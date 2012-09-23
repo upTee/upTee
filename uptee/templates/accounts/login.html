@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% comment %}
+context variables:
+    form
+{% endcomment %}
+
+{% block content %}
+
+{% if form.errors %}
+    <p class="error">The combination of username and password is wrong or your account is not activated yet.</p>
+{% endif %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    <p>
+        <label for="username">Username:</label><input type="text" name="username" value="" id="username" required="" />
+        <label for="password">Password:</label><input type="password" name="password" value="" id="password" required="" />
+        <input class="button" type="submit" value="Login" /><input type="hidden" name="next" value="{{ next }}" />
+    </p>
+</form>
+
+{% endblock content %}

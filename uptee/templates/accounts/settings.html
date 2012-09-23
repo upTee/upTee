@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% comment %}
+context variables:
+    form
+{% endcomment %}
+
+{% block content %}
+
+<div class="head">
+    <h2>User settings</h2>
+</div>
+<div class="body">
+    <form method="post" action="{{ request.path }}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p><input class="button" type="submit" value="Submit" /></p>
+    </form>
+    <p><a class="button" href="{% url change_password %}">Change password</a></p>
+</div>
+{% if messages %}
+    <div class="foot">
+        <div class="left">
+            <h3>
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </h3>
+        </div>
+    </div>
+{% endif %}
+
+{% endblock %}

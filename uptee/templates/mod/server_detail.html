@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% comment %}
+context variables:
+    server
+    options
+{% endcomment %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<div class="head">
+    <h2>Server mod: <a href"{% url server_detail server.mod.title %}">{{ server.mod.title }}</a> ({% if server.is_online %}started{% else %}stopped{% endif %})</h2>
+</div>
+<div class="body">
+    <p><a href="{% url upload_map server.mod.title %}">Upload Map</a></p>
+    <form action="{% url update_settings server.mod.title %}" method="post">
+        {% csrf_token %}
+        <p>Options:</p>
+        {% for option in options %}
+            <p><label for="{{ option.command }}">{{ option.command }}:</label><input type="text" name="{{ option.command }}" value="{{ option.value }}" id="{{ option.command }}"/></p>
+        {% endfor %}
+        <p><input class="button" type="submit" value="Update settings" /></p>
+    </form>
+    <p>Server control:</p>
+    <form method="post" action="{% url start_stop_server server.mod.title %}?next={{ request.path }}">
+        {% csrf_token %}
+        <p><input class="button" type="submit" value="{% if server.is_online %}Stop{% else %}Start{% endif %} Server" /></p>
+    </form>
+</div>
+
+{% endif %}
+
+{% endblock content %}

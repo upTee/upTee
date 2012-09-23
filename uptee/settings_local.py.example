@@ -1,0 +1,193 @@
+# pylint: disable-all
+"""
+settings_local.py
+
+Change site-specific settings here.
+"""
+
+from settings_default import *
+
+"""
+There's a list of settings that you will probably override.
+Uncomment the lines to override the global settings.
+"""
+
+"""
+DEBUG
+
+Turns Django into development mode.
+
+Default: False
+"""
+#DEBUG = False
+
+"""
+TEMPLATE_DEBUG
+
+Additional debug data for templates.
+
+Default: False
+"""
+#TEMPLATE_DEBUG = False
+
+"""
+TIME_ZONE
+
+Sets the used time zone.
+
+Default: 'Europe/Berlin'
+"""
+#TIME_ZONE = 'Europe/Berlin'
+
+"""
+LANGUAGE_CODE
+
+Sets the language code.
+
+Default: 'de-de'
+"""
+#LANGUAGE_CODE = 'de-de'
+
+"""
+ADMINS
+
+A list of chaps maintaining the app.
+
+Default: ()
+"""
+#ADMINS = (
+# ('Your Name', 'your_email@example.com'),
+#)
+
+"""
+EMAIL_HOST
+
+Smtp host for mails.
+"""
+#EMAIL_HOST = 'smtp.example.com'
+
+"""
+EMAIL_PORT
+
+The port for smtp host.
+"""
+#EMAIL_PORT = 25
+
+"""
+EMAIL_HOST_USER
+
+The user name used to authenticate with the smtp host.
+"""
+#EMAIL_HOST_USER = 'joe'
+
+"""
+EMAIL_HOST_PASSWORD
+
+The password used to authenticate with the smtp host.
+"""
+#EMAIL_HOST_PASSWORD = 'password'
+
+"""
+EMAIL_USE_TLS
+
+Controles if TLS should be used.
+"""
+#EMAIL_USE_TLS = False
+
+"""
+SERVER_EMAIL
+
+The default address mails are sent from.
+"""
+#SERVER_EMAIL = 'uptee@example.com'
+
+"""
+EMAIL_SUBJECT_PREFIX
+
+Prefix for mails sent to admins or managers.
+If not set '[Django]: ' will be used.
+"""
+#EMAIL_SUBJECT_PREFIX = '[upTee]: '
+
+"""
+DATABASES
+
+Database-stuff.
+
+Default: SQLite database
+"""
+#DATABASES = {
+# 'default': {
+# # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3'.
+# 'ENGINE': 'django.db.backends.sqlite3',
+# # Or path to database file if using sqlite3.
+# 'NAME': PROJECT_DIR + '/database.db',
+# # Not used with sqlite3.
+# 'USER': '',
+# # Not used with sqlite3.
+# 'PASSWORD': '',
+# # Set to empty string for localhost. Not used with sqlite3.
+# 'HOST': '',
+# # Set to empty string for default. Not used with sqlite3.
+# 'PORT': '',
+# }
+#}
+
+"""
+MIDDLEWARE_CLASSES
+
+You might want to add some debug stuff here.
+"""
+#MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + (
+#    'debug_toolbar.middleware.DebugToolbarMiddleware',
+#)
+
+"""
+INSTALLED_APPS
+
+You might want to add some debug stuff here.
+"""
+#INSTALLED_APPS = INSTALLED_APPS + (
+#    'debug_toolbar',
+#)
+
+"""
+INTERNAL_IPS
+
+Internal IP's.
+"""
+#INTERNAL_IPS = ('127.0.0.1')
+
+"""
+SERVER_EXEC
+
+The teeworlds server executable.
+"""
+#SERVER_EXEC = 'teeworlds_srv_d'
+
+"""
+DEBUG_TOOLBAR_PANELS
+
+This is a debug toolbar with some nice features
+"""
+#DEBUG_TOOLBAR_PANELS = (
+#    'debug_toolbar.panels.version.VersionDebugPanel',
+#    'debug_toolbar.panels.timer.TimerDebugPanel',
+#    'debug_toolbar.panels.settings_vars.SettingsVarsDebugPanel',
+#    'debug_toolbar.panels.headers.HeaderDebugPanel',
+#    'debug_toolbar.panels.request_vars.RequestVarsDebugPanel',
+#    'debug_toolbar.panels.template.TemplateDebugPanel',
+#    'debug_toolbar.panels.sql.SQLDebugPanel',
+#    'debug_toolbar.panels.signals.SignalDebugPanel',
+#    'debug_toolbar.panels.logger.LoggingPanel',
+#)
+
+"""
+DEBUG_TOOLBAR_CONFIG
+
+Uncomment this if you want to use the debug toolbar
+"""
+#DEBUG_TOOLBAR_CONFIG = {
+#    'INTERCEPT_REDIRECTS': False,
+#    'SHOW_TOOLBAR_CALLBACK': lambda x: True,
+#}

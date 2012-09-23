@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% comment %}
+context variables:
+    form
+{% endcomment %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<div class="head">
+    <h2>MapUpload</h2>
+</div>
+<div class="body">
+    <form action="{{ request.path }}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p><input class="button" type="submit" value="Upload" /></p>
+    </form>
+</div>
+
+{% endif %}
+
+{% endblock content %}

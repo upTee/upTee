@@ -1,0 +1,13 @@
+*.db
+*.DS_Store
+*~
+*.pyc
+*.pem
+*.tmproj
+*.directory
+uptee/settings_local.py
+uptee/media
+tests.json
+build/
+pip-log.txt
+src/
