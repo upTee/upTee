@@ -1,4 +1,6 @@
+celery>=3.0
 Django>=1.4
+django-celery>=3.0
 django-admin-tools>=0.4.0
 django-debug-toolbar>=0.9.4
 django-simple-captcha>=0.3.4

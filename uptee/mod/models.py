@@ -1,10 +1,10 @@
-import mimetypes, os, psutil, signal, subprocess, tarfile, zipfile
+import mimetypes, os, psutil, signal, tarfile, zipfile
 from django.db import models
 from django.contrib.auth.models import User
 from django.forms import ValidationError
+from mod.tasks import run_server
 from shutil import move, rmtree
-from subprocess import Popen
-from settings import MEDIA_ROOT, SERVER_EXEC
+from settings import MEDIA_ROOT
 from twconfig import Config as TwCongig
 
 class FreePortManager(models.Manager):
@@ -128,8 +128,7 @@ class Server(models.Model):
         for vote in self.config_votes.all():
             config.add_vote(vote.command, vote.title)
         config.write()
-        self.pid = subprocess.Popen((os.path.join(path, SERVER_EXEC), '-f', 'generated.cfg'), cwd=path).pid
-        self.save()
+        run_server.delay(path, self)
 
     def delete(self):
         path = os.path.join(MEDIA_ROOT, 'users', self.owner.username, self.mod.title)

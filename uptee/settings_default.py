@@ -1,7 +1,9 @@
-import os
+import djcelery, os
 from django import contrib
 
 # Django settings for uptee project.
+
+djcelery.setup_loader()
 
 PROJECT_DIR = os.path.dirname(__file__)
 
@@ -137,6 +139,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+    'djcelery',
     'accounts',
     'mod',
     'captcha',
@@ -146,4 +149,8 @@ LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login/'
 LOGOUT_URL = '/logout/'
 
+# teeworlds executable
 SERVER_EXEC = 'teeworlds_srv'
+
+# Broker URL for celery
+BROKER_URL = 'amqp://guest:guest@localhost:5672/'
