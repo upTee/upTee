@@ -11,7 +11,7 @@
         </div>
         <div class="user">
             {% if user.is_authenticated %}
-                <a class="button" href="{% url settings %}">Settings</a> <a class="button" href="{% url logout %}">Logout</a>
+                <a class="button" href="{% url settings %}">Settings</a> <a class="button" href="{% url logout %}">Logout</a> <a href="{% url server_list %}">Servers</a>
             {% else %}
                 <a class="button" href="{% url login %}?next={{ request.path }}">Login</a> <a class="button" href="{% url register %}">Register</a>
             {% endif %}

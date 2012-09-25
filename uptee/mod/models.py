@@ -110,9 +110,11 @@ class Server(models.Model):
         if self.port and self.port.is_active:
             self.port.is_active = False
             self.port.save()
-            self.save()
+            self.port = None
         if self.pid in psutil.get_pid_list():
             os.kill(self.pid, signal.SIGTERM)
+        self.pid = None
+        self.save()
 
     def set_online(self):
         self.port = Port.get_free_port()

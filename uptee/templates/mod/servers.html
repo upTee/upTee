@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% comment %}
+context variables:
+    server_list
+{% endcomment %}
+
+{% block content %}
+
+{% for server in server_list %}
+<div class="head">
+    <h2>Server mod: {% if server.owner == user %}<a href="{% url server_detail server.mod.title %}">{{ server.mod.title }}</a>{% else %}{{ server.mod.title }}{% endif %} ({% if server.is_online %}started{% else %}stopped{% endif %}) from {{ server.owner.username }}</h2>
+</div>
+
+{% if user.is_authenticated %}{% if user.is_staff or server.owner == user %}
+<div class="body">
+    <form method="post" action="{% url start_stop_server_by_id server.id %}?next={{ request.path }}">
+        {% csrf_token %}
+        <p><input class="button" type="submit" value="{% if server.is_online %}Stop{% else %}Start{% endif %} Server" /></p>
+    </form>
+</div>
+{% endif %}{% endif %}
+{% endfor %}
+
+{% endblock content %}

@@ -2,6 +2,7 @@ import os
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
+from django.http import Http404
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.views.decorators.http import require_POST
@@ -9,13 +10,19 @@ from mod.forms import MapUploadForm
 from mod.models import Server
 from settings import MEDIA_ROOT
 
-def server_list(request):
+def user_server_list(request):
     servers = None
     if request.user.is_authenticated():
         servers = Server.objects.filter(is_active=True).filter(owner=request.user)
         for server in servers:
             server.check_online()
     return render_to_response('mod/base.html', {'server_list': servers}, context_instance=RequestContext(request))
+
+def server_list(request):
+    servers = Server.objects.filter(is_active=True)
+    for server in servers:
+        server.check_online()
+    return render_to_response('mod/servers.html', {'server_list': servers}, context_instance=RequestContext(request))
 
 @login_required
 def server_detail(request, mod_name):
@@ -46,6 +53,21 @@ def upload_map(request, mod_name):
 def start_stop_server(request, mod_name):
     next = request.REQUEST.get('next', reverse('home'))
     server = get_object_or_404(Server.objects.select_related().filter(is_active=True).filter(owner=request.user), mod__title=mod_name)
+    server.check_online()
+    if server.is_online:
+        server.set_offline()
+    else:
+        server.set_online()
+    return render_to_response('mod/state_changed.html', {'next': next }, context_instance=RequestContext(request))
+
+@login_required
+@require_POST
+def start_stop_server_by_id(request, server_id):
+    server = get_object_or_404(Server.objects.select_related().filter(is_active=True), pk=server_id)
+    user = request.user
+    if not user.is_staff and server.owner != user:
+        raise Http404
+    next = request.REQUEST.get('next', reverse('server_list'))
     server.check_online()
     if server.is_online:
         server.set_offline()
