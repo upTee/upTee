@@ -26,9 +26,9 @@ TEMPLATE_DEBUG
 
 Additional debug data for templates.
 
-Default: False
+Default: DEBUG
 """
-#TEMPLATE_DEBUG = False
+#TEMPLATE_DEBUG = DEBUG
 
 """
 TIME_ZONE
@@ -112,7 +112,7 @@ If not set '[Django]: ' will be used.
 """
 DATABASES
 
-Database-stuff.
+Overrides the default database settings.
 
 Default: SQLite database
 """
@@ -139,24 +139,50 @@ MIDDLEWARE_CLASSES
 You might want to add some debug stuff here.
 """
 #MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + (
-#    'debug_toolbar.middleware.DebugToolbarMiddleware',
+#    'johnny.middleware.LocalStoreClearMiddleware', # requires johnny-cache
+#    'johnny.middleware.QueryCacheMiddleware',      # requires johnny-cache
 #)
+#JOHNNY_MIDDLEWARE_KEY_PREFIX='jc_uptee'            # requires johnny-cache, is only needed if johnny-cache is used
+
+"""
+CACHES
+
+Controles if a cache should be used and which.
+"""
+#CACHES = {
+#    'default' : dict(
+#        BACKEND = 'johnny.backends.memcached.MemcachedCache',  # requires johnny-cache and memcache
+#        LOCATION = ['127.0.0.1:11211'],
+#        JOHNNY_CACHE = True,
+#    )
+#}
+
+"""
+TEMPLATE_CACHING
+
+Activates template caching.
+"""
+#TEMPLATE_CACHING = True
+
+"""
+TEMPLATE_LOADERS
+
+Overrides the default template loaders.
+Uncomment the following if TEMPLATE_CACHING is True.
+"""
+#if TEMPLATE_CACHING:
+#    TEMPLATE_LOADERS = (
+#        ('django.template.loaders.cached.Loader', TEMPLATE_LOADERS),
+#    )
 
 """
 INSTALLED_APPS
 
-You might want to add some debug stuff here.
+You might want to add some of your own apps.
 """
 #INSTALLED_APPS = INSTALLED_APPS + (
-#    'debug_toolbar',
+#    # add your extra apps here
 #)
-
-"""
-INTERNAL_IPS
-
-Internal IP's.
-"""
-#INTERNAL_IPS = ('127.0.0.1')
 
 """
 SERVER_EXEC
@@ -166,28 +192,60 @@ The teeworlds server executable.
 #SERVER_EXEC = 'teeworlds_srv_d'
 
 """
-DEBUG_TOOLBAR_PANELS
+Debug stuff
 
-This is a debug toolbar with some nice features
+Uncomment the following for stuff which is for debugging only.
 """
-#DEBUG_TOOLBAR_PANELS = (
-#    'debug_toolbar.panels.version.VersionDebugPanel',
-#    'debug_toolbar.panels.timer.TimerDebugPanel',
-#    'debug_toolbar.panels.settings_vars.SettingsVarsDebugPanel',
-#    'debug_toolbar.panels.headers.HeaderDebugPanel',
-#    'debug_toolbar.panels.request_vars.RequestVarsDebugPanel',
-#    'debug_toolbar.panels.template.TemplateDebugPanel',
-#    'debug_toolbar.panels.sql.SQLDebugPanel',
-#    'debug_toolbar.panels.signals.SignalDebugPanel',
-#    'debug_toolbar.panels.logger.LoggingPanel',
-#)
+#if DEBUG:
 
-"""
-DEBUG_TOOLBAR_CONFIG
+    """
+    MIDDLEWARE_CLASSES
 
-Uncomment this if you want to use the debug toolbar
-"""
-#DEBUG_TOOLBAR_CONFIG = {
-#    'INTERCEPT_REDIRECTS': False,
-#    'SHOW_TOOLBAR_CALLBACK': lambda x: True,
-#}
+    You might want to add some debug middleware.
+    """
+    #MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + (
+    #    'debug_toolbar.middleware.DebugToolbarMiddleware', # for debug toolbar
+    #)
+
+    """
+    INSTALLED_APPS
+
+    You might want to add some debug stuff here.
+    """
+    #INSTALLED_APPS = INSTALLED_APPS + (
+    #    'debug_toolbar',   # for debug toolbar
+    #)
+
+    """
+    DEBUG_TOOLBAR_PANELS
+
+    This is a debug toolbar with some nice features.
+    """
+    #DEBUG_TOOLBAR_PANELS = (
+    #    'debug_toolbar.panels.version.VersionDebugPanel',
+    #    'debug_toolbar.panels.timer.TimerDebugPanel',
+    #    'debug_toolbar.panels.settings_vars.SettingsVarsDebugPanel',
+    #    'debug_toolbar.panels.headers.HeaderDebugPanel',
+    #    'debug_toolbar.panels.request_vars.RequestVarsDebugPanel',
+    #    'debug_toolbar.panels.template.TemplateDebugPanel',
+    #    'debug_toolbar.panels.sql.SQLDebugPanel',
+    #    'debug_toolbar.panels.signals.SignalDebugPanel',
+    #    'debug_toolbar.panels.logger.LoggingPanel',
+    #)
+
+    """
+    DEBUG_TOOLBAR_CONFIG
+
+    Uncomment this if you want to use the debug toolbar.
+    """
+    #DEBUG_TOOLBAR_CONFIG = {
+    #    'INTERCEPT_REDIRECTS': False,
+    #    'SHOW_TOOLBAR_CALLBACK': lambda x: True,
+    #}
+
+    """
+    INTERNAL_IPS
+
+    The internal IP's are required by the debug toolbar.
+    """
+    #INTERNAL_IPS = ('127.0.0.1')
