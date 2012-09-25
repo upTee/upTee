@@ -16,7 +16,7 @@ from settings import ADMINS, DEBUG
 def logout(request):
     user_logout(request)
     return render_to_response('accounts/logout.html', {
-            'next': reverse('home'),
+            'next': request.REQUEST.get('next', reverse('home')),
         }, context_instance=RequestContext(request))
 
 def login(request):
