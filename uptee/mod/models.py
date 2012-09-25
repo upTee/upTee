@@ -131,6 +131,7 @@ class Server(models.Model):
         run_server.delay(path, self)
 
     def delete(self):
+        self.set_offline()
         path = os.path.join(MEDIA_ROOT, 'users', self.owner.username, self.mod.title)
         if os.path.exists(path):
             rmtree(path)
