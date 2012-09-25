@@ -19,6 +19,8 @@ class ServerAdmin(admin.ModelAdmin):
 
     def save_model(self, request, obj, form, change):
         obj.save()
+        if not obj.is_active:
+            obj.set_offline()
         if not change:
             mod_path = os.path.join(MEDIA_ROOT, 'users', obj.owner.username, obj.mod.title)
             if not os.path.exists(mod_path):
