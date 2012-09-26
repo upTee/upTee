@@ -79,7 +79,7 @@ def start_stop_server(request, server_id):
     user = request.user
     if not user.is_staff and server.owner != user:
         raise Http404
-    next = request.REQUEST.get('next', reverse('user_server_list', kwargs={'username': server.owner.username, 'mod_name': server.mod.title}))
+    next = request.REQUEST.get('next', reverse('user_home', kwargs={'username': server.owner.username}))
     server.check_online()
     if server.is_online:
         server.set_offline()
