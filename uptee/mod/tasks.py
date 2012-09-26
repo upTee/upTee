@@ -9,4 +9,3 @@ def run_server(path, server):
         p = Popen((os.path.join(path, SERVER_EXEC), '-f', 'generated.cfg'), cwd=path, stdout=f, stderr=f)
         server.pid = p.pid
         server.save()
-        p.wait()
