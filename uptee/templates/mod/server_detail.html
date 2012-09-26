@@ -3,33 +3,31 @@
 {% comment %}
 context variables:
     server
-    options
+    server_details
 {% endcomment %}
 
 {% block content %}
 
-{% if user.is_authenticated %}
-
 <div class="head">
-    <h2>Server mod: <a href"{% url server_detail server.mod.title %}">{{ server.mod.title }}</a> ({% if server.is_online %}started{% else %}stopped{% endif %})</h2>
+    <h2>Server mod: {{ server.mod.title }} ({% if server.is_online %}started{% else %}stopped{% endif %})</h2>
 </div>
 <div class="body">
-    <p><a href="{% url upload_map server.mod.title %}">Upload Map</a></p>
-    <form action="{% url update_settings server.mod.title %}" method="post">
-        {% csrf_token %}
-        <p>Options:</p>
-        {% for option in options %}
-            <p><label for="{{ option.command }}">{{ option.command }}:</label><input type="text" name="{{ option.command }}" value="{{ option.value }}" id="{{ option.command }}"/></p>
-        {% endfor %}
-        <p><input class="button" type="submit" value="Update settings" /></p>
-    </form>
+    {% if user == server.owner %}
+        <p><a href="{% url upload_map user.username server.mod.title %}">Upload Map</a> <a href="{% url server_edit user.username server.mod.title %}">Edit settings</a></p>
+    {% endif %}
+
+    <p>Servername: {{ server_details.name }}</p>
+    <p>Gametype: {{ server_details.gametype }}</p>
+
+    {% if user.is_authenticated %}{% if user == server.owner or user.is_staff %}
+
     <p>Server control:</p>
-    <form method="post" action="{% url start_stop_server server.mod.title %}?next={{ request.path }}">
+    <form method="post" action="{% url start_stop_server server.id %}?next={{ request.path }}">
         {% csrf_token %}
         <p><input class="button" type="submit" value="{% if server.is_online %}Stop{% else %}Start{% endif %} Server" /></p>
     </form>
-</div>
 
-{% endif %}
+    {% endif %}{% endif %}
+</div>
 
 {% endblock content %}

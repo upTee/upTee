@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% comment %}
+context variables:
+    server
+    options
+{% endcomment %}
+
+{% block content %}
+
+<div class="head">
+    <h2>Server mod: <a href"{% url server_detail user.username server.mod.title %}">{{ server.mod.title }}</a> ({% if server.is_online %}started{% else %}stopped{% endif %})</h2>
+</div>
+<div class="body">
+    <form action="{% url update_settings server.id %}" method="post">
+        {% csrf_token %}
+        <p>Options:</p>
+        {% for option in options %}
+            <p><label for="{{ option.command }}">{{ option.command }}:</label><input type="text" name="{{ option.command }}" value="{{ option.value }}" id="{{ option.command }}"/></p>
+        {% endfor %}
+        <p><input class="button" type="submit" value="Update settings" /></p>
+    </form>
+</div>
+
+{% endblock content %}

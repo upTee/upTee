@@ -7,8 +7,6 @@ context variables:
 
 {% block content %}
 
-{% if user.is_authenticated %}
-
 <div class="head">
     <h2>MapUpload</h2>
 </div>
@@ -19,7 +17,5 @@ context variables:
         <p><input class="button" type="submit" value="Upload" /></p>
     </form>
 </div>
-
-{% endif %}
 
 {% endblock content %}

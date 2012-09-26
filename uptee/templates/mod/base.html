@@ -11,10 +11,10 @@ context variables:
 
 {% for server in server_list %}
 <div class="head">
-    <h2>Server mod: <a href="{% url server_detail server.mod.title %}">{{ server.mod.title }}</a> ({% if server.is_online %}started{% else %}stopped{% endif %})</h2>
+    <h2>Server mod: <a href="{% url server_detail server.owner.username server.mod.title %}">{{ server.mod.title }}</a> ({% if server.is_online %}started{% else %}stopped{% endif %})</h2>
 </div>
 <div class="body">
-    <form method="post" action="{% url start_stop_server server.mod.title %}?next={{ request.path }}">
+    <form method="post" action="{% url start_stop_server server.id %}?next={{ request.path }}">
         {% csrf_token %}
         <p><input class="button" type="submit" value="{% if server.is_online %}Stop{% else %}Start{% endif %} Server" /></p>
     </form>
