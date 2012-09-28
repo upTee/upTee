@@ -12,11 +12,11 @@ class SettingsUserForm(forms.ModelForm):
 
 class PasswordChangeForm(forms.Form):
     old_password = forms.CharField(label='Old password',
-        widget=forms.PasswordInput(render_value=False, attrs={'required': None}))
+        widget=forms.PasswordInput(render_value=False, attrs={'pattern': r'.{8,}', 'title': '8 characters are required', 'required': None}))
     new_password1 = forms.CharField(label='New password', min_length=8,
-        widget=forms.PasswordInput(render_value=False, attrs={'required': None}))
+        widget=forms.PasswordInput(render_value=False, attrs={'pattern': r'.{8,}', 'title': '8 characters are required', 'required': None}))
     new_password2 = forms.CharField(label='New password again', min_length=8,
-        widget=forms.PasswordInput(render_value=False, attrs={'required': None}))
+        widget=forms.PasswordInput(render_value=False, attrs={'pattern': r'.{8,}', 'title': '8 characters are required', 'required': None}))
 
     def __init__(self, *args, **kwargs):
         self.current_user = kwargs.pop('current_user', None)
