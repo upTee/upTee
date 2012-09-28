@@ -45,12 +45,12 @@ class PasswordChangeForm(forms.Form):
 
 class RegisterForm(forms.Form):
     username = forms.RegexField(label="Username", min_length=3, regex=r'^[\w.@+-]+$',
-        error_messages = {'invalid': 'Nur Zahlen, Buchstaben und @/./+/-/_ sind erlaubt.'},
-        widget=forms.TextInput(attrs={'required': None}))
+        error_messages = {'invalid': 'Required. 30 characters or fewer. Letters, numbers and @/./+/-/_ characters.'},
+        widget=forms.TextInput(attrs={'pattern': r'[\w.@+-]{3,30}', 'title': '30 characters or fewer. Letters, numbers and @/./+/-/_ characters', 'required': None}))
     password1 = forms.CharField(label='Password', min_length=8,
-        widget=forms.PasswordInput(render_value=False, attrs={'required': None}))
+        widget=forms.PasswordInput(render_value=False, attrs={'pattern': r'.{8,}', 'title': '8 characters are required', 'required': None}))
     password2 = forms.CharField(label='Password again', min_length=8,
-        widget=forms.PasswordInput(render_value=False, attrs={'required': None}))
+        widget=forms.PasswordInput(render_value=False, attrs={'pattern': r'.{8,}', 'title': '8 characters are required', 'required': None}))
     email = forms.EmailField(required=True, widget=Html5EmailInput(attrs={'required': None}))
     captcha = Html5CaptchaField(required=True)
 
