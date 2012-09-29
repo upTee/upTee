@@ -31,7 +31,7 @@ def login(request):
         if next == reverse('logout') or next == reverse('logout')[:-1]:
             post['next'] = reverse('home')
             request.POST = post
-    return auth_views.login(request, 'accounts/login.html')
+    return auth_views.login(request, 'base.html')
 
 @login_required
 def settings(request):

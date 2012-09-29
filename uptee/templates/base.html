@@ -3,25 +3,67 @@
     <head>
         <title>{% block title %}upTee{% endblock title %}</title>
         <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+
+        <meta name="description" content="" />
+        <meta name="author" content="Fisico" />
+        <meta name="viewport" content="width=device-width; initial-scale=1.0" />
+
+        <!-- <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" /> we don't have this yet -->
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" type="text/css" />
         {% block extra_head %}{% endblock extra_head %}
     </head>
     <body>
-        <div class="header">
-            <p>Welcome to <a href="{% url home %}">upTee</a>. The simple teeworlds server managment tool.</p>
-        </div>
-        <div class="user">
-            {% if user.is_authenticated %}
-                <a class="button" href="{% url settings %}">Settings</a> <a class="button" href="{% url logout %}?next={{ request.path }}">Logout</a>
-            {% else %}
-                <a class="button" href="{% url login %}?next={{ request.path }}">Login</a> <a class="button" href="{% url register %}">Register</a>
-            {% endif %}
-            <a href="{% url server_list %}">Servers</a>
-        </div>
-        <div class="content">
-            {% for message in messages %}
-                <p class="message">{{ message }}</p>
-            {% endfor %}
-            {% block content %}{% endblock %}
+        <div id="wrapper">
+            <div id="header_box"> 
+                <a href="{% url home %}"><div id="header"> </div></a>
+            </div>
+
+            <div id="menu_box"> 
+                <ul id="tabmenue">
+                    {% if user.is_authenticated %}
+                    <li><a class="button" href="{% url settings %}">Settings</a></li>
+                    <li><a class="button" href="{% url logout %}?next={{ request.path }}">Logout</a></li>
+                    {% else %}
+                    <li><a class="button" href="{% url register %}">Register</a></li>
+                    {% endif %}
+                    <li><a href="{% url server_list %}">Servers</a></li>
+                </ul>
+            </div>
+
+            <div id="content_box"> 
+                {% for message in messages %}
+                    <p class="message">{{ message }}</p>
+                {% endfor %}
+                {% block content %}{% endblock %}
+            </div>
+
+            <div id="signup_box">
+                {% if not user.is_authenticated %}
+                    {% if form.errors %}
+                        <p class="error">The combination of username and password is wrong or your account is not activated yet.</p>
+                    {% endif %}
+
+                    <form action="{% url login %}?next={{ request.path }}" method="post">
+                        {% csrf_token %}
+                            <p><label for="username">Username:</label><input type="text" name="username" value="" id="username" pattern="[\w.@+-]{3,30}" title="30 characters or fewer. Letters, numbers and @/./+/-/_ characters" required="" /></p>
+                            <p><label for="password">Password:</label><input type="password" name="password" value="" id="password" pattern=".{8,}" title="8 characters are required" required="" /></p>
+                            <p><input class="button" type="submit" value="Login" /><input type="hidden" name="next" value="{{ next }}" /></p>
+                    </form>
+                {% endif %}
+            </div>
+
+            <div id="sidebar_box"> 
+                {% block sidebar %}{% endblock %}
+            </div>
+                <div class="clear"> </div>
+
+            <div id="footer_box"> 
+                <div id="footer_left"> TEST </div>
+                <div id="footer_center"> Design &copy; 2012 Sushi / David G. </div>
+                <div id="footer_right"> TEST </div>
+                    <div class="clear"> </div>
+            </div>
         </div>
     </body>
 </html>

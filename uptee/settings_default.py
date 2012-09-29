@@ -73,6 +73,7 @@ STATIC_URL = '/static/'
 # Additional locations of static files
 STATICFILES_DIRS = (
     os.path.join(contrib.__path__[0], 'admin', 'static'),
+    os.path.join(PROJECT_DIR, 'static'),
 )
 
 # List of finder classes that know how to find static files in
@@ -146,7 +147,7 @@ INSTALLED_APPS = (
 )
 
 LOGIN_REDIRECT_URL = '/'
-LOGIN_URL = '/login/'
+LOGIN_URL = '/'
 LOGOUT_URL = '/logout/'
 
 # teeworlds executable
