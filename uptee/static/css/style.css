@@ -107,17 +107,6 @@ body {
 }
 
 
-#signup_box {
-    float: right;
-    margin-top: 20px;
-    padding: 10px;
-    width: 180px;
-    background: rgba(244, 244, 244, 255);
-    border: 1px solid rgb(199, 199, 199);
-    box-shadow: 0px 1px 0px rgb(255, 255, 255), 0px 1px 0px rgb(255, 255, 255) inset;
-    font-size: 14px;
-}
-    
 #content_box {
     width: 750px;
     float: left;
@@ -127,11 +116,24 @@ body {
     border: 1px solid rgb(199, 199, 199);
     box-shadow: 0px 1px 0px rgb(255, 255, 255), 0px 1px 0px rgb(255, 255, 255) inset;
     font-size: 14px;
-    
 }
 
 #sidebar_box {
     float: right;
+    width: 200px;
+}
+
+.signup_box {
+    margin-top: 20px;
+    padding: 10px;
+    width: 180px;
+    background: rgba(244, 244, 244, 255);
+    border: 1px solid rgb(199, 199, 199);
+    box-shadow: 0px 1px 0px rgb(255, 255, 255), 0px 1px 0px rgb(255, 255, 255) inset;
+    font-size: 14px;
+}
+
+.sidebar {
     margin-top: 20px;
     padding: 10px;
     width: 180px;
@@ -171,7 +173,7 @@ body {
 
 
 /*-------------------------Inputs---------------------*/
-#signup_box input[type=text] {
+.signup_box input[type=text] {
     background: #dcdcdc url('../img/person.png') no-repeat 5px center;
     background-size: 20px 20px;
     border: solid 1px #969696;
@@ -182,13 +184,13 @@ body {
     transition: all .5s;
 }
 
-#signup_box input[type=text]:focus {
+.signup_box input[type=text]:focus {
     width: 100px;
     background-color: #fff;
     border: solid 1px #ccc;
 }
 
-#signup_box input[type=password] {
+.signup_box input[type=password] {
 background: #dcdcdc url('../img/lock.png') no-repeat 5px center;
 background-size: 20px 20px;
 border: solid 1px #969696;
@@ -199,7 +201,7 @@ width: 30px;
 transition: all .5s;
 }
 
-#signup_box input[type=password]:focus {
+.signup_box input[type=password]:focus {
     width: 100px;
     background-color: #fff;
     border: solid 1px #ccc;
