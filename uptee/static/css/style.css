@@ -175,7 +175,6 @@ body {
 /*-------------------------Inputs---------------------*/
 .signup_box input[type=text] {
     background: #dcdcdc url('../img/person.png') no-repeat 5px center;
-    background-size: 20px 20px;
     border: solid 1px #969696;
     padding: 5px 10px 5px 30px;
     width: 30px;
@@ -192,7 +191,6 @@ body {
 
 .signup_box input[type=password] {
 background: #dcdcdc url('../img/lock.png') no-repeat 5px center;
-background-size: 20px 20px;
 border: solid 1px #969696;
 padding: 5px 10px 5px 30px;
 width: 30px;
