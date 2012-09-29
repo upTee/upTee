@@ -44,11 +44,11 @@
                         <p class="error">The combination of username and password is wrong or your account is not activated yet.</p>
                     {% endif %}
 
-                    <form action="{% url login %}?next={{ request.path }}" method="post">
+                    <form action="{% url login %}" method="post">
                         {% csrf_token %}
                             <p><label for="username">Username:</label><input type="text" name="username" value="" id="username" pattern="[\w.@+-]{3,30}" title="30 characters or fewer. Letters, numbers and @/./+/-/_ characters" required="" /></p>
                             <p><label for="password">Password:</label><input type="password" name="password" value="" id="password" pattern=".{8,}" title="8 characters are required" required="" /></p>
-                            <p><input class="button" type="submit" value="Login" /><input type="hidden" name="next" value="{{ next }}" /></p>
+                            <p><input class="button" type="submit" value="Login" /><input type="hidden" name="next" value="{{ request.path }}" /></p>
                     </form>
                 {% endif %}
             </div>

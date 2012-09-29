@@ -1,6 +1,7 @@
 from django.core.mail import mail_admins
 from django.contrib.auth import views as auth_views
 from django.contrib.auth import logout as user_logout
+from django.contrib.auth import login as user_login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.hashers import make_password
@@ -15,23 +16,23 @@ from settings import ADMINS, DEBUG
 @login_required
 def logout(request):
     user_logout(request)
-    return render_to_response('accounts/logout.html', {
-            'next': request.REQUEST.get('next', reverse('home')),
-        }, context_instance=RequestContext(request))
+    messages.success(request, "Successfully logged out.")
+    return redirect(request.REQUEST.get('next', reverse('home')))
 
 def login(request):
-    if request.user.is_authenticated():
+    if request.user.is_authenticated() or request.method != 'POST':
         return redirect(reverse('home'))
-    if request.method == 'POST':
-        post = request.POST.copy()
-        next = post.get('next', '')
-        form = AuthenticationForm(data=post)
-        if form.is_valid():
-            user_profile = User.objects.get(username=form.get_user())
-        if next == reverse('logout') or next == reverse('logout')[:-1]:
-            post['next'] = reverse('home')
-            request.POST = post
-    return auth_views.login(request, 'base.html')
+    post = request.POST.copy()
+    next = post.get('next', reverse('home'))
+    form = AuthenticationForm(data=post)
+    if form.is_valid():
+        user_login(request, form.get_user())
+        messages.success(request, "Successfully logged in.")
+    else:
+        messages.warning(request, "The combination of username and password is wrong or your account is not activated yet.")
+    if next == reverse('logout') or next == reverse('logout')[:-1]:
+        next = reverse('home')
+    return redirect(next)
 
 @login_required
 def settings(request):
