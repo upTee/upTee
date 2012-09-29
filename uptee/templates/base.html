@@ -31,10 +31,11 @@
                 </ul>
             </div>
 
+            {% for message in messages %}
+                <p class="notification_{{ message.tags }}">{{ message }}</p>
+            {% endfor %}
+
             <div id="content_box"> 
-                {% for message in messages %}
-                    <p class="message">{{ message }}</p>
-                {% endfor %}
                 {% block content %}{% endblock %}
             </div>
 

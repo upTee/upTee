@@ -70,7 +70,7 @@ body {
     background-color: #bbe6f7;
 }
 
-.notification_sucess {
+.notification_success {
     background: #dcdcdc url('../img/sucess.png') no-repeat 10px center;
     border: 1px solid;
     margin-top: 20px;
