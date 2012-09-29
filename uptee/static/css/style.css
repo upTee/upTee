@@ -17,17 +17,14 @@ body {
     width: 1000px;
     margin-right: auto;
     margin-left: auto;
-    outline: 1px dotted red; /*remove after test*/
 }
 
 #header_box {
-    border: 1px dotted; /*remove after test*/
     margin-top: 20px;
 }
 
 #header {
     background-image: url('../img/logo.png');
-    outline: 1px dotted; /*remove after test*/
     width: 145px;
     height: 35px;
 }
@@ -59,6 +56,56 @@ body {
 #tabmenue li a:hover {
     background-image: url('../img/menu_pattern.png');
 }
+
+
+.notification_info {
+	background: #dcdcdc url('../img/info.png') no-repeat 10px center;
+	border: 1px solid;
+	margin-top: 20px;
+	margin-right: auto;
+    margin-left: auto;
+	width: 745px;
+	padding: 10px 10px 10px 45px;
+	color: #034e96;
+  	background-color: #bbe6f7;
+}
+
+.notification_sucess {
+	background: #dcdcdc url('../img/sucess.png') no-repeat 10px center;
+	border: 1px solid;
+	margin-top: 20px;
+	margin-right: auto;
+    margin-left: auto;
+	width: 745px;
+	padding: 10px 10px 10px 45px;
+	color: #4f8a14;
+  	background-color: #e0f3be;
+}
+
+.notification_warning {
+	background: #dcdcdc url('../img/warning.png') no-repeat 10px center;
+	border: 1px solid;
+	margin-top: 20px;
+	margin-right: auto;
+    margin-left: auto;
+	width: 745px;
+	padding: 10px 10px 10px 45px;
+	color: #a06011;
+  	background-color: #feefb6;
+}
+
+.notification_error {
+	background: #dcdcdc url('../img/error.png') no-repeat 10px center;
+	border: 1px solid;
+	margin-top: 20px;
+	margin-right: auto;
+    margin-left: auto;
+	width: 745px;
+	padding: 10px 10px 10px 45px;
+	color: #d4000b;
+  	background-color: #febab8;
+}
+
 
 #signup_box {
     float: right;
@@ -159,7 +206,7 @@ transition: all .5s;
 }
 
 
-#signup_box input[type=submit] {
+input[type=submit] {
     background: url('../img/submenu_pattern.png') repeat-x;
     margin-top: 20px;
     padding: 5px;
@@ -171,7 +218,7 @@ transition: all .5s;
     border-radius: 3px;
 }
 
-#signup_box input[type=submit]:hover {
+input[type=submit]:hover {
     background: #d8d8d8;
     color: gray;
     cursor: pointer;
@@ -179,7 +226,7 @@ transition: all .5s;
     box-shadow: inset 0 0 1px 1px #ebebeb;
 }
 
-#signup_box input[type=submit]:active {
+input[type=submit]:active {
     background: url('../img/menu_pattern.png') repeat-x;
     -webkit-box-shadow: inset 0 0 1px 1px #e3e3e3;
     box-shadow: inset 0 0 1px 1px #e3e3e3;
