@@ -46,8 +46,8 @@
 
                     <form action="{% url login %}" method="post">
                         {% csrf_token %}
-                            <p><label for="username">Username:</label><input type="text" name="username" value="" id="username" pattern="[\w.@+-]{3,30}" title="30 characters or fewer. Letters, numbers and @/./+/-/_ characters" required="" /></p>
-                            <p><label for="password">Password:</label><input type="password" name="password" value="" id="password" pattern=".{8,}" title="8 characters are required" required="" /></p>
+                            <p><label for="username">Username:</label></p><p><input type="text" name="username" value="" id="username" pattern="[\w.@+-]{3,30}" title="30 characters or fewer. Letters, numbers and @/./+/-/_ characters" required="" /></p>
+                            <p><label for="password">Password:</label></p><p><input type="password" name="password" value="" id="password" pattern=".{8,}" title="8 characters are required" required="" /></p>
                             <p><input class="button" type="submit" value="Login" /><input type="hidden" name="next" value="{{ request.path }}" /></p>
                     </form>
                 {% endif %}
@@ -60,7 +60,7 @@
 
             <div id="footer_box"> 
                 <div id="footer_left"> TEST </div>
-                <div id="footer_center"> Design &copy; 2012 Sushi / David G. </div>
+                <div id="footer_center"> Design &copy; 2012 Sascha W. / David G. </div>
                 <div id="footer_right"> TEST </div>
                     <div class="clear"> </div>
             </div>
