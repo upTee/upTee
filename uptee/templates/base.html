@@ -24,8 +24,6 @@
                     {% if user.is_authenticated %}
                     <li><a class="button" href="{% url settings %}">Settings</a></li>
                     <li><a class="button" href="{% url logout %}?next={{ request.path }}">Logout</a></li>
-                    {% else %}
-                    <li><a class="button" href="{% url register %}">Register</a></li>
                     {% endif %}
                     <li><a href="{% url server_list %}">Servers</a></li>
                 </ul>
@@ -61,7 +59,7 @@
                         
                     <div class="sidebar_entry">
                         <div class="register_box">
-                            <h3>Register</h3>
+                            <a href="{% url register %}"><h3>Register</h3></a>
                         </div>
                     </div>
                     {% else %}
@@ -70,7 +68,14 @@
                             you are logged in!
                         </div>
                     </div>
+                    
+                    <div class="sidebar_entry">
+                        <div class="server_box">
+                            serverbox
+                        </div>
+                    </div>
                     {% endif %}
+                    
                     {% block sidebar %}{% endblock %}
                 </div>
                     
