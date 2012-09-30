@@ -41,18 +41,25 @@
 
                 <div id="sidebar_box">
                     <div class="signup_box">
-                        {% if not user.is_authenticated %}
+                        <div class="signup"> 
+                            <h3>Login:</h3>
+                            {% if not user.is_authenticated %}
                             {% if form.errors %}
                                 <p class="error">The combination of username and password is wrong or your account is not activated yet.</p>
                             {% endif %}
         
-                            <form action="{% url login %}" method="post">
-                                {% csrf_token %}
-                                    <p><label for="username">Username:</label></p><p><input type="text" name="username" value="" id="username" pattern="[\w.@+-]{3,30}" title="30 characters or fewer. Letters, numbers and @/./+/-/_ characters" required="" /></p>
-                                    <p><label for="password">Password:</label></p><p><input type="password" name="password" value="" id="password" pattern=".{8,}" title="8 characters are required" required="" /></p>
-                                    <p><input class="button" type="submit" value="Login" /><input type="hidden" name="next" value="{{ request.path }}" /></p>
-                            </form>
-                        {% endif %}
+                                <form action="{% url login %}" method="post">
+                                    {% csrf_token %}
+                                        <p><label for="username">Username:</label></p><p><input type="text" name="username" value="" id="username" pattern="[\w.@+-]{3,30}" title="30 characters or fewer. Letters, numbers and @/./+/-/_ characters" required="" /></p>
+                                        <p><label for="password">Password:</label></p><p><input type="password" name="password" value="" id="password" pattern=".{8,}" title="8 characters are required" required="" /></p>
+                                        <p><input class="button" type="submit" value="Login" /><input type="hidden" name="next" value="{{ request.path }}" /></p>
+                                </form>
+                            {% endif %}
+                        </div>
+                        <div class="register"> 
+                           <h3>Register</h3>    
+                        </div>
+                        
                     </div>
                     
                     <div class="sidebar"> 
