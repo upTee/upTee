@@ -12,16 +12,11 @@ from mod.forms import MapUploadForm
 from mod.models import Server
 from settings import MEDIA_ROOT
 
-def user_server_list(request, username=None):
-    if username:
-        user = get_object_or_404(User.objects.all(is_active=True), username=username)
-    else:
-        user = request.user if request.user.is_authenticated() else None
-    servers = None
-    if user:
-        servers = Server.objects.filter(is_active=True, owner=user)
-        for server in servers:
-            server.check_online()
+def user_server_list(request, username):
+    user = get_object_or_404(User.objects.filter(is_active=True), username=username)
+    servers = Server.objects.filter(is_active=True, owner=user)
+    for server in servers:
+        server.check_online()
     return render_to_response('mod/base.html', {'server_list': servers}, context_instance=RequestContext(request))
 
 def server_list(request):
@@ -79,7 +74,7 @@ def start_stop_server(request, server_id):
     user = request.user
     if not user.is_staff and server.owner != user:
         raise Http404
-    next = request.REQUEST.get('next', reverse('user_home', kwargs={'username': server.owner.username}))
+    next = request.REQUEST.get('next', reverse('user_server_list', kwargs={'username': server.owner.username}))
     server.check_online()
     if server.is_online:
         server.set_offline()
