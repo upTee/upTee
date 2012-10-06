@@ -188,128 +188,19 @@ body {
 .form_table tbody {
 }
 
-.form_table th {
-    width: 200px;
-    text-align: right;
-    outline: 1px dashed blue;
-    margin-top: 10px;
-}
-
 .form_table td {
-    width: 200px;
+    width: 150px;
     text-align: left;
-    outline: 1px dashed blue;
     
 }
 
-
-/*-------------------------Inputs---------------------*/
-.signup_box input[type=text] {
-    background: #dcdcdc url('../img/person.png') no-repeat 5px center;
-    border: solid 1px #969696;
-    padding: 5px 10px 5px 30px;
-    width: 30px;
-    -webkit-transition: all .5s;
-    -moz-transition: all .5s;
-    transition: all .5s;
+.form_table th {
+    width: 150px;
+    text-align: right;
 }
 
-.signup_box input[type=text]:focus {
-    width: 100px;
-    background-color: #fff;
-    border: solid 1px #ccc;
-}
-
-.signup_box input[type=password] {
-    background: #dcdcdc url('../img/lock.png') no-repeat 5px center;
-    border: solid 1px #969696;
-    padding: 5px 10px 5px 30px;
-    width: 30px;
-    -webkit-transition: all .5s;
-    -moz-transition: all .5s;
-    transition: all .5s;
-}
-
-.signup_box input[type=password]:focus {
-    width: 100px;
-    background-color: #fff;
-    border: solid 1px #ccc;
-}
-
-
-input[type=text] {
-    background: #dcdcdc;
-    border: solid 1px #969696;
-    padding: 5px;
-    width: 200px;
-    -webkit-transition: all .5s;
-    -moz-transition: all .5s;
-    transition: all .5s;
-}
-
-input[type=text]:focus {
-    width: 200px;
-    background-color: #fff;
-    border: solid 1px #ccc;
-}
-
-input[type=password] {
-    background: #dcdcdc;
-    border: solid 1px #969696;
-    padding: 5px;
-    width: 200px;
-    -webkit-transition: all .5s;
-    -moz-transition: all .5s;
-    transition: all .5s;
-}
-
-input[type=password]:focus {
-    width: 200px;
-    background-color: #fff;
-    border: solid 1px #ccc;
-}
-
-input[type=email] {
-    background: #dcdcdc;
-    border: solid 1px #969696;
-    padding: 5px;
-    width: 200px;
-    -webkit-transition: all .5s;
-    -moz-transition: all .5s;
-    transition: all .5s;
-}
-
-input[type=email]:focus {
-    width: 200px;
-    background-color: #fff;
-    border: solid 1px #ccc;
-}
-
-
-input[type=submit] {
-    background: url('../img/submenu_pattern.png') repeat-x;
-    margin-top: 20px;
-    padding: 5px;
-    width: 100px;
-    cursor: pointer;
-    -webkit-box-shadow: inset 0 0 1px 1px #f7f7f7;
-    box-shadow: inset 0 0 1px 1px #f7f7f7;
-    border: 1px solid rgb(199, 199, 199);
-    border-radius: 3px;
-}
-
-input[type=submit]:hover {
-    background: #d8d8d8;
-    color: gray;
-    cursor: pointer;
-    -webkit-box-shadow: inset 0 0 1px 1px #ebebeb;
-    box-shadow: inset 0 0 1px 1px #ebebeb;
-}
-
-input[type=submit]:active {
-    background: url('../img/menu_pattern.png') repeat-x;
-    -webkit-box-shadow: inset 0 0 1px 1px #e3e3e3;
-    box-shadow: inset 0 0 1px 1px #e3e3e3;
-    color: #000;
-    width: 100px;
+.form_table tr  {
+    width: 150px;
+    text-align: right;
+    margin-top: 10px;
 }
