@@ -11,7 +11,7 @@ body {
     background-image: url('../img/noise.png');
     background-color: #EEEEEE;
     font-family: "trebuchet ms", Arial, Helvetica, sans-serif;
-}
+} 
 
 #wrapper{
     width: 1000px;
@@ -181,26 +181,26 @@ body {
 }
 
 .form_table { 
-    border-collapse:seperate;
+    border-collapse: separate;
     border-spacing:20px;
+    /*outline:1px solid red;*/
 }
 
 .form_table tbody {
 }
 
 .form_table td {
-    width: 150px;
     text-align: left;
+    /*outline:1px solid blue;*/
     
 }
 
 .form_table th {
-    width: 150px;
     text-align: right;
+    /*outline:1px solid green;*/
 }
 
 .form_table tr  {
-    width: 150px;
     text-align: right;
     margin-top: 10px;
 }
