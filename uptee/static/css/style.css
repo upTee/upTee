@@ -180,6 +180,27 @@ body {
     text-align:right;
 }
 
+.form_table { 
+    border-collapse:seperate;
+    border-spacing:20px;
+}
+
+.form_table tbody {
+}
+
+.form_table th {
+    width: 200px;
+    text-align: right;
+    outline: 1px dashed blue;
+    margin-top: 10px;
+}
+
+.form_table td {
+    width: 200px;
+    text-align: left;
+    outline: 1px dashed blue;
+    
+}
 
 
 /*-------------------------Inputs---------------------*/
@@ -211,6 +232,55 @@ body {
 
 .signup_box input[type=password]:focus {
     width: 100px;
+    background-color: #fff;
+    border: solid 1px #ccc;
+}
+
+
+input[type=text] {
+    background: #dcdcdc;
+    border: solid 1px #969696;
+    padding: 5px;
+    width: 200px;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    transition: all .5s;
+}
+
+input[type=text]:focus {
+    width: 200px;
+    background-color: #fff;
+    border: solid 1px #ccc;
+}
+
+input[type=password] {
+    background: #dcdcdc;
+    border: solid 1px #969696;
+    padding: 5px;
+    width: 200px;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    transition: all .5s;
+}
+
+input[type=password]:focus {
+    width: 200px;
+    background-color: #fff;
+    border: solid 1px #ccc;
+}
+
+input[type=email] {
+    background: #dcdcdc;
+    border: solid 1px #969696;
+    padding: 5px;
+    width: 200px;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    transition: all .5s;
+}
+
+input[type=email]:focus {
+    width: 200px;
     background-color: #fff;
     border: solid 1px #ccc;
 }

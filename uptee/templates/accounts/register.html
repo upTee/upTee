@@ -13,7 +13,19 @@ context variables:
 <div class="body">
     <form method="post" action="{{ request.path }}">
         {% csrf_token %}
-        {{ form.as_p }}
+        <table class="form_table">
+            <tbody>
+                {{ form.as_table }}
+                <tr>
+                   <td>td</td>
+                   <th>hier die der input fürs captcha</th>
+                </tr>
+                <tr>
+                    <td>submit</td>
+                </tr>
+            </tbody>
+        </table>
+        
         <p><input class="button" type="submit" value="Submit" /></p>
     </form>
 </div>
