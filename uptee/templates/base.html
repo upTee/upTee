@@ -1,3 +1,5 @@
+{% load revision %}
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/TR/html5/">
     <head>
@@ -91,14 +93,11 @@
 
                     {% endif %}
                 </div>
-                    
 
             <div class="clear"> </div>
 
-
-
             <div id="footer_box"> 
-                <div id="footer_left"> TEST </div>
+                <div id="footer_left">{% revision %}</div>
                 <div id="footer_center"> Design &copy; 2012 Sascha W. / David G. </div>
                 <div id="footer_right"> TEST </div>
                     <div class="clear"> </div>
