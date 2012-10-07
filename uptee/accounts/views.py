@@ -1,3 +1,5 @@
+from captcha.conf import settings as captcha_settings
+from captcha.models import CaptchaStore
 from django.core.mail import mail_admins
 from django.contrib.auth import views as auth_views
 from django.contrib.auth import logout as user_logout
@@ -78,6 +80,10 @@ def register(request):
             return redirect(reverse('home'))
     else:
         form = RegisterForm()
+    challenge, response = captcha_settings.get_challenge()()
+    store = CaptchaStore.objects.create(challenge=challenge, response=response)
+    key = store.hashkey
     return render_to_response('accounts/register.html', {
-            'form': form,
+            'captcha': key,
+            'register_form': form,
         }, context_instance=RequestContext(request))
