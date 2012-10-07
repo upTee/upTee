@@ -54,6 +54,22 @@ class RegisterForm(forms.Form):
     email = forms.EmailField(required=True, widget=Html5EmailInput(attrs={'required': None}))
     captcha = Html5CaptchaField(required=True)
 
+    def clean_username(self):
+        username = self.cleaned_data['username']
+        users = User.objects.filter(username=username)
+        if users:
+            raise forms.ValidationError(
+                u"A user with this username already exists.")
+        return username
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        users = User.objects.filter(email=email)
+        if users:
+            raise forms.ValidationError(
+                u"A user with this email address already exists.")
+        return email
+
     def clean_password2(self):
         password1 = self.cleaned_data.get('password1')
         password2 = self.cleaned_data.get('password2')
