@@ -44,7 +44,7 @@ class Mod(models.Model):
                 with zipfile.ZipFile(self.mod_file.path) as z:
                     z.extractall(mod_path)
             elif self.mimetype == 'application/x-tar':
-                with tarfile.TarFile(mod.mod_file.path) as t:
+                with tarfile.TarFile(self.mod_file.path) as t:
                     t.extractall(mod_path)
             if os.path.exists(os.path.join(tmp_dir, 'maps')):
                 rmtree(map_path)
