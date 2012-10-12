@@ -205,6 +205,10 @@ body {
     min-height: 10px;
 }
 
+.powered_by {
+    float: right;
+}
+
 .form_table { 
     border-collapse: separate;
     border-spacing:20px;

@@ -1,0 +1,23 @@
+.sprite_django{
+    background: url('../img/spriteset.png') no-repeat 0 0;
+    width: 50px;
+    height: 18px;
+}
+
+.sprite_teeworlds{
+    background: url('../img/spriteset.png') no-repeat -50px 0;
+    width: 80px;   
+    height: 18px;
+}
+
+.sprite_python{
+    background: url('../img/spriteset.png') no-repeat -130px 0;
+    width: 60px;
+    height: 18px;
+}
+
+.sprite_nginx{
+    background: url('../img/spriteset.png') no-repeat -190px 0;
+    width: 80px;
+    height: 18px;
+}

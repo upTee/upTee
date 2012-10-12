@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" type="text/css" />
         <link rel="stylesheet" href="{{ STATIC_URL }}css/forms.css" type="text/css" />
         <link rel="stylesheet" href="{{ STATIC_URL }}css/forms_mod.css" type="text/css" />
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/sprites.css" type="text/css" />
         {% block extra_head %}{% endblock extra_head %}
     </head>
     <body>
@@ -101,6 +102,7 @@
                                <p>Map: cft5</p>
                                <p>Address: 127.0.0.1</p>
                                <p>Players: 12/16</p>
+                               <p><a href="#">Edit</a></p>
                             </div>
                         </div>
                         <div class="server_status">
@@ -110,6 +112,7 @@
                                <p>Map: cft5</p>
                                <p>Address: 127.0.0.1</p>
                                <p>Players: 12/16</p>
+                               <p><a href="#">Edit</a></p>
                             </div>
                         </div>
                     </div>
@@ -121,7 +124,11 @@
             <div id="footer_box"> 
                 <div id="footer_left"></div>
                 <div id="footer_center">&copy; 2012 Sascha W. / David G. <br \> {% revision %} </div>
-                <div id="footer_right"> TEST </div>
+                <div id="footer_right">
+                    <div class="powered_by">
+                        <div class="sprite_nginx"></div>
+                    </div>
+                </div>
                     <div class="clear"> </div>
             </div>
         </div>
