@@ -10,4 +10,4 @@ def revision():
 		from lib.revision_hook import get_revision, set_cache
 		rev = get_revision()
 		set_cache(rev)
-	return "r<a href=\"https://github.com/upTee/upTee/commit/{0}\">{1}</a>".format(rev, rev[:7])
+	return "Revision: <a href=\"https://github.com/upTee/upTee/commit/{0}\">{1}</a>".format(rev, rev[:7])

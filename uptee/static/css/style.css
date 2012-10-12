@@ -166,18 +166,21 @@ body {
 #footer_left {
     float: left;
     width: 330px;
+    min-height: 10px;
 }
 
 #footer_center {
     float: left;
     width: 330px;
     text-align:center;
+    min-height: 10px;
 }
 
 #footer_right {
-    float: right;
+    float: left;
     width: 330px;
     text-align:right;
+    min-height: 10px;
 }
 
 .form_table { 
