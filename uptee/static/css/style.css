@@ -124,6 +124,7 @@ body {
 }
 
 .sidebar_entry {
+    padding: 10px;
     margin-top: 20px;
     width: 200px;
     background: rgba(244, 244, 244, 255);
@@ -134,24 +135,45 @@ body {
 
 
 .signup_box {
-    padding: 10px;
     font-size: 14px;
 }
 
 .register_box {
-    padding: 10px;
     font-size: 14px;
 }
 
 .logged_in {
-    padding: 10px;
     font-size: 14px;
 }
 
 .server_box{
-    padding: 10px;
     font-size: 14px;
 }
+
+.server_status{
+    margin-bottom: 20px;
+}
+
+.server_status_headline_off{
+    height: 25px;
+    padding-left: 30px;
+    background: url('../img/red_status.png') no-repeat;
+    font-size: 20px;
+}
+
+.server_status_headline_on{
+    height: 25px;
+    padding-left: 30px;
+    background: url('../img/green_status.png') no-repeat;
+    font-size: 20px;
+}
+
+.server_status_info{
+    padding-left: 40px;
+    font-size: 10px;
+    color: gray;
+}
+
 
 
 #footer_box {
