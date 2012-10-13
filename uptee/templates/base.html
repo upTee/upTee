@@ -1,4 +1,4 @@
-{% load revision %}{% load split %}{% load gametype %}{% load servername %}
+{% load revision %}{% load split %}{% load get_option %}
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/TR/html5/">
@@ -83,13 +83,13 @@
                     <div class="sidebar_entry">
                         {% for server in user_server_list %}
                         <div class="server_status">
-                            <div class="server_status_headline {% if server.is_online %}on{% else %}off{% endif %}">{{ server|servername }}</div>
+                            <div class="server_status_headline {% if server.is_online %}on{% else %}off{% endif %}">{{ server|get_option:'sv_name' }}</div>
                             <div class="server_status_info">
                                 <p>Mod: {{ server.mod.title }}</p>
-                                <p>Gametype: {{ server|gametype }}</p>
+                                <p>Gametype: {{ server|get_option:'sv_gametype' }}</p>
                                 <p>Map: TODO!</p>
                                 <p>Slots: TODO!</p>
-                                <p>Address: {{ request.META.HTTP_HOST|split:':'|first }}</p>
+                                {% if server.is_online %}<p>Address: {{ request.META.HTTP_HOST|split:':'|first }}:{{ server.port }}</p>{% endif %}
                                 <p><a href="{% url server_detail server.owner.username server.mod.title %}">Edit</p></a>
                                 <!-- <form method="post" action="{% url start_stop_server server.id %}?next={{ request.path }}">
                                     {% csrf_token %}

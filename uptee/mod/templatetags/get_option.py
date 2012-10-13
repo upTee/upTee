@@ -2,9 +2,9 @@ from django import template
 register = template.Library()
 
 @register.filter
-def servername(server):
+def get_option(server, command):
     try:
-        servername = server.config_options.get(command='sv_name')
+        servername = server.config_options.get(command=command)
         return servername.value
     except:
         return ''
