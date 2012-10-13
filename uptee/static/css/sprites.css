@@ -1,23 +1,31 @@
-.sprite_django{
+div[sprite=django]{
     background: url('../img/spriteset.png') no-repeat 0 0;
     width: 50px;
     height: 18px;
 }
 
-.sprite_teeworlds{
+div[sprite=teeworlds]{
     background: url('../img/spriteset.png') no-repeat -50px 0;
     width: 80px;   
     height: 18px;
 }
 
-.sprite_python{
+div[sprite=python]{
     background: url('../img/spriteset.png') no-repeat -130px 0;
     width: 60px;
     height: 18px;
 }
 
-.sprite_nginx{
+div[sprite=nginx]{
     background: url('../img/spriteset.png') no-repeat -190px 0;
     width: 80px;
     height: 18px;
 }
+
+#footer_box div[sprite] {
+    opacity: 0.5;
+}
+
+    #footer_box div[sprite]:hover {
+        opacity: 1;
+    }
