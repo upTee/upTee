@@ -15,12 +15,14 @@ context variables:
     {% csrf_token %}
     <p>Options:</p>
     <table class="form_table">
+        <tbody>
             {% for option in options %}
             <tr>
-                <td><label for="{{ option.command }}">{{ option.command }}</td>
+                <th><label for="{{ option.command }}">{{ option.command }}</th>
                 <td></label><input type="text" name="{{ option.command }}" value="{{ option.value }}" id="{{ option.command }}"/></td>
             </tr>
             {% endfor %}
+        </tbody>
     </table>
     <p><input class="button" type="submit" value="Update settings" /></p>
 </form>
