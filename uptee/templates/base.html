@@ -32,7 +32,6 @@
             <div id="menu_box"> 
                 <ul id="tabmenue">
                     {% if user.is_authenticated %}
-                    <li><a class="button" href="{% url settings %}">Settings</a></li>
                     {% endif %}
                     <li><a href="{% url server_list %}">Servers</a></li>
                 </ul>
@@ -76,6 +75,7 @@
                         <div class="logged_in">
                             <p>You are logged in as <b>{{ user.username }}</b>!</p>
                             <p><a href="{% url logout %}?next={{ request.path }}">Logout</a></p>
+                            <p><a href="{% url settings %}">Settings</a></p>
                         </div>
                     </div>
 

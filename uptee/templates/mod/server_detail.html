@@ -8,10 +8,10 @@ context variables:
 
 {% block content %}
 
-<div class="head">
+<div>
     <h2>Server mod: {{ server.mod.title }} ({% if server.is_online %}started{% else %}stopped{% endif %})</h2>
 </div>
-<div class="body">
+<div>
     {% if user == server.owner %}
         <p><a href="{% url upload_map user.username server.mod.title %}">Upload Map</a> <a href="{% url server_edit user.username server.mod.title %}">Edit settings</a></p>
     {% endif %}

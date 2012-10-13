@@ -7,6 +7,10 @@
     clear: both
 }
 
+a:visited, a:link {
+    color: grey;
+}
+
 body {
     background-image: url('../img/noise.png');
     background-color: #EEEEEE;
