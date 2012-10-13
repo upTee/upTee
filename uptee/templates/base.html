@@ -33,7 +33,6 @@
                 <ul id="tabmenue">
                     {% if user.is_authenticated %}
                     <li><a class="button" href="{% url settings %}">Settings</a></li>
-                    <li><a class="button" href="{% url logout %}?next={{ request.path }}">Logout</a></li>
                     {% endif %}
                     <li><a href="{% url server_list %}">Servers</a></li>
                 </ul>
@@ -76,6 +75,7 @@
                     <div class="sidebar_entry">
                         <div class="logged_in">
                             <p>You are logged in as <b>{{ user.username }}</b>!</p>
+                            <p><a href="{% url logout %}?next={{ request.path }}">Logout</a></p>
                         </div>
                     </div>
 
@@ -90,11 +90,7 @@
                                 <p>Map: TODO!</p>
                                 <p>Slots: TODO!</p>
                                 <p>Address: {{ request.META.HTTP_HOST|split:':'|first }}</p>
-                                <p><a href="{% url server_detail server.owner.username server.mod.title %}">Edit</p></a>
-                                <!-- <form method="post" action="{% url start_stop_server server.id %}?next={{ request.path }}">
-                                    {% csrf_token %}
-                                    <p><input class="button" type="submit" value="{% if server.is_online %}Stop{% else %}Start{% endif %} Server" /></p>
-                                </form> -->
+                                <p><a href="{% url server_detail server.owner.username server.mod.title %}">Edit</a></p>
                             </div>
                         </div>
                         {% endfor %}
