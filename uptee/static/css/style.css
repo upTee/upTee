@@ -158,14 +158,14 @@ body {
     height: 25px;
     padding-left: 30px;
     background: url('../img/red_status.png') no-repeat;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .server_status_headline_on{
     height: 25px;
     padding-left: 30px;
     background: url('../img/green_status.png') no-repeat;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .server_status_info{
