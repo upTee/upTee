@@ -11,6 +11,7 @@ body {
     background-image: url('../img/noise.png');
     background-color: #EEEEEE;
     font-family: "trebuchet ms", Arial, Helvetica, sans-serif;
+    font-size: 14px;
 } 
 
 #wrapper{
@@ -57,53 +58,33 @@ body {
     background-image: url('../img/menu_pattern.png');
 }
 
-
-.notification_info {
-    background: #dcdcdc url('../img/info.png') no-repeat 10px center;
+.notification {
     border: 1px solid;
     margin-top: 20px;
     margin-right: auto;
     margin-left: auto;
     width: 745px;
     padding: 10px 10px 10px 45px;
+}
+
+.notification.info {
+    background: #bbe6f7 url('../img/info.png') no-repeat 10px center;
     color: #034e96;
-    background-color: #bbe6f7;
 }
 
-.notification_success {
-    background: #dcdcdc url('../img/sucess.png') no-repeat 10px center;
-    border: 1px solid;
-    margin-top: 20px;
-    margin-right: auto;
-    margin-left: auto;
-    width: 745px;
-    padding: 10px 10px 10px 45px;
+.notification.success {
+    background: #e0f3be url('../img/sucess.png') no-repeat 10px center;
     color: #4f8a14;
-    background-color: #e0f3be;
 }
 
-.notification_warning {
-    background: #dcdcdc url('../img/warning.png') no-repeat 10px center;
-    border: 1px solid;
-    margin-top: 20px;
-    margin-right: auto;
-    margin-left: auto;
-    width: 745px;
-    padding: 10px 10px 10px 45px;
+.notification.warning {
+    background: #feefb6 url('../img/warning.png') no-repeat 10px center;
     color: #a06011;
-    background-color: #feefb6;
 }
 
-.notification_error {
-    background: #dcdcdc url('../img/error.png') no-repeat 10px center;
-    border: 1px solid;
-    margin-top: 20px;
-    margin-right: auto;
-    margin-left: auto;
-    width: 745px;
-    padding: 10px 10px 10px 45px;
+.notification.error {
+    background: #febab8 url('../img/error.png') no-repeat 10px center;
     color: #d4000b;
-    background-color: #febab8;
 }
 
 
@@ -115,7 +96,6 @@ body {
     background: rgba(244, 244, 244, 255);
     border: 1px solid rgb(199, 199, 199);
     box-shadow: 0px 1px 0px rgb(255, 255, 255), 0px 1px 0px rgb(255, 255, 255) inset;
-    font-size: 14px;
 }
 
 #sidebar_box {
@@ -130,42 +110,24 @@ body {
     background: rgba(244, 244, 244, 255);
     border: 1px solid rgb(199, 199, 199);
     box-shadow: 0px 1px 0px rgb(255, 255, 255), 0px 1px 0px rgb(255, 255, 255) inset;
-    font-size: 14px;
-}
-
-
-.signup_box {
-    font-size: 14px;
-}
-
-.register_box {
-    font-size: 14px;
-}
-
-.logged_in {
-    font-size: 14px;
-}
-
-.server_box{
-    font-size: 14px;
 }
 
 .server_status{
     margin-bottom: 20px;
 }
 
-.server_status_headline_off{
+.server_status_headline{
     height: 25px;
     padding-left: 30px;
-    background: url('../img/red_status.png') no-repeat;
     font-size: 15px;
 }
 
-.server_status_headline_on{
-    height: 25px;
-    padding-left: 30px;
+.server_status_headline.off{
+    background: url('../img/red_status.png') no-repeat;
+}
+
+.server_status_headline.on{
     background: url('../img/green_status.png') no-repeat;
-    font-size: 15px;
 }
 
 .server_status_info{
@@ -212,21 +174,17 @@ body {
 .form_table { 
     border-collapse: separate;
     border-spacing:20px;
-    /*outline:1px solid red;*/
 }
 
 .form_table tbody {
 }
 
 .form_table td {
-    text-align: left;
-    /*outline:1px solid blue;*/
-    
+    text-align: left;  
 }
 
 .form_table th {
     text-align: right;
-    /*outline:1px solid green;*/
 }
 
 .form_table tr  {

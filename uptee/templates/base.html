@@ -40,7 +40,7 @@
             </div>
 
             {% for message in messages %}
-                <p class="notification_{{ message.tags }}">{{ message }}</p>
+                <p class="notification {{ message.tags }}">{{ message }}</p>
             {% endfor %}
 
             <div id="content_box"> 
@@ -83,7 +83,7 @@
                     <div class="sidebar_entry">
                         {% for server in user_server_list %}
                         <div class="server_status">
-                            <div class="server_status_headline_{% if server.is_online %}on{% else %}off{% endif %}"><a href="{% url server_detail server.owner.username server.mod.title %}">{{ server|servername }}</a></div>
+                            <div class="server_status_headline {% if server.is_online %}on{% else %}off{% endif %}"><a href="{% url server_detail server.owner.username server.mod.title %}">{{ server|servername }}</a></div>
                             <div class="server_status_info">
                                 <p>Mod: {{ server.mod.title }}</p>
                                 <p>Gametype: {{ server|gametype }}</p>
