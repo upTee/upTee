@@ -123,11 +123,11 @@ body {
 }
 
 .server_status_headline.off{
-    background: #febab8 url('../img/red_status.png') no-repeat;
+    background: url('../img/red_status.png') no-repeat;
 }
 
 .server_status_headline.on{
-    background: #e0f3be url('../img/green_status.png') no-repeat;
+    background: url('../img/green_status.png') no-repeat;
 }
 
 .server_status_info{

@@ -83,16 +83,18 @@
                     <div class="sidebar_entry">
                         {% for server in user_server_list %}
                         <div class="server_status">
-                            <div class="server_status_headline {% if server.is_online %}on{% else %}off{% endif %}"><a href="{% url server_detail server.owner.username server.mod.title %}">{{ server|servername }}</a></div>
+                            <div class="server_status_headline {% if server.is_online %}on{% else %}off{% endif %}">{{ server|servername }}</div>
                             <div class="server_status_info">
                                 <p>Mod: {{ server.mod.title }}</p>
                                 <p>Gametype: {{ server|gametype }}</p>
                                 <p>Map: TODO!</p>
+                                <p>Slots: TODO!</p>
                                 <p>Address: {{ request.META.HTTP_HOST|split:':'|first }}</p>
-                                <form method="post" action="{% url start_stop_server server.id %}?next={{ request.path }}">
+                                <p><a href="{% url server_detail server.owner.username server.mod.title %}">Edit</p></a>
+                                <!-- <form method="post" action="{% url start_stop_server server.id %}?next={{ request.path }}">
                                     {% csrf_token %}
                                     <p><input class="button" type="submit" value="{% if server.is_online %}Stop{% else %}Start{% endif %} Server" /></p>
-                                </form>
+                                </form> -->
                             </div>
                         </div>
                         {% endfor %}
