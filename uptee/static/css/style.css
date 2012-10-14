@@ -39,8 +39,8 @@ body {
 }
 
 .user_bar_entry.settings {
-    background: url('../img/gear.png') no-repeat 25px 3px;
-    padding-left: 40px;
+    background: url('../img/gear.png') no-repeat 18px 3px;
+    padding-left: 33px;
 }
 
 
@@ -147,11 +147,11 @@ body {
 }
 
 .server_status_headline.off{
-    background: url('../img/red_status.png') no-repeat;
+    background: url('../img/red_status.png') no-repeat 0 3px;
 }
 
 .server_status_headline.on{
-    background: url('../img/green_status.png') no-repeat;
+    background: url('../img/green_status.png') no-repeat 0 3px;
 }
 
 .server_status_info{

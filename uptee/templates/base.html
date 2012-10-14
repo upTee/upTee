@@ -78,14 +78,7 @@
                             <a href="{% url register %}"><h3>Register</h3></a>
                         </div>
                     </div>
-                    {% else %}
-                    <div class="sidebar_entry">
-                        <div class="logged_in">
-                            <p>You are logged in as <b>{{ user.username }}</b>!</p>
-                            <p><a href="{% url logout %}?next={{ request.path }}">Logout</a></p>
-                            <p><a href="{% url settings %}">Settings</a></p>
-                        </div>
-                    </div>
+                     {% endif %}
 
                     {% if user_server_list %}
                     <div class="sidebar_entry">
@@ -103,8 +96,6 @@
                         </div>
                         {% endfor %}
                     </div>
-                    {% endif %}
-
                     {% endif %}              
                 </div>
 
