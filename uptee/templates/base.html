@@ -25,6 +25,14 @@
     </head>
     <body>
         <div id="wrapper">
+            {% if user.is_authenticated %}
+            <div id="user_bar">
+                <div class="user_bar_entry settings"><a href="{% url settings %}">Settings</a></div>
+                <div class="user_bar_entry"><a href="{% url logout %}?next={{ request.path }}">Logout</a></div>
+                <div class="user_bar_entry">You are logged in as <b>{{ user.username }}</b>!</div>
+                <div class="clear"></div>
+            </div>
+            {% endif %}
             <div id="header_box"> 
                 <a href="{% url home %}"><div id="header"> </div></a>
             </div>
