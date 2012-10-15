@@ -123,7 +123,7 @@ class Server(models.Model):
         path = os.path.join(MEDIA_ROOT, 'users', self.owner.username, self.mod.title)
         config = TwCongig(os.path.join(path, 'generated.cfg'))
         for option in self.config_options.all():
-            config.add_option(option.command, option.value)
+            config.add_option(option.command, option.value, option.widget)
         config.add_option('sv_port', self.port.port)
         for tune in self.config_tunes.all():
             config.add_tune(tune.command, tune.value)
@@ -148,6 +148,14 @@ class Config(models.Model):
 
 class Option(Config):
     value = models.CharField(blank=True, max_length=500)
+
+    WIDGET_TEXT = 1
+    WIDGET_TEXTAREA = 2
+    WIDGET_CHOICES = (
+        (WIDGET_TEXT, 'text'),
+        (WIDGET_TEXTAREA, 'textarea'),
+    )
+    widget = models.IntegerField(choices=WIDGET_CHOICES, default=WIDGET_TEXT)
 
     class Meta:
         ordering = ['id']

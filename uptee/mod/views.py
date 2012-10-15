@@ -9,7 +9,7 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.views.decorators.http import require_POST
 from mod.forms import MapUploadForm
-from mod.models import Server
+from mod.models import Option, Server
 from settings import MEDIA_ROOT
 
 def user_server_list(request, username):
@@ -93,6 +93,9 @@ def update_settings(request, server_id):
     for key in request.POST.keys():
         option = options.filter(command=key)[0] if options.filter(command=key) else None
         if option:
-            option.value = request.POST[key]
+            if option.widget == Option.WIDGET_TEXTAREA:
+                option.value = request.POST[key].replace('\r\n', r'\n')
+            else:
+                option.value = request.POST[key]
             option.save()
     return render_to_response('mod/settings_updated.html', {'next': next }, context_instance=RequestContext(request))

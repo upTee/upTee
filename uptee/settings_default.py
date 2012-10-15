@@ -146,6 +146,7 @@ INSTALLED_APPS = (
     'accounts',
     'mod',
     'captcha',
+    'south'
 )
 
 LOGIN_REDIRECT_URL = '/'

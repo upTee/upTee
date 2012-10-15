@@ -36,7 +36,11 @@ class ServerAdmin(admin.ModelAdmin):
             config = TwCongig(config_path)
             config.read()
             for key, value in config.options.iteritems():
-                data = Option(server=obj, command=key, value=value)
+                widget = 1 # text
+                for widget_type in Option.WIDGET_CHOICES:
+                    if widget_type[1] == value[1]:
+                        widget = widget_type[0]
+                data = Option(server=obj, command=key, value=value[0], widget=widget)
                 data.save()
             for tune in config.tunes:
                 data = Tune(server=obj, command=tune['command'], value=tune['value'])

@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load le %}
+
 {% comment %}
 context variables:
     server
@@ -18,8 +20,12 @@ context variables:
         <tbody>
             {% for option in options %}
             <tr>
-                <th><label for="{{ option.command }}">{{ option.command }}</th>
-                <td></label><input type="text" name="{{ option.command }}" value="{{ option.value }}" id="{{ option.command }}"/></td>
+                <th><label for="{{ option.command }}">{{ option.command }}</label></th>
+                {% if option.get_widget_display == 'textarea' %}
+                    <td><textarea name="{{ option.command }}" id="{{ option.command }}"/>{{ option.value|le }}</textarea></td>
+                {% else %}
+                    <td><input type="{{ option.get_widget_display }}" name="{{ option.command }}" value="{{ option.value }}" id="{{ option.command }}"/></td>
+                {% endif %}
             </tr>
             {% endfor %}
         </tbody>
