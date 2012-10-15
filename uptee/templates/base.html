@@ -33,6 +33,7 @@
                 <div class="clear"></div>
             </div>
             {% endif %}
+
             <div id="header_box"> 
                 <a href="{% url home %}"><div id="header"> </div></a>
             </div>
@@ -44,6 +45,10 @@
                     <li><a href="{% url server_list %}">Servers</a></li>
                 </ul>
             </div>
+
+            <noscript>
+                <p class="notification info">Please activate JavaScript to see the website correctly</p>
+            </noscript>
 
             {% for message in messages %}
                 <p class="notification {{ message.tags }}">{{ message }}</p>
