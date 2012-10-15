@@ -195,6 +195,16 @@ body {
     float: right;
 }
 
+div .cycle .django {
+    float: right;
+    left: 30px !important;
+}
+
+div .cycle .python {
+    float: right;
+    left: 20px !important;
+}
+
 .form_table { 
     border-collapse: separate;
     border-spacing:20px;
