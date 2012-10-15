@@ -24,6 +24,26 @@ body {
     margin-left: auto;
 }
 
+#user_bar {
+    background-image: url('../img/submenu_pattern.png');
+    padding: 3px;
+    border: 1px solid rgb(199, 199, 199);
+    box-shadow: 0px 1px 0px rgb(255, 255, 255), 0px 1px 0px rgb(255, 255, 255) inset;
+}
+
+.user_bar_entry {
+    float: right;
+    font-size: 12px;
+    padding-left: 20px;
+    padding-right: 10px;
+}
+
+.user_bar_entry.settings {
+    background: url('../img/gear.png') no-repeat 18px 3px;
+    padding-left: 33px;
+}
+
+
 #header_box {
     margin-top: 20px;
 }
@@ -43,7 +63,7 @@ body {
 }
 
 #tabmenue {
-    padding-top: 7px;
+    padding-top: 8px;
 }
 
 #tabmenue li {
@@ -51,7 +71,7 @@ body {
 }
 
 #tabmenue li a {
-    padding: 7px 10px;
+    padding: 9px 10px;
     border-left: 1px solid;
     border-right: 1px solid;
     border-color: #cacaca;
@@ -122,16 +142,16 @@ body {
 
 .server_status_headline{
     height: 25px;
-    padding-left: 30px;
+    padding-left: 20px;
     font-size: 15px;
 }
 
 .server_status_headline.off{
-    background: url('../img/red_status.png') no-repeat;
+    background: url('../img/red_status.png') no-repeat 0 3px;
 }
 
 .server_status_headline.on{
-    background: url('../img/green_status.png') no-repeat;
+    background: url('../img/green_status.png') no-repeat 0 3px;
 }
 
 .server_status_info{

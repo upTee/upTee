@@ -25,6 +25,14 @@
     </head>
     <body>
         <div id="wrapper">
+            {% if user.is_authenticated %}
+            <div id="user_bar">
+                <div class="user_bar_entry settings"><a href="{% url settings %}">Settings</a></div>
+                <div class="user_bar_entry"><a href="{% url logout %}?next={{ request.path }}">Logout</a></div>
+                <div class="user_bar_entry">You are logged in as <b>{{ user.username }}</b>!</div>
+                <div class="clear"></div>
+            </div>
+            {% endif %}
             <div id="header_box"> 
                 <a href="{% url home %}"><div id="header"> </div></a>
             </div>
@@ -70,18 +78,11 @@
                             <a href="{% url register %}"><h3>Register</h3></a>
                         </div>
                     </div>
-                    {% else %}
-                    <div class="sidebar_entry">
-                        <div class="logged_in">
-                            <p>You are logged in as <b>{{ user.username }}</b>!</p>
-                            <p><a href="{% url logout %}?next={{ request.path }}">Logout</a></p>
-                            <p><a href="{% url settings %}">Settings</a></p>
-                        </div>
-                    </div>
+                     {% endif %}
 
                     {% if user_server_list %}
+                    {% for server in user_server_list %}
                     <div class="sidebar_entry">
-                        {% for server in user_server_list %}
                         <div class="server_status">
                             <div class="server_status_headline {% if server.is_online %}on{% else %}off{% endif %}">{{ server|get_option:'sv_name' }}</div>
                             <div class="server_status_info">
@@ -93,10 +94,8 @@
                                 <p><a href="{% url server_detail server.owner.username server.mod.title %}">Edit</a></p>
                             </div>
                         </div>
-                        {% endfor %}
                     </div>
-                    {% endif %}
-
+                    {% endfor %}
                     {% endif %}              
                 </div>
 
@@ -108,12 +107,12 @@
                 <div id="footer_right">
                     <div class="cycle">
                         <div><a href="http://teeworlds.com"><div sprite="teeworlds" alt="Teeworlds" title="Teeworlds"></div></a></div>
-                        <div style="float: right;"><a href="https://www.djangoproject.com/"><div sprite="django" alt="django" title="django"></div></a></div>
+                        <div><a href="https://www.djangoproject.com/"><div sprite="django" alt="django" title="django"></div></a></div>
                         <div><a href="http://www.python.org/"><div sprite="python" alt="Python" title="Python"></div></a></div>
                         <div><a href="http://nginx.org/"><div sprite="nginx" alt="nginx" title="nginx"></div></a></div>
                     </div>
                 </div>
-                    <div class="clear"> </div>
+                <div class="clear"> </div>
             </div>
         </div>
     </body>
