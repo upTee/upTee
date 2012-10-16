@@ -4,6 +4,7 @@ django-celery>=3.0
 django-admin-tools>=0.4.0
 django-debug-toolbar>=0.9.4
 django-simple-captcha>=0.3.4
+django-pybrowscap>=0.9.1
 PIL>=1.1.7
 psutil>=0.6.1
 pytz

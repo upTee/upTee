@@ -1,4 +1,4 @@
-import djcelery, os
+import djcelery, os, re
 from django import contrib
 
 # Django settings for uptee project.
@@ -105,6 +105,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django_pybrowscap.middleware.PybrowscapMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -141,12 +142,13 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+    'django_pybrowscap',
     'lib',
     'djcelery',
     'accounts',
     'mod',
     'captcha',
-    'south'
+    'south',
 )
 
 LOGIN_REDIRECT_URL = '/'
@@ -158,3 +160,22 @@ SERVER_EXEC = 'teeworlds_srv'
 
 # Broker URL for celery
 BROKER_URL = 'amqp://guest:guest@localhost:5672/'
+
+# This setting will effectively turn the middleware off, to speed up requests/response while developing
+#PYBROWSCAP_INITIALIZE = True # Default is `not settings.DEBUG`.
+
+# Path where browscap file is located on filesystem
+PYBROWSCAP_FILE_PATH = os.path.join(PROJECT_DIR, 'browscap.csv') # Default is '' (empty string) (copy browscap.csv.example to browscap.csv)
+
+# Whether to perform automatic updates of browscap file
+PYBROWSCAP_UPDATE = True # Default is False
+
+# Interval of automatic browscap file updates
+PYBROWSCAP_UPDATE_INTERVAL = 604800 # Default one week in seconds
+
+# Tuple or regex expressions of path that are to be ignored by middleware
+PYBROWSCAP_IGNORE_PATHS = (
+    re.compile(r'^/favicon.ico$'),
+    re.compile(r'^/media/'),
+    re.compile(r'^/static/')
+) # Default empty tupple
