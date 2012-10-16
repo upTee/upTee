@@ -50,6 +50,20 @@
                 <p class="notification info">Please activate JavaScript to see the website correctly</p>
             </noscript>
 
+            {% if request.browser %}
+                {% if request.browser.name == 'Firefox' and request.browser.version < 4.0 %}
+                    <div class="notification info">Your Browser just sux!</div>
+                {% elif request.browser.name == 'Chrome' and request.browser.version < 10.0 %}
+                    <div class="notification info">Your Browser just sux!</div>
+                {% elif request.browser.name == 'Opera' and request.browser.version < 10.0 %}
+                    <div class="notification info">Your Browser just sux!</div>
+                {% elif request.browser.name == 'Safari' and request.browser.version < 5.0 %}
+                    <div class="notification info">Your Browser just sux!</div>
+                {% elif request.browser.name == 'IE' and request.browser.version < 9.0 %}
+                    <div class="notification info">Your Browser just sux!</div>
+                {% endif %}
+            {% endif %}
+
             {% for message in messages %}
                 <p class="notification {{ message.tags }}">{{ message }}</p>
             {% endfor %}
