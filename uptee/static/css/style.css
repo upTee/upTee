@@ -114,25 +114,25 @@ body {
 }
 
 .notification.info {
-    background-image: url('../img/not_blue.png') repeat-x;
+    background: url('../img/not_blue.png') repeat-x;
     color: #034e96;
 }
 
 
 .notification.success {
-    background-image: url('../img/not_green.png') repeat-x;
+    background: url('../img/not_green.png') repeat-x;
     color: #4f8a14;
 }
 
 
 .notification.warning {
-    background-image: url('../img/not_yellow.png') repeat-x;
+    background: url('../img/not_yellow.png') repeat-x;
     color: #a06011;
 }
 
 
 .notification.error {
-    background-image: url('../img/not_red.png') repeat-x;
+    background: url('../img/not_red.png') repeat-x;
     color: #d4000b;
 }
 
