@@ -91,23 +91,43 @@ body {
     padding: 10px 10px 10px 45px;
 }
 
-.notification.info {
+.notification.info_old {
     background: #bbe6f7 url('../img/info.png') no-repeat 10px center;
     color: #034e96;
 }
 
-.notification.success {
+.notification.success_old {
     background: #e0f3be url('../img/sucess.png') no-repeat 10px center;
     color: #4f8a14;
 }
 
-.notification.warning {
+.notification.warning_old {
     background: #feefb6 url('../img/warning.png') no-repeat 10px center;
     color: #a06011;
 }
 
-.notification.error {
+.notification.error_old {
     background: #febab8 url('../img/error.png') no-repeat 10px center;
+    color: #d4000b;
+}
+
+.notification.info {
+    background-image: url('../img/not_blue.png') repeat-x;
+    color: #034e96;
+}
+
+.notification.success {
+    background-image: url('../img/not_green.png') repeat-x;
+    color: #4f8a14;
+}
+
+.notification.warning {
+    background-image: url('../img/not_yellow.png') repeat-x;
+    color: #a06011;
+}
+
+.notification.error {
+    background-image: url('../img/not_red.png') repeat-x;
     color: #d4000b;
 }
 
