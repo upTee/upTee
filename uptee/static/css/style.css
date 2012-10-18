@@ -89,6 +89,8 @@ body {
     margin-left: auto;
     width: 745px;
     padding: 10px 10px 10px 45px;
+    -webkit-box-shadow:  4px 4px 6px 0px rgba(150, 150, 150, 255);
+    box-shadow:  4px 4px 6px 0px rgba(150, 150, 150, 255);
 }
 
 .notification.info_old {
@@ -116,15 +118,18 @@ body {
     color: #034e96;
 }
 
+
 .notification.success {
     background-image: url('../img/not_green.png') repeat-x;
     color: #4f8a14;
 }
 
+
 .notification.warning {
     background-image: url('../img/not_yellow.png') repeat-x;
     color: #a06011;
 }
+
 
 .notification.error {
     background-image: url('../img/not_red.png') repeat-x;
