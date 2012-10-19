@@ -89,52 +89,40 @@ body {
     margin-left: auto;
     width: 745px;
     padding: 10px 10px 10px 45px;
-    -webkit-box-shadow:  4px 4px 6px 0px rgba(150, 150, 150, 255);
-    box-shadow:  4px 4px 6px 0px rgba(150, 150, 150, 255);
+    -webkit-box-shadow:  2px 2px 10px 0px rgba(150, 150, 150, 255);
+    box-shadow:  2px 2px 10px 0px rgba(150, 150, 150, 255);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }
 
-.notification.info_old {
-    background: #bbe6f7 url('../img/info.png') no-repeat 10px center;
-    color: #034e96;
-}
-
-.notification.success_old {
-    background: #e0f3be url('../img/sucess.png') no-repeat 10px center;
-    color: #4f8a14;
-}
-
-.notification.warning_old {
-    background: #feefb6 url('../img/warning.png') no-repeat 10px center;
-    color: #a06011;
-}
-
-.notification.error_old {
-    background: #febab8 url('../img/error.png') no-repeat 10px center;
-    color: #d4000b;
+.notification_close {
+   background: url('../img/close_icon.png') no-repeat center;
+   height: 15px;
+   width: 15px;
+   float: right;
 }
 
 .notification.info {
-    background: url('../img/not_blue.png') repeat-x;
+    background: url('../img/info.png') no-repeat 10px center, url('../img/not_blue.png') repeat-x;
     color: #034e96;
 }
 
-
 .notification.success {
-    background: url('../img/not_green.png') repeat-x;
+    background: url('../img/sucess.png') no-repeat 10px center, url('../img/not_green.png') repeat-x;
     color: #4f8a14;
 }
 
-
 .notification.warning {
-    background: url('../img/not_yellow.png') repeat-x;
+    background: url('../img/warning.png') no-repeat 10px, url('../img/not_yellow.png') repeat-x;
     color: #a06011;
 }
 
-
 .notification.error {
-    background: url('../img/not_red.png') repeat-x;
+    background: url('../img/error.png') no-repeat 10px center, url('../img/not_red.png') repeat-x;
     color: #d4000b;
 }
+
 
 
 #content_box {

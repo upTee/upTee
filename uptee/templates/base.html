@@ -47,17 +47,26 @@
             </div>
 
             <noscript>
-                <p class="notification info">Please activate JavaScript to see the website correctly</p>
+                <div class="notification info">
+                    Please activate JavaScript to see the website correctly
+                    <div class="notification_close"></div>
+                </div>
             </noscript>
 
             {% if request.browser %}
                 {% if request.browser.name == 'Firefox' and request.browser.version < 4.0 or request.browser.name == 'Chrome' and request.browser.version < 10.0 or request.browser.name == 'Opera' and request.browser.version < 10.0 or request.browser.name == 'Safari' and request.browser.version < 5.0 or request.browser.name == 'IE' and request.browser.version < 9.0 %}
-                    <div class="notification info">Your Browser just sux!</div>
+                    <div class="notification info">
+                        Your Browser just sux!
+                        <div class="notification_close"></div>
+                    </div>
                 {% endif %}
             {% endif %}
 
             {% for message in messages %}
-                <p class="notification {{ message.tags }}">{{ message }}</p>
+                <div class="notification {{ message.tags }}">
+                    {{ message }}
+                    <div class="notification_close"></div>
+                </div>
             {% endfor %}
 
             <div id="content_box"> 
@@ -72,7 +81,10 @@
                             <h3>Login:</h3>
                             
                             {% if form.errors %}
-                                <p class="error">The combination of username and password is wrong or your account is not activated yet.</p>
+                            <div class="notification error">
+                                The combination of username and password is wrong or your account is not activated yet.
+                                <div class="notification_close"></div>
+                            </div>
                             {% endif %}
         
                                 <form action="{% url login %}" method="post">
