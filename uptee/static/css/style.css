@@ -101,6 +101,12 @@ body {
    height: 15px;
    width: 15px;
    float: right;
+   opacity: 0.5;
+}
+
+.notification_close:hover {
+    opacity: 1.0;
+    cursor: pointer;
 }
 
 .notification.info {
