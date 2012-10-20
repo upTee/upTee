@@ -11,10 +11,11 @@ context variables:
 <div>
     <p>Servername: {{ server_details.name }}</p>
     <p>Gametype: {{ server_details.gametype }}</p>
-
+    <p>Map: Map</p>
+    <p>Slots: Slots</p>
+    <p>Mod: Mod </p>
     {% if user.is_authenticated %}{% if user == server.owner or user.is_staff %}
 
-    <p>Server control:</p>
     <form method="post" action="{% url start_stop_server server.id %}?next={{ request.path }}">
         {% csrf_token %}
         <p><input class="button" type="submit" value="{% if server.is_online %}Stop{% else %}Start{% endif %} Server" /></p>

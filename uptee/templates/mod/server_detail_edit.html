@@ -12,7 +12,6 @@ context variables:
 
 <form action="{% url update_settings server.id %}" method="post">
     {% csrf_token %}
-    <p>Options:</p>
     <table class="form_table">
         <tbody>
             {% for option in options %}

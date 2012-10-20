@@ -10,7 +10,7 @@ context variables:
 {% block content %}
 
 <div>
-    <h2>Server mod: {{ server.mod.title }} ({% if server.is_online %}started{% else %}stopped{% endif %})</h2>
+    <h2>{{ server_details.name }}</h2> ({% if server.is_online %}started{% else %}stopped{% endif %})
 </div>
 <div>
     <div id="tabmenu">
