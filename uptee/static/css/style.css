@@ -55,7 +55,7 @@ body {
 }
 
 #menu_box {
-    background-image: url('../img/submenu_pattern.png');
+    background-image: url('../img/menu_pattern.png');
     height: 35px;
     margin-top: 20px;
     border: 1px solid rgb(199, 199, 199);
@@ -79,7 +79,7 @@ body {
 }
 
 #tabmenue li a:hover {
-    background-image: url('../img/menu_pattern.png');
+    background-image: url('../img/menu_pattern_hover.png');
 }
 
 .notification {
