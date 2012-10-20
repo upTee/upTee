@@ -73,6 +73,25 @@ input[type=submit]:active {
     width: 100px;
 }
 
+
+input[type=textarea] {
+    background: #dcdcdc;
+    border: solid 1px #969696;
+    padding: 5px;
+    width: 200px;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    transition: all .5s;
+}
+
+input[type=textarea]:focus {
+    width: 200px;
+    background-color: #fff;
+    border: solid 1px #ccc;
+}
+
+
+
 .signup_box input[type=text] {
     background: #dcdcdc url('../img/person.png') no-repeat 5px center;
     padding: 5px 10px 5px 30px;
