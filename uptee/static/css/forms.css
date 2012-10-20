@@ -11,7 +11,7 @@ input[type=text] {
 input[type=text]:focus {
     width: 200px;
     background-color: #fff;
-    border: solid 1px #ccc;
+    border: solid 1px #009bff;
 }
 
 input[type=password] {
@@ -27,7 +27,7 @@ input[type=password] {
 input[type=password]:focus {
     width: 200px;
     background-color: #fff;
-    border: solid 1px #ccc;
+    border: solid 1px #009bff;
 }
 
 input[type=email] {
@@ -43,7 +43,7 @@ input[type=email] {
 input[type=email]:focus {
     width: 200px;
     background-color: #fff;
-    border: solid 1px #ccc;
+    border: solid 1px #009bff;
 }
 
 input[type=submit] {
@@ -87,7 +87,7 @@ input[type=textarea] {
 input[type=textarea]:focus {
     width: 200px;
     background-color: #fff;
-    border: solid 1px #ccc;
+    border: solid 1px #009bff;
 }
 
 
