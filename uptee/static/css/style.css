@@ -179,6 +179,34 @@ body {
     color: gray;
 }
 
+#tabmenu_box {
+    
+}
+
+.tab {
+   padding: 10px;
+   margin-right: 5px;
+   background: #b3b3b3;
+   border: 1px solid #009bff;
+   border-bottom: 0;
+   float: left;
+}
+
+.tab:hover {
+   background: #63c2ff;
+   border-bottom: 0;
+}
+
+.tab:active {
+   background: #63c2ff;
+   border: 1px solid #009bff;
+   border-bottom: 0;
+}
+
+.tabmenu_content {
+   padding: 10px;
+   border: 1px solid #009bff;
+}
 
 
 #footer_box {
