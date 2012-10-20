@@ -8,15 +8,24 @@
 }
 
 a:visited, a:link {
-    color: grey;
+    color: #808080;
 }
 
 body {
-    background-image: url('../img/noise.png');
+    background: url('../img/noise.png');
     background-color: #EEEEEE;
     font-family: "trebuchet ms", Arial, Helvetica, sans-serif;
-    font-size: 14px;
+    font-size: 12px;
 } 
+
+#ribbon{
+    background: url('../img/ribbon_alpha.png') no-repeat;
+    position: absolute;
+    right: 0;
+    margin-top: -22px;
+    height: 105px;
+    width: 107px;
+}
 
 #wrapper{
     width: 1000px;
@@ -25,10 +34,10 @@ body {
 }
 
 #user_bar {
-    background-image: url('../img/menu_pattern.png');
+    background: url('../img/menu_pattern.png');
     padding: 3px;
     border: 1px solid rgb(199, 199, 199);
-    box-shadow: 0px 1px 0px rgb(255, 255, 255), 0px 1px 0px rgb(255, 255, 255) inset;
+    box-shadow: 0px 1px 0px #ffffff, 0px 1px 0px #ffffff inset;
 }
 
 .user_bar_entry {
@@ -49,17 +58,17 @@ body {
 }
 
 #header {
-    background-image: url('../img/logo_75.png');
+    background: url('../img/logo_75.png');
     width: 345px;
     height: 75px;
 }
 
 #menu_box {
-    background-image: url('../img/menu_pattern.png');
+    background: url('../img/menu_pattern.png');
     height: 35px;
     margin-top: 20px;
     border: 1px solid rgb(199, 199, 199);
-    box-shadow: 0px 1px 0px rgb(255, 255, 255), 0px 1px 0px rgb(255, 255, 255) inset;
+    box-shadow: 0px 1px 0px #ffffff, 0px 1px 0px #ffffff inset;
 }
 
 #menu {
@@ -79,7 +88,7 @@ body {
 }
 
 #menu li a:hover {
-    background-image: url('../img/menu_pattern_hover.png');
+    background: url('../img/menu_pattern_hover.png');
 }
 
 .notification {
@@ -138,7 +147,7 @@ body {
     padding: 10px;
     background: rgba(244, 244, 244, 255);
     border: 1px solid rgb(199, 199, 199);
-    box-shadow: 0px 1px 0px rgb(255, 255, 255), 0px 1px 0px rgb(255, 255, 255) inset;
+    box-shadow: 0px 1px 0px #ffffff, 0px 1px 0px #ffffff inset;
 }
 
 #sidebar_box {
@@ -152,7 +161,7 @@ body {
     width: 178px;
     background: rgba(244, 244, 244, 255);
     border: 1px solid rgb(199, 199, 199);
-    box-shadow: 0px 1px 0px rgb(255, 255, 255), 0px 1px 0px rgb(255, 255, 255) inset;
+    box-shadow: 0px 1px 0px #ffffff, 0px 1px 0px #ffffff inset;
 }
 
 .server_status{
@@ -216,8 +225,8 @@ body {
     padding: 5px;
     margin-top: 20px;
     border-top: 1px solid rgb(199, 199, 199);
-    box-shadow: 0px 1px 0px rgb(255, 255, 255) inset;
-    color: gray;
+    box-shadow: 0px 1px 0px #ffffff inset;
+    color: #808080;
     font-size: 11px;
 }
 
