@@ -16,11 +16,13 @@ context variables:
     <div id="tabmenu">
         <div id="tabmenu_box">
             {% url server_detail server.owner.username server.mod.title as url_info %}
-            {% url upload_map user.username server.mod.title as url_upload_map %}
-            {% url server_edit user.username server.mod.title as url_edit_settings %}
+            {% url upload_map server.owner.username server.mod.title as url_upload_map %}
+            {% url server_edit server.owner.username server.mod.title as url_edit_settings %}
             <a href="{{ url_info }}"><div class="tab{% current request url_info %}">Info</div></a>
-            <a href="{{ url_upload_map }}"><div class="tab{% current request url_upload_map %}">Upload Map</div></a>
-            <a href="{{ url_edit_settings }}"><div class="tab{% current request url_edit_settings %}">Edit Settings</div></a>
+            {% if server.owner == user %}
+                <a href="{{ url_upload_map }}"><div class="tab{% current request url_upload_map %}">Upload Map</div></a>
+                <a href="{{ url_edit_settings }}"><div class="tab{% current request url_edit_settings %}">Edit Settings</div></a>
+            {% endif %}
             <div class="clear"> </div>
         </div>
         <div class="tabmenu_content">
