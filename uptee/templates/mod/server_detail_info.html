@@ -1,16 +1,17 @@
 {% extends "mod/server_detail_base.html" %}
 
+{% load get_option %}
+
 {% comment %}
 context variables:
     server
-    server_details
 {% endcomment %}
 
 {% block tab_content %}
 
 <div>
-    <p>Servername: {{ server_details.name }}</p>
-    <p>Gametype: {{ server_details.gametype }}</p>
+    <p>Servername: {{ server|get_option:'sv_name' }}</p>
+    <p>Gametype: {{ server|get_option:'sv_gametype' }}</p>
     <p>Map: Map</p>
     <p>Slots: Slots</p>
     <p>Mod: Mod </p>

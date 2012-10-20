@@ -29,13 +29,8 @@ def server_detail(request, username, mod_name):
     user = get_object_or_404(User.objects.filter(is_active=True), username=username)
     server = get_object_or_404(Server.objects.select_related().filter(is_active=True, owner=user), mod__title=mod_name)
     options = server.config_options.filter(Q(command='sv_name') | Q(command='sv_gametype')).order_by('command')
-    details = {
-        'gametype': options[0].value if options[0].value else 'default',
-        'name': options[1].value if options[1].value else 'unnamed server'
-    }
     return render_to_response('mod/server_detail_info.html', {
-        'server': server,
-        'server_details': details
+        'server': server
     }, context_instance=RequestContext(request))
 
 @login_required

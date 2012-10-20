@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load menu %}
+{% load get_option %}
 
 {% comment %}
 context variables:
@@ -10,7 +11,7 @@ context variables:
 {% block content %}
 
 <div>
-    <h2>{{ server_details.name }}</h2> ({% if server.is_online %}started{% else %}stopped{% endif %})
+    <h2>{{ server|get_option:'sv_name' }}</h2> ({% if server.is_online %}started{% else %}stopped{% endif %})
 </div>
 <div>
     <div id="tabmenu">
