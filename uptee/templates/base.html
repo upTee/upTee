@@ -26,7 +26,7 @@
     </head>
     <body>
         
-        <div id="ribbon"></div>
+        
         
         <div id="wrapper">
             {% if user.is_authenticated %}
@@ -37,7 +37,9 @@
                 <div class="clear"></div>
             </div>
             {% endif %}
-
+            
+            <div id="ribbon"></div>
+            
             <div id="header_box"> 
                 <a href="{% url home %}"><div id="header"> </div></a>
             </div>
