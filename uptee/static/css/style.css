@@ -62,15 +62,15 @@ body {
     box-shadow: 0px 1px 0px rgb(255, 255, 255), 0px 1px 0px rgb(255, 255, 255) inset;
 }
 
-#tabmenue {
+#menu {
     padding-top: 8px;
 }
 
-#tabmenue li {
+#menu li {
     display: inline;
 }
 
-#tabmenue li a {
+#menu li a {
     padding: 9px 10px;
     border-left: 1px solid;
     border-right: 1px solid;
@@ -78,7 +78,7 @@ body {
     text-decoration: none;
 }
 
-#tabmenue li a:hover {
+#menu li a:hover {
     background-image: url('../img/menu_pattern_hover.png');
 }
 
@@ -244,3 +244,5 @@ div .cycle .python {
     text-align: right;
     margin-top: 10px;
 }
+
+
