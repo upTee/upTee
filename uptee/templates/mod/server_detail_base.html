@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% load menu %}
+
+{% comment %}
+context variables:
+    server
+{% endcomment %}
+
+{% block content %}
+
+<div>
+    <h2>Server mod: {{ server.mod.title }} ({% if server.is_online %}started{% else %}stopped{% endif %})</h2>
+</div>
+<div>
+    <div id="tabmenu">
+        <div id="tabmenu_box">
+            {% url server_detail server.owner.username server.mod.title as url_info %}
+            {% url upload_map user.username server.mod.title as url_upload_map %}
+            {% url server_edit user.username server.mod.title as url_edit_settings %}
+            <a href="{{ url_info }}"><div class="tab{% current request url_info %}">Info</div></a>
+            <a href="{{ url_upload_map }}"><div class="tab{% current request url_upload_map %}">Upload Map</div></a>
+            <a href="{{ url_edit_settings }}"><div class="tab{% current request url_edit_settings %}">Edit Settings</div></a>
+            <div class="clear"> </div>
+        </div>
+        <div class="tabmenu_content">
+            {% block tab_content %}{% endblock tab_content %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

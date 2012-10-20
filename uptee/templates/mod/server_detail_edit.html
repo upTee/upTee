@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "mod/server_detail_base.html" %}
 
 {% load le %}
 
@@ -8,10 +8,7 @@ context variables:
     options
 {% endcomment %}
 
-{% block content %}
-
-
-<h2>Server mod: <a href"{% url server_detail user.username server.mod.title %}">{{ server.mod.title }}</a> ({% if server.is_online %}started{% else %}stopped{% endif %})</h2>
+{% block tab_content %}
 
 <form action="{% url update_settings server.id %}" method="post">
     {% csrf_token %}
@@ -33,4 +30,4 @@ context variables:
     <p><input class="button" type="submit" value="Update settings" /></p>
 </form>
 
-{% endblock content %}
+{% endblock tab_content %}

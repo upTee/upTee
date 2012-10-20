@@ -1,15 +1,12 @@
-{% extends "base.html" %}
+{% extends "mod/server_detail_base.html" %}
 
 {% comment %}
 context variables:
     form
 {% endcomment %}
 
-{% block content %}
+{% block tab_content %}
 
-<div class="head">
-    <h2>MapUpload</h2>
-</div>
 <div class="body">
     <form action="{{ request.path }}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
@@ -18,4 +15,4 @@ context variables:
     </form>
 </div>
 
-{% endblock content %}
+{% endblock tab_content %}

@@ -197,7 +197,7 @@ body {
    border-bottom: 0;
 }
 
-.tab:active {
+.tab.current {
    background: #63c2ff;
    border: 1px solid #009bff;
    border-bottom: 0;

@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "mod/server_detail_base.html" %}
 
 {% comment %}
 context variables:
@@ -6,16 +6,9 @@ context variables:
     server_details
 {% endcomment %}
 
-{% block content %}
+{% block tab_content %}
 
 <div>
-    <h2>Server mod: {{ server.mod.title }} ({% if server.is_online %}started{% else %}stopped{% endif %})</h2>
-</div>
-<div>
-    {% if user == server.owner %}
-        <p><a href="{% url upload_map user.username server.mod.title %}">Upload Map</a> <a href="{% url server_edit user.username server.mod.title %}">Edit settings</a></p>
-    {% endif %}
-
     <p>Servername: {{ server_details.name }}</p>
     <p>Gametype: {{ server_details.gametype }}</p>
 
@@ -30,4 +23,4 @@ context variables:
     {% endif %}{% endif %}
 </div>
 
-{% endblock content %}
+{% endblock tab_content %}

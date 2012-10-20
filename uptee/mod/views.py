@@ -33,7 +33,7 @@ def server_detail(request, username, mod_name):
         'gametype': options[0].value if options[0].value else 'default',
         'name': options[1].value if options[1].value else 'unnamed server'
     }
-    return render_to_response('mod/server_detail.html', {
+    return render_to_response('mod/server_detail_info.html', {
         'server': server,
         'server_details': details
     }, context_instance=RequestContext(request))
@@ -44,15 +44,16 @@ def server_edit(request, username, mod_name):
         raise Http404
     server = get_object_or_404(Server.objects.select_related().filter(is_active=True, owner=request.user), mod__title=mod_name)
     options = server.config_options.all()
-    return render_to_response('mod/server_edit.html', {
+    return render_to_response('mod/server_detail_edit.html', {
         'server': server,
-        'options': options,
+        'options': options
     }, context_instance=RequestContext(request))
 
 @login_required
 def upload_map(request, username, mod_name):
     if username != request.user.username:
         raise Http404
+    server = get_object_or_404(Server.objects.select_related().filter(is_active=True, owner=request.user), mod__title=mod_name)
     if request.method == 'POST':
         form = MapUploadForm(request.POST, request.FILES)
         if form.is_valid():
@@ -62,8 +63,9 @@ def upload_map(request, username, mod_name):
             messages.success(request, 'Map was successfully uploaded.')
     else:
         form = MapUploadForm()
-    return render_to_response('mod/upload_map.html', {
-        'form': form,
+    return render_to_response('mod/server_detail_upload_map.html', {
+        'server': server,
+        'form': form
     }, context_instance=RequestContext(request))
 
 
