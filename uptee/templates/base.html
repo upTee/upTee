@@ -125,7 +125,7 @@
 
             <div id="footer_box"> 
                 <div id="footer_left"></div>
-                <div id="footer_center">&copy; 2012 Sascha W. / David G. <br \> {% revision %} </div>
+                <div id="footer_center">&copy; 2012 Sascha W. / David G. {% if user.is_staff %}<br \> {% revision %} {% endif %}</div>
                 <div id="footer_right">
                     <div class="cycle">
                         <div class="teeworlds"><a href="http://teeworlds.com"><div sprite="teeworlds" alt="Teeworlds" title="Teeworlds"></div></a></div>
