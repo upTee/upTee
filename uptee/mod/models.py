@@ -5,7 +5,7 @@ from django.forms import ValidationError
 from mod.tasks import run_server
 from shutil import move, rmtree
 from settings import MEDIA_ROOT
-from twconfig import Config as TwCongig
+from lib.twconfig import Config as TwCongig
 
 class FreePortManager(models.Manager):
     def get_query_set(self):

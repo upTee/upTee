@@ -3,7 +3,7 @@ from django.contrib import admin
 from mod.forms import *
 from mod.models import *
 from settings import MEDIA_ROOT
-from twconfig import Config as TwCongig
+from lib.twconfig import Config as TwCongig
 
 class ModAdmin(admin.ModelAdmin):
     list_display = ('title', 'upload_date', 'mod_file', 'mimetype')
