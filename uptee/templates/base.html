@@ -108,9 +108,11 @@
                             <div class="server_status_headline {% if server.is_online %}on{% else %}off{% endif %}">{{ server|get_option:'sv_name' }}</div>
                             <div class="server_status_info">
                                 <p>Mod: {{ server.mod.title }}</p>
-                                <p>Gametype: {{ server|get_option:'sv_gametype' }}</p>
-                                <p>Map: TODO!</p>
-                                <p>Slots: TODO!</p>
+                                {% with server_info=server.info %}
+                                    <p>Gametype: {% if server_info %}{{ server_info.gametype }}{% else %}{{ server|get_option:'sv_gametype' }}{% endif %}</p>
+                                    <p>Map: {% if server_info %}{{ server_info.map }}{% else %}{{ server|get_option:'sv_map' }}{% endif %}</p>
+                                    <p>Slots: {% if server_info %}{{ server_info.clients|length }}/{{ server_info.max_clients }}{% else %}{{ server|get_option:'sv_max_clients' }}{% endif %}</p>
+                                {% endwith %}
                                 {% if server.is_online %}<p>Address: {{ request.META.HTTP_HOST|split:':'|first }}:{{ server.port }}</p>{% endif %}
                                 <p><a href="{% url server_detail server.owner.username server.mod.title %}">Edit</a></p>
                             </div>

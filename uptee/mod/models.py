@@ -6,6 +6,7 @@ from mod.tasks import run_server
 from shutil import move, rmtree
 from settings import MEDIA_ROOT
 from lib.twconfig import Config as TwCongig
+from lib.twserverinfo import ServerInfo
 
 class FreePortManager(models.Manager):
     def get_query_set(self):
@@ -96,6 +97,14 @@ class Server(models.Model):
         if self.port and self.port.is_active:
             return True
         return False
+
+    @property
+    def info(self):
+        if self.is_online:
+            s = ServerInfo()
+            s.send(self.port.port)
+            return s.server_info
+        return None
 
     def __unicode__(self):
         return '{0} ({1}) Owner: {2}'.format(self.mod.title, self.is_online, self.owner.username)
