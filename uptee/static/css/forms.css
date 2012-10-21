@@ -80,10 +80,9 @@ textarea {
     padding: 5px;
     width: 325px;
     height: 105px;
-    transition: color .5s;
-    -webkit-transition: color .5s;
-    -moz-transition: color .5s;
-    
+    transition: background-color .5s, border .5s;
+    -webkit-transition: background-color .5s, border .5s;
+    -moz-transition: background-color .5s, border .5s;
 }
 
 textarea:focus {
