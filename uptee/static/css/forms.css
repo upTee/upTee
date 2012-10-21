@@ -1,3 +1,5 @@
+/* general input fields */
+
 input[type=text] {
     background: #dcdcdc;
     border: solid 1px #969696;
@@ -8,11 +10,11 @@ input[type=text] {
     transition: all .5s;
 }
 
-input[type=text]:focus {
-    width: 200px;
-    background-color: #fff;
-    border: solid 1px #009bff;
-}
+    input[type=text]:focus {
+        width: 200px;
+        background-color: #fff;
+        border: solid 1px #009bff;
+    }
 
 input[type=password] {
     background: #dcdcdc;
@@ -24,11 +26,11 @@ input[type=password] {
     transition: all .5s;
 }
 
-input[type=password]:focus {
-    width: 200px;
-    background-color: #fff;
-    border: solid 1px #009bff;
-}
+    input[type=password]:focus {
+        width: 200px;
+        background-color: #fff;
+        border: solid 1px #009bff;
+    }
 
 input[type=email] {
     background: #dcdcdc;
@@ -40,11 +42,11 @@ input[type=email] {
     transition: all .5s;
 }
 
-input[type=email]:focus {
-    width: 200px;
-    background-color: #fff;
-    border: solid 1px #009bff;
-}
+    input[type=email]:focus {
+        width: 200px;
+        background-color: #fff;
+        border: solid 1px #009bff;
+    }
 
 input[type=submit] {
     background: url('../img/menu_pattern.png') repeat-x;
@@ -57,22 +59,21 @@ input[type=submit] {
     border-radius: 3px;
 }
 
-input[type=submit]:hover {
-    background: #d8d8d8;
-    color: gray;
-    cursor: pointer;
-    -webkit-box-shadow: inset 0 0 1px 1px #ebebeb;
-    box-shadow: inset 0 0 1px 1px #ebebeb;
-}
+    input[type=submit]:hover {
+        background: #d8d8d8;
+        color: gray;
+        cursor: pointer;
+        -webkit-box-shadow: inset 0 0 1px 1px #ebebeb;
+        box-shadow: inset 0 0 1px 1px #ebebeb;
+    }
 
-input[type=submit]:active {
-    background: url('../img/menu_pattern_hover.png') repeat-x;
-    -webkit-box-shadow: inset 0 0 1px 1px #e3e3e3;
-    box-shadow: inset 0 0 1px 1px #e3e3e3;
-    color: #000;
-    width: 100px;
-}
-
+    input[type=submit]:active {
+        background: url('../img/menu_pattern_hover.png') repeat-x;
+        -webkit-box-shadow: inset 0 0 1px 1px #e3e3e3;
+        box-shadow: inset 0 0 1px 1px #e3e3e3;
+        color: #000;
+        width: 100px;
+    }
 
 textarea {
     background: #dcdcdc;
@@ -86,12 +87,13 @@ textarea {
     -moz-transition: background-color .5s, border .5s;
 }
 
-textarea:focus {
-    background-color: #fff;
-    border: solid 1px #009bff;
-}
+    textarea:focus {
+        background-color: #fff;
+        border: solid 1px #009bff;
+    }
 
 
+/* login box */
 
 .signup_box input[type=text] {
     background: #dcdcdc url('../img/person.png') no-repeat 5px center;
@@ -99,9 +101,10 @@ textarea:focus {
     width: 30px;
 }
 
-.signup_box input[type=text]:focus {
-    width: 100px;
-}
+    .signup_box input[type=text]:focus {
+        background: #fff url('../img/person.png') no-repeat 5px center;
+        width: 100px;
+    }
 
 .signup_box input[type=password] {
     background: #dcdcdc url('../img/lock.png') no-repeat 5px center;
@@ -109,11 +112,35 @@ textarea:focus {
     width: 30px;
 }
 
-.signup_box input[type=password]:focus {
-    width: 100px;
-}
+    .signup_box input[type=password]:focus {
+        background: #fff url('../img/lock.png') no-repeat 5px center;
+        width: 100px;
+    }
 
 .signup_box input[type=submit] {
     background: url('../img/menu_pattern.png') repeat-x;
     margin-top: 20px;
 }
+
+/* from table */
+
+.form_table { 
+    border-collapse: separate;
+    border-spacing:20px;
+}
+
+    .form_table tbody {
+    }
+
+    .form_table td {
+        text-align: left;  
+    }
+
+    .form_table th {
+        text-align: right;
+    }
+
+    .form_table tr  {
+        text-align: right;
+        margin-top: 10px;
+    }

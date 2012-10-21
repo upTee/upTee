@@ -15,7 +15,6 @@
         
         <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" type="text/css" />
         <link rel="stylesheet" href="{{ STATIC_URL }}css/forms.css" type="text/css" />
-        <link rel="stylesheet" href="{{ STATIC_URL }}css/forms_mod.css" type="text/css" />
         <link rel="stylesheet" href="{{ STATIC_URL }}css/sprites.css" type="text/css" />
 
         <script src="{{ STATIC_URL }}js/jquery-1.8.2.min.js"></script>
@@ -25,9 +24,6 @@
         {% block extra_head %}{% endblock extra_head %}
     </head>
     <body>
-        
-        
-        
         <div id="wrapper">
             {% if user.is_authenticated %}
             <div id="user_bar">
@@ -41,7 +37,7 @@
             <div id="ribbon"></div>
             
             <div id="header_box"> 
-                <a href="{% url home %}"><div id="header"> </div></a>
+                <a href="{% url home %}"><div image="header"></div></a>
             </div>
 
             <div id="menu_box"> 
@@ -76,9 +72,7 @@
             <div id="content_box"> 
                 {% block content %}{% endblock %}                
             </div>
-
-                <div id="sidebar_box">
-                    
+                <div id="sidebar_box"> 
                     {% if not user.is_authenticated %}
                     <div class="sidebar_entry">
                         <div class="signup_box">
@@ -126,11 +120,11 @@
                     {% endif %}              
                 </div>
 
-            <div class="clear"> </div>
+            <div class="clear"></div>
 
             <div id="footer_box"> 
                 <div id="footer_left"></div>
-                <div id="footer_center">&copy; 2012 Sascha W. / David G. {% if user.is_staff %}<br \> {% revision %} {% endif %}</div>
+                <div id="footer_center">&copy; 2012 Sascha W. / David G. {% if user.is_staff %}<br \>{% revision %}{% endif %}</div>
                 <div id="footer_right">
                     <div class="cycle">
                         <div class="teeworlds"><a href="http://teeworlds.com"><div sprite="teeworlds" alt="Teeworlds" title="Teeworlds"></div></a></div>
@@ -139,7 +133,7 @@
                         <div class="nginx"><a href="http://nginx.org/"><div sprite="nginx" alt="nginx" title="nginx"></div></a></div>
                     </div>
                 </div>
-                <div class="clear"> </div>
+                <div class="clear"></div>
             </div>
         </div>
     </body>

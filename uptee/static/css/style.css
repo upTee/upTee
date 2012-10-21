@@ -1,3 +1,4 @@
+/* global */
 * {
     margin: 0;
     padding: 0;
@@ -18,7 +19,11 @@ body {
     font-size: 12px;
 } 
 
-#ribbon{
+
+/* others */
+/* ribbon */
+
+#ribbon {
     background: url('../img/ribbon_alpha.png') no-repeat;
     position: absolute;
     right: 0;
@@ -27,11 +32,15 @@ body {
     width: 107px;
 }
 
-#wrapper{
+/* wrapper */
+
+#wrapper {
     width: 1000px;
     margin-right: auto;
     margin-left: auto;
 }
+
+/* userbar */
 
 #user_bar {
     background: url('../img/menu_pattern.png');
@@ -47,21 +56,24 @@ body {
     padding-right: 10px;
 }
 
-.user_bar_entry.settings {
-    background: url('../img/gear.png') no-repeat 18px 3px;
-    padding-left: 33px;
-}
+    .user_bar_entry.settings {
+        background: url('../img/gear.png') no-repeat 18px 3px;
+        padding-left: 33px;
+    }
 
+/* header */
 
 #header_box {
     margin-top: 20px;
 }
 
-#header {
-    background: url('../img/logo_75.png');
-    width: 345px;
-    height: 75px;
-}
+    #header_box div[image=header] {
+        background: url('../img/logo_75.png');
+        width: 345px;
+        height: 75px;
+    }
+
+/* menu */
 
 #menu_box {
     background: url('../img/menu_pattern.png');
@@ -75,21 +87,23 @@ body {
     padding-top: 8px;
 }
 
-#menu li {
-    display: inline;
-}
+    #menu li {
+        display: inline;
+    }
 
-#menu li a {
-    padding: 9px 10px;
-    border-left: 1px solid;
-    border-right: 1px solid;
-    border-color: #cacaca;
-    text-decoration: none;
-}
+        #menu li a {
+            padding: 9px 10px;
+            border-left: 1px solid;
+            border-right: 1px solid;
+            border-color: #cacaca;
+            text-decoration: none;
+        }
 
-#menu li a:hover {
-    background: url('../img/menu_pattern_hover.png');
-}
+            #menu li a:hover {
+                background: url('../img/menu_pattern_hover.png');
+            }
+
+/* notification */
 
 .notification {
     border: 1px solid;
@@ -105,6 +119,26 @@ body {
     border-radius: 5px;
 }
 
+    .notification.info {
+        background: url('../img/info.png') no-repeat 10px center, url('../img/not_blue.png') repeat-x;
+        color: #034e96;
+    }
+
+    .notification.success {
+        background: url('../img/sucess.png') no-repeat 10px center, url('../img/not_green.png') repeat-x;
+        color: #4f8a14;
+    }
+
+    .notification.warning {
+        background: url('../img/warning.png') no-repeat 10px, url('../img/not_yellow.png') repeat-x;
+        color: #a06011;
+    }
+
+    .notification.error {
+        background: url('../img/error.png') no-repeat 10px center, url('../img/not_red.png') repeat-x;
+        color: #d4000b;
+    }
+
 .notification_close {
    background: url('../img/close_icon.png') no-repeat center;
    height: 15px;
@@ -113,42 +147,12 @@ body {
    opacity: 0.5;
 }
 
-.notification_close:hover {
-    opacity: 1.0;
-    cursor: pointer;
-}
+    .notification_close:hover {
+        opacity: 1.0;
+        cursor: pointer;
+    }
 
-.notification.info {
-    background: url('../img/info.png') no-repeat 10px center, url('../img/not_blue.png') repeat-x;
-    color: #034e96;
-}
-
-.notification.success {
-    background: url('../img/sucess.png') no-repeat 10px center, url('../img/not_green.png') repeat-x;
-    color: #4f8a14;
-}
-
-.notification.warning {
-    background: url('../img/warning.png') no-repeat 10px, url('../img/not_yellow.png') repeat-x;
-    color: #a06011;
-}
-
-.notification.error {
-    background: url('../img/error.png') no-repeat 10px center, url('../img/not_red.png') repeat-x;
-    color: #d4000b;
-}
-
-
-
-#content_box {
-    width: 750px;
-    float: left;
-    margin-top: 20px;
-    padding: 10px;
-    background: rgba(244, 244, 244, 255);
-    border: 1px solid rgb(199, 199, 199);
-    box-shadow: 0px 1px 0px #ffffff, 0px 1px 0px #ffffff inset;
-}
+/* siedbar */
 
 #sidebar_box {
     float: right;
@@ -164,33 +168,45 @@ body {
     box-shadow: 0px 1px 0px #ffffff, 0px 1px 0px #ffffff inset;
 }
 
-.server_status{
+/* content */
+
+#content_box {
+    width: 750px;
+    float: left;
+    margin-top: 20px;
+    padding: 10px;
+    background: rgba(244, 244, 244, 255);
+    border: 1px solid rgb(199, 199, 199);
+    box-shadow: 0px 1px 0px #ffffff, 0px 1px 0px #ffffff inset;
+}
+
+/* server status sidebar entry */
+
+.server_status {
     margin-bottom: 20px;
 }
 
-.server_status_headline{
+.server_status_headline {
     height: 25px;
     padding-left: 20px;
     font-size: 15px;
 }
 
-.server_status_headline.off{
-    background: url('../img/red_status.png') no-repeat 0 3px;
-}
+    .server_status_headline.on {
+        background: url('../img/green_status.png') no-repeat 0 3px;
+    }
 
-.server_status_headline.on{
-    background: url('../img/green_status.png') no-repeat 0 3px;
-}
+    .server_status_headline.off {
+        background: url('../img/red_status.png') no-repeat 0 3px;
+    }
 
-.server_status_info{
+.server_status_info {
     padding-left: 40px;
     font-size: 10px;
     color: gray;
 }
 
-#tabmenu_box {
-    
-}
+/* content tabmenu */
 
 .tab {
    padding: 10px;
@@ -203,22 +219,23 @@ body {
    float: left;
 }
 
-.tab:hover {
-   background: #63c2ff;
-   border-bottom: 0;
-}
+    .tab:hover {
+       background: #63c2ff;
+       border-bottom: 0;
+    }
 
-.tab.current {
-   background: #63c2ff;
-   border: 1px solid #009bff;
-   border-bottom: 0;
-}
+    .tab.current {
+       background: #63c2ff;
+       border: 1px solid #009bff;
+       border-bottom: 0;
+    }
 
 .tabmenu_content {
    padding: 10px;
    border: 1px solid #009bff;
 }
 
+/* footer */
 
 #footer_box {
     background: url('../img/footer.png') no-repeat;
@@ -250,39 +267,18 @@ body {
     min-height: 10px;
 }
 
+/* footer cycle */
+
 .cycle {
     float: right;
 }
 
 div .cycle .django {
     float: right;
-    left: 30px !important;
+    left: 30px !important; /* to override generated inline */
 }
 
 div .cycle .python {
     float: right;
-    left: 20px !important;
+    left: 20px !important; /* to override generated inline */
 }
-
-.form_table { 
-    border-collapse: separate;
-    border-spacing:20px;
-}
-
-.form_table tbody {
-}
-
-.form_table td {
-    text-align: left;  
-}
-
-.form_table th {
-    text-align: right;
-}
-
-.form_table tr  {
-    text-align: right;
-    margin-top: 10px;
-}
-
-
