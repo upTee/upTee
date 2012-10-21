@@ -25,6 +25,9 @@
         {% block extra_head %}{% endblock extra_head %}
     </head>
     <body>
+        
+        
+        
         <div id="wrapper">
             {% if user.is_authenticated %}
             <div id="user_bar">
@@ -34,7 +37,9 @@
                 <div class="clear"></div>
             </div>
             {% endif %}
-
+            
+            <div id="ribbon"></div>
+            
             <div id="header_box"> 
                 <a href="{% url home %}"><div id="header"> </div></a>
             </div>
