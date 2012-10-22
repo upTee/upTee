@@ -135,7 +135,7 @@ class Server(models.Model):
         path = os.path.join(MEDIA_ROOT, 'users', self.owner.username, self.mod.title)
         config = TwCongig(os.path.join(path, 'generated.cfg'))
         for option in self.config_options.all():
-            config.add_option(option.command, option.value, option.widget)
+            config.add_option(option.command, option.value, option.get_widget_display)
         config.add_option('sv_port', self.port.port)
         for tune in self.config_tunes.all():
             config.add_tune(tune.command, tune.value)
