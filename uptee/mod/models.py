@@ -86,10 +86,10 @@ class Port(models.Model):
         super(Port, self).save()
 
 class Server(models.Model):
-    owner = models.OneToOneField(User, related_name='server')
+    owner = models.ForeignKey(User, related_name='servers')
     mod = models.ForeignKey(Mod, related_name='servers')
     pid = models.IntegerField(blank=True, null=True, unique=True)
-    port = models.ForeignKey(Port, blank=True, null=True, related_name='server')
+    port = models.OneToOneField(Port, blank=True, null=True, related_name='server')
     is_active = models.BooleanField(default=False)
 
     @property
