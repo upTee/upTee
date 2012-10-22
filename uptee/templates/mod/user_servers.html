@@ -1,9 +1,13 @@
 {% extends "base.html" %}
 
+{% load possessive %}
+
 {% comment %}
 context variables:
     server_list
 {% endcomment %}
+
+{% block title %}upTee - {{ server_list.0.owner.username|possessive }} servers{% endblock title %}
 
 {% block content %}
 

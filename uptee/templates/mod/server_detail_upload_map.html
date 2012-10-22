@@ -1,9 +1,13 @@
 {% extends "mod/server_detail_base.html" %}
 
+{% load get_option %}
+
 {% comment %}
 context variables:
     form
 {% endcomment %}
+
+{% block title %}upTee - {{ server|get_option:'sv_name' }} - Upload map{% endblock title %}
 
 {% block tab_content %}
 

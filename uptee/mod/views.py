@@ -17,7 +17,7 @@ def user_server_list(request, username):
     servers = Server.objects.filter(is_active=True, owner=user)
     for server in servers:
         server.check_online()
-    return render_to_response('mod/base.html', {'server_list': servers}, context_instance=RequestContext(request))
+    return render_to_response('mod/user_servers.html', {'server_list': servers}, context_instance=RequestContext(request))
 
 def server_list(request):
     servers = Server.objects.filter(is_active=True)

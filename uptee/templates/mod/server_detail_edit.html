@@ -1,12 +1,15 @@
 {% extends "mod/server_detail_base.html" %}
 
 {% load le %}
+{% load get_option %}
 
 {% comment %}
 context variables:
     server
     options
 {% endcomment %}
+
+{% block title %}upTee - {{ server|get_option:'sv_name' }} - Edit server settings{% endblock title %}
 
 {% block tab_content %}
 
