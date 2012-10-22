@@ -41,11 +41,9 @@
             </div>
 
             <div id="menu_box"> 
-                <div class="menu_entry">
+                <a href="{% url server_list %}"> <div class="menu_entry">Servers</div></a>
                     {% if user.is_authenticated %}
                     {% endif %}
-                    <a href="{% url server_list %}">Servers</a>
-                </div>
             </div>
 
             <noscript>
