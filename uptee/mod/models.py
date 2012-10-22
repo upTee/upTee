@@ -167,7 +167,7 @@ class Option(Config):
     WIDGET_CHOICES = (
         (WIDGET_TEXT, 'text'),
         (WIDGET_TEXTAREA, 'textarea'),
-        (WIDGET_TEXTAREA, 'password'),
+        (WIDGET_PASSWORD, 'password'),
     )
     widget = models.IntegerField(choices=WIDGET_CHOICES, default=WIDGET_TEXT)
 
