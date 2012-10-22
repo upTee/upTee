@@ -81,7 +81,7 @@ def update_settings(request, server_id):
     if server.owner != request.user:
         raise Http404
     next = request.REQUEST.get('next', reverse('server_detail', kwargs={'server_id': server.id}))
-    options = server.config_options.all()
+    options = server.config_options.exclude(widget=Option.WIDGET_CHECKBOX)
     for key in request.POST.keys():
         option = options.filter(command=key)[0] if options.filter(command=key) else None
         if option:
@@ -90,4 +90,11 @@ def update_settings(request, server_id):
             else:
                 option.value = request.POST[key]
             option.save()
+    options = server.config_options.filter(widget=Option.WIDGET_CHECKBOX)
+    for option in options:
+        if option.command in request.POST.keys():
+            option.value = '1'
+        else:
+            option.value = '0'
+        option.save()
     return render_to_response('mod/settings_updated.html', {'next': next }, context_instance=RequestContext(request))

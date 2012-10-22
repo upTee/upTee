@@ -19,6 +19,8 @@ context variables:
                 <th><label for="{{ option.command }}">{{ option.command }}</label></th>
                 {% if option.get_widget_display == 'textarea' %}
                     <td><textarea name="{{ option.command }}" id="{{ option.command }}"/>{{ option.value|le }}</textarea></td>
+                {% elif option.get_widget_display == 'checkbox' %}
+                    <td><input type="checkbox" name="{{ option.command }}" id="{{ option.command }}"{% if option.value != '0' %} checked="checked"{% endif %}/></td>
                 {% else %}
                     <td><input type="{{ option.get_widget_display }}" name="{{ option.command }}" value="{{ option.value }}" id="{{ option.command }}"/></td>
                 {% endif %}
