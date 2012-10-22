@@ -106,6 +106,9 @@ class Server(models.Model):
             return s.server_info
         return None
 
+    class Meta:
+        ordering = ['owner', 'mod', 'port']
+
     def __unicode__(self):
         return '{0} ({1}) Owner: {2}'.format(self.mod.title, self.is_online, self.owner.username)
 
