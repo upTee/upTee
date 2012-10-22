@@ -41,11 +41,11 @@
             </div>
 
             <div id="menu_box"> 
-                <ul id="menu">
+                <div class="menu_entry">
                     {% if user.is_authenticated %}
                     {% endif %}
-                    <li><a href="{% url server_list %}">Servers</a></li>
-                </ul>
+                    <a href="{% url server_list %}">Servers</a>
+                </div>
             </div>
 
             <noscript>
