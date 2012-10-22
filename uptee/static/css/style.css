@@ -198,7 +198,6 @@ end old*/
 /* server status sidebar entry */
 
 .server_status {
-    margin-bottom: 20px;
 }
 
 .server_status_headline {
@@ -208,11 +207,11 @@ end old*/
 }
 
     .server_status_headline.on {
-        background: url('../img/green_status.png') no-repeat 0 3px;
+        background: url('../img/green_status.png') no-repeat 0 3px, url('../img/serverstatus_on.png') repeat-x -10px -10px 0 -10px;
     }
 
     .server_status_headline.off {
-        background: url('../img/red_status.png') no-repeat 0 3px;
+        background: url('../img/red_status.png') no-repeat 0 3px, url('../img/serverstatus_off.png') repeat-x;
     }
 
 .server_status_info {
