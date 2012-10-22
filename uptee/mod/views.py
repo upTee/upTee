@@ -25,19 +25,16 @@ def server_list(request):
         server.check_online()
     return render_to_response('mod/servers.html', {'server_list': servers}, context_instance=RequestContext(request))
 
-def server_detail(request, username, mod_name):
-    user = get_object_or_404(User.objects.filter(is_active=True), username=username)
-    server = get_object_or_404(Server.objects.select_related().filter(is_active=True, owner=user), mod__title=mod_name)
+def server_detail(request, server_id):
+    server = get_object_or_404(Server.objects.select_related().filter(is_active=True), pk=server_id)
     options = server.config_options.filter(Q(command='sv_name') | Q(command='sv_gametype')).order_by('command')
     return render_to_response('mod/server_detail_info.html', {
         'server': server
     }, context_instance=RequestContext(request))
 
 @login_required
-def server_edit(request, username, mod_name):
-    if username != request.user.username:
-        raise Http404
-    server = get_object_or_404(Server.objects.select_related().filter(is_active=True, owner=request.user), mod__title=mod_name)
+def server_edit(request, server_id):
+    server = get_object_or_404(Server.objects.select_related().filter(is_active=True, owner=request.user), pk=server_id)
     options = server.config_options.all()
     return render_to_response('mod/server_detail_edit.html', {
         'server': server,
@@ -45,10 +42,8 @@ def server_edit(request, username, mod_name):
     }, context_instance=RequestContext(request))
 
 @login_required
-def upload_map(request, username, mod_name):
-    if username != request.user.username:
-        raise Http404
-    server = get_object_or_404(Server.objects.select_related().filter(is_active=True, owner=request.user), mod__title=mod_name)
+def upload_map(request, server_id):
+    server = get_object_or_404(Server.objects.select_related().filter(is_active=True, owner=request.user), pk=server_id)
     if request.method == 'POST':
         form = MapUploadForm(request.POST, request.FILES)
         if form.is_valid():

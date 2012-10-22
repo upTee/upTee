@@ -9,7 +9,7 @@ context variables:
 
 {% for server in server_list %}
 <div>
-    <h2>Server mod: <a href="{% url server_detail server.owner.username server.mod.title %}">{{ server.mod.title }}</a> ({% if server.is_online %}started{% else %}stopped{% endif %}) from {{ server.owner.username }}</h2>
+    <h2>Server mod: <a href="{% url server_detail server.id %}">{{ server.mod.title }}</a> ({% if server.is_online %}started{% else %}stopped{% endif %}) from {{ server.owner.username }}</h2>
 </div>
 
 {% if user.is_authenticated %}{% if user.is_staff or server.owner == user %}
