@@ -80,7 +80,7 @@ def update_settings(request, server_id):
     server = get_object_or_404(Server.objects.select_related().filter(is_active=True), pk=server_id)
     if server.owner != request.user:
         raise Http404
-    next = request.REQUEST.get('next', reverse('server_detail', kwargs={'username': server.owner.username, 'mod_name': server.mod.title}))
+    next = request.REQUEST.get('next', reverse('server_detail', kwargs={'server_id': server.id}))
     options = server.config_options.all()
     for key in request.POST.keys():
         option = options.filter(command=key)[0] if options.filter(command=key) else None

@@ -9,13 +9,35 @@ class ModAdmin(admin.ModelAdmin):
     list_display = ('title', 'upload_date', 'mod_file', 'mimetype')
     search_fields = ('title', 'mod_file', 'mimetype')
     list_filter = ('upload_date', 'mimetype')
-    form = ModAdminForm 
+    form = ModAdminForm
+    actions=['really_delete_selected']
+
+    def get_actions(self, request):
+        actions = super(ModAdmin, self).get_actions(request)
+        del actions['delete_selected']
+        return actions
+
+    def really_delete_selected(self, request, queryset):
+        for obj in queryset:
+            obj.delete()
+    really_delete_selected.short_description = u"Delete selected mods"
 
 class ServerAdmin(admin.ModelAdmin):
     list_display = ('mod', 'owner', 'is_active')
     search_fields = ('title', 'owner')
     list_filter = ('mod', 'owner', 'is_active')
     form = ServerAdminForm
+    actions=['really_delete_selected']
+
+    def get_actions(self, request):
+        actions = super(ServerAdmin, self).get_actions(request)
+        del actions['delete_selected']
+        return actions
+
+    def really_delete_selected(self, request, queryset):
+        for obj in queryset:
+            obj.delete()
+    really_delete_selected.short_description = u"Delete selected servers"
 
     def save_model(self, request, obj, form, change):
         obj.save()
@@ -25,12 +47,12 @@ class ServerAdmin(admin.ModelAdmin):
             mod_path = os.path.join(MEDIA_ROOT, 'users', obj.owner.username, obj.mod.title)
             if not os.path.exists(mod_path):
                 os.makedirs(mod_path)
-            if obj.mod.mimetype == 'application/zip':
-                with zipfile.ZipFile(obj.mod.mod_file.path) as z:
-                    z.extractall(mod_path)
-            elif obj.mod.mimetype == 'application/x-tar':
-                with tarfile.TarFile(obj.mod.mod_file.path) as t:
-                    t.extractall(mod_path)
+                if obj.mod.mimetype == 'application/zip':
+                    with zipfile.ZipFile(obj.mod.mod_file.path) as z:
+                        z.extractall(mod_path)
+                elif obj.mod.mimetype == 'application/x-tar':
+                    with tarfile.TarFile(obj.mod.mod_file.path) as t:
+                        t.extractall(mod_path)
 
             config_path = os.path.join(mod_path, 'config.cfg')
             config = TwCongig(config_path)

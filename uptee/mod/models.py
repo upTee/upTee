@@ -144,7 +144,7 @@ class Server(models.Model):
     def delete(self):
         self.set_offline()
         path = os.path.join(MEDIA_ROOT, 'users', self.owner.username, self.mod.title)
-        if os.path.exists(path):
+        if os.path.exists(path) and len(Server.objects.filter(owner=self.owner, mod=self.mod)) <= 1:
             rmtree(path)
         super(Server, self).delete()
 
