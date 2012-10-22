@@ -202,16 +202,23 @@ end old*/
 
 .server_status_headline {
     height: 25px;
-    padding-left: 20px;
+    padding-left: 30px;
     font-size: 15px;
+    font-style: bold;
 }
 
     .server_status_headline.on {
-        background: url('../img/green_status.png') no-repeat 0 3px, url('../img/serverstatus_on.png') repeat-x -10px -10px 0 -10px;
+        background: url('../img/green_status.png') no-repeat 10px 4px, url('../img/serverstatus_on.png') repeat-x;
+        margin-top: -10px;
+        margin-left: -10px;
+        width: 168px;
     }
 
     .server_status_headline.off {
-        background: url('../img/red_status.png') no-repeat 0 3px, url('../img/serverstatus_off.png') repeat-x;
+        background: url('../img/red_status.png') no-repeat 10px 4px, url('../img/serverstatus_off.png') repeat-x;
+        margin-top: -10px;
+        margin-left: -10px;
+        width: 168px;
     }
 
 .server_status_info {
