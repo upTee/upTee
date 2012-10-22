@@ -217,17 +217,19 @@ body {
    border: 1px solid #009bff;
    border-bottom: 0;
    float: left;
+   color: #000;
 }
 
     .tab:hover {
-       background: #63c2ff;
+       background: #009bff;
        border-bottom: 0;
     }
 
     .tab.current {
-       background: #63c2ff;
+       background: #009bff;
        border: 1px solid #009bff;
        border-bottom: 0;
+       color: #fff;
     }
 
 .tabmenu_content {
