@@ -89,6 +89,7 @@ body {
     padding: 10px;
     text-align: center;
     border-right: 1px solid #009bff;
+    float: left;
 }
 
 .menu_entry:hover {
