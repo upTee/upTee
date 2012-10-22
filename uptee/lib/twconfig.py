@@ -14,7 +14,15 @@ class Config:
             options = [line for line in lines if line.split(' ', 1)[0] not in ['add_vote', 'tune']]
             tunes = [line.split(' ', 1)[1] for line in lines if line.split(' ', 1)[0] == 'tune']
             votes = [line.split(' ', 1)[1] for line in lines if line.split(' ', 1)[0] == 'add_vote']
-            self.options = {line.split(' ', 1)[0] : (line.split(' ', 1)[1].rsplit(' ', 1)[0].strip('"'), line.rsplit(' ', 1)[1].split(':', 1)[1] if line.rsplit(' ', 1)[1][0] == '#' and '#widget:' in line.rsplit(' ', 1)[1] else 'text') for line in options}
+            self.options = {}
+            for line in options:
+                command = line.split(' ', 1)[0]
+                widget = line.rsplit(' ', 1)[1].split(':', 1)[1] if line.rsplit(' ', 1)[1][0] == '#' and '#widget:' in line.rsplit(' ', 1)[1] else 'text'
+                line = line.split(' ', 1)[1]
+                if ' ' in line and line.rsplit(' ', 1)[1][0] == '#' and '#widget:' in line.rsplit(' ', 1)[1]:
+                    line = line.rsplit(' ', 1)[0]
+                value = line.strip('"') 
+                self.options[command] = (value, widget)
             self.tunes = [{'command': line.rsplit().strip('"')[0], 'value': float(line.split().strip('"')[1])} for line in tunes]
             self.votes = [{'command': line.rsplit('" ', 1)[1].strip('"'), 'title': line.rsplit('" ', 1)[0].strip('"')} for line in votes if len(line.split('" ')) == 2]
 
