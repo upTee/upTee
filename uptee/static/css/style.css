@@ -204,25 +204,25 @@ end old*/
     height: 25px;
     padding-left: 30px;
     font-size: 15px;
-    font-style: bold;
+    font-weight: bold; 
+    margin-top: -10px;
+    margin-left: -10px;
+    width: 168px;
+    padding-bottom: 1px;
+    padding-top: 3px;
 }
 
     .server_status_headline.on {
-        background: url('../img/green_status.png') no-repeat 10px 4px, url('../img/serverstatus_on.png') repeat-x;
-        margin-top: -10px;
-        margin-left: -10px;
-        width: 168px;
+        background: url('../img/green_status.png') no-repeat 10px 7px, url('../img/serverstatus_on.png') repeat-x;
     }
 
     .server_status_headline.off {
-        background: url('../img/red_status.png') no-repeat 10px 4px, url('../img/serverstatus_off.png') repeat-x;
-        margin-top: -10px;
-        margin-left: -10px;
-        width: 168px;
+        background: url('../img/red_status.png') no-repeat 10px 7px, url('../img/serverstatus_off.png') repeat-x;
     }
 
 .server_status_info {
     padding-left: 20px;
+    padding-top: 5px;
     font-size: 10px;
     color: gray;
 }
