@@ -71,5 +71,28 @@ class ServerAdmin(admin.ModelAdmin):
                 data = Vote(server=obj, command=vote['command'], title=vote['title'])
                 data.save()
 
+class PortAdmin(admin.ModelAdmin):
+    list_display = ('port', 'is_active')
+    list_filter = ('is_active',)
+    actions = ['set_free']
+
+    def set_free(self, request, queryset):
+        for obj in queryset:
+            try:
+                obj.server.set_offline()
+            except:
+                obj.is_active = False
+                obj.save()
+    set_free.short_description = u"Set selected ports free"
+
+    def save_model(self, request, obj, form, change):
+        if not obj.is_active:
+            try:
+                obj.server.set_offline()
+            except:
+                pass
+        obj.save()
+
 admin.site.register(Mod, ModAdmin)
 admin.site.register(Server, ServerAdmin)
+admin.site.register(Port, PortAdmin)
