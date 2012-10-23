@@ -1,0 +1,47 @@
+{% if server_info and server_info.clients %}
+    <div class="clients">
+        <div class="sidebar_entry">
+            {% if server_info.players %}
+            <div class="players">
+                <p><b>Players</b></p>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Score</th>
+                            <th>Name</th>
+                            <th>Clan</th>
+                        </tr>
+                        {% for player in server_info.players %}
+                        <tr>
+                            <td>{{ player.score }}</td>
+                            <td>{{ player.name }}</td>
+                            <td>{{ player.clan }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+            {% if server_info.spectators %}
+            <div class="spectators">
+                <p><b>Spectators</b></p>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Name</th>
+                            <th>Clan</th>
+                        </tr>
+                        {% for player in server_info.spectators %}
+                        <tr>
+                            <td>{{ player.name }}</td>
+                            <td>{{ player.clan }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+{% endif %}
+                                        

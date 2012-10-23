@@ -227,6 +227,11 @@ end old*/
     color: gray;
 }
 
+.server_status_update div.clients {
+    position: fixed;
+    visibility: hidden;
+}
+
 /* content tabmenu */
 
 .tab {

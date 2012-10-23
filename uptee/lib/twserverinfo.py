@@ -115,3 +115,9 @@ class ServerInfo:
                 players.append(client)
         self.server_info['clients'] = clients
         self.server_info['players'] = players
+
+        spectators = []
+        for client in clients:
+            if client not in players:
+                spectators.append(client)
+        self.server_info['spectators'] = spectators
