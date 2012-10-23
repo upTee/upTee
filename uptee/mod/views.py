@@ -8,6 +8,7 @@ from django.http import Http404
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.views.decorators.http import require_POST
+from annoying.decorators import ajax_request
 from mod.forms import MapUploadForm
 from mod.models import Option, Server
 from settings import MEDIA_ROOT
@@ -98,3 +99,10 @@ def update_settings(request, server_id):
             option.value = '0'
         option.save()
     return render_to_response('mod/settings_updated.html', {'next': next }, context_instance=RequestContext(request))
+
+@ajax_request
+def server_info_update_ajax(request, server_id):
+    if not request.is_ajax():
+        raise Http404
+    server = get_object_or_404(Server.objects.select_related().filter(is_active=True), pk=server_id)
+    return {'server_info': server.info }
