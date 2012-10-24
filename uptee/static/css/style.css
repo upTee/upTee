@@ -310,3 +310,11 @@ div .cycle .python {
     float: right;
     left: 20px !important; /* to override generated inline */
 }
+
+div .cycle .nginx {
+    float: right;
+}
+
+div .cycle .teeworlds {
+    float: right;
+}
