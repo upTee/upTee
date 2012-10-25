@@ -232,6 +232,31 @@ end old*/
     visibility: hidden;
 }
 
+.server_list_entry {
+    border-right: 1px solid #009bff;
+    margin-bottom: 10px;
+}
+
+    .server_list_headline {
+        height: 25px;
+        font-weight: bold;
+        font-size: 15px;
+        text-align: center;
+    }
+    
+        .server_list_headline.on {
+            background: url('../img/green_status.png') no-repeat 10px 7px, url('../img/serverstatus_on.png') repeat-x;
+        }
+        
+        .server_list_headline.off {
+            background: url('../img/red_status.png') no-repeat 10px 7px, url('../img/serverstatus_off.png') repeat-x;
+        }
+
+    .server_list_content {
+        border-right: 1px solid #009bff;
+        color: gray;
+    }
+
 /* content tabmenu */
 
 .tab {
