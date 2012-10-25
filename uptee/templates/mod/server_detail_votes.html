@@ -1,0 +1,40 @@
+{% extends "mod/server_detail_base.html" %}
+
+{% load le %}
+{% load get_option %}
+
+{% comment %}
+context variables:
+    server
+    votes
+{% endcomment %}
+
+{% block title %}upTee - {{ server|get_option:'sv_name' }} - Edit votes{% endblock title %}
+
+{% block tab_content %}
+
+<form action="{% url update_votes server.id %}" method="post">
+    {% csrf_token %}
+    <table class="form_table">
+        <tbody>
+            {% for vote in votes %}
+            <tr>
+                <th><input type="text" name="title {{ vote.title }} {{ vote.id }}" value="{{ vote.title }}" id="id-{{ vote.title }}-{{ vote..id }}"/></th>
+                <td><input type="text" name="command {{ vote.command }} {{ vote.id }}" value="{{ vote.command }}" id="id-{{ vote.command }}-{{ vote..id }}"/></td>
+                <td><div class="delete_vote"></div></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div id="add_vote"></div> <!-- here a button will be included by js-->
+    <p><input class="button" type="submit" value="Update votes" /></p>
+</form>
+
+<noscript>
+<form action="{{ request.path }}" method="post">
+    {% csrf_token %}
+    <p><input class="button" type="submit" value="Add vote" /></p>
+</form>
+</noscript>
+
+{% endblock tab_content %}

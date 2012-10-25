@@ -10,7 +10,7 @@ from django.template import RequestContext
 from django.views.decorators.http import require_POST
 from annoying.decorators import ajax_request
 from mod.forms import MapUploadForm
-from mod.models import Option, Server
+from mod.models import Option, Server, Vote
 from settings import MEDIA_ROOT
 
 def user_server_list(request, username):
@@ -59,6 +59,18 @@ def upload_map(request, server_id):
         'form': form
     }, context_instance=RequestContext(request))
 
+@login_required
+def server_votes(request, server_id):
+    server = get_object_or_404(Server.objects.select_related().filter(is_active=True, owner=request.user), pk=server_id)
+    if request.method == 'POST':
+        vote = Vote(server=server, command='command', title='New vote')
+        vote.save()
+    votes = server.config_votes.all()
+    return render_to_response('mod/server_detail_votes.html', {
+        'server': server,
+        'votes': votes
+    }, context_instance=RequestContext(request))
+
 
 @login_required
 @require_POST
@@ -81,7 +93,7 @@ def update_settings(request, server_id):
     server = get_object_or_404(Server.objects.select_related().filter(is_active=True), pk=server_id)
     if server.owner != request.user:
         raise Http404
-    next = request.REQUEST.get('next', reverse('server_detail', kwargs={'server_id': server.id}))
+    next = request.REQUEST.get('next', reverse('server_edit', kwargs={'server_id': server.id}))
     options = server.config_options.exclude(widget=Option.WIDGET_CHECKBOX)
     for key in request.POST.keys():
         option = options.filter(command=key)[0] if options.filter(command=key) else None
@@ -98,6 +110,75 @@ def update_settings(request, server_id):
         else:
             option.value = '0'
         option.save()
+    return render_to_response('mod/settings_updated.html', {'next': next }, context_instance=RequestContext(request))
+
+@login_required
+@require_POST
+def update_votes(request, server_id):
+    server = get_object_or_404(Server.objects.select_related().filter(is_active=True), pk=server_id)
+    if server.owner != request.user:
+        raise Http404
+    next = request.REQUEST.get('next', reverse('server_votes', kwargs={'server_id': server.id}))
+    votes = server.config_votes.all()
+    post = request.POST.copy()
+    id_done_list = []
+    title_done_list = []
+    for key in post:
+        if ' ' not in key:
+            continue
+        input_type = key.split(' ', 1)[0]
+        if input_type not in ['title', 'command']:
+            continue
+        vote_id = key.rsplit(' ', 1)[-1]
+        if vote_id == 'new':
+            if not post[key]:
+                continue
+            vote_id = key.rsplit(' ', 2)[-2]
+            if vote_id in id_done_list:
+                continue
+            if vote_id.isdigit:
+                if input_type == 'title':
+                    if post[key] in title_done_list:
+                        continue
+                    other = 'command'
+                else:
+                    other = 'title'
+                vars()[input_type] = post[key]
+                for _key in post:
+                    if not post[_key] and ' ' not in _key:
+                        continue
+                    if _key.rsplit(' ', 1)[-1] == 'new' and _key.split(' ', 1)[0] == other:
+                        check_id = key.rsplit(' ', 2)[-2]
+                        if check_id == vote_id:
+                            if input_type == 'command':
+                                if post[_key] in title_done_list:
+                                    break
+                            vars()[other] = post[_key]
+                            new_vote = Vote(server=server, command=vars()['command'], title=vars()['title'])
+                            new_vote.save()
+                            id_done_list.append(vote_id)
+                            title_done_list.append(vars()['title'])
+                            break
+        elif vote_id.isdigit():
+            if input_type == 'title':
+                vote = votes.filter(title=post[key]).exclude(pk=vote_id)
+                if vote:
+                    vote.delete()
+            vote = votes.filter(pk=vote_id)
+            if len(vote) != 1:
+                continue
+            vote = vote[0]
+            if not post[key]:
+                vote.delete()
+            else:
+                setattr(vote, input_type, post[key])
+                vote.save()
+    """for vote in votes:
+        vote_list = votes.filter(title=vote.title)
+        if len(vote_list) > 1:
+            vote_list = vote_list[1:]
+            for item in vote_list:
+                item.delete()"""
     return render_to_response('mod/settings_updated.html', {'next': next }, context_instance=RequestContext(request))
 
 @ajax_request

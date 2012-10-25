@@ -263,6 +263,21 @@ end old*/
    border: 1px solid #009bff;
 }
 
+/* vote delete button */
+
+.delete_vote div.del_button {
+   background: url('../img/close_icon.png') no-repeat center;
+   height: 15px;
+   width: 15px;
+   float: right;
+   opacity: 0.5;
+}
+
+    .delete_vote div.del_button:hover {
+       opacity: 1.0;
+       cursor: pointer;
+    }
+
 /* footer */
 
 #footer_box {

@@ -19,10 +19,12 @@ context variables:
             {% url server_detail server.id as url_info %}
             {% url upload_map server.id as url_upload_map %}
             {% url server_edit server.id as url_edit_settings %}
+            {% url server_votes server.id as url_edit_votes %}
             <a href="{{ url_info }}"><div class="tab{% current request url_info %}">Info</div></a>
             {% if server.owner == user %}
                 <a href="{{ url_upload_map }}"><div class="tab{% current request url_upload_map %}">Upload Map</div></a>
                 <a href="{{ url_edit_settings }}"><div class="tab{% current request url_edit_settings %}">Edit Settings</div></a>
+                <a href="{{ url_edit_votes }}"><div class="tab{% current request url_edit_votes %}">Edit Votes</div></a>
             {% endif %}
             <div class="clear"></div>
         </div>
