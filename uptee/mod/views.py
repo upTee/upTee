@@ -71,6 +71,17 @@ def server_votes(request, server_id):
         'votes': votes
     }, context_instance=RequestContext(request))
 
+@login_required
+def server_tunes(request, server_id):
+    server = get_object_or_404(Server.objects.select_related().filter(is_active=True, owner=request.user), pk=server_id)
+    tunes = server.config_tunes.all()
+    if not tunes:
+        raise Http404
+    return render_to_response('mod/server_detail_tunes.html', {
+        'server': server,
+        'tunes': tunes
+    }, context_instance=RequestContext(request))
+
 
 @login_required
 @require_POST
@@ -180,6 +191,26 @@ def update_votes(request, server_id):
             for item in vote_list:
                 item.delete()"""
     return render_to_response('mod/settings_updated.html', {'next': next }, context_instance=RequestContext(request))
+
+@login_required
+@require_POST
+def update_tunes(request, server_id):
+    server = get_object_or_404(Server.objects.select_related().filter(is_active=True), pk=server_id)
+    if server.owner != request.user:
+        raise Http404
+    next = request.REQUEST.get('next', reverse('server_tunes', kwargs={'server_id': server.id}))
+    tunes = server.config_tunes.all()
+    if tunes:
+        for key in request.POST.keys():
+            tune = tunes.filter(command=key)[0] if tunes.filter(command=key) else None
+            if tune:
+                try:
+                    tune.value = float(request.POST[key])
+                except ValueError:
+                    continue
+                tune.save()
+    return render_to_response('mod/settings_updated.html', {'next': next }, context_instance=RequestContext(request))
+
 
 @ajax_request
 def server_info_update_ajax(request, server_id):

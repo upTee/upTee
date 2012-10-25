@@ -20,11 +20,15 @@ context variables:
             {% url upload_map server.id as url_upload_map %}
             {% url server_edit server.id as url_edit_settings %}
             {% url server_votes server.id as url_edit_votes %}
+            {% url server_tunes server.id as url_edit_tunes %}
             <a href="{{ url_info }}"><div class="tab{% current request url_info %}">Info</div></a>
             {% if server.owner == user %}
                 <a href="{{ url_upload_map }}"><div class="tab{% current request url_upload_map %}">Upload Map</div></a>
                 <a href="{{ url_edit_settings }}"><div class="tab{% current request url_edit_settings %}">Edit Settings</div></a>
                 <a href="{{ url_edit_votes }}"><div class="tab{% current request url_edit_votes %}">Edit Votes</div></a>
+                {% if server.config_tunes.all %}
+                    <a href="{{ url_edit_tunes }}"><div class="tab{% current request url_edit_tunes %}">Edit Tunings</div></a>
+                {% endif %}
             {% endif %}
             <div class="clear"></div>
         </div>
