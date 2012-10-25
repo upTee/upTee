@@ -21,12 +21,12 @@ context variables:
             <tr>
                 <th><input type="text" name="title {{ vote.title }} {{ vote.id }}" value="{{ vote.title }}" id="id-{{ vote.title }}-{{ vote..id }}"/></th>
                 <td><input type="text" name="command {{ vote.command }} {{ vote.id }}" value="{{ vote.command }}" id="id-{{ vote.command }}-{{ vote..id }}"/></td>
-                <td><div class="delete_vote"></div></td> <!-- here a button will be included by js if js is supported -->
+                <td><div class="delete_vote"></div></td> <!-- here a button will be included by js if js is supported "<div class="del_button"></div>" -->
             </tr>
             {% endfor %}
         </tbody>
     </table>
-    <div id="add_vote"></div> <!-- here a button will be included by js if js is supported -->
+    <div id="add_vote"></div> <!-- here a button will be included by js if js is supported "<p><button type="button">Add vote</button></p>" -->
     <p><input class="button" type="submit" value="Update votes" /></p>
 </form>
 
