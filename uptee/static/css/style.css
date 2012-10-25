@@ -256,6 +256,7 @@ end old*/
     .server_list_content {
         color: gray;
         text-align: center;
+        padding: 5px;
     }
 
 /* content tabmenu */

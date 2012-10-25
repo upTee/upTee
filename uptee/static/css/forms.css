@@ -75,6 +75,19 @@ input[type=submit] {
         width: 100px;
     }
 
+input[type=checkbox] {
+    background: #dcdcdc;
+    border: solid 1px #969696;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    transition: all .5s;
+}
+
+    input[type=checkbox]:checked :active {
+        background-color: #fff;
+        border: solid 1px #009bff;
+    }
+
 textarea {
     background: #dcdcdc;
     border: solid 1px #969696;

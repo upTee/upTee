@@ -65,12 +65,13 @@
             {% for message in messages %}
                 <div class="notification {{ message.tags }}">
                     {{ message }}
-                    <div class="notification_close"></div>
+                    <input type="checkbox"/>
                 </div>
             {% endfor %}
 
             <div id="content_box"> 
-                {% block content %}{% endblock %}                
+                {% block content %}{% endblock %}  
+                <input type="checkbox"/>             
             </div>
                 <div id="sidebar_box"> 
                     {% if not user.is_authenticated %}
