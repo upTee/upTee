@@ -67,7 +67,7 @@ body {
     margin-top: 20px;
 }
 
-    #header_box div[image=header] {
+    #header_box div[data-image=header] {
         background: url('../img/logo_75.png');
         width: 345px;
         height: 75px;

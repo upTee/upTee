@@ -1,24 +1,24 @@
 /* image sprites */
 
-div[sprite=django] {
+div[data-sprite=django] {
     background: url('../img/spriteset.png') no-repeat 0 0;
     width: 50px;
     height: 18px;
 }
 
-div[sprite=teeworlds] {
+div[data-sprite=teeworlds] {
     background: url('../img/spriteset.png') no-repeat -50px 0;
     width: 80px;   
     height: 18px;
 }
 
-div[sprite=python] {
+div[data-sprite=python] {
     background: url('../img/spriteset.png') no-repeat -130px 0;
     width: 60px;
     height: 18px;
 }
 
-div[sprite=nginx] {
+div[data-sprite=nginx] {
     background: url('../img/spriteset.png') no-repeat -190px 0;
     width: 80px;
     height: 18px;
@@ -27,10 +27,10 @@ div[sprite=nginx] {
 
 /* sprite effects */
 
-#footer_box div[sprite] {
+#footer_box div[data-sprite] {
     opacity: 0.5;
 }
 
-    #footer_box div[sprite]:hover {
+    #footer_box div[data-sprite]:hover {
         opacity: 1;
     }
