@@ -88,6 +88,20 @@ input[type=checkbox] {
         border: solid 1px #009bff;
     }
 
+.checkbox, .radio {
+    width: 19px;
+    height: 25px;
+    padding: 0 5px 0 0;
+    background: url('../img/checkbox.png') no-repeat;
+    display: block;
+    clear: left;
+    float: left;
+}
+
+.radio {
+    background: url('../img/radio.png') no-repeat;
+}
+
 textarea {
     background: #dcdcdc;
     border: solid 1px #969696;

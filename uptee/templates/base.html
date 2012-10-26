@@ -20,6 +20,7 @@
         <script src="{{ STATIC_URL }}js/jquery-1.8.2.min.js"></script>
         <script src="{{ STATIC_URL }}js/jquery.easing.1.3.min.js"></script>
         <script src="{{ STATIC_URL }}js/jquery.cycle.all.min.js"></script>
+        <script src="{{ STATIC_URL }}js/custom-form-elements.js"></script>
         <script src="{{ STATIC_URL }}js/uptee.js"></script>
         {% block extra_head %}{% endblock extra_head %}
     </head>
@@ -70,62 +71,62 @@
             {% endfor %}
 
             <div id="content_box"> 
-                {% block content %}{% endblock %}  
-                <input type="checkbox"/>             
+                {% block content %}{% endblock %}           
             </div>
-                <div id="sidebar_box"> 
-                    {% if not user.is_authenticated %}
-                    <div class="sidebar_entry">
-                        <div class="signup_box">
-                            <h3>Login:</h3>
-                            
-                            {% if form.errors %}
-                            <div class="notification error">
-                                The combination of username and password is wrong or your account is not activated yet.
-                                <div class="notification_close"></div>
-                            </div>
-                            {% endif %}
-        
-                                <form action="{% url login %}" method="post">
-                                    {% csrf_token %}
-                                        <p><label for="username">Username:</label></p><p><input type="text" name="username" value="" id="username" pattern="[\w.@+-]{3,30}" title="30 characters or fewer. Letters, numbers and @/./+/-/_ characters" required="" /></p>
-                                        <p><label for="password">Password:</label></p><p><input type="password" name="password" value="" id="password" pattern=".{8,}" title="8 characters are required" required="" /></p>
-                                        <p><input class="button" type="submit" value="Login" /><input type="hidden" name="next" value="{{ request.path }}" /></p>
-                                </form>
-                        </div>
-                    </div>
+            
+            <div id="sidebar_box"> 
+                {% if not user.is_authenticated %}
+                <div class="sidebar_entry">
+                    <div class="signup_box">
+                        <h3>Login:</h3>
                         
-                    <div class="sidebar_entry">
-                        <div class="register_box">
-                            <a href="{% url register %}"><h3>Register</h3></a>
+                        {% if form.errors %}
+                        <div class="notification error">
+                            The combination of username and password is wrong or your account is not activated yet.
+                            <div class="notification_close"></div>
                         </div>
+                        {% endif %}
+    
+                            <form action="{% url login %}" method="post">
+                                {% csrf_token %}
+                                    <p><label for="username">Username:</label></p><p><input type="text" name="username" value="" id="username" pattern="[\w.@+-]{3,30}" title="30 characters or fewer. Letters, numbers and @/./+/-/_ characters" required="" /></p>
+                                    <p><label for="password">Password:</label></p><p><input type="password" name="password" value="" id="password" pattern=".{8,}" title="8 characters are required" required="" /></p>
+                                    <p><input class="button" type="submit" value="Login" /><input type="hidden" name="next" value="{{ request.path }}" /></p>
+                            </form>
                     </div>
-                     {% endif %}
-
-                    {% if user_server_list %}
-                    {% for server in user_server_list %}
-                    <div class="sidebar_entry">
-                        <div class="server_status">
-                            <div class="server_status_headline {% if server.is_online %}on{% else %}off{% endif %}">{{ server|get_option:'sv_name' }}</div>
-                            <div class="server_status_info">
-                                {% if server.is_online %}<div class="server_status_update" serverid="{{ server.id }}">{% endif %}
-                                    <p>Mod: {{ server.mod.title }}</p>
-                                    {% with server_info=server.info %}
-                                        <p>Gametype: <span info="gametype">{% if server_info %}{{ server_info.gametype }}{% else %}{{ server|get_option:'sv_gametype' }}{% endif %}</span></p>
-                                        <p>Map: <span info="map">{% if server_info %}{{ server_info.map }}{% else %}{{ server|get_option:'sv_map' }}{% endif %}</span></p>
-                                        <p info="slots">Slots: <span info="slots">{% if server_info %}{{ server_info.clients|length }}/{{ server_info.max_clients }}{% else %}{{ server|get_option:'sv_max_clients' }}{% endif %}</span></p>
-                                    
-                                        {% if server.is_online %}<p>Address: {{ request.META.HTTP_HOST|split:':'|first }}:{{ server.port }}</p>{% endif %}
-                                        <p><a href="{% url server_detail server.id %}">Edit</a></p>
-                                        {% include "scoreboard.html" %}
-                                    {% endwith %}
-                                {% if server.is_online %}</div>{% endif %}
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                    {% endif %}              
                 </div>
+                    
+                <div class="sidebar_entry">
+                    <div class="register_box">
+                        <a href="{% url register %}"><h3>Register</h3></a>
+                    </div>
+                </div>
+                 {% endif %}
+
+                {% if user_server_list %}
+                {% for server in user_server_list %}
+                <div class="sidebar_entry">
+                    <div class="server_status">
+                        <div class="server_status_headline {% if server.is_online %}on{% else %}off{% endif %}">{{ server|get_option:'sv_name' }}</div>
+                        <div class="server_status_info">
+                            {% if server.is_online %}<div class="server_status_update" serverid="{{ server.id }}">{% endif %}
+                                <p>Mod: {{ server.mod.title }}</p>
+                                {% with server_info=server.info %}
+                                    <p>Gametype: <span info="gametype">{% if server_info %}{{ server_info.gametype }}{% else %}{{ server|get_option:'sv_gametype' }}{% endif %}</span></p>
+                                    <p>Map: <span info="map">{% if server_info %}{{ server_info.map }}{% else %}{{ server|get_option:'sv_map' }}{% endif %}</span></p>
+                                    <p info="slots">Slots: <span info="slots">{% if server_info %}{{ server_info.clients|length }}/{{ server_info.max_clients }}{% else %}{{ server|get_option:'sv_max_clients' }}{% endif %}</span></p>
+                                
+                                    {% if server.is_online %}<p>Address: {{ request.META.HTTP_HOST|split:':'|first }}:{{ server.port }}</p>{% endif %}
+                                    <p><a href="{% url server_detail server.id %}">Edit</a></p>
+                                    {% include "scoreboard.html" %}
+                                {% endwith %}
+                            {% if server.is_online %}</div>{% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}              
+            </div>
 
             <div class="clear"></div>
 
