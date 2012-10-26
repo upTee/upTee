@@ -13,18 +13,21 @@ from mod.forms import MapUploadForm
 from mod.models import Option, Server, Vote
 from settings import MEDIA_ROOT
 
-def user_server_list(request, username):
-    user = get_object_or_404(User.objects.filter(is_active=True), username=username)
-    servers = Server.objects.filter(is_active=True, owner=user)
+def server_list(request, username=None, server_type=None):
+    if server_type:
+        if server_type not in ['online', 'offline']:
+            raise Http404
+    if username:
+        user = get_object_or_404(User.objects.filter(is_active=True), username=username)
+        servers = Server.objects.filter(is_active=True, owner=user)
+    else:
+        servers = Server.objects.filter(is_active=True)
     for server in servers:
         server.check_online()
-    return render_to_response('mod/user_servers.html', {'server_list': servers}, context_instance=RequestContext(request))
-
-def server_list(request):
-    servers = Server.objects.filter(is_active=True)
-    for server in servers:
-        server.check_online()
-    return render_to_response('mod/servers.html', {'server_list': servers}, context_instance=RequestContext(request))
+    if server_type:
+        online = True if server_type == 'online' else False
+        servers = (server for server in servers if server.is_online == online)
+    return render_to_response('mod/servers.html', {'server_list': servers, 'username': username}, context_instance=RequestContext(request))
 
 def server_detail(request, server_id):
     server = get_object_or_404(Server.objects.select_related().filter(is_active=True), pk=server_id)
