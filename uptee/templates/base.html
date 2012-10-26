@@ -54,7 +54,7 @@
                 </div>
             </noscript>
 
-            {% if request.browser %}
+            {% if request.browser and request.browser.version > 0.0 %}
                 {% if request.browser.name == 'Firefox' and request.browser.version < 4.0 or request.browser.name == 'Chrome' and request.browser.version < 10.0 or request.browser.name == 'Opera' and request.browser.version < 10.0 or request.browser.name == 'Safari' and request.browser.version < 5.0 or request.browser.name == 'IE' and request.browser.version < 9.0 %}
                     <div class="notification info">
                         Your Browser just sux!
