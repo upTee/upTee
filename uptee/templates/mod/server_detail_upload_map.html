@@ -13,9 +13,9 @@ context variables:
 
 <div class="body">
     <form action="{{ request.path }}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
+        <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
         {{ form.as_p }}
-        <p><input class="button" type="submit" value="Upload" /></p>
+        <p><input class="button" type="submit" value="Upload"></p>
     </form>
 </div>
 

@@ -15,7 +15,7 @@ context variables:
 </div>
 <div class="body">
     <form method="post" action="{{ request.path }}">
-        {% csrf_token %}
+        <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
         <table class="form_table">
             <tbody>
                 {% for field in register_form %}
@@ -36,7 +36,7 @@ context variables:
                 {% endfor %}
                 <tr>
                    <td></td>
-                   <th><input id="id_captcha_1" type="text" name="captcha_1" required="None"></input></th>
+                   <th><input id="id_captcha_1" type="text" name="captcha_1" required="None"></th>
                 </tr>
                 <tr>
                     <th><input class="button" type="submit" value="Submit"/></th>

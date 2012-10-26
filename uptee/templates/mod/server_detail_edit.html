@@ -14,7 +14,7 @@ context variables:
 {% block tab_content %}
 
 <form action="{% url update_settings server.id %}" method="post">
-    {% csrf_token %}
+    <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
     <table class="form_table">
         <tbody>
             {% for option in options %}
@@ -24,17 +24,17 @@ context variables:
                     <td><textarea name="{{ option.command }}" id="{{ option.command }}"/>{{ option.value|le }}</textarea></td>
                 {% elif option.get_widget_display == 'checkbox' %}
                     <td>
-                        <input type="checkbox" name="{{ option.command }}" id="{{ option.command }}"{% if option.value != '0' %} checked="checked"{% endif %}/>
+                        <input type="checkbox" name="{{ option.command }}" id="{{ option.command }}"{% if option.value != '0' %} checked="checked"{% endif %}>
                         <label class="checkbox" for="{{ option.command }}"></label>
                     </td>
                 {% else %}
-                    <td><input type="{{ option.get_widget_display }}" name="{{ option.command }}" value="{{ option.value }}" id="{{ option.command }}"{% if option.get_widget_display == 'password' %} autocomplete="off"{% endif %}/></td>
+                    <td><input type="{{ option.get_widget_display }}" name="{{ option.command }}" value="{{ option.value }}" id="{{ option.command }}"{% if option.get_widget_display == 'password' %} autocomplete="off"{% endif %}></td>
                 {% endif %}
             </tr>
             {% endfor %}
         </tbody>
     </table>
-    <p><input class="button" type="submit" value="Update settings" /></p>
+    <p><input class="button" type="submit" value="Update settings"></p>
 </form>
 
 {% endblock tab_content %}

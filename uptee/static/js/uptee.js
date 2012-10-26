@@ -79,8 +79,8 @@ $(document).ready(function() {
     $('#add_vote button').click(function() {
         table = $('#add_vote').parent().find('tbody');
         table.append('<tr> \
-                        <th><input type="text" name="title new title ' + number + ' new" value="New vote" id="id-' + number + '-title_new"/></th> \
-                        <td><input type="text" name="command new command ' + number + ' new" value="command" id="id-' + number + '-command_new"/></td> \
+                        <th><input type="text" name="title new title ' + number + ' new" value="New vote" id="id-' + number + '-title_new"></th> \
+                        <td><input type="text" name="command new command ' + number + ' new" value="command" id="id-' + number + '-command_new"></td> \
                         <td><div class="delete_vote"><div class="del_button"></div></div></td> \
                     </tr>');
         number++;

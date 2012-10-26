@@ -13,27 +13,27 @@ context variables:
 {% block tab_content %}
 
 <form action="{% url update_votes server.id %}" method="post">
-    {% csrf_token %}
+    <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
     <table class="form_table">
         <tbody>
             {% for vote in votes %}
             <tr>
-                <th><input type="text" name="title {{ vote.title }} {{ vote.id }}" value="{{ vote.title }}" id="id-{{ vote.title }}-{{ vote..id }}"/></th>
-                <td><input type="text" name="command {{ vote.command }} {{ vote.id }}" value="{{ vote.command }}" id="id-{{ vote.command }}-{{ vote..id }}"/></td>
+                <th><input type="text" name="title {{ vote.title }} {{ vote.id }}" value="{{ vote.title }}" id="id-{{ vote.title }}-{{ vote..id }}"></th>
+                <td><input type="text" name="command {{ vote.command }} {{ vote.id }}" value="{{ vote.command }}" id="id-{{ vote.command }}-{{ vote..id }}"></td>
                 <td><div class="delete_vote"></div></td> <!-- here a button will be included by js if js is supported "<div class="del_button"></div>" -->
             </tr>
             {% endfor %}
         </tbody>
     </table>
     <div id="add_vote"></div> <!-- here a button will be included by js if js is supported "<p><button type="button">Add vote</button></p>" -->
-    <p><input class="button" type="submit" value="Update votes" /></p>
+    <p><input class="button" type="submit" value="Update votes"></p>
 </form>
 
 <!-- this is for all the people without js -->
 <noscript>
     <form action="{{ request.path }}" method="post">
-        {% csrf_token %}
-        <p><input class="button" type="submit" value="Add vote" /></p>
+        <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
+        <p><input class="button" type="submit" value="Add vote"></p>
     </form>
 </noscript>
 
