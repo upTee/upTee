@@ -26,16 +26,5 @@ context variables:
     </form>
     <p><a class="button" href="{% url change_password %}">Change password</a></p>
 </div>
-{% if messages %}
-    <div class="foot">
-        <div class="left">
-            <h3>
-                {% for message in messages %}
-                    {{ message }}
-                {% endfor %}
-            </h3>
-        </div>
-    </div>
-{% endif %}
 
 {% endblock %}
