@@ -135,22 +135,22 @@ end old*/
 }
 
     .notification.info {
-        background: url('../img/info.png') no-repeat 10px center, url('../img/not_blue.png') repeat-x;
+        background: url('../img/info.png') no-repeat 10px center, url('../img/notification_bars.png') repeat-x 0 0;
         color: #034e96;
     }
 
     .notification.success {
-        background: url('../img/sucess.png') no-repeat 10px center, url('../img/not_green.png') repeat-x;
+        background: url('../img/sucess.png') no-repeat 10px center, url('../img/notification_bars.png') repeat-x 0 -40px;
         color: #4f8a14;
     }
 
     .notification.warning {
-        background: url('../img/warning.png') no-repeat 10px, url('../img/not_yellow.png') repeat-x;
+        background: url('../img/warning.png') no-repeat 10px center, url('../img/notification_bars.png') repeat-x 0 -80px;
         color: #a06011;
     }
 
     .notification.error {
-        background: url('../img/error.png') no-repeat 10px center, url('../img/not_red.png') repeat-x;
+        background: url('../img/error.png') no-repeat 10px center, url('../img/notification_bars.png') repeat-x 0 -120px;
         color: #d4000b;
     }
 
