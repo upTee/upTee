@@ -81,27 +81,75 @@ input[type=checkbox] {
 
 input[type=checkbox]
 + label.checkbox {
-    background: #dcdcdc;
-    border: solid 1px #969696;
-    width: 24px;
-    height: 24px;
-    display: inline-block;
-    -webkit-transition: all .5s;
-    -moz-transition: all .5s;
-    transition: all .5s;
+    background: url('../img/checkbox.png') no-repeat;
+    background-position:0 0;
+    height: 15px;
+    width: 15px;
+}
+
+    input[type=checkbox]
+        + label.checkbox:hover {
+            background: url('../img/checkbox.png') no-repeat;
+            background-position:0 -15px;
+            height: 15px;
+            width: 15px;
+        }
+
+
+input[type=checkbox]:checked
++ label.checkbox {
+    background: url('../img/checkbox.png') no-repeat;
+    background-position:0 -30px;
+    height: 15px;
+    width: 15px;
 }
 
     input[type=checkbox]:checked
-    + label.checkbox {
-        background-color: #000;
-        border: solid 1px #009bff;
+    + label.checkbox:hover {
+        background: url('../img/checkbox.png') no-repeat;
+        background-position:0 -45px;
+        height: 15px;
+        width: 15px;
     }
 
-    input[type=checkbox]
-    + label.checkbox:hover {
-        background-color: ActiveBorder;
-        border: solid 1px #009bff;
-    }
+
+input[type=radio] {
+    display: none;
+}
+
+input[type=radio]
++ label.radio {
+    background: url('../img/checkbox.png') no-repeat;
+    background-position:0 0;
+    height: 15px;
+    width: 15px;
+}
+
+    input[type=radio]
+        + label.radio:hover {
+            background: url('../img/checkbox.png') no-repeat;
+            background-position:0 -15px;
+            height: 15px;
+            width: 15px;
+        }
+
+
+input[type=radio]:checked
++ label.radio {
+    background: url('../img/checkbox.png') no-repeat;
+    background-position:0 -60px;
+    height: 15px;
+    width: 15px;
+}
+
+    input[type=radio]:checked
+    + label.radio:hover {
+        background: url('../img/checkbox.png') no-repeat;
+        background-position:0 -75px;
+        height: 15px;
+        width: 15px;
+    }   
+ 
 
 textarea {
     background: #dcdcdc;
