@@ -32,13 +32,14 @@ context variables:
     </div>
     <div class="server_list_content">
         {% if server.is_online %}<div class="server_status_update" serverid="{{ server.id }}">{% endif %}
+            {% if not username %}<p>Owner: {{ server.owner.username }}</p>{% endif %}
             <p>Mod: {{ server.mod.title }}</p>
             {% with server_info=server.info %}
                 <p>Gametype: <span info="gametype">{% if server_info %}{{ server_info.gametype }}{% else %}{{ server|get_option:'sv_gametype' }}{% endif %}</span></p>
                 <p>Map: <span info="map">{% if server_info %}{{ server_info.map }}{% else %}{{ server|get_option:'sv_map' }}{% endif %}</span></p>
                 <p info="slots">Slots: <span info="slots">{% if server_info %}{{ server_info.clients|length }}/{{ server_info.max_clients }}{% else %}{{ server|get_option:'sv_max_clients' }}{% endif %}</span></p>
                 {% if server.is_online %}<p>Address: {{ request.META.HTTP_HOST|split:':'|first }}:{{ server.port }}</p>{% endif %}
-                <p><a href="{% url server_detail server.id %}">Edit</a></p>
+                <p><a href="{% url server_detail server.id %}">Info</a></p>
                 {% include "scoreboard.html" %}
             {% endwith %}
         {% if server.is_online %}</div>{% endif %}
