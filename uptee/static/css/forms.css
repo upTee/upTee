@@ -86,9 +86,6 @@ input[type=checkbox]
     height: 15px;
     width: 15px;
     display: inline-block;
-    -webkit-transition: all .5s;
-    -moz-transition: all .5s;
-    transition: all .5s;
 }
 
     input[type=checkbox]
@@ -106,9 +103,6 @@ input[type=checkbox]:checked
     background-position:0 -30px;
     height: 15px;
     width: 15px;
-    -webkit-transition: all .5s;
-    -moz-transition: all .5s;
-    transition: all .5s;
 }
 
     input[type=checkbox]:checked
@@ -131,9 +125,6 @@ input[type=radio]
     height: 15px;
     width: 15px;
     display: inline-block;
-    -webkit-transition: all .5s;
-    -moz-transition: all .5s;
-    transition: all .5s;
 }
 
     input[type=radio]
@@ -151,9 +142,6 @@ input[type=radio]:checked
     background-position:0 -60px;
     height: 15px;
     width: 15px;
-    -webkit-transition: all .5s;
-    -moz-transition: all .5s;
-    transition: all .5s;
 }
 
     input[type=radio]:checked
