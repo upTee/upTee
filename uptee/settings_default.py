@@ -124,6 +124,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.static',
     'django.core.context_processors.request',
     'mod.context_processors.mod',
+    'lib.context_processors.settings',
 )
 
 TEMPLATE_DIRS = (

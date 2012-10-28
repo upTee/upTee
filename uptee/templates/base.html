@@ -21,7 +21,7 @@
         <script src="{{ STATIC_URL }}js/uptee.js"></script>
         {% block extra_head %}{% endblock extra_head %}
         {% if settings.ANALYTICS_ID %}
-        <script type="text/javascript">
+        <script>
             var _gaq = _gaq || [];
             _gaq.push(['_setAccount', '{{ settings.ANALYTICS_ID }}']);
             _gaq.push(['_trackPageview']);
