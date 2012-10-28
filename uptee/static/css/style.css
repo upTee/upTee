@@ -305,6 +305,12 @@ end old*/
        cursor: pointer;
     }
 
+/* link list */
+
+#link_list {
+    margin: 10px 20px 5px;
+}
+
 /* footer */
 
 #footer_box {
