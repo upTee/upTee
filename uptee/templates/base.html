@@ -72,7 +72,7 @@
             {% endfor %}
 
             <div id="content_box"> 
-                {% block content %}{% endblock %} 
+                {% block content %}Hello {% if user.is_authenticated %}{{ user.username }}{% else %}Guest{% endif %}{% endblock %} 
             </div>
 
             <div id="sidebar_box"> 
