@@ -48,31 +48,26 @@ input[type=email] {
         border: solid 1px #009bff;
     }
 
-input[type=submit] {
-    background: url('../img/menu_pattern.png') repeat-x;
-    padding: 5px;
-    width: 100px;
+input[type=button], [type=submit] {
+    background: url('../img/buttons.png') repeat-x;
+    background-position: 0 0;
+    margin: 10px;
+    padding: 6px;
     cursor: pointer;
-    -webkit-box-shadow: inset 0 0 1px 1px #f7f7f7;
-    box-shadow: inset 0 0 1px 1px #f7f7f7;
-    border: 1px solid rgb(199, 199, 199);
-    border-radius: 3px;
+    border: 1px solid #acacac;
+    -webkit-transition: all .4s;
+    -moz-transition: all .4s;
+    transition: all .4s;
 }
 
-    input[type=submit]:hover {
-        background: #d8d8d8;
-        color: gray;
-        cursor: pointer;
-        -webkit-box-shadow: inset 0 0 1px 1px #ebebeb;
-        box-shadow: inset 0 0 1px 1px #ebebeb;
+    input[type=button]:hover, [type=submit]:hover {
+        background-position: 0 -30px;
+        border: 1px solid #7eb4ea;
     }
 
-    input[type=submit]:active {
-        background: url('../img/menu_pattern_hover.png') repeat-x;
-        -webkit-box-shadow: inset 0 0 1px 1px #e3e3e3;
-        box-shadow: inset 0 0 1px 1px #e3e3e3;
-        color: #000;
-        width: 100px;
+    input[type=button]:active, [type=submit]:active {
+        background-position: 0 -60px;
+        border: 1px solid #569de5;
     }
 
 input[type=checkbox] {
