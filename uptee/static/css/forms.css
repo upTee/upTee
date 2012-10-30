@@ -55,9 +55,6 @@ input[type=button], [type=submit] {
     padding: 6px;
     cursor: pointer;
     border: 1px solid #acacac;
-    -webkit-transition: all .4s;
-    -moz-transition: all .4s;
-    transition: all .4s;
 }
 
     input[type=button]:hover, [type=submit]:hover {
