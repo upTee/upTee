@@ -1,7 +1,7 @@
 function server_info_update() {
     var server_id_list = [];
     $('.server_status_update').each(function(i) {
-        var server_id = $(this).attr("serverid");
+        var server_id = $(this).attr("data-serverid");
 
         if($.inArray(server_id, server_id_list) == -1) {
             $.ajax({
@@ -10,7 +10,7 @@ function server_info_update() {
                 success: function(json) {
                     server_info = json.server_info;
                     if(server_info) {
-                        $('.server_status_update[serverid="' + server_id + '"]').each(function(j) {
+                        $('.server_status_update[data-serverid="' + server_id + '"]').each(function(j) {
                             $(this).find('span[info="gametype"]').html(server_info.gametype);
                             $(this).find('span[info="map"]').html(server_info.map);
                             $(this).find('span[info="slots"]').html(server_info.clients.length + "/" + server_info.max_clients);
@@ -91,5 +91,20 @@ $(document).ready(function() {
         tr = $(this).parents('tr');
         tr.hide();
         tr.find('input').attr('value', '');
+    });
+
+    $('input[type=file]').each(function(i) {
+        $(this).css('display', 'none');
+        var name = $(this).attr('name');
+        $(this).after('<input type="text" data-for="' + name + '"><button type="button" data-type="file" data-for="' + name + '">Search</button>');
+
+        $(this).change(function() {
+            var data = $(this).attr('value');
+            $('input[data-for="' + name + '"]').attr('value', data);
+        });
+    });
+    $('button[data-type=file]').click(function() {
+        var data_for = $(this).attr('data-for');
+        $('input[name=' + data_for + ']').click();
     });
 });

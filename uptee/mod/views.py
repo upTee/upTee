@@ -52,6 +52,7 @@ def upload_map(request, server_id):
         form = MapUploadForm(request.POST, request.FILES)
         if form.is_valid():
             map_file = form.cleaned_data['map_file']
+            mod_name = server.mod.title
             with open(os.path.join(MEDIA_ROOT, 'users', request.user.username, mod_name, 'data', 'maps', map_file.name), 'wb') as f:
                 f.write(map_file.read())
             messages.success(request, 'Map was successfully uploaded.')

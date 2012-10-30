@@ -48,7 +48,7 @@ input[type=email] {
         border: solid 1px #009bff;
     }
 
-input[type=button], [type=submit] {
+button[type=button], input[type=submit] {
     background: url('../img/buttons.png') repeat-x;
     background-position: 0 0;
     margin: 10px;
@@ -60,12 +60,12 @@ input[type=button], [type=submit] {
     transition: all .4s;
 }
 
-    input[type=button]:hover, [type=submit]:hover {
+    button[type=button]:hover, input[type=submit]:hover {
         background-position: 0 -30px;
         border: 1px solid #7eb4ea;
     }
 
-    input[type=button]:active, [type=submit]:active {
+    button[type=button]:active, input[type=submit]:active {
         background-position: 0 -60px;
         border: 1px solid #569de5;
     }

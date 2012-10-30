@@ -123,7 +123,7 @@
                     <div class="server_status">
                         <div class="server_status_headline {% if server.is_online %}on{% else %}off{% endif %}">{{ server|get_option:'sv_name' }}</div>
                         <div class="server_status_info">
-                            {% if server.is_online %}<div class="server_status_update" serverid="{{ server.id }}">{% endif %}
+                            {% if server.is_online %}<div class="server_status_update" data-serverid="{{ server.id }}">{% endif %}
                                 <p>Mod: {{ server.mod.title }}</p>
                                 {% with server_info=server.info %}
                                     <p>Gametype: <span info="gametype">{% if server_info %}{{ server_info.gametype }}{% else %}{{ server|get_option:'sv_gametype' }}{% endif %}</span></p>
