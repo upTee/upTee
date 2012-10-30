@@ -260,7 +260,21 @@ end old*/
         padding: 5px;
     }
 
+.server_detail_headline h2 {
+    display: inline;
+    color: #009bff;
+}
+
+.server_detail_headline {
+    color: black;
+}
+
+
 /* content tabmenu */
+
+#tabmenu_box {
+    margin-top: 10px;
+}
 
 .tab {
    padding: 10px;

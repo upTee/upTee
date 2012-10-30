@@ -10,7 +10,7 @@ context variables:
 
 {% block content %}
 
-<div>
+<div class="server_detail_headline">
     <h2>{{ server|get_option:'sv_name' }}</h2> ({% if server.is_online %}started{% else %}stopped{% endif %})
 </div>
 <div>
