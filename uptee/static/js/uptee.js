@@ -11,9 +11,9 @@ function server_info_update() {
                     server_info = json.server_info;
                     if(server_info) {
                         $('.server_status_update[data-serverid="' + server_id + '"]').each(function(j) {
-                            $(this).find('span[info="gametype"]').html(server_info.gametype);
-                            $(this).find('span[info="map"]').html(server_info.map);
-                            $(this).find('span[info="slots"]').html(server_info.clients.length + "/" + server_info.max_clients);
+                            $(this).find('span[data-info="gametype"]').html(server_info.gametype);
+                            $(this).find('span[data-info="map"]').html(server_info.map);
+                            $(this).find('span[data-info="slots"]').html(server_info.clients.length + "/" + server_info.max_clients);
                             if(server_info.clients.length) {
                                 if($(this).find(".clients").length)
                                     $(this).find(".clients").html('<div class="sidebar_entry"></div>');
@@ -61,7 +61,7 @@ $(document).ready(function() {
 
     setInterval(server_info_update, 10000);
 
-    $('p[info="slots"]').mousemove(function(e) {
+    $('p[data-info="slots"]').mousemove(function(e) {
         var clients = $(this).parent().find("div.clients");
         if(clients.length) {
             var x = e.clientX-parseInt(clients.css("width"))-10;
