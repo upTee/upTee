@@ -235,6 +235,7 @@ end old*/
 .server_list_entry {
     border: 1px solid #009bff;
     margin-bottom: 10px;
+    position: relative;
 }
 
     .server_list_headline {
@@ -258,10 +259,6 @@ end old*/
         text-align: center;
         padding: 5px;
     }
-
-.button_serverlist {
-    float: right;
-}
 
 /* content tabmenu */
 
