@@ -259,6 +259,10 @@ end old*/
         padding: 5px;
     }
 
+.button_serverlist {
+    float: right;
+}
+
 /* content tabmenu */
 
 .tab {
