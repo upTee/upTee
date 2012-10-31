@@ -25,18 +25,18 @@ context variables:
                         <td>{{ error }}</td>
                     </tr>
                     {% endfor %}
-                <tr>
-                    <th>{{ field.label_tag }}</th>
-                {% if not forloop.last %}
-                    <td>{{ field }}</td>
-                {% else %}
-                    <td><img class="captcha" alt="captcha" src="{% url captcha-image captcha %}"><input id="id_captcha_0" type="hidden" value="{{ captcha }}" name="captcha_0"></td>
-                {% endif %}
-                </tr>
+                    <tr>
+                        <th>{{ field.label_tag }}</th>
+                    {% if not forloop.last %}
+                        <td>{{ field }}</td>
+                    {% else %}
+                        <td><img class="captcha" alt="captcha" src="{% url captcha-image captcha %}"><input id="id_captcha_0" type="hidden" value="{{ captcha }}" name="captcha_0"></td>
+                    {% endif %}
+                    </tr>
                 {% endfor %}
                 <tr>
-                   <td></td>
-                   <th><input id="id_captcha_1" type="text" name="captcha_1" required="None"></th>
+                    <th></th>
+                    <td><input id="id_captcha_1" type="text" name="captcha_1" required="None"></td>
                 </tr>
                 <tr>
                     <th><input class="button" type="submit" value="Submit"/></th>
