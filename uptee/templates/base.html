@@ -47,7 +47,9 @@
             </div>
             {% endif %}
             
-            <div id="ribbon"></div>
+            {% if not request.browser or not request.browser.is_mobile %}
+                <div id="ribbon"></div>
+            {% endif %}
             
             <div id="header_box"> 
                 <a href="{% url home %}"><div data-image="header"></div></a>
