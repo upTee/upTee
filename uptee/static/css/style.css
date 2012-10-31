@@ -86,7 +86,8 @@ body {
 
 .menu_entry {
     width: 100px;
-    padding: 9px;
+    height: 16px;
+    padding: 10px;
     text-align: center;
     border-right: 1px solid #009bff;
     float: left;
