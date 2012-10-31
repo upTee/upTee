@@ -96,7 +96,7 @@ $(document).ready(function() {
     $('input[type=file]').each(function(i) {
         $(this).css('display', 'none');
         var name = $(this).attr('name');
-        $(this).after('<input type="text" data-type="file" data-for="' + name + '" readonly><button type="button" data-type="file" data-for="' + name + '">Search</button>');
+        $(this).after('<input type="text" data-type="file" data-for="' + name + '" readonly><button type="button" data-type="file" data-for="' + name + '">Browse...</button>');
 
         $(this).change(function() {
             var data = $(this).attr('value');
