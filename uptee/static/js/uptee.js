@@ -96,14 +96,14 @@ $(document).ready(function() {
     $('input[type=file]').each(function(i) {
         $(this).css('display', 'none');
         var name = $(this).attr('name');
-        $(this).after('<input type="text" data-for="' + name + '"><button type="button" data-type="file" data-for="' + name + '">Search</button>');
+        $(this).after('<input type="text" data-type="file" data-for="' + name + '" readonly><button type="button" data-type="file" data-for="' + name + '">Search</button>');
 
         $(this).change(function() {
             var data = $(this).attr('value');
             $('input[data-for="' + name + '"]').attr('value', data);
         });
     });
-    $('button[data-type=file]').click(function() {
+    $('button[data-type=file], input[data-type=file]').click(function() {
         var data_for = $(this).attr('data-for');
         $('input[name=' + data_for + ']').click();
     });
