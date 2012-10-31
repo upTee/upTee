@@ -27,7 +27,7 @@ def server_list(request, username=None, server_type=None):
     if server_type:
         online = True if server_type == 'online' else False
         servers = (server for server in servers if server.is_online == online)
-    return render_to_response('mod/servers.html', {'server_list': servers, 'username': username}, context_instance=RequestContext(request))
+    return render_to_response('mod/servers.html', {'server_list': servers, 'username': username, 'server_type': server_type}, context_instance=RequestContext(request))
 
 def server_detail(request, server_id):
     server = get_object_or_404(Server.objects.select_related().filter(is_active=True), pk=server_id)

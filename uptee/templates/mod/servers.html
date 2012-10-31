@@ -6,6 +6,7 @@
 context variables:
     server_list
     username
+    server_type
 {% endcomment %}
 
 {% block title %}upTee - {% if username %}{{ username|possessive }} servers{% else %}Server list{% endif %}{% endblock title %}
@@ -51,11 +52,19 @@ context variables:
             {% endwith %}
         {% if server.is_online %}</div>{% endif %}
     </div>
-    
 </div>
 
+{% empty %}
 
-
+{% if username %}
+    {% if server_type %}
+        <p>None of {{ username|possessive }} servers is {{ server_type }}.</p>
+    {% else %}
+        <p>{{ username }} doesn't have any servers.</p>
+    {% endif %}
+{% else %}
+    <p>There are no servers{% if server_type %} {{ server_type }}{% endif %}.</p>
+{% endif %}
 
 {% endfor %}
 
