@@ -270,7 +270,32 @@ end old*/
     color: black;
 }
 
+.server_detail_info {
+    float: left;
+    width: 360px;
+}
 
+.server_detail_scoreboard {
+    float: right;
+    width: 360px;
+}
+
+    .server_detail_scoreboard table {
+        text-align: center;
+        float: right;
+    }
+    
+    .server_detail_scoreboard th{
+        border-bottom: 1px solid #009bff;
+        font-size: 16px;
+        padding: 5px;
+        color: gray;
+    }
+
+    .server_detail_scoreboard td{
+        padding: 5px;
+    }
+    
 /* content tabmenu */
 
 #tabmenu_box {
