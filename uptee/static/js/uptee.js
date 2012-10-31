@@ -81,12 +81,12 @@ $(document).ready(function() {
         table.append('<tr> \
                         <th><input type="text" name="title new title ' + number + ' new" value="New vote" id="id-' + number + '-title_new"></th> \
                         <td><input type="text" name="command new command ' + number + ' new" value="command" id="id-' + number + '-command_new"></td> \
-                        <td><div class="delete_vote"><div class="del_button"></div></div></td> \
+                        <td><div class="delete_vote"><div class="del_button" onclick=""></div></div></td> \
                     </tr>');
         number++;
     });
 
-    $('.delete_vote').html('<div class="del_button"></div>');
+    $('.delete_vote').html('<div class="del_button" onclick=""></div>');
     $('.delete_vote div.del_button').live('click', function() {
         tr = $(this).parents('tr');
         tr.hide();
