@@ -309,11 +309,14 @@ end old*/
 
 .mouseover_overlay {
     margin-top: 20px;
-    width: 157px;
     background: rgba(244, 244, 244, 255);
     border: 1px solid rgb(199, 199, 199);
     box-shadow: 0px 1px 0px #ffffff, 0px 1px 0px #ffffff inset;
     display: inline-block;
+}
+
+.mouseover_overlay .server_detail_scoreboard {
+    width: auto;
 }
 
 /* content tabmenu */
