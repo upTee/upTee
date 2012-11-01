@@ -14,6 +14,10 @@ function server_info_update() {
                             $(this).find('span[data-info="gametype"]').html(server_info.gametype);
                             $(this).find('span[data-info="map"]').html(server_info.map);
                             $(this).find('span[data-info="slots"]').html(server_info.clients.length + "/" + server_info.max_clients);
+                            var password_protected = 'No';
+                            if(server_info.flags & 1) // 1 = Flag for password protection
+                                password_protected = 'Yes';
+                            $(this).find('span[data-info="password"]').html(password_protected);
                         });
                         var scoreboard = $('.server_detail_scoreboard[data-serverid="' + server_id + '"]');
                         if(scoreboard.length && server_info.clients.length) {
