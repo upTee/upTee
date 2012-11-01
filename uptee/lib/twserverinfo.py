@@ -38,6 +38,8 @@ def string_unpack(input):
 
 class ServerInfo:
 
+    SERVERINFO_FLAG_PASSWORD = 0x1
+
     def __init__(self):
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.sock.bind(('127.0.0.1', 0))
@@ -121,3 +123,7 @@ class ServerInfo:
             if client not in players:
                 spectators.append(client)
         self.server_info['spectators'] = spectators
+
+    @property
+    def password(self):
+        return self.server_info['flags'] & ServerInfo.SERVERINFO_FLAG_PASSWORD if self.server_info else False
