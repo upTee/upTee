@@ -48,7 +48,11 @@ context variables:
                 <p data-info="slots">Slots: <span data-info="slots">{% if server_info %}{{ server_info.clients|length }}/{{ server_info.max_clients }}{% else %}{{ server|get_option:'sv_max_clients' }}{% endif %}</span></p>
                 {% if server.is_online %}<p>Address: {{ request.META.HTTP_HOST|split:':'|first }}:{{ server.port }}</p>{% endif %}
                 <p><a href="{% url server_detail server.id %}">Info</a></p>
-                {% include "scoreboard.html" %}
+                <div class="hide_mouseover">
+                    <div class="mouseover_overlay">
+                        {% include "scoreboard.html" %}
+                    </div>
+                </div>
             {% endwith %}
         {% if server.is_online %}</div>{% endif %}
     </div>

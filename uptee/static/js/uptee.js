@@ -14,33 +14,33 @@ function server_info_update() {
                             $(this).find('span[data-info="gametype"]').html(server_info.gametype);
                             $(this).find('span[data-info="map"]').html(server_info.map);
                             $(this).find('span[data-info="slots"]').html(server_info.clients.length + "/" + server_info.max_clients);
-                            if(server_info.clients.length) {
-                                if($(this).find(".clients").length)
-                                    $(this).find(".clients").html('<div class="sidebar_entry"></div>');
-                                else
-                                    $(this).append('<div class="clients"><div class="sidebar_entry"></div></div>')
+                        });
+                        var scoreboard = $('.server_detail_scoreboard[data-serverid="' + server_id + '"]');
+                        if(scoreboard.length && server_info.clients.length) {
+                            scoreboard.each(function(j) {
+                                $(this).html('<table><tbody><tr><th>Score</th><th>Name</th><th>Clan</th></tr></tbody></table>');
                                 if(server_info.players.length) {
-                                    var table = $(this).find(".clients .sidebar_entry");
-                                    table.html('<div class="players"><p><b>Players</b></p><table><tbody><tr><th>Score</th><th>Name</th><th>Clan</th></tr></tbody></table></div>');
-                                    table = $(this).find(".clients .sidebar_entry .players tbody tr:last");
-                                    for(var i = 0; i < server_info.players.length; i++) {
-                                        data = "<tr><td>" + server_info.players[i].score + "</td><td>" + server_info.players[i].name + "</td><td>" + server_info.players[i].clan + "</td></tr>";
+                                    var table = $(this).find("tbody tr:last");
+                                    for(var k = 0; k < server_info.players.length; k++) {
+                                        data = "<tr><td>" + server_info.players[k].score + "</td><td>" + server_info.players[k].name + "</td><td>" + server_info.players[k].clan + "</td></tr>";
                                         table.after(data);
                                     }
                                 }
                                 if(server_info.spectators.length) {
-                                    var table = $(this).find(".clients .sidebar_entry");
-                                    table.append('<div class="spectators"><p><b>Spectators</b></p><table><tbody><tr><th>Name</th><th>Clan</th></tr></tbody></table></div>');
-                                    table = $(this).find(".clients .sidebar_entry .spectators tbody tr:last");
-                                    for(var i = 0; i < server_info.spectators.length; i++) {
-                                        data = "<tr><td>" + server_info.spectators[i].name + "</td><td>" + server_info.spectators[i].clan + "</td></tr>";
+                                    table = $(this).find("tbody tr:last");
+                                    for(var k = 0; k < server_info.spectators.length; k++) {
+                                        data = "<tr><td>-</td><td>" + server_info.spectators[k].name + "</td><td>" + server_info.spectators[k].clan + "</td></tr>";
                                         table.after(data);
                                     }
                                 }
-                            }
-                            else
-                                $(this).find(".clients").remove();
-                        });
+                            });
+                        }
+                        else if(scoreboard.length) {
+                            scoreboard.html(''); // clear the scoreboard... otherwise its weird when nobody is there anymore 
+                            var parent = scoreboard.parent('div.mouseover_overlay');
+                            if(parent.length)
+                                parent.parent().hide(); // force hiding the overlay so it doesnt look weird when the last player left and you are mouseover
+                        }
                     }
                 }
             });
@@ -62,16 +62,17 @@ $(document).ready(function() {
     setInterval(server_info_update, 10000);
 
     $('p[data-info="slots"]').mousemove(function(e) {
-        var clients = $(this).parent().find("div.clients");
-        if(clients.length) {
-            var x = e.clientX-parseInt(clients.css("width"))-10;
+        var hide_mouseover = $(this).siblings("div.hide_mouseover");
+        if(hide_mouseover.length) {
+            var x = e.clientX-parseInt(hide_mouseover.css("width"))-10;
             if(x < 5)
                 x = e.clientX+10;
             var y = e.clientY-10;
-            clients.css({"visibility": "visible", "top": y, "left": x});
+            if(hide_mouseover.find('tr').length > 1) // dont even try to activate the overlay if the scoreboard doesnt have any data anyway
+                hide_mouseover.css({"display": "inherit", "top": y, "left": x});
         }
     }).mouseout(function(){
-        $("div.clients").css("visibility", "hidden");
+        $("div.hide_mouseover").css("display", "none");
     });
 
     var number = 1;

@@ -278,6 +278,7 @@ end old*/
 .server_detail_scoreboard {
     float: right;
     width: 360px;
+    max-height: 170px;
 }
 
     .server_detail_scoreboard table {
@@ -293,9 +294,28 @@ end old*/
     }
 
     .server_detail_scoreboard td{
-        padding: 5px;
+        padding: 2px;
     }
     
+/* class to hide a block */
+
+.hide_mouseover {
+    position: fixed;
+    display: none;
+    z-index: 5;
+}
+
+/* mouse over overlay */
+
+.mouseover_overlay {
+    margin-top: 20px;
+    width: 157px;
+    background: rgba(244, 244, 244, 255);
+    border: 1px solid rgb(199, 199, 199);
+    box-shadow: 0px 1px 0px #ffffff, 0px 1px 0px #ffffff inset;
+    display: inline-block;
+}
+
 /* content tabmenu */
 
 #tabmenu_box {
