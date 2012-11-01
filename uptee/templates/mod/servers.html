@@ -40,7 +40,7 @@ context variables:
     </div>
     <div class="server_list_content">
         {% if server.is_online %}<div class="server_status_update" data-serverid="{{ server.id }}">{% endif %}
-            {% if not username %}<p>Owner: {{ server.owner.username }}</p>{% endif %}
+            {% if not username %}<p>Owner: {% if server.owner == request.user %}You{% else %}{{ server.owner.username }}{% endif %}</p>{% endif %}
             <p>Mod: {{ server.mod.title }}</p>
             {% with server_info=server.info %}
                 <p>Gametype: <span data-info="gametype">{% if server_info %}{{ server_info.gametype }}{% else %}{{ server|get_option:'sv_gametype' }}{% endif %}</span></p>

@@ -13,7 +13,7 @@ context variables:
 
 <div class="server_detail_info">
     {% if server.is_online %}<div class="server_status_update" serverid="{{ server.id }}">{% endif %}
-        <p>Servername: {{ server|get_option:'sv_name' }}</p>
+        <p>Owner: {% if server.owner == request.user %}You{% else %}{{ server.owner.username }}{% endif %}</p>
         <p>Mod: {{ server.mod.title }}</p>
         {% with server_info=server.info %}
             <p>Gametype: <span data-info="gametype">{% if server_info %}{{ server_info.gametype }}{% else %}{{ server|get_option:'sv_gametype' }}{% endif %}</span></p>
