@@ -315,9 +315,9 @@ end old*/
     display: inline-block;
 }
 
-.mouseover_overlay .server_detail_scoreboard {
-    width: auto;
-}
+    .mouseover_overlay .server_detail_scoreboard {
+        width: auto; /* override default width for the overlay */
+    }
 
 /* content tabmenu */
 
