@@ -70,6 +70,14 @@ class ServerAdmin(admin.ModelAdmin):
             for vote in config.votes:
                 data = Vote(server=obj, command=vote['command'], title=vote['title'])
                 data.save()
+        maps_path = os.path.join(MEDIA_ROOT, 'users', obj.owner.username, obj.mod.title, 'data', 'maps')
+        if os.path.exists(maps_path):
+            maps = [os.path.splitext(_file)[0] for _file in os.listdir(maps_path) if os.path.splitext(_file)[1].lower() == '.map']
+            for _map in maps:
+                map_obj = Map.objects.filter(server=obj, name=_map) 
+                if not map_obj:
+                    map_obj = Map(server=obj, name=_map)
+                    map_obj.save()
 
 class PortAdmin(admin.ModelAdmin):
     list_display = ('port', 'is_active')
@@ -93,6 +101,25 @@ class PortAdmin(admin.ModelAdmin):
                 pass
         obj.save()
 
+class MapAdmin(admin.ModelAdmin):
+    list_display = ('owner', 'server', 'name', 'author')
+    list_filter = ('server', 'server__owner')
+    actions=['really_delete_selected']
+
+    def get_actions(self, request):
+        actions = super(MapAdmin, self).get_actions(request)
+        del actions['delete_selected']
+        return actions
+
+    def really_delete_selected(self, request, queryset):
+        for obj in queryset:
+            obj.delete()
+    really_delete_selected.short_description = u"Delete selected maps"
+
+    def owner(self, obj):
+        return obj.server.owner
+
 admin.site.register(Mod, ModAdmin)
 admin.site.register(Server, ServerAdmin)
 admin.site.register(Port, PortAdmin)
+admin.site.register(Map, MapAdmin)

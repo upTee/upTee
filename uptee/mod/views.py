@@ -10,7 +10,7 @@ from django.template import RequestContext
 from django.views.decorators.http import require_POST
 from annoying.decorators import ajax_request
 from mod.forms import MapUploadForm
-from mod.models import Option, Server, Vote
+from mod.models import Map, Option, Server, Vote
 from settings import MEDIA_ROOT
 
 def server_list(request, username=None, server_type=None):
@@ -55,6 +55,8 @@ def upload_map(request, server_id):
             mod_name = server.mod.title
             with open(os.path.join(MEDIA_ROOT, 'users', request.user.username, mod_name, 'data', 'maps', map_file.name), 'wb') as f:
                 f.write(map_file.read())
+            map_obj = Map(server=server, name=os.path.splitext(map_file.name)[0])
+            map_obj.save()
             messages.success(request, 'Map was successfully uploaded.')
     else:
         form = MapUploadForm()

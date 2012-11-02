@@ -256,6 +256,8 @@ end old*/
         padding: 5px;
     }
 
+/* server detail page */
+
 .server_detail_headline h2 {
     display: inline;
     color: #009bff;
@@ -267,13 +269,14 @@ end old*/
 
 .server_detail_info {
     float: left;
-    width: 360px;
+    width: 243px;
 }
 
 .server_detail_scoreboard {
     float: right;
-    width: 360px;
+    width: 243px;
     max-height: 170px;
+    overflow: auto;
 }
 
     .server_detail_scoreboard table {
@@ -281,17 +284,35 @@ end old*/
         float: right;
     }
     
-    .server_detail_scoreboard th{
+    .server_detail_scoreboard th {
         border-bottom: 1px solid #009bff;
         font-size: 16px;
         padding: 5px;
         color: gray;
     }
 
-    .server_detail_scoreboard td{
+    .server_detail_scoreboard td {
         padding: 2px;
     }
-    
+
+.server_detail_maplist {
+    float: right;
+    width: 242px;
+    text-align: center;
+}
+
+    .server_detail_maplist h2 {
+        border-bottom: 1px solid #009bff;
+        font-size: 16px;
+        padding: 5px;
+        color: gray;
+    }
+
+    .server_detail_maplist .maplist_data {
+        max-height: 137px;
+        overflow: auto;
+    }
+
 /* class to hide a block */
 
 .hide_mouseover {

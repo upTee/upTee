@@ -196,4 +196,20 @@ class Vote(Config):
 
     def __unicode__(self):
         return str(self.command)
-    
+
+class Map(models.Model):
+    server = models.ForeignKey(Server, related_name="maps")
+    name = models.CharField(max_length=100)
+    author = models.CharField(max_length=100, blank=True)
+    info = models.CharField(max_length=300, blank=True)
+
+    class Meta:
+        ordering = ['name']
+
+    def delete(self):
+        path = os.path.join(MEDIA_ROOT, 'users', self.server.owner.username, self.server.mod.title, 'data', 'maps')
+        if os.path.exists(path):
+            for _file in os.listdir(path):
+                if os.path.splitext(_file)[0] == self.name and os.path.splitext(_file)[1].lower() == '.map':
+                    os.remove(os.path.join(path, _file))
+        super(Map, self).delete()
