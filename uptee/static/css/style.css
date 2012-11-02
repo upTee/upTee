@@ -228,11 +228,6 @@ end old*/
     color: gray;
 }
 
-.server_status_update div.clients {
-    position: fixed;
-    visibility: hidden;
-}
-
 .server_list_entry {
     border: 1px solid #009bff;
     margin-bottom: 10px;
