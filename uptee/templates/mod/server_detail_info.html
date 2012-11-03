@@ -22,15 +22,6 @@ context variables:
             <p>Password: <span data-info="password">{% if server_info %}{% if server_info.password %}Yes{% else %}No{% endif %}{% else %}{% if server|get_option:'password' %}Yes{% else %}No{% endif %}{% endif %}</span></p>
             {% if server.is_online %}<p>Address: {{ request.META.HTTP_HOST|split:':'|first }}:{{ server.port }}</p>{% endif %}
     {% if server.is_online %}</div>{% endif %}
-
-    {% if user.is_authenticated %}{% if user == server.owner or user.is_staff %}
-
-    <form class="only_button" method="post" action="{% url start_stop_server server.id %}?next={{ request.path }}">
-        <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
-        <p><input class="button" type="submit" value="{% if server.is_online %}Stop{% else %}Start{% endif %} Server"></p>
-    </form>
-
-    {% endif %}{% endif %}
 </div>
 
 {% include "scoreboard.html" %}
@@ -46,6 +37,15 @@ context variables:
 </div>
 {% endif %}
 <div class="clear"></div>
+
+{% if user.is_authenticated %}{% if user == server.owner or user.is_staff %}
+
+<form class="only_button" method="post" action="{% url start_stop_server server.id %}?next={{ request.path }}">
+    <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
+    <p><input class="button" type="submit" value="{% if server.is_online %}Stop{% else %}Start{% endif %} Server"></p>
+</form>
+
+{% endif %}{% endif %}
 
 {% endwith %}
 
