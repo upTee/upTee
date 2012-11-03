@@ -173,6 +173,17 @@ textarea {
         border: solid 1px #009bff;
     }
 
+/* start/stop button in server info */
+
+form.only_button {
+    position: absolute;
+    bottom: 10px;
+}
+
+form.only_button .button {
+    margin: 0;
+}
+
 /* login box */
 
 .signup_box input[type=text] {

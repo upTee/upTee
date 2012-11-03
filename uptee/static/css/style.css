@@ -270,6 +270,7 @@ end old*/
 .server_detail_info {
     float: left;
     width: 243px;
+    margin-bottom: 40px;
 }
 
 .server_detail_scoreboard {
@@ -366,23 +367,24 @@ end old*/
     }
 
 .tabmenu_content {
-   padding: 10px;
-   border: 1px solid #009bff;
+    position: relative;
+    padding: 10px;
+    border: 1px solid #009bff;
 }
 
 /* vote delete button */
 
 .delete_vote div.del_button {
-   background: url('../img/close_icon.png') no-repeat center;
-   height: 15px;
-   width: 15px;
-   float: right;
-   opacity: 0.5;
+    background: url('../img/close_icon.png') no-repeat center;
+    height: 15px;
+    width: 15px;
+    float: right;
+    opacity: 0.5;
 }
 
     .delete_vote div.del_button:hover {
-       opacity: 1.0;
-       cursor: pointer;
+        opacity: 1.0;
+        cursor: pointer;
     }
 
 /* link list */
