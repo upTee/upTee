@@ -80,7 +80,7 @@ $(document).ready(function() {
     });
 
     var number = 1;
-    $('#add_vote').html('<p><button type="button">Add vote</button></p>');
+    $('#add_vote').html('<p><button class="button" type="button">Add vote</button></p>');
     $('#add_vote button').click(function() {
         table = $('#add_vote').parent().find('tbody');
         table.append('<tr> \

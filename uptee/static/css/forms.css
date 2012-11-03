@@ -67,6 +67,10 @@ button[type=button], input[type=submit] {
         border: 1px solid #569de5;
     }
 
+button[type=button].button, input[type=submit].button {
+    margin: 10px 0 0; /* buttons with class button don't have margin */
+}
+
 .server_list_headline form {
     position: absolute;
     right: 0;
@@ -178,10 +182,6 @@ textarea {
 form.only_button {
     position: absolute;
     bottom: 10px;
-}
-
-form.only_button .button {
-    margin: 0;
 }
 
 /* login box */
