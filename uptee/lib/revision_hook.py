@@ -9,7 +9,10 @@ def get_revision():
 	old_path = os.getcwd()
 	os.chdir(settings.PROJECT_DIR)
 	cmd = ["git", "rev-list", "-n 1", "--first-parent", "master"]
-	rev = Popen(cmd, stdout=PIPE).communicate()[0].strip()
+	try:
+		rev = Popen(cmd, stdout=PIPE).communicate()[0].strip()
+	except:
+		rev = ''
 	os.chdir(old_path)
 	return rev
 
@@ -20,7 +23,7 @@ def set_cache(rev):
 if __name__ == '__main__':
 	sys.path.append(os.environ['PWD'])
 	from django.core.management import setup_environ
-	from teerace import settings
+	from uptee import settings
 	setup_environ(settings)
 
 	rev = get_revision()
