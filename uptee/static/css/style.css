@@ -97,28 +97,6 @@ body {
      background: url('../img/menu_pattern_hover.png');
 }
 
-/* old
-#menu {
-    padding-top: 8px;
-}
-
-    #menu li {
-        display: inline;
-    }
-
-        #menu li a {
-            padding: 9px 10px;
-            border-left: 1px solid;
-            border-right: 1px solid;
-            border-color: #cacaca;
-            text-decoration: none;
-        }
-
-            #menu li a:hover {
-                background: url('../img/menu_pattern_hover.png');
-            }
-end old*/
-
 /* notification */
 
 .notification {
@@ -196,10 +174,16 @@ end old*/
     box-shadow: 0px 1px 0px #ffffff, 0px 1px 0px #ffffff inset;
 }
 
-/* server status sidebar entry */
-
-.server_status {
+.errorlist {
+   outline: solid 1px #cc7576; 
+   padding: 5px;
+   background: #ffeaeb;
+   color: #cc7576;
 }
+
+
+
+/* server status sidebar entry */
 
 .server_status_headline {
     height: 25px;
@@ -271,7 +255,15 @@ end old*/
     float: left;
     width: 243px;
     margin-bottom: 40px;
+    text-align: center;
 }
+
+ .server_detail_info h2 {
+        border-bottom: 1px solid #009bff;
+        font-size: 16px;
+        padding: 5px;
+        color: gray;
+    }
 
 .server_detail_scoreboard {
     float: right;
@@ -448,3 +440,4 @@ div .cycle .nginx {
 div .cycle .teeworlds {
     float: right;
 }
+

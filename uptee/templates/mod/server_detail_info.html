@@ -12,7 +12,8 @@ context variables:
 {% block tab_content %}
 
 {% with server_info=server.info %}
-<div class="server_detail_info">
+<!--<div class="server_detail_info">
+    <h2>Info</h2>
     {% if server.is_online %}<div class="server_status_update" data-serverid="{{ server.id }}">{% endif %}
         <p>Owner: {% if server.owner == request.user %}You{% else %}{{ server.owner.username }}{% endif %}</p>
         <p>Mod: {{ server.mod.title }}</p>
@@ -22,7 +23,48 @@ context variables:
             <p>Password: <span data-info="password">{% if server_info %}{% if server_info.password %}Yes{% else %}No{% endif %}{% else %}{% if server|get_option:'password' %}Yes{% else %}No{% endif %}{% endif %}</span></p>
             {% if server.is_online %}<p>Address: {{ request.META.HTTP_HOST|split:':'|first }}:{{ server.port }}</p>{% endif %}
     {% if server.is_online %}</div>{% endif %}
+</div>-->
+
+<div class="server_detail_info">
+    <h2>Info</h2>
+    {% if server.is_online %}<div class="server_status_update" data-serverid="{{ server.id }}">{% endif %}
+        <table border=1 align="center">
+          <tbody>
+            <tr>
+              <td>Owner:</td>
+              <td>{% if server.owner == request.user %}You{% else %}{{ server.owner.username }}{% endif %}</td>
+            </tr>
+            <tr>
+              <td>Mod:</td>
+              <td>{{ server.mod.title }}</td>
+            </tr>
+            <tr>
+              <td>Gametype:</td>
+              <td><span data-info="gametype">{% if server_info %}{{ server_info.gametype }}{% else %}{{ server|get_option:'sv_gametype' }}{% endif %}</span></td>
+            </tr>
+            <tr>
+              <td>Maps:</td>
+              <td><span data-info="map">{% if server_info %}{{ server_info.map }}{% else %}{{ server|get_option:'sv_map' }}{% endif %}</span></td>
+            </tr>
+            <tr>
+              <td>Slots:</td>
+              <td><span data-info="slots">{% if server_info %}{{ server_info.clients|length }}/{{ server_info.max_clients }}{% else %}{{ server|get_option:'sv_max_clients' }}{% endif %}</span></td>
+            </tr>
+            <tr>
+              <td>Password:</td>
+              <td><span data-info="password">{% if server_info %}{% if server_info.password %}Yes{% else %}No{% endif %}{% else %}{% if server|get_option:'password' %}Yes{% else %}No{% endif %}{% endif %}</span></td>
+            </tr>
+        {% if server.is_online %}
+            <tr>
+              <td>Address:</td>
+              <td>{{ request.META.HTTP_HOST|split:':'|first }}:{{ server.port }}</td>
+            </tr>
+        {% endif %}
+          </tbody>
+        </table>
+        {% if server.is_online %}</div>{% endif %}
 </div>
+
 
 {% include "scoreboard.html" %}
 

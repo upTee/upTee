@@ -20,9 +20,9 @@ context variables:
             <tbody>
                 {% for field in register_form %}
                     {% for error in field.errors %}
-                    <tr class="errorlist">
-                        <th>Error</th>
-                        <td>{{ error }}</td>
+                    <tr>
+                        <th></th>
+                        <td><div class="errorlist">{{ error }}</div></td>
                     </tr>
                     {% endfor %}
                     <tr>
