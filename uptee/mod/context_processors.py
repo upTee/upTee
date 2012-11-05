@@ -1,5 +1,5 @@
-from django.contrib.auth.models import User
 from mod.models import Server
+
 
 def mod(request):
     user = request.user if request.user.is_authenticated() else None

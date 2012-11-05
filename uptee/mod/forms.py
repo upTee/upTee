@@ -1,7 +1,10 @@
-import mimetypes, os, tarfile, zipfile
+import mimetypes
+import os
+import tarfile
+import zipfile
 from django import forms
 from mod.models import Mod, Server
-from settings import MEDIA_ROOT
+
 
 class ModAdminForm(forms.ModelForm):
 
@@ -27,11 +30,13 @@ class ModAdminForm(forms.ModelForm):
                     u'The file is no valid archieve.')
         return mod_file
 
+
 class ServerAdminForm(forms.ModelForm):
 
     class Meta:
         model = Server
         fields = ('owner', 'mod', 'is_active')
+
 
 class MapUploadForm(forms.Form):
     map_file = forms.FileField(label='Map')

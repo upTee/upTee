@@ -3,6 +3,7 @@ from celery import task
 from settings import SERVER_EXEC
 from subprocess import Popen
 
+
 @task()
 def run_server(path, server):
     with open(os.path.join(path, 'log.txt'), 'w') as f:

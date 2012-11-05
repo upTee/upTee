@@ -1,7 +1,6 @@
 from captcha.conf import settings as captcha_settings
 from captcha.models import CaptchaStore
 from django.core.mail import mail_admins
-from django.contrib.auth import views as auth_views
 from django.contrib.auth import logout as user_logout
 from django.contrib.auth import login as user_login
 from django.contrib.auth.decorators import login_required
@@ -15,11 +14,13 @@ from django.template import RequestContext
 from accounts.forms import *
 from settings import ADMINS, DEBUG
 
+
 @login_required
 def logout(request):
     user_logout(request)
     messages.success(request, "Successfully logged out.")
     return redirect(request.REQUEST.get('next', reverse('home')))
+
 
 def login(request):
     if request.user.is_authenticated() or request.method != 'POST':
@@ -36,6 +37,7 @@ def login(request):
         next = reverse('home')
     return redirect(next)
 
+
 @login_required
 def settings(request):
     form = SettingsUserForm(instance=request.user)
@@ -49,6 +51,7 @@ def settings(request):
             'form': form,
         }, context_instance=RequestContext(request))
 
+
 @login_required
 def change_password(request):
     form = PasswordChangeForm(current_user=request.user)
@@ -60,6 +63,7 @@ def change_password(request):
     return render_to_response('accounts/password_change.html', {
             'form': form,
         }, context_instance=RequestContext(request))
+
 
 def register(request):
     if request.user.is_authenticated():

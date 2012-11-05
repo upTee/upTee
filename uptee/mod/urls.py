@@ -1,6 +1,5 @@
 from django.conf.urls.defaults import *
 from django.views.generic.simple import direct_to_template
-from mod.models import Mod
 
 urlpatterns = patterns('mod.views',
     url(r'^$', direct_to_template, {'template': 'base.html'}, name='home'),

@@ -1,5 +1,4 @@
 import os
-from django.db.models import Q
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -12,6 +11,7 @@ from annoying.decorators import ajax_request
 from mod.forms import MapUploadForm
 from mod.models import Map, Option, Server, Vote
 from settings import MEDIA_ROOT
+
 
 def server_list(request, username=None, server_type=None):
     if server_type:
@@ -29,12 +29,13 @@ def server_list(request, username=None, server_type=None):
         servers = (server for server in servers if server.is_online == online)
     return render_to_response('mod/servers.html', {'server_list': servers, 'username': username, 'server_type': server_type}, context_instance=RequestContext(request))
 
+
 def server_detail(request, server_id):
     server = get_object_or_404(Server.objects.select_related().filter(is_active=True), pk=server_id)
-    options = server.config_options.filter(Q(command='sv_name') | Q(command='sv_gametype')).order_by('command')
     return render_to_response('mod/server_detail_info.html', {
         'server': server
     }, context_instance=RequestContext(request))
+
 
 @login_required
 def server_edit(request, server_id):
@@ -44,6 +45,7 @@ def server_edit(request, server_id):
         'server': server,
         'options': options
     }, context_instance=RequestContext(request))
+
 
 @login_required
 def upload_map(request, server_id):
@@ -65,6 +67,7 @@ def upload_map(request, server_id):
         'form': form
     }, context_instance=RequestContext(request))
 
+
 @login_required
 def server_votes(request, server_id):
     server = get_object_or_404(Server.objects.select_related().filter(is_active=True, owner=request.user), pk=server_id)
@@ -76,6 +79,7 @@ def server_votes(request, server_id):
         'server': server,
         'votes': votes
     }, context_instance=RequestContext(request))
+
 
 @login_required
 def server_tunes(request, server_id):
@@ -102,7 +106,8 @@ def start_stop_server(request, server_id):
         server.set_offline()
     else:
         server.set_online()
-    return render_to_response('mod/state_changed.html', {'next': next }, context_instance=RequestContext(request))
+    return render_to_response('mod/state_changed.html', {'next': next}, context_instance=RequestContext(request))
+
 
 @login_required
 @require_POST
@@ -127,7 +132,8 @@ def update_settings(request, server_id):
         else:
             option.value = '0'
         option.save()
-    return render_to_response('mod/settings_updated.html', {'next': next }, context_instance=RequestContext(request))
+    return render_to_response('mod/settings_updated.html', {'next': next}, context_instance=RequestContext(request))
+
 
 @login_required
 @require_POST
@@ -196,7 +202,8 @@ def update_votes(request, server_id):
             vote_list = vote_list[1:]
             for item in vote_list:
                 item.delete()"""
-    return render_to_response('mod/settings_updated.html', {'next': next }, context_instance=RequestContext(request))
+    return render_to_response('mod/settings_updated.html', {'next': next}, context_instance=RequestContext(request))
+
 
 @login_required
 @require_POST
@@ -215,7 +222,7 @@ def update_tunes(request, server_id):
                 except ValueError:
                     continue
                 tune.save()
-    return render_to_response('mod/settings_updated.html', {'next': next }, context_instance=RequestContext(request))
+    return render_to_response('mod/settings_updated.html', {'next': next}, context_instance=RequestContext(request))
 
 
 @ajax_request
@@ -223,4 +230,4 @@ def server_info_update_ajax(request, server_id):
     if not request.is_ajax():
         raise Http404
     server = get_object_or_404(Server.objects.select_related().filter(is_active=True), pk=server_id)
-    return {'server_info': server.info }
+    return {'server_info': server.info}

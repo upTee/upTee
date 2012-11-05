@@ -1,5 +1,6 @@
 from captcha.fields import CaptchaField
 
+
 class Html5CaptchaField(CaptchaField):
 
     def __init__(self, *args, **kwargs):

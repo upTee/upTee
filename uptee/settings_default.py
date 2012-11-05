@@ -1,4 +1,6 @@
-import djcelery, os, re
+import djcelery
+import os
+import re
 from django import contrib
 
 # Django settings for uptee project.
@@ -18,8 +20,8 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': PROJECT_DIR + '/database.db',   # Or path to database file if using sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': PROJECT_DIR + '/database.db',    # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -166,17 +168,17 @@ BROKER_URL = 'amqp://guest:guest@localhost:5672/'
 #PYBROWSCAP_INITIALIZE = True # Default is `not settings.DEBUG`.
 
 # Path where browscap file is located on filesystem
-PYBROWSCAP_FILE_PATH = os.path.join(PROJECT_DIR, 'browscap.csv') # Default is '' (empty string) (copy browscap.csv.example to browscap.csv)
+PYBROWSCAP_FILE_PATH = os.path.join(PROJECT_DIR, 'browscap.csv')  # Default is '' (empty string) (copy browscap.csv.example to browscap.csv)
 
 # Whether to perform automatic updates of browscap file
-PYBROWSCAP_UPDATE = True # Default is False
+PYBROWSCAP_UPDATE = True  # Default is False
 
 # Interval of automatic browscap file updates
-PYBROWSCAP_UPDATE_INTERVAL = 604800 # Default one week in seconds
+PYBROWSCAP_UPDATE_INTERVAL = 604800  # Default one week in seconds
 
 # Tuple or regex expressions of path that are to be ignored by middleware
 PYBROWSCAP_IGNORE_PATHS = (
     re.compile(r'^/favicon.ico$'),
     re.compile(r'^/media/'),
     re.compile(r'^/static/')
-) # Default empty tupple
+)  # Default empty tupple

@@ -2,6 +2,7 @@
 * {
     margin: 0;
     padding: 0;
+    outline: 0;
 }
 
 .clear {
@@ -46,7 +47,9 @@ body {
     background: url('../img/menu_pattern.png');
     padding: 3px;
     border: 1px solid rgb(199, 199, 199);
-    box-shadow: 0px 1px 0px #ffffff, 0px 1px 0px #ffffff inset;
+    -webkit-box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
+    -moz-box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
+    box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
 }
 
 .user_bar_entry {
@@ -80,7 +83,9 @@ body {
     height: 35px;
     margin-top: 20px;
     border: 1px solid rgb(199, 199, 199);
-    box-shadow: 0px 1px 0px #ffffff, 0px 1px 0px #ffffff inset;
+    -webkit-box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
+    -moz-box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
+    box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
 }
 
 
@@ -106,8 +111,9 @@ body {
     margin-left: auto;
     width: 745px;
     padding: 10px 10px 10px 35px;
-    -webkit-box-shadow:  2px 2px 10px 0px rgba(150, 150, 150, 255);
-    box-shadow:  2px 2px 10px 0px rgba(150, 150, 150, 255);
+    -webkit-box-shadow:  2px 2px 10px 0 rgba(150, 150, 150, 255);
+    -moz-box-shadow:  2px 2px 10px 0 rgba(150, 150, 150, 255);
+    box-shadow:  2px 2px 10px 0 rgba(150, 150, 150, 255);
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
@@ -157,9 +163,11 @@ body {
     padding: 10px;
     margin-top: 20px;
     width: 178px;
-    background: rgba(244, 244, 244, 255);
+    background: rgb(244, 244, 244);
     border: 1px solid rgb(199, 199, 199);
-    box-shadow: 0px 1px 0px #ffffff, 0px 1px 0px #ffffff inset;
+    -webkit-box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
+    -moz-box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
+    box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
 }
 
 /* content */
@@ -169,9 +177,11 @@ body {
     float: left;
     margin-top: 20px;
     padding: 10px;
-    background: rgba(244, 244, 244, 255);
+    background: rgb(244, 244, 244);
     border: 1px solid rgb(199, 199, 199);
-    box-shadow: 0px 1px 0px #ffffff, 0px 1px 0px #ffffff inset;
+    -webkit-box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
+    -moz-box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
+    box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
 }
 
 .errorlist {
@@ -187,14 +197,14 @@ body {
 
 .server_status_headline {
     height: 25px;
+    padding-top: 3px;
     padding-left: 30px;
+    padding-bottom: 1px;
     font-size: 15px;
     font-weight: bold; 
     margin-top: -10px;
     margin-left: -10px;
     width: 168px;
-    padding-bottom: 1px;
-    padding-top: 3px;
 }
 
     .server_status_headline.on {
@@ -318,9 +328,11 @@ body {
 
 .mouseover_overlay {
     margin-top: 20px;
-    background: rgba(244, 244, 244, 255);
+    background: rgb(244, 244, 244);
     border: 1px solid rgb(199, 199, 199);
-    box-shadow: 0px 1px 0px #ffffff, 0px 1px 0px #ffffff inset;
+    -webkit-box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
+    -moz-box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
+    box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
     display: inline-block;
 }
 
@@ -392,7 +404,9 @@ body {
     padding: 5px;
     margin-top: 20px;
     border-top: 1px solid rgb(199, 199, 199);
-    box-shadow: 0px 1px 0px #ffffff inset;
+    -webkit-box-shadow: 0 1px 0 #ffffff inset;
+    -moz-box-shadow: 0 1px 0 #ffffff inset;
+    box-shadow: 0 1px 0 #ffffff inset;
     color: #808080;
     font-size: 11px;
 }

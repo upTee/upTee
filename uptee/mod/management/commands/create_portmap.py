@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand, CommandError
 from mod.models import Port
 
+
 class Command(BaseCommand):
     args = '<min_port max_port>'
     help = 'Creates a portmap.'
@@ -15,6 +16,6 @@ class Command(BaseCommand):
             port.delete()
 
         # create new range
-        for port_num in range(min_port, max_port+1):
+        for port_num in range(min_port, max_port + 1):
             port = Port(port=port_num)
             port.save()

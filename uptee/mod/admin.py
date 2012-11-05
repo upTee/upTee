@@ -1,16 +1,19 @@
-import os, tarfile, zipfile
+import os
+import tarfile
+import zipfile
 from django.contrib import admin
 from mod.forms import *
 from mod.models import *
 from settings import MEDIA_ROOT
 from lib.twconfig import Config as TwCongig
 
+
 class ModAdmin(admin.ModelAdmin):
     list_display = ('title', 'upload_date', 'mod_file', 'mimetype')
     search_fields = ('title', 'mod_file', 'mimetype')
     list_filter = ('upload_date', 'mimetype')
     form = ModAdminForm
-    actions=['really_delete_selected']
+    actions = ['really_delete_selected']
 
     def get_actions(self, request):
         actions = super(ModAdmin, self).get_actions(request)
@@ -22,12 +25,13 @@ class ModAdmin(admin.ModelAdmin):
             obj.delete()
     really_delete_selected.short_description = u"Delete selected mods"
 
+
 class ServerAdmin(admin.ModelAdmin):
     list_display = ('mod', 'owner', 'is_active')
     search_fields = ('title', 'owner')
     list_filter = ('mod', 'owner', 'is_active')
     form = ServerAdminForm
-    actions=['really_delete_selected']
+    actions = ['really_delete_selected']
 
     def get_actions(self, request):
         actions = super(ServerAdmin, self).get_actions(request)
@@ -58,7 +62,7 @@ class ServerAdmin(admin.ModelAdmin):
             config = TwCongig(config_path)
             config.read()
             for key, value in config.options.iteritems():
-                widget = 1 # text
+                widget = 1  # text
                 for widget_type in Option.WIDGET_CHOICES:
                     if widget_type[1] == value[1]:
                         widget = widget_type[0]
@@ -74,10 +78,11 @@ class ServerAdmin(admin.ModelAdmin):
         if os.path.exists(maps_path):
             maps = [os.path.splitext(_file)[0] for _file in os.listdir(maps_path) if os.path.splitext(_file)[1].lower() == '.map']
             for _map in maps:
-                map_obj = Map.objects.filter(server=obj, name=_map) 
+                map_obj = Map.objects.filter(server=obj, name=_map)
                 if not map_obj:
                     map_obj = Map(server=obj, name=_map)
                     map_obj.save()
+
 
 class PortAdmin(admin.ModelAdmin):
     list_display = ('port', 'is_active')
@@ -101,10 +106,11 @@ class PortAdmin(admin.ModelAdmin):
                 pass
         obj.save()
 
+
 class MapAdmin(admin.ModelAdmin):
     list_display = ('owner', 'server', 'name', 'author')
     list_filter = ('server', 'server__owner')
-    actions=['really_delete_selected']
+    actions = ['really_delete_selected']
 
     def get_actions(self, request):
         actions = super(MapAdmin, self).get_actions(request)

@@ -1,13 +1,17 @@
-import os, tarfile, zipfile
+import os
+import tarfile
+import zipfile
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as AuthUserAdmin
 from django.contrib.auth.models import User
 from mod.models import Mod
 from settings import MEDIA_ROOT
 
+
 def make_dir(path):
     if not os.path.exists(path):
         os.makedirs(path)
+
 
 class UserAdmin(AuthUserAdmin):
     def save_model(self, request, obj, form, change):

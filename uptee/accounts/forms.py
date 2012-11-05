@@ -3,12 +3,14 @@ from django import forms
 from fields import Html5CaptchaField
 from html5input import *
 
+
 class SettingsUserForm(forms.ModelForm):
     email = forms.EmailField(required=True, widget=Html5EmailInput(attrs={'required': None}))
 
     class Meta:
         model = User
         fields = ('email',)
+
 
 class PasswordChangeForm(forms.Form):
     old_password = forms.CharField(label='Old password',
@@ -43,9 +45,10 @@ class PasswordChangeForm(forms.Form):
         self.current_user.set_password(self.cleaned_data.get('new_password1'))
         self.current_user.save()
 
+
 class RegisterForm(forms.Form):
     username = forms.RegexField(label="Username", min_length=3, regex=r'^[\w.@+-]+$',
-        error_messages = {'invalid': 'Required. 30 characters or fewer. Letters, numbers and @/./+/-/_ characters.'},
+        error_messages={'invalid': 'Required. 30 characters or fewer. Letters, numbers and @/./+/-/_ characters.'},
         widget=forms.TextInput(attrs={'pattern': r'[\w.@+-]{3,30}', 'title': '30 characters or fewer. Letters, numbers and @/./+/-/_ characters', 'required': None}))
     password1 = forms.CharField(label='Password', min_length=8,
         widget=forms.PasswordInput(render_value=False, attrs={'pattern': r'.{8,}', 'title': '8 characters are required', 'required': None}))

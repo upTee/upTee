@@ -1,40 +1,43 @@
 import socket
 
+
 def int_unpack(input):
     added = 1
-    sign = ord(input[0])>>6&1
-    out = ord(input[0])&0x3f
-    if (ord(input[0])&0x80) == 0:
+    sign = ord(input[0]) >> 6 & 1
+    out = ord(input[0]) & 0x3f
+    if (ord(input[0]) & 0x80) == 0:
         out ^= -sign
         return added, out
-    out |= (ord(input[1])&0x7f)<<6
+    out |= (ord(input[1]) & 0x7f) << 6
     added += 1
-    
-    if (ord(input[1])&0x80) == 0:
+
+    if (ord(input[1]) & 0x80) == 0:
         out ^= -sign
         return added, out
-    out |= (ord(input[2])&0x7f)<<13
+    out |= (ord(input[2]) & 0x7f) << 13
     added += 1
-    
-    if (ord(input[2])&0x80) == 0:
+
+    if (ord(input[2]) & 0x80) == 0:
         out ^= -sign
         return added, out
-    out |= (ord(input[3])&0x7f)<<20
+    out |= (ord(input[3]) & 0x7f) << 20
     added += 1
-    
-    if (ord(input[3])&0x80) == 0:
+
+    if (ord(input[3]) & 0x80) == 0:
         out ^= -sign
         return added, out
-    out |= (ord(input[4])&0x7f)<<27
+    out |= (ord(input[4]) & 0x7f) << 27
     out ^= -sign
     added += 1
     return added, out
 
+
 def string_unpack(input):
     for i in range(len(input)):
         if input[i] == '\x00':
-            return i+1, input[:i]
+            return i + 1, input[:i]
     return ''
+
 
 class ServerInfo:
 
@@ -77,7 +80,7 @@ class ServerInfo:
             return
         self.data = self.data[14:]
         added, token = int_unpack(self.data)
-        if token != 1: # test for old version
+        if token != 1:  # test for old version
             added, token = string_unpack(self.data)
             if token == '1':
                 self.data = self.data[added:]
@@ -97,7 +100,7 @@ class ServerInfo:
         self.server_info['flags'] = self.unpack_int()
         if self.compressed_data:
             self.server_info['skill_level'] = self.unpack_int()
-        num_players = self.unpack_int()
+        self.unpack_int()  # this value is not needed
         self.server_info['max_players'] = self.unpack_int()
         num_clients = self.unpack_int()
         self.server_info['max_clients'] = self.unpack_int()

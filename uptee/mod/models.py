@@ -1,4 +1,9 @@
-import mimetypes, os, psutil, signal, tarfile, zipfile
+import mimetypes
+import os
+import psutil
+import signal
+import tarfile
+import zipfile
 from django.db import models
 from django.contrib.auth.models import User
 from django.forms import ValidationError
@@ -7,6 +12,7 @@ from shutil import move, rmtree
 from settings import MEDIA_ROOT
 from lib.twconfig import Config as TwCongig
 from lib.twserverinfo import ServerInfo
+
 
 class FreePortManager(models.Manager):
     def get_query_set(self):
@@ -56,6 +62,7 @@ class Mod(models.Model):
             os.remove(self.mod_file.path)
         super(Mod, self).delete()
 
+
 class Port(models.Model):
     port = models.IntegerField(unique=True)
     is_active = models.BooleanField(default=False)
@@ -84,6 +91,7 @@ class Port(models.Model):
     def save(self):
         self.full_clean()
         super(Port, self).save()
+
 
 class Server(models.Model):
     owner = models.ForeignKey(User, related_name='servers')
@@ -151,12 +159,14 @@ class Server(models.Model):
             rmtree(path)
         super(Server, self).delete()
 
+
 class Config(models.Model):
     server = models.ForeignKey(Server, related_name='config_%(class)ss')
     command = models.CharField(max_length=100)
 
     class Meta:
         abstract = True
+
 
 class Option(Config):
     value = models.CharField(blank=True, max_length=500)
@@ -179,6 +189,7 @@ class Option(Config):
     def __unicode__(self):
         return str(self.command)
 
+
 class Tune(Config):
     value = models.FloatField()
 
@@ -188,6 +199,7 @@ class Tune(Config):
     def __unicode__(self):
         return str(self.command)
 
+
 class Vote(Config):
     title = models.CharField(max_length=100)
 
@@ -196,6 +208,7 @@ class Vote(Config):
 
     def __unicode__(self):
         return str(self.command)
+
 
 class Map(models.Model):
     server = models.ForeignKey(Server, related_name="maps")

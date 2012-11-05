@@ -23,16 +23,18 @@ function server_info_update() {
                         if(scoreboard.length && server_info.clients.length) {
                             scoreboard.each(function(j) {
                                 $(this).html('<table><tbody><tr><th>Score</th><th>Name</th><th>Clan</th></tr></tbody></table>');
+                                var table;
+                                var k;
                                 if(server_info.players.length) {
-                                    var table = $(this).find("tbody tr:last");
-                                    for(var k = 0; k < server_info.players.length; k++) {
+                                    table = $(this).find("tbody tr:last");
+                                    for(k = 0; k < server_info.players.length; k++) {
                                         data = "<tr><td>" + server_info.players[k].score + "</td><td>" + server_info.players[k].name + "</td><td>" + server_info.players[k].clan + "</td></tr>";
                                         table.after(data);
                                     }
                                 }
                                 if(server_info.spectators.length) {
                                     table = $(this).find("tbody tr:last");
-                                    for(var k = 0; k < server_info.spectators.length; k++) {
+                                    for(k = 0; k < server_info.spectators.length; k++) {
                                         data = "<tr><td>-</td><td>" + server_info.spectators[k].name + "</td><td>" + server_info.spectators[k].clan + "</td></tr>";
                                         table.after(data);
                                     }
@@ -40,7 +42,7 @@ function server_info_update() {
                             });
                         }
                         else if(scoreboard.length) {
-                            scoreboard.html(''); // clear the scoreboard... otherwise its weird when nobody is there anymore 
+                            scoreboard.html(''); // clear the scoreboard... otherwise its weird when nobody is there anymore
                             var parent = scoreboard.parent('div.mouseover_overlay');
                             if(parent.length)
                                 parent.parent().hide(); // force hiding the overlay so it doesnt look weird when the last player left and you are mouseover
@@ -68,7 +70,7 @@ $(document).ready(function() {
     $('p[data-info="slots"]').mousemove(function(e) {
         var hide_mouseover = $(this).siblings("div.hide_mouseover");
         if(hide_mouseover.length) {
-            var x = e.clientX-parseInt(hide_mouseover.css("width"))-10;
+            var x = e.clientX-parseInt(hide_mouseover.css("width"), 10)-10;
             if(x < 5)
                 x = e.clientX+10;
             var y = e.clientY-10;
