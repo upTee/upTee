@@ -268,11 +268,15 @@ body {
     text-align: center;
 }
 
- .server_detail_info h2 {
+    .server_detail_info h2 {
         border-bottom: 1px solid #009bff;
         font-size: 16px;
         padding: 5px;
         color: gray;
+    }
+
+    .server_detail_info table {
+        margin: 0 auto;
     }
 
 .server_detail_scoreboard {
