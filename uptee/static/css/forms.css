@@ -7,8 +7,8 @@ input[type=text] {
     
     border: solid 1px #969696;
     transition: all .5s;
-        -webkit-transition: all .5s;
-        -moz-transition: all .5s;
+        /*-webkit-transition: all .5s;
+        -moz-transition: all .5s;*/
 }
 
     input[type=text]:focus {
@@ -27,8 +27,8 @@ input[type=password] {
     padding: 5px;
     border: solid 1px #969696;
     transition: all .5s;
-        -webkit-transition: all .5s;
-        -moz-transition: all .5s;
+        /*-webkit-transition: all .5s;
+        -moz-transition: all .5s;*/
 }
 
     input[type=password]:focus {
@@ -43,8 +43,8 @@ input[type=email] {
     padding: 5px;
     border: solid 1px #969696;
     transition: all .5s;
-        -webkit-transition: all .5s;
-        -moz-transition: all .5s;
+        /*-webkit-transition: all .5s;
+        -moz-transition: all .5s;*/
     
 }
 
@@ -174,8 +174,8 @@ textarea {
     padding: 5px;
     border: solid 1px #969696;
     transition: background-color .5s, border .5s;
-        -webkit-transition: background-color .5s, border .5s;
-        -moz-transition: background-color .5s, border .5s;
+        /*-webkit-transition: background-color .5s, border .5s;
+        -moz-transition: background-color .5s, border .5s;*/
 }
 
     textarea:focus {
