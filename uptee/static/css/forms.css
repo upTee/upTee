@@ -213,7 +213,6 @@ form.only_button {
     }
 
 .signup_box input[type=submit] {
-    background: url('../img/menu_pattern.png') repeat-x;
     margin-top: 20px;
 }
 
