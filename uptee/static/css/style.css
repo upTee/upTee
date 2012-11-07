@@ -27,14 +27,15 @@ body {
 
 #ribbon {
     background: url('../img/ribbon_alpha.png') no-repeat;
-    position: absolute;
-    right: 0;
-    top: 0;
     height: 105px;
     width: 107px;
+    position: absolute;
+        right: 0;
+        top: 0;
 }
 
 /* wrapper */
+
 
 #wrapper {
     width: 1000px;
@@ -48,16 +49,17 @@ body {
     background: url('../img/menu_pattern.png');
     padding: 3px;
     border: 1px solid rgb(199, 199, 199);
-    -webkit-box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
-    -moz-box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
     box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
+        -webkit-box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
+        -moz-box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
 }
 
 .user_bar_entry {
-    float: right;
-    font-size: 12px;
     padding-left: 20px;
     padding-right: 10px;
+    float: right;
+    font-size: 12px;
+    
 }
 
     .user_bar_entry.settings {
@@ -84,9 +86,9 @@ body {
     height: 35px;
     margin-top: 20px;
     border: 1px solid rgb(199, 199, 199);
-    -webkit-box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
-    -moz-box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
     box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
+        -webkit-box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
+        -moz-box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
 }
 
 
@@ -94,9 +96,9 @@ body {
     width: 100px;
     height: 16px;
     padding: 10px;
-    text-align: center;
-    border-right: 1px solid #009bff;
     float: left;
+    border-right: 1px solid #009bff;
+    text-align: center;
 }
 
 .menu_entry:hover {
@@ -106,18 +108,18 @@ body {
 /* notification */
 
 .notification {
-    border: 1px solid;
+    width: 745px;
     margin-top: 20px;
     margin-right: auto;
     margin-left: auto;
-    width: 745px;
     padding: 10px 10px 10px 35px;
-    -webkit-box-shadow:  2px 2px 10px 0 rgba(150, 150, 150, 255);
-    -moz-box-shadow:  2px 2px 10px 0 rgba(150, 150, 150, 255);
+    border: 1px solid;
     box-shadow:  2px 2px 10px 0 rgba(150, 150, 150, 255);
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
+        -webkit-box-shadow:  2px 2px 10px 0 rgba(150, 150, 150, 255);
+        -moz-box-shadow:  2px 2px 10px 0 rgba(150, 150, 150, 255);
     border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
 }
 
     .notification.info {
@@ -156,40 +158,40 @@ body {
 /* siedbar */
 
 #sidebar_box {
-    float: right;
     width: 200px;
+    float: right;
 }
 
 .sidebar_entry {
-    padding: 10px;
-    margin-top: 20px;
-    width: 178px;
     background: rgb(244, 244, 244);
+    width: 178px;
+    margin-top: 20px;
+    padding: 10px;
     border: 1px solid rgb(199, 199, 199);
-    -webkit-box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
-    -moz-box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
     box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
+        -webkit-box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
+        -moz-box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
 }
 
 /* content */
 
 #content_box {
+    background: rgb(244, 244, 244);
     width: 750px;
-    float: left;
     margin-top: 20px;
     padding: 10px;
-    background: rgb(244, 244, 244);
+    float: left;
     border: 1px solid rgb(199, 199, 199);
-    -webkit-box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
-    -moz-box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
     box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
+        -webkit-box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
+        -moz-box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
 }
 
 .errorlist {
-   outline: solid 1px #cc7576; 
-   padding: 5px;
-   background: #ffeaeb;
-   color: #cc7576;
+    background: #ffeaeb;
+    padding: 5px;
+    outline: solid 1px #cc7576; 
+    color: #cc7576;
 }
 
 
@@ -197,15 +199,15 @@ body {
 /* server status sidebar entry */
 
 .server_status_headline {
+    width: 168px;
     height: 25px;
+    margin-top: -10px;
+    margin-left: -10px;
     padding-top: 3px;
     padding-left: 30px;
     padding-bottom: 1px;
     font-size: 15px;
     font-weight: bold; 
-    margin-top: -10px;
-    margin-left: -10px;
-    width: 168px;
 }
 
     .server_status_headline.on {
@@ -224,17 +226,17 @@ body {
 }
 
 .server_list_entry {
-    border: 1px solid #009bff;
     margin-bottom: 10px;
     position: relative;
+    border: 1px solid #009bff;
 }
 
     .server_list_headline {
         height: 25px;
+        padding-top: 3px;
         font-weight: bold;
         font-size: 15px;
         text-align: center;
-        padding-top: 3px;
     }
     
         .server_list_headline.on {
@@ -246,9 +248,10 @@ body {
         }
 
     .server_list_content {
+        padding: 5px;
         color: gray;
         text-align: center;
-        padding: 5px;
+
     }
 
 /* server detail page */
@@ -263,17 +266,17 @@ body {
 }
 
 .server_detail_info {
-    float: left;
     width: 243px;
     margin-bottom: 40px;
+    float: left;
     text-align: center;
 }
 
     .server_detail_info h2 {
-        border-bottom: 1px solid #009bff;
-        font-size: 16px;
         padding: 5px;
         color: gray;
+        border-bottom: 1px solid #009bff;
+        font-size: 16px;
     }
 
     .server_detail_info table {
@@ -281,21 +284,21 @@ body {
     }
 
 .server_detail_scoreboard {
-    float: right;
     width: 243px;
     max-height: 170px;
+    float: right;
     overflow: auto;
 }
 
     .server_detail_scoreboard table {
-        text-align: center;
         float: right;
+        text-align: center;
     }
     
     .server_detail_scoreboard th {
+        padding: 5px;
         border-bottom: 1px solid #009bff;
         font-size: 16px;
-        padding: 5px;
         color: gray;
     }
 
@@ -304,15 +307,15 @@ body {
     }
 
 .server_detail_maplist {
-    float: right;
     width: 242px;
+    float: right;
     text-align: center;
 }
 
     .server_detail_maplist h2 {
+        padding: 5px;
         border-bottom: 1px solid #009bff;
         font-size: 16px;
-        padding: 5px;
         color: gray;
     }
 
@@ -332,13 +335,14 @@ body {
 /* mouse over overlay */
 
 .mouseover_overlay {
-    margin-top: 20px;
     background: rgb(244, 244, 244);
-    border: 1px solid rgb(199, 199, 199);
-    -webkit-box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
-    -moz-box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
-    box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
+    margin-top: 20px;
     display: inline-block;
+    border: 1px solid rgb(199, 199, 199);
+    box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
+        -webkit-box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
+        -moz-box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
+    
 }
 
     .mouseover_overlay .server_detail_scoreboard {
@@ -352,15 +356,15 @@ body {
 }
 
 .tab {
-   padding: 10px;
-   padding-top: 5px;
-   padding-bottom: 5px;
-   margin-right: 5px;
-   background: #b3b3b3;
-   border: 1px solid #009bff;
-   border-bottom: 0;
-   float: left;
-   color: #000;
+    background: #b3b3b3;
+    margin-right: 5px;
+    padding: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    float: left;
+    border: 1px solid #009bff;
+    border-bottom: 0;
+    color: #000;
 }
 
     .tab:hover {
@@ -376,8 +380,8 @@ body {
     }
 
 .tabmenu_content {
-    position: relative;
     padding: 10px;
+    position: relative;
     border: 1px solid #009bff;
 }
 
@@ -406,34 +410,34 @@ body {
 
 #footer_box {
     background: url('../img/footer.png') no-repeat;
-    padding: 5px;
     margin-top: 20px;
+    padding: 5px;
     border-top: 1px solid rgb(199, 199, 199);
-    -webkit-box-shadow: 0 1px 0 #ffffff inset;
-    -moz-box-shadow: 0 1px 0 #ffffff inset;
     box-shadow: 0 1px 0 #ffffff inset;
+        -webkit-box-shadow: 0 1px 0 #ffffff inset;
+        -moz-box-shadow: 0 1px 0 #ffffff inset;
     color: #808080;
     font-size: 11px;
 }
 
 #footer_left {
-    float: left;
     width: 330px;
     min-height: 10px;
+    float: left;
 }
 
 #footer_center {
-    float: left;
     width: 330px;
-    text-align:center;
     min-height: 10px;
+    float: left;
+    text-align:center;
 }
 
 #footer_right {
-    float: left;
     width: 330px;
-    text-align:right;
     min-height: 10px;
+    float: left;
+    text-align:right;
 }
 
 /* footer cycle */

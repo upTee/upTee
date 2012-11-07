@@ -2,12 +2,13 @@
 
 input[type=text] {
     background: #dcdcdc;
-    border: solid 1px #969696;
-    padding: 5px;
     width: 200px;
-    -webkit-transition: all .5s;
-    -moz-transition: all .5s;
+    padding: 5px;
+    
+    border: solid 1px #969696;
     transition: all .5s;
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
 }
 
     input[type=text]:focus {
@@ -22,33 +23,34 @@ input[type=text] {
 
 input[type=password] {
     background: #dcdcdc;
-    border: solid 1px #969696;
-    padding: 5px;
     width: 200px;
-    -webkit-transition: all .5s;
-    -moz-transition: all .5s;
+    padding: 5px;
+    border: solid 1px #969696;
     transition: all .5s;
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
 }
 
     input[type=password]:focus {
-        width: 200px;
         background-color: #fff;
+        width: 200px;
         border: solid 1px #009bff;
     }
 
 input[type=email] {
     background: #dcdcdc;
-    border: solid 1px #969696;
-    padding: 5px;
     width: 200px;
-    -webkit-transition: all .5s;
-    -moz-transition: all .5s;
+    padding: 5px;
+    border: solid 1px #969696;
     transition: all .5s;
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+    
 }
 
     input[type=email]:focus {
-        width: 200px;
         background-color: #fff;
+        width: 200px;
         border: solid 1px #009bff;
     }
 
@@ -57,8 +59,8 @@ button[type=button], input[type=submit] {
     background-position: 0 0;
     margin: 10px;
     padding: 6px;
-    cursor: pointer;
     border: 1px solid #acacac;
+    cursor: pointer;
 }
 
     button[type=button]:hover, input[type=submit]:hover {
@@ -77,8 +79,8 @@ button[type=button].button, input[type=submit].button {
 
 .server_list_headline form {
     position: absolute;
-    right: 0;
-    top: 3px;
+        right: 0;
+        top: 3px;
 }
 
     .server_list_headline form input[type="submit"] {
@@ -166,14 +168,14 @@ input[type=radio]:checked
 
 textarea {
     background: #dcdcdc;
-    border: solid 1px #969696;
-    padding: 5px;
     width: 325px;
-    height: 105px;
     max-width: 530px;
+    height: 105px;
+    padding: 5px;
+    border: solid 1px #969696;
     transition: background-color .5s, border .5s;
-    -webkit-transition: background-color .5s, border .5s;
-    -moz-transition: background-color .5s, border .5s;
+        -webkit-transition: background-color .5s, border .5s;
+        -moz-transition: background-color .5s, border .5s;
 }
 
     textarea:focus {
@@ -185,15 +187,16 @@ textarea {
 
 form.only_button {
     position: absolute;
-    bottom: 10px;
+        bottom: 10px;
 }
 
 /* login box */
 
 .signup_box input[type=text] {
     background: #dcdcdc url('../img/person.png') no-repeat 5px center;
-    padding: 5px 10px 5px 30px;
     width: 30px;
+    padding: 5px 10px 5px 30px;
+
 }
 
     .signup_box input[type=text]:focus {
@@ -203,8 +206,8 @@ form.only_button {
 
 .signup_box input[type=password] {
     background: #dcdcdc url('../img/lock.png') no-repeat 5px center;
-    padding: 5px 10px 5px 30px;
     width: 30px;
+    padding: 5px 10px 5px 30px;
 }
 
     .signup_box input[type=password]:focus {
@@ -224,8 +227,8 @@ form.only_button {
 }
 
     .form_table td {
+        padding-left: 20px;
         text-align: left;
-        padding-left: 20px;  
     }
 
     .form_table th {
@@ -233,6 +236,6 @@ form.only_button {
     }
 
     .form_table tr  {
-        text-align: right;
         margin-top: 10px;
+        text-align: right;
     }
