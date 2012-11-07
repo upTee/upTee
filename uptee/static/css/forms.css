@@ -16,6 +16,10 @@ input[type=text] {
         border: solid 1px #009bff;
     }
 
+p input[type=text] {
+    margin-left: 16px;
+}
+
 input[type=password] {
     background: #dcdcdc;
     border: solid 1px #969696;
@@ -217,11 +221,12 @@ form.only_button {
 
 .form_table { 
     border-collapse: separate;
-    border-spacing:20px;
+    border-spacing: 0 20px;
 }
 
     .form_table td {
-        text-align: left;  
+        text-align: left;
+        padding-left: 20px;  
     }
 
     .form_table th {

@@ -18,7 +18,7 @@ context variables:
         <tbody>
             {% for tune in tunes %}
             <tr>
-                <th><label for="{{ tune.command }}">{{ tune.command }}</label></th>
+                <th><label for="{{ tune.command }}">{{ tune.command }}:</label></th>
                 <td><input type="text" name="{{ tune.command }}" value="{{ tune.value }}" id="{{ tune.command }}" pattern="-?(?:\d+|\d*\.\d+)" title="Must be a floating point value"></td>
             </tr>
             {% endfor %}
