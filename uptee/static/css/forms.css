@@ -16,7 +16,7 @@ input[type=text] {
         border: solid 1px #009bff;
     }
 
-p input[type=text] {
+.tabmenu_content p input[type=text] {
     margin-left: 16px;
 }
 
