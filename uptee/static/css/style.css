@@ -7,7 +7,6 @@
 
 .clear {
     clear: both
-
 }
 
 a:visited, a:link {
@@ -56,8 +55,7 @@ body {
     padding-left: 20px;
     padding-right: 10px;
     float: right;
-    font-size: 12px;
-    
+    font-size: 12px;   
 }
 
     .user_bar_entry.settings {
@@ -239,7 +237,6 @@ body {
         padding: 5px;
         color: gray;
         text-align: center;
-
     }
 
 /* server detail page */

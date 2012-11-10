@@ -5,6 +5,8 @@ input[type=text] {
     width: 200px;
     padding: 5px;
     border: solid 1px #969696;
+    -webkit-transition: all .5s;
+    -ms-transition: all .5s;
     transition: all .5s;
 }
 
@@ -23,6 +25,8 @@ input[type=password] {
     width: 200px;
     padding: 5px;
     border: solid 1px #969696;
+    -webkit-transition: all .5s;
+    -ms-transition: all .5s;
     transition: all .5s;
 }
 
@@ -37,6 +41,8 @@ input[type=email] {
     width: 200px;
     padding: 5px;
     border: solid 1px #969696;
+    -webkit-transition: all .5s;
+    -ms-transition: all .5s;
     transition: all .5s;
 }
 
@@ -165,6 +171,8 @@ textarea {
     height: 105px;
     padding: 5px;
     border: solid 1px #969696;
+    -webkit-transition: background-color .5s, border .5s;
+    -ms-transition: background-color .5s, border .5s;
     transition: background-color .5s, border .5s;
 }
 
