@@ -14,11 +14,11 @@ context variables:
 {% block link_list %}
 
 <div id="link_list">
-    <a href="{% if username %}{% url user_server_list request.user.username %}{% else %}{% url server_list %}{% endif %}">All</a>
+    <a href="{% if username %}{% url user_server_list username %}{% else %}{% url server_list %}{% endif %}">All</a>
     |
-    <a href="{% if username %}{% url user_server_list request.user.username %}{% else %}{% url server_list %}{% endif %}type:online">Online</a>
+    <a href="{% if username %}{% url user_server_list username %}{% else %}{% url server_list %}{% endif %}type:online">Online</a>
     |
-    <a href="{% if username %}{% url user_server_list request.user.username %}{% else %}{% url server_list %}{% endif %}type:offline">Offline</a>
+    <a href="{% if username %}{% url user_server_list username %}{% else %}{% url server_list %}{% endif %}type:offline">Offline</a>
 </div>
 
 {% endblock link_list %}
