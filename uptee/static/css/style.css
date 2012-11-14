@@ -248,6 +248,7 @@ body {
 
 /* ---server detail page--- */
 .server_detail_headline h2 {
+    margin: 2px;
     display: inline;
     color: #009bff;
 }
@@ -264,6 +265,7 @@ body {
 }
 
     .server_detail_info h2 {
+        margin: 2px;
         padding: 5px;
         color: gray;
         border-bottom: 1px solid #009bff;
@@ -282,6 +284,7 @@ body {
 }
 
     .server_detail_scoreboard table {
+        width: 243px;
         float: right;
         text-align: center;
     }
@@ -304,6 +307,7 @@ body {
 }
 
     .server_detail_maplist h2 {
+        margin: 2px;
         padding: 5px;
         border-bottom: 1px solid #009bff;
         font-size: 16px;
