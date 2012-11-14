@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.views.decorators.http import require_POST
@@ -66,6 +66,38 @@ def upload_map(request, server_id):
         'server': server,
         'form': form
     }, context_instance=RequestContext(request))
+
+
+def map_download(request, map_id):
+    map_obj = get_object_or_404(Map, pk=map_id)
+    map_path = map_obj.get_download_url()
+    if not map_path:
+        raise Http404
+    map_obj.download_count += 1
+    map_obj.save()
+    map_name = os.path.basename(map_path)
+    fsock = open(map_path, 'rb')
+    response = HttpResponse(fsock, mimetype='application/octet-stream')
+    response['Content-Disposition'] = 'attachment; filename={0}'.format(map_name)
+    return response
+
+
+def map_details(request, map_id):
+    map_obj = get_object_or_404(Map, pk=map_id)
+    return render_to_response('mod/map_details.html', {
+        'map_obj': map_obj,
+    }, context_instance=RequestContext(request))
+
+
+@login_required
+@require_POST
+def delete_map(request, map_id):
+    map_obj = get_object_or_404(Map, pk=map_id)
+    if map_obj.server.owner != request.user:
+        raise Http404
+    next = request.REQUEST.get('next', reverse('server_detail', kwargs={'server_id': map_obj.server.id}))
+    map_obj.delete()
+    return render_to_response('mod/map_deleted.html', {'next': next}, context_instance=RequestContext(request))
 
 
 @login_required

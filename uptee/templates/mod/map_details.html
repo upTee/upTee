@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% comment %}
+context variables:
+    map_obj
+{% endcomment %}
+
+{% block title %}upTee - {{ map_obj.name }} - Details{% endblock title %}
+
+{% block content %}
+
+<div class="server_detail_headline">
+    <h2>{{ map_obj.name }}</h2>
+</div>
+<div>
+    <p>Downloads: {{ map_obj.download_count }}</p>
+    <p><a href="{% url map_download map_obj.id %}">Download {{ map_obj.name }}</a></p>
+
+    {% if user.is_authenticated and user == map_obj.server.owner %}
+    <form action="{% url delete_map map_obj.id %}" method="post">
+        <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
+        <p><input class="button" type="submit" value="Delete {{ map_obj.name }}"></p>
+    </form>
+    {% endif %}
+</div>
+
+{% endblock content %}

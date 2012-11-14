@@ -73,7 +73,7 @@ context variables:
     <h2>Maps</h2>
     <div class="maplist_data">
     {% for map in server.maps.all %}
-        <p>{{ map.name }}</p>
+        <p><a href="{% url map_details map.id %}">{{ map.name }}</a></p>
     {% endfor %}
     </div>
 </div>

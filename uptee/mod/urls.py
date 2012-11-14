@@ -17,4 +17,7 @@ urlpatterns = patterns('mod.views',
     url(r'^updatevotes/(?P<server_id>\d+)/$', 'update_votes', name='update_votes'),
     url(r'^updatetunings/(?P<server_id>\d+)/$', 'update_tunes', name='update_tunes'),
     url(r'^server_info_update/(?P<server_id>\d+)/$', 'server_info_update_ajax', name='server_info_update_ajax'),
+    url(r'^map/(?P<map_id>\d+)/$', 'map_details', name='map_details'),
+    url(r'^map/(?P<map_id>\d+)/download/$', 'map_download', name='map_download'),
+    url(r'^map/(?P<map_id>\d+)/delete/$', 'delete_map', name='delete_map')
 )

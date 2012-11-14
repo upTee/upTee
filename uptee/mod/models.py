@@ -215,14 +215,20 @@ class Map(models.Model):
     name = models.CharField(max_length=100)
     author = models.CharField(max_length=100, blank=True)
     info = models.CharField(max_length=300, blank=True)
+    download_count = models.IntegerField(default=0)
 
     class Meta:
         ordering = ['name']
 
-    def delete(self):
+    def get_download_url(self):
         path = os.path.join(MEDIA_ROOT, 'users', self.server.owner.username, self.server.mod.title, 'data', 'maps')
         if os.path.exists(path):
             for _file in os.listdir(path):
                 if os.path.splitext(_file)[0] == self.name and os.path.splitext(_file)[1].lower() == '.map':
-                    os.remove(os.path.join(path, _file))
+                    return os.path.join(path, _file)
+        return None
+
+    def delete(self):
+        path = self.get_download_url()
+        os.remove(path)
         super(Map, self).delete()
