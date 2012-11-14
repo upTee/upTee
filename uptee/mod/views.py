@@ -73,6 +73,11 @@ def upload_map(request, server_id):
 
 def map_download(request, map_id):
     map_obj = get_object_or_404(Map, pk=map_id)
+    password = map_obj.server.config_options.filter(command='password')
+    if password:
+        password = password[0].value
+    if request.user != map_obj.server.owner and password:
+        raise Http404
     map_path = map_obj.get_download_url()
     if not map_path:
         raise Http404
