@@ -1,6 +1,7 @@
 import os
 import tarfile
 import zipfile
+from shutil import copyfile
 from django.contrib import admin
 from mod.forms import *
 from mod.models import *
@@ -76,12 +77,16 @@ class ServerAdmin(admin.ModelAdmin):
                 data.save()
         maps_path = os.path.join(MEDIA_ROOT, 'users', obj.owner.username, obj.mod.title, 'data', 'maps')
         if os.path.exists(maps_path):
-            maps = [os.path.splitext(_file)[0] for _file in os.listdir(maps_path) if os.path.splitext(_file)[1].lower() == '.map']
+            maps = [_file for _file in os.listdir(maps_path) if os.path.splitext(_file)[1].lower() == '.map']
             for _map in maps:
-                map_obj = Map.objects.filter(server=obj, name=_map)
+                map_obj = Map.objects.filter(server=obj, name=os.path.splitext(_map)[0])
                 if not map_obj:
-                    map_obj = Map(server=obj, name=_map)
+                    map_obj = Map(server=obj, name=os.path.splitext(_map)[0])
                     map_obj.save()
+                server_maps_path = os.path.join(MEDIA_ROOT, 'users', obj.owner.username, obj.mod.title, 'servers', '{0}'.format(obj.id), 'maps')
+                if not os.path.exists(server_maps_path):
+                    os.makedirs(server_maps_path)
+                copyfile(os.path.join(maps_path, _map), os.path.join(server_maps_path, _map))
 
 
 class PortAdmin(admin.ModelAdmin):

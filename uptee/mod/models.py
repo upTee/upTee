@@ -150,6 +150,8 @@ class Server(models.Model):
         for vote in self.config_votes.all():
             config.add_vote(vote.command, vote.title)
         config.write()
+        with open(os.path.join(path, 'storage.cfg'), 'w') as storage:
+            storage.write('add_path servers/{0}\nadd_path $CURRENTDIR\n'.format(self.id))
         run_server.delay(path, self)
 
     def delete(self):
@@ -221,7 +223,7 @@ class Map(models.Model):
         ordering = ['name']
 
     def get_download_url(self):
-        path = os.path.join(MEDIA_ROOT, 'users', self.server.owner.username, self.server.mod.title, 'data', 'maps')
+        path = os.path.join(MEDIA_ROOT, 'users', self.server.owner.username, self.server.mod.title, 'servers', '{0}'.format(self.server.id), 'maps')
         if os.path.exists(path):
             for _file in os.listdir(path):
                 if os.path.splitext(_file)[0] == self.name and os.path.splitext(_file)[1].lower() == '.map':
@@ -230,5 +232,6 @@ class Map(models.Model):
 
     def delete(self):
         path = self.get_download_url()
-        os.remove(path)
+        if path:
+            os.remove(path)
         super(Map, self).delete()
