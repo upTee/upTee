@@ -1,16 +1,18 @@
 {% extends "base.html" %}
 
+{% load get_option %}
+
 {% comment %}
 context variables:
     map_obj
 {% endcomment %}
 
-{% block title %}upTee - {{ map_obj.name }} - Details{% endblock title %}
+{% block title %}upTee - {{ map_obj.server|get_option:'sv_name' }} - {{ map_obj.name }} - Details{% endblock title %}
 
 {% block content %}
 
 <div class="server_detail_headline">
-    <h2>{{ map_obj.name }}</h2>
+    <h2>{{ map_obj.server|get_option:'sv_name' }} - {{ map_obj.name }}</h2>
 </div>
 <div>
     <p>Downloads: {{ map_obj.download_count }}</p>
