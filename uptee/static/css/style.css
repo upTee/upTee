@@ -27,7 +27,7 @@ body {
 /* ---ribbon--- */
 
 #ribbon {
-    background: url('../img/ribbon_alpha.png') no-repeat;
+    background: url('../img/ribbon_beta.png') no-repeat;
     height: 105px;
     width: 107px;
     position: absolute;
@@ -186,6 +186,43 @@ body {
     color: #cc7576;
 }
 /* ---END content--- */
+
+
+/* ---About Page--- */
+#about h2{
+    margin: 2px;
+    color: #009bff;
+    border-bottom: 1px solid #009bff;
+}
+
+#about p{
+    margin: 5px;
+    margin-bottom: 15px;
+}
+
+#about table{
+    border-collapse: collapse;
+    margin: 5px;
+}
+
+#about th{
+    text-align: left;
+    padding: 5px;
+    padding-right: 10px;
+    font-size: 14px;
+}
+
+#about td{
+    text-align: left;
+    padding: 5px;
+    padding-right: 10px;
+    border-top: 1px solid #009bff;
+}
+
+#about ul{
+    margin-left: 30px;
+}
+/* ---END About Page--- */
 
 
 /* ---server status sidebar entry--- */
