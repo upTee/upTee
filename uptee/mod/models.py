@@ -10,7 +10,7 @@ from django.forms import ValidationError
 from mod.tasks import run_server
 from shutil import move, rmtree
 from settings import MEDIA_ROOT
-from lib.twconfig import Config as TwCongig
+from lib.twconfig import Config as TwConfig
 from lib.twserverinfo import ServerInfo
 
 
@@ -146,7 +146,7 @@ class Server(models.Model):
         self.port.is_active = True
         self.port.save()
         path = os.path.join(MEDIA_ROOT, 'users', self.owner.username, self.mod.title)
-        config = TwCongig(os.path.join(path, 'generated.cfg'))
+        config = TwConfig(os.path.join(path, 'generated.cfg'))
         for option in self.config_options.all():
             config.add_option(option.command, option.value, option.get_widget_display())
         config.add_option('sv_port', self.port.port)
