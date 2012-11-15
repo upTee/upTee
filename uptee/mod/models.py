@@ -137,6 +137,11 @@ class Server(models.Model):
         self.save()
 
     def set_online(self):
+        ports = Port.objects.filter(server=self)
+        if ports:
+            for port in ports:
+                server = port.server
+                server.set_offline()
         self.port = Port.get_free_port()
         self.port.is_active = True
         self.port.save()
