@@ -14,6 +14,8 @@ def make_dir(path):
 
 
 class UserAdmin(AuthUserAdmin):
+    list_display = ('username', 'email', 'first_name', 'last_name', 'is_active', 'is_staff')
+
     def save_model(self, request, obj, form, change):
         if obj.is_active:
             path = os.path.join(MEDIA_ROOT, 'users', obj.username)
