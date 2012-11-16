@@ -129,4 +129,4 @@ class ServerInfo:
 
     @property
     def password(self):
-        return self.server_info['flags'] & ServerInfo.SERVERINFO_FLAG_PASSWORD if self.server_info else False
+        return True if self.server_info and self.server_info['flags'] & ServerInfo.SERVERINFO_FLAG_PASSWORD else False
