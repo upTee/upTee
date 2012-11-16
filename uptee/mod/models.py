@@ -87,7 +87,7 @@ class Server(models.Model):
 
     @property
     def info(self):
-        if self.is_online:
+        if self.is_online and self.check_online():
             s = ServerInfo()
             s.send(self.port.port)
             return s.server_info
