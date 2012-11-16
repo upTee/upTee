@@ -1,7 +1,7 @@
 import os
 import tarfile
 import zipfile
-from shutil import copyfile
+from shutil import copyfile, move, rmtree
 from django.contrib import admin
 from mod.forms import *
 from mod.models import *
@@ -26,6 +26,32 @@ class ModAdmin(admin.ModelAdmin):
             obj.delete()
     really_delete_selected.short_description = u"Delete selected mods"
 
+    def save_model(self, request, obj, form, change):
+        obj.save()
+        mod_path = os.path.join(MEDIA_ROOT, 'mods', obj.title)
+        if not change:
+            self.extract_mod(obj, mod_path)
+        else:
+            tmp_dir = os.path.join(MEDIA_ROOT, 'tmp')
+            servers_path = os.path.join(MEDIA_ROOT, 'mods', obj.title, 'servers')
+            if os.path.exists(servers_path):
+                move(servers_path, os.path.join(tmp_dir, obj.title, 'servers'))
+            if os.path.exists(mod_path):
+                rmtree(mod_path)
+            self.extract_mod(obj, mod_path)
+            if os.path.exists(os.path.join(tmp_dir, obj.title, 'servers')):
+                move(os.path.join(tmp_dir, obj.title, 'servers'), os.path.join(mod_path))
+
+    def extract_mod(self, obj, mod_path):
+        if not os.path.exists(mod_path):
+            os.makedirs(mod_path)
+            if obj.mimetype == 'application/zip':
+                with zipfile.ZipFile(obj.mod_file.path) as z:
+                    z.extractall(mod_path)
+            elif obj.mimetype == 'application/x-tar':
+                with tarfile.TarFile(obj.mod_file.path) as t:
+                    t.extractall(mod_path)
+
 
 class ServerAdmin(admin.ModelAdmin):
     list_display = ('mod', 'owner', 'is_active')
@@ -49,16 +75,7 @@ class ServerAdmin(admin.ModelAdmin):
         if not obj.is_active:
             obj.set_offline()
         if not change:
-            mod_path = os.path.join(MEDIA_ROOT, 'users', obj.owner.username, obj.mod.title)
-            if not os.path.exists(mod_path):
-                os.makedirs(mod_path)
-                if obj.mod.mimetype == 'application/zip':
-                    with zipfile.ZipFile(obj.mod.mod_file.path) as z:
-                        z.extractall(mod_path)
-                elif obj.mod.mimetype == 'application/x-tar':
-                    with tarfile.TarFile(obj.mod.mod_file.path) as t:
-                        t.extractall(mod_path)
-
+            mod_path = os.path.join(MEDIA_ROOT, 'mods', obj.mod.title)
             config_path = os.path.join(mod_path, 'config.cfg')
             config = TwCongig(config_path)
             config.read()
@@ -75,7 +92,7 @@ class ServerAdmin(admin.ModelAdmin):
             for vote in config.votes:
                 data = Vote(server=obj, command=vote['command'], title=vote['title'])
                 data.save()
-        maps_path = os.path.join(MEDIA_ROOT, 'users', obj.owner.username, obj.mod.title, 'data', 'maps')
+        maps_path = os.path.join(MEDIA_ROOT, 'mods', obj.mod.title, 'data', 'maps')
         if os.path.exists(maps_path):
             maps = [_file for _file in os.listdir(maps_path) if os.path.splitext(_file)[1].lower() == '.map']
             for _map in maps:
@@ -83,7 +100,7 @@ class ServerAdmin(admin.ModelAdmin):
                 if not map_obj:
                     map_obj = Map(server=obj, name=os.path.splitext(_map)[0])
                     map_obj.save()
-                server_maps_path = os.path.join(MEDIA_ROOT, 'users', obj.owner.username, obj.mod.title, 'servers', '{0}'.format(obj.id), 'maps')
+                server_maps_path = os.path.join(MEDIA_ROOT, 'mods', obj.mod.title, 'servers', obj.owner.username, '{0}'.format(obj.id), 'maps')
                 if not os.path.exists(server_maps_path):
                     os.makedirs(server_maps_path)
                 copyfile(os.path.join(maps_path, _map), os.path.join(server_maps_path, _map))

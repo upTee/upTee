@@ -2,14 +2,12 @@ import mimetypes
 import os
 import psutil
 import signal
-import tarfile
-import zipfile
 from django.db import models
 from django.contrib.auth.models import User
 from django.forms import ValidationError
 from mod.tasks import run_server
-from shutil import move, rmtree
 from settings import MEDIA_ROOT
+from shutil import rmtree
 from lib.twconfig import Config as TwConfig
 from lib.twserverinfo import ServerInfo
 
@@ -34,32 +32,13 @@ class Mod(models.Model):
     def save(self):
         self.mimetype = mimetypes.guess_type(self.mod_file.path)[0]
         super(Mod, self).save()
-        tmp_dir = os.path.join(MEDIA_ROOT, 'tmp')
-        servers = Server.objects.all()
-        for user in User.objects.filter(is_active=True):
-            if not servers.filter(owner=user).filter(mod=self):
-                continue
-
-            mod_path = os.path.join(MEDIA_ROOT, 'users', user.username, self.title)
-            map_path = os.path.join(mod_path, 'data', 'maps')
-            if os.path.exists(map_path):
-                move(map_path, os.path.join(tmp_dir, 'maps'))
-            if os.path.exists(mod_path):
-                rmtree(mod_path)
-            os.makedirs(mod_path)
-            if self.mimetype == 'application/zip':
-                with zipfile.ZipFile(self.mod_file.path) as z:
-                    z.extractall(mod_path)
-            elif self.mimetype == 'application/x-tar':
-                with tarfile.TarFile(self.mod_file.path) as t:
-                    t.extractall(mod_path)
-            if os.path.exists(os.path.join(tmp_dir, 'maps')):
-                rmtree(map_path)
-                move(os.path.join(tmp_dir, 'maps'), os.path.join(mod_path, 'data'))
 
     def delete(self):
         if os.path.exists(self.mod_file.path):
             os.remove(self.mod_file.path)
+        path = os.path.join(MEDIA_ROOT, 'mods', self.title)
+        if os.path.exists(path):
+            rmtree(path)
         super(Mod, self).delete()
 
 
@@ -145,7 +124,7 @@ class Server(models.Model):
         self.port = Port.get_free_port()
         self.port.is_active = True
         self.port.save()
-        path = os.path.join(MEDIA_ROOT, 'users', self.owner.username, self.mod.title)
+        path = os.path.join(MEDIA_ROOT, 'mods', self.mod.title)
         config = TwConfig(os.path.join(path, 'generated.cfg'))
         for option in self.config_options.all():
             config.add_option(option.command, option.value, option.get_widget_display())
@@ -156,13 +135,13 @@ class Server(models.Model):
             config.add_vote(vote.command, vote.title)
         config.write()
         with open(os.path.join(path, 'storage.cfg'), 'w') as storage:
-            storage.write('add_path servers/{0}\nadd_path $CURRENTDIR\n'.format(self.id))
+            storage.write('add_path servers/{0}/{1}\n'.format(self.owner.username, self.id))
         run_server.delay(path, self)
 
     def delete(self):
         self.set_offline()
-        path = os.path.join(MEDIA_ROOT, 'users', self.owner.username, self.mod.title)
-        if os.path.exists(path) and len(Server.objects.filter(owner=self.owner, mod=self.mod)) <= 1:
+        path = os.path.join(MEDIA_ROOT, 'mods', self.mod.title, 'servers', self.owner.username)
+        if os.path.exists(path):
             rmtree(path)
         super(Server, self).delete()
 
@@ -228,7 +207,7 @@ class Map(models.Model):
         ordering = ['name']
 
     def get_download_url(self):
-        path = os.path.join(MEDIA_ROOT, 'users', self.server.owner.username, self.server.mod.title, 'servers', '{0}'.format(self.server.id), 'maps')
+        path = os.path.join(MEDIA_ROOT, 'mods', self.server.mod.title, 'servers', self.server.owner.username, '{0}'.format(self.server.id), 'maps')
         if os.path.exists(path):
             for _file in os.listdir(path):
                 if os.path.splitext(_file)[0] == self.name and os.path.splitext(_file)[1].lower() == '.map':

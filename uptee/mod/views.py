@@ -55,7 +55,7 @@ def upload_map(request, server_id):
         if form.is_valid():
             map_file = form.cleaned_data['map_file']
             mod_name = server.mod.title
-            maps_path = os.path.join(MEDIA_ROOT, 'users', request.user.username, mod_name, 'servers', '{0}'.format(server_id), 'maps')
+            maps_path = os.path.join(MEDIA_ROOT, 'mods', mod_name, 'servers', request.user.username, '{0}'.format(server_id), 'maps')
             if not os.path.exists(maps_path):
                 os.makedirs(maps_path)
             with open(os.path.join(maps_path, map_file.name), 'wb') as f:
