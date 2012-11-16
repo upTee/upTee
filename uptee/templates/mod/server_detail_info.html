@@ -40,7 +40,7 @@ context variables:
             </tr>
             <tr>
               <td>Password:</td>
-              <td><span data-info="password">{% if server_info_obj %}{% if server_info_obj.server_info.password %}Yes{% else %}No{% endif %}{% else %}{% if server|get_option:'password' %}Yes{% else %}No{% endif %}{% endif %}</span></td>
+              <td><span data-info="password">{% if server_info_obj %}{% if server_info_obj.password %}Yes{% else %}No{% endif %}{% else %}{% if server|get_option:'password' %}Yes{% else %}No{% endif %}{% endif %}</span></td>
             </tr>
         {% if server.is_online %}
             <tr>

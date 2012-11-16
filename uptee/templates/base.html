@@ -131,7 +131,7 @@
                                     <p>Gametype: <span data-info="gametype">{% if server_info_obj %}{{ server_info_obj.server_info.gametype }}{% else %}{{ server|get_option:'sv_gametype' }}{% endif %}</span></p>
                                     <p>Map: <span data-info="map">{% if server_info_obj %}{{ server_info_obj.server_info.map }}{% else %}{{ server|get_option:'sv_map' }}{% endif %}</span></p>
                                     <p data-info="slots">Slots: <span data-info="slots">{% if server_info_obj %}{{ server_info_obj.server_info.clients|length }}/{{ server_info_obj.server_info.max_clients }}{% else %}{{ server|get_option:'sv_max_clients' }}{% endif %}</span></p>
-                                    <p>Password: <span data-info="password">{% if server_info_obj %}{% if server_info_obj.server_info.password %}Yes{% else %}No{% endif %}{% else %}{% if server|get_option:'password' %}Yes{% else %}No{% endif %}{% endif %}</span></p>
+                                    <p>Password: <span data-info="password">{% if server_info_obj %}{% if server_info_obj.password %}Yes{% else %}No{% endif %}{% else %}{% if server|get_option:'password' %}Yes{% else %}No{% endif %}{% endif %}</span></p>
                                     {% if server.is_online %}<p>Address: {{ request.META.HTTP_HOST|split:':'|first }}:{{ server.port }}</p>{% endif %}
                                     <p><a href="{% url server_detail server.id %}">Info/Edit</a></p>
                                     <div class="hide_mouseover">
