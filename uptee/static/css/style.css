@@ -228,7 +228,8 @@ body {
 /* ---server status sidebar entry--- */
 .server_status_headline {
     width: 168px;
-    height: 25px;
+    height: auto;
+    min-height: 25px;
     margin-top: -10px;
     margin-left: -10px;
     padding-top: 3px;
