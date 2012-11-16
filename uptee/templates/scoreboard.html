@@ -1,5 +1,5 @@
 <div class="server_detail_scoreboard" data-serverid="{{ server.id }}">
-{% if server_info and server_info.clients %}
+{% if server_info_obj and server_info_obj.server_info.clients %}
     <table>
         <tbody>
             <tr>
@@ -7,14 +7,14 @@
                 <th>Name</th>
                 <th>Clan</th>
             </tr>
-            {% for player in server_info.players %}
+            {% for player in server_info_obj.server_info.players %}
             <tr>
                 <td>{{ player.score }}</td>
                 <td>{{ player.name }}</td>
                 <td>{{ player.clan }}</td>
             </tr>
             {% endfor %}
-            {% for spectator in server_info.spectators %}
+            {% for spectator in server_info_obj.server_info.spectators %}
             <tr>
                 <td>-</td>
                 <td>{{ spectator.name }}</td>
