@@ -136,7 +136,8 @@ class Server(models.Model):
         config.write()
         with open(os.path.join(path, 'storage.cfg'), 'w') as storage:
             storage.write('add_path servers/{0}/{1}\nadd_path $CURRENTDIR\n'.format(self.owner.username, self.id))
-        run_server.delay(path, self)
+        result = run_server.delay(path, self)
+        result.get()  # wait until server is started
 
     def delete(self):
         self.set_offline()
