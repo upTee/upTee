@@ -90,7 +90,7 @@ class Server(models.Model):
         if self.is_online and self.check_online():
             s = ServerInfo()
             s.send(self.port.port)
-            return s.server_info
+            return s
         return None
 
     class Meta:

@@ -270,4 +270,7 @@ def server_info_update_ajax(request, server_id):
     if not request.is_ajax():
         raise Http404
     server = get_object_or_404(Server.objects.select_related().filter(is_active=True), pk=server_id)
-    return {'server_info': server.info}
+    server_info = server.info
+    if server_info:
+        server_info = server.info.server_info
+    return {'server_info': server_info}
