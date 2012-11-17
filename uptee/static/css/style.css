@@ -379,6 +379,7 @@ body {
 
     .mouseover_overlay .server_detail_scoreboard {
         width: auto; /* override default width for the overlay */
+        max-height: none; /* override default max-height for the overlay */
     }
 /* ---END mouse over overlay--- */
 
