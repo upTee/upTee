@@ -93,6 +93,15 @@ class Server(models.Model):
             return s
         return None
 
+    @property
+    def map_exists(self):
+        if self.is_online:  # return true if server is online
+            return True
+        map_name = self.config_options.get(command='sv_map').value
+        if self.maps.filter(name=map_name):
+            return True
+        return False
+
     class Meta:
         ordering = ['owner', 'mod', 'port']
 

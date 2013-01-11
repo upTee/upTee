@@ -151,6 +151,14 @@ body {
 /* ---END notification--- */
 
 
+/* ---config error--- */
+.config_error {
+    color: orangered;
+    font-weight: bold;
+}
+/* ---END config error--- */
+
+
 /* ---siedbar--- */
 #sidebar_box {
     width: 200px;

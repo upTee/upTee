@@ -31,8 +31,8 @@ context variables:
               <td><span data-info="gametype">{% if server_info_obj %}{{ server_info_obj.server_info.gametype }}{% else %}{{ server|get_option:'sv_gametype' }}{% endif %}</span></td>
             </tr>
             <tr>
-              <td>Maps:</td>
-              <td><span data-info="map">{% if server_info_obj %}{{ server_info_obj.server_info.map }}{% else %}{{ server|get_option:'sv_map' }}{% endif %}</span></td>
+              <td>Map:</td>
+              <td><span data-info="map">{% if server_info_obj %}{{ server_info_obj.server_info.map }}{% else %}{{ server|get_option:'sv_map' }}{% if not server.map_exists %} (<span class="config_error">does not exist!</span>){% endif %}{% endif %}</span></td>
             </tr>
             <tr>
               <td>Slots:</td>
@@ -69,7 +69,7 @@ context variables:
 {% endif %}
 <div class="clear"></div>
 
-{% if user.is_authenticated %}{% if user == server.owner or user.is_staff %}
+{% if user.is_authenticated and server.map_exists %}{% if user == server.owner or user.is_staff %}
 
 <form class="only_button" method="post" action="{% url start_stop_server server.id %}?next={{ request.path }}">
     <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">

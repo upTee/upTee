@@ -141,12 +141,16 @@ def start_stop_server(request, server_id):
     if not user.is_staff and server.owner != user:
         raise Http404
     next = request.REQUEST.get('next', reverse('user_server_list', kwargs={'username': server.owner.username}))
+    map_exists = True
     server.check_online()
     if server.is_online:
         server.set_offline()
     else:
-        server.set_online()
-    return render_to_response('mod/state_changed.html', {'next': next}, context_instance=RequestContext(request))
+        if server.map_exists:
+            server.set_online()
+        else:
+            map_exists = False
+    return render_to_response('mod/state_changed.html', {'next': next, 'map_exists': map_exists}, context_instance=RequestContext(request))
 
 
 @login_required
