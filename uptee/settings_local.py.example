@@ -35,18 +35,18 @@ TIME_ZONE
 
 Sets the used time zone.
 
-Default: 'Europe/Berlin'
+Default: 'America/Chicago'
 """
-#TIME_ZONE = 'Europe/Berlin'
+#TIME_ZONE = 'America/Chicago'
 
 """
 LANGUAGE_CODE
 
 Sets the language code.
 
-Default: 'de-de'
+Default: 'en-us'
 """
-#LANGUAGE_CODE = 'de-de'
+#LANGUAGE_CODE = 'en-us'
 
 """
 ADMINS
