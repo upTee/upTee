@@ -30,6 +30,7 @@ Links
 
 Help
 -----
+* __[Mod format](https://github.com/upTee/upTee/blob/master/docs/mod_format.md)__
 * __[Config format](https://github.com/upTee/upTee/blob/master/docs/config_format.md)__
 
 ### Contact
