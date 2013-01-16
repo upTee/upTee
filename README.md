@@ -30,7 +30,7 @@ Links
 
 Help
 -----
-* __[Config format](https://github.com/upTee/upTee/blob/master/docs/config_format.md)
+* __[Config format](https://github.com/upTee/upTee/blob/master/docs/config_format.md)__
 
 ### Contact
 * __IRC__ - [Webchat](http://webchat.quakenet.org/?channels=teeworlds-dev)<br>___irc://irc.quakenet.org/#teeworlds-dev___<br>#teeworlds-dev at irc.quakenet.org
