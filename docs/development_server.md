@@ -5,6 +5,7 @@ Setting up a development server is important if you want to help with the develo
 Installation
 ------------
 ###Install all requirements    
+Be sure to install all requirements shown in the [README](https://github.com/upTee/upTee/blob/master/README.md).    
 ```
 pip install -r requirements.txt
 ```
