@@ -1,6 +1,6 @@
 Config format
 =============
-Every mod uploaded to uptee uses a default config. In the config is defined which server commands and tunings are allowed to change and how they will look like. Also it defines the default settings and votes for the mod.
+Every mod uploaded to uptee uses a default config. In the config is defined which server commands and tunings are allowed to change and how they will look like. Also it defines the default settings and votes for the mod.    
 The user cannot add or remove commands or tunings, only it's values.
 
 Installation
@@ -9,9 +9,9 @@ The default config is part of every mod and is required. The config __must__ hav
 
 Widgets
 -------
-The widgets define how the config option is shown on the website. The widget is written after each config option.
-Unknown widget or missing widget will be automatically recognized as _text_ widget.
-Every widget defintion starts with __#widget:__
+The widgets define how the config option is shown on the website. The widget is written after each config option.    
+Unknown widget or missing widget will be automatically recognized as _text_ widget.    
+Every widget defintion starts with __#widget:__    
 The following widgets are available:
 
 ###[text] - a string value. Used for strings and integer options. (default widget)    
