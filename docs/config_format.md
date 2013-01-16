@@ -5,7 +5,7 @@ The user cannot add or remove commands or tunings, only it's values.
 
 Installation
 ------------
-The default config is part of every mod and is required. The config __must___ have the filename _config.cfg_ and is located in the root folder of each mod.
+The default config is part of every mod and is required. The config __must__ have the filename _config.cfg_ and is located in the root folder of each mod.
 
 Widgets
 -------
