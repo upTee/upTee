@@ -32,6 +32,7 @@ Links
 Help
 -----
 * __[Setting up a development server](https://github.com/upTee/upTee/blob/master/docs/development_server.md)__
+* __[Setting up a production server](https://github.com/upTee/upTee/blob/master/docs/production_server.md)__
 * __[Mod format](https://github.com/upTee/upTee/blob/master/docs/mod_format.md)__
 * __[Config format](https://github.com/upTee/upTee/blob/master/docs/config_format.md)__
 
