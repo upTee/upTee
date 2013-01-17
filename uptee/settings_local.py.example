@@ -150,10 +150,10 @@ CACHES
 Controles if a cache should be used and which.
 """
 #CACHES = {
-#    'default' : dict(
-#        BACKEND = 'johnny.backends.memcached.MemcachedCache',  # requires johnny-cache and memcache
-#        LOCATION = ['127.0.0.1:11211'],
-#        JOHNNY_CACHE = True,
+#    'default': dict(
+#        BACKEND='johnny.backends.memcached.MemcachedCache',  # requires johnny-cache and memcache
+#        LOCATION=['127.0.0.1:11211'],
+#        JOHNNY_CACHE=True,
 #    )
 #}
 

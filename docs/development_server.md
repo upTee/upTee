@@ -15,7 +15,8 @@ Repeat the command until the installation finishes successfully!
 
 ###Set up the project
 To set up the project copy the _settings_local.py.example_ and rename the new file to _settings_local.py_.    
-Now edit the settings how u like. You can find an example for a development server [here](https://github.com/upTee/upTee/blob/master/docs/settings_local.py).
+Now edit the settings how u like. You can find an example for a development server [here](https://github.com/upTee/upTee/blob/master/docs/settings_devlopment/settings_local.py).    
+Copy _browscap.csv.example_ and rename the new file to _browscap.csv_.
 
 ###Install the database
 Switch into the uptee folder and enter the following commands:    
