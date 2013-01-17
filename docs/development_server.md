@@ -30,7 +30,7 @@ python manage.py migrate
 ```
 
 ###Set up the port map
-the port map is a list of available ports for the teeworlds servers. Be sure that the ports are not blocked by a firewall.    
+The port map is a list of available ports for the teeworlds servers. Be sure that the ports are not blocked by a firewall.    
 ```
 python manage.py create_portmap 8300 8320
 ```
