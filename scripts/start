@@ -1,0 +1,18 @@
+#!/bin/bash
+# script to start the uptee website
+UPTEEDIR=/path/to/virtualenv
+
+cd $UPTEEDIR
+
+#switch user to uptee
+. bin/activate
+
+cd web/uptee
+
+python manage.py celeryd -E -l info & >/dev/null 2>/dev/null
+python manage.py celerybeat -f $UPTEEDIR/var/log/celerybeat.log & >/dev/null 2>/dev/null
+python manage.py celerycam & >/dev/null 2>/dev/null
+
+cd $UPTEEDIR
+
+bin/uwsgi --socket web/sock/uwsgi.sock --daemonize var/log/uwsgi.log --post-buffering 1 --chmod-socket --module wsgi --enable-threads --pythonpath $UPTEEDIR/web/uptee/ & >/dev/null 2>/dev/null

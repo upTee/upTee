@@ -1,0 +1,70 @@
+#!/bin/bash
+# script to restart the teerace website
+UPTEEDIR=/path/to/virtualenv
+RUNAS=uptee
+PS="uptee"
+PIDNAME="uptee"				#lets you do $PS-slave
+PIDFILE=$PIDNAME.pid                    #pid file
+PIDSPATH=/var/run
+DAEMON=$UPTEEDIR/start
+
+isRunning() {
+	if [ -f $PIDSPATH/$PIDFILE ]; then
+		return 1
+	else
+		return 0
+	fi
+}
+
+start() {
+	isRunning
+	isAlive=$?
+	if [ ${isAlive} -gt 0 ]; then
+		echo "uptee already running"
+	else
+		/etc/init.d/memcached restart
+		su $RUNAS -c $DAEMON 2>/dev/null >/dev/null
+		echo "running ...do not touch this file!" > $PIDSPATH/$PIDFILE
+		echo "uptee started"
+	fi
+}
+
+stop() {
+	isRunning
+	isAlive=$?
+	if [ ${isAlive} -gt 0 ]; then
+		PID=`ps uax | awk '/uwsgi/ && !/awk/ {print $2}'`
+		kill $PID
+		Num=`ps uax | awk '/celery/ && !/awk/' | grep -wc "python"`
+		while [ $Num -gt 0 ]; do
+			PID=`ps uax | awk '/celery/ && !/awk/ {print $2}' | head -1`
+			kill -9 $PID
+			Num=`ps uax | awk '/celery/ && !/awk/' | grep -wc "python"`
+		done
+		rm $PIDSPATH/$PIDFILE
+		echo "uptee stopped"
+	else
+		echo "uptee is not running"
+	fi
+}
+
+case "$1" in
+	start)
+		start
+		;;
+	stop)
+		stop
+		;;
+	restart)
+		stop
+		sleep 1
+		start
+		;;
+	*)
+		echo "Usage: ./uptee {start|stop|restart}"
+		exit 1
+		;;
+esac
+ 
+exit 0
+
