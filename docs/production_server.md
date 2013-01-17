@@ -159,8 +159,8 @@ mkdir -p $VIRTUAL_ENV/var/log
 
   2\. Get the scripts    
 
-  Download the [start](https://github.com/upTee/upTee/blob/master/scripts/start) script and copy into the virtualenv directory.
-  Download the [uptee](https://github.com/upTee/upTee/blob/master/scripts/uptee) script and copy into the virtualenv directory.
+  Download the [start](https://github.com/upTee/upTee/blob/master/scripts/start) script and copy into the virtualenv directory.    
+  Download the [uptee](https://github.com/upTee/upTee/blob/master/scripts/uptee) script and copy into the virtualenv directory.    
   Download the [uptee init.d](https://github.com/upTee/upTee/blob/master/scripts/init.d/uptee) script and copy into _/etc/init.d/_.
 
   3\. Edit the scripts    
