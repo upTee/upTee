@@ -27,6 +27,7 @@ Links
 * __[Github repository](https://github.com/upTee/upTee/)__
 * __[Issues](https://github.com/upTee/upTee/issues)__
 * __[License](https://github.com/upTee/upTee/blob/master/LICENSE)__
+* __[Contributors](https://github.com/upTee/upTee/blob/master/CONTRIBUTORS.md)__
 
 Help
 -----
