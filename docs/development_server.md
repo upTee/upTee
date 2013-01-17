@@ -15,7 +15,7 @@ In windows download packages which fails from [here](http://www.lfd.uci.edu/~goh
 Repeat the command until the installation finishes successfully!
 
 ###Set up the project
-Switch into the uptee directory.    
+Switch into the _uptee_ directory.    
 To set up the project copy the _settings_local.py.example_ and rename the new file to _settings_local.py_.    
 Now edit the settings how u like. You can find an example for a development server [here](https://github.com/upTee/upTee/blob/master/docs/settings_devlopment/settings_local.py).    
 Copy _browscap.csv.example_ and rename the new file to _browscap.csv_.
