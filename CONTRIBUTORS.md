@@ -8,12 +8,12 @@ Original Authors
 ----------------
 ### Owners
 
-* Sascha Weichel (SushiTee)
-* David Gruber (Fisico)
+* Sascha "SushiTee" Weichel
+* David "Fisico" Gruber
 
 ### Collaborators
 
-* Cedric Dipp (Zatline)
+* Cedric "Zatline" Dipp
 
 Long-term Contributions
 -----------------------
