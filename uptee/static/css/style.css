@@ -293,15 +293,24 @@ body {
 
 
 /* ---server detail page--- */
-.server_detail_headline h2 {
-    margin: 2px;
-    display: inline;
-    color: #009bff;
-}
-
 .server_detail_headline {
     color: black;
 }
+
+    .server_detail_headline.on {
+        background: url('../img/green_status.png') no-repeat 0 5px;
+    }
+
+    .server_detail_headline.off {
+        background: url('../img/red_status.png') no-repeat 0 5px;
+    }
+
+    .server_detail_headline h2 {
+        margin: 2px;
+        padding-left: 17px;
+        display: inline;
+        color: #009bff;
+    }
 
 .server_detail_info {
     width: 243px;
