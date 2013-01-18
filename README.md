@@ -3,7 +3,7 @@ upTee - Readme
 =============================
 upTee is an open source software aiming to simplify all the work for hosing a [teeworlds](https://teeworlds.com) game server by providing a simple web interface.    
 The software is written with [django](https://www.djangoproject.com/) and uses many other python modules.    
-The project was founded by Sascha (SushiTee) Weichel to speed up the map development of [teeworlds](https://teeworlds.com). He convinced David (Fisico) Gruber to make the website beautiful.
+The project was founded by Sascha "SushiTee" Weichel to speed up the map development of [teeworlds](https://teeworlds.com). He convinced David "Fisico" Gruber to make the website beautiful.
 
 General requirements
 --------------------
