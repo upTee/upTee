@@ -64,6 +64,7 @@ $ pip install -r requirements.txt
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If an error appears install the missing packages. The error messages are obvious.    
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In windows download packages which fails from [here](http://www.lfd.uci.edu/~gohlke/pythonlibs/).    
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Repeat the command until the installation finishes successfully!    
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If there are still problems with some modules have a look at the [Troubleshooting section](https://github.com/upTee/upTee/blob/master/docs/production_server.md#Troubleshooting).    
 
   &nbsp;&nbsp;3\. Set up the website    
 
@@ -195,3 +196,15 @@ To update uptee simply update the git repository.
 $ git pull origin master
 ```
 After updating the website needs to be restarted to make the changes take effect!
+
+Troubleshooting
+---------------
+###error: Unable to find vcvarsall.bat
+Some modules need a C/C++ compiler to build parts of the module for performance reasons.    
+In windows it may happen that it will not find the compiler or it might be even not installed.    
+If this is the case just download module from [here](http://www.lfd.uci.edu/~gohlke/pythonlibs/) and install it. After the installation you may still get the same error.    
+Just comment out the concerned module in the _requirements.txt_.    
+Example:    
+```
+# PIL>=1.1.7
+```
