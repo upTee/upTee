@@ -64,7 +64,7 @@ $ pip install -r requirements.txt
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If an error appears install the missing packages. The error messages are obvious.    
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In windows download packages which fails from [here](http://www.lfd.uci.edu/~gohlke/pythonlibs/).    
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Repeat the command until the installation finishes successfully!    
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If there are still problems with some modules have a look at the [Troubleshooting section](https://github.com/upTee/upTee/blob/master/docs/development_server.md#troubleshooting).    
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If there are still problems with some modules have a look at the [Troubleshooting section](https://github.com/upTee/upTee/blob/master/docs/production_server.md#troubleshooting).    
 
   &nbsp;&nbsp;3\. Set up the website    
 
