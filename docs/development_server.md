@@ -6,6 +6,10 @@ Installation
 ------------
 ###Install all requirements    
 Be sure to install all requirements shown in the [README](https://github.com/upTee/upTee/blob/master/README.md).    
+In case the command _pip_ is not available after installing _setuptools_ run the following command:    
+```shell
+$ easy_install pip
+```
 Switch into the uptee directory and run the following command:    
 ```shell
 $ pip install -r requirements.txt

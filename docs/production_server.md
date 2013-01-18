@@ -7,7 +7,11 @@ Installation
 ------------
 ###Install all requirements
 Be sure to install all requirements shown in the [README](https://github.com/upTee/upTee/blob/master/README.md).    
-__Do not install uWSGI yet!__
+__Do not install uWSGI yet!__    
+In case the command _pip_ is not available after installing _setuptools_ run the following command:    
+```shell
+$ easy_install pip
+```
 
   &nbsp;&nbsp;1\. Create a new user and be sure to make him the owner of the virtualenv which will be created in the next step.    
 
