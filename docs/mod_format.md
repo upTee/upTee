@@ -1,11 +1,11 @@
 Mod format
 ==========
-Every mod has a special format which is required for upTee to recognize the mods and set it's default settings.    
+Every mod has a special format which is required for upTee to recognize the mods and set its default settings.    
 Mod files are packed in _.tar_ or _.zip_ files.
 
 Installation
 ------------
-The complete mod file just gets uploaded in the admin panel of upTee. The website will check if it's content is valid.
+The complete mod file just gets uploaded in the admin panel of upTee. The website will check if its content is valid.
 
 File structure
 --------------
