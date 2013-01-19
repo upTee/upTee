@@ -118,6 +118,8 @@ class ServerInfo:
             clients.append(client)
             if client['is_player']:
                 players.append(client)
+        # sort players by score
+        players = sorted(players, key=lambda k: k['score'], reverse=True)
         self.server_info['clients'] = clients
         self.server_info['players'] = players
 
@@ -125,6 +127,8 @@ class ServerInfo:
         for client in clients:
             if client not in players:
                 spectators.append(client)
+        # sort specs by name
+        spectators = sorted(spectators, key=lambda k: k['name'])
         self.server_info['spectators'] = spectators
 
     @property
