@@ -23,22 +23,20 @@ function server_info_update() {
                         if(scoreboard.length && server_info.clients.length) {
                             scoreboard.each(function(j) {
                                 $(this).html('<table><tbody><tr><th>Score</th><th>Name</th><th>Clan</th></tr></tbody></table>');
-                                var table;
+                                var table = $(this).find("tbody tr:last");
+                                var data = "";
                                 var k;
                                 if(server_info.players.length) {
-                                    table = $(this).find("tbody tr:last");
                                     for(k = 0; k < server_info.players.length; k++) {
-                                        data = "<tr><td>" + server_info.players[k].score + "</td><td>" + server_info.players[k].name + "</td><td>" + server_info.players[k].clan + "</td></tr>";
-                                        table.after(data);
+                                        data += "<tr><td>" + server_info.players[k].score + "</td><td>" + server_info.players[k].name + "</td><td>" + server_info.players[k].clan + "</td></tr>";
                                     }
                                 }
                                 if(server_info.spectators.length) {
-                                    table = $(this).find("tbody tr:last");
                                     for(k = 0; k < server_info.spectators.length; k++) {
-                                        data = "<tr><td>-</td><td>" + server_info.spectators[k].name + "</td><td>" + server_info.spectators[k].clan + "</td></tr>";
-                                        table.after(data);
+                                        data += "<tr><td>-</td><td>" + server_info.spectators[k].name + "</td><td>" + server_info.spectators[k].clan + "</td></tr>";
                                     }
                                 }
+                                table.after(data);
                             });
                         }
                         else if(scoreboard.length) {
