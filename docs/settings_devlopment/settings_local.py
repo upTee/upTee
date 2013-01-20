@@ -102,6 +102,7 @@ You might want to add some debug stuff here.
 """
 INSTALLED_APPS = INSTALLED_APPS + (
     'debug_toolbar',
+    'kombu.transport.django',  # needed because the django databse is used as celery broker
 )
 
 DEBUG_TOOLBAR_PANELS = (
@@ -123,7 +124,10 @@ DEBUG_TOOLBAR_CONFIG = {
 
 INTERNAL_IPS = ('127.0.0.1')
 
+# Broker URL for celery. Using the django databse here
+BROKER_URL = 'django://'
 
+# Email settings
 EMAIL_HOST = 'smtp.example.org'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'johndoeuptee'
@@ -132,13 +136,7 @@ EMAIL_USE_TLS = False
 SERVER_EMAIL = 'johndoeuptee@example.org'
 EMAIL_SUBJECT_PREFIX = '[upTee]: '
 
+# server executable
 SERVER_EXEC = 'teeworlds_srv'
-
-BROKER_HOST = "localhost"
-BROKER_PORT = 5672
-BROKER_USER = "guest"
-BROKER_PASSWORD = "guest"
-BROKER_VHOST = "/"
-CELERY_RESULT_BACKEND = "amqp"
 
 PYBROWSCAP_INITIALIZE = True

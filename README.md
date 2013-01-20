@@ -9,13 +9,13 @@ General requirements
 --------------------
 * [python 2.7](http://www.python.org/) - a programming language that you should dive into
 * [setuptools](http://pypi.python.org/pypi/setuptools) - Python module to install packages <sup>[1]</sup>
-* [RabbitMQ](http://www.rabbitmq.com/) - AMQP messaging system, backend for celery <sup>[2]</sup>
 
 Production requirements
 -----------------------
 * [nginx](http://nginx.org/) - high-performance HTTP server <sup>[2]</sup>
 * [uwsgi](http://projects.unbit.it/uwsgi/) - application container server <sup>[2]</sup>
 * [PostgreSQL](http://www.postgresql.org/) - The world's most advanced open source database <sup>[2]</sup>
+* [RabbitMQ](http://www.rabbitmq.com/) - AMQP messaging system, backend for celery <sup>[2]</sup>
 
 Optional requirements
 ---------------------
