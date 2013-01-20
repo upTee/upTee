@@ -2,9 +2,9 @@ from django.conf.urls.defaults import *
 
 urlpatterns = patterns('mod.views',
     url(r'^servers/$', 'server_list', name='server_list'),
-    url(r'^servers/type:(?P<server_type>[\w-]+)$', 'server_list', name='server_list__type'),
+    url(r'^servers/type:(?P<server_type>online|offline)$', 'server_list', name='server_list__type'),
     url(r'^servers/(?P<username>[\w.@+-]+)/$', 'server_list', name='user_server_list'),
-    url(r'^servers/(?P<username>[\w.@+-]+)/type:(?P<server_type>[\w-]+)$', 'server_list', name='user_server_list__type'),
+    url(r'^servers/(?P<username>[\w.@+-]+)/type:(?P<server_type>online|offline)$', 'server_list', name='user_server_list__type'),
     url(r'^server/(?P<server_id>\d+)/$', 'server_detail', name='server_detail'),
     url(r'^server/(?P<server_id>\d+)/editsettings/$', 'server_edit', name='server_edit'),
     url(r'^server/(?P<server_id>\d+)/uploadmap/$', 'upload_map', name='upload_map'),

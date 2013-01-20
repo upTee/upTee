@@ -14,21 +14,18 @@ from mod.models import Map, Option, Server, Vote
 from settings import MEDIA_ROOT
 
 
-def server_list(request, username=None, server_type=None):
-    if server_type:
-        if server_type not in ['online', 'offline']:
-            raise Http404
+def server_list(request, username=None, server_status=None):
     if username:
         user = get_object_or_404(User.objects.filter(is_active=True), username=username)
         servers = Server.objects.filter(is_active=True, owner=user)
     else:
         servers = Server.objects.filter(is_active=True)
-    for server in servers:
-        server.check_online()
-    if server_type:
-        online = True if server_type == 'online' else False
+    if server_status:
+        online = True if server_status == 'online' else False
         servers = (server for server in servers if server.is_online == online)
-    return render_to_response('mod/servers.html', {'server_list': servers, 'username': username, 'server_type': server_type}, context_instance=RequestContext(request))
+    return render(request, 'mod/servers.html', {'server_list': servers,
+                                                    'username': username,
+                                                    'server_type': server_status})
 
 
 def server_detail(request, server_id):
