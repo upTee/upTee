@@ -102,7 +102,7 @@ mkdir $VIRTUAL_ENV/sock
 ```
 # uWSGI serving Django.
 upstream django {
-  # Distribute requests to servers based on client IP. This keeps load
+	# Distribute requests to servers based on client IP. This keeps load
 	# balancing fair but consistent per-client. In this instance we're
 	# only using one uWGSI worker anyway.
 	ip_hash;
@@ -119,19 +119,19 @@ server {
 		alias /path/to/virtualenv/lib/python2.7/site-packages/django/contrib/admin/static/admin/;
 	}
 
-	# Your project's static media.
+	# Your project's media directory.
 	location /media/ {
 		alias /path/to/virtualenv/web/uptee/media/;
 	}
 
-	# Your project's static media.
+	# Your project's static directory.
 	location /static/ {
 		alias /path/to/virtualenv/web/uptee/static/;
 	}
 
 	# Finally, send all non-media requests to the Django server.
 	location / {
-    # touch /path/to/virtualenv/web/downtime to set the page down
+		# touch /path/to/virtualenv/web/downtime to set the page down
 		if (-f /path/to/virtualenv/web/downtime) {
 			return 503;
 		}
