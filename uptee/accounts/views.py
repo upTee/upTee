@@ -12,6 +12,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
 from accounts.forms import *
+from accounts.models import get_template
 from settings import ADMINS, DEBUG
 
 
@@ -47,7 +48,7 @@ def settings(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Your profile was saved successfully")
-    return render_to_response('accounts/settings.html', {
+    return render_to_response('{0}/accounts/settings.html'.format(get_template(request)), {
             'form': form,
         }, context_instance=RequestContext(request))
 
@@ -60,7 +61,7 @@ def change_password(request):
         if form.is_valid():
             form.save()
             messages.success(request, u'Password changed successfully.')
-    return render_to_response('accounts/password_change.html', {
+    return render_to_response('{0}/accounts/password_change.html'.format(get_template(request)), {
             'form': form,
         }, context_instance=RequestContext(request))
 
@@ -87,7 +88,7 @@ def register(request):
     challenge, response = captcha_settings.get_challenge()()
     store = CaptchaStore.objects.create(challenge=challenge, response=response)
     key = store.hashkey
-    return render_to_response('accounts/register.html', {
+    return render_to_response('{0}/accounts/register.html'.format(get_template(request)), {
             'captcha': key,
             'register_form': form,
         }, context_instance=RequestContext(request))

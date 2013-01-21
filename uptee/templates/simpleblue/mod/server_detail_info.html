@@ -1,4 +1,4 @@
-{% extends "mod/server_detail_base.html" %}
+{% extends "simpleblue/mod/server_detail_base.html" %}
 
 {% load get_option %}{% load split %}
 
@@ -53,7 +53,7 @@ context variables:
         {% if server.is_online %}</div>{% endif %}
 </div>
 
-{% include "scoreboard.html" %}
+{% include "simpleblue/scoreboard.html" %}
 
 {% endwith %}
 

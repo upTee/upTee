@@ -133,6 +133,12 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_DIR, 'templates'),
 )
 
+AVAILABLE_TEMPLATES = (
+    ('simpleblue', 'SimpleBlue'),
+)
+
+DEFAULT_TEMPLATE = 'simpleblue'
+
 INSTALLED_APPS = (
     'admin_tools',
     'admin_tools.theming',
@@ -157,6 +163,9 @@ INSTALLED_APPS = (
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login/'
 LOGOUT_URL = '/logout/'
+
+# user profile
+AUTH_PROFILE_MODULE = 'accounts.UserProfile'
 
 # teeworlds executable
 SERVER_EXEC = 'teeworlds_srv'

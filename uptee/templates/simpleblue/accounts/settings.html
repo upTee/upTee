@@ -1,16 +1,24 @@
-{% extends "base.html" %}
+{% extends "simpleblue/base.html" %}
 
 {% comment %}
 context variables:
     form
 {% endcomment %}
 
-{% block title %}upTee - Change password{% endblock title %}
+{% block title %}upTee - Settings{% endblock title %}
+
+{% block link_list %}
+
+<div id="link_list">
+    <a href="{% url change_password %}">Change password</a>
+</div>
+
+{% endblock link_list %}
 
 {% block content %}
 
 <div class="head">
-    <h2>Change Password</h2>
+    <h2>User settings</h2>
 </div>
 <div class="body">
     <form method="post" action="{{ request.path }}">
@@ -23,16 +31,5 @@ context variables:
         <input class="button" type="submit" value="Submit">
     </form>
 </div>
-{% if messages %}
-    <div class="foot">
-        <div class="left">
-            <h3>
-                {% for message in messages %}
-                    {{ message }}
-                {% endfor %}
-            </h3>
-        </div>
-    </div>
-{% endif %}
 
 {% endblock %}

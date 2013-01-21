@@ -176,6 +176,22 @@ Uncomment the following if TEMPLATE_CACHING is True.
 #    )
 
 """
+AVAILABLE_TEMPLATES
+
+Available templates. ('directory_name', 'template_name')
+"""
+#AVAILABLE_TEMPLATES = AVAILABLE_TEMPLATES + (
+#    ('yourtemplate', 'YourTemplate'),  # add your templates here
+#)
+
+"""
+DEFAULT_TEMPLATE
+
+Default: 'simpleblue'
+"""
+#DEFAULT_TEMPLATE = 'simpleblue'
+
+"""
 INSTALLED_APPS
 
 You might want to add some of your own apps.

@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "simpleblue/base.html" %}
 
 {% load possessive %}{% load split %}{% load get_option %}
 
@@ -51,7 +51,7 @@ context variables:
                 <p><a href="{% url server_detail server.id %}">{% if server.owner == request.user %}Info/Edit{% else %}Info{% endif %}</a></p>
                 <div class="hide_mouseover">
                     <div class="mouseover_overlay">
-                        {% include "scoreboard.html" %}
+                        {% include "simpleblue/scoreboard.html" %}
                     </div>
                 </div>
             {% endwith %}

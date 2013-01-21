@@ -1,15 +1,34 @@
+import os
 from django.contrib.auth.models import User
 from django import forms
 from fields import Html5CaptchaField
 from html5input import *
+from settings import AVAILABLE_TEMPLATES, TEMPLATE_DIRS
 
 
 class SettingsUserForm(forms.ModelForm):
     email = forms.EmailField(required=True, widget=Html5EmailInput(attrs={'required': None}))
+    template = forms.ChoiceField(choices=AVAILABLE_TEMPLATES)
 
     class Meta:
         model = User
         fields = ('email',)
+
+    def clean_template(self):
+        template = self.cleaned_data['template']
+        found = False
+        for path in TEMPLATE_DIRS:
+            if os.path.exists(os.path.join(path, template)):
+                found = True
+                break
+        if not found:
+            raise forms.ValidationError('Template does not exist. Please contact an admin.')
+        return template
+
+    def save(self):
+        self.instance.profile.template = self.cleaned_data['template']
+        self.instance.profile.save()
+        super(SettingsUserForm, self).save()
 
 
 class PasswordChangeForm(forms.Form):

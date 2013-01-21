@@ -1,8 +1,6 @@
 from django.conf.urls.defaults import *
-from django.views.generic.simple import direct_to_template
 
 urlpatterns = patterns('mod.views',
-    url(r'^$', direct_to_template, {'template': 'base.html'}, name='home'),
     url(r'^servers/$', 'server_list', name='server_list'),
     url(r'^servers/type:(?P<server_type>[\w-]+)$', 'server_list', name='server_list__type'),
     url(r'^servers/(?P<username>[\w.@+-]+)/$', 'server_list', name='user_server_list'),
