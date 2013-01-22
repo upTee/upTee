@@ -13,8 +13,8 @@ def about(request):
 
 
 def custom_page_not_found(request):
-    return page_not_found(request, template_name='{0}/404.html')
+    return page_not_found(request, template_name='{0}/404.html'.format(get_template(request)))
 
 
 def custom_permission_denied(request):
-    return permission_denied(request, template_name='{0}/403.html')
+    return permission_denied(request, template_name='{0}/403.html'.format(get_template(request)))
