@@ -16,3 +16,7 @@ urlpatterns = patterns('',
 )
 
 urlpatterns += staticfiles_urlpatterns()
+
+# custom views for error pages
+handler403 = 'views.custom_permission_denied'
+handler404 = 'views.custom_page_not_found'
