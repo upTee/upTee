@@ -181,6 +181,23 @@ textarea {
         border: solid 1px #009bff;
     }
 
+
+select {
+    background: #dcdcdc;
+    width: 212px;
+    padding: 5px;
+    border: solid 1px #969696;
+    -webkit-transition: all .5s;
+    -ms-transition: all .5s;
+    transition: all .5s;
+}
+
+    select:focus {
+        background-color: #fff;
+        width: 212px;
+        border: solid 1px #009bff;
+    }
+
 /* start/stop button in server info */
 
 form.only_button {
