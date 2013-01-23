@@ -71,12 +71,21 @@ class ServerAdmin(admin.ModelAdmin):
     really_delete_selected.short_description = u"Delete selected servers"
 
     def save_model(self, request, obj, form, change):
+        old_obj = Server.objects.get(pk=obj.id)
         obj.save()
         if not obj.is_active:
             obj.set_offline()
+        default_settings = False
         if not change:
-            mod_path = os.path.join(MEDIA_ROOT, 'mods', obj.mod.title)
-            config_path = os.path.join(mod_path, 'config.cfg')
+            default_settings = True
+        else:
+            # check if server mod changed and reset config
+            if old_obj.mod != obj.mod:
+                default_settings = True
+                for option in Option.objects.filter(server=obj):
+                    option.delete()
+        if default_settings:
+            config_path = os.path.join(MEDIA_ROOT, 'mods', obj.mod.title, 'config.cfg')
             config = TwCongig(config_path)
             config.read()
             for key, value in config.options.iteritems():
