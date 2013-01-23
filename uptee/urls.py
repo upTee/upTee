@@ -1,7 +1,7 @@
 from django.conf.urls.defaults import *
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from views import home
+import settings
 
 admin.autodiscover()
 
@@ -17,6 +17,14 @@ urlpatterns = patterns('',
 
 urlpatterns += staticfiles_urlpatterns()
 
+if settings.DEBUG:
+    urlpatterns += patterns('views',
+        (r'^403/$', 'custom_permission_denied'),
+        (r'^404/$', 'custom_page_not_found'),
+        (r'^500/$', 'custom_server_error'),
+    )
+
 # custom views for error pages
 handler403 = 'views.custom_permission_denied'
 handler404 = 'views.custom_page_not_found'
+handler500 = 'views.custom_server_error'
