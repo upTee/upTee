@@ -1,0 +1,32 @@
+{% extends "simpleblue/base.html" %}
+
+{% comment %}
+context variables:
+    form
+    admins_available
+{% endcomment %}
+
+{% block title %}upTee - Contact{% endblock title %}
+
+{% block content %}
+
+<div class="head">
+    <h2>Contact</h2>
+</div>
+<div class="body">
+    {% if not admins_available %}
+        This page doesn't have any admins. Please contact an admin. xDDDDDDD
+    {% else %}
+    <form method="post" action="{{ request.path }}">
+        <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
+        <table class="form_table">
+            <tbody>
+                {{ form.as_table }}
+            </tbody>
+        </table>
+        <input class="button" type="submit" value="Submit">
+    </form>
+    {% endif %}
+</div>
+
+{% endblock %}

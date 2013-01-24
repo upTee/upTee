@@ -156,6 +156,7 @@ INSTALLED_APPS = (
     'djcelery',
     'accounts',
     'mod',
+    'messaging',
     'captcha',
     'south',
 )
