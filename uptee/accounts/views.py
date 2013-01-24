@@ -95,7 +95,7 @@ def register(request):
 
 
 def users(request):
-    users = User.objects.select_related().filter(is_active=True)
+    users = User.objects.select_related().filter(is_active=True).order_by("username")
     return render_to_response('{0}/accounts/users.html'.format(get_template(request)), {
             'users': users,
         }, context_instance=RequestContext(request))
