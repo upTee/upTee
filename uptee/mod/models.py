@@ -16,6 +16,10 @@ class FreePortManager(models.Manager):
     def get_query_set(self):
         return super(FreePortManager, self).get_query_set().filter(is_active=False)
 
+class ActiveServerManager(models.Manager):
+    def get_query_set(self):
+        return super(ActiveServerManager, self).get_query_set().filter(is_active=True)
+
 
 class Mod(models.Model):
     mod_file = models.FileField(upload_to='uploads', help_text='Should be .zip or .tar')
@@ -78,6 +82,9 @@ class Server(models.Model):
     pid = models.IntegerField(blank=True, null=True, unique=True)
     port = models.OneToOneField(Port, blank=True, null=True, related_name='server')
     is_active = models.BooleanField(default=False)
+
+    objects = models.Manager()
+    active = ActiveServerManager()
 
     @property
     def is_online(self):

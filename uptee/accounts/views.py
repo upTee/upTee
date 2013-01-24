@@ -92,3 +92,10 @@ def register(request):
             'captcha': key,
             'register_form': form,
         }, context_instance=RequestContext(request))
+
+
+def users(request):
+    users = User.objects.select_related().filter(is_active=True)
+    return render_to_response('{0}/accounts/users.html'.format(get_template(request)), {
+            'users': users,
+        }, context_instance=RequestContext(request))

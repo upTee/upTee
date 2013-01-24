@@ -44,6 +44,20 @@ body {
 }
 /* ---END wrapper--- */
 
+/* ---userlist--- */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#userlist tr {
+    border-bottom: thin solid #009BFF;
+}
+
+#userlist th, #userlist td {
+    text-align: left;
+}
+/* ---END userlist--- */
 
 /* ---userbar--- */
 #user_bar {

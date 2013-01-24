@@ -60,6 +60,7 @@
                 {% if user.is_authenticated %}
                     <a href="{% url user_server_list request.user.username %}"><div class="menu_entry">Own servers</div></a>
                 {% endif %}
+                <a href="{% url users %}"><div class="menu_entry">Users</div></a>
             </div>
             <div class="clear"></div>
 

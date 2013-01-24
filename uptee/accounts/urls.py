@@ -6,4 +6,5 @@ urlpatterns = patterns('accounts.views',
     url(r'^register/$', 'register', name='register'),
     url(r'^settings/$', 'settings', name='settings'),
     url(r'^settings/password/$', 'change_password', name='change_password'),
+    url(r'^users/$', 'users', name='users'),
 )
