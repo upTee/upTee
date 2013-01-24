@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width; initial-scale=1.0">
 
         <link rel="shortcut icon" href="{{ STATIC_URL }}simpleblue/img/favicon.ico">
-        <link rel="apple-touch-icon" href="{{ STATIC_URL }}img/apple-touch-icon.png">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}simpleblue/img/apple-touch-icon.png">
         
         <link rel="stylesheet" href="{{ STATIC_URL }}simpleblue/css/style.css" type="text/css">
         <link rel="stylesheet" href="{{ STATIC_URL }}simpleblue/css/forms.css" type="text/css">
@@ -137,7 +137,7 @@
                                     <p><a href="{% url server_detail server.id %}">Info/Edit</a></p>
                                     <div class="hide_mouseover">
                                         <div class="mouseover_overlay">
-                                            {% include "simpleblue/scoreboard.html" %}
+                                            {% include "scoreboard.html" %}
                                         </div>
                                     </div>
                                 {% endwith %}

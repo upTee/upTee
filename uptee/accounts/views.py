@@ -48,7 +48,7 @@ def settings(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Your profile was saved successfully")
-    return render_to_response('{0}/accounts/settings.html'.format(get_template(request)), {
+    return render_to_response('accounts/settings.html', {
             'form': form,
         }, context_instance=RequestContext(request))
 
@@ -61,7 +61,7 @@ def change_password(request):
         if form.is_valid():
             form.save()
             messages.success(request, u'Password changed successfully.')
-    return render_to_response('{0}/accounts/password_change.html'.format(get_template(request)), {
+    return render_to_response('accounts/password_change.html', {
             'form': form,
         }, context_instance=RequestContext(request))
 
@@ -88,7 +88,7 @@ def register(request):
     challenge, response = captcha_settings.get_challenge()()
     store = CaptchaStore.objects.create(challenge=challenge, response=response)
     key = store.hashkey
-    return render_to_response('{0}/accounts/register.html'.format(get_template(request)), {
+    return render_to_response('accounts/register.html', {
             'captcha': key,
             'register_form': form,
         }, context_instance=RequestContext(request))
@@ -96,6 +96,6 @@ def register(request):
 
 def users(request):
     users = User.objects.select_related().filter(is_active=True).order_by("username")
-    return render_to_response('{0}/accounts/users.html'.format(get_template(request)), {
+    return render_to_response('accounts/users.html', {
             'users': users,
         }, context_instance=RequestContext(request))

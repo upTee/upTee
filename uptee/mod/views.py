@@ -28,12 +28,12 @@ def server_list(request, username=None, server_type=None):
     if server_type:
         online = True if server_type == 'online' else False
         servers = (server for server in servers if server.is_online == online)
-    return render_to_response('{0}/mod/servers.html'.format(get_template(request)), {'server_list': servers, 'username': username, 'server_type': server_type}, context_instance=RequestContext(request))
+    return render_to_response('mod/servers.html', {'server_list': servers, 'username': username, 'server_type': server_type}, context_instance=RequestContext(request))
 
 
 def server_detail(request, server_id):
     server = get_object_or_404(Server.objects.select_related().filter(is_active=True), pk=server_id)
-    return render_to_response('{0}/mod/server_detail_info.html'.format(get_template(request)), {
+    return render_to_response('mod/server_detail_info.html', {
         'server': server
     }, context_instance=RequestContext(request))
 
@@ -42,7 +42,7 @@ def server_detail(request, server_id):
 def server_edit(request, server_id):
     server = get_object_or_404(Server.objects.select_related().filter(is_active=True, owner=request.user), pk=server_id)
     options = server.config_options.all()
-    return render_to_response('{0}/mod/server_detail_edit.html'.format(get_template(request)), {
+    return render_to_response('mod/server_detail_edit.html', {
         'server': server,
         'options': options
     }, context_instance=RequestContext(request))
@@ -66,7 +66,7 @@ def upload_map(request, server_id):
             messages.success(request, 'Map was successfully uploaded.')
     else:
         form = MapUploadForm()
-    return render_to_response('{0}/mod/server_detail_upload_map.html'.format(get_template(request)), {
+    return render_to_response('mod/server_detail_upload_map.html', {
         'server': server,
         'form': form
     }, context_instance=RequestContext(request))
@@ -93,7 +93,7 @@ def map_download(request, map_id):
 
 def map_details(request, map_id):
     map_obj = get_object_or_404(Map, pk=map_id)
-    return render_to_response('{0}/mod/map_details.html'.format(get_template(request)), {
+    return render_to_response('mod/map_details.html', {
         'map_obj': map_obj,
     }, context_instance=RequestContext(request))
 
@@ -106,7 +106,7 @@ def delete_map(request, map_id):
         raise Http404
     next = request.REQUEST.get('next', reverse('server_detail', kwargs={'server_id': map_obj.server.id}))
     map_obj.delete()
-    return render_to_response('{0}/mod/map_deleted.html'.format(get_template(request)), {'next': next}, context_instance=RequestContext(request))
+    return render_to_response('mod/map_deleted.html', {'next': next}, context_instance=RequestContext(request))
 
 
 @login_required
@@ -116,7 +116,7 @@ def server_votes(request, server_id):
         vote = Vote(server=server, command='command', title='New vote')
         vote.save()
     votes = server.config_votes.all()
-    return render_to_response('{0}/mod/server_detail_votes.html'.format(get_template(request)), {
+    return render_to_response('mod/server_detail_votes.html', {
         'server': server,
         'votes': votes
     }, context_instance=RequestContext(request))
@@ -128,7 +128,7 @@ def server_tunes(request, server_id):
     tunes = server.config_tunes.all()
     if not tunes:
         raise Http404
-    return render_to_response('{0}/mod/server_detail_tunes.html'.format(get_template(request)), {
+    return render_to_response('mod/server_detail_tunes.html', {
         'server': server,
         'tunes': tunes
     }, context_instance=RequestContext(request))
@@ -151,7 +151,7 @@ def start_stop_server(request, server_id):
             server.set_online()
         else:
             map_exists = False
-    return render_to_response('{0}/mod/state_changed.html'.format(get_template(request)), {'next': next, 'map_exists': map_exists}, context_instance=RequestContext(request))
+    return render_to_response('mod/state_changed.html', {'next': next, 'map_exists': map_exists}, context_instance=RequestContext(request))
 
 
 @login_required
@@ -177,7 +177,7 @@ def update_settings(request, server_id):
         else:
             option.value = '0'
         option.save()
-    return render_to_response('{0}/mod/settings_updated.html'.format(get_template(request)), {'next': next}, context_instance=RequestContext(request))
+    return render_to_response('mod/settings_updated.html', {'next': next}, context_instance=RequestContext(request))
 
 
 @login_required
@@ -247,7 +247,7 @@ def update_votes(request, server_id):
             vote_list = vote_list[1:]
             for item in vote_list:
                 item.delete()"""
-    return render_to_response('{0}/mod/settings_updated.html'.format(get_template(request)), {'next': next}, context_instance=RequestContext(request))
+    return render_to_response('mod/settings_updated.html', {'next': next}, context_instance=RequestContext(request))
 
 
 @login_required
@@ -267,7 +267,7 @@ def update_tunes(request, server_id):
                 except ValueError:
                     continue
                 tune.save()
-    return render_to_response('{0}/mod/settings_updated.html'.format(get_template(request)), {'next': next}, context_instance=RequestContext(request))
+    return render_to_response('mod/settings_updated.html', {'next': next}, context_instance=RequestContext(request))
 
 
 @ajax_request

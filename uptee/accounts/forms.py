@@ -10,6 +10,10 @@ class SettingsUserForm(forms.ModelForm):
     email = forms.EmailField(required=True, widget=Html5EmailInput(attrs={'required': None}))
     template = forms.ChoiceField(choices=AVAILABLE_TEMPLATES)
 
+    def __init__(self, *args, **kwargs):
+        super(SettingsUserForm, self).__init__(*args, **kwargs)
+        self.initial['template'] = self.instance.profile.template
+
     class Meta:
         model = User
         fields = ('email',)

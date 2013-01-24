@@ -96,6 +96,7 @@ SECRET_KEY = 'oj^cv)^5b^a1ke-%d8-7$5$k5)sj70w8d97b3z!mvamgd#a0tl'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
+    'lib.template_loader.Loader',
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
@@ -108,6 +109,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django_pybrowscap.middleware.PybrowscapMiddleware',
+    'lib.template_middleware.TemplateMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )

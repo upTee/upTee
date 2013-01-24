@@ -18,7 +18,7 @@ def contact(request):
             mail_admins('User contact', msg, fail_silently=not DEBUG)
             messages.success(request, "Your message has been sent.")
             return HttpResponseRedirect(reverse('home'))
-    return render_to_response('{0}/messaging/contact.html'.format(get_template(request)), {
+    return render_to_response('messaging/contact.html', {
             'form': form,
             'admins_available': admins_available,
         }, context_instance=RequestContext(request))
