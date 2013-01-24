@@ -52,6 +52,14 @@ USE_L10N = True
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
 
+# Paginator
+PAGINATION_DEFAULT_PAGINATION = 20
+# ... 2 3 4 [5] 6 7 8 ...
+PAGINATION_DEFAULT_WINDOW = 3
+# If the last page has 1 object, the object gets attached to previous one instead.
+PAGINATION_DEFAULT_ORPHANS = 1
+PAGINATION_INVALID_PAGE_RAISES_404 = True
+
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
 MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
@@ -110,6 +118,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django_pybrowscap.middleware.PybrowscapMiddleware',
     'lib.template_middleware.TemplateMiddleware',
+    'pagination.middleware.PaginationMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -156,6 +165,7 @@ INSTALLED_APPS = (
     'django_pybrowscap',
     'lib',
     'djcelery',
+    'pagination',
     'accounts',
     'mod',
     'messaging',

@@ -1,15 +1,28 @@
 {% extends "base.html" %}
 
 {% load active_servers %}
+{% load pagination_tags %}
 
 {% comment %}
 context variables:
     users
+    paginator
 {% endcomment %}
 
 {% block title %}upTee - Users{% endblock title %}
 
+{% block link_list %}
+
+<div id="link_list">
+    {% autopaginate users %}
+    {% paginate %}
+</div>
+
+{% endblock link_list %}
+
 {% block content %}
+
+{% autopaginate users %}
 
 <div class="head">
     <h2>Users</h2>
