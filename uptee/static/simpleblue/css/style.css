@@ -64,6 +64,7 @@ table {
     background: url('../img/menu_pattern.png');
     padding: 3px;
     border: 1px solid rgb(199, 199, 199);
+	border-top: none;
     box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
 }
 
