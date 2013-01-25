@@ -71,7 +71,7 @@ class ServerAdmin(admin.ModelAdmin):
     really_delete_selected.short_description = u"Delete selected servers"
 
     def save_model(self, request, obj, form, change):
-        old_obj = Server.objects.get(pk=obj.id)
+        old_obj = Server.objects.get(pk=obj.id) if change else None
         obj.save()
         if not obj.is_active:
             obj.set_offline()
@@ -80,6 +80,7 @@ class ServerAdmin(admin.ModelAdmin):
             default_settings = True
         else:
             # check if server mod changed and reset config
+            old_obj = Server.objects.get(pk=obj.id)
             if old_obj.mod != obj.mod:
                 default_settings = True
                 for option in Option.objects.filter(server=obj):

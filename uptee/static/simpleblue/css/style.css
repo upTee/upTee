@@ -50,11 +50,11 @@ table {
     width: 100%;
 }
 
-#userlist tr {
+.tablelist tr {
     border-bottom: thin solid #009BFF;
 }
 
-#userlist th, #userlist td {
+.tablelist th, .tablelist td {
     text-align: left;
 }
 /* ---END userlist--- */

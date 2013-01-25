@@ -108,13 +108,13 @@ def delete_map(request, map_id):
 
 
 @login_required
-def server_votes(request, server_id):
+def server_edit_votes(request, server_id):
     server = get_object_or_404(Server.active.select_related().filter(owner=request.user), pk=server_id)
     if request.method == 'POST':
         vote = Vote(server=server, command='command', title='New vote')
         vote.save()
     votes = server.config_votes.all()
-    return render_to_response('mod/server_detail_votes.html', {
+    return render_to_response('mod/server_detail_edit_votes.html', {
         'server': server,
         'votes': votes
     }, context_instance=RequestContext(request))
@@ -129,6 +129,17 @@ def server_tunes(request, server_id):
     return render_to_response('mod/server_detail_tunes.html', {
         'server': server,
         'tunes': tunes
+    }, context_instance=RequestContext(request))
+
+
+def server_votes(request, server_id):
+    server = get_object_or_404(Server.active.select_related(), pk=server_id)
+    votes = server.config_votes.all()
+    if not votes:
+        raise Http404
+    return render_to_response('mod/server_detail_votes.html', {
+        'server': server,
+        'votes': votes
     }, context_instance=RequestContext(request))
 
 
