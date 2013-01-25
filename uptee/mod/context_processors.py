@@ -6,8 +6,6 @@ def mod(request):
     servers = None
     if user:
         servers = Server.objects.filter(is_active=True, owner=user)
-        for server in servers:
-            server.check_online()
     return {
         'user_server_list': servers,
     }

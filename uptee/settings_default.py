@@ -1,6 +1,7 @@
 import djcelery
 import os
 import re
+from datetime import timedelta
 from django import contrib
 
 # Django settings for uptee project.
@@ -185,6 +186,17 @@ SERVER_EXEC = 'teeworlds_srv'
 
 # Broker URL for celery
 BROKER_URL = 'amqp://guest:guest@localhost:5672/'
+
+# celery scheduled tasks
+CELERYBEAT_SCHEDULE = {
+    # every minutes
+    'check_server_state': {
+        'task': 'mod.tasks.check_server_state',
+        'schedule': timedelta(minutes=1)
+    },
+}
+
+CELERY_TIMEZONE = 'UTC'
 
 # This setting will effectively turn the middleware off, to speed up requests/response while developing
 #PYBROWSCAP_INITIALIZE = True # Default is `not settings.DEBUG`.

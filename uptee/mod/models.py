@@ -16,6 +16,7 @@ class FreePortManager(models.Manager):
     def get_query_set(self):
         return super(FreePortManager, self).get_query_set().filter(is_active=False)
 
+
 class ActiveServerManager(models.Manager):
     def get_query_set(self):
         return super(ActiveServerManager, self).get_query_set().filter(is_active=True)

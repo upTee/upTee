@@ -8,7 +8,6 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.views.decorators.http import require_POST
 from annoying.decorators import ajax_request
-from accounts.models import get_template
 from mod.forms import MapUploadForm
 from mod.models import Map, Option, Server, Vote
 from settings import MEDIA_ROOT
@@ -17,19 +16,21 @@ from settings import MEDIA_ROOT
 def server_list(request, username=None, server_status=None):
     if username:
         user = get_object_or_404(User.objects.filter(is_active=True), username=username)
-        servers = Server.objects.filter(is_active=True, owner=user)
+        servers = Server.active.filter(owner=user)
     else:
-        servers = Server.objects.filter(is_active=True)
+        servers = Server.active.all()
     if server_status:
         online = True if server_status == 'online' else False
         servers = (server for server in servers if server.is_online == online)
-    return render(request, 'mod/servers.html', {'server_list': servers,
-                                                    'username': username,
-                                                    'server_type': server_status})
+    return render_to_response('mod/servers.html', {
+        'server_list': servers,
+        'username': username,
+        'server_type': server_status
+    }, context_instance=RequestContext(request))
 
 
 def server_detail(request, server_id):
-    server = get_object_or_404(Server.objects.select_related().filter(is_active=True), pk=server_id)
+    server = get_object_or_404(Server.active.select_related(), pk=server_id)
     return render_to_response('mod/server_detail_info.html', {
         'server': server
     }, context_instance=RequestContext(request))
@@ -37,7 +38,7 @@ def server_detail(request, server_id):
 
 @login_required
 def server_edit(request, server_id):
-    server = get_object_or_404(Server.objects.select_related().filter(is_active=True, owner=request.user), pk=server_id)
+    server = get_object_or_404(Server.active.select_related().filter(owner=request.user), pk=server_id)
     options = server.config_options.all()
     return render_to_response('mod/server_detail_edit.html', {
         'server': server,
@@ -47,7 +48,7 @@ def server_edit(request, server_id):
 
 @login_required
 def upload_map(request, server_id):
-    server = get_object_or_404(Server.objects.select_related().filter(is_active=True, owner=request.user), pk=server_id)
+    server = get_object_or_404(Server.active.select_related().filter(owner=request.user), pk=server_id)
     if request.method == 'POST':
         form = MapUploadForm(request.POST, request.FILES)
         if form.is_valid():
@@ -108,7 +109,7 @@ def delete_map(request, map_id):
 
 @login_required
 def server_votes(request, server_id):
-    server = get_object_or_404(Server.objects.select_related().filter(is_active=True, owner=request.user), pk=server_id)
+    server = get_object_or_404(Server.active.select_related().filter(owner=request.user), pk=server_id)
     if request.method == 'POST':
         vote = Vote(server=server, command='command', title='New vote')
         vote.save()
@@ -121,7 +122,7 @@ def server_votes(request, server_id):
 
 @login_required
 def server_tunes(request, server_id):
-    server = get_object_or_404(Server.objects.select_related().filter(is_active=True, owner=request.user), pk=server_id)
+    server = get_object_or_404(Server.active.select_related().filter(owner=request.user), pk=server_id)
     tunes = server.config_tunes.all()
     if not tunes:
         raise Http404
@@ -134,7 +135,7 @@ def server_tunes(request, server_id):
 @login_required
 @require_POST
 def start_stop_server(request, server_id):
-    server = get_object_or_404(Server.objects.select_related().filter(is_active=True), pk=server_id)
+    server = get_object_or_404(Server.active.select_related(), pk=server_id)
     user = request.user
     if not user.is_staff and server.owner != user:
         raise Http404
@@ -154,7 +155,7 @@ def start_stop_server(request, server_id):
 @login_required
 @require_POST
 def update_settings(request, server_id):
-    server = get_object_or_404(Server.objects.select_related().filter(is_active=True), pk=server_id)
+    server = get_object_or_404(Server.active.select_related(), pk=server_id)
     if server.owner != request.user:
         raise Http404
     next = request.REQUEST.get('next', reverse('server_edit', kwargs={'server_id': server.id}))
@@ -180,7 +181,7 @@ def update_settings(request, server_id):
 @login_required
 @require_POST
 def update_votes(request, server_id):
-    server = get_object_or_404(Server.objects.select_related().filter(is_active=True), pk=server_id)
+    server = get_object_or_404(Server.active.select_related(), pk=server_id)
     if server.owner != request.user:
         raise Http404
     next = request.REQUEST.get('next', reverse('server_votes', kwargs={'server_id': server.id}))
@@ -250,7 +251,7 @@ def update_votes(request, server_id):
 @login_required
 @require_POST
 def update_tunes(request, server_id):
-    server = get_object_or_404(Server.objects.select_related().filter(is_active=True), pk=server_id)
+    server = get_object_or_404(Server.active.select_related(), pk=server_id)
     if server.owner != request.user:
         raise Http404
     next = request.REQUEST.get('next', reverse('server_tunes', kwargs={'server_id': server.id}))
@@ -271,7 +272,7 @@ def update_tunes(request, server_id):
 def server_info_update_ajax(request, server_id):
     if not request.is_ajax():
         raise Http404
-    server = get_object_or_404(Server.objects.select_related().filter(is_active=True), pk=server_id)
+    server = get_object_or_404(Server.active.select_related(), pk=server_id)
     server_info = server.info
     if server_info:
         server_info = server.info.server_info
