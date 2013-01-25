@@ -43,9 +43,10 @@ This command adds the ports 8300 till 8320 to upTee. Decide yourself which ports
 
 ###Start up the server
 You will have to run two processes for starting up the Server.    
-First you have to run the celery worker.    
+First you have to run the celery worker and celerybeat (start as background process or two sessions).    
 ```shell
 $ python manage.py celery worker --loglevel=info
+$ python manage.py celery beat
 ```
 Be sure that the broker for celery is running (RabbitMQ is recommended).    
 After celery is running, run the server itself.
