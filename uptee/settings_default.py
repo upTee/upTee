@@ -61,6 +61,9 @@ PAGINATION_DEFAULT_WINDOW = 3
 PAGINATION_DEFAULT_ORPHANS = 1
 PAGINATION_INVALID_PAGE_RAISES_404 = True
 
+# Gravatar default image
+GRAVATAR_DEFAULT_IMAGE = 'mm'
+
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
 MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
