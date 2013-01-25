@@ -9,13 +9,13 @@ from settings import MEDIA_ROOT, SERVER_EXEC
 @task()
 def run_server(path, server):
     log_path = os.path.join(MEDIA_ROOT, 'logs', server.owner.username, server.mod.title)
-    if not os.path.exists(log_path):
+    """if not os.path.exists(log_path):
         os.makedirs(log_path)
-    with open(os.path.join(log_path, '{0}_{1}_{2}.txt'.format(server.id, datetime.now().strftime("%y%m%d%H%M%S"), User.objects.make_random_password())), 'w') as f:
-        p = Popen((os.path.join(path, SERVER_EXEC), '-f', 'generated.cfg'), cwd=path, stdout=f, stderr=f)
-        server.pid = p.pid
-        server.online = True
-        server.save()
+    with open(os.path.join(log_path, '{0}_{1}_{2}.txt'.format(server.id, datetime.now().strftime("%y%m%d%H%M%S"), User.objects.make_random_password())), 'w') as f:"""
+    p = Popen((os.path.join(path, SERVER_EXEC), '-f', 'generated.cfg'), cwd=path, stdout=None, stderr=None)
+    server.pid = p.pid
+    server.online = True
+    server.save()
 
 
 @task()
