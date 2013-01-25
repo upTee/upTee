@@ -60,6 +60,15 @@ Default: ()
 #)
 
 """
+GRAVATAR_DEFAULT_IMAGE
+
+Default gravatar to use if the user doesn't use gravatar.
+
+Default: "mm"
+"""
+#GRAVATAR_DEFAULT_IMAGE = 'mm'
+
+"""
 EMAIL_HOST
 
 Smtp host for mails.
