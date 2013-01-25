@@ -55,9 +55,33 @@ table.userlist {
 }
 
 .userlist th, .userlist td {
+    text-align: center;
+    padding: 5px 0;
+}
+
+.userlist th:first-child, .userlist td:first-child {
     text-align: left;
+    padding: 5px 0;
+    width: 60%
 }
 /* ---END userlist--- */
+
+/* ---votelist--- */
+table.votelist {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.votelist tr {
+    border-bottom: thin solid #009BFF;
+}
+
+.votelist th, .votelist td {
+    text-align: left;
+    padding: 5px 0;
+    width: 60%
+}
+/* ---END votelist--- */
 
 /* ---tablelist--- */
 table.tablelist {
@@ -72,6 +96,7 @@ table.tablelist {
 
 .tablelist th, .tablelist td {
     text-align: left;
+    padding: 5px 0;
 }
 /* ---END tablelist--- */
 
@@ -80,6 +105,10 @@ img.avatar {
     position: absolute;
     right: 10px;
     top: 10px;
+}
+
+img.gravatar {
+    margin: -3px 5px -6px 3px;
 }
 /* ---END avatar--- */
 
