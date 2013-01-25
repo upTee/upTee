@@ -7,6 +7,7 @@ django-debug-toolbar>=0.9.4
 django-simple-captcha>=0.3.4
 django-pybrowscap>=0.9.1
 django-pagination>=1.0.7
+django-gravatar>=0.1.0
 PIL>=1.1.7
 psutil>=0.6.1
 pytz

@@ -10,7 +10,7 @@ from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.core.urlresolvers import reverse
-from django.shortcuts import redirect, render_to_response
+from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.template import RequestContext
 from accounts.forms import *
 from settings import ADMINS, DEBUG
@@ -98,4 +98,11 @@ def users(request):
     users = User.objects.select_related().filter(is_active=True).order_by('username')
     return render_to_response('accounts/users.html', {
             'users': users,
+        }, context_instance=RequestContext(request))
+
+
+def user(request, user_id):
+    user = get_object_or_404(User.objects.select_related(), pk=user_id)
+    return render_to_response('accounts/user_profile.html', {
+            'user_profile': user,
         }, context_instance=RequestContext(request))

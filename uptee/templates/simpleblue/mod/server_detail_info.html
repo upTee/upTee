@@ -1,6 +1,7 @@
 {% extends "mod/server_detail_base.html" %}
 
-{% load get_option %}{% load split %}
+{% load get_option %}
+{% load split %}
 
 {% comment %}
 context variables:
@@ -20,7 +21,7 @@ context variables:
           <tbody>
             <tr>
               <td>Owner:</td>
-              <td>{% if server.owner == request.user %}You{% else %}{{ server.owner.username }}{% endif %}</td>
+              <td><a href="{% url user server.owner.id %}">{% if server.owner == request.user %}You{% else %}{{ server.owner.username }}{% endif %}</a></td>
             </tr>
             <tr>
               <td>Mod:</td>

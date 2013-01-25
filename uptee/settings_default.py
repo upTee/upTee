@@ -172,6 +172,7 @@ INSTALLED_APPS = (
     'messaging',
     'captcha',
     'south',
+    'gravatar',
 )
 
 LOGIN_REDIRECT_URL = '/'
