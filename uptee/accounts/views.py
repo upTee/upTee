@@ -1,5 +1,6 @@
 from captcha.conf import settings as captcha_settings
 from captcha.models import CaptchaStore
+from django.db.models import Count
 from django.core.mail import mail_admins
 from django.contrib.auth import logout as user_logout
 from django.contrib.auth import login as user_login
@@ -12,7 +13,6 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
 from accounts.forms import *
-from accounts.models import get_template
 from settings import ADMINS, DEBUG
 
 
@@ -95,7 +95,7 @@ def register(request):
 
 
 def users(request):
-    users = User.objects.select_related().filter(is_active=True).order_by("username")
+    users = User.objects.select_related().filter(is_active=True).order_by('username')
     return render_to_response('accounts/users.html', {
             'users': users,
         }, context_instance=RequestContext(request))

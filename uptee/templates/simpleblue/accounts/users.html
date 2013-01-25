@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 
-{% load active_servers %}
 {% load pagination_tags %}
 
 {% comment %}
@@ -33,11 +32,13 @@ context variables:
             <tr>
                 <th>Name</th>
                 <th>Servers</th>
+                <th>Online servers</th>
             </tr>
             {% for user in users %}
                 <tr>
                     <td>{{ user.username }}</td>
-                    <td><a href="{% url user_server_list user.username %}">{{ user.servers|active_servers|length }}</a></td>
+                    <td><a href="{% url user_server_list user.username %}">{{ user.profile.active_servers|length }}</a></td>
+                    <td><a href="{% url user_server_list user.username %}type:online">{{ user.profile.online_servers|length }}</a></td>
                 </tr>
             {% endfor %}
         </tbody>
