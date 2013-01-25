@@ -16,6 +16,7 @@ def run_server(path, server):
         server.pid = p.pid
         server.online = True
         server.save()
+        p.wait()
 
 
 @task()
