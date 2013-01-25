@@ -8,7 +8,7 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.views.decorators.http import require_POST
 from annoying.decorators import ajax_request
-from mod.forms import MapUploadForm
+from mod.forms import ChangeModForm, MapUploadForm
 from mod.models import Map, Option, Server, Vote
 from settings import MEDIA_ROOT
 
@@ -132,6 +132,22 @@ def server_tunes(request, server_id):
     }, context_instance=RequestContext(request))
 
 
+@login_required
+def server_change_mod(request, server_id):
+    server = get_object_or_404(Server.active.select_related().filter(owner=request.user), pk=server_id)
+    if request.method == 'POST':
+        form = ChangeModForm(request.POST, instance=server)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Mod was successfully changed.')
+    else:
+        form = ChangeModForm(initial={'mod': server.mod.pk})
+    return render_to_response('mod/server_detail_change_mod.html', {
+        'server': server,
+        'form': form
+    }, context_instance=RequestContext(request))
+
+
 def server_votes(request, server_id):
     server = get_object_or_404(Server.active.select_related(), pk=server_id)
     votes = server.config_votes.all()
@@ -195,7 +211,7 @@ def update_votes(request, server_id):
     server = get_object_or_404(Server.active.select_related(), pk=server_id)
     if server.owner != request.user:
         raise Http404
-    next = request.REQUEST.get('next', reverse('server_votes', kwargs={'server_id': server.id}))
+    next = request.REQUEST.get('next', reverse('server_edit_votes', kwargs={'server_id': server.id}))
     votes = server.config_votes.all()
     post = request.POST.copy()
     id_done_list = []

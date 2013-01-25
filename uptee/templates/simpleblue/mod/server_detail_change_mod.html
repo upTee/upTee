@@ -8,15 +8,17 @@ context variables:
     form
 {% endcomment %}
 
-{% block title %}upTee - {{ server|get_option:'sv_name' }} - Upload map{% endblock title %}
+{% block title %}upTee - {{ server|get_option:'sv_name' }} - Change mod{% endblock title %}
 
 {% block tab_content %}
 
 <div class="body">
-    <form action="{{ request.path }}" method="post" enctype="multipart/form-data">
+    <p><strong>If you change the mod of your server all settings will be resetted to the mod default.</strong></p>
+    <br>
+    <form action="{{ request.path }}" method="post">
         <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
-        {{ form.as_p }}
-        <p><input class="button" type="submit" value="Upload"></p>
+        {{ form.as_table }}
+        <p><input class="button" type="submit" value="Change mod"></p>
     </form>
 </div>
 

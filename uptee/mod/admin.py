@@ -85,6 +85,10 @@ class ServerAdmin(admin.ModelAdmin):
                 default_settings = True
                 for option in Option.objects.filter(server=obj):
                     option.delete()
+                for tune in Tune.objects.filter(server=obj):
+                    tune.delete()
+                for vote in Vote.objects.filter(server=obj):
+                    vote.delete()
         if default_settings:
             config_path = os.path.join(MEDIA_ROOT, 'mods', obj.mod.title, 'config.cfg')
             config = TwCongig(config_path)
