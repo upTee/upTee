@@ -6,6 +6,8 @@
 *.pem
 *.tmproj
 *.directory
+uptee/celerybeat.pid
+uptee/celerybeat-schedule
 uptee/settings_local.py
 uptee/media
 tests.json
