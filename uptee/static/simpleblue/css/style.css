@@ -258,7 +258,8 @@ img.gravatar {
 
 .errorlist {
     background: #ffeaeb;
-    padding: 5px;
+    margin: 5px 1px;
+    padding: 4px 4px 4px 23px;
     outline: solid 1px #cc7576; 
     color: #cc7576;
 }
