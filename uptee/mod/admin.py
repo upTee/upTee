@@ -82,7 +82,7 @@ class ServerAdmin(admin.ModelAdmin):
             if old_obj and old_obj.mod != obj.mod:
                 default_settings = True
         if default_settings:
-            obj.reset_settings()
+            obj.reset_settings(old_obj)
         maps_path = os.path.join(MEDIA_ROOT, 'mods', obj.mod.title, 'data', 'maps')
         if os.path.exists(maps_path):
             maps = [_file for _file in os.listdir(maps_path) if os.path.splitext(_file)[1].lower() == '.map']

@@ -67,7 +67,8 @@ class ChangeModForm(forms.ModelForm):
         fields = ('mod',)
 
     def save(self):
-        self.instance.reset_settings()
+        old_instance = Server.objects.get(pk=self.instance.pk)
+        self.instance.reset_settings(old_instance)
         self.instance.save()
 
 
