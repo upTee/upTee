@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% load get_option %}
+{% load split %}
+
+{% comment %}
+context variables:
+    server
+    description_form
+{% endcomment %}
+
+{% block title %}upTee - {{ server|get_option:'sv_name' }} - Edit description{% endblock title %}
+
+{% block content %}
+
+<div class="server_detail_description_edit">
+    <h2>Edit description</h2>
+    <form method="post" action="{{ request.path }}">
+        <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
+        {{ description_form.as_p }}
+        <input class="button" type="submit" value="Update">
+    </form>
+</div>
+
+{% endblock content %}

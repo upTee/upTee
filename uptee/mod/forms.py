@@ -67,3 +67,10 @@ class ChangeModForm(forms.ModelForm):
     def save(self):
         self.instance.reset_settings()
         self.instance.save()
+
+
+class ServerDescriptionForm(forms.ModelForm):
+
+    class Meta:
+        model = Server
+        fields = ('description',)

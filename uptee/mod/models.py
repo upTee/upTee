@@ -2,12 +2,14 @@ import mimetypes
 import os
 import psutil
 import signal
+from markdown import markdown
+from shutil import rmtree
 from django.db import models
 from django.contrib.auth.models import User
 from django.forms import ValidationError
+from django.utils.html import escape
 from mod.tasks import run_server
 from settings import MEDIA_ROOT
-from shutil import rmtree
 from lib.twconfig import Config as TwConfig
 from lib.twserverinfo import ServerInfo
 
@@ -84,6 +86,8 @@ class Server(models.Model):
     port = models.OneToOneField(Port, blank=True, null=True, related_name='server')
     is_active = models.BooleanField(default=False)
     online = models.BooleanField(default=False)
+    description = models.TextField(blank=True, help_text='You may use markdown')
+    description_html = models.TextField(blank=True)
 
     objects = models.Manager()
     active = ActiveServerManager()
@@ -183,6 +187,10 @@ class Server(models.Model):
         for vote in config.votes:
             data = Vote(server=self, command=vote['command'], title=vote['title'])
             data.save()
+
+    def save(self, *args, **kwargs):
+        self.description_html = markdown(escape(self.description))
+        super(Server, self).save(*args, **kwargs)
 
     def delete(self):
         self.set_offline()

@@ -8,7 +8,7 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.views.decorators.http import require_POST
 from annoying.decorators import ajax_request
-from mod.forms import ChangeModForm, MapUploadForm
+from mod.forms import ChangeModForm, MapUploadForm, ServerDescriptionForm
 from mod.models import Map, Option, Server, Vote
 from settings import MEDIA_ROOT
 
@@ -32,7 +32,23 @@ def server_list(request, username=None, server_status=None):
 def server_detail(request, server_id):
     server = get_object_or_404(Server.active.select_related(), pk=server_id)
     return render_to_response('mod/server_detail_info.html', {
-        'server': server
+        'server': server,
+    }, context_instance=RequestContext(request))
+
+
+@login_required
+def server_edit_description(request, server_id):
+    server = get_object_or_404(Server.active.select_related().filter(owner=request.user), pk=server_id)
+    form = ServerDescriptionForm(instance=server)
+    if request.method == 'POST':
+        form = ServerDescriptionForm(request.POST, instance=server)
+        if form.is_valid():
+            form.save()
+            next = request.REQUEST.get('next', reverse('server_detail', kwargs={'server_id': server.id}))
+            return render_to_response('mod/description_updated.html', {'next': next}, context_instance=RequestContext(request))
+    return render_to_response('mod/server_edit_description.html', {
+        'server': server,
+        'description_form': form
     }, context_instance=RequestContext(request))
 
 
@@ -182,9 +198,7 @@ def start_stop_server(request, server_id):
 @login_required
 @require_POST
 def update_settings(request, server_id):
-    server = get_object_or_404(Server.active.select_related(), pk=server_id)
-    if server.owner != request.user:
-        raise Http404
+    server = get_object_or_404(Server.active.select_related().filter(owner=request.user), pk=server_id)
     next = request.REQUEST.get('next', reverse('server_edit', kwargs={'server_id': server.id}))
     options = server.config_options.exclude(widget=Option.WIDGET_CHECKBOX)
     for key in request.POST.keys():
@@ -208,9 +222,7 @@ def update_settings(request, server_id):
 @login_required
 @require_POST
 def update_votes(request, server_id):
-    server = get_object_or_404(Server.active.select_related(), pk=server_id)
-    if server.owner != request.user:
-        raise Http404
+    server = get_object_or_404(Server.active.select_related().filter(owner=request.user), pk=server_id)
     next = request.REQUEST.get('next', reverse('server_edit_votes', kwargs={'server_id': server.id}))
     votes = server.config_votes.all()
     post = request.POST.copy()
