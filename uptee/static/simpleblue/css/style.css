@@ -548,8 +548,10 @@ a.edit_link {
 
 .tabmenu_content {
     padding: 10px;
+    display: inline-block;
     position: relative;
     border: 1px solid #009bff;
+    width: 728px;
 }
 /* ---END content tabmenu--- */
 
