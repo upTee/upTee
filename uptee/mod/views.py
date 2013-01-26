@@ -287,7 +287,7 @@ def start_stop_server(request, server_id):
     if server.owner != request.user and not moderator:
         raise Http404
     moderator = moderator[0] if moderator else None
-    if not server.owner != request.user and not moderator.restart_allowed:
+    if server.owner != request.user and not moderator.restart_allowed:
         raise Http404
     next = request.REQUEST.get('next', reverse('user_server_list', kwargs={'username': server.owner.username}))
     map_exists = True
@@ -341,7 +341,7 @@ def update_votes(request, server_id):
     if server.owner != request.user and not moderator:
         raise Http404
     moderator = moderator[0] if moderator else None
-    if not server.owner != request.user and not moderator.edit_votes_allowed:
+    if server.owner != request.user and not moderator.edit_votes_allowed:
         raise Http404
     next = request.REQUEST.get('next', reverse('server_edit_votes', kwargs={'server_id': server.id}))
     votes = server.config_votes.all()
