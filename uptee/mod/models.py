@@ -160,6 +160,30 @@ class Server(models.Model):
             storage.write('add_path servers/{0}/{1}\nadd_path $CURRENTDIR\n'.format(self.owner.username, self.id))
         run_server.delay(path, self)
 
+    def reset_settings(self):
+        for option in Option.objects.filter(server=self):
+            option.delete()
+        for tune in Tune.objects.filter(server=self):
+            tune.delete()
+        for vote in Vote.objects.filter(server=self):
+            vote.delete()
+        config_path = os.path.join(MEDIA_ROOT, 'mods', self.mod.title, 'config.cfg')
+        config = TwConfig(config_path)
+        config.read()
+        for key, value in config.options.iteritems():
+            widget = 1  # text
+            for widget_type in Option.WIDGET_CHOICES:
+                if widget_type[1] == value[1]:
+                    widget = widget_type[0]
+            data = Option(server=self, command=key, value=value[0], widget=widget)
+            data.save()
+        for tune in config.tunes:
+            data = Tune(server=self, command=tune['command'], value=tune['value'])
+            data.save()
+        for vote in config.votes:
+            data = Vote(server=self, command=vote['command'], title=vote['title'])
+            data.save()
+
     def delete(self):
         self.set_offline()
         path = os.path.join(MEDIA_ROOT, 'mods', self.mod.title, 'servers', self.owner.username)

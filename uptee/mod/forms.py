@@ -3,9 +3,7 @@ import os
 import tarfile
 import zipfile
 from django import forms
-from mod.models import Mod, Option, Server, Tune, Vote
-from settings import MEDIA_ROOT
-from lib.twconfig import Config as TwCongig
+from mod.models import Mod, Server
 
 
 class ModAdminForm(forms.ModelForm):
@@ -67,26 +65,5 @@ class ChangeModForm(forms.ModelForm):
         fields = ('mod',)
 
     def save(self):
-        for option in Option.objects.filter(server=self.instance):
-            option.delete()
-        for tune in Tune.objects.filter(server=self.instance):
-            tune.delete()
-        for vote in Vote.objects.filter(server=self.instance):
-            vote.delete()
-        config_path = os.path.join(MEDIA_ROOT, 'mods', self.instance.mod.title, 'config.cfg')
-        config = TwCongig(config_path)
-        config.read()
-        for key, value in config.options.iteritems():
-            widget = 1  # text
-            for widget_type in Option.WIDGET_CHOICES:
-                if widget_type[1] == value[1]:
-                    widget = widget_type[0]
-            data = Option(server=self.instance, command=key, value=value[0], widget=widget)
-            data.save()
-        for tune in config.tunes:
-            data = Tune(server=self.instance, command=tune['command'], value=tune['value'])
-            data.save()
-        for vote in config.votes:
-            data = Vote(server=self.instance, command=vote['command'], title=vote['title'])
-            data.save()
+        self.instance.reset_settings()
         self.instance.save()

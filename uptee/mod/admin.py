@@ -6,7 +6,6 @@ from django.contrib import admin
 from mod.forms import *
 from mod.models import *
 from settings import MEDIA_ROOT
-from lib.twconfig import Config as TwCongig
 
 
 class ModAdmin(admin.ModelAdmin):
@@ -80,32 +79,10 @@ class ServerAdmin(admin.ModelAdmin):
             default_settings = True
         else:
             # check if server mod changed and reset config
-            old_obj = Server.objects.get(pk=obj.id)
-            if old_obj.mod != obj.mod:
+            if old_obj and old_obj.mod != obj.mod:
                 default_settings = True
-                for option in Option.objects.filter(server=obj):
-                    option.delete()
-                for tune in Tune.objects.filter(server=obj):
-                    tune.delete()
-                for vote in Vote.objects.filter(server=obj):
-                    vote.delete()
         if default_settings:
-            config_path = os.path.join(MEDIA_ROOT, 'mods', obj.mod.title, 'config.cfg')
-            config = TwCongig(config_path)
-            config.read()
-            for key, value in config.options.iteritems():
-                widget = 1  # text
-                for widget_type in Option.WIDGET_CHOICES:
-                    if widget_type[1] == value[1]:
-                        widget = widget_type[0]
-                data = Option(server=obj, command=key, value=value[0], widget=widget)
-                data.save()
-            for tune in config.tunes:
-                data = Tune(server=obj, command=tune['command'], value=tune['value'])
-                data.save()
-            for vote in config.votes:
-                data = Vote(server=obj, command=vote['command'], title=vote['title'])
-                data.save()
+            obj.reset_settings()
         maps_path = os.path.join(MEDIA_ROOT, 'mods', obj.mod.title, 'data', 'maps')
         if os.path.exists(maps_path):
             maps = [_file for _file in os.listdir(maps_path) if os.path.splitext(_file)[1].lower() == '.map']
