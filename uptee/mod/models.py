@@ -188,15 +188,16 @@ class Server(models.Model):
             data = Vote(server=self, command=vote['command'], title=vote['title'])
             data.save()
         # copy maps if there are already some
-        server_maps_path = os.path.join(MEDIA_ROOT, 'mods', old_obj.mod.title, 'servers', old_obj.owner.username, '{0}'.format(old_obj.id), 'maps')
-        if os.path.exists(server_maps_path):
-            maps = [_file for _file in os.listdir(server_maps_path) if os.path.splitext(_file)[1].lower() == '.map']
-            for _map in maps:
-                new_server_maps_path = os.path.join(MEDIA_ROOT, 'mods', self.mod.title, 'servers', self.owner.username, '{0}'.format(self.id), 'maps')
-                if not os.path.exists(new_server_maps_path):
-                    os.makedirs(new_server_maps_path)
-                copyfile(os.path.join(server_maps_path, _map), os.path.join(new_server_maps_path, _map))
-            rmtree(os.path.join(MEDIA_ROOT, 'mods', old_obj.mod.title, 'servers', old_obj.owner.username))
+        if old_obj:
+            server_maps_path = os.path.join(MEDIA_ROOT, 'mods', old_obj.mod.title, 'servers', old_obj.owner.username, '{0}'.format(old_obj.id), 'maps')
+            if os.path.exists(server_maps_path):
+                maps = [_file for _file in os.listdir(server_maps_path) if os.path.splitext(_file)[1].lower() == '.map']
+                for _map in maps:
+                    new_server_maps_path = os.path.join(MEDIA_ROOT, 'mods', self.mod.title, 'servers', self.owner.username, '{0}'.format(self.id), 'maps')
+                    if not os.path.exists(new_server_maps_path):
+                        os.makedirs(new_server_maps_path)
+                    copyfile(os.path.join(server_maps_path, _map), os.path.join(new_server_maps_path, _map))
+                rmtree(os.path.join(MEDIA_ROOT, 'mods', old_obj.mod.title, 'servers', old_obj.owner.username))
 
     def save(self, *args, **kwargs):
         self.description_html = markdown(escape(self.description))
