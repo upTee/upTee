@@ -263,6 +263,10 @@ img.gravatar {
     outline: solid 1px #cc7576; 
     color: #cc7576;
 }
+
+.smallform ul.errorlist {
+    width: 40%;
+}
 /* ---END content--- */
 
 
@@ -472,6 +476,19 @@ a.edit_link {
     top: 10px;
     right: 10px;
 }
+
+.server_detail_edit_moderator {
+    position: relative;
+}
+
+    .server_detail_edit_moderator h2 {
+        margin: 2px;
+        padding: 5px;
+        border-bottom: 1px solid #009bff;
+        font-size: 16px;
+        color: gray;
+        text-align: center;
+    }
 /* ---END server detail page--- */
 
 

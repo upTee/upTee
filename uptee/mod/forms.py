@@ -3,6 +3,8 @@ import os
 import tarfile
 import zipfile
 from django import forms
+from django.contrib.auth.models import User
+from accounts.models import Moderator
 from mod.models import Mod, Server
 
 
@@ -74,3 +76,19 @@ class ServerDescriptionForm(forms.ModelForm):
     class Meta:
         model = Server
         fields = ('description',)
+
+
+class ModeratorForm(forms.Form):
+    user = forms.ModelChoiceField(User.objects, empty_label=None)
+
+    def __init__(self, user, server, *args, **kwargs):
+        super(ModeratorForm, self).__init__(*args, **kwargs)
+        self.server = server
+        self.fields['user'].queryset = User.objects.exclude(pk=user.pk)
+        for moderator in server.moderators.all():
+            self.fields['user'].queryset = self.fields['user'].queryset.exclude(pk=moderator.user.pk)
+
+    def save(self):
+        user = self.cleaned_data['user']
+        moderator = Moderator(server=self.server, user=user)
+        moderator.save()

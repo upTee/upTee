@@ -13,7 +13,7 @@ context variables:
 {% block tab_content %}
 
 <div class="body">
-    <p><strong>If you change the mod of your server all settings will be resetted to the mod default.</strong></p>
+    <p><strong>If you change the mod of your server all settings will be resetted to the mod default. You may have to check your moderators permissions.</strong></p>
     <br>
     <form action="{{ request.path }}" method="post">
         <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">

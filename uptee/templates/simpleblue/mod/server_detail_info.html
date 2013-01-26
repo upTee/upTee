@@ -6,6 +6,7 @@
 {% comment %}
 context variables:
     server
+    moderator
 {% endcomment %}
 
 {% block title %}upTee - {{ server|get_option:'sv_name' }} - Details{% endblock title %}
@@ -82,7 +83,7 @@ context variables:
     </p>
 </div>
 
-{% if user.is_authenticated and server.map_exists %}{% if user == server.owner or user.is_staff %}
+{% if user.is_authenticated and server.map_exists %}{% if user == server.owner or user.is_staff or moderator and moderator.restart_allowed %}
 
 <form class="only_button" method="post" action="{% url start_stop_server server.id %}?next={{ request.path }}">
     <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">

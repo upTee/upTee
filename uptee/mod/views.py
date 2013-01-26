@@ -4,11 +4,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.http import Http404, HttpResponse
-from django.shortcuts import get_object_or_404, render_to_response
+from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.template import RequestContext
 from django.views.decorators.http import require_POST
 from annoying.decorators import ajax_request
-from mod.forms import ChangeModForm, MapUploadForm, ServerDescriptionForm
+from mod.forms import ChangeModForm, MapUploadForm, ModeratorForm, ServerDescriptionForm
 from mod.models import Map, Option, Server, Vote
 from settings import MEDIA_ROOT
 
@@ -31,8 +31,11 @@ def server_list(request, username=None, server_status=None):
 
 def server_detail(request, server_id):
     server = get_object_or_404(Server.active.select_related(), pk=server_id)
+    moderator = server.moderators.filter(user=request.user) if request.user.is_authenticated() else None
+    moderator = moderator[0] if moderator else None
     return render_to_response('mod/server_detail_info.html', {
         'server': server,
+        'moderator': moderator
     }, context_instance=RequestContext(request))
 
 
@@ -53,24 +56,105 @@ def server_edit_description(request, server_id):
 
 
 @login_required
-def server_edit(request, server_id):
+def server_moderators(request, server_id):
     server = get_object_or_404(Server.active.select_related().filter(owner=request.user), pk=server_id)
-    options = server.config_options.all()
+    form = ModeratorForm(request.user, server)
+    if request.method == 'POST':
+        form = ModeratorForm(request.user, server, request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Moderator successfully added.')
+    return render_to_response('mod/server_detail_moderators.html', {
+        'server': server,
+        'moderator_form': form,
+        'moderator': None
+    }, context_instance=RequestContext(request))
+
+
+@login_required
+def server_edit_moderator(request, server_id, user_id):
+    server = get_object_or_404(Server.active.select_related().filter(owner=request.user), pk=server_id)
+    moderator = get_object_or_404(server.moderators.select_related(), user__pk=user_id)
+    if request.method == 'POST':
+        if 'form-delete-moderator' in request.POST.keys():
+            moderator.delete()
+            messages.success(request, 'Moderator successfully deleted.')
+            return redirect(reverse(server_moderators, kwargs={'server_id': server.pk}))
+        if 'restart_allowed' in request.POST.keys():
+            moderator.restart_allowed = True
+        else:
+            moderator.restart_allowed = False
+        if 'edit_votes_allowed' in request.POST.keys():
+            moderator.edit_votes_allowed = True
+        else:
+            moderator.edit_votes_allowed = False
+        if 'map_upload_allowed' in request.POST.keys():
+            moderator.map_upload_allowed = True
+        else:
+            moderator.map_upload_allowed = False
+        for option in moderator.allowed_options.all():
+            if option.command not in request.POST.keys():
+                moderator.allowed_options.remove(option)
+        for tune in moderator.allowed_tunings.all():
+            if tune.command not in request.POST.keys():
+                moderator.allowed_tunings.remove(tune)
+        for key in request.POST.keys():
+            if key == 'csrfmiddlewaretoken':
+                continue
+            option = moderator.allowed_options.filter(command=key)
+            if not option:
+                option = server.config_options.filter(command=key)
+                if option:
+                    moderator.allowed_options.add(option[0])
+            else:
+                continue
+            tune = moderator.allowed_tunings.filter(command=key)
+            if not tune:
+                tune = server.config_tunes.filter(command=key)
+                if tune:
+                    moderator.allowed_tunings.add(tune[0])
+        moderator.save()
+        messages.success(request, 'Moderator successfully updated.')
+    return render_to_response('mod/server_edit_moderator.html', {
+        'server': server,
+        'moderator_settings': moderator,
+        'moderator': None
+    }, context_instance=RequestContext(request))
+
+
+@login_required
+def server_edit(request, server_id):
+    server = get_object_or_404(Server.active.select_related(), pk=server_id)
+    moderator = server.moderators.filter(user=request.user)
+    if server.owner != request.user and not moderator:
+        raise Http404
+    moderator = moderator[0] if moderator else None
+    if server.owner != request.user and moderator:
+        options = moderator.allowed_options.all()
+        if not options:
+            raise Http404
+    else:
+        options = server.config_options.all()
     return render_to_response('mod/server_detail_edit.html', {
         'server': server,
-        'options': options
+        'options': options,
+        'moderator': moderator
     }, context_instance=RequestContext(request))
 
 
 @login_required
 def upload_map(request, server_id):
-    server = get_object_or_404(Server.active.select_related().filter(owner=request.user), pk=server_id)
+    server = get_object_or_404(Server.active.select_related(), pk=server_id)
+    moderator = server.moderators.filter(user=request.user)
+    if server.owner != request.user and (not moderator or not moderator[0].map_upload_allowed):
+        raise Http404
+    moderator = moderator[0] if moderator else None
     if request.method == 'POST':
         form = MapUploadForm(request.POST, request.FILES)
         if form.is_valid():
             map_file = form.cleaned_data['map_file']
             mod_name = server.mod.title
-            maps_path = os.path.join(MEDIA_ROOT, 'mods', mod_name, 'servers', request.user.username, '{0}'.format(server_id), 'maps')
+            maps_path = os.path.join(MEDIA_ROOT, 'mods', mod_name, 'servers', server.owner.username, '{0}'.format(server_id), 'maps')
             if not os.path.exists(maps_path):
                 os.makedirs(maps_path)
             with open(os.path.join(maps_path, map_file.name), 'wb') as f:
@@ -82,7 +166,8 @@ def upload_map(request, server_id):
         form = MapUploadForm()
     return render_to_response('mod/server_detail_upload_map.html', {
         'server': server,
-        'form': form
+        'form': form,
+        'moderator': moderator
     }, context_instance=RequestContext(request))
 
 
@@ -125,26 +210,41 @@ def delete_map(request, map_id):
 
 @login_required
 def server_edit_votes(request, server_id):
-    server = get_object_or_404(Server.active.select_related().filter(owner=request.user), pk=server_id)
+    server = get_object_or_404(Server.active.select_related(), pk=server_id)
+    moderator = server.moderators.filter(user=request.user)
+    if server.owner != request.user and (not moderator or not moderator[0].edit_votes_allowed):
+        raise Http404
+    moderator = moderator[0] if moderator else None
     if request.method == 'POST':
         vote = Vote(server=server, command='command', title='New vote')
         vote.save()
     votes = server.config_votes.all()
     return render_to_response('mod/server_detail_edit_votes.html', {
         'server': server,
-        'votes': votes
+        'votes': votes,
+        'moderator': moderator
     }, context_instance=RequestContext(request))
 
 
 @login_required
 def server_tunes(request, server_id):
-    server = get_object_or_404(Server.active.select_related().filter(owner=request.user), pk=server_id)
-    tunes = server.config_tunes.all()
+    server = get_object_or_404(Server.active.select_related(), pk=server_id)
+    moderator = server.moderators.filter(user=request.user)
+    if server.owner != request.user and not moderator:
+        raise Http404
+    moderator = moderator[0] if moderator else None
+    if server.owner != request.user and moderator:
+        tunes = moderator.allowed_tunings.all()
+        if not tunes:
+            raise Http404
+    else:
+        tunes = server.config_tunes.all()
     if not tunes:
         raise Http404
     return render_to_response('mod/server_detail_tunes.html', {
         'server': server,
-        'tunes': tunes
+        'tunes': tunes,
+        'moderator': moderator
     }, context_instance=RequestContext(request))
 
 
@@ -160,18 +260,22 @@ def server_change_mod(request, server_id):
         form = ChangeModForm(initial={'mod': server.mod.pk})
     return render_to_response('mod/server_detail_change_mod.html', {
         'server': server,
-        'form': form
+        'form': form,
+        'moderator': None
     }, context_instance=RequestContext(request))
 
 
 def server_votes(request, server_id):
     server = get_object_or_404(Server.active.select_related(), pk=server_id)
+    moderator = server.moderators.filter(user=request.user) if request.user.is_authenticated() else None
+    moderator = moderator[0] if moderator else None
     votes = server.config_votes.all()
     if not votes:
         raise Http404
     return render_to_response('mod/server_detail_votes.html', {
         'server': server,
-        'votes': votes
+        'votes': votes,
+        'moderator': moderator
     }, context_instance=RequestContext(request))
 
 
@@ -179,8 +283,11 @@ def server_votes(request, server_id):
 @require_POST
 def start_stop_server(request, server_id):
     server = get_object_or_404(Server.active.select_related(), pk=server_id)
-    user = request.user
-    if not user.is_staff and server.owner != user:
+    moderator = server.moderators.filter(user=request.user)
+    if server.owner != request.user and not moderator:
+        raise Http404
+    moderator = moderator[0] if moderator else None
+    if not server.owner != request.user and not moderator.restart_allowed:
         raise Http404
     next = request.REQUEST.get('next', reverse('user_server_list', kwargs={'username': server.owner.username}))
     map_exists = True
@@ -198,10 +305,17 @@ def start_stop_server(request, server_id):
 @login_required
 @require_POST
 def update_settings(request, server_id):
-    server = get_object_or_404(Server.active.select_related().filter(owner=request.user), pk=server_id)
+    server = get_object_or_404(Server.active.select_related(), pk=server_id)
+    moderator = server.moderators.filter(user=request.user)
+    if server.owner != request.user and not moderator:
+        raise Http404
+    moderator = moderator[0] if moderator else None
     next = request.REQUEST.get('next', reverse('server_edit', kwargs={'server_id': server.id}))
     options = server.config_options.exclude(widget=Option.WIDGET_CHECKBOX)
     for key in request.POST.keys():
+        if server.owner != request.user:
+            if not moderator.allowed_options.filter(command=key):
+                continue
         option = options.filter(command=key)[0] if options.filter(command=key) else None
         if option:
             if option.widget == Option.WIDGET_TEXTAREA:
@@ -222,7 +336,13 @@ def update_settings(request, server_id):
 @login_required
 @require_POST
 def update_votes(request, server_id):
-    server = get_object_or_404(Server.active.select_related().filter(owner=request.user), pk=server_id)
+    server = get_object_or_404(Server.active.select_related(), pk=server_id)
+    moderator = server.moderators.filter(user=request.user)
+    if server.owner != request.user and not moderator:
+        raise Http404
+    moderator = moderator[0] if moderator else None
+    if not server.owner != request.user and not moderator.edit_votes_allowed:
+        raise Http404
     next = request.REQUEST.get('next', reverse('server_edit_votes', kwargs={'server_id': server.id}))
     votes = server.config_votes.all()
     post = request.POST.copy()
@@ -291,12 +411,17 @@ def update_votes(request, server_id):
 @require_POST
 def update_tunes(request, server_id):
     server = get_object_or_404(Server.active.select_related(), pk=server_id)
-    if server.owner != request.user:
+    moderator = server.moderators.filter(user=request.user)
+    if server.owner != request.user and not moderator:
         raise Http404
+    moderator = moderator[0] if moderator else None
     next = request.REQUEST.get('next', reverse('server_tunes', kwargs={'server_id': server.id}))
     tunes = server.config_tunes.all()
     if tunes:
         for key in request.POST.keys():
+            if server.owner != request.user:
+                if not moderator.allowed_tunings.filter(command=key):
+                    continue
             tune = tunes.filter(command=key)[0] if tunes.filter(command=key) else None
             if tune:
                 try:
