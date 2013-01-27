@@ -39,8 +39,10 @@ context variables:
             {% if server.owner == user or moderator and moderator.edit_votes_allowed %}
                 <a href="{{ url_edit_votes }}"><div class="tab{% current request url_edit_votes %}">Edit Votes</div></a>
             {% endif %}
-            {% if server.owner == user or moderator and moderator.edit_rcon_commands_allowed %}
-                <a href="{{ url_edit_rcon_commands }}"><div class="tab{% current request url_edit_rcon_commands %}">Edit Rcon commands</div></a>
+            {% if server.config_available_rconcommands.all %}
+                {% if server.owner == user or moderator and moderator.edit_rcon_commands_allowed %}
+                    <a href="{{ url_edit_rcon_commands }}"><div class="tab{% current request url_edit_rcon_commands %}">Edit Rcon commands</div></a>
+                {% endif %}
             {% endif %}
             {% if server.owner == user or moderator and moderator.allowed_tunings.all %}
                 {% if server.config_tunes.all %}

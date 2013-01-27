@@ -233,12 +233,14 @@ def server_edit_votes(request, server_id):
 @login_required
 def server_edit_rcon_commands(request, server_id):
     server = get_object_or_404(Server.active.select_related(), pk=server_id)
+    available_rcon_commands = server.config_available_rconcommands.all()
+    if not available_rcon_commands:
+        raise Http404
     moderator = server.moderators.filter(user=request.user)
     if server.owner != request.user and (not moderator or not moderator[0].edit_rcon_commands_allowed):
         raise Http404
     moderator = moderator[0] if moderator else None
     rcon_commands = server.config_rconcommands.all()
-    available_rcon_commands = server.config_available_rconcommands.all()
     return render_to_response('mod/server_detail_edit_rcon_commands.html', {
         'server': server,
         'rcon_commands': rcon_commands,
