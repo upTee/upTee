@@ -331,7 +331,7 @@ def update_settings(request, server_id):
         raise Http404
     moderator = moderator[0] if moderator else None
     next = request.REQUEST.get('next', reverse('server_edit', kwargs={'server_id': server.id}))
-    options = server.config_options.exclude(widget=Option.WIDGET_CHECKBOX)
+    options = server.config_options.exclude(widget__in=[Option.WIDGET_CHECKBOX, Option.WIDGET_SELECT])
     for key in request.POST.keys():
         if server.owner != request.user:
             if not moderator.allowed_options.filter(command=key):
@@ -350,6 +350,18 @@ def update_settings(request, server_id):
         else:
             option.value = '0'
         option.save()
+    options = server.config_options.filter(widget=Option.WIDGET_SELECT)
+    for key in request.POST.keys():
+        if server.owner != request.user:
+            if not moderator.allowed_options.filter(command=key):
+                continue
+        option = options.filter(command=key)[0] if options.filter(command=key) else None
+        if option:
+            selections = option.selections()
+            option.value = request.POST[key]
+            for selection in selections:
+                option.value += ',{0}'.format(selection)
+            option.save()
     return render_to_response('mod/settings_updated.html', {'next': next}, context_instance=RequestContext(request))
 
 

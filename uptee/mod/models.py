@@ -156,7 +156,12 @@ class Server(models.Model):
         path = os.path.join(MEDIA_ROOT, 'mods', self.mod.title)
         config = TwConfig(os.path.join(path, 'generated.cfg'))
         for option in self.config_options.all():
-            config.add_option(option.command, option.value, option.get_widget_display())
+            if option.get_widget_display() == 'select':
+                value = option.value.split(',', 1)[0]
+                widget = 'select:{0}'.format(option.value.split(',', 1)[1])
+                config.add_option(option.command, value, widget)
+            else:
+                config.add_option(option.command, option.value, option.get_widget_display())
         config.add_option('sv_port', self.port.port)
         for tune in self.config_tunes.all():
             config.add_tune(tune.command, tune.value)
@@ -236,13 +241,25 @@ class Option(Config):
     WIDGET_TEXTAREA = 2
     WIDGET_PASSWORD = 3
     WIDGET_CHECKBOX = 4
+    WIDGET_SELECT = 5
     WIDGET_CHOICES = (
         (WIDGET_TEXT, 'text'),
         (WIDGET_TEXTAREA, 'textarea'),
         (WIDGET_PASSWORD, 'password'),
         (WIDGET_CHECKBOX, 'checkbox'),
+        (WIDGET_SELECT, 'select'),
     )
     widget = models.IntegerField(choices=WIDGET_CHOICES, default=WIDGET_TEXT)
+
+    def selections(self):
+        if self.get_widget_display() == 'select':
+            return self.value.split(',')[1:]
+        return None
+
+    def selected_value(self):
+        if self.get_widget_display() == 'select':
+            return self.value.split(',')[0]
+        return None
 
     class Meta:
         ordering = ['id']

@@ -28,6 +28,14 @@ context variables:
                         <input type="checkbox" name="{{ option.command }}" id="{{ option.command }}"{% if option.value != '0' %} checked="checked"{% endif %}>
                         <label class="checkbox" for="{{ option.command }}"></label>
                     </td>
+                {% elif option.get_widget_display == 'select' %}
+                    <td>
+                        <select name="{{ option.command }}" id="{{ option.command }}">
+                            {% for selection in option.selections %}
+                                <option value="{{ selection }}"{% if selection == option.selected_value %} selected="selected"{% endif %}>{{ selection }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
                 {% else %}
                     <td><input type="{{ option.get_widget_display }}" name="{{ option.command }}" value="{{ option.value }}" id="{{ option.command }}"{% if option.get_widget_display == 'password' %} autocomplete="off"{% endif %}></td>
                 {% endif %}
