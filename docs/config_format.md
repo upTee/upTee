@@ -14,21 +14,30 @@ Unknown widget or missing widget will be automatically recognized as _text_ widg
 Every widget defintion starts with __#widget:__    
 The following widgets are available:
 
-###[text] - a string value. Used for strings and integer options. (default widget)    
+###[text] - String value.    
+Used for strings and integer options. (default widget)    
 ```
 sv_name " upTee Testserver" #widget:text
 ```
-###[textarea] - a multiline string. Line breaks get converted automatically on the website.    
+###[textarea] - Multiline string value.    
+Line breaks get converted automatically on the website.    
 ```
 sv_motd "upTee Testserver - Vanilla\n\nThis server is a test\n\nHosted by Sushi" #widget:textarea
 ```
-###[password] - a string value. Values on the website are hidden.    
+###[password] - String value.    
+Values on the website are hidden.    
 ```
 sv_rcon_password "example" #widget:password
 ```
-###[checkbox] - boolean value. Used for integer values limited to 0 and 1.    
+###[checkbox] - Boolean value.    
+Used for integer values limited to 0 and 1.    
 ```
 sv_powerups 0 #widget:checkbox
+```
+###[select] - Selection value.    
+Used for predefined values. Values are comma seperated and no spaces are allowed.     
+```
+sv_gametype ctf #widget:select:ctf,tdm,dm
 ```
 
 Commands
@@ -66,7 +75,7 @@ sv_rcon_password "examplerc" #widget:password
 # game
 sv_scorelimit 0
 sv_timelimit 0
-sv_gametype sur
+sv_gametype sur #widget:select:ctf,tdm,dm,sur,lms
 sv_spectator_slots 10
 sv_warmup 0
 sv_teamdamage 0 #widget:checkbox
