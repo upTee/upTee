@@ -8,7 +8,7 @@ class Config:
         self.votes = []
         self.tunes = []
         self.available_rcon_commands = []
-        self.rcon_commands = {}
+        self.rcon_commands = []
 
     def read(self):
         with open(self.path) as f:
@@ -53,8 +53,8 @@ class Config:
                 f.write(u'tune {0} {1}\n'.format(tune['command'], tune['value']).encode('UTF-8'))
             for vote in self.votes:
                 f.write(u'add_vote "{0}" "{1}"\n'.format(vote['title'], vote['command']).encode('UTF-8'))
-            for key, value in self.rcon_commands.iteritems():
-                f.write(u'{0} {1}\n'.format(key, value).encode('UTF-8'))
+            for rcon_command in self.rcon_commands:
+                f.write(u'{0} {1}\n'.format(rcon_command['command'], rcon_command['value']).encode('UTF-8'))
 
     def add_option(self, command, value, widget='text'):
         self.options[command] = (value, widget)
@@ -66,4 +66,4 @@ class Config:
         self.votes.append({'command': command, 'title': title})
 
     def add_rcon_command(self, command, value):
-        self.rcon_commands[command] = value
+        self.rcon_commands.append({'command': command, 'value': value})
