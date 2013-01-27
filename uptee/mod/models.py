@@ -103,6 +103,9 @@ class Server(models.Model):
         if self.is_online and self.check_online():
             s = ServerInfo()
             s.send(self.port.port)
+            if not s:  # assume there is something wrong with the server
+                self.set_offline()
+                return None
             return s
         return None
 
