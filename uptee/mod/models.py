@@ -183,6 +183,8 @@ class Server(models.Model):
             vote.delete()
         for rcon_command in RconCommand.objects.filter(server=self):
             rcon_command.delete()
+        for available_rcon_command in AvailableRconCommand.objects.filter(server=self):
+            available_rcon_command.delete()
         config_path = os.path.join(MEDIA_ROOT, 'mods', self.mod.title, 'config.cfg')
         config = TwConfig(config_path)
         config.read()
