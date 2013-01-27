@@ -31,6 +31,17 @@ sv_rcon_password "example" #widget:password
 sv_powerups 0 #widget:checkbox
 ```
 
+Commands
+--------
+With the _#command:_ command you can add rcon commands which should be available for putting inside of the config.    
+You can put more than one command after the command seperated by a space.    
+It is important that there is no space after the _":"_ and no space between the _"#"_ and _"command"_.    
+The user can add all allowed commands to the config via the website.    
+```
+#command:mod_command
+#command:add_vote change_map
+```
+
 Example
 -------
 The following example shows a vanilla 0.7 config. All commands and tunings written down are allowed to change by the user. The votes get added.
