@@ -284,10 +284,7 @@ def server_votes(request, server_id):
 def start_stop_server(request, server_id):
     server = get_object_or_404(Server.active.select_related(), pk=server_id)
     moderator = server.moderators.filter(user=request.user)
-    if server.owner != request.user and not moderator:
-        raise Http404
-    moderator = moderator[0] if moderator else None
-    if server.owner != request.user and not moderator.restart_allowed:
+    if server.owner != request.user and not request.user.is_staff() and (not moderator or not moderator[0].restart_allowed):
         raise Http404
     next = request.REQUEST.get('next', reverse('user_server_list', kwargs={'username': server.owner.username}))
     map_exists = True
