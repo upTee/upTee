@@ -46,7 +46,7 @@ class ServerInfo:
     def __init__(self):
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.sock.bind(('127.0.0.1', 0))
-        self.sock.settimeout(2)  # do this different later and in an extra task with higher timeout
+        self.sock.settimeout(10)  # do this different later and in an extra task
         self.compressed_data = True
         self.data = ''
         self.server_info = {}
