@@ -345,6 +345,9 @@ def update_settings(request, server_id):
             option.save()
     options = server.config_options.filter(widget=Option.WIDGET_CHECKBOX)
     for option in options:
+        if server.owner != request.user:
+            if not moderator.allowed_options.filter(command=key):
+                continue
         if option.command in request.POST.keys():
             option.value = '1'
         else:
