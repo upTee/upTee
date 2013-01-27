@@ -162,6 +162,8 @@ class Server(models.Model):
             config.add_tune(tune.command, tune.value)
         for vote in self.config_votes.all():
             config.add_vote(vote.command, vote.title)
+        for rcon_command in self.config_rconcommands.all():
+            config.add_rcon_command(rcon_command.command, rcon_command.value)
         config.write()
         with open(os.path.join(path, 'storage.cfg'), 'w') as storage:
             storage.write('add_path servers/{0}/{1}\nadd_path $CURRENTDIR\n'.format(self.owner.username, self.id))
@@ -174,6 +176,8 @@ class Server(models.Model):
             tune.delete()
         for vote in Vote.objects.filter(server=self):
             vote.delete()
+        for rcon_command in RconCommand.objects.filter(server=self):
+            rcon_command.delete()
         config_path = os.path.join(MEDIA_ROOT, 'mods', self.mod.title, 'config.cfg')
         config = TwConfig(config_path)
         config.read()
@@ -189,6 +193,9 @@ class Server(models.Model):
             data.save()
         for vote in config.votes:
             data = Vote(server=self, command=vote['command'], title=vote['title'])
+            data.save()
+        for rcon_command in config.available_rcon_commands:
+            data = AvailableRconCommand(server=self, command=rcon_command)
             data.save()
         # copy maps if there are already some
         if old_obj:
@@ -256,6 +263,27 @@ class Tune(Config):
 
 class Vote(Config):
     title = models.CharField(max_length=100)
+
+    class Meta:
+        ordering = ['id']
+
+    def __unicode__(self):
+        return str(self.command)
+
+
+class RconCommand(Config):
+    value = models.CharField(blank=True, max_length=500)
+
+    class Meta:
+        ordering = ['id']
+
+    def __unicode__(self):
+        return str(self.command)
+
+
+class AvailableRconCommand(models.Model):
+    server = models.ForeignKey(Server, related_name='config_available_rconcommands')
+    command = command = models.CharField(max_length=100)
 
     class Meta:
         ordering = ['id']

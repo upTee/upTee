@@ -569,6 +569,19 @@ a.edit_link {
         opacity: 1.0;
         cursor: pointer;
     }
+
+.delete_command div.del_button {
+    background: url('../img/close_icon.png') no-repeat center;
+    height: 15px;
+    width: 15px;
+    float: right;
+    opacity: 0.5;
+}
+
+    .delete_command div.del_button:hover {
+        opacity: 1.0;
+        cursor: pointer;
+    }
 /* ---END vote delete button--- */
 
 

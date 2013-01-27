@@ -9,7 +9,7 @@ from django.template import RequestContext
 from django.views.decorators.http import require_POST
 from annoying.decorators import ajax_request
 from mod.forms import ChangeModForm, MapUploadForm, ModeratorForm, ServerDescriptionForm
-from mod.models import Map, Option, Server, Vote
+from mod.models import Map, Option, RconCommand, Server, Vote
 from settings import MEDIA_ROOT
 
 
@@ -92,6 +92,10 @@ def server_edit_moderator(request, server_id, user_id):
             moderator.map_upload_allowed = True
         else:
             moderator.map_upload_allowed = False
+        if 'edit_rcon_commands_allowed' in request.POST.keys():
+            moderator.edit_rcon_commands_allowed = True
+        else:
+            moderator.edit_rcon_commands_allowed = False
         for option in moderator.allowed_options.all():
             if option.command not in request.POST.keys():
                 moderator.allowed_options.remove(option)
@@ -222,6 +226,23 @@ def server_edit_votes(request, server_id):
     return render_to_response('mod/server_detail_edit_votes.html', {
         'server': server,
         'votes': votes,
+        'moderator': moderator
+    }, context_instance=RequestContext(request))
+
+
+@login_required
+def server_edit_rcon_commands(request, server_id):
+    server = get_object_or_404(Server.active.select_related(), pk=server_id)
+    moderator = server.moderators.filter(user=request.user)
+    if server.owner != request.user and (not moderator or not moderator[0].edit_rcon_commands_allowed):
+        raise Http404
+    moderator = moderator[0] if moderator else None
+    rcon_commands = server.config_rconcommands.all()
+    available_rcon_commands = server.config_available_rconcommands.all()
+    return render_to_response('mod/server_detail_edit_rcon_commands.html', {
+        'server': server,
+        'rcon_commands': rcon_commands,
+        'available_rcon_commands': available_rcon_commands,
         'moderator': moderator
     }, context_instance=RequestContext(request))
 
@@ -401,6 +422,41 @@ def update_votes(request, server_id):
             vote_list = vote_list[1:]
             for item in vote_list:
                 item.delete()"""
+    return render_to_response('mod/settings_updated.html', {'next': next}, context_instance=RequestContext(request))
+
+
+@login_required
+@require_POST
+def update_rcon_commands(request, server_id):
+    server = get_object_or_404(Server.active.select_related(), pk=server_id)
+    moderator = server.moderators.filter(user=request.user)
+    if server.owner != request.user and not moderator:
+        raise Http404
+    moderator = moderator[0] if moderator else None
+    if server.owner != request.user and not moderator.edit_rcon_commands_allowed:
+        raise Http404
+    next = request.REQUEST.get('next', reverse('server_edit_rcon_commands', kwargs={'server_id': server.id}))
+    rcon_commands = server.config_rconcommands.all()
+    post = request.POST.copy()
+    new_commands = []
+    for key in post:
+        if '-' not in key:
+            continue
+        if key[:4] == 'new-' and post[key]:
+            new_commands.append((key[4:].rsplit('-', 1)[0], post[key]))
+        else:
+            rcon_id = key.rsplit('-', 1)[1]
+            rcon_command = rcon_commands.filter(pk=rcon_id)
+            rcon_command = rcon_command[0] if rcon_command else None
+            if rcon_command:
+                if post[key] and rcon_command.command == key.rsplit('-', 1)[0]:
+                    rcon_command.value = post[key]
+                    rcon_command.save()
+                else:
+                    rcon_command.delete()
+    for command in new_commands:
+        rcon_command = RconCommand(server=server, command=command[0], value=command[1])
+        rcon_command.save()
     return render_to_response('mod/settings_updated.html', {'next': next}, context_instance=RequestContext(request))
 
 

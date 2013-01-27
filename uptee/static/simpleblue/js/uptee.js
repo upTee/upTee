@@ -79,20 +79,40 @@ $(document).ready(function() {
         $("div.hide_mouseover").css("display", "none");
     });
 
-    var number = 1;
+    var vote_number = 1;
     $('#add_vote').html('<p><button class="button" type="button">Add vote</button></p>');
     $('#add_vote button').click(function() {
         table = $('#add_vote').parent().find('tbody');
         table.append('<tr> \
-                        <th><input type="text" name="title new title ' + number + ' new" value="New vote" id="id-' + number + '-title_new"></th> \
-                        <td><input type="text" name="command new command ' + number + ' new" value="command" id="id-' + number + '-command_new"></td> \
+                        <th><input type="text" name="title new title ' + vote_number + ' new" value="New vote" id="id-' + vote_number + '-title_new"></th> \
+                        <td><input type="text" name="command new command ' + vote_number + ' new" value="command" id="id-' + vote_number + '-command_new"></td> \
                         <td><div class="delete_vote"><div class="del_button" onclick=""></div></div></td> \
                     </tr>');
-        number++;
+        vote_number++;
     });
 
     $('.delete_vote').html('<div class="del_button" onclick=""></div>');
     $('.delete_vote div.del_button').live('click', function() {
+        tr = $(this).parents('tr');
+        tr.hide();
+        tr.find('input').attr('value', '');
+    });
+
+    var rcon_number = 1;
+    $('#add_command').html('<p><button class="button" type="button">Add rcon command</button></p>');
+    $('#add_command button').click(function() {
+        var selected_command = $('#rcon_commands_select :selected').text();
+        table = $('#add_command').parent().find('tbody');
+        table.append('<tr> \
+                        <th><label for="new-' + selected_command + '-' + rcon_number + '">' + selected_command + ':</label></th> \
+                        <td><input type="text" name="new-' + selected_command + '-' + rcon_number + '" value="command" id="new-' + selected_command + '-' + rcon_number + '"></td> \
+                        <td><div class="delete_command"><div class="del_button" onclick=""></div></div></td> \
+                    </tr>');
+        rcon_number++;
+    });
+
+    $('.delete_command').html('<div class="del_button" onclick=""></div>');
+    $('.delete_command div.del_button').live('click', function() {
         tr = $(this).parents('tr');
         tr.hide();
         tr.find('input').attr('value', '');

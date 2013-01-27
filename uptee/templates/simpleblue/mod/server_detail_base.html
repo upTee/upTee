@@ -21,6 +21,7 @@ context variables:
             {% url upload_map server.id as url_upload_map %}
             {% url server_edit server.id as url_edit_settings %}
             {% url server_edit_votes server.id as url_edit_votes %}
+            {% url server_edit_rcon_commands server.id as url_edit_rcon_commands %}
             {% url server_tunes server.id as url_edit_tunes %}
             {% url server_votes server.id as url_votes %}
             {% url server_change_mod server.id as url_change_mod %}
@@ -37,6 +38,9 @@ context variables:
             {% endif %}
             {% if server.owner == user or moderator and moderator.edit_votes_allowed %}
                 <a href="{{ url_edit_votes }}"><div class="tab{% current request url_edit_votes %}">Edit Votes</div></a>
+            {% endif %}
+            {% if server.owner == user or moderator and moderator.edit_rcon_commands_allowed %}
+                <a href="{{ url_edit_rcon_commands }}"><div class="tab{% current request url_edit_rcon_commands %}">Edit Rcon commands</div></a>
             {% endif %}
             {% if server.owner == user or moderator and moderator.allowed_tunings.all %}
                 {% if server.config_tunes.all %}

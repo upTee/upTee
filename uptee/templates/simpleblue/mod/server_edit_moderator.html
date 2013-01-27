@@ -19,7 +19,7 @@ context variables:
         <table class="form_table">
             <tbody>
                 <tr>
-                    <th><label for="restart_allowed">Allow restart server:</label></th>
+                    <th><label for="restart_allowed">Allow restarting server:</label></th>
                     <td>
                         <input type="checkbox" name="restart_allowed" id="restart_allowed"{% if moderator_settings.restart_allowed != 0 %} checked="checked"{% endif %}>
                         <label class="checkbox" for="restart_allowed"></label>
@@ -37,6 +37,13 @@ context variables:
                     <td>
                         <input type="checkbox" name="map_upload_allowed" id="map_upload_allowed"{% if moderator_settings.map_upload_allowed != 0 %} checked="checked"{% endif %}>
                         <label class="checkbox" for="map_upload_allowed"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="edit_rcon_commands_allowed">Allow editing rcon commands:</label></th>
+                    <td>
+                        <input type="checkbox" name="edit_rcon_commands_allowed" id="edit_rcon_commands_allowed"{% if moderator_settings.edit_rcon_commands_allowed != 0 %} checked="checked"{% endif %}>
+                        <label class="checkbox" for="edit_rcon_commands_allowed"></label>
                     </td>
                 </tr>
             </tbody>

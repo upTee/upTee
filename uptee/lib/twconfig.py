@@ -7,14 +7,17 @@ class Config:
         self.options = {}
         self.votes = []
         self.tunes = []
+        self.available_rcon_commands = []
+        self.rcon_commands = {}
 
     def read(self):
         with open(self.path) as f:
             lines = f.readlines()
-            lines = [line.strip() for line in lines if len(line.strip()) and line.strip()[0] != '#' and ' ' in line.strip()]
-            options = [line for line in lines if line.split(' ', 1)[0] not in ['add_vote', 'tune']]
+            lines = [line.strip() for line in lines if len(line.strip()) and ((line.strip()[0] != '#' and ' ' in line.strip()) or (len(line.strip()) > 9 and line.strip()[:9] == '#command:'))]
+            options = [line for line in lines if line.split(' ', 1)[0] not in ['add_vote', 'tune'] and line.split(' ', 1)[0][0] != '#']
             tunes = [line.split(' ', 1)[1] for line in lines if line.split(' ', 1)[0] == 'tune']
             votes = [line.split(' ', 1)[1] for line in lines if line.split(' ', 1)[0] == 'add_vote']
+            rcon_commands = [line[9:] for line in lines if line[:9] == '#command:']
             self.options = {}
             for line in options:
                 command = line.split(' ', 1)[0]
@@ -26,6 +29,8 @@ class Config:
                 self.options[command] = (value, widget)
             self.tunes = [{'command': line.rsplit()[0].strip('"'), 'value': float(line.split()[1].strip('"'))} for line in tunes]
             self.votes = [{'command': line.rsplit('" ', 1)[1].strip('"'), 'title': line.rsplit('" ', 1)[0].strip('"')} for line in votes if len(line.split('" ')) == 2]
+            for line in rcon_commands:
+                self.available_rcon_commands.extend([command for command in line.split() if command not in self.available_rcon_commands])
 
     def write(self, path=None):
         if not path:
@@ -37,6 +42,8 @@ class Config:
                 f.write(u'tune {0} {1}\n'.format(tune['command'], tune['value']).encode('UTF-8'))
             for vote in self.votes:
                 f.write(u'add_vote "{0}" "{1}"\n'.format(vote['title'], vote['command']).encode('UTF-8'))
+            for key, value in self.rcon_commands.iteritems():
+                f.write(u'{0} "{1}"\n'.format(key, value).encode('UTF-8'))
 
     def add_option(self, command, value, widget='text'):
         self.options[command] = (value, widget)
@@ -46,3 +53,6 @@ class Config:
 
     def add_vote(self, command, title):
         self.votes.append({'command': command, 'title': title})
+
+    def add_rcon_command(self, command, value):
+        self.rcon_commands[command] = value
