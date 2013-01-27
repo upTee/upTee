@@ -27,15 +27,16 @@ class Config:
                     line = line.rsplit(' ', 1)[0]
                 value = line.strip('"')
                 # in case of select widget save the selections to the value
-                if widget[:7] == 'select:' and len(widget[7:]):
-                    selections = widget.split(':', 1)[1].split(',')
-                    widget = 'select'
-                    if value not in selections:
-                        selections.append(value)
-                    for selection in selections:
-                        value += ',{0}'.format(selection)
-                else:
-                    widget = 'text'
+                if len(widget) >= 7:
+                    if widget[:7] == 'select:' and len(widget[7:]):
+                        selections = widget.split(':', 1)[1].split(',')
+                        widget = 'select'
+                        if value not in selections:
+                            selections.append(value)
+                        for selection in selections:
+                            value += ',{0}'.format(selection)
+                    elif widget[:7] == 'select:':
+                        widget = 'text'
                 self.options[command] = (value, widget)
             self.tunes = [{'command': line.rsplit()[0].strip('"'), 'value': float(line.split()[1].strip('"'))} for line in tunes]
             self.votes = [{'command': line.rsplit('" ', 1)[1].strip('"'), 'title': line.rsplit('" ', 1)[0].strip('"')} for line in votes if len(line.split('" ')) == 2]

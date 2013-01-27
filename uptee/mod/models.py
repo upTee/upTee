@@ -252,14 +252,14 @@ class Option(Config):
     widget = models.IntegerField(choices=WIDGET_CHOICES, default=WIDGET_TEXT)
 
     def selections(self):
-        if self.get_widget_display() == 'select':
+        if self.widget == Option.WIDGET_SELECT:
             return self.value.split(',')[1:]
         return None
 
-    def selected_value(self):
-        if self.get_widget_display() == 'select':
+    def get_value(self):
+        if self.widget == Option.WIDGET_SELECT:
             return self.value.split(',')[0]
-        return None
+        return self.value
 
     class Meta:
         ordering = ['id']

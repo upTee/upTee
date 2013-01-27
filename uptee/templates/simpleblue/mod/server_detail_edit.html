@@ -32,7 +32,7 @@ context variables:
                     <td>
                         <select name="{{ option.command }}" id="{{ option.command }}">
                             {% for selection in option.selections %}
-                                <option value="{{ selection }}"{% if selection == option.selected_value %} selected="selected"{% endif %}>{{ selection }}</option>
+                                <option value="{{ selection }}"{% if selection == option.get_value %} selected="selected"{% endif %}>{{ selection }}</option>
                             {% endfor %}
                         </select>
                     </td>

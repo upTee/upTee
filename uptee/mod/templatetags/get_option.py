@@ -6,6 +6,6 @@ register = template.Library()
 def get_option(server, command):
     try:
         servername = server.config_options.get(command=command)
-        return servername.value
+        return servername.get_value()
     except:
         return ''
