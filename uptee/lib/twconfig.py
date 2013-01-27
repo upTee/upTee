@@ -32,11 +32,11 @@ class Config:
             path = self.path
         with open(path, 'w') as f:
             for key, value in self.options.iteritems():
-                f.write('{0} "{1}" #widget:{2}\n'.format(key, value[0], value[1]))
+                f.write(u'{0} "{1}" #widget:{2}\n'.format(key, value[0], value[1]))
             for tune in self.tunes:
-                f.write('tune {0} {1}\n'.format(tune['command'], tune['value']))
+                f.write(u'tune {0} {1}\n'.format(tune['command'], tune['value']))
             for vote in self.votes:
-                f.write('add_vote "{0}" "{1}"\n'.format(vote['title'], vote['command']))
+                f.write(u'add_vote "{0}" "{1}"\n'.format(vote['title'], vote['command']))
 
     def add_option(self, command, value, widget='text'):
         self.options[command] = (value, widget)
