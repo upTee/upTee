@@ -43,7 +43,7 @@ class Config:
             for vote in self.votes:
                 f.write(u'add_vote "{0}" "{1}"\n'.format(vote['title'], vote['command']).encode('UTF-8'))
             for key, value in self.rcon_commands.iteritems():
-                f.write(u'{0} "{1}"\n'.format(key, value).encode('UTF-8'))
+                f.write(u'{0} {1}\n'.format(key, value).encode('UTF-8'))
 
     def add_option(self, command, value, widget='text'):
         self.options[command] = (value, widget)
