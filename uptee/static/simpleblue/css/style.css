@@ -492,6 +492,49 @@ a.edit_link {
 /* ---END server detail page--- */
 
 
+/* ---blog--- */
+.blog_entry {
+    margin-bottom: 10px;
+    display: inline-block;
+    width: 100%;
+}
+
+.blog_entry div.headline h2 {
+    border-bottom: 1px solid #009BFF;
+    color: gray;
+    font-size: 16px;
+    margin: 2px;
+    padding: 5px;
+}
+
+.blog_entry div.user {
+    float: left;
+    width: 42px;
+    padding: 10px;
+}
+
+.blog_entry div.entry {
+    padding: 10px;
+    display: inline-block;
+}
+
+.blog_entry div.footer {
+    border-top: 1px solid #009BFF;
+    color: gray;
+}
+
+.blog_entry div.right {
+    float: right;
+    padding: 5px;
+}
+
+.blog_entry div.left {
+    float: left;
+    padding: 5px;
+}
+/* ---END blog--- */
+
+
 /* ---class to hide a block--- */
 .hide_mouseover {
     position: fixed;

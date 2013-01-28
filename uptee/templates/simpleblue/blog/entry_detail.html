@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% load gravatar %}
+
+{% comment %}
+context variables:
+    entry
+{% endcomment %}
+
+{% block content %}
+
+<div class="blog_entry">
+    <div class="headline"><h2>{{ entry.title }}</h2></div>
+    <div class="user">
+        <div class="avatar"><img src="{% gravatar_for_user entry.created_by 40 %}"></div>
+        <div class="user_info"></div>
+    </div>
+    <div class="entry"><p>{{ entry.content_html|safe }}</p></div>
+    <div class="clear"></div>
+    <div class="footer">
+        <div class="left">{{ entry.created_at|date:"F j, Y" }} / <a href="{% url user entry.created_by.id %}">{{ entry.created_by.username }}</a></div>
+        <!--<div class="right">Comments</div>-->
+    </div>
+</div>
+<div class="clear"></div>
+
+{% endblock content %}

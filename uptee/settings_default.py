@@ -171,6 +171,7 @@ INSTALLED_APPS = (
     'djcelery',
     'pagination',
     'accounts',
+    'blog',
     'mod',
     'messaging',
     'captcha',
