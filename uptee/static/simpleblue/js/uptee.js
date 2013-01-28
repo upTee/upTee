@@ -136,6 +136,9 @@ $(document).ready(function() {
 
 function toogle_comments() {
     $(document).ready(function() {
-        $('form').slideToggle('fast');
+        $('form').slideToggle('fast', function() {
+            if($('.create_comment form').css('display') != 'none')
+                $(window).scrollTop($('.create_comment').position().top);
+        });
     });
 }
