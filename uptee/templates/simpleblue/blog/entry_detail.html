@@ -25,8 +25,10 @@ context variables:
 </div>
 <div class="clear"></div>
 
-<div class="comment_headline"><h2>Comments</h2></div>
 {% get_comment_list for blog.entry entry.id as comment_list %}
+{% if comment_list %}
+    <div class="comment_headline"><h2>Comments</h2></div>
+{% endif %}
 {% for comment in comment_list %}
     <div id="cm-{{ comment.id }}" class="comment">
         <div class="headline"><h2><a href="{% url user comment.user.id %}">{{ comment.user.username }}</a></h2></div>
