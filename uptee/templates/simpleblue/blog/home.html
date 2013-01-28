@@ -2,13 +2,25 @@
 
 {% load comments %}
 {% load gravatar %}
+{% load pagination_tags %}
 
 {% comment %}
 context variables:
     entry_list
 {% endcomment %}
 
+{% block link_list %}
+
+<div id="link_list">
+    {% autopaginate entry_list 5 %}
+    {% paginate %}
+</div>
+
+{% endblock link_list %}
+
 {% block content %}
+
+{% autopaginate entry_list 5 %}
 
 {% for entry in entry_list %}
     {% get_comment_count for blog.entry entry.id as comment_count %}
