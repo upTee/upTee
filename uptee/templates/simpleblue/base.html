@@ -145,11 +145,38 @@
                         </div>
                     </div>
                 </div>
-                {% empty %}
+                {% endfor %}
+                {% for server in user_moderated_servers %}
+                <div class="sidebar_entry">
+                    <div class="server_status">
+                        <div class="server_status_headline {% if server.is_online %}on{% else %}off{% endif %}">{{ server|get_option:'sv_name' }}</div>
+                        <div class="server_status_info">
+                            {% if server.is_online %}<div class="server_status_update" data-serverid="{{ server.id }}">{% endif %}
+                                <p>Owner: {{ server.owner.username }}</p>
+                                <p>Mod: {{ server.mod.title }}</p>
+                                {% with server_info_obj=server.info %}
+                                    <p>Gametype: <span data-info="gametype">{% if server_info_obj %}{{ server_info_obj.server_info.gametype }}{% else %}{{ server|get_option:'sv_gametype' }}{% endif %}</span></p>
+                                    <p>Map: <span data-info="map">{% if server_info_obj %}{{ server_info_obj.server_info.map }}{% else %}{{ server|get_option:'sv_map' }}{% endif %}</span></p>
+                                    <p data-info="slots">Slots: <span data-info="slots">{% if server_info_obj %}{{ server_info_obj.server_info.clients|length }}/{{ server_info_obj.server_info.max_clients }}{% else %}{{ server|get_option:'sv_max_clients' }}{% endif %}</span></p>
+                                    <p>Password: <span data-info="password">{% if server_info_obj %}{% if server_info_obj.password %}Yes{% else %}No{% endif %}{% else %}{% if server|get_option:'password' %}Yes{% else %}No{% endif %}{% endif %}</span></p>
+                                    {% if server.is_online %}<p>Address: {{ request.META.HTTP_HOST|split:':'|first }}:{{ server.port }}</p>{% endif %}
+                                    <p><a href="{% url server_detail server.id %}">Info/Edit</a></p>
+                                    <div class="hide_mouseover">
+                                        <div class="mouseover_overlay">
+                                            {% include "scoreboard.html" %}
+                                        </div>
+                                    </div>
+                                {% endwith %}
+                            {% if server.is_online %}</div>{% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% if not user_server_list and not user_moderated_servers %}
                 <div class="sidebar_entry">
                     <p>You don't have any servers. Please contact an admin.</p>
                 </div>
-                {% endfor %}
+                {% endif %}
                 {% endif %}        
             </div>
 
