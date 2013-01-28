@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load comments %}
+{% block extra_head %}
+
+<!-- Sorry, I don't like it either. -->
+<meta http-equiv="refresh" content="2;url={{ comment.content_object.get_absolute_url }}#cm-{{ comment.id }}">
+
+{% endblock extra_head %}
+
+{% block content %}
+
+<div class="box">
+    <div class="header">
+        <h2>Thank you for your comment.</h2>
+    </div>
+    <div class="message">
+        <p>You will be redirected in few seconds. If not click <a href="{{ comment.content_object.get_absolute_url }}#cm-{{ comment.id }}">click here</a>.</p>
+    </div>
+</div>
+
+{% endblock content %}

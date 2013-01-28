@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+{% load comments %}
 {% load gravatar %}
 
 {% comment %}
@@ -7,21 +8,45 @@ context variables:
     entry
 {% endcomment %}
 
+{% block title %}upTee - Blog entry details{% endblock title %}
+
 {% block content %}
 
 <div class="blog_entry">
     <div class="headline"><h2>{{ entry.title }}</h2></div>
     <div class="user">
         <div class="avatar"><img src="{% gravatar_for_user entry.created_by 40 %}"></div>
-        <div class="user_info"></div>
     </div>
     <div class="entry"><p>{{ entry.content_html|safe }}</p></div>
     <div class="clear"></div>
     <div class="footer">
         <div class="left">{{ entry.created_at|date:"F j, Y" }} / <a href="{% url user entry.created_by.id %}">{{ entry.created_by.username }}</a></div>
-        <!--<div class="right">Comments</div>-->
     </div>
 </div>
 <div class="clear"></div>
+
+<div class="comment_headline"><h2>Comments</h2></div>
+{% get_comment_list for blog.entry entry.id as comment_list %}
+{% for comment in comment_list %}
+    <div id="cm-{{ comment.id }}" class="comment">
+        <div class="headline"><h2><a href="{% url user comment.user.id %}">{{ comment.user.username }}</a></h2></div>
+        <div class="links"><a title="Permalink" href="{{ entry.get_absolute_url }}#cm-{{ comment.id }}">#</a> {% if user.is_staff or user.is_superuser %}<a href="{% url comments-delete comment.id %}">delete</a>{% endif %}</div>
+        <div class="user">
+            <div class="avatar"><img src="{% gravatar_for_user comment.user 40 %}"></div>
+        </div>
+        <div class="entry"><p>{{ comment.comment|safe }}</p></div>
+        <div class="clear"></div>
+        <div class="footer">
+            <div class="left">{{ comment.submit_date|date:"F j, Y" }}</div>
+        </div>
+    </div>
+{% endfor %}
+
+{% if user.is_authenticated %}
+<div class="create_comment">
+    <h2><a onclick="toogle_comments()">Create comment</a></h2>
+    {% render_comment_form for entry %}
+</div>
+{% endif %}
 
 {% endblock content %}

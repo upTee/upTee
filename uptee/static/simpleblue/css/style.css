@@ -535,6 +535,66 @@ a.edit_link {
 /* ---END blog--- */
 
 
+/* ---comments--- */
+.comment_headline h2 {
+    border-bottom: 1px solid #009BFF;
+    color: gray;
+    font-size: 16px;
+    margin: 2px;
+    padding: 5px;
+    text-align: center;
+}
+
+.comment {
+    margin-bottom: 10px;
+    display: inline-block;
+    width: 100%;
+    position: relative;
+}
+
+.comment div.links {
+    position: absolute;
+    top: 12px;
+    right: 5px;
+}
+
+.comment div.headline h2 {
+    border-bottom: 1px solid #009BFF;
+    color: gray;
+    font-size: 16px;
+    margin: 2px;
+    padding: 5px;
+}
+
+.comment div.user {
+    float: left;
+    width: 42px;
+    padding: 10px;
+}
+
+.comment div.entry {
+    padding: 10px;
+    display: inline-block;
+}
+
+.comment div.footer {
+    border-top: 1px solid #009BFF;
+    color: gray;
+}
+
+.comment div.left {
+    float: left;
+    padding: 5px;
+}
+
+.create_comment a {
+    text-decoration: underline;
+    color: #808080;
+    cursor: pointer;
+}
+/* ---END comments--- */
+
+
 /* ---class to hide a block--- */
 .hide_mouseover {
     position: fixed;

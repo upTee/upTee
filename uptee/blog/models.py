@@ -54,5 +54,5 @@ class Entry(models.Model):
         return (
             'entry_detail',
             (),
-            {'entry_id': self.id, 'slug': self.slug},
+            {'slug': self.slug},
         )

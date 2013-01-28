@@ -133,3 +133,9 @@ $(document).ready(function() {
         $('input[name=' + data_for + ']').click();
     });
 });
+
+function toogle_comments() {
+    $(document).ready(function() {
+        $('form').slideToggle('fast');
+    });
+}

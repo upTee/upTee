@@ -14,6 +14,7 @@ urlpatterns = patterns('',
     url(r'^', include('messaging.urls')),
     url(r'^about/$', direct_to_template, {'template': 'about.html'}, name='about'),
     url(r'^captcha/', include('captcha.urls')),
+    (r'^comments/', include('django.contrib.comments.urls')),
     (r'^admin/', include(admin.site.urls)),
     (r'^admin_tools/', include('admin_tools.urls')),
 )

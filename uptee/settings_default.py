@@ -164,6 +164,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
+    'django.contrib.comments',
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django_pybrowscap',
@@ -172,6 +173,7 @@ INSTALLED_APPS = (
     'pagination',
     'accounts',
     'blog',
+    'comments',
     'mod',
     'messaging',
     'captcha',
@@ -185,6 +187,7 @@ LOGOUT_URL = '/logout/'
 
 # user profile
 AUTH_PROFILE_MODULE = 'accounts.UserProfile'
+COMMENTS_APP = 'comments'
 
 # teeworlds executable
 SERVER_EXEC = 'teeworlds_srv'
