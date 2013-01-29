@@ -215,6 +215,19 @@ class Server(models.Model):
                         os.makedirs(new_server_maps_path)
                     copyfile(os.path.join(server_maps_path, _map), os.path.join(new_server_maps_path, _map))
                 rmtree(os.path.join(MEDIA_ROOT, 'mods', old_obj.mod.title, 'servers', old_obj.owner.username))
+        # copy default mod maps
+        maps_path = os.path.join(MEDIA_ROOT, 'mods', self.mod.title, 'data', 'maps')
+        if os.path.exists(maps_path):
+            maps = [_file for _file in os.listdir(maps_path) if os.path.splitext(_file)[1].lower() == '.map']
+            for _map in maps:
+                map_obj = Map.objects.filter(server=self, name=os.path.splitext(_map)[0])
+                if not map_obj:
+                    map_obj = Map(server=self, name=os.path.splitext(_map)[0])
+                    map_obj.save()
+                    server_maps_path = os.path.join(MEDIA_ROOT, 'mods', self.mod.title, 'servers', self.owner.username, '{0}'.format(self.id), 'maps')
+                    if not os.path.exists(server_maps_path):
+                        os.makedirs(server_maps_path)
+                    copyfile(os.path.join(maps_path, _map), os.path.join(server_maps_path, _map))
 
     def save(self, *args, **kwargs):
         self.description_html = markdown(escape(self.description))

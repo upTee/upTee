@@ -83,18 +83,6 @@ class ServerAdmin(admin.ModelAdmin):
                 default_settings = True
         if default_settings:
             obj.reset_settings(old_obj)
-        maps_path = os.path.join(MEDIA_ROOT, 'mods', obj.mod.title, 'data', 'maps')
-        if os.path.exists(maps_path):
-            maps = [_file for _file in os.listdir(maps_path) if os.path.splitext(_file)[1].lower() == '.map']
-            for _map in maps:
-                map_obj = Map.objects.filter(server=obj, name=os.path.splitext(_map)[0])
-                if not map_obj:
-                    map_obj = Map(server=obj, name=os.path.splitext(_map)[0])
-                    map_obj.save()
-                server_maps_path = os.path.join(MEDIA_ROOT, 'mods', obj.mod.title, 'servers', obj.owner.username, '{0}'.format(obj.id), 'maps')
-                if not os.path.exists(server_maps_path):
-                    os.makedirs(server_maps_path)
-                copyfile(os.path.join(maps_path, _map), os.path.join(server_maps_path, _map))
 
 
 class PortAdmin(admin.ModelAdmin):
