@@ -154,21 +154,28 @@ class Server(models.Model):
         self.port.is_active = True
         self.port.save()
         path = os.path.join(MEDIA_ROOT, 'mods', self.mod.title)
+        self.save_config()
         with open(os.path.join(path, 'storage.cfg'), 'w') as storage:
             storage.write('add_path servers/{0}/{1}\nadd_path $CURRENTDIR\n'.format(self.owner.username, self.id))
         run_server.delay(path, self)
 
-    def save_config(self):
+    def save_config(self, download=False):
         path = os.path.join(MEDIA_ROOT, 'mods', self.mod.title)
         config = TwConfig(os.path.join(path, 'servers', self.owner.username, '{0}'.format(self.id), 'generated.cfg'))
         for option in self.config_options.all():
-            if option.get_widget_display() == 'select':
+            if option.widget == Option.WIDGET_SELECT:
                 value = option.value.split(',', 1)[0]
                 widget = 'select:{0}'.format(option.value.split(',', 1)[1])
                 config.add_option(option.command, value, widget)
             else:
-                config.add_option(option.command, option.value, option.get_widget_display())
-        config.add_option('sv_port', self.port.port)
+                if download and option.widget == Option.WIDGET_PASSWORD:
+                    config.add_option(option.command, '', option.get_widget_display())
+                else:
+                    config.add_option(option.command, option.value, option.get_widget_display())
+        if download:
+            config.add_option('sv_port', '8303')
+        else:
+            config.add_option('sv_port', self.port.port)
         for tune in self.config_tunes.all():
             config.add_tune(tune.command, tune.value)
         for vote in self.config_votes.all():
