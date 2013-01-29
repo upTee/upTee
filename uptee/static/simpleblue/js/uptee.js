@@ -132,6 +132,8 @@ $(document).ready(function() {
         var data_for = $(this).attr('data-for');
         $('input[name=' + data_for + ']').click();
     });
+
+    $('#comment_form').css('display', 'none');
 });
 
 function toogle_comments() {
