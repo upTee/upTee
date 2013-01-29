@@ -86,6 +86,7 @@ class Server(models.Model):
     port = models.OneToOneField(Port, blank=True, null=True, related_name='server')
     is_active = models.BooleanField(default=False)
     online = models.BooleanField(default=False)
+    locked = models.BooleanField(default=False)
     automatic_restart = models.BooleanField(default=False)
     map_download_allowed = models.BooleanField(default=True)
     description = models.TextField(blank=True, help_text='You may use markdown')
@@ -151,19 +152,22 @@ class Server(models.Model):
         self.save()
 
     def set_online(self):
-        ports = Port.objects.filter(server=self)
-        if ports:
-            for port in ports:
-                server = port.server
-                server.set_offline()
-        self.port = Port.get_free_port()
-        self.port.is_active = True
-        self.port.save()
-        path = os.path.join(MEDIA_ROOT, 'mods', self.mod.title)
-        self.save_config()
-        with open(os.path.join(path, 'storage.cfg'), 'w') as storage:
-            storage.write('add_path servers/{0}/{1}\nadd_path $CURRENTDIR\n'.format(self.owner.username, self.id))
-        run_server.delay(path, self)
+        if not self.locked:
+            ports = Port.objects.filter(server=self)
+            if ports:
+                for port in ports:
+                    server = port.server
+                    server.set_offline()
+            self.port = Port.get_free_port()
+            self.port.is_active = True
+            self.port.save()
+            self.locked = True
+            self.save()
+            path = os.path.join(MEDIA_ROOT, 'mods', self.mod.title)
+            self.save_config()
+            with open(os.path.join(path, 'storage.cfg'), 'w') as storage:
+                storage.write('add_path servers/{0}/{1}\nadd_path $CURRENTDIR\n'.format(self.owner.username, self.id))
+            run_server.delay(path, self)
 
     def save_config(self, download=False):
         path = os.path.join(MEDIA_ROOT, 'mods', self.mod.title)

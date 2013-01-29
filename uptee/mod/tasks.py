@@ -15,6 +15,7 @@ def run_server(path, server):
         p = Popen((os.path.join(path, SERVER_EXEC), '-f', os.path.join(path, 'servers', server.owner.username, '{0}'.format(server.id), 'generated.cfg')), cwd=path, stdout=f, stderr=f)
         server.pid = p.pid
         server.online = True
+        server.locked = False
         server.save()
         p.wait()
 
