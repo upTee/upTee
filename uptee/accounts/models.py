@@ -34,6 +34,7 @@ class Moderator(models.Model):
     server = models.ForeignKey(Server, related_name='moderators')
     user = models.ForeignKey(User, related_name='moderators')
     restart_allowed = models.BooleanField(default=False)
+    edit_automatic_restart_allowed = models.BooleanField(default=False)
     edit_votes_allowed = models.BooleanField(default=False)
     map_upload_allowed = models.BooleanField(default=False)
     edit_rcon_commands_allowed = models.BooleanField(default=False)

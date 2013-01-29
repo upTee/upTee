@@ -84,6 +84,10 @@ def server_edit_moderator(request, server_id, user_id):
             moderator.restart_allowed = True
         else:
             moderator.restart_allowed = False
+        if 'edit_automatic_restart_allowed' in request.POST.keys():
+            moderator.edit_automatic_restart_allowed = True
+        else:
+            moderator.edit_automatic_restart_allowed = False
         if 'edit_votes_allowed' in request.POST.keys():
             moderator.edit_votes_allowed = True
         else:
@@ -341,41 +345,45 @@ def update_settings(request, server_id):
     moderator = moderator[0] if moderator else None
     next = request.REQUEST.get('next', reverse('server_edit', kwargs={'server_id': server.id}))
     options = server.config_options.exclude(widget__in=[Option.WIDGET_CHECKBOX, Option.WIDGET_SELECT])
-    if 'automatic_restart' in request.POST.keys():
-        server.automatic_restart = True
-    else:
-        server.automatic_restart = False
-    server.save()
-    for key in request.POST.keys():
+    post = request.POST.copy()
+    if server.owner == request.user or (moderator and moderator.edit_automatic_restart_allowed):
+        if 'automatic_restart' in post.keys():
+            server.automatic_restart = True
+        else:
+            server.automatic_restart = False
+        server.save()
+    if 'automatic_restart' in post.keys():
+        del post['automatic_restart']
+    for key in post.keys():
         if server.owner != request.user:
             if not moderator.allowed_options.filter(command=key):
                 continue
         option = options.filter(command=key)[0] if options.filter(command=key) else None
         if option:
             if option.widget == Option.WIDGET_TEXTAREA:
-                option.value = request.POST[key].replace('\r\n', r'\n')
+                option.value = post[key].replace('\r\n', r'\n')
             else:
-                option.value = request.POST[key]
+                option.value = post[key]
             option.save()
     options = server.config_options.filter(widget=Option.WIDGET_CHECKBOX)
     for option in options:
         if server.owner != request.user:
             if not moderator.allowed_options.filter(command=key):
                 continue
-        if option.command in request.POST.keys():
+        if option.command in post.keys():
             option.value = '1'
         else:
             option.value = '0'
         option.save()
     options = server.config_options.filter(widget=Option.WIDGET_SELECT)
-    for key in request.POST.keys():
+    for key in post.keys():
         if server.owner != request.user:
             if not moderator.allowed_options.filter(command=key):
                 continue
         option = options.filter(command=key)[0] if options.filter(command=key) else None
         if option:
             selections = option.selections()
-            option.value = request.POST[key]
+            option.value = post[key]
             for selection in selections:
                 option.value += ',{0}'.format(selection)
             option.save()

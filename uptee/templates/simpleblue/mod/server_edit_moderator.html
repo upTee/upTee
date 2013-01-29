@@ -26,6 +26,13 @@ context variables:
                     </td>
                 </tr>
                 <tr>
+                    <th><label for="edit_automatic_restart_allowed">Allow editing auto restart:</label></th>
+                    <td>
+                        <input type="checkbox" name="edit_automatic_restart_allowed" id="edit_automatic_restart_allowed"{% if moderator_settings.edit_automatic_restart_allowed != 0 %} checked="checked"{% endif %}>
+                        <label class="checkbox" for="edit_automatic_restart_allowed"></label>
+                    </td>
+                </tr>
+                <tr>
                     <th><label for="edit_votes_allowed">Allow editing votes:</label></th>
                     <td>
                         <input type="checkbox" name="edit_votes_allowed" id="edit_votes_allowed"{% if moderator_settings.edit_votes_allowed != 0 %} checked="checked"{% endif %}>
