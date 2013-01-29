@@ -201,6 +201,14 @@ def map_details(request, map_id):
     }, context_instance=RequestContext(request))
 
 
+def config_download(request, server_id):
+    server = get_object_or_404(Server.active, pk=server_id)
+    fsock = open(os.path.join(MEDIA_ROOT, 'mods', server.mod.title, 'servers', server.owner.username, '{0}'.format(server.id), 'generated.cfg'), 'rb')
+    response = HttpResponse(fsock, mimetype='application/octet-stream')
+    response['Content-Disposition'] = 'attachment; filename=config.cfg'
+    return response
+
+
 @login_required
 @require_POST
 def delete_map(request, map_id):
@@ -365,6 +373,8 @@ def update_settings(request, server_id):
             for selection in selections:
                 option.value += ',{0}'.format(selection)
             option.save()
+    # save the config
+    server.save_config()
     return render_to_response('mod/settings_updated.html', {'next': next}, context_instance=RequestContext(request))
 
 
@@ -433,12 +443,8 @@ def update_votes(request, server_id):
             else:
                 setattr(vote, input_type, post[key])
                 vote.save()
-    """for vote in votes:
-        vote_list = votes.filter(title=vote.title)
-        if len(vote_list) > 1:
-            vote_list = vote_list[1:]
-            for item in vote_list:
-                item.delete()"""
+    # save the config
+    server.save_config()
     return render_to_response('mod/settings_updated.html', {'next': next}, context_instance=RequestContext(request))
 
 
@@ -474,6 +480,8 @@ def update_rcon_commands(request, server_id):
     for command in new_commands:
         rcon_command = RconCommand(server=server, command=command[0], value=command[1])
         rcon_command.save()
+    # save the config
+    server.save_config()
     return render_to_response('mod/settings_updated.html', {'next': next}, context_instance=RequestContext(request))
 
 
@@ -499,6 +507,8 @@ def update_tunes(request, server_id):
                 except ValueError:
                     continue
                 tune.save()
+    # save the config
+    server.save_config()
     return render_to_response('mod/settings_updated.html', {'next': next}, context_instance=RequestContext(request))
 
 

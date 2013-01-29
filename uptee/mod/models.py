@@ -154,6 +154,12 @@ class Server(models.Model):
         self.port.is_active = True
         self.port.save()
         path = os.path.join(MEDIA_ROOT, 'mods', self.mod.title)
+        with open(os.path.join(path, 'storage.cfg'), 'w') as storage:
+            storage.write('add_path servers/{0}/{1}\nadd_path $CURRENTDIR\n'.format(self.owner.username, self.id))
+        run_server.delay(path, self)
+
+    def save_config(self):
+        path = os.path.join(MEDIA_ROOT, 'mods', self.mod.title)
         config = TwConfig(os.path.join(path, 'servers', self.owner.username, '{0}'.format(self.id), 'generated.cfg'))
         for option in self.config_options.all():
             if option.get_widget_display() == 'select':
@@ -170,9 +176,6 @@ class Server(models.Model):
         for rcon_command in self.config_rconcommands.all():
             config.add_rcon_command(rcon_command.command, rcon_command.value)
         config.write()
-        with open(os.path.join(path, 'storage.cfg'), 'w') as storage:
-            storage.write('add_path servers/{0}/{1}\nadd_path $CURRENTDIR\n'.format(self.owner.username, self.id))
-        run_server.delay(path, self)
 
     def reset_settings(self, old_obj):
         for option in Option.objects.filter(server=self):
@@ -204,6 +207,8 @@ class Server(models.Model):
         for rcon_command in config.available_rcon_commands:
             data = AvailableRconCommand(server=self, command=rcon_command)
             data.save()
+        # save the config
+        self.save_config()
         # copy maps if there are already some
         if old_obj:
             server_maps_path = os.path.join(MEDIA_ROOT, 'mods', old_obj.mod.title, 'servers', old_obj.owner.username, '{0}'.format(old_obj.id), 'maps')

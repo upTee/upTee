@@ -1,5 +1,4 @@
 from django.conf.urls.defaults import *
-from django.views.generic.simple import direct_to_template
 
 urlpatterns = patterns('mod.views',
     url(r'^servers/$', 'server_list', name='server_list'),
@@ -17,6 +16,7 @@ urlpatterns = patterns('mod.views',
     url(r'^server/(?P<server_id>\d+)/editserverdescription/$', 'server_edit_description', name='server_edit_description'),
     url(r'^server/(?P<server_id>\d+)/moderators/$', 'server_moderators', name='server_moderators'),
     url(r'^server/(?P<server_id>\d+)/moderators/(?P<user_id>\d+)/$', 'server_edit_moderator', name='server_edit_moderator'),
+    url(r'^server/(?P<server_id>\d+)/downloadconfig/$', 'config_download', name='config_download'),
     url(r'^startstopserver/(?P<server_id>\d+)/$', 'start_stop_server', name='start_stop_server'),
     url(r'^updatesettings/(?P<server_id>\d+)/$', 'update_settings', name='update_settings'),
     url(r'^updatevotes/(?P<server_id>\d+)/$', 'update_votes', name='update_votes'),
