@@ -12,7 +12,7 @@ def run_server(path, server):
     if not os.path.exists(log_path):
         os.makedirs(log_path)
     with open(os.path.join(log_path, '{0}_{1}_{2}.txt'.format(server.id, datetime.now().strftime("%y%m%d%H%M%S"), User.objects.make_random_password())), 'w') as f:
-        p = Popen((os.path.join(path, SERVER_EXEC), '-f', 'generated.cfg'), cwd=path, stdout=f, stderr=f)
+        p = Popen((os.path.join(path, SERVER_EXEC), '-f', os.path.join(path, 'servers', server.owner.username, '{0}'.format(server.id), 'generated.cfg')), cwd=path, stdout=f, stderr=f)
         server.pid = p.pid
         server.online = True
         server.save()

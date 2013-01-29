@@ -154,7 +154,7 @@ class Server(models.Model):
         self.port.is_active = True
         self.port.save()
         path = os.path.join(MEDIA_ROOT, 'mods', self.mod.title)
-        config = TwConfig(os.path.join(path, 'generated.cfg'))
+        config = TwConfig(os.path.join(path, 'servers', self.owner.username, '{0}'.format(self.id), 'generated.cfg'))
         for option in self.config_options.all():
             if option.get_widget_display() == 'select':
                 value = option.value.split(',', 1)[0]
