@@ -185,10 +185,11 @@ def upload_map(request, server_id):
 
 def map_download(request, map_id):
     map_obj = get_object_or_404(Map, pk=map_id)
-    password = map_obj.server.config_options.filter(command='password')
-    if password:
-        password = password[0].value
-    if request.user != map_obj.server.owner and password:
+    server = map_obj.server
+    moderator = server.moderators.filter(user=request.user) if request.user.is_authenticated() else None
+    password = server.config_options.filter(command='password')
+    password = password[0].get_value() if password else ''
+    if server.owner != request.user and (not server.map_download_allowed or password) and not moderator:
         raise Http404
     map_path = map_obj.get_download_url()
     if not map_path:
@@ -204,12 +205,6 @@ def map_download(request, map_id):
 
 def map_details(request, map_id):
     map_obj = get_object_or_404(Map, pk=map_id)
-    server = map_obj.server
-    moderator = server.moderators.filter(user=request.user)
-    password = server.config_options.filter(command='password')
-    password = password[0].get_value() if password else ''
-    if server.owner != request.user and (not server.map_download_allowed or password) and not moderator:
-        raise Http404
     return render_to_response('mod/map_details.html', {
         'map_obj': map_obj,
     }, context_instance=RequestContext(request))
