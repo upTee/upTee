@@ -220,8 +220,6 @@ class Server(models.Model):
         for rcon_command in config.available_rcon_commands:
             data = AvailableRconCommand(server=self, command=rcon_command)
             data.save()
-        # save the config
-        self.save_config()
         # copy maps if there are already some
         if old_obj:
             server_maps_path = os.path.join(MEDIA_ROOT, 'mods', old_obj.mod.title, 'servers', old_obj.owner.username, '{0}'.format(old_obj.id), 'maps')
