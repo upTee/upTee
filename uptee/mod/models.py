@@ -86,6 +86,7 @@ class Server(models.Model):
     port = models.OneToOneField(Port, blank=True, null=True, related_name='server')
     is_active = models.BooleanField(default=False)
     online = models.BooleanField(default=False)
+    automatic_restart = models.BooleanField(default=False)
     description = models.TextField(blank=True, help_text='You may use markdown')
     description_html = models.TextField(blank=True)
 
@@ -100,7 +101,11 @@ class Server(models.Model):
 
     @property
     def info(self):
-        if self.is_online and self.check_online():
+        old_is_online = self.is_online
+        self.check_online()
+        if self.automatic_restart and old_is_online and not self.is_online:
+            self.set_online()
+        if self.is_online:
             s = ServerInfo()
             s.send(self.port.port)
             if not s:  # assume there is something wrong with the server

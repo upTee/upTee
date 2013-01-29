@@ -341,6 +341,11 @@ def update_settings(request, server_id):
     moderator = moderator[0] if moderator else None
     next = request.REQUEST.get('next', reverse('server_edit', kwargs={'server_id': server.id}))
     options = server.config_options.exclude(widget__in=[Option.WIDGET_CHECKBOX, Option.WIDGET_SELECT])
+    if 'automatic_restart' in request.POST.keys():
+        server.automatic_restart = True
+    else:
+        server.automatic_restart = False
+    server.save()
     for key in request.POST.keys():
         if server.owner != request.user:
             if not moderator.allowed_options.filter(command=key):

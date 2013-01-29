@@ -24,4 +24,7 @@ def check_server_state():
     from mod.models import Server
     servers = Server.active.all()
     for server in servers:
+        old_is_online = server.is_online
         server.check_online()
+        if server.automatic_restart and old_is_online and not server.is_online:
+            server.set_online()

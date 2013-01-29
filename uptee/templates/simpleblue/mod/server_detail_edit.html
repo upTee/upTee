@@ -16,6 +16,19 @@ context variables:
 
 <form action="{% url update_settings server.id %}" method="post">
     <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
+    <h2>General options</h2>
+    <table class="form_table">
+        <tbody>
+            <tr>
+                <th><label for="automatic_restart">Auto restart server:</label></th>
+                <td>
+                    <input type="checkbox" name="automatic_restart" id="automatic_restart"{% if server.automatic_restart != 0 %} checked="checked"{% endif %}>
+                    <label class="checkbox" for="automatic_restart"></label>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h2>Config options</h2>
     <table class="form_table">
         <tbody>
             {% for option in options %}
