@@ -28,6 +28,13 @@ context variables:
                             <label class="checkbox" for="automatic_restart"></label>
                         </td>
                     </tr>
+                    <tr>
+                        <th><label for="map_download_allowed">Allow map downloads:</label></th>
+                        <td>
+                            <input type="checkbox" name="map_download_allowed" id="map_download_allowed"{% if server.map_download_allowed != 0 %} checked="checked"{% endif %}>
+                            <label class="checkbox" for="map_download_allowed"></label>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         {% endif %}

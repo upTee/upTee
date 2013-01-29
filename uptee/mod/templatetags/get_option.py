@@ -5,7 +5,7 @@ register = template.Library()
 @register.filter
 def get_option(server, command):
     try:
-        servername = server.config_options.get(command=command)
-        return servername.get_value()
+        option = server.config_options.get(command=command)
+        return option.get_value()
     except:
         return ''

@@ -35,6 +35,7 @@ class Moderator(models.Model):
     user = models.ForeignKey(User, related_name='moderators')
     restart_allowed = models.BooleanField(default=False)
     edit_automatic_restart_allowed = models.BooleanField(default=False)
+    edit_map_download_allowed = models.BooleanField(default=False)
     edit_votes_allowed = models.BooleanField(default=False)
     map_upload_allowed = models.BooleanField(default=False)
     edit_rcon_commands_allowed = models.BooleanField(default=False)

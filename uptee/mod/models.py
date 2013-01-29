@@ -87,6 +87,7 @@ class Server(models.Model):
     is_active = models.BooleanField(default=False)
     online = models.BooleanField(default=False)
     automatic_restart = models.BooleanField(default=False)
+    map_download_allowed = models.BooleanField(default=True)
     description = models.TextField(blank=True, help_text='You may use markdown')
     description_html = models.TextField(blank=True)
 

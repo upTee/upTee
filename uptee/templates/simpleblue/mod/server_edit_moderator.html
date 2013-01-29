@@ -33,6 +33,13 @@ context variables:
                     </td>
                 </tr>
                 <tr>
+                    <th><label for="edit_map_download_allowed">Allow editing download maps:</label></th>
+                    <td>
+                        <input type="checkbox" name="edit_map_download_allowed" id="edit_map_download_allowed"{% if moderator_settings.edit_map_download_allowed != 0 %} checked="checked"{% endif %}>
+                        <label class="checkbox" for="edit_map_download_allowed"></label>
+                    </td>
+                </tr>
+                <tr>
                     <th><label for="edit_votes_allowed">Allow editing votes:</label></th>
                     <td>
                         <input type="checkbox" name="edit_votes_allowed" id="edit_votes_allowed"{% if moderator_settings.edit_votes_allowed != 0 %} checked="checked"{% endif %}>

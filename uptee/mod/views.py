@@ -88,6 +88,10 @@ def server_edit_moderator(request, server_id, user_id):
             moderator.edit_automatic_restart_allowed = True
         else:
             moderator.edit_automatic_restart_allowed = False
+        if 'edit_map_download_allowed' in request.POST.keys():
+            moderator.edit_map_download_allowed = True
+        else:
+            moderator.edit_map_download_allowed = False
         if 'edit_votes_allowed' in request.POST.keys():
             moderator.edit_votes_allowed = True
         else:
@@ -200,6 +204,12 @@ def map_download(request, map_id):
 
 def map_details(request, map_id):
     map_obj = get_object_or_404(Map, pk=map_id)
+    server = map_obj.server
+    moderator = server.moderators.filter(user=request.user)
+    password = server.config_options.filter(command='password')
+    password = password[0].get_value() if password else ''
+    if server.owner != request.user and (not server.map_download_allowed or password) and not moderator:
+        raise Http404
     return render_to_response('mod/map_details.html', {
         'map_obj': map_obj,
     }, context_instance=RequestContext(request))
@@ -351,9 +361,16 @@ def update_settings(request, server_id):
             server.automatic_restart = True
         else:
             server.automatic_restart = False
-        server.save()
+    if server.owner == request.user or (moderator and moderator.edit_map_download_allowed):
+        if 'map_download_allowed' in post.keys():
+            server.map_download_allowed = True
+        else:
+            server.map_download_allowed = False
+    server.save()
     if 'automatic_restart' in post.keys():
         del post['automatic_restart']
+    if 'map_download_allowed' in post.keys():
+        del post['map_download_allowed']
     for key in post.keys():
         if server.owner != request.user:
             if not moderator.allowed_options.filter(command=key):
