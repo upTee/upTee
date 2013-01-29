@@ -489,6 +489,19 @@ a.edit_link {
         color: gray;
         text-align: center;
     }
+
+.server_detail_edit {
+    position: relative;
+}
+
+    .server_detail_edit h2 {
+        margin: 2px;
+        padding: 5px;
+        border-bottom: 1px solid #009bff;
+        font-size: 16px;
+        color: gray;
+        text-align: center;
+    }
 /* ---END server detail page--- */
 
 
