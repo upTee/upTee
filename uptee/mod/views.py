@@ -329,7 +329,6 @@ def start_stop_server(request, server_id):
         raise Http404
     next = request.REQUEST.get('next', reverse('user_server_list', kwargs={'username': server.owner.username}))
     map_exists = True
-    server.check_online()
     if server.is_online:
         server.set_offline()
     else:
@@ -536,7 +535,4 @@ def server_info_update_ajax(request, server_id):
     if not request.is_ajax():
         raise Http404
     server = get_object_or_404(Server.active.select_related(), pk=server_id)
-    server_info = server.info
-    if server_info:
-        server_info = server.info.server_info
-    return {'server_info': server_info}
+    return {'server_info': server.server_info}

@@ -200,7 +200,7 @@ CELERYBEAT_SCHEDULE = {
     # every minutes
     'check_server_state': {
         'task': 'mod.tasks.check_server_state',
-        'schedule': timedelta(minutes=1)
+        'schedule': timedelta(seconds=30)
     },
 }
 

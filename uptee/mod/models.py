@@ -7,7 +7,9 @@ from shutil import copyfile, rmtree
 from django.db import models
 from django.contrib.auth.models import User
 from django.forms import ValidationError
+from django.utils import timezone
 from django.utils.html import escape
+from picklefield.fields import PickledObjectField
 from mod.tasks import run_server
 from settings import DEBUG, MEDIA_ROOT
 from lib.twconfig import Config as TwConfig
@@ -86,11 +88,13 @@ class Server(models.Model):
     port = models.OneToOneField(Port, blank=True, null=True, related_name='server')
     is_active = models.BooleanField(default=False)
     online = models.BooleanField(default=False)
+    set_online_at = models.DateTimeField(auto_now=True)
     locked = models.BooleanField(default=False)
     automatic_restart = models.BooleanField(default=False)
     map_download_allowed = models.BooleanField(default=True)
     description = models.TextField(blank=True, help_text='You may use markdown')
     description_html = models.TextField(blank=True)
+    server_info = PickledObjectField(blank=True, null=True)
 
     objects = models.Manager()
     active = ActiveServerManager()
@@ -101,20 +105,18 @@ class Server(models.Model):
             return True
         return False
 
-    @property
-    def info(self):
-        old_is_online = self.is_online
-        self.check_online()
-        if self.automatic_restart and old_is_online and not self.is_online:
-            self.set_online()
+    def get_server_info(self):
         if self.is_online:
             s = ServerInfo()
             s.send(self.port.port)
-            if not s:  # assume there is something wrong with the server
+            if not s.server_info:  # assume there is something wrong with the server
                 self.set_offline()
-                return None
-            return s
-        return None
+            info_dict = s.server_info
+            info_dict['password'] = s.password
+            self.server_info = info_dict
+        else:
+            self.server_info = ''
+        self.save()
 
     @property
     def map_exists(self):
@@ -149,6 +151,7 @@ class Server(models.Model):
             os.kill(self.pid, signal.SIGTERM)
         self.pid = None
         self.online = False
+        self.server_info = ''
         self.save()
 
     def set_online(self):
@@ -163,6 +166,7 @@ class Server(models.Model):
             self.port.save()
             if not DEBUG:  # don#t care for lock in debug mode
                 self.locked = True
+            self.set_online_at = timezone.now()
             self.save()
             path = os.path.join(MEDIA_ROOT, 'mods', self.mod.title)
             self.save_config()

@@ -8,8 +8,6 @@ def mod(request):
     moderated_servers_restart = []
     if user:
         servers = Server.objects.filter(is_active=True, owner=user)
-        for server in servers:
-            server.check_online()
         moderated_servers = Server.objects.filter(moderators__user=user)
         moderated_servers_restart = Server.objects.filter(moderators__user=user, moderators__restart_allowed=True)
     return {

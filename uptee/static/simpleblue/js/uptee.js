@@ -63,7 +63,7 @@ $(document).ready(function() {
         });
     });
 
-    setInterval(server_info_update, 10000);
+    setInterval(server_info_update, 30000);
 
     $('p[data-info="slots"]').mousemove(function(e) {
         var hide_mouseover = $(this).siblings("div.hide_mouseover");
