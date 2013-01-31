@@ -57,7 +57,9 @@ class Config:
                 f.write(u'{0} {1}\n'.format(rcon_command['command'], rcon_command['value']).encode('UTF-8'))
 
     def add_option(self, command, value, widget='text'):
-        self.options[command] = (value, widget)
+        if isinstance(value, int):
+            value = str(value)
+        self.options[command] = (value.replace('"', r'\"'), widget)
 
     def add_tune(self, command, value):
         self.tunes.append({'command': command, 'value': float(value)})

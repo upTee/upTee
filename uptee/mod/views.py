@@ -395,10 +395,11 @@ def update_settings(request, server_id):
         option = options.filter(command=key)[0] if options.filter(command=key) else None
         if option:
             selections = option.selections()
-            option.value = post[key]
-            for selection in selections:
-                option.value += ',{0}'.format(selection)
-            option.save()
+            if post[key] in selections:
+                option.value = post[key]
+                for selection in selections:
+                    option.value += ',{0}'.format(selection)
+                option.save()
     return render_to_response('mod/settings_updated.html', {'next': next}, context_instance=RequestContext(request))
 
 

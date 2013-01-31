@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 from django.forms import ValidationError
 from django.utils.html import escape
 from mod.tasks import run_server
-from settings import MEDIA_ROOT
+from settings import DEBUG, MEDIA_ROOT
 from lib.twconfig import Config as TwConfig
 from lib.twserverinfo import ServerInfo
 
@@ -161,7 +161,8 @@ class Server(models.Model):
             self.port = Port.get_free_port()
             self.port.is_active = True
             self.port.save()
-            self.locked = True
+            if not DEBUG:  # don#t care for lock in debug mode
+                self.locked = True
             self.save()
             path = os.path.join(MEDIA_ROOT, 'mods', self.mod.title)
             self.save_config()
