@@ -3,6 +3,7 @@ from datetime import timedelta
 from subprocess import Popen
 from celery import task
 from django.contrib.auth.models import User
+from django.core.cache import cache
 from django.utils import timezone
 from settings import MEDIA_ROOT, SERVER_EXEC
 
@@ -24,6 +25,7 @@ def run_server(path, server):
 @task()
 def check_server_state():
     from mod.models import Server
+    cache.clear()
     servers = Server.active.filter(is_active=True)
     for server in servers:
         old_is_online = server.is_online
