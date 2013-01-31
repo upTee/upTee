@@ -9,6 +9,7 @@ cd $UPTEEDIR
 
 cd web/uptee
 
+python manage.py unlock_servers
 python manage.py celeryd -E -l info & >/dev/null 2>/dev/null
 python manage.py celerybeat -f $UPTEEDIR/var/log/celerybeat.log & >/dev/null 2>/dev/null
 python manage.py celerycam & >/dev/null 2>/dev/null
