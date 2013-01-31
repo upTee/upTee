@@ -65,7 +65,7 @@ class Config:
         self.tunes.append({'command': command, 'value': float(value)})
 
     def add_vote(self, command, title):
-        self.votes.append({'command': command, 'title': title})
+        self.votes.append({'command': command.replace('"', r'\"'), 'title': title.replace('"', r'\"')})
 
     def add_rcon_command(self, command, value):
-        self.rcon_commands.append({'command': command, 'value': value})
+        self.rcon_commands.append({'command': command.replace('"', r'\"'), 'value': value.replace('"', r'\"')})
