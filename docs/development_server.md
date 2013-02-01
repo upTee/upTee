@@ -29,9 +29,13 @@ Copy _browscap.csv.example_ and rename the new file to _browscap.csv_.
 ```shell
 $ python manage.py syncdb
 ```
-It will ask to create a Superuser. Do that!    
+It will ask to create a Superuser. Do not do that!    
 ```shell
 $ python manage.py migrate
+```
+Now create the Superuser.    
+```shell
+$ python manage.py createsuperuser
 ```
 
 ###Set up the port map
