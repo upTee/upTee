@@ -78,9 +78,13 @@ $ pip install -r requirements.txt
 ```shell
 $ python manage.py syncdb
 ```
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;It will ask to create a Superuser. Do that!    
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;It will ask to create a Superuser. Do not do that!    
 ```shell
 $ python manage.py migrate
+```
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now create the Superuser.    
+```shell
+$ python manage.py createsuperuser
 ```
 
   &nbsp;&nbsp;5\. Set up the port map    
