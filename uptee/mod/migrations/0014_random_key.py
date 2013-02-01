@@ -11,6 +11,8 @@ class Migration(DataMigration):
     def forwards(self, orm):
         for server in orm.Server.objects.all():
             random_key = User.objects.make_random_password()
+            server.random_key = random_key
+            server.save()
             old_path = os.path.join(MEDIA_ROOT, 'mods', server.mod.title, 'servers', server.owner.username, '{0}'.format(server.id))
             new_path = os.path.join(MEDIA_ROOT, 'mods', server.mod.title, 'servers', server.owner.username, '{0}'.format(server.id), random_key)
             if os.path.exists(old_path):
