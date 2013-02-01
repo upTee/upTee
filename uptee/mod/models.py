@@ -2,6 +2,7 @@ import mimetypes
 import os
 import psutil
 import signal
+from datetime import timedelta
 from markdown import markdown
 from shutil import copyfile, rmtree
 from django.db import models
@@ -109,7 +110,7 @@ class Server(models.Model):
         if self.is_online:
             s = ServerInfo()
             s.send(self.port.port)
-            if not s.server_info:  # assume there is something wrong with the server
+            if not s.server_info and timezone.now() >= self.set_online_at + timedelta(seconds=10):  # assume there is something wrong with the server
                 self.set_offline()
             info_dict = s.server_info
             info_dict['password'] = s.password
