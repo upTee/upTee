@@ -1,8 +1,9 @@
 import os
 import tarfile
 import zipfile
-from shutil import copyfile, move, rmtree
+from shutil import move, rmtree
 from django.contrib import admin
+from django.contrib.auth.models import User
 from mod.forms import *
 from mod.models import *
 from settings import MEDIA_ROOT
@@ -71,16 +72,17 @@ class ServerAdmin(admin.ModelAdmin):
 
     def save_model(self, request, obj, form, change):
         old_obj = Server.objects.get(pk=obj.id) if change else None
-        obj.save()
         if not obj.is_active:
             obj.set_offline()
         default_settings = False
         if not change:
+            obj.random_key = User.objects.make_random_password()
             default_settings = True
         else:
             # check if server mod changed and reset config
             if old_obj and old_obj.mod != obj.mod:
                 default_settings = True
+        obj.save()
         if default_settings:
             obj.reset_settings(old_obj)
 

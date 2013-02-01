@@ -96,6 +96,7 @@ class Server(models.Model):
     description = models.TextField(blank=True, help_text='You may use markdown')
     description_html = models.TextField(blank=True)
     server_info = PickledObjectField(blank=True, null=True)
+    random_key = models.CharField(max_length=24, unique=True, null=True)
 
     objects = models.Manager()
     active = ActiveServerManager()
@@ -172,12 +173,12 @@ class Server(models.Model):
             path = os.path.join(MEDIA_ROOT, 'mods', self.mod.title)
             self.save_config()
             with open(os.path.join(path, 'storage.cfg'), 'w') as storage:
-                storage.write('add_path servers/{0}/{1}\nadd_path $CURRENTDIR\n'.format(self.owner.username, self.id))
+                storage.write('add_path servers/{0}/{1}/{2}\nadd_path $CURRENTDIR\n'.format(self.owner.username, self.id, self.random_key))
             run_server.delay(path, self)
 
     def save_config(self, download=False):
         path = os.path.join(MEDIA_ROOT, 'mods', self.mod.title)
-        config = TwConfig(os.path.join(path, 'servers', self.owner.username, '{0}'.format(self.id), 'generated.cfg'))
+        config = TwConfig(os.path.join(path, 'servers', self.owner.username, '{0}'.format(self.id), self.random_key, 'generated.cfg'))
         for option in self.config_options.all():
             if option.widget == Option.WIDGET_SELECT:
                 value = option.value.split(',', 1)[0]
@@ -232,11 +233,11 @@ class Server(models.Model):
             data.save()
         # copy maps if there are already some
         if old_obj:
-            server_maps_path = os.path.join(MEDIA_ROOT, 'mods', old_obj.mod.title, 'servers', old_obj.owner.username, '{0}'.format(old_obj.id), 'maps')
+            server_maps_path = os.path.join(MEDIA_ROOT, 'mods', old_obj.mod.title, 'servers', old_obj.owner.username, '{0}'.format(old_obj.id), old_obj.random_key, 'maps')
             if os.path.exists(server_maps_path):
                 maps = [_file for _file in os.listdir(server_maps_path) if os.path.splitext(_file)[1].lower() == '.map']
                 for _map in maps:
-                    new_server_maps_path = os.path.join(MEDIA_ROOT, 'mods', self.mod.title, 'servers', self.owner.username, '{0}'.format(self.id), 'maps')
+                    new_server_maps_path = os.path.join(MEDIA_ROOT, 'mods', self.mod.title, 'servers', self.owner.username, '{0}'.format(self.id), self.random_key, 'maps')
                     if not os.path.exists(new_server_maps_path):
                         os.makedirs(new_server_maps_path)
                     copyfile(os.path.join(server_maps_path, _map), os.path.join(new_server_maps_path, _map))
@@ -250,7 +251,7 @@ class Server(models.Model):
                 if not map_obj:
                     map_obj = Map(server=self, name=os.path.splitext(_map)[0])
                     map_obj.save()
-                    server_maps_path = os.path.join(MEDIA_ROOT, 'mods', self.mod.title, 'servers', self.owner.username, '{0}'.format(self.id), 'maps')
+                    server_maps_path = os.path.join(MEDIA_ROOT, 'mods', self.mod.title, 'servers', self.owner.username, '{0}'.format(self.id), self.random_key, 'maps')
                     if not os.path.exists(server_maps_path):
                         os.makedirs(server_maps_path)
                     copyfile(os.path.join(maps_path, _map), os.path.join(server_maps_path, _map))
@@ -361,7 +362,7 @@ class Map(models.Model):
         ordering = ['name']
 
     def get_download_url(self):
-        path = os.path.join(MEDIA_ROOT, 'mods', self.server.mod.title, 'servers', self.server.owner.username, '{0}'.format(self.server.id), 'maps')
+        path = os.path.join(MEDIA_ROOT, 'mods', self.server.mod.title, 'servers', self.server.owner.username, '{0}'.format(self.server.id), self.server.random_key, 'maps')
         if os.path.exists(path):
             for _file in os.listdir(path):
                 if os.path.splitext(_file)[0] == self.name and os.path.splitext(_file)[1].lower() == '.map':

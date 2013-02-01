@@ -166,7 +166,7 @@ def upload_map(request, server_id):
         if form.is_valid():
             map_file = form.cleaned_data['map_file']
             mod_name = server.mod.title
-            maps_path = os.path.join(MEDIA_ROOT, 'mods', mod_name, 'servers', server.owner.username, '{0}'.format(server_id), 'maps')
+            maps_path = os.path.join(MEDIA_ROOT, 'mods', mod_name, 'servers', server.owner.username, '{0}'.format(server_id), server.random_key, 'maps')
             if not os.path.exists(maps_path):
                 os.makedirs(maps_path)
             with open(os.path.join(maps_path, map_file.name), 'wb') as f:
@@ -213,7 +213,7 @@ def map_details(request, map_id):
 def config_download(request, server_id):
     server = get_object_or_404(Server.active, pk=server_id)
     server.save_config(download=True)
-    fsock = open(os.path.join(MEDIA_ROOT, 'mods', server.mod.title, 'servers', server.owner.username, '{0}'.format(server.id), 'generated.cfg'), 'rb')
+    fsock = open(os.path.join(MEDIA_ROOT, 'mods', server.mod.title, 'servers', server.owner.username, '{0}'.format(server.id), server.random_key, 'generated.cfg'), 'rb')
     response = HttpResponse(fsock, mimetype='application/octet-stream')
     response['Content-Disposition'] = 'attachment; filename=config.cfg'
     return response
