@@ -56,6 +56,11 @@ class MapUploadForm(forms.Form):
 class ChangeModForm(forms.ModelForm):
     mod = forms.ModelChoiceField(Mod.objects, empty_label=None)
 
+    def __init__(self, user, *args, **kwargs):
+        super(ChangeModForm, self).__init__(*args, **kwargs)
+        if not user.is_staff:
+            self.fields['mod'].queryset = user.profile.allowed_mods.all()
+
     def clean_mod(self):
         mod = self.cleaned_data['mod']
         if mod == Server.objects.get(pk=self.instance.pk).mod:

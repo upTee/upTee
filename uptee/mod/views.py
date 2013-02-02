@@ -9,7 +9,7 @@ from django.template import RequestContext
 from django.views.decorators.http import require_POST
 from annoying.decorators import ajax_request
 from mod.forms import ChangeModForm, MapUploadForm, ModeratorForm, ServerDescriptionForm
-from mod.models import Map, Option, RconCommand, Server, Vote
+from mod.models import Map, Mod, Option, RconCommand, Server, Vote
 from settings import MEDIA_ROOT
 
 
@@ -293,12 +293,12 @@ def server_tunes(request, server_id):
 def server_change_mod(request, server_id):
     server = get_object_or_404(Server.active.select_related().filter(owner=request.user), pk=server_id)
     if request.method == 'POST':
-        form = ChangeModForm(request.POST, instance=server)
+        form = ChangeModForm(request.user, request.POST, instance=server)
         if form.is_valid():
             form.save()
             messages.success(request, 'Mod was successfully changed.')
     else:
-        form = ChangeModForm(initial={'mod': server.mod.pk})
+        form = ChangeModForm(request.user, initial={'mod': server.mod.pk})
     return render_to_response('mod/server_detail_change_mod.html', {
         'server': server,
         'form': form,

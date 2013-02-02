@@ -82,6 +82,9 @@ class ServerAdmin(admin.ModelAdmin):
             # check if server mod changed and reset config
             if old_obj and old_obj.mod != obj.mod:
                 default_settings = True
+        if obj.mod not in obj.owner.profile.allowed_mods.all():
+            obj.owner.profile.allowed_mods.add(obj.mod)
+            obj.owner.profile.save()
         obj.save()
         if default_settings:
             obj.reset_settings(old_obj)

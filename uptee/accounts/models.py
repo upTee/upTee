@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
 from settings import DEFAULT_TEMPLATE
-from mod.models import Option, Server, Tune
+from mod.models import Mod, Option, Server, Tune
 
 
 def get_template(request):
@@ -12,6 +12,7 @@ def get_template(request):
 class UserProfile(models.Model):
     user = models.OneToOneField(User, unique=True, related_name='profile')
     template = models.CharField(max_length=100, default=DEFAULT_TEMPLATE)
+    allowed_mods = models.ManyToManyField(Mod, related_name='users')
 
     def active_servers(self):
         return self.user.servers.filter(is_active=True)
