@@ -1,12 +1,12 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
-from settings import DEFAULT_TEMPLATE
+from settings import AVAILABLE_TEMPLATES, DEFAULT_TEMPLATE
 from mod.models import Mod, Option, Server, Tune
 
 
 def get_template(request):
-    return DEFAULT_TEMPLATE if not request.user.is_authenticated() else request.user.profile.template
+    return DEFAULT_TEMPLATE if not request.user.is_authenticated() or request.user.profile.template not in [tpl[0] for tpl in AVAILABLE_TEMPLATES] else request.user.profile.template
 
 
 class UserProfile(models.Model):
