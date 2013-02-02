@@ -49,15 +49,15 @@ html, body {
 
 	#server_menu_frame {
 		margin-top: 80px;
-		border-top: 1px solid #2e2e2e;
+		border-top: 1px solid #1f1f1f;
 	}
 
 	#server_menu_frame .entry_user {
 		background: rgba(255,255,255,0.05);
 		width:100%;
 		height:120px;
-		border-top: 1px solid #555555;
-		border-bottom: 1px solid #2e2e2e;
+		border-top: 1px solid #888888;
+		border-bottom: 1px solid #1f1f1f;
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.15)), color-stop(100%,rgba(255,255,255,0.05)));
 		background: -webkit-linear-gradient(top, rgba(255,255,255,0.15) 0%,rgba(255,255,255,0.05) 100%);
 		background: -moz-linear-gradient(top, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
@@ -65,10 +65,16 @@ html, body {
 
 		#server_menu_frame .entry_user:hover {
 			background: rgba(255,255,255,0.1);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.2)), color-stop(100%,rgba(255,255,255,0.08)));
+			background: -webkit-linear-gradient(top, rgba(255,255,255,0.2) 0%,rgba(255,255,255,0.08) 100%);
+			background: -moz-linear-gradient(top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%);
 		}
 
 		#server_menu_frame .entry_user:active {
 			background: rgba(255,255,255,0.15);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.25)), color-stop(100%,rgba(255,255,255,0.1)));
+			background: -webkit-linear-gradient(top, rgba(255,255,255,0.25) 0%,rgba(255,255,255,0.1) 100%);
+			background: -moz-linear-gradient(top, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%);
 		}
 
 
@@ -86,8 +92,7 @@ html, body {
 			margin-left: 5px;
 			margin-right: 5px;
 			color: #fff;
-			text-align: center; 
-
+			text-align: center;
 		}
 
 
@@ -96,8 +101,8 @@ html, body {
 		width:100%;
 		height:65px;
 		padding-top: 15px;
-		border-top: 1px solid #555555;
-		border-bottom: 1px solid #2e2e2e;
+		border-top: 1px solid #888888;
+		border-bottom: 1px solid #1f1f1f;
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.15)), color-stop(100%,rgba(255,255,255,0.05)));
 		background: -webkit-linear-gradient(top, rgba(255,255,255,0.15) 0%,rgba(255,255,255,0.05) 100%);
 		background: -moz-linear-gradient(top, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
@@ -120,14 +125,21 @@ html, body {
 			margin-right: 5px;
 			color: #fff;
 			text-align: center; 
+			font-size: 10px;
 		}
 
 		#server_menu_frame .entry:hover {
 			background: rgba(255,255,255,0.1);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.2)), color-stop(100%,rgba(255,255,255,0.08)));
+			background: -webkit-linear-gradient(top, rgba(255,255,255,0.2) 0%,rgba(255,255,255,0.08) 100%);
+			background: -moz-linear-gradient(top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%);
 		}
 
 		#server_menu_frame .entry:active {
 			background: rgba(255,255,255,0.15);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.25)), color-stop(100%,rgba(255,255,255,0.1)));
+			background: -webkit-linear-gradient(top, rgba(255,255,255,0.25) 0%,rgba(255,255,255,0.1) 100%);
+			background: -moz-linear-gradient(top, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%);
 		}
 
 #option_menu_frame {
@@ -135,19 +147,49 @@ html, body {
 	top: 80px;
 	left: 100px;
 	width: 200px;
-	border: 1px solid green;
+	border: 0px solid green;
 }
 
 #option_menu_frame .placeholder {
 	width: 100%;
-	border: 1px solid red;
-	height: 120px;
-	background: #fff;
+	height: 122px;
+	border-bottom: 1px solid #bbbbbb;
 }
 
 #option_menu_frame .entry {
-	width: 90%;
-	border: 1px solid red;
-	height: 50px;
-	background: #fff;
+	width: 200px;
+	border-bottom: 1px solid #bbbbbb;
+	border-right: 1px solid #bbbbbb;
+	height: 40px;
+	background: rgb(252,255,244);
+	background: -moz-linear-gradient(top, rgba(240,240,210,1) 0%, rgba(220,220,206,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(240,240,210,1)), color-stop(100%,rgba(220,220,206,1)));
+	background: -webkit-linear-gradient(top, rgba(240,240,210,1) 0%,rgba(220,220,206,1) 100%);
+}
+
+	#option_menu_frame .entry:hover {
+		background: -moz-linear-gradient(top, rgba(252,255,234,1) 0%, rgba(220,220,206,1) 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,255,234,1)), color-stop(100%,rgba(220,220,206,1)));
+		background: -webkit-linear-gradient(top, rgba(252,255,234,1) 0%,rgba(220,220,206,1) 100%);
+	}
+
+	#option_menu_frame .entry:active {
+		background: url('../img/pattern_light.png');
+		border-right: none;
+		border-left: 5px solid #2f2f2f;
+		width: 195px;
+	}
+
+	#option_menu_frame .entry .current{
+
+	}
+
+#content_container {
+	background: url('../img/pattern_light.png');
+	position: absolute;
+	left: 301px;
+	top: 202px;
+	width: 100%;
+	height: 100%;
+	border-top: 1px solid #bbbbbb;
 }
