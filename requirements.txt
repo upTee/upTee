@@ -9,6 +9,7 @@ django-pybrowscap>=0.9.1
 django-pagination>=1.0.7
 django-gravatar>=0.1.0
 django-picklefield>=0.3.0
+django-crumbs>=0.5.0
 markdown>=2.2.0
 PIL>=1.1.7
 psutil>=0.6.1

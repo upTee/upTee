@@ -169,6 +169,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django_pybrowscap',
     'lib',
+    'crumbs',
     'djcelery',
     'pagination',
     'accounts',
