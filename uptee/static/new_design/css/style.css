@@ -222,3 +222,60 @@ html, body {
 	left: 301px;
 	right: 0;
 }
+
+#breadcrum {
+	border-top: 1px solid #bbbbbb;
+	border-left: 1px solid #bbbbbb;;
+	height: 25px;
+	position: absolute;
+	top: 176px;
+	left:300px;
+	right: 0;
+}
+
+	#breadcrum .icon {
+		background: #000;
+		height: 15px;
+		width: 15px;
+		margin-top: 5px;
+		margin-left: 10px;
+		float: left;
+	}
+
+	#breadcrum .text {
+		margin-left: 10px;
+		margin-top: 3px;
+		width: 300px;
+		float: left;
+		color: #555555;
+	}
+
+
+#button_container {
+	border: 0px solid red;
+	position: absolute;
+	right: 0;
+	top: 82px;
+	height: 90px;
+	max-width: 800px;
+}
+
+#button_container .button {
+	border: 1px solid green;
+	float: right;
+	width: 100px;
+	height: 90px;
+	margin-left: 10px;
+}
+
+	#button_container .button:hover {
+		
+	}
+
+	#button_container .button:active {
+		
+	}
+
+	#button_container .button .current {
+		
+	}
