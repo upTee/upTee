@@ -75,6 +75,13 @@ html, body {
 			background: -moz-linear-gradient(top, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%);
 		}
 
+		#server_menu_frame .entry_user .current {
+			background: rgba(255,255,255,0.15);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.25)), color-stop(100%,rgba(255,255,255,0.1)));
+			background: -webkit-linear-gradient(top, rgba(255,255,255,0.25) 0%,rgba(255,255,255,0.1) 100%);
+			background: -moz-linear-gradient(top, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%);
+		}
+
 
 		#server_menu_frame .entry_user .avatar {
 			background-size: 60px 60px;
@@ -140,9 +147,16 @@ html, body {
 			background: -moz-linear-gradient(top, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%);
 		}
 
+		#server_menu_frame .entry .current {
+			background: rgba(255,255,255,0.15);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.25)), color-stop(100%,rgba(255,255,255,0.1)));
+			background: -webkit-linear-gradient(top, rgba(255,255,255,0.25) 0%,rgba(255,255,255,0.1) 100%);
+			background: -moz-linear-gradient(top, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%);
+		}
+
 #option_menu_frame {
+	background: url('../img/pattern_light2.png');
 	width: 200px;
-	border: 0px solid green;
 	position: absolute;
 	left: 100px;
 	top: 80px;
@@ -166,6 +180,25 @@ html, body {
 	background: -webkit-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
 }
 
+	#option_menu_frame .entry .icon{
+		background: rgba(0,0,0,0.1);;
+		height: 25px;
+		width: 25px;
+		margin-top: 7px;
+		margin-left: 15px;
+		float: left;
+	}
+
+	#option_menu_frame .entry .text{
+		color: #2f2f2f;
+		height: 20px;
+		width: 120px;
+		margin-top: 11px;
+		margin-left: 10px;
+		float: left;
+	}
+
+
 	#option_menu_frame .entry:hover {
 		background: -moz-linear-gradient(top, rgba(252,255,234,1) 0%, rgba(220,220,206,1) 100%);
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,255,234,1)), color-stop(100%,rgba(220,220,206,1)));
@@ -180,15 +213,18 @@ html, body {
 	}
 
 	#option_menu_frame .entry .current{
-
+		background: url('../img/pattern_light.png');
+		border-right: none;
+		border-left: 5px solid #2f2f2f;
+		width: 195px;
 	}
 
 #content_container {
 	background: url('../img/pattern_light.png');
 	border-top: 1px solid #bbbbbb;
 	position: absolute;
-	top: 200px;
+	top: 202px;
 	bottom: 0;
-	left: 300px;
+	left: 301px;
 	right: 0;
 }
