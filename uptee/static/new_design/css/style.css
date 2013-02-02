@@ -201,9 +201,9 @@ html, body {
 
 
 	#option_menu_frame .entry:hover {
-		background: -moz-linear-gradient(top, rgba(252,255,234,1) 0%, rgba(220,220,206,1) 100%);
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,255,234,1)), color-stop(100%,rgba(220,220,206,1)));
-		background: -webkit-linear-gradient(top, rgba(252,255,234,1) 0%,rgba(220,220,206,1) 100%);
+		background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(220,220,220,1) 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(220,220,220,1)));
+		background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(220,220,220,1) 100%);
 	}
 
 	#option_menu_frame .entry:active {
