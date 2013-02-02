@@ -38,11 +38,12 @@ html, body {
 #server_menu {
 	background: url('../img/pattern_gray.png');
 	width: 100px;
-	min-height: 100%; /* Mindesthöhe für moderne Browser */
-	height:auto !important; /* Important Regel für moderne Browser */ 
-	height:100%; /* Mindesthöhe für den IE */ 
 	outline: 0px solid green;
 	float: left;
+	position: absolute;
+	bottom: 0;
+	top: 80px;
+	left: 0;
 }
 
 	#server_menu_frame {
@@ -139,17 +140,13 @@ html, body {
 			background: -moz-linear-gradient(top, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%);
 		}
 
-#middle_box {
-	margin-left: 100px;
-    outline: 1px solid black;
-    height: 100%;
-    position: relative;
-}
-
 #option_menu_frame {
 	width: 200px;
 	border: 0px solid green;
-	float: left;
+	position: absolute;
+	left: 100px;
+	top: 80px;
+	bottom: 0;
 }
 
 #option_menu_frame .placeholder {
@@ -190,5 +187,8 @@ html, body {
 	background: url('../img/pattern_light.png');
 	height: 100%;
 	border-top: 1px solid #bbbbbb;
-	margin-left: 200px;
+	position: absolute;
+	top: 200px;
+	left: 300px;
+	bottom: 0;
 }
