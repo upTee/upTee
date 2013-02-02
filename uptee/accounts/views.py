@@ -3,6 +3,7 @@ from captcha.models import CaptchaStore
 from django.core.mail import mail_admins, send_mail
 from django.contrib.auth import logout as user_logout
 from django.contrib.auth import login as user_login
+from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.hashers import make_password
@@ -25,19 +26,21 @@ def logout(request):
 
 
 def login(request):
-    if request.user.is_authenticated() or request.method != 'POST':
+    if request.user.is_authenticated():
         return redirect(reverse('home'))
-    post = request.POST.copy()
-    next = post.get('next', reverse('home'))
-    form = AuthenticationForm(data=post)
-    if form.is_valid():
-        user_login(request, form.get_user())
-        messages.success(request, "Successfully logged in.")
-    else:
-        messages.warning(request, "The combination of username and password is wrong or your account is not activated yet.")
-    if next == reverse('logout') or next == reverse('logout')[:-1]:
-        next = reverse('home')
-    return redirect(next)
+    if request.method == 'POST':
+        post = request.POST.copy()
+        next = post.get('next', reverse('home'))
+        form = AuthenticationForm(data=post)
+        if form.is_valid():
+            user_login(request, form.get_user())
+            messages.success(request, "Successfully logged in.")
+        else:
+            messages.warning(request, "The combination of username and password is wrong or your account is not activated yet.")
+        if next == reverse('logout') or next == reverse('logout')[:-1]:
+            next = reverse('home')
+        return redirect(next)
+    return auth_views.login(request, 'accounts/login.html')
 
 
 @login_required
