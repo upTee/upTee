@@ -35,6 +35,23 @@ html, body {
 	margin-left: 100px;
 }
 
+#login_container {
+	position: absolute;
+        left:50%;
+    margin-left: 200px;
+    width: 400px;
+    height: 400px;
+    border: 1px solid red;
+}
+
+#login_container #header {
+
+}
+
+#login_container #box {
+	
+}
+
 #server_menu {
 	background: url('../img/pattern_gray.png');
 	width: 100px;
@@ -183,15 +200,11 @@ html, body {
 	#option_menu_frame .entry:active {
 		background: url('../img/pattern_light.png');
 		border-right: none;
-		border-left: 5px solid #2f2f2f;
-		width: 195px;
 	}
 
 	#option_menu_frame .entry .current{
 		background: url('../img/pattern_light.png');
 		border-right: none;
-		border-left: 5px solid #2f2f2f;
-		width: 195px;
 	}
 
 
