@@ -185,10 +185,10 @@ html, body {
 
 #content_container {
 	background: url('../img/pattern_light.png');
-	height: 100%;
 	border-top: 1px solid #bbbbbb;
 	position: absolute;
 	top: 200px;
-	left: 300px;
 	bottom: 0;
+	left: 300px;
+	right: 0;
 }
