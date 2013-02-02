@@ -186,6 +186,9 @@ LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login/'
 LOGOUT_URL = '/logout/'
 
+# mail dummy
+SERVER_EMAIL = ''
+
 # user profile
 AUTH_PROFILE_MODULE = 'accounts.UserProfile'
 COMMENTS_APP = 'comments'
