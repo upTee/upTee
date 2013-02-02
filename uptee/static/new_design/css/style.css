@@ -69,17 +69,13 @@ html, body {
 		}
 
 		#server_menu_frame .entry_user:active {
-			background: rgba(255,255,255,0.15);
-			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.25)), color-stop(100%,rgba(255,255,255,0.1)));
-			background: -webkit-linear-gradient(top, rgba(255,255,255,0.25) 0%,rgba(255,255,255,0.1) 100%);
-			background: -moz-linear-gradient(top, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%);
+			background: rgba(0,0,0,0.15);
+			box-shadow: 0 1px 10px 0 #000000 inset;
 		}
 
 		#server_menu_frame .entry_user .current {
-			background: rgba(255,255,255,0.15);
-			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.25)), color-stop(100%,rgba(255,255,255,0.1)));
-			background: -webkit-linear-gradient(top, rgba(255,255,255,0.25) 0%,rgba(255,255,255,0.1) 100%);
-			background: -moz-linear-gradient(top, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%);
+			background: rgba(0,0,0,0.15);
+			box-shadow: 0 1px 10px 0 #000000 inset;
 		}
 
 
@@ -141,17 +137,13 @@ html, body {
 		}
 
 		#server_menu_frame .entry:active {
-			background: rgba(255,255,255,0.15);
-			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.25)), color-stop(100%,rgba(255,255,255,0.1)));
-			background: -webkit-linear-gradient(top, rgba(255,255,255,0.25) 0%,rgba(255,255,255,0.1) 100%);
-			background: -moz-linear-gradient(top, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%);
+			background: rgba(0,0,0,0.15);
+			box-shadow: 0 1px 10px 0 #000000 inset;
 		}
 
 		#server_menu_frame .entry .current {
-			background: rgba(255,255,255,0.15);
-			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.25)), color-stop(100%,rgba(255,255,255,0.1)));
-			background: -webkit-linear-gradient(top, rgba(255,255,255,0.25) 0%,rgba(255,255,255,0.1) 100%);
-			background: -moz-linear-gradient(top, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%);
+			background: rgba(0,0,0,0.15);
+			box-shadow: 0 1px 10px 0 #000000 inset;
 		}
 
 #option_menu_frame {
@@ -181,6 +173,28 @@ html, body {
 	background: -webkit-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
 }
 
+
+	#option_menu_frame .entry:hover {
+		background: -moz-linear-gradient(top, rgba(245,245,245,1) 0%, rgba(210,210,210,1) 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(245,245,245,1)), color-stop(100%,rgba(210,210,210,1)));
+		background: -webkit-linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
+	}
+
+	#option_menu_frame .entry:active {
+		background: url('../img/pattern_light.png');
+		border-right: none;
+		border-left: 5px solid #2f2f2f;
+		width: 195px;
+	}
+
+	#option_menu_frame .entry .current{
+		background: url('../img/pattern_light.png');
+		border-right: none;
+		border-left: 5px solid #2f2f2f;
+		width: 195px;
+	}
+
+
 	#option_menu_frame .entry .icon{
 		background: rgba(0,0,0,0.1);;
 		height: 25px;
@@ -197,27 +211,6 @@ html, body {
 		margin-top: 11px;
 		margin-left: 10px;
 		float: left;
-	}
-
-
-	#option_menu_frame .entry:hover {
-		background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(220,220,220,1) 100%);
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(220,220,220,1)));
-		background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(220,220,220,1) 100%);
-	}
-
-	#option_menu_frame .entry:active {
-		background: url('../img/pattern_light.png');
-		border-right: none;
-		border-left: 5px solid #2f2f2f;
-		width: 195px;
-	}
-
-	#option_menu_frame .entry .current{
-		background: url('../img/pattern_light.png');
-		border-right: none;
-		border-left: 5px solid #2f2f2f;
-		width: 195px;
 	}
 
 #content_container {
