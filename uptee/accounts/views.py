@@ -1,7 +1,6 @@
 from captcha.conf import settings as captcha_settings
 from captcha.models import CaptchaStore
-from django.db.models import Count
-from django.core.mail import mail_admins
+from django.core.mail import mail_admins, send_mail
 from django.contrib.auth import logout as user_logout
 from django.contrib.auth import login as user_login
 from django.contrib.auth.decorators import login_required
@@ -10,10 +9,12 @@ from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.core.urlresolvers import reverse
+from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.template import RequestContext
 from accounts.forms import *
-from settings import ADMINS, DEBUG
+from accounts.models import Activation
+from settings import ADMINS, DEBUG, SERVER_EMAIL
 
 
 @login_required
@@ -79,7 +80,14 @@ def register(request):
                 is_active=False,
             )
             new_user.save()
-            messages.success(request, "Your account was successfully created. An Admin will contact you shortly.")
+            if SERVER_EMAIL:
+                messages.success(request, "Your account was successfully created. An activation link has been sent to your email address.")
+                key = User.objects.make_random_password(length=32)
+                activation = Activation(user=new_user, key=key)
+                activation.save()
+                send_mail('upTee registration', 'Thank you for your registration.\r\nClick the link below to activate your account:\r\n\r\nhttp://{0}/activate/{1}'.format(request.META['HTTP_HOST'], key), SERVER_EMAIL, [new_user.email], fail_silently=not DEBUG)
+            else:
+                messages.success(request, "Your account was successfully created. An Admin should contact you shortly.")
             if ADMINS:
                 mail_admins('User registration', u'The following user just registered and wants to be activated:\r\n\r\n{0}'.format(form.cleaned_data['username']), fail_silently=not DEBUG)
             return redirect(reverse('home'))
@@ -92,6 +100,16 @@ def register(request):
             'captcha': key,
             'register_form': form,
         }, context_instance=RequestContext(request))
+
+
+def activate(request, activation_key):
+    if request.user.is_authenticated():
+        raise Http404
+    activation = get_object_or_404(Activation.objects.select_related(), key=activation_key)
+    activation.user.is_active = True
+    activation.user.save()
+    activation.delete()
+    return render_to_response('accounts/activate.html', context_instance=RequestContext(request))
 
 
 def users(request):

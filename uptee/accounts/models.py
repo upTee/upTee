@@ -44,6 +44,11 @@ class Moderator(models.Model):
     allowed_tunings = models.ManyToManyField(Tune, related_name='moderators')
 
 
+class Activation(models.Model):
+    user = models.OneToOneField(User, unique=True, related_name='activation')
+    key = models.CharField(max_length=32, unique=True, null=True)
+
+
 def post_user_save(instance, **kwargs):
     if kwargs['created']:
         profile = UserProfile(user=instance)
