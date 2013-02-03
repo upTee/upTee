@@ -5,7 +5,24 @@
 
 <div id="login_container">
     <div id="header">upTee Login</div>
-    <div id="box"></div>
+    <div id="box">
+	    	<form action="" method="post">
+			    <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
+			   	
+			   	<div class="form_box">
+			        <label for="username">Username:</label>
+			        <input type="text" name="username" value="" id="username" required="" />
+			    </div>
+			    <div class="form_box">
+			        <label for="password">Password:</label>
+			        <input type="password" name="password" value="" id="password" required="" />
+			    </div>
+			    <div class="submit_box">
+			        <input class="button positive" type="submit" value="Login" />
+			        <input type="hidden" name="next" value="{{ request.path }}" />
+			    </div>
+			</form>
+    </div>
 </div>
 
 {% endblock body %}

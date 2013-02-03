@@ -42,28 +42,40 @@ html, body {
     margin-left: -200px;
     margin-top: -200px;
     width: 400px;
-    height: 400px;
+    height: 275px;
     border: 1px solid #bbbbbb;
     -moz-box-shadow: 2px 2px 5px #888;
 	-webkit-box-shadow: 2px 2px 5px #888;
 	box-shadow: 2px 2px 5px #888;
 }
 
-#login_container #header {
-	background: -moz-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(220,220,220,1) 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(240,240,240,1)), color-stop(100%,rgba(220,220,220,1)));
-	background: -webkit-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
-	padding: 10px;
-	height: 25px;
-	font-size: 16px;
-	width: 380px;
+	#login_container #header {
+		background: -moz-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(220,220,220,1) 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(240,240,240,1)), color-stop(100%,rgba(220,220,220,1)));
+		background: -webkit-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
+		padding: 10px;
+		height: 25px;
+		font-size: 16px;
+		width: 380px;
 
-}
+	}
 
-#login_container #box {
-	background: #efefef;
-	height: 355px;
-}
+	#login_container #box {
+		background: #efefef;
+		height: 180px;
+	}
+
+	#login_container .form_box {
+		border-bottom: 1px solid #bbbbbb;
+		padding: 20px;
+	}
+
+	#login_container .submit_box {
+		padding: 20px;
+		width: 100px;
+		margin-left: auto;
+		margin-right: auto;
+	}
 
 #server_menu {
 	background: url('../img/pattern_gray.png');
