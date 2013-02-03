@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     outline: 0 none;
+    color: #191919
 }
 
 .clear {
@@ -23,295 +24,291 @@ html, body {
 } 
 
 #header {
-	background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.2) 100%), url('../img/pattern_gray.png');
-	background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%), url('../img/pattern_gray.png');
-	background: linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%), url('../img/pattern_gray.png');
-	width: 100%;
-	height: 80px;
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.2) 100%), url('../img/pattern_gray.png');
+    background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%), url('../img/pattern_gray.png');
+    background: linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%), url('../img/pattern_gray.png');
+    width: 100%;
+    height: 80px;
 }
 
 #logo {
-	background: url('../img/logo_75.png');
-	height: 75px;
-	width: 345px;
-	margin-left: 100px;
+    background: url('../img/logo_75.png');
+    height: 75px;
+    width: 345px;
+    margin-left: 100px;
 }
 
 #login_container {
-	position: absolute;
-        left:50%;
-        top: 50%;
-    margin-left: -200px;
-    margin-top: -200px;
+    margin: 35px auto 0;
     width: 400px;
     height: 275px;
     border: 1px solid #bbbbbb;
     -moz-box-shadow: 2px 2px 5px #888;
-	-webkit-box-shadow: 2px 2px 5px #888;
-	box-shadow: 2px 2px 5px #888;
+    -webkit-box-shadow: 2px 2px 5px #888;
+    box-shadow: 2px 2px 5px #888;
 }
 
-	#login_container #header {
-		background: -moz-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(220,220,220,1) 100%);
-		background: -webkit-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
-		background: linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
-		padding: 10px;
-		height: 25px;
-		font-size: 16px;
-		width: 380px;
+    #login_container #header {
+        background: -moz-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(220,220,220,1) 100%);
+        background: -webkit-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
+        background: linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
+        padding: 10px;
+        height: 25px;
+        font-size: 16px;
+        width: 380px;
 
-	}
+    }
 
-	#login_container #box {
-		background: #efefef;
-		height: 180px;
-	}
+    #login_container #box {
+        background: #efefef;
+        height: 180px;
+    }
 
-	#login_container .form_box {
-		border-bottom: 1px solid #bbbbbb;
-		padding: 20px;
-	}
+    #login_container .form_box {
+        border-bottom: 1px solid #bbbbbb;
+        padding: 20px;
+    }
 
-	#login_container .submit_box {
-		padding: 20px;
-		width: 100px;
-		margin-left: auto;
-		margin-right: auto;
-	}
+    #login_container .submit_box {
+        padding: 20px;
+        width: 100px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
 #server_menu {
-	background: url('../img/pattern_gray.png');
-	width: 100px;
-	outline: 0px solid green;
-	float: left;
-	position: absolute;
-	bottom: 0;
-	top: 80px;
-	left: 0;
+    background: url('../img/pattern_gray.png');
+    width: 100px;
+    outline: 0px solid green;
+    float: left;
+    position: absolute;
+    bottom: 0;
+    top: 80px;
+    left: 0;
 }
 
-	#server_menu_frame {
-		border-top: 1px solid #1f1f1f;
-	}
+    #server_menu_frame {
+        border-top: 1px solid #1f1f1f;
+    }
 
-	#server_menu_frame .entry_user {
-		width:100%;
-		height:120px;
-		border-top: 1px solid #888888;
-		border-bottom: 1px solid #1f1f1f;
-		background: -webkit-linear-gradient(top, rgba(255,255,255,0.15) 0%,rgba(255,255,255,0.05) 100%);
-		background: -moz-linear-gradient(top, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
-		background: linear-gradient(top, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
-	}
+    #server_menu_frame .entry_user {
+        width:100%;
+        height:120px;
+        border-top: 1px solid #888888;
+        border-bottom: 1px solid #1f1f1f;
+        background: -webkit-linear-gradient(top, rgba(255,255,255,0.15) 0%,rgba(255,255,255,0.05) 100%);
+        background: -moz-linear-gradient(top, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
+        background: linear-gradient(top, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
+    }
 
-		#server_menu_frame .entry_user:hover {
-			background: -webkit-linear-gradient(top, rgba(255,255,255,0.2) 0%,rgba(255,255,255,0.08) 100%);
-			background: -moz-linear-gradient(top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%);
-			background: linear-gradient(top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%);
-		}
+        #server_menu_frame .entry_user:hover {
+            background: -webkit-linear-gradient(top, rgba(255,255,255,0.2) 0%,rgba(255,255,255,0.08) 100%);
+            background: -moz-linear-gradient(top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%);
+            background: linear-gradient(top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%);
+        }
 
-		#server_menu_frame .entry_user:active {
-			background: rgba(0,0,0,0.15);
-			box-shadow: 0 1px 10px 0 #000000 inset;
-		}
+        #server_menu_frame .entry_user:active {
+            background: rgba(0,0,0,0.15);
+            box-shadow: 0 1px 10px 0 #000000 inset;
+        }
 
-		#server_menu_frame .entry_user .current {
-			background: rgba(0,0,0,0.15);
-			box-shadow: 0 1px 10px 0 #000000 inset;
-		}
-
-
-		#server_menu_frame .entry_user .avatar {
-			background-size: 60px 60px;
-			margin-top: 10px;
-			margin-left: 20px;
-			width: 60px;
-			height: 60px;
-		}
-
-		#server_menu_frame .entry_user .underline {
-			height: 15px;
-			margin-top: 10px;
-			margin-left: 5px;
-			margin-right: 5px;
-			color: #fff;
-			text-align: center;
-		}
+        #server_menu_frame .entry_user .current {
+            background: rgba(0,0,0,0.15);
+            box-shadow: 0 1px 10px 0 #000000 inset;
+        }
 
 
-	#server_menu_frame .entry {
-		width:100%;
-		height:65px;
-		padding-top: 15px;
-		border-top: 1px solid #888888;
-		border-bottom: 1px solid #1f1f1f;
-		background: -webkit-linear-gradient(top, rgba(255,255,255,0.15) 0%,rgba(255,255,255,0.05) 100%);
-		background: -moz-linear-gradient(top, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
-		background: linear-gradient(top, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
-		
-	}
+        #server_menu_frame .entry_user .avatar {
+            background-size: 60px 60px;
+            margin-top: 10px;
+            margin-left: 20px;
+            width: 60px;
+            height: 60px;
+        }
+
+        #server_menu_frame .entry_user .underline {
+            height: 15px;
+            margin-top: 10px;
+            margin-left: 5px;
+            margin-right: 5px;
+            color: #fff;
+            text-align: center;
+        }
 
 
-	#server_menu_frame .entry .icon {
-			background: rgba(255,255,255,0.5);
-			width:40px;
-			height:30px;
-			margin-left: auto;
-			margin-right: auto;
-		}
+    #server_menu_frame .entry {
+        width:100%;
+        height:65px;
+        padding-top: 15px;
+        border-top: 1px solid #888888;
+        border-bottom: 1px solid #1f1f1f;
+        background: -webkit-linear-gradient(top, rgba(255,255,255,0.15) 0%,rgba(255,255,255,0.05) 100%);
+        background: -moz-linear-gradient(top, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
+        background: linear-gradient(top, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
+        
+    }
 
-		#server_menu_frame .entry .underline {
-			height: 15px;
-			margin-top: 5px;
-			margin-left: 5px;
-			margin-right: 5px;
-			color: #fff;
-			text-align: center; 
-			font-size: 10px;
-		}
 
-		#server_menu_frame .entry:hover {
-			background: -webkit-linear-gradient(top, rgba(255,255,255,0.2) 0%,rgba(255,255,255,0.08) 100%);
-			background: -moz-linear-gradient(top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%);
-			background: linear-gradient(top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%);
-		}
+    #server_menu_frame .entry .icon {
+            background: rgba(255,255,255,0.5);
+            width:40px;
+            height:30px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-		#server_menu_frame .entry:active {
-			background: rgba(0,0,0,0.15);
-			box-shadow: 0 1px 10px 0 #000000 inset;
-		}
+        #server_menu_frame .entry .underline {
+            height: 15px;
+            margin-top: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            color: #fff;
+            text-align: center; 
+            font-size: 10px;
+        }
 
-		#server_menu_frame .entry .current {
-			background: rgba(0,0,0,0.15);
-			box-shadow: 0 1px 10px 0 #000000 inset;
-		}
+        #server_menu_frame .entry:hover {
+            background: -webkit-linear-gradient(top, rgba(255,255,255,0.2) 0%,rgba(255,255,255,0.08) 100%);
+            background: -moz-linear-gradient(top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%);
+            background: linear-gradient(top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%);
+        }
+
+        #server_menu_frame .entry:active {
+            background: rgba(0,0,0,0.15);
+            box-shadow: 0 1px 10px 0 #000000 inset;
+        }
+
+        #server_menu_frame .entry .current {
+            background: rgba(0,0,0,0.15);
+            box-shadow: 0 1px 10px 0 #000000 inset;
+        }
 
 #option_menu_frame {
-	background: url('../img/noise.png');
-	background-color: #EEEEEE;
-	width: 200px;
-	position: absolute;
-	left: 100px;
-	top: 80px;
-	bottom: 0;
+    background: url('../img/noise.png');
+    background-color: #EEEEEE;
+    width: 200px;
+    position: absolute;
+    left: 100px;
+    top: 80px;
+    bottom: 0;
 }
 
 #option_menu_frame .placeholder {
-	width: 201px;
-	height: 122px;
-	border-bottom: 1px solid #bbbbbb;
+    width: 201px;
+    height: 122px;
+    border-bottom: 1px solid #bbbbbb;
 }
 
 #option_menu_frame .entry {
-	width: 200px;
-	border-bottom: 1px solid #bbbbbb;
-	border-right: 1px solid #bbbbbb;
-	height: 40px;
-	background: rgb(252,255,244);
-	background: -moz-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(220,220,220,1) 100%);
-	background: -webkit-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
-	background: linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
+    width: 200px;
+    border-bottom: 1px solid #bbbbbb;
+    border-right: 1px solid #bbbbbb;
+    height: 40px;
+    background: rgb(252,255,244);
+    background: -moz-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(220,220,220,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
+    background: linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
 }
 
 
-	#option_menu_frame .entry:hover {
-		background: -moz-linear-gradient(top, rgba(245,245,245,1) 0%, rgba(210,210,210,1) 100%);
-		background: -webkit-linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
-		background: linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
-	}
+    #option_menu_frame .entry:hover {
+        background: -moz-linear-gradient(top, rgba(245,245,245,1) 0%, rgba(210,210,210,1) 100%);
+        background: -webkit-linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
+        background: linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
+    }
 
-	#option_menu_frame .entry:active {
-		background: url('../img/pattern_light.png');
-		border-right: none;
-	}
+    #option_menu_frame .entry:active {
+        background: url('../img/pattern_light.png');
+        border-right: none;
+    }
 
-	#option_menu_frame .entry .current{
-		background: url('../img/pattern_light.png');
-		border-right: none;
-	}
+    #option_menu_frame .entry .current{
+        background: url('../img/pattern_light.png');
+        border-right: none;
+    }
 
 
-	#option_menu_frame .entry .icon{
-		background: rgba(0,0,0,0.1);;
-		height: 25px;
-		width: 25px;
-		margin-top: 7px;
-		margin-left: 15px;
-		float: left;
-	}
+    #option_menu_frame .entry .icon{
+        background: rgba(0,0,0,0.1);;
+        height: 25px;
+        width: 25px;
+        margin-top: 7px;
+        margin-left: 15px;
+        float: left;
+    }
 
-	#option_menu_frame .entry .text{
-		color: #2f2f2f;
-		height: 20px;
-		width: 120px;
-		margin-top: 11px;
-		margin-left: 10px;
-		float: left;
-	}
+    #option_menu_frame .entry .text{
+        color: #2f2f2f;
+        height: 20px;
+        width: 120px;
+        margin-top: 11px;
+        margin-left: 10px;
+        float: left;
+    }
 
 #content_container {
-	background: url('../img/pattern_light.png');
-	border-top: 1px solid #bbbbbb;
-	position: absolute;
-	top: 202px;
-	bottom: 0;
-	left: 301px;
-	right: 0;
+    background: url('../img/pattern_light.png');
+    border-top: 1px solid #bbbbbb;
+    position: absolute;
+    top: 202px;
+    bottom: 0;
+    left: 301px;
+    right: 0;
 }
 
 #breadcrum {
-	border-top: 1px solid #bbbbbb;
-	border-left: 1px solid #bbbbbb;;
-	height: 25px;
-	position: absolute;
-	top: 176px;
-	left:300px;
-	right: 0;
+    border-top: 1px solid #bbbbbb;
+    border-left: 1px solid #bbbbbb;;
+    height: 25px;
+    position: absolute;
+    top: 176px;
+    left:300px;
+    right: 0;
 }
 
-	#breadcrum .icon {
-		background: #000;
-		height: 15px;
-		width: 15px;
-		margin-top: 5px;
-		margin-left: 10px;
-		float: left;
-	}
+    #breadcrum .icon {
+        background: #000;
+        height: 15px;
+        width: 15px;
+        margin-top: 5px;
+        margin-left: 10px;
+        float: left;
+    }
 
-	#breadcrum .text {
-		margin-left: 10px;
-		margin-top: 3px;
-		width: 300px;
-		float: left;
-		color: #555555;
-	}
+    #breadcrum .text {
+        margin-left: 10px;
+        margin-top: 3px;
+        width: 300px;
+        float: left;
+        color: #555555;
+    }
 
 
 #button_container {
-	border: 0px solid red;
-	position: absolute;
-	right: 0;
-	top: 82px;
-	height: 90px;
-	max-width: 800px;
+    border: 0px solid red;
+    position: absolute;
+    right: 0;
+    top: 82px;
+    height: 90px;
+    max-width: 800px;
 }
 
 #button_container .button {
-	border: 1px solid green;
-	float: right;
-	width: 100px;
-	height: 90px;
-	margin-left: 10px;
+    border: 1px solid green;
+    float: right;
+    width: 100px;
+    height: 90px;
+    margin-left: 10px;
 }
 
-	#button_container .button:hover {
-		
-	}
+    #button_container .button:hover {
+        
+    }
 
-	#button_container .button:active {
-		
-	}
+    #button_container .button:active {
+        
+    }
 
-	#button_container .button .current {
-		
-	}
+    #button_container .button .current {
+        
+    }
