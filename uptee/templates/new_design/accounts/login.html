@@ -4,7 +4,7 @@
 {% block body %}
 
 <div id="login_container">
-    <div id="header">upTee Login</div>
+    <div id="login_header">upTee Login</div>
     <div id="box">
             <form action="" method="post">
                 <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">

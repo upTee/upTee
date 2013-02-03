@@ -48,7 +48,7 @@ html, body {
     box-shadow: 2px 2px 5px #888;
 }
 
-    #login_container #header {
+    #login_container #login_header {
         background: -moz-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(220,220,220,1) 100%);
         background: -webkit-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
         background: linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
