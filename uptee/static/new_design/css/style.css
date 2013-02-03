@@ -83,7 +83,7 @@ html, body {
     float: left;
     position: absolute;
     bottom: 0;
-    top: 80px;
+    top: 79px;
     left: 0;
 }
 
@@ -183,6 +183,7 @@ html, body {
             box-shadow: 0 1px 10px 0 #000000 inset;
         }
 
+
 #option_menu_frame {
     background: url('../img/noise.png');
     background-color: #EEEEEE;
@@ -195,7 +196,7 @@ html, body {
 
 #option_menu_frame .placeholder {
     width: 201px;
-    height: 122px;
+    height: 121px;
     border-bottom: 1px solid #bbbbbb;
 }
 
@@ -204,7 +205,6 @@ html, body {
     border-bottom: 1px solid #bbbbbb;
     border-right: 1px solid #bbbbbb;
     height: 40px;
-    background: rgb(252,255,244);
     background: -moz-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(220,220,220,1) 100%);
     background: -webkit-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
     background: linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
@@ -250,15 +250,18 @@ html, body {
     background: url('../img/pattern_light.png');
     border-top: 1px solid #bbbbbb;
     position: absolute;
-    top: 202px;
+    top: 201px;
     bottom: 0;
     left: 301px;
     right: 0;
 }
 
 #breadcrum {
+    background: -moz-linear-gradient(top, rgba(245,245,245,1) 0%, rgba(210,210,210,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
+    background: linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
     border-top: 1px solid #bbbbbb;
-    border-left: 1px solid #bbbbbb;;
+    border-left: 1px solid #bbbbbb;
     height: 25px;
     position: absolute;
     top: 176px;
@@ -287,28 +290,54 @@ html, body {
 #button_container {
     border: 0px solid red;
     position: absolute;
-    right: 0;
-    top: 82px;
-    height: 90px;
+    right: 10px;
+    top: 90px;
+    height: 74px;
     max-width: 800px;
 }
 
 #button_container .button {
-    border: 1px solid green;
+    border: 1px solid #bbbbbb;
     float: right;
-    width: 100px;
-    height: 90px;
+    width: 150px;
+    height: 74px;
     margin-left: 10px;
+    background: -moz-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(220,220,220,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
+    background: linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
 }
 
     #button_container .button:hover {
-        
+        background: -moz-linear-gradient(top, rgba(245,245,245,1) 0%, rgba(210,210,210,1) 100%);
+        background: -webkit-linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
+        background: linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
+        border: 1px solid #aaa;
     }
 
     #button_container .button:active {
-        
+        background: rgba(0,0,0,0.05);
+        border: 1px solid #aaa;
+        box-shadow: 0 1px 10px 0 #888 inset;
     }
 
     #button_container .button .current {
-        
+        background: rgba(0,0,0,0.05);
+        border: 1px solid #aaa;
+        box-shadow: 0 1px 10px 0 #888 inset;
     }
+
+#button_container .button .icon {
+    background: rgba(0,0,0,0.5);
+    height: 30px;
+    width: 30px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+#button_container .button .underline {
+    height: 20px;
+    width: 100px;
+    margin: auto;
+    margin-top: 10px;
+    text-align: center;
+}
