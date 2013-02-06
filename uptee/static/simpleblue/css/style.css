@@ -579,6 +579,7 @@ a.edit_link {
 .blog_entry div.entry {
     padding: 10px;
     display: inline-block;
+    max-width: 668px;
 }
 
 .blog_entry div.footer {
