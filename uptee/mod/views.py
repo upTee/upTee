@@ -325,7 +325,7 @@ def server_console(request, server_id):
     cache.delete('server-{0}-in'.format(server_id))
     cache.delete('server-{0}-out'.format(server_id))
     cache.set('server-{0}-ping'.format(server_id), time())
-    telnet_client.delay(server_id, server.port.port + 100)
+    telnet_client.delay(server_id, server.port.port)
     return render_to_response('mod/server_detail_console.html', {
         'server': server,
         'moderator': moderator
