@@ -1,0 +1,28 @@
+{% extends "mod/server_detail_base.html" %}
+
+{% load get_option %}
+
+{% comment %}
+context variables:
+    server
+    moderator
+{% endcomment %}
+
+{% block title %}upTee - {{ server|get_option:'sv_name' }} - Console{% endblock title %}
+
+{% block tab_content %}
+
+<div class="server_detail_terminal">
+    <h2>Console</h2>
+    <div id="terminal" data-serverid="{{ server.id }}">
+        <div id="terminal_entry" class="scroll_pane">
+            <!--<p>output will be here</p>-->
+        </div>
+        <div id="terminal_enter">
+            <div><p>&gt;</p></div>
+            <div><input type="text" id="terminal_command_input" value=""></div>
+        </div>
+    </div>
+</div>
+
+{% endblock tab_content %}

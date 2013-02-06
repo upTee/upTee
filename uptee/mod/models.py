@@ -193,6 +193,8 @@ class Server(models.Model):
             config.add_option('sv_port', '8303')
         else:
             config.add_option('sv_port', self.port.port)
+            config.add_option('ec_port', self.port.port + 100)
+            config.add_option('ec_password', 'uptee')
         for tune in self.config_tunes.all():
             config.add_tune(tune.command, tune.value)
         for vote in self.config_votes.all():

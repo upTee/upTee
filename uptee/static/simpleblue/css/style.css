@@ -502,7 +502,57 @@ a.edit_link {
         color: gray;
         text-align: center;
     }
+
+.server_detail_terminal {
+    position: relative;
+}
+
+    .server_detail_terminal h2 {
+        margin: 2px;
+        padding: 5px;
+        border-bottom: 1px solid #009bff;
+        font-size: 16px;
+        color: gray;
+        text-align: center;
+    }
 /* ---END server detail page--- */
+
+
+/* ---terminal--- */
+#terminal {
+    background-color: #272822;
+    width: 705px;
+    color: #D4D4D4;
+    box-shadow: 1px 1px 2px 2px #272822;
+    margin: 10px;
+    font-size: 14px;
+}
+
+#terminal_command_input {
+    background-color: #272822;
+    border: none;
+    color: #E6E6E6;
+    width: 671px;
+    font-size: 14px;
+}
+
+#terminal_enter {
+    padding: 0px 5px;
+}
+
+#terminal_enter div:first-child {
+    width: 14px;
+    float: left;
+    font-size: 22px;
+}
+
+#terminal_entry {
+    height: 300px;
+    padding: 5px;
+    overflow: auto;
+    border-bottom: thin solid #45473D;
+}
+/* ---END terminal--- */
 
 
 /* ---blog--- */

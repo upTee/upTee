@@ -9,6 +9,7 @@
 uptee/celerybeat.pid
 uptee/celerybeat-schedule
 uptee/settings_local.py
+uptee/cache
 uptee/media
 tests.json
 build/

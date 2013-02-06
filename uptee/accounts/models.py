@@ -39,6 +39,7 @@ class Moderator(models.Model):
     edit_map_download_allowed = models.BooleanField(default=False)
     edit_votes_allowed = models.BooleanField(default=False)
     map_upload_allowed = models.BooleanField(default=False)
+    console_allowed = models.BooleanField(default=False)
     edit_rcon_commands_allowed = models.BooleanField(default=False)
     allowed_options = models.ManyToManyField(Option, related_name='moderators')
     allowed_tunings = models.ManyToManyField(Tune, related_name='moderators')

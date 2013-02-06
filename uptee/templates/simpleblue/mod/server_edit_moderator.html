@@ -40,6 +40,13 @@ context variables:
                     </td>
                 </tr>
                 <tr>
+                    <th><label for="console_allowed">Allow using console:</label></th>
+                    <td>
+                        <input type="checkbox" name="console_allowed" id="console_allowed"{% if moderator_settings.console_allowed != 0 %} checked="checked"{% endif %}>
+                        <label class="checkbox" for="console_allowed"></label>
+                    </td>
+                </tr>
+                <tr>
                     <th><label for="edit_votes_allowed">Allow editing votes:</label></th>
                     <td>
                         <input type="checkbox" name="edit_votes_allowed" id="edit_votes_allowed"{% if moderator_settings.edit_votes_allowed != 0 %} checked="checked"{% endif %}>

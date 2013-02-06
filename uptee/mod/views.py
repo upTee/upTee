@@ -1,15 +1,18 @@
 import os
+from time import time
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.core.cache import cache
 from django.core.urlresolvers import reverse
 from django.http import Http404, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.template import RequestContext
 from django.views.decorators.http import require_POST
 from annoying.decorators import ajax_request
-from mod.forms import ChangeModForm, MapUploadForm, ModeratorForm, ServerDescriptionForm
-from mod.models import Map, Mod, Option, RconCommand, Server, Vote
+from econ.tasks import telnet_client
+from mod.forms import CommandForm, ChangeModForm, MapUploadForm, ModeratorForm, ServerDescriptionForm
+from mod.models import Map, Option, RconCommand, Server, Vote
 from settings import MEDIA_ROOT
 
 
@@ -92,6 +95,10 @@ def server_edit_moderator(request, server_id, user_id):
             moderator.edit_map_download_allowed = True
         else:
             moderator.edit_map_download_allowed = False
+        if 'console_allowed' in request.POST.keys():
+            moderator.console_allowed = True
+        else:
+            moderator.console_allowed = False
         if 'edit_votes_allowed' in request.POST.keys():
             moderator.edit_votes_allowed = True
         else:
@@ -303,6 +310,25 @@ def server_change_mod(request, server_id):
         'server': server,
         'form': form,
         'moderator': None
+    }, context_instance=RequestContext(request))
+
+
+@login_required
+def server_console(request, server_id):
+    server = get_object_or_404(Server.active.select_related(), pk=server_id)
+    if not server.is_online:
+        raise Http404
+    moderator = server.moderators.filter(user=request.user)
+    if server.owner != request.user and (not moderator or not moderator[0].console_allowed):
+        raise Http404
+    moderator = moderator[0] if moderator else None
+    cache.delete('server-{0}-in'.format(server_id))
+    cache.delete('server-{0}-out'.format(server_id))
+    cache.set('server-{0}-ping'.format(server_id), time())
+    telnet_client.delay(server_id, server.port.port + 100)
+    return render_to_response('mod/server_detail_console.html', {
+        'server': server,
+        'moderator': moderator
     }, context_instance=RequestContext(request))
 
 
@@ -536,3 +562,33 @@ def server_info_update_ajax(request, server_id):
         raise Http404
     server = get_object_or_404(Server.active.select_related(), pk=server_id)
     return {'server_info': server.server_info}
+
+
+@ajax_request
+@require_POST
+def terminal_command_ajax(request, server_id):
+    server = get_object_or_404(Server.active.select_related(), pk=server_id)
+    if not server.is_online:
+        raise Http404
+    form = CommandForm(request.POST)
+    if not form.is_valid():
+        raise Http404
+    key = 'server-{0}-in'.format(server_id)
+    lines = cache.get(key, [])
+    lines.append(form.cleaned_data['command'])
+    cache.set(key, lines)
+    cache.set('server-{0}-ping'.format(server_id), time())
+    return {}
+
+
+@ajax_request
+def terminal_receive_ajax(request, server_id):
+    server = get_object_or_404(Server.active.select_related(), pk=server_id)
+    if not server.is_online:
+        raise Http404
+    cache.set('server-{0}-ping'.format(server_id), time())
+    key = 'server-{0}-out'.format(server_id)
+    lines = cache.get(key, [])
+    cache.delete(key)
+    cache.delete('server-{0}-terminate'.format(server_id))
+    return {} if not lines else {"lines": lines}

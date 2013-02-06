@@ -134,6 +134,13 @@ $(document).ready(function() {
     });
 
     $('#comment_form').css('display', 'none');
+
+    // terminal interval
+    (function receive_terminal_interval() {
+        receive_entries();
+
+        setTimeout(receive_terminal_interval, 1000);
+    })();
 });
 
 function toogle_comments() {
@@ -143,4 +150,94 @@ function toogle_comments() {
                 $(window).scrollTop($('.create_comment').position().top);
         });
     });
+}
+
+
+// terminal stuff
+var command_list = [];
+var command_list_index = 0;
+
+$(document).keypress(function(e) {
+    if (e.which == 13 && $('#terminal_command_input:focus').length) {
+        handle_input();
+    }
+
+    if (e.keyCode == 38 && $("#terminal_command_input:focus").length) {
+        rotate_commands(0);
+    }
+    
+    if (e.keyCode == 40 && $("#terminal_command_input:focus").length) {
+        rotate_commands(1);
+    }
+});
+
+function handle_input() {
+    var command = $('#terminal_command_input').val();
+    if (command === '') return;
+    command_list.push(command);
+    command_list_index = command_list.length;
+    $('#terminal_command_input').val('');
+    send_command(command);
+}
+
+function add_entry(line) {
+    var data = '<p>' + line + '</p>';
+    $('#terminal_entry').append(data);
+    $('#terminal_entry').animate({
+        scrollTop: $('#terminal_entry')[0].scrollHeight
+    }, 'normal');
+}
+
+function send_command(command) {
+    var server_id = $('#terminal').attr('data-serverid');
+
+    $.ajax({
+        beforeSend: function(jqXHR, settings) {
+            var csrftoken = $.cookie('csrftoken');
+            jqXHR.setRequestHeader('X-CSRFToken', csrftoken);
+        },
+        url: '/server_terminal_command/' + server_id + '/',
+        type: 'POST',
+        data: {
+            'command': command
+        }
+    });
+}
+
+function receive_entries(command) {
+    if($('#terminal').length) {
+        var server_id = $('#terminal').attr('data-serverid');
+
+        $.ajax({
+            url: '/server_terminal_receive/' + server_id + '/',
+            type: 'GET',
+            success: function(json) {
+                var entries = json.lines;
+                if(entries) {
+                    var i;
+                    for(i = 0; i < entries.length; i++) {
+                        add_entry(entries[i]);
+                    }
+                }
+            }
+        });
+    }
+}
+
+function rotate_commands(direction) {
+    if(!direction) {
+        if(command_list_index > 0) {
+            command_list_index--;
+            $('#terminal_command_input').val(command_list[command_list_index]);
+        }
+    }
+    else {
+        if(command_list_index < command_list.length) {
+            command_list_index++;
+            $('#terminal_command_input').val(command_list[command_list_index]);
+        }
+        else {
+            $('#terminal_command_input').val('');
+        }
+    }
 }

@@ -157,6 +157,8 @@ You might want to add some debug stuff here.
 CACHES
 
 Controles if a cache should be used and which.
+
+Default: Filesystem caching
 """
 #CACHES = {
 #    'default': dict(

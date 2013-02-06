@@ -98,3 +98,7 @@ class ModeratorForm(forms.Form):
         user = self.cleaned_data['user']
         moderator = Moderator(server=self.server, user=user)
         moderator.save()
+
+
+class CommandForm(forms.Form):
+    command = forms.CharField(max_length=500)

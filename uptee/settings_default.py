@@ -30,6 +30,13 @@ DATABASES = {
     }
 }
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': os.path.join(PROJECT_DIR, 'cache'),
+    }
+}
+
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
@@ -169,6 +176,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django_pybrowscap',
     'lib',
+    'econ',
     'crumbs',
     'djcelery',
     'pagination',

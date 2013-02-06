@@ -26,6 +26,7 @@ context variables:
             {% url server_votes server.id as url_votes %}
             {% url server_change_mod server.id as url_change_mod %}
             {% url server_moderators server.id as url_moderators %}
+            {% url server_console server.id as url_console %}
             <a href="{{ url_info }}"><div class="tab{% current request url_info %}">Info</div></a>
             {% if server.config_votes.all %}
                 <a href="{{ url_votes }}"><div class="tab{% current request url_votes %}">Show Votes</div></a>
@@ -41,13 +42,16 @@ context variables:
             {% endif %}
             {% if server.config_available_rconcommands.all %}
                 {% if server.owner == user or moderator and moderator.edit_rcon_commands_allowed %}
-                    <a href="{{ url_edit_rcon_commands }}"><div class="tab{% current request url_edit_rcon_commands %}">Edit Rcon commands</div></a>
+                    <a href="{{ url_edit_rcon_commands }}"><div class="tab{% current request url_edit_rcon_commands %}">Rcon</div></a>
                 {% endif %}
             {% endif %}
             {% if server.owner == user or moderator and moderator.allowed_tunings.all %}
                 {% if server.config_tunes.all %}
                     <a href="{{ url_edit_tunes }}"><div class="tab{% current request url_edit_tunes %}">Edit Tunings</div></a>
                 {% endif %}
+            {% endif %}
+            {% if server.is_online and server.owner == user or moderator and moderator.console_allowed %}
+                <a href="{{ url_console }}"><div class="tab{% current request url_console %}">Console</div></a>
             {% endif %}
             {% if server.owner == user %}
                 <a href="{{ url_change_mod }}"><div class="tab{% current request url_change_mod %}">Change Mod</div></a>
