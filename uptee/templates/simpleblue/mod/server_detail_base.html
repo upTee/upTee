@@ -29,7 +29,7 @@ context variables:
             {% url server_console server.id as url_console %}
             <a href="{{ url_info }}"><div class="tab{% current request url_info %}">Info</div></a>
             {% if server.config_votes.all %}
-                <a href="{{ url_votes }}"><div class="tab{% current request url_votes %}">Show Votes</div></a>
+                <a href="{{ url_votes }}"><div class="tab{% current request url_votes %}">Votes</div></a>
             {% endif %}
             {% if server.owner == user or moderator and moderator.map_upload_allowed %}
                 <a href="{{ url_upload_map }}"><div class="tab{% current request url_upload_map %}">Upload Map</div></a>
@@ -42,7 +42,7 @@ context variables:
             {% endif %}
             {% if server.config_available_rconcommands.all %}
                 {% if server.owner == user or moderator and moderator.edit_rcon_commands_allowed %}
-                    <a href="{{ url_edit_rcon_commands }}"><div class="tab{% current request url_edit_rcon_commands %}">Rcon</div></a>
+                    <a href="{{ url_edit_rcon_commands }}"><div class="tab{% current request url_edit_rcon_commands %}">Commands</div></a>
                 {% endif %}
             {% endif %}
             {% if server.owner == user or moderator and moderator.allowed_tunings.all %}
