@@ -255,6 +255,7 @@ html, body {
     left: 301px;
     right: 0;
     padding: 30px;
+    overflow: auto;
 }
 
 #breadcrum {
@@ -345,7 +346,7 @@ html, body {
 
 .content_box {
     border: 1px solid #bbbbbb;
-    position: relative;
+    margin-bottom: 30px;
 }
 
 .content_headline {
@@ -360,15 +361,6 @@ html, body {
 
 
 .content {
-    position: absolute;
-        top: 38px;
-        left: 0px;
-        bottom: 0px;
-        right: 0px;
     background: #efefef;
     padding: 10px;
 }
-
-
-
-   
