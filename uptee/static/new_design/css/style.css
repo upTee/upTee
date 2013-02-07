@@ -254,6 +254,7 @@ html, body {
     bottom: 0;
     left: 301px;
     right: 0;
+    padding: 30px;
 }
 
 #breadcrum {
@@ -341,3 +342,33 @@ html, body {
     margin-top: 10px;
     text-align: center;
 }
+
+.content_box {
+    border: 1px solid #bbbbbb;
+    position: relative;
+}
+
+.content_headline {
+    background: -moz-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(220,220,220,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
+    background: linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+
+.content {
+    position: absolute;
+        top: 38px;
+        left: 0px;
+        bottom: 0px;
+        right: 0px;
+    background: #efefef;
+    padding: 10px;
+}
+
+
+
+   
