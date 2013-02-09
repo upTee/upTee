@@ -230,9 +230,9 @@ html, body {
 
     #option_menu_frame .entry .icon{
         background: rgba(0,0,0,0.1);;
-        height: 25px;
-        width: 25px;
-        margin-top: 7px;
+        height: 15px;
+        width: 15px;
+        margin-top: 12px;
         margin-left: 15px;
         float: left;
     }
@@ -258,7 +258,7 @@ html, body {
 }
 
     #fold_button .icon{
-        background: url('../img/arrows.png');
+        background: url('../icons/arrows.png');
         background-position: 0 -15px;
         height: 15px;
         width: 20px;
@@ -272,7 +272,7 @@ html, body {
     }
 
     #fold_button .icon_collapsed{
-        background: url('../img/arrows.png');
+        background: url('../icons/arrows.png');
         background-position: 0 0;
         height: 15px;
         width: 20px;
@@ -311,7 +311,7 @@ html, body {
 }
 
     #breadcrum .icon {
-        background: #000;
+        background: url('../icons/home2.png');
         height: 15px;
         width: 15px;
         margin-top: 5px;
@@ -368,9 +368,9 @@ html, body {
     }
 
 #button_container .button .icon {
-    background: rgba(0,0,0,0.5);
-    height: 30px;
-    width: 30px;
+    /*background: rgba(0,0,0,0.5);*/
+    height: 35px;
+    width: 35px;
     margin: auto;
     margin-top: 10px;
 }
@@ -379,7 +379,7 @@ html, body {
     height: 20px;
     width: 100px;
     margin: auto;
-    margin-top: 10px;
+    margin-top: 5px;
     text-align: center;
 }
 
