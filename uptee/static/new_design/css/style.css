@@ -246,6 +246,45 @@ html, body {
         float: left;
     }
 
+#fold_button{
+    margin-left: 85px;
+    width: 30px;
+    border: 1px solid #bbbbbb;
+    border-top: 1px solid transparent;
+    height: 20px;
+    background: -moz-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(220,220,220,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
+    background: linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
+}
+
+    #fold_button .icon{
+        background: url('../img/arrows.png');
+        background-position: 0 -15px;
+        height: 15px;
+        width: 20px;
+        margin-left: 5px;
+        margin-top: 2px;
+        opacity: 0.5;
+    }
+
+    #fold_button .icon:hover{
+        opacity: 0.75;
+    }
+
+    #fold_button .icon_collapsed{
+        background: url('../img/arrows.png');
+        background-position: 0 0;
+        height: 15px;
+        width: 20px;
+        margin-left: 5px;
+        margin-top: 2px;
+        opacity: 0.5;
+    }
+
+    #fold_button .icon_collapsed:hover{
+        opacity: 0.75;
+    }
+
 #content_container {
     background: url('../img/pattern_light.png');
     border-top: 1px solid #bbbbbb;
