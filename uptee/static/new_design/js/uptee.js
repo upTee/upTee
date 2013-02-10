@@ -1,0 +1,28 @@
+$(document).ready(function() {
+    // hide menu by default
+    if($('#fold_button .icon').length) {
+        $('#fold_button .icon').attr('class', 'icon_collapsed');
+        $('#option_menu_entries').css({'display': 'none'});
+        $('#content_container').css({'left': '100px'});
+        $('#breadcrum').css({'left': '100px'});
+    }
+
+    // fold button logic
+    $('#fold_button').click(function() {
+        if($('#fold_button .icon').length) {
+            $('#option_menu_entries').slideUp('fast', function() {
+                    $('#fold_button .icon').attr('class', 'icon_collapsed');
+                    $('#content_container').animate({'left': '100'}, 'fast');
+                    $('#breadcrum').animate({'left': '100'}, 'fast');
+            });
+        }
+        if($('#fold_button .icon_collapsed').length) {
+            $('#content_container').animate({'left': '301'}, 'fast');
+            $('#breadcrum').animate({'left': '300'}, 'fast', function() {
+                $('#option_menu_entries').slideDown('fast', function() {
+                    $('#fold_button .icon_collapsed').attr('class', 'icon');
+                });
+            });
+        }
+    });
+});
