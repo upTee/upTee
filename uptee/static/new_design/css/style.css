@@ -437,12 +437,12 @@ html, body {
     text-align: center;
 }
 
-.content_box {
+.content_box, .blog_box {
     border: 1px solid #bbbbbb;
     margin-bottom: 30px;
 }
 
-.content_headline {
+.content_headline, .blog_headline {
     background: #F0F0F0;
     background: -moz-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(220,220,220,1) 100%);
     background: -webkit-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
@@ -455,6 +455,14 @@ html, body {
     font-size: 14px;
 }
 
+.blog_box .footer{
+    background: #efefef;
+    border-top: 1px solid #bbbbbb;
+    padding: 5px;
+    padding-left: 10px;
+    font-size: 10px;
+
+}
 
 .content {
     background: #efefef;
