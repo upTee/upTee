@@ -24,8 +24,11 @@ html, body {
 } 
 
 #header {
+    background: url('../img/pattern_gray.png');
     background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.2) 100%), url('../img/pattern_gray.png');
     background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%), url('../img/pattern_gray.png');
+    background: -o-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%), url('../img/pattern_gray.png');
+    background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%), url('../img/pattern_gray.png');
     background: linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%), url('../img/pattern_gray.png');
     width: 100%;
     height: 80px;
@@ -45,12 +48,17 @@ html, body {
     border: 1px solid #bbbbbb;
     -moz-box-shadow: 2px 2px 5px #888;
     -webkit-box-shadow: 2px 2px 5px #888;
+    -o-box-shadow: 2px 2px 5px #888;
+    -ms-box-shadow: 2px 2px 5px #888;
     box-shadow: 2px 2px 5px #888;
 }
 
     #login_container #login_header {
-        background: -moz-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(220,220,220,1) 100%);
+        background: #DCDCDC;
         background: -webkit-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
+        background: -moz-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(220,220,220,1) 100%);
+        background: -o-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(220,220,220,1) 100%);
+        background: -ms-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(220,220,220,1) 100%);
         background: linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
         padding: 10px;
         height: 25px;
@@ -82,9 +90,9 @@ html, body {
     outline: 0px solid green;
     float: left;
     position: absolute;
-    bottom: 0;
-    top: 79px;
-    left: 0;
+        top: 79px;
+        bottom: 0;
+        left: 0;
 }
 
     #server_menu_frame {
@@ -96,24 +104,38 @@ html, body {
         height:120px;
         border-top: 1px solid #888888;
         border-bottom: 1px solid #1f1f1f;
+        background: rgba(255,255,255,0.15);
         background: -webkit-linear-gradient(top, rgba(255,255,255,0.15) 0%,rgba(255,255,255,0.05) 100%);
         background: -moz-linear-gradient(top, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
+        background: -o-linear-gradient(top, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
+        background: -ms-linear-gradient(top, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
         background: linear-gradient(top, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
     }
 
         #server_menu_frame .entry_user:hover {
+            background: rgba(255,255,255,0.2);
             background: -webkit-linear-gradient(top, rgba(255,255,255,0.2) 0%,rgba(255,255,255,0.08) 100%);
             background: -moz-linear-gradient(top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%);
+            background: -o-linear-gradient(top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%);
+            background: -ms-linear-gradient(top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%);
             background: linear-gradient(top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%);
         }
 
         #server_menu_frame .entry_user:active {
             background: rgba(0,0,0,0.15);
+            -webkit-box-shadow: 0 1px 10px 0 #000000 inset;
+            -moz-box-shadow: 0 1px 10px 0 #000000 inset;
+            -o-box-shadow: 0 1px 10px 0 #000000 inset;
+            -ms-box-shadow: 0 1px 10px 0 #000000 inset;
             box-shadow: 0 1px 10px 0 #000000 inset;
         }
 
         #server_menu_frame .entry_user .current {
             background: rgba(0,0,0,0.15);
+            -webkit-box-shadow: 0 1px 10px 0 #000000 inset;
+            -moz-box-shadow: 0 1px 10px 0 #000000 inset;
+            -o-box-shadow: 0 1px 10px 0 #000000 inset;
+            -ms-box-shadow: 0 1px 10px 0 #000000 inset;
             box-shadow: 0 1px 10px 0 #000000 inset;
         }
 
@@ -142,8 +164,11 @@ html, body {
         padding-top: 15px;
         border-top: 1px solid #888888;
         border-bottom: 1px solid #1f1f1f;
+        background: rgba(255,255,255,0.15);
         background: -webkit-linear-gradient(top, rgba(255,255,255,0.15) 0%,rgba(255,255,255,0.05) 100%);
         background: -moz-linear-gradient(top, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
+        background: -o-linear-gradient(top, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
+        background: -ms-linear-gradient(top, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
         background: linear-gradient(top, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
         
     }
@@ -168,8 +193,11 @@ html, body {
         }
 
         #server_menu_frame .entry:hover {
+            background: rgba(255,255,255,0.2);
             background: -webkit-linear-gradient(top, rgba(255,255,255,0.2) 0%,rgba(255,255,255,0.08) 100%);
             background: -moz-linear-gradient(top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%);
+            background: -o-linear-gradient(top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%);
+            background: -ms-linear-gradient(top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%);
             background: linear-gradient(top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%);
         }
 
@@ -205,15 +233,21 @@ html, body {
     border-bottom: 1px solid #bbbbbb;
     border-right: 1px solid #bbbbbb;
     height: 40px;
+    background: #F0F0F0;
     background: -moz-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(220,220,220,1) 100%);
     background: -webkit-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
+    background: -o-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
+    background: -ms-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
     background: linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
 }
 
 
     #option_menu_frame .entry:hover {
+        background: #F5F5F5;
         background: -moz-linear-gradient(top, rgba(245,245,245,1) 0%, rgba(210,210,210,1) 100%);
         background: -webkit-linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
+        background: -o-linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
+        background: -ms-linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
         background: linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
     }
 
@@ -252,8 +286,11 @@ html, body {
     border: 1px solid #bbbbbb;
     border-top: 1px solid transparent;
     height: 20px;
+    background: #F0F0F0;
     background: -moz-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(220,220,220,1) 100%);
     background: -webkit-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
+    background: -o-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
+    background: -ms-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
     background: linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
 }
 
@@ -298,8 +335,11 @@ html, body {
 }
 
 #breadcrum {
+    background: #F5F5F5;
     background: -moz-linear-gradient(top, rgba(245,245,245,1) 0%, rgba(210,210,210,1) 100%);
     background: -webkit-linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
+    background: -o-linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
+    background: -ms-linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
     background: linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
     border-top: 1px solid #bbbbbb;
     border-left: 1px solid #bbbbbb;
@@ -343,14 +383,20 @@ html, body {
     width: 150px;
     height: 74px;
     margin-left: 10px;
+    background: #F0F0F0;
     background: -moz-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(220,220,220,1) 100%);
     background: -webkit-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
+    background: -o-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
+    background: -ms-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
     background: linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
 }
 
     #button_container .button:hover {
+        background: #F5F5F5;
         background: -moz-linear-gradient(top, rgba(245,245,245,1) 0%, rgba(210,210,210,1) 100%);
         background: -webkit-linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
+        background: -o-linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
+        background: -ms-linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
         background: linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
         border: 1px solid #aaa;
     }
@@ -358,12 +404,20 @@ html, body {
     #button_container .button:active {
         background: rgba(0,0,0,0.05);
         border: 1px solid #aaa;
+        -webkit-box-shadow: 0 1px 10px 0 #888 inset;
+        -moz-box-shadow: 0 1px 10px 0 #888 inset;
+        -o-box-shadow: 0 1px 10px 0 #888 inset;
+        -ms-box-shadow: 0 1px 10px 0 #888 inset;
         box-shadow: 0 1px 10px 0 #888 inset;
     }
 
     #button_container .button .current {
         background: rgba(0,0,0,0.05);
         border: 1px solid #aaa;
+        -webkit-box-shadow: 0 1px 10px 0 #888 inset;
+        -moz-box-shadow: 0 1px 10px 0 #888 inset;
+        -o-box-shadow: 0 1px 10px 0 #888 inset;
+        -ms-box-shadow: 0 1px 10px 0 #888 inset;
         box-shadow: 0 1px 10px 0 #888 inset;
     }
 
@@ -389,8 +443,11 @@ html, body {
 }
 
 .content_headline {
+    background: #F0F0F0;
     background: -moz-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(220,220,220,1) 100%);
     background: -webkit-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
+    background: -o-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
+    background: -ms-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
     background: linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
     padding-top: 10px;
     padding-bottom: 10px;
