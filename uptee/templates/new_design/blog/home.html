@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% load comments %}
+{% load gravatar %}
+{% load pagination_tags %}
+
 {% comment %}
 context variables:
     entry_list
@@ -7,41 +11,27 @@ context variables:
 
 {% block content %}
 
-<div class="content_box">
-    <div class="content_headline">Headline 1</div>
-    <div class="content">
-        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-    </div>
-</div>
+{% autopaginate entry_list 5 %}
 
-<div class="content_box">
-    <div class="content_headline">Headline 1</div>
-    <div class="content">
-        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+{% for entry in entry_list %}
+    {% get_comment_count for blog.entry entry.id as comment_count %}
+    <div class="blog_box">
+        <div class="blog_headline">{{ entry.title }}</div>
+        <div class="content">
+            <p>{{ entry.content_html|safe }}</p>
+        </div>
+        <div class="footer">
+            <div class="left">Posted on <strong>{{ entry.created_at|date:"F j, Y" }}</strong> by <strong><a href="{% url user entry.created_by.id %}">{{ entry.created_by.username }}</a></strong></div>
+            <div class="right"><a href="{% url entry_detail entry.slug %}">{{ comment_count }} comment{{ comment_count|pluralize }}</a></div>
+            <div class="clear"></div>
+        </div>
     </div>
-</div>
-
-<div class="content_box">
-    <div class="content_headline">Headline 1</div>
-    <div class="content">
-        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+{% empty %}
+    <div class="content_box">
+        <div class="content_headline">Hello {% if user.is_authenticated %}{{ user.username }}{% else %}Guest{% endif %}</div>
     </div>
-</div>
+{% endfor %}
 
-<div class="content_box">
-    <div class="content_headline">Headline 1</div>
-    <div class="content">
-        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-    </div>
-</div>
-
-
-<div class="blog_box">
-    <div class="blog_headline">Blog Headline 1</div>
-    <div class="content">
-        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-    </div>
-    <div class="footer">Posted on <strong>date</strong> by <strong>{{ user.username }}</strong> </div>
-</div>
+{% paginate %}
 
 {% endblock content %}

@@ -116,14 +116,18 @@
         </div>
 
         <div id="button_container">
-            <div class="button">
-                <div class="icon"><img src="{{ STATIC_URL }}new_design/icons/blog.png"\></div>
-                <div class="underline">Blog</div>
-            </div>
-            <div class="button">
-                <div class="icon"><img src="{{ STATIC_URL }}new_design/icons/user2.png"\></div>
-                <div class="underline">User List</div>
-            </div>
+            <a href="{% url home %}">
+                <div class="button">
+                    <div class="icon"><img src="{{ STATIC_URL }}new_design/icons/blog.png"\></div>
+                    <div class="underline">Blog</div>
+                </div>
+            </a>
+            <a href="{% url users %}">
+                <div class="button">
+                    <div class="icon"><img src="{{ STATIC_URL }}new_design/icons/user2.png"\></div>
+                    <div class="underline">User List</div>
+                </div>
+            </a>
             <div class="button">
                 <div class="icon"></div>
                 <div class="underline">Underline</div>
@@ -136,7 +140,11 @@
 
         <div id="breadcrum">
             <div class="icon"></div>
-            <div class="text">Breadcrum > Fisico > Sushi > Baum</div>
+            {% block breadcrumb %}
+                {% load breadcrumb_tags %}
+                {% add_crumb 'Home' 'home' %}
+            {% endblock %}
+            <div class="text">{% render_breadcrumbs %}</div>
         </div>
 
         <div id="content_container">

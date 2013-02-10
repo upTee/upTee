@@ -464,6 +464,14 @@ html, body {
 
 }
 
+.blog_box div.right {
+    float: right;
+}
+
+.blog_box div.left {
+    float: left;
+}
+
 .content {
     background: #efefef;
     padding: 10px;
