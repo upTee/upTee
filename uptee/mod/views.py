@@ -11,6 +11,7 @@ from django.template import RequestContext
 from django.views.decorators.http import require_POST
 from annoying.decorators import ajax_request
 from econ.tasks import telnet_client
+from lib.session_user import get_user
 from mod.forms import CommandForm, ChangeModForm, MapUploadForm, ModeratorForm, ServerDescriptionForm
 from mod.models import Map, Option, RconCommand, Server, Vote
 from settings import MEDIA_ROOT
@@ -570,6 +571,12 @@ def terminal_command_ajax(request, server_id):
     server = get_object_or_404(Server.active.select_related(), pk=server_id)
     if not server.is_online:
         raise Http404
+    user = get_user(request)
+    if not user:
+        raise Http404
+    moderator = server.moderators.filter(user=user)
+    if server.owner != user and (not moderator or not moderator[0].console_allowed):
+        raise Http404
     form = CommandForm(request.POST)
     if not form.is_valid():
         raise Http404
@@ -585,6 +592,12 @@ def terminal_command_ajax(request, server_id):
 def terminal_receive_ajax(request, server_id):
     server = get_object_or_404(Server.active.select_related(), pk=server_id)
     if not server.is_online:
+        raise Http404
+    user = get_user(request)
+    if not user:
+        raise Http404
+    moderator = server.moderators.filter(user=user)
+    if server.owner != user and (not moderator or not moderator[0].console_allowed):
         raise Http404
     cache.set('server-{0}-ping'.format(server_id), time())
     key = 'server-{0}-out'.format(server_id)
