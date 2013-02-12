@@ -8,9 +8,6 @@ def mod(request):
     moderated_servers = []
     moderated_servers_restart = []
     invalidate(Server)
-    invalidate(Option)
-    invalidate(Tune)
-    invalidate(Vote)
     if user:
         servers = Server.objects.filter(is_active=True, owner=user)
         moderated_servers = Server.objects.filter(moderators__user=user)

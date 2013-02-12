@@ -562,8 +562,8 @@ def update_tunes(request, server_id):
 def server_info_update_ajax(request, server_id):
     if not request.is_ajax():
         raise Http404
-    server = get_object_or_404(Server.active.select_related(), pk=server_id)
     invalidate(Server)
+    server = get_object_or_404(Server.active.select_related(), pk=server_id)
     return {'server_info': server.server_info}
 
 
