@@ -11,6 +11,7 @@ from django.template import RequestContext
 from django.views.decorators.http import require_POST
 from annoying.decorators import ajax_request
 from econ.tasks import telnet_client
+from lib.invalidate import invalidate
 from lib.session_user import get_user
 from mod.forms import CommandForm, ChangeModForm, MapUploadForm, ModeratorForm, ServerDescriptionForm
 from mod.models import Map, Option, RconCommand, Server, Vote
@@ -562,6 +563,7 @@ def server_info_update_ajax(request, server_id):
     if not request.is_ajax():
         raise Http404
     server = get_object_or_404(Server.active.select_related(), pk=server_id)
+    invalidate(Server)
     return {'server_info': server.server_info}
 
 

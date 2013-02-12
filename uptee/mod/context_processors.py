@@ -1,4 +1,5 @@
-from mod.models import Server
+from lib.invalidate import invalidate
+from mod.models import Option, Server, Tune, Vote
 
 
 def mod(request):
@@ -6,11 +7,10 @@ def mod(request):
     servers = None
     moderated_servers = []
     moderated_servers_restart = []
-    try:  # try invalidating cache for server model (have no idea if this is right)
-        from johnny.cache import invalidate
-        invalidate(Server)
-    except:
-        pass
+    invalidate(Server)
+    invalidate(Option)
+    invalidate(Tune)
+    invalidate(Vote)
     if user:
         servers = Server.objects.filter(is_active=True, owner=user)
         moderated_servers = Server.objects.filter(moderators__user=user)
