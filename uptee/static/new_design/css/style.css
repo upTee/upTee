@@ -326,6 +326,39 @@ html, body {
         opacity: 0.75;
     }
 
+
+#bottom_buttons{
+    position:absolute;
+    bottom: 0;
+    left: 100px;
+}
+
+#bottom_buttons .button {
+    float: left;
+    text-align: center;
+    border: 1px solid #bbbbbb;
+    padding: 10px;
+    margin-right: 3px;
+    margin-left: 3px;
+    height: 15px;
+    width: 72px;
+    background: #F0F0F0;
+    background: -moz-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(220,220,220,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
+    background: -o-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
+    background: -ms-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
+    background: linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
+}
+
+    #bottom_buttons .button:hover {
+        background: #F5F5F5;
+        background: -moz-linear-gradient(top, rgba(245,245,245,1) 0%, rgba(210,210,210,1) 100%);
+        background: -webkit-linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
+        background: -o-linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
+        background: -ms-linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
+        background: linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
+    }
+
 #content_container {
     background: url('../img/pattern_light.png');
     border-top: 1px solid #bbbbbb;
