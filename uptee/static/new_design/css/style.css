@@ -99,6 +99,10 @@ html, body {
         border-top: 1px solid #1f1f1f;
     }
 
+    #server_menu_frame a {
+        text-decoration: none;
+    }
+
     #server_menu_frame .entry_user {
         width:100%;
         height:120px;

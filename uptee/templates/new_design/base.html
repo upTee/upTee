@@ -51,17 +51,21 @@
 
                 {% if user.is_authenticated %}
                     
-                    <div class="entry_user">
-                        <div class="avatar"><img src="{% gravatar_for_user user 60 %}"></div>
-                        <div class="underline">{{ user.username }}</div>
-                    </div>
+                    <a href="{% url home %}">
+                        <div class="entry_user">
+                            <div class="avatar"><img src="{% gravatar_for_user user 60 %}"></div>
+                            <div class="underline">{{ user.username }}</div>
+                        </div>
+                    </a>
 
                     {% for server in user_server_list %}
 
-                        <div class="entry">
-                            <div class="icon"></div>
-                            <div class="underline">{{ server|get_option:'sv_name'|truncatechars:12 }}</div>
-                        </div>
+                        <a href="{% url server_detail server.id %}">
+                            <div class="entry">
+                                <div class="icon"></div>
+                                <div class="underline">{{ server|get_option:'sv_name'|truncatechars:12 }}</div>
+                            </div>
+                        </a>
 
                     {% endfor %}
 
@@ -73,38 +77,7 @@
         <div id="option_menu_frame">
             <div id="option_menu_entries">
                 <div class="placeholder"></div>
-                <div class="entry">
-                    <div class="icon"><img src="{{ STATIC_URL }}new_design/icons/info.png"\></div>
-                    <div class="text">Info</div>
-                </div>
-                <div class="entry">
-                    <div class="icon"><img src="{{ STATIC_URL }}new_design/icons/votes.png"\></div>
-                    <div class="text">Votes</div>
-                </div>
-                <div class="entry">
-                    <div class="icon"><img src="{{ STATIC_URL }}new_design/icons/maps.png"\></div>
-                    <div class="text">Maps</div>
-                </div>
-                <div class="entry">
-                    <div class="icon"><img src="{{ STATIC_URL }}new_design/icons/settings.png"\></div>
-                    <div class="text">Settings</div>
-                </div>
-                <div class="entry">
-                    <div class="icon"><img src="{{ STATIC_URL }}new_design/icons/console.png"\></div>
-                    <div class="text">Console</div>
-                </div>
-                <div class="entry">
-                    <div class="icon"></div>
-                    <div class="text">Commands</div>
-                </div>
-                <div class="entry">
-                    <div class="icon"></div>
-                    <div class="text">Mod</div>
-                </div>
-                <div class="entry">
-                    <div class="icon"><img src="{{ STATIC_URL }}new_design/icons/mods.png"\></div>
-                    <div class="text">Moderators</div>
-                </div>
+                {% block option_menu %}{% endblock option_menu %}
                 <div class="clear"></div>
             </div>            
 
@@ -128,14 +101,6 @@
                     <div class="underline">User List</div>
                 </div>
             </a>
-            <div class="button">
-                <div class="icon"></div>
-                <div class="underline">Underline</div>
-            </div>
-            <div class="button">
-                <div class="icon"></div>
-                <div class="underline">Underline</div>
-            </div>
         </div>
 
         <div id="breadcrum">

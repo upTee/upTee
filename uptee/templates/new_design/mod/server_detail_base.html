@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% load menu %}
+{% load get_option %}
+
+{% comment %}
+context variables:
+    server
+    moderator
+{% endcomment %}
+
+{% block option_menu %}
+
+{% url server_detail server.id as url_info %}
+{% url upload_map server.id as url_upload_map %}
+{% url server_edit server.id as url_edit_settings %}
+{% url server_edit_votes server.id as url_edit_votes %}
+{% url server_edit_rcon_commands server.id as url_edit_rcon_commands %}
+{% url server_tunes server.id as url_edit_tunes %}
+{% url server_votes server.id as url_votes %}
+{% url server_change_mod server.id as url_change_mod %}
+{% url server_moderators server.id as url_moderators %}
+{% url server_console server.id as url_console %}
+
+<a href="{{ url_info }}">
+    <div class="entry{% current request url_info %}">
+        <div class="icon"><img src="{{ STATIC_URL }}new_design/icons/info.png"></div>
+        <div class="text">Info</div>
+    </div>
+</a>
+{% if server.config_votes.all %}
+    <a href="{{ url_votes }}">
+        <div class="entry{% current request url_votes %}">
+            <div class="icon"><img src="{{ STATIC_URL }}new_design/icons/votes.png"></div>
+            <div class="text">Votes</div>
+        </div>
+    </a>
+{% endif %}
+{% if server.owner == user or moderator and moderator.map_upload_allowed %}
+    <a href="{{ url_upload_map }}">
+        <div class="entry{% current request url_upload_map %}">
+            <div class="icon"><img src="{{ STATIC_URL }}new_design/icons/maps.png"></div>
+            <div class="text">Upload Map</div>
+        </div>
+    </a>
+{% endif %}
+{% if server.owner == user or moderator and moderator.allowed_options.all %}
+    <a href="{{ url_edit_settings }}">
+        <div class="entry{% current request url_edit_settings %}">
+            <div class="icon"><img src="{{ STATIC_URL }}new_design/icons/settings.png"></div>
+            <div class="text">Edit Settings</div>
+        </div>
+    </a>
+{% endif %}
+{% if server.owner == user or moderator and moderator.edit_votes_allowed %}
+    <a href="{{ url_edit_votes }}">
+        <div class="entry{% current request url_edit_votes %}">
+            <div class="icon"><img src="{{ STATIC_URL }}new_design/icons/votes.png"></div>
+            <div class="text">Edit Votes</div>
+        </div>
+    </a>
+{% endif %}
+{% if server.config_available_rconcommands.all %}
+    {% if server.owner == user or moderator and moderator.edit_rcon_commands_allowed %}
+        <a href="{{ url_edit_rcon_commands }}">
+            <div class="entry{% current request url_edit_rcon_commands %}">
+                <div class="icon"></div>
+                <div class="text">Commands</div>
+            </div>
+        </a>
+    {% endif %}
+{% endif %}
+{% if server.owner == user or moderator and moderator.allowed_tunings.all %}
+    {% if server.config_tunes.all %}
+        <a href="{{ url_edit_tunes }}">
+            <div class="entry{% current request url_edit_tunes %}">
+                <div class="icon"></div>
+                <div class="text">Edit Tunings</div>
+            </div>
+        </a>
+    {% endif %}
+{% endif %}
+{% if server.is_online and server.owner == user or moderator and moderator.console_allowed %}
+    <a href="{{ url_console }}">
+        <div class="entry{% current request url_console %}">
+            <div class="icon"><img src="{{ STATIC_URL }}new_design/icons/console.png"></div>
+            <div class="text">Console</div>
+        </div>
+    </a>
+{% endif %}
+{% if server.owner == user %}
+    <a href="{{ url_change_mod }}">
+        <div class="entry{% current request url_change_mod %}">
+            <div class="icon"><img src="{{ STATIC_URL }}new_design/icons/mods.png"></div>
+            <div class="text">Change mod</div>
+        </div>
+    </a>
+    <a href="{{ url_moderators }}">
+        <div class="entry{% current request url_moderators %}">
+            <div class="icon"><img src="{{ STATIC_URL }}new_design/icons/mods.png"></div>
+            <div class="text">Moderators</div>
+        </div>
+    </a>
+{% endif %}
+
+{% endblock option_menu %}
+
+
+{% block content %}
+
+<div class="content_box">
+    <div class="content_headline {% if server.is_online %}on{% else %}off{% endif %}">
+        <h2>{{ server|get_option:'sv_name' }}</h2>
+    </div>
+    <div class="content">{% block server_detail_content %}{% endblock server_detail_content %}</div>
+</div>
+
+{% endblock content %}

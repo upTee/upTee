@@ -1,0 +1,27 @@
+<div class="server_detail_scoreboard" data-serverid="{{ server.id }}">
+{% if server.server_info and server.server_info.clients %}
+    <table>
+        <tbody>
+            <tr>
+                <th>Score</th>
+                <th>Name</th>
+                <th>Clan</th>
+            </tr>
+            {% for player in server.server_info.players %}
+            <tr>
+                <td>{{ player.score }}</td>
+                <td>{{ player.name }}</td>
+                <td>{{ player.clan }}</td>
+            </tr>
+            {% endfor %}
+            {% for spectator in server.server_info.spectators %}
+            <tr>
+                <td>-</td>
+                <td>{{ spectator.name }}</td>
+                <td>{{ spectator.clan }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+</div>

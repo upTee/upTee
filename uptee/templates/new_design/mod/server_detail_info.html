@@ -1,0 +1,100 @@
+{% extends "mod/server_detail_base.html" %}
+
+{% load get_option %}
+{% load split %}
+
+{% comment %}
+context variables:
+    server
+    moderator
+{% endcomment %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{{ STATIC_URL }}simpleblue/css/calendar.css" type="text/css">
+<!--<link rel="stylesheet" href="{{ STATIC_URL }}simpleblue/css/eventCalendar_theme_responsive.css" type="text/css">-->
+{% endblock extra_head %}
+
+{% block title %}upTee - {{ server|get_option:'sv_name' }} - Details{% endblock title %}
+
+{% block server_detail_content %}
+
+<div class="server_detail_info">
+    <h2>Info</h2>
+    {% if server.is_online %}<div class="server_status_update" data-serverid="{{ server.id }}">{% endif %}
+        <table>
+            <tbody>
+                <tr>
+                    <td>Owner:</td>
+                    <td><a href="{% url user server.owner.id %}">{% if server.owner == request.user %}You{% else %}{{ server.owner.username }}{% endif %}</a></td>
+                </tr>
+                <tr>
+                    <td>Mod:</td>
+                    <td>{{ server.mod.title }}</td>
+                </tr>
+                <tr>
+                    <td>Gametype:</td>
+                    <td><span data-info="gametype">{% if server.server_info %}{{ server.server_info.gametype }}{% else %}{{ server|get_option:'sv_gametype' }}{% endif %}</span></td>
+                </tr>
+                <tr>
+                    <td>Map:</td>
+                    <td><span data-info="map">{% if server.server_info %}{{ server.server_info.map }}{% else %}{{ server|get_option:'sv_map' }}{% if not server.map_exists %} (<span class="config_error">does not exist!</span>){% endif %}{% endif %}</span></td>
+                </tr>
+                <tr>
+                    <td>Slots:</td>
+                    <td><span data-info="slots">{% if server.server_info %}{{ server.server_info.clients|length }}/{{ server.server_info.max_clients }}{% else %}{{ server|get_option:'sv_max_clients' }}{% endif %}</span></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><span data-info="password">{% if server.server_info %}{% if server.server_info.password %}Yes{% else %}No{% endif %}{% else %}{% if server|get_option:'password' %}Yes{% else %}No{% endif %}{% endif %}</span></td>
+                </tr>
+                {% if server.is_online %}
+                <tr>
+                    <td>Address:</td>
+                    <td>{{ request.META.HTTP_HOST|split:':'|first }}:{{ server.port }}</td>
+                </tr>
+                {% endif %}
+                <tr>
+                    <td>Config:</td>
+                    <td><a href="{% url config_download server.id %}">Download</a></td>
+                </tr>
+            </tbody>
+        </table>
+        {% if server.is_online %}</div>{% endif %}
+</div>
+
+{% include "scoreboard.html" %}
+
+{% if server.maps.all %}
+<div class="server_detail_maplist">
+    <h2>Maps</h2>
+    <div class="maplist_data">
+    {% for map in server.maps.all %}
+        <p><a href="{% url map_details map.id %}">{{ map.name }}</a></p>
+    {% endfor %}
+    </div>
+</div>
+{% endif %}
+<div class="clear"></div>
+
+<div class="server_detail_description">
+    <h2>Description</h2>
+    {% if user.is_authenticated and user == server.owner %}<a class="edit_link" href="{% url server_edit_description server.id %}">edit</a>{% endif %}
+    <p>
+        {% if server.description_html %}
+            {{ server.description_html|safe }}
+        {% else %}
+            No description available.
+        {% endif %}
+    </p>
+</div>
+
+{% if user.is_authenticated and server.map_exists %}{% if user == server.owner or user.is_staff or moderator and moderator.restart_allowed %}
+
+<form class="only_button" method="post" action="{% url start_stop_server server.id %}?next={{ request.path }}">
+    <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
+    <p><input class="button" type="submit" value="{% if server.is_online %}Stop{% else %}Start{% endif %} Server"></p>
+</form>
+
+{% endif %}{% endif %}
+
+{% endblock server_detail_content %}
