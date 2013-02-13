@@ -83,29 +83,42 @@
 
             <div id="fold_button">
                 <div class="icon"></div>
-                <!--<div class="icon_collapsed"></div>--><!-- If collapsed-->
             </div>
 
         </div>
 
-            <div id="bottom_buttons">
-                <a href="{% url contact %}"><div class="button">Contact</div></a>
-                <a href="{% url about %}"><div class="button">About</div></a>
-            </div>
-
         <div id="button_container">
-            <a href="{% url home %}">
+
+            <a href="{% url contact %}">
                 <div class="button">
-                    <div class="icon"><img src="{{ STATIC_URL }}new_design/icons/blog.png"\></div>
-                    <div class="underline">Blog</div>
+                    <div class="icon"><img src="{{ STATIC_URL }}new_design/icons/user3.png"\></div>
+                    <div class="underline">Contact</div>
                 </div>
             </a>
+
+            <a href="{% url about %}">
+                <div class="button">
+                    <div class="icon"><img src="{{ STATIC_URL }}new_design/icons/user3.png"\></div>
+                    <div class="underline">Contact</div>
+                </div>
+            </a>
+
             <a href="{% url users %}">
                 <div class="button">
-                    <div class="icon"><img src="{{ STATIC_URL }}new_design/icons/user2.png"\></div>
+                    <div class="icon"><img src="{{ STATIC_URL }}new_design/icons/user3.png"\></div>
                     <div class="underline">User List</div>
                 </div>
             </a>
+
+            <a href="{% url home %}">
+                <div class="button">
+                    <div class="icon"><img src="{{ STATIC_URL }}new_design/icons/home3.png"\></div>
+                    <div class="underline">Blog</div>
+                </div>
+            </a>
+
+
+            
         </div>
 
         <div id="breadcrum">
