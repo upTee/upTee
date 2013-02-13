@@ -1,12 +1,4 @@
 $(document).ready(function() {
-    // hide menu by default
-    if($('#fold_button .icon').length) {
-        $('#fold_button .icon').attr('class', 'icon_collapsed');
-        $('#option_menu_entries').css({'display': 'none'});
-        $('#content_container').css({'left': '100px'});
-        $('#breadcrum').css({'left': '100px'});
-    }
-
     // fold button logic
     $('#fold_button').click(function() {
         if($('#fold_button .icon').length) {
