@@ -58,6 +58,9 @@
                         </div>
                     </a>
 
+            
+
+
                     {% for server in user_server_list %}
 
                         <a href="{% url server_detail server.id %}">
@@ -99,7 +102,7 @@
             <a href="{% url about %}">
                 <div class="button">
                     <div class="icon"><img src="{{ STATIC_URL }}new_design/icons/user3.png"\></div>
-                    <div class="underline">Contact</div>
+                    <div class="underline">About</div>
                 </div>
             </a>
 

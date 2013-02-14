@@ -238,21 +238,13 @@ html, body {
     border-right: 1px solid #bbbbbb;
     height: 40px;
     background: #F0F0F0;
-    background: -moz-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(220,220,220,1) 100%);
-    background: -webkit-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
-    background: -o-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
-    background: -ms-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
-    background: linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
+    background: url('../img/gradient.svg');
 }
 
 
     #option_menu_frame .entry:hover {
         background: #F5F5F5;
-        background: -moz-linear-gradient(top, rgba(245,245,245,1) 0%, rgba(210,210,210,1) 100%);
-        background: -webkit-linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
-        background: -o-linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
-        background: -ms-linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
-        background: linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
+        background: url('../img/gradient_hover.svg');
     }
 
     #option_menu_frame .entry:active {
@@ -267,7 +259,6 @@ html, body {
 
 
     #option_menu_frame .entry .icon{
-        background: rgba(0,0,0,0.1);;
         height: 15px;
         width: 15px;
         margin-top: 12px;
@@ -291,11 +282,7 @@ html, body {
     border-top: 1px solid transparent;
     height: 20px;
     background: #F0F0F0;
-    background: -moz-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(220,220,220,1) 100%);
-    background: -webkit-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
-    background: -o-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
-    background: -ms-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
-    background: linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
+    background: url('../img/gradient.svg');
 }
 
     #fold_button .icon{
@@ -327,38 +314,6 @@ html, body {
     }
 
 
-#bottom_buttons{
-    position:absolute;
-    bottom: 0;
-    left: 100px;
-}
-
-#bottom_buttons .button {
-    float: left;
-    text-align: center;
-    border: 1px solid #bbbbbb;
-    padding: 10px;
-    margin-right: 3px;
-    margin-left: 3px;
-    height: 15px;
-    width: 72px;
-    background: #F0F0F0;
-    background: -moz-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(220,220,220,1) 100%);
-    background: -webkit-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
-    background: -o-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
-    background: -ms-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
-    background: linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
-}
-
-    #bottom_buttons .button:hover {
-        background: #F5F5F5;
-        background: -moz-linear-gradient(top, rgba(245,245,245,1) 0%, rgba(210,210,210,1) 100%);
-        background: -webkit-linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
-        background: -o-linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
-        background: -ms-linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
-        background: linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
-    }
-
 #content_container {
     background: url('../img/pattern_light.png');
     border-top: 1px solid #bbbbbb;
@@ -373,11 +328,7 @@ html, body {
 
 #breadcrum {
     background: #F5F5F5;
-    background: -moz-linear-gradient(top, rgba(245,245,245,1) 0%, rgba(210,210,210,1) 100%);
-    background: -webkit-linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
-    background: -o-linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
-    background: -ms-linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
-    background: linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
+    background: url('../img/gradient.svg');
     border-top: 1px solid #bbbbbb;
     border-left: 1px solid #bbbbbb;
     height: 25px;
@@ -421,20 +372,12 @@ html, body {
     height: 50px;
     margin-left: 10px;
     background: #F0F0F0;
-    background: -moz-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(220,220,220,1) 100%);
-    background: -webkit-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
-    background: -o-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
-    background: -ms-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
-    background: linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
+    background: url('../img/gradient.svg');
 }
 
     #button_container .button:hover {
         background: #F5F5F5;
-        background: -moz-linear-gradient(top, rgba(245,245,245,1) 0%, rgba(210,210,210,1) 100%);
-        background: -webkit-linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
-        background: -o-linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
-        background: -ms-linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
-        background: linear-gradient(top, rgba(245,245,245,1) 0%,rgba(210,210,210,1) 100%);
+        background: url('../img/gradient_hover.svg');
         border: 1px solid #aaa;
     }
 
@@ -479,11 +422,7 @@ html, body {
 
 .content_headline, .blog_headline {
     background: #F0F0F0;
-    background: -moz-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(220,220,220,1) 100%);
-    background: -webkit-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
-    background: -o-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
-    background: -ms-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
-    background: linear-gradient(top, rgba(240,240,240,1) 0%,rgba(220,220,220,1) 100%);
+    background: url('../img/gradient.svg');
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 10px;
@@ -511,3 +450,5 @@ html, body {
     background: #efefef;
     padding: 10px;
 }
+
+
