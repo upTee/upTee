@@ -58,17 +58,6 @@
                         </div>
                     </a>
 
-                {% else %}
-
-                    <a href="{% url login %}">
-                        <div class="entry_user">
-                            <div class="avatar"><img src="{{ STATIC_URL }}new_design/icons/avatar.png"></div>
-                            <div class="underline">Login !</div>
-                        </div>
-                    </a>
-
-
-
                     {% for server in user_server_list %}
 
                         <a href="{% url server_detail server.id %}">
@@ -79,6 +68,15 @@
                         </a>
 
                     {% endfor %}
+
+                {% else %}
+
+                    <a href="{% url login %}">
+                        <div class="entry_user">
+                            <div class="avatar"><img src="{{ STATIC_URL }}new_design/icons/avatar.png"></div>
+                            <div class="underline">Login !</div>
+                        </div>
+                    </a>
 
                 {% endif %}
                 
