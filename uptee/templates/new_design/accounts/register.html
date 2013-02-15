@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+
+<div id="register_container">
+    <div id="register_header">upTee Register</div>
+
+                <div class="description_box">
+                    <label for="username">Username:</label>
+                </div>
+
+                <div class="form_box">
+                    <input type="text" name="username" value="" id="username" required="" /> <!-- If Error = class="error" -->
+                </div>
+
+                <div class="description_box">
+                    <label for="password">Password:</label>
+                </div>
+
+                <div class="form_box">
+                    <input type="password" name="password" value="" id="password" required="" />
+                </div>
+                <div class="clear"></div>
+
+                <div class="description_box">
+                    <label for="password">Password again:</label>
+                </div>
+
+                <div class="form_box">
+                    <input type="password" name="password" value="" id="password" required="" />
+                </div>
+
+                <div class="description_box">
+                    <label for="username">Email:</label>
+                </div>
+
+                <div class="form_box">
+                    <input type="text" name="email" value="" id="email" required="" />
+                </div>
+                <div class="clear"></div>
+
+                <div class="description_box">
+                    <label for="username">Captcha:</label>
+                </div>
+
+                <div class="form_box">
+                    <input type="text" name="captcha" value="" id="captcha" required="" />
+                </div>
+                <div class="clear"></div>
+
+
+                <div class="submit_box">
+                    <input class="button positive" type="submit" value="Register" />
+                    <input type="hidden" name="next" value="{{ request.path }}" />
+                </div>
+            </form>
+    
+</div>
+
+{% endblock body %}

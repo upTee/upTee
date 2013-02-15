@@ -410,4 +410,19 @@ html, body {
     padding: 10px;
 }
 
+/* Server Info Page */
+.content_box.off {
+    border: 1px solid #ff9191;
+}
 
+.content_headline.off {
+    background: url('../img/gradient_red.svg');
+}
+
+.content_box.on {
+    border: 1px solid #009300;
+}
+
+.content_headline.on {
+    background: url('../img/gradient_green.svg');
+}

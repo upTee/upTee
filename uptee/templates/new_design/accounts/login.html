@@ -5,7 +5,7 @@
 
 <div id="login_container">
     <div id="login_header">upTee Login</div>
-    <div id="box">
+    <!--<div id="box">-->
             <form action="" method="post">
                 <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
                 
@@ -14,7 +14,7 @@
                 </div>
 
                 <div class="form_box">
-                    <input class="error" type="text" name="username" value="" id="username" required="" /> <!-- If Error = class="error" -->
+                    <input type="text" name="username" value="" id="username" required="" /> <!-- If Error = class="error" -->
                 </div>
 
                 <div class="description_box">
@@ -32,7 +32,7 @@
                     <input type="hidden" name="next" value="{{ request.path }}" />
                 </div>
             </form>
-    </div>
+    
 </div>
 
 {% endblock body %}
