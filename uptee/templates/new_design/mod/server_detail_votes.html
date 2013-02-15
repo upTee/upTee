@@ -1,0 +1,27 @@
+{% extends "mod/server_detail_base.html" %}
+
+{% load get_option %}
+
+{% comment %}
+context variables:
+    server
+    votes
+    moderator
+{% endcomment %}
+
+{% block title %}upTee - {{ server|get_option:'sv_name' }} - Votes{% endblock title %}
+
+{% block server_detail_content %}
+
+<table class="votelist">
+    <tbody>
+        {% for vote in votes %}
+        <tr>
+            <th>{{ vote.title }}</th>
+            <td>{{ vote.command }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock server_detail_content %}

@@ -1,0 +1,39 @@
+{% extends "mod/server_detail_base.html" %}
+
+{% load get_option %}
+
+{% comment %}
+context variables:
+    server
+    rcon_commands
+    available_rcon_commands
+    moderator
+{% endcomment %}
+
+{% block title %}upTee - {{ server|get_option:'sv_name' }} - Edit rcon commands{% endblock title %}
+
+{% block server_detail_content %}
+
+<form action="{% url update_rcon_commands server.id %}" method="post">
+    <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
+    <select id="rcon_commands_select">
+        {% for command in available_rcon_commands %}
+            <option value="{{ command.id }}">{{ command.command }}</option>
+        {% endfor %}
+    </select>
+    <table class="form_table">
+        <tbody>
+            {% for rcon_command in rcon_commands %}
+            <tr>
+                <th><label for="{{ rcon_command.command }}-{{ rcon_command.id }}">{{ rcon_command.command }}:</label></th>
+                <td><input type="text" name="{{ rcon_command.command }}-{{ rcon_command.id }}" value="{{ rcon_command.value }}" id="{{ rcon_command.command }}-{{ rcon_command.id }}"></td>
+                <td><div class="delete_command"></div></td> <!-- here a button will be included by js if js is supported "<div class="del_button"></div>" -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div id="add_command"></div> <!-- here a button will be included by js if js is supported "<p><button type="button">Add rcon command</button></p>" -->
+    <p><input class="button" type="submit" value="Update rcon commands"></p>
+</form>
+
+{% endblock server_detail_content %}

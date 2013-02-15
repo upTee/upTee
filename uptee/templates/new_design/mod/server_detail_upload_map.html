@@ -1,0 +1,24 @@
+{% extends "mod/server_detail_base.html" %}
+
+{% load get_option %}
+
+{% comment %}
+context variables:
+    server
+    form
+    moderator
+{% endcomment %}
+
+{% block title %}upTee - {{ server|get_option:'sv_name' }} - Upload map{% endblock title %}
+
+{% block server_detail_content %}
+
+<div class="body">
+    <form action="{{ request.path }}" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
+        {{ form.as_p }}
+        <p><input class="button" type="submit" value="Upload"></p>
+    </form>
+</div>
+
+{% endblock server_detail_content %}

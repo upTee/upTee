@@ -1,0 +1,31 @@
+{% extends "mod/server_detail_base.html" %}
+
+{% load get_option %}
+
+{% comment %}
+context variables:
+    server
+    tunes
+    moderator
+{% endcomment %}
+
+{% block title %}upTee - {{ server|get_option:'sv_name' }} - Edit server tunings{% endblock title %}
+
+{% block server_detail_content %}
+
+<form action="{% url update_tunes server.id %}" method="post">
+    <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
+    <table class="form_table">
+        <tbody>
+            {% for tune in tunes %}
+            <tr>
+                <th><label for="{{ tune.command }}">{{ tune.command }}:</label></th>
+                <td><input type="text" name="{{ tune.command }}" value="{{ tune.value }}" id="{{ tune.command }}" pattern="-?(?:\d+|\d*\.\d+)" title="Must be a floating point value"></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p><input class="button" type="submit" value="Update tunings"></p>
+</form>
+
+{% endblock server_detail_content %}
