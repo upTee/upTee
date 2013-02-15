@@ -193,7 +193,7 @@ def upload_map(request, server_id):
 
 
 def map_download(request, map_id):
-    map_obj = get_object_or_404(Map, pk=map_id)
+    map_obj = get_object_or_404(Map, pk=map_id, server__is_active=True)
     server = map_obj.server
     moderator = server.moderators.filter(user=request.user) if request.user.is_authenticated() else None
     password = server.config_options.filter(command='password')
@@ -213,7 +213,7 @@ def map_download(request, map_id):
 
 
 def map_details(request, map_id):
-    map_obj = get_object_or_404(Map, pk=map_id)
+    map_obj = get_object_or_404(Map, pk=map_id, server__is_active=True)
     return render_to_response('mod/map_details.html', {
         'map_obj': map_obj,
     }, context_instance=RequestContext(request))
