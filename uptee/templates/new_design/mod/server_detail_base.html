@@ -11,16 +11,16 @@ context variables:
 
 {% block option_menu %}
 
-{% url server_detail server.id as url_info %}
-{% url upload_map server.id as url_upload_map %}
-{% url server_edit server.id as url_edit_settings %}
-{% url server_edit_votes server.id as url_edit_votes %}
-{% url server_edit_rcon_commands server.id as url_edit_rcon_commands %}
-{% url server_tunes server.id as url_edit_tunes %}
-{% url server_votes server.id as url_votes %}
-{% url server_change_mod server.id as url_change_mod %}
-{% url server_moderators server.id as url_moderators %}
-{% url server_console server.id as url_console %}
+{% url 'server_detail' server.id as url_info %}
+{% url 'upload_map' server.id as url_upload_map %}
+{% url 'server_edit' server.id as url_edit_settings %}
+{% url 'server_edit_votes' server.id as url_edit_votes %}
+{% url 'server_edit_rcon_commands' server.id as url_edit_rcon_commands %}
+{% url 'server_tunes' server.id as url_edit_tunes %}
+{% url 'server_votes' server.id as url_votes %}
+{% url 'server_change_mod' server.id as url_change_mod %}
+{% url 'server_moderators' server.id as url_moderators %}
+{% url 'server_console' server.id as url_console %}
 
 <a href="{{ url_info }}">
     <div class="entry{% current request url_info %}">

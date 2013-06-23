@@ -37,9 +37,9 @@ context variables:
             </tr>
             {% for user in users %}
                 <tr>
-                    <td><img class="gravatar" src="{% gravatar_for_user user 20 %}"> <a href="{% url user user.id %}">{{ user.username }}</a></td>
-                    <td><a href="{% url user_server_list user.username %}">{{ user.profile.active_servers|length }}</a></td>
-                    <td><a href="{% url user_server_list user.username %}type:online">{{ user.profile.online_servers|length }}</a></td>
+                    <td><img class="gravatar" src="{% gravatar_for_user user 20 %}"> <a href="{% url 'user' user.id %}">{{ user.username }}</a></td>
+                    <td><a href="{% url 'user_server_list' user.username %}">{{ user.profile.active_servers|length }}</a></td>
+                    <td><a href="{% url 'user_server_list' user.username %}type:online">{{ user.profile.online_servers|length }}</a></td>
                 </tr>
             {% endfor %}
         </tbody>

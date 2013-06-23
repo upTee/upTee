@@ -30,7 +30,7 @@ context variables:
                     {% if not forloop.last %}
                         <td>{{ field }}</td>
                     {% else %}
-                        <td><img class="captcha" alt="captcha" src="{% url captcha-image captcha %}"><input id="id_captcha_0" type="hidden" value="{{ captcha }}" name="captcha_0"></td>
+                        <td><img class="captcha" alt="captcha" src="{% url 'captcha-image' captcha %}"><input id="id_captcha_0" type="hidden" value="{{ captcha }}" name="captcha_0"></td>
                     {% endif %}
                     </tr>
                 {% endfor %}

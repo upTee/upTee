@@ -41,9 +41,9 @@
         <div id="wrapper">
             {% if user.is_authenticated %}
             <div id="user_bar">
-                <div class="user_bar_entry settings"><a href="{% url settings %}">Settings</a></div>
-                <div class="user_bar_entry"><a href="{% url logout %}?next={{ request.path }}">Logout</a></div>
-                <div class="user_bar_entry">You are logged in as <a href="{% url user user.id %}">{{ user.username }}</a>!</div>
+                <div class="user_bar_entry settings"><a href="{% url 'settings' %}">Settings</a></div>
+                <div class="user_bar_entry"><a href="{% url 'logout' %}?next={{ request.path }}">Logout</a></div>
+                <div class="user_bar_entry">You are logged in as <a href="{% url 'user' user.id %}">{{ user.username }}</a>!</div>
                 <div class="clear"></div>
             </div>
             {% endif %}
@@ -53,15 +53,15 @@
             {% endif %}
             
             <div id="header_box"> 
-                <a href="{% url home %}"><div data-image="header"></div></a>
+                <a href="{% url 'home' %}"><div data-image="header"></div></a>
             </div>
 
             <div id="menu_box"> 
-                <a href="{% url server_list %}"><div class="menu_entry">All servers</div></a>
+                <a href="{% url 'server_list' %}"><div class="menu_entry">All servers</div></a>
                 {% if user.is_authenticated %}
-                    <a href="{% url user_server_list request.user.username %}"><div class="menu_entry">Own servers</div></a>
+                    <a href="{% url 'user_server_list' request.user.username %}"><div class="menu_entry">Own servers</div></a>
                 {% endif %}
-                <a href="{% url users %}"><div class="menu_entry">Users</div></a>
+                <a href="{% url 'users' %}"><div class="menu_entry">Users</div></a>
             </div>
             <div class="clear"></div>
 
@@ -105,7 +105,7 @@
                         </div>
                         {% endif %}
     
-                            <form action="{% url login %}" method="post">
+                            <form action="{% url 'login' %}" method="post">
                                 <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
                                 <p><label for="username">Username:</label></p><p><input type="text" name="username" value="" id="username" pattern="[\w.@+-]{3,30}" title="30 characters or fewer. Letters, numbers and @/./+/-/_ characters" required=""></p>
                                 <p><label for="password">Password:</label></p><p><input type="password" name="password" value="" id="password" pattern=".{8,}" title="8 characters are required" required=""></p>
@@ -116,7 +116,7 @@
                     
                 <div class="sidebar_entry">
                     <div class="register_box">
-                        <a href="{% url register %}"><h3>Register</h3></a>
+                        <a href="{% url 'register' %}"><h3>Register</h3></a>
                     </div>
                 </div>
                 {% endif %}
@@ -134,7 +134,7 @@
                                 <p data-info="slots">Slots: <span data-info="slots">{% if server.server_info %}{{ server.server_info.clients|length }}/{{ server.server_info.max_clients }}{% else %}{{ server|get_option:'sv_max_clients' }}{% endif %}</span></p>
                                 <p>Password: <span data-info="password">{% if server.server_info %}{% if server.server_info.password %}Yes{% else %}No{% endif %}{% else %}{% if server|get_option:'password' %}Yes{% else %}No{% endif %}{% endif %}</span></p>
                                 {% if server.is_online %}<p>Address: {{ request.META.HTTP_HOST|split:':'|first }}:{{ server.port }}</p>{% endif %}
-                                <p><a href="{% url server_detail server.id %}">Info/Edit</a></p>
+                                <p><a href="{% url 'server_detail' server.id %}">Info/Edit</a></p>
                                 <div class="hide_mouseover">
                                     <div class="mouseover_overlay">
                                         {% include "scoreboard.html" %}
@@ -158,7 +158,7 @@
                                 <p data-info="slots">Slots: <span data-info="slots">{% if server.server_info %}{{ server.server_info.clients|length }}/{{ server.server_info.max_clients }}{% else %}{{ server|get_option:'sv_max_clients' }}{% endif %}</span></p>
                                 <p>Password: <span data-info="password">{% if server.server_info %}{% if server.server_info.password %}Yes{% else %}No{% endif %}{% else %}{% if server|get_option:'password' %}Yes{% else %}No{% endif %}{% endif %}</span></p>
                                 {% if server.is_online %}<p>Address: {{ request.META.HTTP_HOST|split:':'|first }}:{{ server.port }}</p>{% endif %}
-                                <p><a href="{% url server_detail server.id %}">Info/Edit</a></p>
+                                <p><a href="{% url 'server_detail' server.id %}">Info/Edit</a></p>
                                 <div class="hide_mouseover">
                                     <div class="mouseover_overlay">
                                         {% include "scoreboard.html" %}
@@ -180,7 +180,7 @@
             <div class="clear"></div>
 
             <div id="footer_box"> 
-                <div id="footer_left"><a href="{% url about %}">About</a> | <a href="{% url contact %}">Contact</a></div>
+                <div id="footer_left"><a href="{% url 'about' %}">About</a> | <a href="{% url 'contact' %}">Contact</a></div>
                 <div id="footer_center">&copy; 2012-2013 Sascha W. &amp; David G.<br> Version: Alpha{% if user.is_staff %}<br>{% revision %}{% endif %}</div>
                 <div id="footer_right">
                     <div class="cycle">

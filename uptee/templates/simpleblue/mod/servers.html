@@ -16,11 +16,11 @@ context variables:
 {% block link_list %}
 
 <div id="link_list">
-    <a href="{% if username %}{% url user_server_list username %}{% else %}{% url server_list %}{% endif %}">All</a>
+    <a href="{% if username %}{% url 'user_server_list' username %}{% else %}{% url 'server_list' %}{% endif %}">All</a>
     |
-    <a href="{% if username %}{% url user_server_list username %}{% else %}{% url server_list %}{% endif %}type:online">Online</a>
+    <a href="{% if username %}{% url 'user_server_list' username %}{% else %}{% url 'server_list' %}{% endif %}type:online">Online</a>
     |
-    <a href="{% if username %}{% url user_server_list username %}{% else %}{% url server_list %}{% endif %}type:offline">Offline</a>
+    <a href="{% if username %}{% url 'user_server_list' username %}{% else %}{% url 'server_list' %}{% endif %}type:offline">Offline</a>
 </div>
 
 {% endblock link_list %}
@@ -33,7 +33,7 @@ context variables:
     <div class="server_list_headline {% if server.is_online %}on{% else %}off{% endif %}">
         <p>{{ server|get_option:'sv_name' }}</p>
         {% if user.is_authenticated and server.map_exists %}{% if user.is_staff or server.owner == user or server in user_moderated_servers_restart %}
-        <form method="post" action="{% url start_stop_server server.id %}?next={{ request.path }}">
+        <form method="post" action="{% url 'start_stop_server' server.id %}?next={{ request.path }}">
             <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
             <input class="button_serverlist" type="submit" value="{% if server.is_online %}Stop{% else %}Start{% endif %} Server">
         </form>
@@ -42,14 +42,14 @@ context variables:
     </div>
     <div class="server_list_content">
         {% if server.is_online %}<div class="server_status_update" data-serverid="{{ server.id }}">{% endif %}
-            {% if not username %}<p>Owner: <a href="{% url user server.owner.id %}">{% if server.owner == request.user %}You{% else %}{{ server.owner.username }}{% endif %}</p>{% endif %}</a>
+            {% if not username %}<p>Owner: <a href="{% url 'user' server.owner.id %}">{% if server.owner == request.user %}You{% else %}{{ server.owner.username }}{% endif %}</p>{% endif %}</a>
             <p>Mod: {{ server.mod.title }}</p>
             <p>Gametype: <span data-info="gametype">{% if server.server_info %}{{ server.server_info.gametype }}{% else %}{{ server|get_option:'sv_gametype' }}{% endif %}</span></p>
             <p>Map: <span data-info="map">{% if server.server_info %}{{ server.server_info.map }}{% else %}{{ server|get_option:'sv_map' }}{% if not server.map_exists %} (<span class="config_error">does not exist!</span>){% endif %}{% endif %}</span></p>
             <p data-info="slots">Slots: <span data-info="slots">{% if server.server_info %}{{ server.server_info.clients|length }}/{{ server.server_info.max_clients }}{% else %}{{ server|get_option:'sv_max_clients' }}{% endif %}</span></p>
             <p>Password: <span data-info="password">{% if server.server_info %}{% if server.password %}Yes{% else %}No{% endif %}{% else %}{% if server|get_option:'password' %}Yes{% else %}No{% endif %}{% endif %}</span></p>
             {% if server.is_online %}<p>Address: {{ request.META.HTTP_HOST|split:':'|first }}:{{ server.port }}</p>{% endif %}
-            <p><a href="{% url server_detail server.id %}">{% if server.owner == request.user or server in user_moderated_servers %}Info/Edit{% else %}Info{% endif %}</a></p>
+            <p><a href="{% url 'server_detail' server.id %}">{% if server.owner == request.user or server in user_moderated_servers %}Info/Edit{% else %}Info{% endif %}</a></p>
             <div class="hide_mouseover">
                 <div class="mouseover_overlay">
                     {% include "scoreboard.html" %}

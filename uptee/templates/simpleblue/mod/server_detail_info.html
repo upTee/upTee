@@ -20,7 +20,7 @@ context variables:
             <tbody>
                 <tr>
                     <td>Owner:</td>
-                    <td><a href="{% url user server.owner.id %}">{% if server.owner == request.user %}You{% else %}{{ server.owner.username }}{% endif %}</a></td>
+                    <td><a href="{% url 'user' server.owner.id %}">{% if server.owner == request.user %}You{% else %}{{ server.owner.username }}{% endif %}</a></td>
                 </tr>
                 <tr>
                     <td>Mod:</td>
@@ -50,7 +50,7 @@ context variables:
                 {% endif %}
                 <tr>
                     <td>Config:</td>
-                    <td><a href="{% url config_download server.id %}">Download</a></td>
+                    <td><a href="{% url 'config_download' server.id %}">Download</a></td>
                 </tr>
             </tbody>
         </table>
@@ -64,7 +64,7 @@ context variables:
     <h2>Maps</h2>
     <div class="maplist_data">
     {% for map in server.maps.all %}
-        <p><a href="{% url map_details map.id %}">{{ map.name }}</a></p>
+        <p><a href="{% url 'map_details' map.id %}">{{ map.name }}</a></p>
     {% endfor %}
     </div>
 </div>
@@ -73,7 +73,7 @@ context variables:
 
 <div class="server_detail_description">
     <h2>Description</h2>
-    {% if user.is_authenticated and user == server.owner %}<a class="edit_link" href="{% url server_edit_description server.id %}">edit</a>{% endif %}
+    {% if user.is_authenticated and user == server.owner %}<a class="edit_link" href="{% url 'server_edit_description' server.id %}">edit</a>{% endif %}
     <p>
         {% if server.description_html %}
             {{ server.description_html|safe }}
@@ -85,7 +85,7 @@ context variables:
 
 {% if user.is_authenticated and server.map_exists %}{% if user == server.owner or user.is_staff or moderator and moderator.restart_allowed %}
 
-<form class="only_button" method="post" action="{% url start_stop_server server.id %}?next={{ request.path }}">
+<form class="only_button" method="post" action="{% url 'start_stop_server' server.id %}?next={{ request.path }}">
     <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
     <p><input class="button" type="submit" value="{% if server.is_online %}Stop{% else %}Start{% endif %} Server"></p>
 </form>

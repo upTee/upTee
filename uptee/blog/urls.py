@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import *
+from django.conf.urls import *
 
 urlpatterns = patterns('blog.views',
     url(r'^$', 'blog_home', name='home'),

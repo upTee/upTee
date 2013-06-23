@@ -1,8 +1,8 @@
-from django.conf.urls.defaults import *
+from django.conf.urls import *
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.defaults import page_not_found, permission_denied, server_error
-from django.views.generic.simple import direct_to_template
+from django.views.generic import TemplateView
 import settings
 
 admin.autodiscover()
@@ -12,7 +12,7 @@ urlpatterns = patterns('',
     url(r'^', include('mod.urls')),
     url(r'^', include('accounts.urls')),
     url(r'^', include('messaging.urls')),
-    url(r'^about/$', direct_to_template, {'template': 'about.html'}, name='about'),
+    url(r'^about/$', TemplateView.as_view(template_name='about.html'), name='about'),
     url(r'^captcha/', include('captcha.urls')),
     (r'^comments/', include('django.contrib.comments.urls')),
     (r'^admin/', include(admin.site.urls)),

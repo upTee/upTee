@@ -16,7 +16,7 @@ context variables:
     <h2>Moderators</h2>
     <div class="maplist_data">
     {% for moderator in server.moderators.all %}
-        <p><a href="{% url server_edit_moderator server.id moderator.user.id %}">{{ moderator.user.username }}</a></p>
+        <p><a href="{% url 'server_edit_moderator' server.id moderator.user.id %}">{{ moderator.user.username }}</a></p>
     {% empty %}
         <p><strong>No moderators here!</strong></p>
     {% endfor %}

@@ -20,7 +20,7 @@ context variables:
     <div class="entry"><p>{{ entry.content_html|safe }}</p></div>
     <div class="clear"></div>
     <div class="footer">
-        <div class="left">{{ entry.created_at|date:"F j, Y" }} / <a href="{% url user entry.created_by.id %}">{{ entry.created_by.username }}</a></div>
+        <div class="left">{{ entry.created_at|date:"F j, Y" }} / <a href="{% url 'user' entry.created_by.id %}">{{ entry.created_by.username }}</a></div>
     </div>
 </div>
 <div class="clear"></div>
@@ -31,8 +31,8 @@ context variables:
 {% endif %}
 {% for comment in comment_list %}
     <div id="cm-{{ comment.id }}" class="comment">
-        <div class="headline"><h2><a href="{% url user comment.user.id %}">{{ comment.user.username }}</a></h2></div>
-        <div class="links"><a title="Permalink" href="{{ entry.get_absolute_url }}#cm-{{ comment.id }}">#</a> {% if user.is_staff or user.is_superuser %}<a href="{% url comments-delete comment.id %}">delete</a>{% endif %}</div>
+        <div class="headline"><h2><a href="{% url 'user' comment.user.id %}">{{ comment.user.username }}</a></h2></div>
+        <div class="links"><a title="Permalink" href="{{ entry.get_absolute_url }}#cm-{{ comment.id }}">#</a> {% if user.is_staff or user.is_superuser %}<a href="{% url 'comments-delete' comment.id %}">delete</a>{% endif %}</div>
         <div class="user">
             <div class="avatar"><img src="{% gravatar_for_user comment.user 40 %}"></div>
         </div>

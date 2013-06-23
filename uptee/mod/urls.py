@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import *
+from django.conf.urls import *
 
 urlpatterns = patterns('mod.views',
     url(r'^servers/$', 'server_list', name='server_list'),

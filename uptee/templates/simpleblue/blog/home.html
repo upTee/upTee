@@ -32,8 +32,8 @@ context variables:
         <div class="entry"><p>{{ entry.content_html|safe }}</p></div>
         <div class="clear"></div>
         <div class="footer">
-            <div class="left">{{ entry.created_at|date:"F j, Y" }} / <a href="{% url user entry.created_by.id %}">{{ entry.created_by.username }}</a></div>
-            <div class="right"><a href="{% url entry_detail entry.slug %}">{{ comment_count }} comment{{ comment_count|pluralize }}</a></div>
+            <div class="left">{{ entry.created_at|date:"F j, Y" }} / <a href="{% url 'user' entry.created_by.id %}">{{ entry.created_by.username }}</a></div>
+            <div class="right"><a href="{% url 'entry_detail' entry.slug %}">{{ comment_count }} comment{{ comment_count|pluralize }}</a></div>
         </div>
     </div>
     <div class="clear"></div>
