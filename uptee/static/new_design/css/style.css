@@ -100,6 +100,7 @@ html, body {
     left: 0px;
     top: 150px;
     bottom: 0;
+    overflow: auto;
 }
 
 
@@ -120,15 +121,24 @@ html, body {
 #menu li a{
     display: inline-block;
     line-height: 40px;
+    height: 40px;
     text-decoration: none;
     margin-left: 20px;
-    font-size: 18px;
+    font-size: 14px;
 }
 
-#menu li.submenu {
+#menu li p{
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+/*#menu li.submenu {
+    display: inline-block;
     background: #eee;
     line-height: 30px;
     height: 30px;
+    width: 100%;
+    border-bottom: 1px solid transparent;
 }
 
 #menu li.submenu:hover {
@@ -137,11 +147,13 @@ html, body {
 }
 
 #menu li.submenu a {
+    display: inline-block;
+    text-decoration: none;
     margin-left: 20px;
     line-height: 30px;
     font-size: 14px;
 }
-
+*/
 
 #content_container {
     background: #fff;
