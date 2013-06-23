@@ -4,60 +4,11 @@
 {% load gravatar %}
 {% load menu %}
 {% load pagination_tags %}
-{% load get_option %}
 
 {% comment %}
 context variables:
     entry_list
 {% endcomment %}
-
-{% block menu %}
-
-{% url 'user' user.id as url_user %}
-{% url 'usettings' as url_settings %}
-
-
-
-<ul id="menu">
-    <div class="clear"></div>
-    {% for server in user_server_list %}
-    <li class="menu_head"><p>{{ server|get_option:'sv_name' }}<p>
-        {% url 'server_detail' server.id as url_info %}
-        {% url 'upload_map' server.id as url_upload_map %}
-        {% url 'server_edit' server.id as url_edit_settings %}
-        {% url 'server_edit_votes' server.id as url_edit_votes %}
-        {% url 'server_edit_rcon_commands' server.id as url_edit_rcon_commands %}
-        {% url 'server_tunes' server.id as url_edit_tunes %}
-        {% url 'server_votes' server.id as url_votes %}
-        {% url 'server_change_mod' server.id as url_change_mod %}
-        {% url 'server_moderators' server.id as url_moderators %}
-        {% url 'server_console' server.id as url_console %}
-        <ul style="display: none;">
-            <li><a href="{{ url_info }}"><div class="tab{% current request url_info %}">Info</div></a></li>
-            {% if server.config_votes.all %}
-                <li><a href="{{ url_votes }}"><div class="tab{% current request url_votes %}">Votes</div></a></li>
-            {% endif %}
-            <li><a href="{{ url_upload_map }}"><div class="tab{% current request url_upload_map %}">Upload Map</div></a></li>
-            <li><a href="{{ url_edit_settings }}"><div class="tab{% current request url_edit_settings %}">Edit Settings</div></a></li>
-            <li><a href="{{ url_edit_votes }}"><div class="tab{% current request url_edit_votes %}">Edit Votes</div></a></li>
-            {% if server.config_available_rconcommands.all %}
-                <li class="submenu"><a href="{{ url_edit_rcon_commands }}"><div class="tab{% current request url_edit_rcon_commands %}">Commands</div></a></li>
-            {% endif %}
-            {% if server.config_tunes.all %}
-                <li><a href="{{ url_edit_tunes }}"><div class="tab{% current request url_edit_tunes %}">Edit Tunings</div></a></li>
-            {% endif %}
-            {% if server.is_online %}
-                <li><a href="{{ url_console }}"><div class="tab{% current request url_console %}">Console</div></a></li>
-            {% endif %}
-            <li><a href="{{ url_change_mod }}"><div class="tab{% current request url_change_mod %}">Change Mod</div></a></li>
-            <li><a href="{{ url_moderators }}"><div class="tab{% current request url_moderators %}">Moderators</div></a></li>
-        </ul>
-    </li>
-    {% endfor %}
-</ul>
-
-{% endblock menu %}
-
 
 {% block content %}
 

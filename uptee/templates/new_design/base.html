@@ -51,7 +51,47 @@
 
         <div id="menu_frame">
             
-                {% block menu %}{% endblock menu %}
+                {% block menu %}
+
+                <ul id="menu">
+                    <div class="clear"></div>
+                    {% for server in user_server_list %}
+                    <li class="menu_head"><p>{{ server|get_option:'sv_name' }}<p>
+                        {% url 'server_detail' server.id as url_info %}
+                        {% url 'upload_map' server.id as url_upload_map %}
+                        {% url 'server_edit' server.id as url_edit_settings %}
+                        {% url 'server_edit_votes' server.id as url_edit_votes %}
+                        {% url 'server_edit_rcon_commands' server.id as url_edit_rcon_commands %}
+                        {% url 'server_tunes' server.id as url_edit_tunes %}
+                        {% url 'server_votes' server.id as url_votes %}
+                        {% url 'server_change_mod' server.id as url_change_mod %}
+                        {% url 'server_moderators' server.id as url_moderators %}
+                        {% url 'server_console' server.id as url_console %}
+                        <ul style="display: none;">
+                            <li><a href="{{ url_info }}">Info</a></li>
+                            {% if server.config_votes.all %}
+                                <li><a href="{{ url_votes }}">Votes</a></li>
+                            {% endif %}
+                            <li><a href="{{ url_upload_map }}">Upload Map</a></li>
+                            <li><a href="{{ url_edit_settings }}">Edit Settings</a></li>
+                            <li><a href="{{ url_edit_votes }}">Edit Votes</a></li>
+                            {% if server.config_available_rconcommands.all %}
+                                <li class="submenu"><a href="{{ url_edit_rcon_commands }}">Commands</a></li>
+                            {% endif %}
+                            {% if server.config_tunes.all %}
+                                <li><a href="{{ url_edit_tunes }}">Edit Tunings</a></li>
+                            {% endif %}
+                            {% if server.is_online %}
+                                <li><a href="{{ url_console }}">Console</a></li>
+                            {% endif %}
+                            <li><a href="{{ url_change_mod }}">Change Mod</a></li>
+                            <li><a href="{{ url_moderators }}">Moderators</a></li>
+                        </ul>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+                {% endblock menu %}
                 <div class="clear"></div>
             </div>            
 
