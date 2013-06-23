@@ -104,7 +104,7 @@ html, body {
 
 
 #menu li {
-    display: block;
+    display: inline-block;
     line-height: 40px;
     height: 40px;
     width: 100%;

@@ -20,6 +20,6 @@ $(document).ready(function() {
 
     // menu slider
     $('.menu_head').click(function() {
-        $('.menu_head li').slideToggle('fast');
+        $(this).find('ul').slideToggle('fast');
     });
 });
