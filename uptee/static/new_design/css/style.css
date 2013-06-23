@@ -3,7 +3,6 @@
     margin: 0;
     padding: 0;
     outline: 0 none;
-    color: #191919
 }
 
 .clear {
@@ -20,285 +19,147 @@ a:visited, a:link {
 }
 
 html, body {
-    background: url('../img/noise.png');
-    background-color: #EEEEEE;
-    font-family: "trebuchet ms", Arial, Helvetica, sans-serif;
-    font-size: 12px;
+    background: #fff;
     height: 100%;
+    font-family: "Segoe UI","Segoe UI Web Regular","Segoe UI Symbol","Helvetica Neue","BBAlpha Sans","S60 Sans",Arial,"sans-serif";
+    font-size: 13px !important;
+    color: #000;
 } 
 
 #header {
-    background: url('../img/pattern_gray.png');
-    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.2) 100%), url('../img/pattern_gray.png');
-    background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%), url('../img/pattern_gray.png');
-    background: -o-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%), url('../img/pattern_gray.png');
-    background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%), url('../img/pattern_gray.png');
-    background: linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%), url('../img/pattern_gray.png');
+    background: #378ce1;
     width: 100%;
-    height: 80px;
-}
-
-#logo {
-    background: url('../img/logo_75.png');
-    height: 75px;
-    width: 345px;
-    margin-left: 100px;
+    height: 50px;
 }
 
 
+#button_container {
+    position: absolute;
+    right: 25px;
+    top: 0px;
+    height: 50px;
+    max-width: 800px;
+}
 
-#server_menu {
-    background: url('../img/pattern_gray.png');
+#button_container .button {
+    float: right;
     width: 100px;
-    outline: 0px solid green;
-    float: left;
-    position: absolute;
-        top: 79px;
-        bottom: 0;
-        left: 0;
+    height: 50px;
+    margin-left: 10px;
+    background: transparent;
 }
 
-    #server_menu_frame {
-        border-top: 1px solid #1f1f1f;
+    #button_container .button:hover {
+        background: rgba(0,0,0,0.1);
     }
 
-    #server_menu_frame a {
-        text-decoration: none;
+    #button_container .button:active {
+        background: rgba(0,0,0,0.2);
+
     }
 
-    #server_menu_frame .entry_user {
-        width:100%;
-        height:120px;
-        border-top: 1px solid #888888;
-        border-bottom: 1px solid #1f1f1f;
-        background: rgba(255,255,255,0.15);
-        background: -webkit-linear-gradient(top, rgba(255,255,255,0.15) 0%,rgba(255,255,255,0.05) 100%);
-        background: -moz-linear-gradient(top, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
-        background: -o-linear-gradient(top, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
-        background: -ms-linear-gradient(top, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
-        background: linear-gradient(top, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
+    #button_container .button.current {
     }
 
-        #server_menu_frame .entry_user:hover {
-            background: rgba(255,255,255,0.2);
-            background: -webkit-linear-gradient(top, rgba(255,255,255,0.2) 0%,rgba(255,255,255,0.08) 100%);
-            background: -moz-linear-gradient(top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%);
-            background: -o-linear-gradient(top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%);
-            background: -ms-linear-gradient(top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%);
-            background: linear-gradient(top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%);
-        }
+#button_container .button .icon {
+    height: 20px;
+    width: 20px;
+    margin: auto;
+    margin-top: 8px;
+}
 
-        #server_menu_frame .entry_user:active {
-            background: rgba(0,0,0,0.15);
-            -webkit-box-shadow: 0 1px 10px 0 #000000 inset;
-            -moz-box-shadow: 0 1px 10px 0 #000000 inset;
-            -o-box-shadow: 0 1px 10px 0 #000000 inset;
-            -ms-box-shadow: 0 1px 10px 0 #000000 inset;
-            box-shadow: 0 1px 10px 0 #000000 inset;
-        }
-
-        #server_menu_frame .entry_user.current {
-            background: rgba(0,0,0,0.15);
-            -webkit-box-shadow: 0 1px 10px 0 #000000 inset;
-            -moz-box-shadow: 0 1px 10px 0 #000000 inset;
-            -o-box-shadow: 0 1px 10px 0 #000000 inset;
-            -ms-box-shadow: 0 1px 10px 0 #000000 inset;
-            box-shadow: 0 1px 10px 0 #000000 inset;
-        }
+#button_container .button .underline {
+    height: 20px;
+    width: 100px;
+    margin: auto;
+    text-align: center;
+}
 
 
-        #server_menu_frame .entry_user .avatar {
-            background-size: 60px 60px;
-            margin-top: 10px;
-            margin-left: 20px;
-            width: 60px;
-            height: 60px;
-        }
 
-        #server_menu_frame .entry_user .underline {
-            height: 15px;
-            margin-top: 10px;
-            margin-left: 5px;
-            margin-right: 5px;
-            color: #fff;
-            text-align: center;
-        }
+.logo {
+    background: url('../img/logo_75.png') no-repeat 3px 5px;
+    background-size: auto 40px;
+    height: 40px;
+    width: 180px;
+}
 
-
-    #server_menu_frame .entry {
-        width:100%;
-        height:65px;
-        padding-top: 15px;
-        border-top: 1px solid #888888;
-        border-bottom: 1px solid #1f1f1f;
-        background: rgba(255,255,255,0.15);
-        background: -webkit-linear-gradient(top, rgba(255,255,255,0.15) 0%,rgba(255,255,255,0.05) 100%);
-        background: -moz-linear-gradient(top, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
-        background: -o-linear-gradient(top, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
-        background: -ms-linear-gradient(top, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
-        background: linear-gradient(top, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
-        
-    }
-
-
-    #server_menu_frame .entry .icon {
-            background: rgba(255,255,255,0.5);
-            width:40px;
-            height:30px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        #server_menu_frame .entry .underline {
-            height: 15px;
-            margin-top: 5px;
-            margin-left: 5px;
-            margin-right: 5px;
-            color: #fff;
-            text-align: center; 
-            font-size: 10px;
-        }
-
-        #server_menu_frame .entry:hover {
-            background: rgba(255,255,255,0.2);
-            background: -webkit-linear-gradient(top, rgba(255,255,255,0.2) 0%,rgba(255,255,255,0.08) 100%);
-            background: -moz-linear-gradient(top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%);
-            background: -o-linear-gradient(top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%);
-            background: -ms-linear-gradient(top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%);
-            background: linear-gradient(top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%);
-        }
-
-        #server_menu_frame .entry:active {
-            background: rgba(0,0,0,0.15);
-            box-shadow: 0 1px 10px 0 #000000 inset;
-        }
-
-        #server_menu_frame .entry.current {
-            background: rgba(0,0,0,0.15);
-            box-shadow: 0 1px 10px 0 #000000 inset;
-        }
-
-
-#option_menu_frame {
-    background: url('../img/noise.png');
-    background-color: #EEEEEE;
-    width: 200px;
+#userbox {
+    background: #eee;
+    width: 250px;
+    height: 100px;
     position: absolute;
-    left: 100px;
-    top: 80px;
+    left: 0px;
+    top: 50px;
+}
+
+#menu {
+    background: #eee;
+    width: 250px;
+    position: absolute;
+    left: 0px;
+    top: 150px;
     bottom: 0;
 }
 
-#option_menu_frame .placeholder {
-    width: 201px;
-    height: 121px;
-    border-bottom: 1px solid #bbbbbb;
-}
 
-#option_menu_frame .entry {
-    width: 200px;
-    border-bottom: 1px solid #bbbbbb;
-    border-right: 1px solid #bbbbbb;
+#menu li {
+    display: block;
+    line-height: 40px;
     height: 40px;
-    background: #F0F0F0;
-    background: url('../img/gradient.svg');
+    width: 100%;
+    border-bottom: 1px solid transparent;
 }
 
+#menu li:hover{
+    background: #dddddd;
+    border-bottom: 1px solid #009bff;
 
-    #option_menu_frame .entry:hover {
-        background: #F5F5F5;
-        background: url('../img/gradient_hover.svg');
-    }
-
-    #option_menu_frame .entry:active {
-        background: url('../img/pattern_light.png');
-        border-right: none;
-    }
-
-    #option_menu_frame  .entry.current{
-        background: url('../img/pattern_light.png');
-        border-right: none;
-    }
-
-
-    #option_menu_frame .entry .icon{
-        height: 15px;
-        width: 15px;
-        margin-top: 12px;
-        margin-left: 15px;
-        float: left;
-    }
-
-    #option_menu_frame .entry .text{
-        color: #2f2f2f;
-        height: 20px;
-        width: 120px;
-        margin-top: 11px;
-        margin-left: 10px;
-        float: left;
-    }
-
-#fold_button{
-    margin-left: 85px;
-    width: 30px;
-    border: 1px solid #bbbbbb;
-    border-top: 1px solid transparent;
-    height: 20px;
-    background: #F0F0F0;
-    background: url('../img/gradient.svg');
 }
 
-    #fold_button .icon{
-        background: url('../icons/arrows.png');
-        background-position: 0 -15px;
-        height: 15px;
-        width: 20px;
-        margin-left: 5px;
-        margin-top: 2px;
-        opacity: 0.5;
-    }
+#menu li a{
+    display: block;
+    line-height: 40px;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 18px;
+}
 
-    #fold_button .icon:hover{
-        opacity: 0.75;
-    }
+#menu li.submenu {
+    background: #eee;
+    line-height: 30px;
+    height: 30px;
+}
 
-    #fold_button .icon_collapsed{
-        background: url('../icons/arrows.png');
-        background-position: 0 0;
-        height: 15px;
-        width: 20px;
-        margin-left: 5px;
-        margin-top: 2px;
-        opacity: 0.5;
-    }
+#menu li.submenu:hover {
+    background: #ddd;
+    
+}
 
-    #fold_button .icon_collapsed:hover{
-        opacity: 0.75;
-    }
-
+#menu li.submenu a {
+    margin-left: 20px;
+    line-height: 30px;
+    font-size: 14px;
+}
 
 #content_container {
-    background: url('../img/pattern_light.png');
-    border-top: 1px solid #bbbbbb;
+    background: #fff;
     position: absolute;
-    top: 201px;
+    top: 150px;
     bottom: 0;
-    left: 301px;
+    left: 250px;
     right: 0;
     padding: 30px;
     overflow: auto;
 }
 
 #breadcrum {
-    background: #F5F5F5;
-    background: url('../img/gradient.svg');
-    border-top: 1px solid #bbbbbb;
-    border-left: 1px solid #bbbbbb;
+    border-bottom: 1px solid #ccc;
     height: 25px;
     position: absolute;
-    top: 176px;
-    left:300px;
-    right: 0;
+    top: 124px;
+    left: 270px;
+    right: 20px;
 }
 
     #breadcrum .icon {
@@ -319,64 +180,11 @@ html, body {
     }
 
 
-#button_container {
-    border: 0px solid red;
-    position: absolute;
-    right: 20px;
-    top: 102px;
-    height: 50px;
-    max-width: 800px;
-}
 
-#button_container .button {
-    border: 1px solid #bbbbbb;
-    float: right;
-    width: 100px;
-    height: 50px;
-    margin-left: 10px;
-    background: #F0F0F0;
-    background: url('../img/gradient.svg');
-}
 
-    #button_container .button:hover {
-        background: #F5F5F5;
-        background: url('../img/gradient_hover.svg');
-        border: 1px solid #aaa;
-    }
 
-    #button_container .button:active {
-        background: rgba(0,0,0,0.05);
-        border: 1px solid #aaa;
-        -webkit-box-shadow: 0 1px 10px 0 #888 inset;
-        -moz-box-shadow: 0 1px 10px 0 #888 inset;
-        -o-box-shadow: 0 1px 10px 0 #888 inset;
-        -ms-box-shadow: 0 1px 10px 0 #888 inset;
-        box-shadow: 0 1px 10px 0 #888 inset;
-    }
 
-    #button_container .button.current {
-        background: rgba(0,0,0,0.05);
-        border: 1px solid #aaa;
-        -webkit-box-shadow: 0 1px 10px 0 #888 inset;
-        -moz-box-shadow: 0 1px 10px 0 #888 inset;
-        -o-box-shadow: 0 1px 10px 0 #888 inset;
-        -ms-box-shadow: 0 1px 10px 0 #888 inset;
-        box-shadow: 0 1px 10px 0 #888 inset;
-    }
 
-#button_container .button .icon {
-    height: 20px;
-    width: 20px;
-    margin: auto;
-    margin-top: 8px;
-}
-
-#button_container .button .underline {
-    height: 20px;
-    width: 100px;
-    margin: auto;
-    text-align: center;
-}
 
 .content_box, .blog_box {
     border: 1px solid #bbbbbb;

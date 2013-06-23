@@ -41,52 +41,16 @@
 
 
         <div id="header">
-            <div id="logo"></div>
+            <div class="logo"></div>
         </div>
 
         {% block body %}
 
-        <div id="server_menu">
-            <div id="server_menu_frame">
+        <div id="userbox"></div>
 
-                {% if user.is_authenticated %}
-                    
-                    <a href="{% url 'home' %}">
-                        <div class="entry_user">
-                            <div class="avatar"><img src="{% gravatar_for_user user 60 %}"></div>
-                            <div class="underline">{{ user.username }}</div>
-                        </div>
-                    </a>
-
-                    {% for server in user_server_list %}
-
-                        <a href="{% url 'server_detail' server.id %}">
-                            <div class="entry">
-                                <div class="icon"></div>
-                                <div class="underline">{{ server|get_option:'sv_name'|truncatechars:12 }}</div>
-                            </div>
-                        </a>
-
-                    {% endfor %}
-
-                {% else %}
-
-                    <a href="{% url 'login' %}">
-                        <div class="entry_user">
-                            <div class="avatar"><img src="{{ STATIC_URL }}new_design/icons/avatar.png"></div>
-                            <div class="underline">Login !</div>
-                        </div>
-                    </a>
-
-                {% endif %}
-                
-            </div>
-        </div>
-
-        <div id="option_menu_frame">
-            <div id="option_menu_entries">
-                <div class="placeholder"></div>
-                {% block option_menu %}{% endblock option_menu %}
+        <div id="menu_frame">
+            
+                {% block menu %}{% endblock menu %}
                 <div class="clear"></div>
             </div>            
 

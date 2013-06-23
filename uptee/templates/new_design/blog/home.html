@@ -10,25 +10,36 @@ context variables:
     entry_list
 {% endcomment %}
 
-{% block option_menu %}
+{% block menu %}
 
 {% url 'user' user.id as url_user %}
 {% url 'usettings' as url_settings %}
 
-<a href="{{ url_user }}">
-    <div class="entry{% current request url_user %}">
-        <div class="icon"></div>
-        <div class="text">Profile</div>
-    </div>
-</a>
-<a href="{{ url_settings }}">
-    <div class="entry{% current request url_settings %}">
-        <div class="icon"><img src="{{ STATIC_URL }}new_design/icons/settings.png"></div>
-        <div class="text">Settings</div>
-    </div>
-</a>
 
-{% endblock option_menu %}
+
+<ul id="menu">
+    <div class="clear"></div>
+    <li><a href="#">Server1</a>
+        <ul>
+            <li class="submenu"><a href="#">option1</a></li>
+            <li class="submenu"><a href="#">option2</a></li>
+        </u>
+    </li>
+    <li><a href="#">Server2</a>
+        <ul>
+            <li class="submenu"><a href="#">option1</a></li>
+            <li class="submenu"><a href="#">option2</a></li>
+        </u>
+    </li>
+    <li><a href="#">Server3</a>
+        <ul>
+            <li class="submenu"><a href="#">option1</a></li>
+            <li class="submenu"><a href="#">option2</a></li>
+        </u>
+    </li>
+</ul>
+
+{% endblock menu %}
 
 
 {% block content %}
