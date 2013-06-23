@@ -15,6 +15,10 @@ a:visited, a:link {
 
 }
 
+.bold {
+    font-weight: bold;
+}
+
 html, body {
     background: url('../img/noise.png');
     background-color: #EEEEEE;
@@ -410,19 +414,32 @@ html, body {
     padding: 10px;
 }
 
-/* Server Info Page */
-.content_box.off {
-    border: 1px solid #ff9191;
+
+/* server info */
+
+.content h1 {
+    color: #009bff;
+    border-bottom: 1px solid #009bff;
+    font-size: 18px;
+    padding:0 0 5px 0;
+    width: 300px;
+
 }
 
-.content_headline.off {
-    background: url('../img/gradient_red.svg');
+.content table {
+    border-collapse: collapse;
 }
 
-.content_box.on {
-    border: 1px solid #009300;
+.content tr {
+    border-bottom: 1px solid #bbbbbb;
+    padding-right: 5px;
 }
 
-.content_headline.on {
-    background: url('../img/gradient_green.svg');
+.content td {
+    padding: 5px 35px 5px 5px;
+}
+
+.content .box {
+    float: left;
+    margin-right: 50px;
 }
