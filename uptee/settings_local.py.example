@@ -219,6 +219,15 @@ The teeworlds server executable.
 #SERVER_EXEC = 'teeworlds_srv_d'
 
 """
+ALLOWED_HOSTS
+
+The hosts allowed to call the website.
+"""
+#ALLOWED_HOSTS = [
+#    '.example.com',
+#]
+
+"""
 Debug stuff
 
 Uncomment the following for stuff which is for debugging only.

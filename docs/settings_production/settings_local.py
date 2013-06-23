@@ -123,6 +123,10 @@ CELERYD_LOG_FILE = "/var/log/celery.log"
 
 PYBROWSCAP_UPDATE = False
 
+ALLOWED_HOSTS = [
+    '.example.org',
+]
+
 if DEBUG:
     """
     MIDDLEWARE_CLASSES
