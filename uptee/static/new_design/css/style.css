@@ -142,6 +142,7 @@ html, body {
     font-size: 14px;
 }
 
+
 #content_container {
     background: #fff;
     position: absolute;
@@ -183,7 +184,6 @@ html, body {
 .content_box, .blog_box {
     border: 2px solid #378ce1;
     margin-bottom: 30px;
-
 }
 
 .content_headline, .blog_headline {
@@ -202,6 +202,40 @@ html, body {
     font-size: 10px;
 
 }
+
+/* -----Custom Box Frames---------------- */
+.content_box.gray, .blog_box.gray{
+    border: 2px solid #666;
+}
+
+.content_headline.gray, .blog_headline.gray{
+    background: #666;
+}
+
+.content_box.darkgray, .blog_box.darkgray{
+    border: 2px solid #333;
+}
+
+.content_headline.darkgray, .blog_headline.darkgray{
+    background: #333;
+}
+
+.content_box.red, .blog_box.red{
+    border: 2px solid #e63a3a;
+}
+
+.content_headline.red, .blog_headline.red{
+    background: #e63a3a;
+}
+
+.content_box.green, .blog_box.green{
+    border: 2px solid #56af45;
+}
+
+.content_headline.green, .blog_headline.green{
+    background: #56af45;
+}
+/* -----END Custom Box Frames---------------- */
 
 .blog_box div.right {
     float: right;
