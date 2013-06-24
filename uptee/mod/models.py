@@ -258,6 +258,9 @@ class Server(models.Model):
                         os.makedirs(server_maps_path)
                     copyfile(os.path.join(maps_path, _map), os.path.join(server_maps_path, _map))
 
+    def server_name(self):
+        return get_option(self, 'sv_name')
+
     def save(self, *args, **kwargs):
         self.description_html = markdown(escape(self.description))
         super(Server, self).save(*args, **kwargs)

@@ -9,6 +9,12 @@ context variables:
     moderator
 {% endcomment %}
 
+{% block breadcrumb %}
+    {{ block.super }}
+    {% load breadcrumb_tags %}
+    {% add_crumb server.server_name 'server_detail' server.id %}
+{% endblock %}
+
 {% block option_menu %}
 
 {% url 'server_detail' server.id as url_info %}

@@ -10,6 +10,12 @@ context variables:
 
 {% block title %}upTee - {{ server|get_option:'sv_name' }} - Edit description{% endblock title %}
 
+{% block breadcrumb %}
+    {{ block.super }}
+    {% load breadcrumb_tags %}
+    {% add_crumb 'Description' 'server_edit_description' server.id %}
+{% endblock %}
+
 {% block content %}
 
 <div class="server_detail_description_edit">

@@ -12,6 +12,12 @@ context variables:
 
 {% block title %}upTee - {{ server|get_option:'sv_name' }} - Edit rcon commands{% endblock title %}
 
+{% block breadcrumb %}
+    {{ block.super }}
+    {% load breadcrumb_tags %}
+    {% add_crumb 'Edit Rcon' 'server_edit_rcon_commands' server.id %}
+{% endblock %}
+
 {% block server_detail_content %}
 
 <form action="{% url 'update_rcon_commands' server.id %}" method="post">

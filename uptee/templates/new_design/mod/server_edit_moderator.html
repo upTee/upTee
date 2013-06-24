@@ -10,6 +10,13 @@ context variables:
 
 {% block title %}upTee - {{ server|get_option:'sv_name' }} - Edit moderator{% endblock title %}
 
+{% block breadcrumb %}
+    {{ block.super }}
+    {% load breadcrumb_tags %}
+    {% add_crumb 'Moderators' 'server_moderators' server.id %}
+    {% add_crumb 'Edit Moderators' 'server_edit_moderator' server.id moderator_settings.user.id %}
+{% endblock %}
+
 {% block content %}
 
 <div class="server_detail_edit_moderator">

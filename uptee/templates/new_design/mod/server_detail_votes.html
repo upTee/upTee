@@ -11,6 +11,12 @@ context variables:
 
 {% block title %}upTee - {{ server|get_option:'sv_name' }} - Votes{% endblock title %}
 
+{% block breadcrumb %}
+    {{ block.super }}
+    {% load breadcrumb_tags %}
+    {% add_crumb 'Votes' 'server_votes' server.id %}
+{% endblock %}
+
 {% block server_detail_content %}
 
 <table class="votelist">
