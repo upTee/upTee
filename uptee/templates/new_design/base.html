@@ -56,7 +56,7 @@
                 <ul id="menu">
                     <div class="clear"></div>
                     {% for server in user_server_list %}
-                    <li class="menu_head"><p>{{ server|get_option:'sv_name' }}<p>
+                    <li class="menu_head" data-serverid="{{ server.id }}"><p>{{ server|get_option:'sv_name' }}<p>
                         {% url 'server_detail' server.id as url_info %}
                         {% url 'upload_map' server.id as url_upload_map %}
                         {% url 'server_edit' server.id as url_edit_settings %}
