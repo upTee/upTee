@@ -95,42 +95,29 @@
                 <div class="clear"></div>
             </div>            
 
-            
-
         </div>
 
-        <div id="button_container">
+        <div id="headermenu">
+            <ul>
+                <li><a href="#">Server</a></li>
+                <li><a href="#">User</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Impressum</a></li>
+            </ul>
+        </div>
 
-            <a href="{% url 'contact' %}">
-                <div class="button">
-                    <div class="icon"><img src="{{ STATIC_URL }}new_design/icons/user3.png"\></div>
-                    <div class="underline">Contact</div>
-                </div>
-            </a>
-
-            <a href="{% url 'about' %}">
-                <div class="button">
-                    <div class="icon"><img src="{{ STATIC_URL }}new_design/icons/user3.png"\></div>
-                    <div class="underline">About</div>
-                </div>
-            </a>
-
-            <a href="{% url 'users' %}">
-                <div class="button">
-                    <div class="icon"><img src="{{ STATIC_URL }}new_design/icons/user3.png"\></div>
-                    <div class="underline">User List</div>
-                </div>
-            </a>
-
-            <a href="{% url 'home' %}">
-                <div class="button">
-                    <div class="icon"><img src="{{ STATIC_URL }}new_design/icons/home3.png"\></div>
-                    <div class="underline">Blog</div>
-                </div>
-            </a>
-
-
-            
+        <div id="usermenu">
+            <ul>
+                {% if user.is_authenticated %}
+                <li><a href="#">Fisico</a></li>
+                <li><a href="#"><img src="avatar40.png"></a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Logout!</a></li>
+                {% else %}
+                <li><form>Username: <input type="text" name="username"></form></li>
+                <li><form>Password: <input type="password" name="password"></form></li>
+                {% endif %}
+            </ul>
         </div>
 
         <div id="breadcrum">
