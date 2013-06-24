@@ -110,7 +110,7 @@
             <ul>
                 {% if user.is_authenticated %}
                 <li><a href="#">Fisico</a></li>
-                <li><a href="#"><img src="avatar40.png"></a></li>
+                <li><a href="#"><img class="gravatar" src="{% gravatar_for_user user 40 %}"></a></li>
                 <li><a href="#">Settings</a></li>
                 <li><a href="#">Logout!</a></li>
                 {% else %}
