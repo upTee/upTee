@@ -32,49 +32,51 @@ html, body {
     height: 50px;
 }
 
-
-#button_container {
+#headermenu {
     position: absolute;
+    top: 0;
+    left: 250px;
+}
+
+#usermenu {
+    position: absolute;
+    top: 0;
     right: 25px;
-    top: 0px;
+}
+
+#headermenu ul, #usermenu ul{
+    list-style-type: none;
     height: 50px;
-    max-width: 800px;
+    margin: auto;
 }
 
-#button_container .button {
-    float: right;
-    width: 100px;
+#headermenu li, #usermenu li{
+    float: left;
     height: 50px;
-    margin-left: 10px;
-    background: transparent;
+    background: none;
+    display: block;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
 }
 
-    #button_container .button:hover {
-        background: rgba(0,0,0,0.1);
-    }
-
-    #button_container .button:active {
-        background: rgba(0,0,0,0.2);
-
-    }
-
-    #button_container .button.current {
-    }
-
-#button_container .button .icon {
-    height: 20px;
-    width: 20px;
-    margin: auto;
-    margin-top: 8px;
+#usermenu li form{
+    margin-top: 15px;
+    padding: 0 20px 0 20px;
+    color: #fff;
 }
 
-#button_container .button .underline {
-    height: 20px;
-    width: 100px;
-    margin: auto;
+#headermenu li a, #usermenu li a{
+    height: 50px;
+    line-height: 50px;
+    padding: 0 20px 0 20px;
+    display: block;
+    color: #fff;
     text-align: center;
 }
 
+#headermenu li a:hover, #usermenu li a:hover{
+    background: rgba(0,0,0,0.1);
+}
 
 
 .logo {
@@ -87,7 +89,7 @@ html, body {
 #userbox {
     background: #eee;
     width: 250px;
-    height: 100px;
+    height: 50px;
     position: absolute;
     left: 0px;
     top: 50px;
@@ -98,7 +100,7 @@ html, body {
     width: 250px;
     position: absolute;
     left: 0px;
-    top: 150px;
+    top: 100px;
     bottom: 0;
     overflow: auto;
 }
@@ -132,33 +134,10 @@ html, body {
     margin-left: 10px;
 }
 
-/*#menu li.submenu {
-    display: inline-block;
-    background: #eee;
-    line-height: 30px;
-    height: 30px;
-    width: 100%;
-    border-bottom: 1px solid transparent;
-}
-
-#menu li.submenu:hover {
-    background: #ddd;
-    
-}
-
-#menu li.submenu a {
-    display: inline-block;
-    text-decoration: none;
-    margin-left: 20px;
-    line-height: 30px;
-    font-size: 14px;
-}
-*/
-
 #content_container {
     background: #fff;
     position: absolute;
-    top: 150px;
+    top: 120px;
     bottom: 0;
     left: 250px;
     right: 0;
@@ -170,7 +149,7 @@ html, body {
     border-bottom: 1px solid #ccc;
     height: 25px;
     position: absolute;
-    top: 124px;
+    top: 90px;
     left: 270px;
     right: 20px;
 }
