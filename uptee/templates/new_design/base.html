@@ -90,25 +90,25 @@
 
         {% endcomment %}
 
-        <!-- url definitions -->
-        {% url 'server_detail' server.id as url_info %}
-        {% url 'upload_map' server.id as url_upload_map %}
-        {% url 'server_edit' server.id as url_edit_settings %}
-        {% url 'server_edit_votes' server.id as url_edit_votes %}
-        {% url 'server_edit_rcon_commands' server.id as url_edit_rcon_commands %}
-        {% url 'server_tunes' server.id as url_edit_tunes %}
-        {% url 'server_votes' server.id as url_votes %}
-        {% url 'server_change_mod' server.id as url_change_mod %}
-        {% url 'server_moderators' server.id as url_moderators %}
-        {% url 'server_console' server.id as url_console %}
-        <!-- end url definitions -->
-
         <div id="menu_frame">
 
             <ul id="menu">
                 <div class="clear"></div>
 
                 {% for server in user_server_list %}
+
+                <!-- url definitions -->
+                {% url 'server_detail' server.id as url_info %}
+                {% url 'upload_map' server.id as url_upload_map %}
+                {% url 'server_edit' server.id as url_edit_settings %}
+                {% url 'server_edit_votes' server.id as url_edit_votes %}
+                {% url 'server_edit_rcon_commands' server.id as url_edit_rcon_commands %}
+                {% url 'server_tunes' server.id as url_edit_tunes %}
+                {% url 'server_votes' server.id as url_votes %}
+                {% url 'server_change_mod' server.id as url_change_mod %}
+                {% url 'server_moderators' server.id as url_moderators %}
+                {% url 'server_console' server.id as url_console %}
+                <!-- end url definitions -->
 
                 <li class="menu_head" data-serverid="{{ server.id }}"><p>{{ server|get_option:'sv_name' }}<p>
                     <ul style="display: none;">
