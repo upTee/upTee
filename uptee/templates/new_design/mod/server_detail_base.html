@@ -108,11 +108,6 @@ context variables:
 
 {% block content %}
 
-<div class="content_box">
-    <div class="content_headline {% if server.is_online %}on{% else %}off{% endif %}">
-        {{ server|get_option:'sv_name' }}
-    </div>
-    <div class="content">{% block server_detail_content %}{% endblock server_detail_content %}</div>
-</div>
+
 
 {% endblock content %}
