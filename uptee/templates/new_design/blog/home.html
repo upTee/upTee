@@ -29,7 +29,8 @@ context variables:
     </div>
 {% empty %}
     <div class="content_box">
-        <div class="content_headline">Hello {% if user.is_authenticated %}{{ user.username }}{% else %}Guest{% endif %}</div>
+        <div class="content_headline">Hello!</div>
+        <div class="content">Hello {% if user.is_authenticated %}{{ user.username }}{% else %}Guest{% endif %}</div></div>
     </div>
 {% endfor %}
 
