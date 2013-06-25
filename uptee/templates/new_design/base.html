@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html>
+
+    {% comment %}
+
+    HEAD
+
+    {% endcomment %}
+
     <head>
         <meta charset="utf-8">
         <title>{% block title %}upTee{% endblock title %}</title>
@@ -35,67 +42,117 @@
         </script>
         {% endif %}
     </head>
+
+    {% comment %}
+
+    END HEAD
+        
+    {% endcomment %}
+
     <body>
+
+        {% comment %}
+
+        LOAD SECTION
+
+        {% endcomment %}
 
         {% load get_option %}
         {% load gravatar %}
 
+        {% comment %}
+
+        END LOAD SECTION
+
+        {% endcomment %}
 
         <div id="header">
             <div class="logo"></div>
         </div>
 
+        {% comment %}
+
+        BLOCK body
+        Contains everytion but the header
+
+        {% endcomment %}
+
         {% block body %}
 
+        <!-- just a filler for making space to the menu frame -->
         <div id="userbox"></div>
 
+
+        {% comment %}
+
+        MENUFRAME
+        contains a side menu which can be overwritten in the menu block
+
+        {% endcomment %}
+
+        <!-- url definitions -->
+        {% url 'server_detail' server.id as url_info %}
+        {% url 'upload_map' server.id as url_upload_map %}
+        {% url 'server_edit' server.id as url_edit_settings %}
+        {% url 'server_edit_votes' server.id as url_edit_votes %}
+        {% url 'server_edit_rcon_commands' server.id as url_edit_rcon_commands %}
+        {% url 'server_tunes' server.id as url_edit_tunes %}
+        {% url 'server_votes' server.id as url_votes %}
+        {% url 'server_change_mod' server.id as url_change_mod %}
+        {% url 'server_moderators' server.id as url_moderators %}
+        {% url 'server_console' server.id as url_console %}
+        <!-- end url definitions -->
+
         <div id="menu_frame">
-            
-                {% block menu %}
 
-                <ul id="menu">
-                    <div class="clear"></div>
-                    {% for server in user_server_list %}
-                    <li class="menu_head" data-serverid="{{ server.id }}"><p>{{ server|get_option:'sv_name' }}<p>
-                        {% url 'server_detail' server.id as url_info %}
-                        {% url 'upload_map' server.id as url_upload_map %}
-                        {% url 'server_edit' server.id as url_edit_settings %}
-                        {% url 'server_edit_votes' server.id as url_edit_votes %}
-                        {% url 'server_edit_rcon_commands' server.id as url_edit_rcon_commands %}
-                        {% url 'server_tunes' server.id as url_edit_tunes %}
-                        {% url 'server_votes' server.id as url_votes %}
-                        {% url 'server_change_mod' server.id as url_change_mod %}
-                        {% url 'server_moderators' server.id as url_moderators %}
-                        {% url 'server_console' server.id as url_console %}
-                        <ul style="display: none;">
-                            <li><a href="{{ url_info }}">Info</a></li>
-                            {% if server.config_votes.all %}
-                                <li><a href="{{ url_votes }}">Votes</a></li>
-                            {% endif %}
-                            <li><a href="{{ url_upload_map }}">Upload Map</a></li>
-                            <li><a href="{{ url_edit_settings }}">Edit Settings</a></li>
-                            <li><a href="{{ url_edit_votes }}">Edit Votes</a></li>
-                            {% if server.config_available_rconcommands.all %}
-                                <li class="submenu"><a href="{{ url_edit_rcon_commands }}">Commands</a></li>
-                            {% endif %}
-                            {% if server.config_tunes.all %}
-                                <li><a href="{{ url_edit_tunes }}">Edit Tunings</a></li>
-                            {% endif %}
-                            {% if server.is_online %}
-                                <li><a href="{{ url_console }}">Console</a></li>
-                            {% endif %}
-                            <li><a href="{{ url_change_mod }}">Change Mod</a></li>
-                            <li><a href="{{ url_moderators }}">Moderators</a></li>
-                        </ul>
-                    </li>
-                    {% endfor %}
-                </ul>
-
-                {% endblock menu %}
+            <ul id="menu">
                 <div class="clear"></div>
-            </div>            
 
+                {% for server in user_server_list %}
+
+                <li class="menu_head" data-serverid="{{ server.id }}"><p>{{ server|get_option:'sv_name' }}<p>
+                    <ul style="display: none;">
+                        <li><a href="{{ url_info }}">Info</a></li>
+                        {% if server.config_votes.all %}
+                            <li><a href="{{ url_votes }}">Votes</a></li>
+                        {% endif %}
+                        <li><a href="{{ url_upload_map }}">Upload Map</a></li>
+                        <li><a href="{{ url_edit_settings }}">Edit Settings</a></li>
+                        <li><a href="{{ url_edit_votes }}">Edit Votes</a></li>
+                        {% if server.config_available_rconcommands.all %}
+                            <li class="submenu"><a href="{{ url_edit_rcon_commands }}">Commands</a></li>
+                        {% endif %}
+                        {% if server.config_tunes.all %}
+                            <li><a href="{{ url_edit_tunes }}">Edit Tunings</a></li>
+                        {% endif %}
+                        {% if server.is_online %}
+                            <li><a href="{{ url_console }}">Console</a></li>
+                        {% endif %}
+                        <li><a href="{{ url_change_mod }}">Change Mod</a></li>
+                        <li><a href="{{ url_moderators }}">Moderators</a></li>
+                    </ul>
+                </li>
+
+                {% endfor %}
+
+            </ul>
+
+            <div class="clear"></div>
         </div>
+
+        {% comment %}
+
+        END MENUFRAME
+
+        {% endcomment %}
+
+
+        {% comment %}
+
+        HEADERMENU
+        contains basic links. Is on the left side of the header.
+
+        {% endcomment %}
 
         <div id="headermenu">
             <ul>
@@ -105,6 +162,20 @@
                 <li><a href="#">Impressum</a></li>
             </ul>
         </div>
+
+        {% comment %}
+
+        END HEADERMENU
+
+        {% endcomment %}
+
+
+        {% comment %}
+
+        USERMENU
+        contains user specific links. Is on the right side of the header.
+
+        {% endcomment %}
 
         <div id="usermenu">
             <ul>
@@ -120,20 +191,60 @@
             </ul>
         </div>
 
+        {% comment %}
+
+        END USERMENU
+
+        {% endcomment %}
+
+
+        {% comment %}
+
+        BREADCRUMBS
+        block responsible for breadcrumbs. Add breadcrumbs for every page using the breadcrumb block.
+
+        {% endcomment %}
+
         <div id="breadcrum">
             <div class="icon"></div>
             {% block breadcrumb %}
                 {% load breadcrumb_tags %}
                 {% add_crumb 'Home' 'home' %}
             {% endblock %}
-            <div class="text">{% render_breadcrumbs %}</div>
+            <div class="text">{% render_breadcrumbs %}</div> <!-- render vreadcrumbs. Only call this here! -->
         </div>
+
+        {% comment %}
+
+        END BREADCRUMBS
+
+        {% endcomment %}
+
+
+        {% comment %}
+
+        CONTENT
+        The actual content. Use the block content to fill in the data for every page.
+
+        {% endcomment %}
 
         <div id="content_container">
            {% block content %}{% endblock content %}
         </div>
 
+        {% comment %}
+
+        END CONTENT
+
+        {% endcomment %}
+
         {% endblock body %}
+
+        {% comment %}
+
+        END BLOCK body
+
+        {% endcomment %}
 
     </body>
 </html>

@@ -18,7 +18,7 @@ context variables:
     {% add_crumb 'Edit Rcon' 'server_edit_rcon_commands' server.id %}
 {% endblock %}
 
-{% block server_detail_content %}
+{% block content %}
 
 <form action="{% url 'update_rcon_commands' server.id %}" method="post">
     <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
@@ -42,4 +42,4 @@ context variables:
     <p><input class="button" type="submit" value="Update rcon commands"></p>
 </form>
 
-{% endblock server_detail_content %}
+{% endblock content %}

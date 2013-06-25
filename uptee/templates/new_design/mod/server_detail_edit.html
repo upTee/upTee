@@ -18,7 +18,7 @@ context variables:
     {% add_crumb 'Edit' 'server_edit' server.id %}
 {% endblock %}
 
-{% block server_detail_content %}
+{% block content %}
 
 <div class="server_detail_edit">
     <form action="{% url 'update_settings' server.id %}" method="post">
@@ -76,4 +76,4 @@ context variables:
     </form>
 </div>
 
-{% endblock server_detail_content %}
+{% endblock content %}

@@ -16,7 +16,7 @@ context variables:
     {% add_crumb 'Moderators' 'server_moderators' server.id %}
 {% endblock %}
 
-{% block server_detail_content %}
+{% block content %}
 
 <div class="server_detail_maplist">
     <h2>Moderators</h2>
@@ -35,4 +35,4 @@ context variables:
     <p><input class="button" type="submit" value="Add moderator"></p>
 </form>
 
-{% endblock server_detail_content %}
+{% endblock content %}
