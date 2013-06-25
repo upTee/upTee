@@ -12,6 +12,7 @@ from django.utils import timezone
 from django.utils.html import escape
 from picklefield.fields import PickledObjectField
 from mod.tasks import run_server
+from mod.templatetags.get_option import get_option
 from settings import DEBUG, MEDIA_ROOT
 from lib.twconfig import Config as TwConfig
 from lib.twserverinfo import ServerInfo
