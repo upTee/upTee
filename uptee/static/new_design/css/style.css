@@ -86,7 +86,7 @@ html, body {
     width: 180px;
 }
 
-#userbox {
+#menufiller {
     background: #eee;
     width: 250px;
     height: 50px;
@@ -145,7 +145,7 @@ html, body {
     overflow: auto;
 }
 
-#breadcrum {
+#breadcrumb {
     border-bottom: 1px solid #ccc;
     height: 25px;
     position: absolute;
@@ -154,7 +154,7 @@ html, body {
     right: 20px;
 }
 
-    #breadcrum .icon {
+    #breadcrumb .icon {
         background: url('../icons/home2.png');
         height: 15px;
         width: 15px;
@@ -163,7 +163,7 @@ html, body {
         float: left;
     }
 
-    #breadcrum .text {
+    #breadcrumb .text {
         margin-left: 10px;
         margin-top: 6px;
         width: 300px;
