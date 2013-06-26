@@ -1,110 +1,110 @@
-#login_container, #register_container {
+#login_container {
     position: relative;
-    margin: 35px auto 0;
-    width: 400px;
-    border: 1px solid #bbbbbb;
-    -moz-box-shadow: 2px 2px 5px #888;
-    -webkit-box-shadow: 2px 2px 5px #888;
-    -o-box-shadow: 2px 2px 5px #888;
-    -ms-box-shadow: 2px 2px 5px #888;
-    box-shadow: 2px 2px 5px #888;
-    padding-top: 45px;
-    background: #f5f5f5;
+    margin: 75px auto 0 auto;
+    width: 455px;
 }
 
-    #login_container #login_header, #register_container #register_header {
-        position: absolute;
-        top: 0;
-        left: 0;
-        background: #F0F0F0;
-        background: url('../img/gradient.svg');
-        border-bottom: 1px solid #bbbbbb; 
-        padding: 10px;
-        height: 25px;
-        font-size: 16px;
-        width: 380px;
 
-    }
-
-    #login_container .description_box, #register_container .description_box {
+    #login_container .description_box {
         float: left;
-        border-bottom: 1px solid #bbbbbb;
-        padding: 13px;
-        font-size: 13px;
-        width: 123px;
+        border: 1px solid #666;
+        border-right: none;
+        padding: 15px;
+        font-size: 16px;
+        width: 130px;
+        margin-bottom: 10px;
+        background: #666;
+        color: #fff;
     }
 
-    #login_container .form_box, #register_container .form_box {
-        float: right;
-        border-bottom: 1px solid #bbbbbb;
-        border-left: 1px solid #bbbbbb;
+    #login_container .description_box .active {
+        border: 1px solid #378ce1;
+        border-right: none;
+        background: #378ce1;
     }
 
-    #login_container .submit_box, #register_container .submit_box {
+    #login_container .description_box .error {
+        border: 1px solid #e63a3a;
+        border-right: none;
+        background: #e63a3a;
+        color: #000;
+    }
+
+    #login_container .form_box {
+        float: left;
+        margin-bottom: 10px;
+    }
+
+    #login_container .submit_box {
         margin-left: auto;
         margin-right: auto;
         margin-top: 30px;
         margin-bottom: 30px;
         height: 30px;
-        width: 115px;
+        width: 200px;
     }
 
 
+#login_container .icon_user{
+    background: #fff url('../icons/person.png') no-repeat 5px center;
+}
 
-#login_container input[type=text], #register_container input[type=text] {
-    background: #f0f0f0 url('../icons/person.png') no-repeat 5px center;
-    width: 220px;
-    height: 44px;
-    border: none;
-    padding-left: 30px;
+#login_container .icon_pw{
+    background: #fff url('../icons/lock.png') no-repeat 5px center;
 }
 
 
-   #login_container input[type=text]:focus, #register_container input[type=text]:focus {
-        box-shadow:inset 0 0 5px #bbbbbb;
-    }
-
-    #login_container input.error[type=text], #register_container input.error[type=text] {
-        box-shadow:inset 0 0 5px #ff9191;
-    }
-
-
-
-#login_container input[type=password], #register_container input[type=password] {
-    background: #f0f0f0 url('../icons/lock.png') no-repeat 5px center;
+#login_container input[type=text] {
     width: 220px;
-    height: 44px;
-    border: none;
-    padding-left: 30px;
+    font-size: 16px;
+    border: 2px solid #666;
+    padding: 15px 15px 15px 30px;
 }
 
 
-   #login_container input[type=password]:focus, #register_container input[type=password]:focus {
-    box-shadow:inset 0 0 5px #bbbbbb;
+   #login_container input[type=text]:focus{
+    border: 2px solid #378ce1;
     }
 
-    #login_container input.error[type=password], #register_container input.error[type=password] {
-    box-shadow:inset 0 0 5px #ff9191;
+    #login_container input.error[type=text]{
+    border: 2px solid #e63a3a;
     }
 
 
-#login_container input[type=submit], #register_container input[type=submit]{
-    background: url('../img/buttons.png') repeat-x;
-    background-position: 0 0;
+
+#login_container input[type=password]{
+    width: 220px;
+    font-size: 16px;
+    padding: 15px 15px 15px 30px;
+    border: 2px solid #666;
+}
+
+
+   #login_container input[type=password]:focus{
+    border: 2px solid #378ce1;
+    }
+
+    #login_container input.error[type=password]{
+        border: 2px solid #e63a3a;
+    }
+
+
+#login_container input[type=submit]{
+    background: #56af45;
     margin-left: auto;
     margin-right: auto;
-    padding: 6px;
-    width: 100px;
-    border: 1px solid #acacac;
+    padding: 15px;
+    font-size: 15px;
+    width: 200px;
     cursor: pointer;
+    color: #fff;
+    border: none;
 }
 
-    #login_container input[type=submit]:hover, #register_container input[type=submit]:hover{
-        background-position: 0 -30px;
-        border: 1px solid #7eb4ea;
+    #login_container input[type=submit]:hover{
+        background: #4e9e3e;
     }
 
-    #login_container input[type=submit]:active, #register_container input[type=submit]:active{
-        background-position: 0 -60px;
-        border: 1px solid #569de5;
+    #login_container input[type=submit]:active{
+        background: #479038;
     }

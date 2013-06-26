@@ -3,15 +3,17 @@
 
 {% block body %}
 
-<div id="register_container">
-    <div id="register_header">upTee Register</div>
+<div id="login_container">
+    <div class="content_box w450">
+        <div class="content_headline ">Register</div>
+        <div class="content">
 
                 <div class="description_box">
                     <label for="username">Username:</label>
                 </div>
 
                 <div class="form_box">
-                    <input type="text" name="username" value="" id="username" required="" /> <!-- If Error = class="error" -->
+                    <input class="icon_user" type="text" name="username" value="" id="username" required="" /> <!-- If Error = class="error" -->
                 </div>
 
                 <div class="description_box">
@@ -19,23 +21,23 @@
                 </div>
 
                 <div class="form_box">
-                    <input type="password" name="password" value="" id="password" required="" />
+                    <input class="icon_pw" type="password" name="password" value="" id="password" required="" />
                 </div>
                 <div class="clear"></div>
 
                 <div class="description_box">
-                    <label for="password">Password again:</label>
+                    <label for="password">Password [Again]:</label>
                 </div>
 
                 <div class="form_box">
-                    <input type="password" name="password" value="" id="password" required="" />
+                    <input class="icon_pw" type="password" name="password" value="" id="password" required="" />
                 </div>
 
                 <div class="description_box">
                     <label for="username">Email:</label>
                 </div>
 
-                <div class="form_box">
+                <div class="form_box ">
                     <input type="text" name="email" value="" id="email" required="" />
                 </div>
                 <div class="clear"></div>
@@ -55,7 +57,9 @@
                     <input type="hidden" name="next" value="{{ request.path }}" />
                 </div>
             </form>
-    
+
+        </div>
+    </div>
 </div>
 
 {% endblock body %}

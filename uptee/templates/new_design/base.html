@@ -90,55 +90,51 @@
 
         {% endcomment %}
 
-        <div id="menu_frame">
 
-            <ul id="menu">
-                <div class="clear"></div>
+        <ul id="menu">
 
-                {% for server in user_server_list %}
+            {% for server in user_server_list %}
 
-                <!-- url definitions -->
-                {% url 'server_detail' server.id as url_info %}
-                {% url 'upload_map' server.id as url_upload_map %}
-                {% url 'server_edit' server.id as url_edit_settings %}
-                {% url 'server_edit_votes' server.id as url_edit_votes %}
-                {% url 'server_edit_rcon_commands' server.id as url_edit_rcon_commands %}
-                {% url 'server_tunes' server.id as url_edit_tunes %}
-                {% url 'server_votes' server.id as url_votes %}
-                {% url 'server_change_mod' server.id as url_change_mod %}
-                {% url 'server_moderators' server.id as url_moderators %}
-                {% url 'server_console' server.id as url_console %}
-                <!-- end url definitions -->
+            <!-- url definitions -->
+            {% url 'server_detail' server.id as url_info %}
+            {% url 'upload_map' server.id as url_upload_map %}
+            {% url 'server_edit' server.id as url_edit_settings %}
+            {% url 'server_edit_votes' server.id as url_edit_votes %}
+            {% url 'server_edit_rcon_commands' server.id as url_edit_rcon_commands %}
+            {% url 'server_tunes' server.id as url_edit_tunes %}
+            {% url 'server_votes' server.id as url_votes %}
+            {% url 'server_change_mod' server.id as url_change_mod %}
+            {% url 'server_moderators' server.id as url_moderators %}
+            {% url 'server_console' server.id as url_console %}
+            <!-- end url definitions -->
 
-                <li class="menu_head" data-serverid="{{ server.id }}"><p>{{ server|get_option:'sv_name' }}<p>
-                    <ul style="display: none;">
-                        <li><a href="{{ url_info }}">Info</a></li>
-                        {% if server.config_votes.all %}
-                            <li><a href="{{ url_votes }}">Votes</a></li>
-                        {% endif %}
-                        <li><a href="{{ url_upload_map }}">Upload Map</a></li>
-                        <li><a href="{{ url_edit_settings }}">Edit Settings</a></li>
-                        <li><a href="{{ url_edit_votes }}">Edit Votes</a></li>
-                        {% if server.config_available_rconcommands.all %}
-                            <li class="submenu"><a href="{{ url_edit_rcon_commands }}">Commands</a></li>
-                        {% endif %}
-                        {% if server.config_tunes.all %}
-                            <li><a href="{{ url_edit_tunes }}">Edit Tunings</a></li>
-                        {% endif %}
-                        {% if server.is_online %}
-                            <li><a href="{{ url_console }}">Console</a></li>
-                        {% endif %}
-                        <li><a href="{{ url_change_mod }}">Change Mod</a></li>
-                        <li><a href="{{ url_moderators }}">Moderators</a></li>
-                    </ul>
-                </li>
+            <li class="menu_head" data-serverid="{{ server.id }}"><p>{{ server|get_option:'sv_name' }}<p>
+                <ul style="display: none;">
+                    <li><a href="{{ url_info }}">Info</a></li>
+                    {% if server.config_votes.all %}
+                        <li><a href="{{ url_votes }}">Votes</a></li>
+                    {% endif %}
+                    <li><a href="{{ url_upload_map }}">Upload Map</a></li>
+                    <li><a href="{{ url_edit_settings }}">Edit Settings</a></li>
+                    <li><a href="{{ url_edit_votes }}">Edit Votes</a></li>
+                    {% if server.config_available_rconcommands.all %}
+                        <li class="submenu"><a href="{{ url_edit_rcon_commands }}">Commands</a></li>
+                    {% endif %}
+                    {% if server.config_tunes.all %}
+                        <li><a href="{{ url_edit_tunes }}">Edit Tunings</a></li>
+                    {% endif %}
+                    {% if server.is_online %}
+                        <li><a href="{{ url_console }}">Console</a></li>
+                    {% endif %}
+                    <li><a href="{{ url_change_mod }}">Change Mod</a></li>
+                    <li><a href="{{ url_moderators }}">Moderators</a></li>
+                </ul>
+            </li>
 
-                {% endfor %}
+            {% endfor %}
 
-            </ul>
+        </ul>
 
-            <div class="clear"></div>
-        </div>
 
         {% comment %}
 
@@ -183,10 +179,9 @@
                 <li><a href="#">Fisico</a></li>
                 <li><a href="#"><img class="gravatar" src="{% gravatar_for_user user 40 %}"></a></li>
                 <li><a href="#">Settings</a></li>
-                <li><a href="#">Logout!</a></li>
+                <li><a href="{% url 'logout' %}">Logout!</a></li>
                 {% else %}
-                <li><form>Username: <input type="text" name="username"></form></li>
-                <li><form>Password: <input type="password" name="password"></form></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
                 {% endif %}
             </ul>
         </div>
