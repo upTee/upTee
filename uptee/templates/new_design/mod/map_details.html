@@ -11,25 +11,25 @@ context variables:
 
 {% block content %}
 
-<div class="server_detail_headline">
-    <h2>{{ map_obj.server|get_option:'sv_name' }} - {{ map_obj.name }}</h2>
-</div>
-<div>
-    <p>Downloads: {{ map_obj.download_count }}</p>
-    {% if not map_obj.server|get_option:'password' and map_obj.server.map_download_allowed or user == map_obj.server.owner or map_obj.server in user_moderated_servers %}
-        <p><a href="{% url 'map_download' map_obj.id %}">Download {{ map_obj.name }}</a></p>
-    {% elif not map_obj.server.map_download_allowed %}
-        <p>Downloading maps is not allowed for this server.</p>
-    {% else %}
-        <p>Downloading the map is currently not possible. The server is password protected.</p>
-    {% endif %}
+<div class="content_box w300">
+        <div class="content_headline">{{ map_obj.server|get_option:'sv_name' }} - {{ map_obj.name }}</div>
+        <div class="content">
+            <p>Downloads: {{ map_obj.download_count }}</p>
+            {% if not map_obj.server|get_option:'password' and map_obj.server.map_download_allowed or user == map_obj.server.owner or map_obj.server in user_moderated_servers %}
+                <p><a href="{% url 'map_download' map_obj.id %}">Download {{ map_obj.name }}</a></p>
+            {% elif not map_obj.server.map_download_allowed %}
+                <p>Downloading maps is not allowed for this server.</p>
+            {% else %}
+                <p>Downloading the map is currently not possible. The server is password protected.</p>
+            {% endif %}
 
-    {% if user.is_authenticated and user == map_obj.server.owner %}
-    <form action="{% url 'delete_map' map_obj.id %}" method="post">
-        <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
-        <p><input class="button" type="submit" value="Delete {{ map_obj.name }}"></p>
-    </form>
-    {% endif %}
+            {% if user.is_authenticated and user == map_obj.server.owner %}
+            <form action="{% url 'delete_map' map_obj.id %}" method="post">
+                <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
+                <p><input class="button" type="submit" value="Delete {{ map_obj.name }}"></p>
+            </form>
+            {% endif %}
+        </div>
 </div>
 
 {% endblock content %}

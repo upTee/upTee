@@ -105,33 +105,34 @@ html, body {
     overflow: auto;
 }
 
-
-#menu li {
-    display: inline;
-    line-height: 40px;
-    height: 40px;
-    width: 100%;
-    border-bottom: 1px solid transparent;
-}
-
-#menu li:hover{
-    background: #dddddd;
-    border-bottom: 1px solid #009bff;
-
-}
-
 #menu li a{
     display: block;
     line-height: 40px;
     height: 40px;
     text-decoration: none;
-    margin-left: 20px;
     font-size: 14px;
+    padding-left: 20px;
+    border-bottom: 1px solid transparent;
+    color: #000;
+}
+
+#menu li a:hover{
+    background: #dddddd;
+    border-bottom: 1px solid #009bff;
+
 }
 
 #menu li p{
     font-size: 18px;
-    margin-left: 10px;
+    padding-left: 10px;
+    line-height: 40px;
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+}
+
+#menu li p:hover{
+    background: #dddddd;
+    border-bottom: 1px solid #009bff;
 }
 
 #content_container {
