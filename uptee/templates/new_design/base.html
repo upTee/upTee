@@ -59,6 +59,7 @@
 
         {% load get_option %}
         {% load gravatar %}
+        {% load menu %}
 
         {% comment %}
 
@@ -110,24 +111,24 @@
 
             <li class="menu_head" data-serverid="{{ server.id }}"><p>{{ server|get_option:'sv_name' }}<p>
                 <ul style="display: none;">
-                    <li><a href="{{ url_info }}">Info</a></li>
+                    <li class="entry{% current request url_info %}"><a href="{{ url_info }}">Info</a></li>
                     {% if server.config_votes.all %}
-                        <li><a href="{{ url_votes }}">Votes</a></li>
+                        <li class="entry{% current request url_votes %}"><a href="{{ url_votes }}">Votes</a></li>
                     {% endif %}
-                    <li><a href="{{ url_upload_map }}">Upload Map</a></li>
-                    <li><a href="{{ url_edit_settings }}">Edit Settings</a></li>
-                    <li><a href="{{ url_edit_votes }}">Edit Votes</a></li>
+                    <li class="entry{% current request url_upload_map %}"><a href="{{ url_upload_map }}">Upload Map</a></li>
+                    <li class="entry{% current request url_edit_settings %}"><a href="{{ url_edit_settings }}">Edit Settings</a></li>
+                    <li class="entry{% current request url_edit_votes %}"><a href="{{ url_edit_votes }}">Edit Votes</a></li>
                     {% if server.config_available_rconcommands.all %}
-                        <li class="submenu"><a href="{{ url_edit_rcon_commands }}">Commands</a></li>
+                        <li class="entry{% current request url_edit_rcon_commands %}"><a href="{{ url_edit_rcon_commands }}">Commands</a></li>
                     {% endif %}
                     {% if server.config_tunes.all %}
-                        <li><a href="{{ url_edit_tunes }}">Edit Tunings</a></li>
+                        <li class="entry{% current request url_edit_tunes %}"><a href="{{ url_edit_tunes }}">Edit Tunings</a></li>
                     {% endif %}
                     {% if server.is_online %}
-                        <li><a href="{{ url_console }}">Console</a></li>
+                        <li class="entry{% current request url_console %}"><a href="{{ url_console }}">Console</a></li>
                     {% endif %}
-                    <li><a href="{{ url_change_mod }}">Change Mod</a></li>
-                    <li><a href="{{ url_moderators }}">Moderators</a></li>
+                    <li class="entry{% current request url_change_mod %}"><a href="{{ url_change_mod }}">Change Mod</a></li>
+                    <li class="entry{% current request url_moderators %}"><a href="{{ url_moderators }}">Moderators</a></li>
                 </ul>
             </li>
 

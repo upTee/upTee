@@ -75,7 +75,7 @@ html, body {
     text-align: center;
 }
 
-#headermenu li a .active {
+#menu li .entry.current {
     background: #fff;
     color: #000;
 }
