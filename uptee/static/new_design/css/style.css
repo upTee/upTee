@@ -3,6 +3,9 @@
     margin: 0;
     padding: 0;
     outline: 0 none;
+    /* F*ck y ios */
+    -webkit-border-radius: 0px;  
+    -webkit-appearance: none;
 }
 
 /* F*ck y IE */
@@ -148,6 +151,7 @@ html, body {
     right: 0;
     padding: 30px;
     overflow: auto;
+    min-width: 500px;
 }
 
 #breadcrumb {
