@@ -200,14 +200,7 @@
 
         {% endcomment %}
 
-        <div id="breadcrumb">
-            <div class="icon"></div>
-            {% block breadcrumb %}
-                {% load breadcrumb_tags %}
-                {% add_crumb 'Home' 'home' %}
-            {% endblock %}
-            <div class="text">{% render_breadcrumbs %}</div> <!-- render vreadcrumbs. Only call this here! -->
-        </div>
+       
 
         {% comment %}
 
@@ -224,7 +217,20 @@
         {% endcomment %}
 
         <div id="content_container">
+
+            <div id="breadcrumb">
+                <div class="icon"></div>
+                {% block breadcrumb %}
+                    {% load breadcrumb_tags %}
+                    {% add_crumb 'Home' 'home' %}
+                {% endblock %}
+                <div class="text">{% render_breadcrumbs %}</div> <!-- render vreadcrumbs. Only call this here! -->
+            </div>
+
+            <div class="spacer"></div>
+
            {% block content %}{% endblock content %}
+           
         </div>
 
         {% comment %}
