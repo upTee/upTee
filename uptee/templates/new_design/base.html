@@ -19,6 +19,9 @@
         <link rel="apple-touch-icon" href="{{ STATIC_URL }}new_design/img/apple-touch-icon.png">
         
         <link rel="stylesheet" href="{{ STATIC_URL }}new_design/css/style.css" type="text/css">
+        {% if not user.is_authenticated %}
+            <link rel="stylesheet" href="{{ STATIC_URL }}new_design/css/style_not_authenticated.css" type="text/css">
+        {% endif %}
         <link rel="stylesheet" href="{{ STATIC_URL }}new_design/css/forms.css" type="text/css">
         <link rel="stylesheet" href="{{ STATIC_URL }}new_design/css/size.css" type="text/css">
 

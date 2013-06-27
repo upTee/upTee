@@ -1,0 +1,12 @@
+/* override things for when the user is not authenticated */
+#content_container {
+    left: 0;
+}
+
+#menufiller {
+    display: none;
+}
+
+#menu {
+    display: none;
+}
