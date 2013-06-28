@@ -5,13 +5,13 @@ import signal
 from datetime import timedelta
 from markdown import markdown
 from shutil import copyfile, rmtree
+from celery import current_app as celery
 from django.db import models
 from django.contrib.auth.models import User
 from django.forms import ValidationError
 from django.utils import timezone
 from django.utils.html import escape
 from picklefield.fields import PickledObjectField
-from mod.tasks import run_server
 from mod.templatetags.get_option import get_option
 from settings import DEBUG, MEDIA_ROOT
 from lib.twconfig import Config as TwConfig
@@ -30,7 +30,7 @@ class ActiveServerManager(models.Manager):
 
 class Mod(models.Model):
     mod_file = models.FileField(upload_to='uploads', help_text='Should be .zip or .tar')
-    upload_date = models.DateTimeField('Uploaddatum', auto_now=True)
+    upload_date = models.DateTimeField('Upload date', auto_now=True)
     title = models.CharField(blank=False, max_length=100)
     mimetype = models.CharField(editable=False, max_length=100)
 
@@ -175,6 +175,7 @@ class Server(models.Model):
             self.save_config()
             with open(os.path.join(path, 'storage.cfg'), 'w') as storage:
                 storage.write('add_path servers/{0}/{1}/{2}\nadd_path $CURRENTDIR\n'.format(self.owner.username, self.id, self.random_key))
+            from mod.tasks import run_server  # i dont like this
             run_server.delay(path, self)
 
     def save_config(self, download=False):
@@ -380,3 +381,35 @@ class Map(models.Model):
         if path:
             os.remove(path)
         super(Map, self).delete()
+
+
+class TaskEvent(models.Model):
+    server = models.ForeignKey(Server, null=True, related_name="events")
+    name = models.CharField(max_length=100)
+
+    TYPE_START = 1
+    TYPE_STOP = 2
+    TYPE_RESTART = 3
+    TYPE_CHOICES = (
+        (TYPE_START, 'start'),
+        (TYPE_STOP, 'stop'),
+        (TYPE_RESTART, 'restart'),
+    )
+    task_type = models.IntegerField(choices=TYPE_CHOICES, default=TYPE_RESTART)
+    date = models.DateTimeField()
+    repeat = models.IntegerField(default=0, help_text='minutes for repeating the task (0 is no repeat)<br>day=1440, week=10080')
+
+    STATUS_ACTIVE = 1
+    STATUS_DONE = 2
+    STATUS_ERROR = 3
+    STATUS_CHOICES = (
+        (STATUS_ACTIVE, 'active'),
+        (STATUS_DONE, 'done'),
+        (STATUS_ERROR, 'error'),
+    )
+    status = models.IntegerField(choices=STATUS_CHOICES, default=STATUS_ACTIVE)
+    task_id = models.CharField(max_length=100, blank=True, null=True)
+
+    def delete(self):
+        celery.control.revoke(self.task_id)
+        super(TaskEvent, self).delete()

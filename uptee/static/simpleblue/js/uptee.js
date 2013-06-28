@@ -57,7 +57,7 @@ function server_info_update() {
 $(document).ready(function() {
     $('.cycle').cycle({fx:'scrollDown',easing:'easeOutBounce',pause:1});
 
-    $('.notification_close').click(function() {
+    $('.notification_close').live('click', function() {
         $(this).parent().animate({opacity: 0, height: 0, paddingTop: 0, paddingBottom: 0, marginTop: 0}, 300, function() {
             $(this).remove();
         });
@@ -140,6 +140,43 @@ $(document).ready(function() {
         receive_entries();
 
         setTimeout(receive_terminal_interval, 1000);
+    })();
+
+    var event_form_count = 0;
+    (function event_calender() {
+        if($('#events').length) {
+            $('#events').eventCalendar();
+        }
+
+        if($('#events-admin').length) {
+            $('#events-admin').eventCalendar({
+                showDelete: true
+            });
+
+            // add button to create a new event here
+            $('.eventsCalendar-list-wrap').append('<p><a class="add_event" href="#">Add Event</a></p>');
+            $('a.add_event').click(function(e) {
+                e.preventDefault();
+
+                if(!$('#event_form').length) {
+                    var server_id = $('.server_detail_events').attr('data-serverid');
+                    $('.server_detail_events').append('<div id="event_form"><p class="loading">loading...</p></div>');
+
+                    $.ajax({
+                        url: '/server/' + server_id + '/events/add/',
+                        type: 'GET',
+                        success: function(data) {
+                            $('#event_form').html(data);
+
+                            if(!event_form_count) {
+                                handle_event_form(server_id);
+                                event_form_count = 1;
+                            }
+                        }
+                    });
+                }
+            });
+        }
     })();
 });
 
@@ -240,4 +277,38 @@ function rotate_commands(direction) {
             $('#terminal_command_input').val('');
         }
     }
+}
+
+function handle_event_form(server_id) {
+    $('#event_form .button').live('click', function(e) {
+        e.preventDefault();
+
+        $('#event_form').append('<p class="loading">loading...</p>');
+
+        $.ajax({
+            beforeSend: function(jqXHR, settings) {
+                var csrftoken = $.cookie('csrftoken');
+                jqXHR.setRequestHeader('X-CSRFToken', csrftoken);
+            },
+            type: "POST",
+            url: '/server/' + server_id + '/events/add/',
+            data: $('#event_form :input').serialize(), // serializes the form's elements.
+            success: function(data)
+            {
+                if(data.length) {
+                    $('#event_form').html(data);
+                }
+                else {
+                    $('#event_form').remove();
+                    $('.eventsCalendar-list-wrap').append('<div class="notification_s success">Event successfully added!<div class="notification_close"></div></div>');
+                }
+            }
+        });
+    });
+
+    $('#event_form .close_button').live('click', function(e) {
+        e.preventDefault();
+
+        $('#event_form').remove();
+    });
 }

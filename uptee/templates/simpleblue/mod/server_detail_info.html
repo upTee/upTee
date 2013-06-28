@@ -9,6 +9,10 @@ context variables:
     moderator
 {% endcomment %}
 
+{% block extra_head %}
+<link rel="stylesheet" href="{{ STATIC_URL }}simpleblue/css/calendar.css" type="text/css">
+{% endblock extra_head %}
+
 {% block title %}upTee - {{ server|get_option:'sv_name' }} - Details{% endblock title %}
 
 {% block tab_content %}
@@ -81,6 +85,11 @@ context variables:
             No description available.
         {% endif %}
     </p>
+</div>
+
+<div class="server_detail_events" data-serverid="{{ server.id }}">
+    <h2>Events</h2>
+    <div id="events{% if user.is_authenticated and user == server.owner %}-admin{% endif %}" data-serverid="{{ server.id }}"></div>
 </div>
 
 {% if user.is_authenticated and server.map_exists %}{% if user == server.owner or user.is_staff or moderator and moderator.restart_allowed %}

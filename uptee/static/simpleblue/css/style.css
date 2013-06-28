@@ -173,7 +173,7 @@ img.gravatar {
 
 
 /* ---notification--- */
-.notification {
+.notification, .notification_s {
     width: 745px;
     margin-top: 20px;
     margin-right: auto;
@@ -184,22 +184,27 @@ img.gravatar {
     border-radius: 5px;
 }
 
-    .notification.info {
+.notification_s {
+    width: 650px;
+    margin-bottom: 10px;
+}
+
+    .notification.info, .notification_s.info {
         background: url('../img/info.png') no-repeat 10px center, url('../img/notification_bars.png') repeat-x 0 0;
         color: #034e96;
     }
 
-    .notification.success {
+    .notification.success, .notification_s.success {
         background: url('../img/sucess.png') no-repeat 10px center, url('../img/notification_bars.png') repeat-x 0 -40px;
         color: #4f8a14;
     }
 
-    .notification.warning {
+    .notification.warning, .notification_s.warning {
         background: url('../img/warning.png') no-repeat 10px center, url('../img/notification_bars.png') repeat-x 0 -80px;
         color: #a06011;
     }
 
-    .notification.error {
+    .notification.error, .notification_s.error {
         background: url('../img/error.png') no-repeat 10px center, url('../img/notification_bars.png') repeat-x 0 -120px;
         color: #d4000b;
     }
@@ -448,12 +453,12 @@ img.gravatar {
         overflow: auto;
     }
 
-.server_detail_description {
+.server_detail_description, .server_detail_events {
     margin-bottom: 40px;
     position: relative;
 }
 
-    .server_detail_description h2 {
+    .server_detail_description h2, .server_detail_events h2 {
         margin: 2px;
         padding: 5px;
         border-bottom: 1px solid #009bff;

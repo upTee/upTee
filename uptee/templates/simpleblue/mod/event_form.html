@@ -1,0 +1,19 @@
+{% comment %}
+context variables:
+    event_form
+{% endcomment %}
+
+{% for message in messages %}
+    <div class="notification_s {{ message.tags }}">
+        {{ message }}
+        <div class="notification_close"></div>
+    </div>
+{% endfor %}
+
+<form action="{% url 'events_add_ajax' server.id %}" method="post">
+    <table class="form_table">
+        {{ event_form.as_table }}
+    </table>
+    <p><input class="button" type="submit" value="Add Event"></p>
+    <p><button class="close_button" type="button">Close</button></p>
+</form>

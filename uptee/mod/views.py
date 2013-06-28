@@ -1,5 +1,5 @@
 import os
-from time import time
+from time import mktime, time
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -13,8 +13,9 @@ from annoying.decorators import ajax_request
 from econ.tasks import telnet_client
 from lib.invalidate import invalidate
 from lib.session_user import get_user
-from mod.forms import CommandForm, ChangeModForm, MapUploadForm, ModeratorForm, ServerDescriptionForm
-from mod.models import Map, Option, RconCommand, Server, Vote
+from mod.forms import CommandForm, ChangeModForm, MapUploadForm, ModeratorForm, ServerDescriptionForm, TaskEventForm
+from mod.models import Map, Option, RconCommand, Server, Vote, TaskEvent
+from mod.tasks import restart_server, start_server, stop_server
 from settings import MEDIA_ROOT
 
 
@@ -607,3 +608,79 @@ def terminal_receive_ajax(request, server_id):
     cache.delete(key)
     cache.delete('server-{0}-terminate'.format(server_id))
     return {} if not lines else {"lines": lines}
+
+
+@ajax_request
+def events_ajax(request, server_id):
+    server = get_object_or_404(Server.active.select_related(), pk=server_id)
+    year = request.GET.get('year', '')
+    month = request.GET.get('month', '')
+    day = request.GET.get('day', '')
+    events = TaskEvent.objects.filter(server=server)
+    if year and month and day:
+        events = events.filter(date__year=year, date__month=month, date__day=day)
+    elif year and month:
+        events = events.filter(date__year=year, date__month=month)
+    elif year:
+        events = events.filter(date__day=year)
+    events_json = [{
+        "date": str(int(mktime(event.date.timetuple())*1000)),
+        "type": event.get_task_type_display(),
+        "title": event.name, "server_id": str(server_id),
+        "repeat": str(event.repeat),
+        "event_id": str(event.id),
+        "status": event.get_status_display()
+    } for event in events]
+    return [] if not events else events_json
+
+
+@ajax_request
+@require_POST
+def events_delete_ajax(request, server_id):
+    server = get_object_or_404(Server.active.select_related(), pk=server_id)
+    user = get_user(request)
+    if not user:
+        raise Http404
+    if server.owner != user:
+        raise Http404
+    event_id = request.POST.get('event_id', None)
+    if not event_id:
+        raise Http404
+    event = get_object_or_404(TaskEvent.objects.all(), pk=event_id)
+    event.delete()
+    return {}
+
+
+@ajax_request
+def events_add_ajax(request, server_id):
+    server = get_object_or_404(Server.active.select_related(), pk=server_id)
+    user = get_user(request)
+    if not user:
+        raise Http404
+    if server.owner != user:
+        raise Http404
+    form = TaskEventForm()
+    if request.method == 'POST':
+        form = TaskEventForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            date = form.cleaned_data['date']
+            repeat = form.cleaned_data['repeat']
+            task_type = form.cleaned_data['task_type']
+            event = TaskEvent(server=server, name=name, task_type=task_type, date=date, repeat=repeat, status=TaskEvent.STATUS_ACTIVE)
+            event.save()
+            task = None
+            if event.task_type == TaskEvent.TYPE_START:
+                task = start_server.apply_async((event.id,), eta=event.date)
+            elif event.task_type == TaskEvent.TYPE_STOP:
+                task = stop_server.apply_async((event.id,), eta=event.date)
+            elif event.task_type == TaskEvent.TYPE_RESTART:
+                task = restart_server.apply_async((event.id,), eta=event.date)
+            if task:
+                event.task_id = task.task_id
+            event.save()
+            return []
+    return render_to_response('mod/event_form.html', {
+        'server': server,
+        'event_form': form
+    }, context_instance=RequestContext(request))

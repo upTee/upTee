@@ -131,7 +131,15 @@ class MapAdmin(admin.ModelAdmin):
     def owner(self, obj):
         return obj.server.owner
 
+
+class TaskEventAdmin(admin.ModelAdmin):
+    list_display = ('name', 'task_type', 'date', 'status')
+    list_filter = ('task_type', 'status')
+    form = TaskEventAdminForm
+
+
 admin.site.register(Mod, ModAdmin)
 admin.site.register(Server, ServerAdmin)
 admin.site.register(Port, PortAdmin)
 admin.site.register(Map, MapAdmin)
+admin.site.register(TaskEvent, TaskEventAdmin)

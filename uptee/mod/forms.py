@@ -4,8 +4,9 @@ import tarfile
 import zipfile
 from django import forms
 from django.contrib.auth.models import User
+from django.utils import timezone
 from accounts.models import Moderator
-from mod.models import Mod, Server
+from mod.models import Mod, Server, TaskEvent
 
 
 class ModAdminForm(forms.ModelForm):
@@ -102,3 +103,29 @@ class ModeratorForm(forms.Form):
 
 class CommandForm(forms.Form):
     command = forms.CharField(max_length=500)
+
+
+class TaskEventAdminForm(forms.ModelForm):
+
+    class Meta:
+        model = TaskEvent
+
+    def clean_date(self):
+        date = self.cleaned_data['date']
+        if date <= timezone.now():
+            raise forms.ValidationError('Choose a time in the future.')
+        return date
+
+    def clean_repeat(self):
+        repeat = self.cleaned_data['repeat']
+        if repeat < 0:
+            raise forms.ValidationError('Time has to be positive.')
+        return repeat
+
+
+class TaskEventForm(TaskEventAdminForm):
+    date = forms.DateTimeField(help_text='MM/DD/YYYY hh:mm:ss')
+
+    class Meta:
+        model = TaskEvent
+        fields = ('name', 'task_type', 'date', 'repeat')

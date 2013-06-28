@@ -254,3 +254,21 @@ form.only_button {
         margin-top: 10px;
         text-align: right;
     }
+
+/* event form box */
+
+#event_form {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    right: 50px;
+    background: rgb(244, 244, 244);
+    padding: 10px;
+    border: 1px solid rgb(199, 199, 199);
+    box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
+    z-index: 3;
+}
+
+#event_form .loading {
+    text-align: center;
+}

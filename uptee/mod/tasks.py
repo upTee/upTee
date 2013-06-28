@@ -4,6 +4,7 @@ from subprocess import Popen
 from celery import task
 from django.contrib.auth.models import User
 from django.utils import timezone
+from mod.models import TaskEvent
 from settings import MEDIA_ROOT, SERVER_EXEC
 
 
@@ -34,3 +35,74 @@ def check_server_state():
         server.get_server_info()
         if server.automatic_restart and old_is_online and not server.is_online:
             server.set_online()
+
+
+@task()
+def start_server(event_id):
+    event = TaskEvent.objects.filter(pk=event_id)
+    if event:
+        event = event[0]
+    else:
+        return
+    event.server.set_online()
+    if not event.repeat:
+        event.status = 2  # done
+        event.save(update_fields=['status'])
+    else:
+        next_run = event.date + timedelta(minutes=event.repeat)
+        if timezone.now() >= next_run:
+            event.status = 2  # done
+            event.save(update_fields=['status'])
+            return
+        task = start_server.apply_async((event_id,), eta=next_run)
+        event.date = next_run
+        event.task_id = task.task_id
+        event.save(update_fields=['date', 'task_id'])
+
+
+@task()
+def stop_server(event_id):
+    event = TaskEvent.objects.filter(pk=event_id)
+    if event:
+        event = event[0]
+    else:
+        return
+    event.server.set_offline()
+    if not event.repeat:
+        event.status = 2  # done
+        event.save(update_fields=['status'])
+    else:
+        next_run = event.date + timedelta(minutes=event.repeat)
+        if timezone.now() >= next_run:
+            event.status = 2  # done
+            event.save(update_fields=['status'])
+            return
+        task = stop_server.apply_async((event_id,), eta=next_run)
+        event.date = next_run
+        event.task_id = task.task_id
+        event.save(update_fields=['date', 'task_id'])
+
+
+@task()
+def restart_server(event_id):
+    event = TaskEvent.objects.filter(pk=event_id)
+    if event:
+        event = event[0]
+    else:
+        return
+    if event.server.is_online:
+        event.server.set_offline()
+    event.server.set_online()
+    if not event.repeat:
+        event.status = 2  # done
+        event.save(update_fields=['status'])
+    else:
+        next_run = event.date + timedelta(minutes=event.repeat)
+        if timezone.now() >= next_run:
+            event.status = 2  # done
+            event.save(update_fields=['status'])
+            return
+        task = restart_server.apply_async((event_id,), eta=next_run)
+        event.date = next_run
+        event.task_id = task.task_id
+        event.save(update_fields=['date', 'task_id'])
