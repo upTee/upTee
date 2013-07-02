@@ -247,6 +247,47 @@ html, body {
 }
 /* -----END Custom Box Frames---------------- */
 
+
+/*----Notifications-----*/
+
+
+
+.notification {
+    position: relative;
+    color: #fff;
+    background: #666;
+    width: 500px;
+    height: 20px;
+    padding: 15px 10px 15px 60px;
+    margin: 20px auto 20px auto;
+}
+
+.notification.info {
+    background: url('../icons/info.png') no-repeat, #666;
+}
+
+
+.notification.sucess{
+    background: url('../icons/sucess.png') no-repeat, #666;
+}
+
+.notification.warning{
+    background: url('../icons/warning.png') no-repeat, #666;
+}
+
+.notification.error{
+    background: url('../icons/error.png') no-repeat, #666;
+}
+
+.notificationClose{
+    background: url('../icons/close.png') no-repeat center;
+    height: 20px;
+    width: 20px;
+    float: right;
+}
+
+/*----END Notifications-----*/
+
 .blog_box div.right {
     float: right;
 }

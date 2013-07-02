@@ -1,6 +1,7 @@
 <noscript>
-    <div class="notification info">
+    <div class="notification warning">
         Please activate JavaScript to see the website correctly
+        <div class="notificationClose"></div>
     </div>
 </noscript>
 
@@ -8,6 +9,7 @@
     {% if request.browser.name == 'Firefox' and request.browser.version < 4.0 or request.browser.name == 'Chrome' and request.browser.version < 10.0 or request.browser.name == 'Opera' and request.browser.version < 10.0 or request.browser.name == 'Safari' and request.browser.version < 5.0 or request.browser.name == 'IE' and request.browser.version < 9.0 %}
         <div class="notification info">
             Your Browser just sux!
+        <div class="notificationClose"></div>
         </div>
     {% endif %}
 {% endif %}
@@ -15,6 +17,8 @@
 {% for message in messages %}
     <div class="notification {{ message.tags }}">
         {{ message }}
-        <div class="notification_close"></div>
+        <div class="notificationClose"></div>
     </div>
 {% endfor %}
+
+<div class="clear"></div>
