@@ -24,6 +24,7 @@
         {% endif %}
         <link rel="stylesheet" href="{{ STATIC_URL }}new_design/css/forms.css" type="text/css">
         <link rel="stylesheet" href="{{ STATIC_URL }}new_design/css/size.css" type="text/css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}new_design/css/font-awesome.min.css" type="text/css"><!-- Font Awesome Icons -->
 
         <script src="{{ STATIC_URL }}js/jquery-1.8.2.min.js"></script>
         <script src="{{ STATIC_URL }}js/jquery.easing.1.3.min.js"></script>
@@ -129,14 +130,14 @@
             {% url 'server_console' server.id as url_console %}
             <!-- end url definitions -->
 
-            <li class="menu_head" data-serverid="{{ server.id }}"><p>{{ server|get_option:'sv_name' }}<p>
+            <li class="menu_head" data-serverid="{{ server.id }}"><p><i class="icon-chevron-right"></i> {{ server|get_option:'sv_name' }}<p>
                 <ul style="display: none;">
                     <li class="entry{% current request url_info %}"><a href="{{ url_info }}">Info</a></li>
                     {% if server.config_votes.all %}
                         <li class="entry{% current request url_votes %}"><a href="{{ url_votes }}">Votes</a></li>
                     {% endif %}
-                    <li class="entry{% current request url_upload_map %}"><a href="{{ url_upload_map }}">Upload Map</a></li>
-                    <li class="entry{% current request url_edit_settings %}"><a href="{{ url_edit_settings }}">Edit Settings</a></li>
+                    <li class="entry{% current request url_upload_map %}"><a href="{{ url_upload_map }}"><i class="icon-upload-alt"></i> Upload Map</a></li>
+                    <li class="entry{% current request url_edit_settings %}"><a href="{{ url_edit_settings }}"><i class="icon-pencil"></i> Edit Settings</a></li>
                     <li class="entry{% current request url_edit_votes %}"><a href="{{ url_edit_votes }}">Edit Votes</a></li>
                     {% if server.config_available_rconcommands.all %}
                         <li class="entry{% current request url_edit_rcon_commands %}"><a href="{{ url_edit_rcon_commands }}">Commands</a></li>
@@ -197,12 +198,12 @@
         <div id="usermenu">
             <ul>
                 {% if user.is_authenticated %}
-                <li><a href="#">Fisico</a></li>
+                <li><a href="#"><i class="icon-user"></i> Fisico</a></li>
                 <li><a href="#"><img class="gravatar" src="{% gravatar_for_user user 40 %}"></a></li>
-                <li><a href="#">Settings</a></li>
-                <li><a href="{% url 'logout' %}">Logout!</a></li>
+                <li><a href="#"><i class="icon-cog"></i> Settings</a></li>
+                <li><a href="{% url 'logout' %}"><i class="icon-off"></i> Logout!</a></li>
                 {% else %}
-                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'login' %}"><i class="icon-signin"></i> Login</a></li>
                 {% endif %}
             </ul>
         </div>

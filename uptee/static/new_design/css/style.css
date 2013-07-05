@@ -73,6 +73,7 @@ html, body {
     display: block;
     color: #fff;
     text-align: center;
+    text-decoration: none;
 }
 
 #menu li .entry.current {
