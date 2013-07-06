@@ -198,7 +198,7 @@
         <div id="usermenu">
             <ul>
                 {% if user.is_authenticated %}
-                <li><a href="#"><i class="icon-user"></i> Fisico</a></li>
+                <li><a href="#"><i class="icon-user"></i> {{ user.username }}</a></li>
                 <li><a href="#"><img class="gravatar" src="{% gravatar_for_user user 40 %}"></a></li>
                 <li><a href="#"><i class="icon-cog"></i> Settings</a></li>
                 <li><a href="{% url 'logout' %}"><i class="icon-off"></i> Logout!</a></li>
