@@ -159,16 +159,12 @@ html, body {
 
 #content_container .spacer{
     width: 100%;
-    height: 50px;
+    height: 20px;
 }
 
 #breadcrumb {
     border-bottom: 1px solid #ccc;
     height: 25px;
-    position: absolute;
-    top: 30px;
-    left: 30px;
-    right: 30px;
 }
 
     #breadcrumb .icon {
@@ -248,19 +244,21 @@ html, body {
 }
 /* -----END Custom Box Frames---------------- */
 
+/*----login messages----*/
+#login_messages {
+    padding-top: 20px;
+}
+/*----END login messages----*/
 
 /*----Notifications-----*/
-
-
-
 .notification {
     position: relative;
     color: #fff;
     background: #666;
-    width: 500px;
+    width: 555px;
     height: 20px;
     padding: 15px 10px 15px 60px;
-    margin: 20px auto 20px auto;
+    margin: 0 auto 20px;
 }
 
 .notification.info {
@@ -268,7 +266,7 @@ html, body {
 }
 
 
-.notification.sucess{
+.notification.success{
     background: url('../icons/sucess.png') no-repeat, #666;
 }
 
@@ -285,7 +283,13 @@ html, body {
     height: 20px;
     width: 20px;
     float: right;
+    opacity: 0.5;
 }
+
+    .notificationClose:hover {
+        opacity: 1.0;
+        cursor: pointer;
+    }
 
 /*----END Notifications-----*/
 

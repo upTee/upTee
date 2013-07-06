@@ -77,23 +77,6 @@
 
         {% comment %}
 
-        MESSAGES
-        is for the global message like the java script one.
-
-        {% endcomment %}
-
-        {% include "messages.html" %}
-
-        {% comment %}
-
-        END MESSAGES
-        is for the global message like the java script one.
-        
-        {% endcomment %}
-
-
-        {% comment %}
-
         BLOCK body
         Contains everytion but the header
 
@@ -239,6 +222,8 @@
         {% endcomment %}
 
         <div id="content_container">
+
+            {% include "messages.html" %}
 
             <div id="breadcrumb">
                 <div class="icon"></div>

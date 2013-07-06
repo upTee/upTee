@@ -1,4 +1,12 @@
 $(document).ready(function() {
+
+    // notification closer
+    $('.notificationClose').live('click', function() {
+        $(this).parent().animate({opacity: 0, height: 0, paddingTop: 0, paddingBottom: 0, marginTop: 0}, 300, function() {
+            $(this).remove();
+        });
+    });
+
     // fold button logic
     $('#fold_button').click(function() {
         if($('#fold_button .icon').length) {
