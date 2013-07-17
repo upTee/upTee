@@ -18,17 +18,19 @@ context variables:
 
 {% block content %}
 
-<div class="server_detail_terminal">
-    <h2>Console</h2>
-    <div id="terminal" data-serverid="{{ server.id }}">
-        <div id="terminal_entry" class="scroll_pane">
-            <!--<p>output will be here</p>-->
+<div class="content_box gray">
+        <div class="content_headline gray">Terminal</div>
+        <div class="content">
+            <div id="terminal" data-serverid="{{ server.id }}">
+                <div id="terminal_entry" class="scroll_pane">
+                    <!--<p>output will be here</p>-->
+                </div>
+                <div id="terminal_enter">
+                    <div><p>&gt;</p></div>
+                    <div><input type="text" id="terminal_command_input" value=""></div>
+                </div>
+            </div>
         </div>
-        <div id="terminal_enter">
-            <div><p>&gt;</p></div>
-            <div><input type="text" id="terminal_command_input" value=""></div>
-        </div>
-    </div>
 </div>
 
 {% endblock content %}

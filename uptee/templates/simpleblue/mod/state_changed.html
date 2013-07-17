@@ -13,6 +13,11 @@ context variables:
 <!-- Sorry, I don't like it either. -->
 <meta http-equiv="refresh" content="2;url={{ next }}">
 
-<p>{% if map_exists %}Server status changed.{% else %}<span class="config_error">Map does not exist!</span>{% endif %} You will be redirected in few seconds. If not click <a href="{{ next }}">here</a>.</p>
+	<div class="content_box">
+        <div class="content_headline">Redirect</div>
+        <div class="content">
+			<p>{% if map_exists %}Server status changed.{% else %}<span class="config_error">Map does not exist!</span>{% endif %} You will be redirected in few seconds. If not click <a href="{{ next }}">here</a>.</p>
+		</div>
+	</div>
 
 {% endblock content %}

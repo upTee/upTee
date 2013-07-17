@@ -20,60 +20,77 @@ context variables:
 
 {% block content %}
 
-<div class="server_detail_edit">
-    <form action="{% url 'update_settings' server.id %}" method="post">
-        <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
-        {% if server.owner == user or moderator and moderator.edit_automatic_restart_allowed %}
-            <h2>General options</h2>
-            <table class="form_table">
-                <tbody>
-                    <tr>
-                        <th><label for="automatic_restart">Auto restart server:</label></th>
-                        <td>
-                            <input type="checkbox" name="automatic_restart" id="automatic_restart"{% if server.automatic_restart != 0 %} checked="checked"{% endif %}>
-                            <label class="checkbox" for="automatic_restart"></label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><label for="map_download_allowed">Allow map downloads:</label></th>
-                        <td>
-                            <input type="checkbox" name="map_download_allowed" id="map_download_allowed"{% if server.map_download_allowed != 0 %} checked="checked"{% endif %}>
-                            <label class="checkbox" for="map_download_allowed"></label>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        {% endif %}
-        <h2>Config options</h2>
-        <table class="form_table">
-            <tbody>
-                {% for option in options %}
-                <tr>
-                    <th><label for="{{ option.command }}">{{ option.command }}:</label></th>
-                    {% if option.get_widget_display == 'textarea' %}
-                        <td><textarea name="{{ option.command }}" id="{{ option.command }}"/>{{ option.value|le }}</textarea></td>
-                    {% elif option.get_widget_display == 'checkbox' %}
-                        <td>
-                            <input type="checkbox" name="{{ option.command }}" id="{{ option.command }}"{% if option.value != '0' %} checked="checked"{% endif %}>
-                            <label class="checkbox" for="{{ option.command }}"></label>
-                        </td>
-                    {% elif option.get_widget_display == 'select' %}
-                        <td>
-                            <select name="{{ option.command }}" id="{{ option.command }}">
-                                {% for selection in option.selections %}
-                                    <option value="{{ selection }}"{% if selection == option.get_value %} selected="selected"{% endif %}>{{ selection }}</option>
-                                {% endfor %}
-                            </select>
-                        </td>
-                    {% else %}
-                        <td><input type="{{ option.get_widget_display }}" name="{{ option.command }}" value="{{ option.value }}" id="{{ option.command }}"{% if option.get_widget_display == 'password' %} autocomplete="off"{% endif %}></td>
-                    {% endif %}
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <p><input class="button" type="submit" value="Update settings"></p>
-    </form>
-</div>
+
+        <form action="{% url 'update_settings' server.id %}" method="post">
+            <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
+            {% if server.owner == user or moderator and moderator.edit_automatic_restart_allowed %}
+
+
+        <div class="content_box w450">
+            <div class="content_headline">Config Options</div>
+            <div class="content">
+                <table class="form_table">
+                    <tbody>
+                        {% for option in options %}
+                        <tr>
+                            <th><label for="{{ option.command }}">{{ option.command }}:</label></th>
+                            {% if option.get_widget_display == 'textarea' %}
+                                <td><textarea name="{{ option.command }}" id="{{ option.command }}"/>{{ option.value|le }}</textarea></td>
+                            {% elif option.get_widget_display == 'checkbox' %}
+                                <td>
+                                    <input type="checkbox" name="{{ option.command }}" id="{{ option.command }}"{% if option.value != '0' %} checked="checked"{% endif %}>
+                                    <label class="checkbox" for="{{ option.command }}"></label>
+                                </td>
+                            {% elif option.get_widget_display == 'select' %}
+                                <td>
+                                    <select name="{{ option.command }}" id="{{ option.command }}">
+                                        {% for selection in option.selections %}
+                                            <option value="{{ selection }}"{% if selection == option.get_value %} selected="selected"{% endif %}>{{ selection }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                            {% else %}
+                                <td><input type="{{ option.get_widget_display }}" name="{{ option.command }}" value="{{ option.value }}" id="{{ option.command }}"{% if option.get_widget_display == 'password' %} autocomplete="off"{% endif %}></td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <div class="content_box w300">
+            <div class="content_headline">General Options</div>
+            <div class="content">
+                <table class="form_table">
+                    <tbody>
+                        <tr>
+                            <th><label for="automatic_restart">Auto restart server:</label></th>
+                            <td>
+                                <input type="checkbox" name="automatic_restart" id="automatic_restart"{% if server.automatic_restart != 0 %} checked="checked"{% endif %}>
+                                <label class="checkbox" for="automatic_restart"></label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label for="map_download_allowed">Allow map downloads:</label></th>
+                            <td>
+                                <input type="checkbox" name="map_download_allowed" id="map_download_allowed"{% if server.map_download_allowed != 0 %} checked="checked"{% endif %}>
+                                <label class="checkbox" for="map_download_allowed"></label>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            {% endif %}
+            </div>
+        </div>
+
+    <div class="content_box w200 red">
+            <div class="content_headline red">Update Settings</div>
+            <div class="content">
+                <p><input class="button" type="submit" value="Update settings"></p>
+                </form>
+            </div>
+    </div>
 
 {% endblock content %}

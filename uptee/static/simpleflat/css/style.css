@@ -107,7 +107,7 @@ html, body {
     width: 250px;
     position: absolute;
     left: 0px;
-    top: 100px;
+    top: 50px;
     bottom: 0;
     overflow: auto;
     z-index: 1;

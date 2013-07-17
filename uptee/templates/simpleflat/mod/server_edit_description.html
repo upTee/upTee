@@ -18,13 +18,17 @@ context variables:
 
 {% block content %}
 
-<div class="server_detail_description_edit">
-    <h2>Edit description</h2>
-    <form method="post" action="{{ request.path }}">
-        <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
-        {{ description_form.as_p }}
-        <input class="button" type="submit" value="Update">
-    </form>
-</div>
+    <div class="content_box">
+        <div class="content_headline">Edit description</div>
+        <div class="content">
+            <form method="post" action="{{ request.path }}">
+                <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
+                {{ description_form.as_p }}
+                <br>
+                <input class="button" type="submit" value="Update">
+
+            </form>
+        </div>
+    </div>
 
 {% endblock content %}
