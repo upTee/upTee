@@ -141,7 +141,7 @@ html, body {
 
 #menu li p:hover{
     background: #dddddd;
-    border-bottom: 1px solid #009bff;
+    border-bottom: 1px solid #378ce1;
 }
 
 #content_container {
@@ -310,8 +310,8 @@ html, body {
 /* server info */
 
 .content h1 {
-    color: #009bff;
-    border-bottom: 1px solid #009bff;
+    color: #378ce1;
+    border-bottom: 1px solid #378ce1;
     font-size: 18px;
     padding:0 0 5px 0;
     width: 300px;
