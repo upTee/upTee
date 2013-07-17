@@ -30,14 +30,14 @@ $ . bin/activate
 
 ```shell
 $ mkdir pkg && cd pkg/
-$ wget 'http://projects.unbit.it/downloads/uwsgi-1.4.4.tar.gz'
+$ wget 'http://projects.unbit.it/downloads/uwsgi-latest.tar.gz'
 ```
 
   &nbsp;&nbsp;4\. Compile uWSGI. _You may have to install missing packages to compile uWSGI._
 
 ```shell
-$ tar -xzvf uwsgi-1.4.4.tar.gz
-$ cd uwsgi-1.4.4/
+$ tar -xzvf uwsgi-latest.tar.gz
+$ cd uwsgi-*/
 $ make
 ```
 
