@@ -19,12 +19,16 @@ context variables:
 
 {% block content %}
 
-<div class="body">
-    <form action="{{ request.path }}" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
-        {{ form.as_p }}
-        <p><input class="button" type="submit" value="Upload"></p>
-    </form>
+<div class="content_box w300">
+        <div class="content_headline"><i class="icon-upload-alt"></i> Upload Map</div>
+        <div class="content">
+            <form action="{{ request.path }}" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
+                {{ form.as_p }}
+                <br \>
+                <p><input class="button" type="submit" value="Upload"></p>
+            </form>
+        </div>
 </div>
 
 {% endblock content %}

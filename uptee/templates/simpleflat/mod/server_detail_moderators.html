@@ -18,21 +18,21 @@ context variables:
 
 {% block content %}
 
-<div class="server_detail_maplist">
-    <h2>Moderators</h2>
-    <div class="maplist_data">
-    {% for moderator in server.moderators.all %}
-        <p><a href="{% url 'server_edit_moderator' server.id moderator.user.id %}">{{ moderator.user.username }}</a></p>
-    {% empty %}
-        <p><strong>No moderators here!</strong></p>
-    {% endfor %}
+    <div class="content_box w300">
+        <div class="content_headline">Moderators</div>
+        <div class="content">
+            {% for moderator in server.moderators.all %}
+                <p><a href="{% url 'server_edit_moderator' server.id moderator.user.id %}">{{ moderator.user.username }}</a></p>
+            {% empty %}
+                <p><strong>No moderators here!</strong></p>
+            {% endfor %}
+            
+            <form class="smallform" method="post" action="{{ request.path }}">
+                <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
+                {{ moderator_form.as_table }}
+                <p><input class="button" type="submit" value="Add moderator"></p>
+            </form>
+        </div>
     </div>
-</div>
-
-<form class="smallform" method="post" action="{{ request.path }}">
-    <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
-    {{ moderator_form.as_table }}
-    <p><input class="button" type="submit" value="Add moderator"></p>
-</form>
 
 {% endblock content %}

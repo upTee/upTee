@@ -84,10 +84,6 @@
 
         {% block body %}
 
-        <!-- just a filler for making space to the menu frame -->
-        <div id="menufiller"></div>
-
-
         {% comment %}
 
         MENUFRAME
@@ -115,9 +111,9 @@
 
             <li class="menu_head" data-serverid="{{ server.id }}"><p><i class="icon-chevron-right"></i> {{ server|get_option:'sv_name' }}<p>
                 <ul style="display: none;">
-                    <li class="entry{% current request url_info %}"><a href="{{ url_info }}">Info</a></li>
+                    <li class="entry{% current request url_info %}"><a href="{{ url_info }}"><i class="icon-info-sign"></i> Info</a></li>
                     {% if server.config_votes.all %}
-                        <li class="entry{% current request url_votes %}"><a href="{{ url_votes }}">Votes</a></li>
+                        <li class="entry{% current request url_votes %}"><a href="{{ url_votes }}"><i class="icon-question-sign"></i> Votes</a></li>
                     {% endif %}
                     <li class="entry{% current request url_upload_map %}"><a href="{{ url_upload_map }}"><i class="icon-upload-alt"></i> Upload Map</a></li>
                     <li class="entry{% current request url_edit_settings %}"><a href="{{ url_edit_settings }}"><i class="icon-pencil"></i> Edit Settings</a></li>
@@ -129,7 +125,7 @@
                         <li class="entry{% current request url_edit_tunes %}"><a href="{{ url_edit_tunes }}">Edit Tunings</a></li>
                     {% endif %}
                     {% if server.is_online %}
-                        <li class="entry{% current request url_console %}"><a href="{{ url_console }}">Console</a></li>
+                        <li class="entry{% current request url_console %}"><a href="{{ url_console }}"><i class="icon-terminal"></i> Terminal</a></li>
                     {% endif %}
                     <li class="entry{% current request url_change_mod %}"><a href="{{ url_change_mod }}">Change Mod</a></li>
                     <li class="entry{% current request url_moderators %}"><a href="{{ url_moderators }}">Moderators</a></li>

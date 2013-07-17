@@ -19,19 +19,23 @@ context variables:
 
 {% block content %}
 
-<form action="{% url 'update_tunes' server.id %}" method="post">
-    <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
-    <table class="form_table">
-        <tbody>
-            {% for tune in tunes %}
-            <tr>
-                <th><label for="{{ tune.command }}">{{ tune.command }}:</label></th>
-                <td><input type="text" name="{{ tune.command }}" value="{{ tune.value }}" id="{{ tune.command }}" pattern="-?(?:\d+|\d*\.\d+)" title="Must be a floating point value"></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <p><input class="button" type="submit" value="Update tunings"></p>
-</form>
-
+    <div class="content_box">
+        <div class="content_headline">Tunes</div>
+        <div class="content">
+            <form action="{% url 'update_tunes' server.id %}" method="post">
+                <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
+                <table class="form_table">
+                    <tbody>
+                        {% for tune in tunes %}
+                        <tr>
+                            <th><label for="{{ tune.command }}">{{ tune.command }}:</label></th>
+                            <td><input type="text" name="{{ tune.command }}" value="{{ tune.value }}" id="{{ tune.command }}" pattern="-?(?:\d+|\d*\.\d+)" title="Must be a floating point value"></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <p><input class="button" type="submit" value="Update tunings"></p>
+            </form>
+        </div>
+    </div>
 {% endblock content %}

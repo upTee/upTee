@@ -1,3 +1,26 @@
+.form_table { 
+    border-collapse: separate;
+    border-spacing: 0 20px;
+    border: none;
+}
+
+    .form_table td {
+        padding-left: 20px;
+        text-align: left;
+        border: none;
+    }
+
+    .form_table th {
+        text-align: right;
+        border: none;
+    }
+
+    .form_table tr  {
+        margin-top: 10px;
+        text-align: right;
+        border: none;
+    }
+
 #login_container {
     position: relative;
     margin: 75px auto 0 auto;
@@ -107,4 +130,152 @@
 
     #login_container input[type=submit]:active{
         background: #479038;
+    }
+
+
+/* -----Content------ */
+
+.content input[type=submit]{
+    background: #666;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 15px;
+    cursor: pointer;
+    color: #fff;
+    border: none;
+    min-width: 90px;
+    min-height: 32px;
+    padding: 5px 10px 5px 10px;
+}
+
+    .content input[type=submit]:hover{
+        background: #777;
+    }
+
+    .content input[type=submit]:active{
+        background: #555;
+    }
+
+
+.content input[type=text], .content input[type=password] {
+    background: #fff;
+    width: 200px;
+    border: 1px solid #666;
+    padding: 5px;
+}
+
+
+   .content input[type=text]:focus, .content input[type=password]:focus{
+    border: 1px solid #378ce1;
+    }
+
+    .content input.error[type=text], .content input.error[type=password]{
+    border: 1px solid #e63a3a;
+    }
+
+
+textarea {
+    background: #fff;
+    width: 200px;
+    min-width: 200px;
+    max-width: 530px;
+    height: 100px;
+    border: 1px solid #666;
+    padding: 5px;
+}
+
+    textarea:focus {
+        border: 1px solid #378ce1;
+    }
+
+
+input[type=checkbox] {
+    display: none;
+}
+
+input[type=checkbox]
++ label.checkbox {
+    background: url('../img/checkbox.png') no-repeat;
+    background-position:0 0;
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+}
+
+    input[type=checkbox]
+        + label.checkbox:hover {
+            background: url('../img/checkbox.png') no-repeat;
+            background-position:0 -20px;
+            height: 20px;
+            width: 20px;
+        }
+
+
+input[type=checkbox]:checked
++ label.checkbox {
+    background: url('../img/checkbox.png') no-repeat;
+    background-position:0 -40px;
+    height: 20px;
+    width: 20px;
+}
+
+    input[type=checkbox]:checked
+    + label.checkbox:hover {
+        background: url('../img/checkbox.png') no-repeat;
+        background-position:0 -60px;
+        height: 20px;
+        width: 20px;
+    }
+
+
+
+input[type=radio] {
+    display: none;
+}
+
+input[type=radio]
++ label.radio {
+    background: url('../img/radio.png') no-repeat;
+    background-position:0 0;
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+}
+
+    input[type=radio]
+        + label.radio:hover {
+            background: url('../img/radio.png') no-repeat;
+            background-position:0 -20px;
+            height: 20px;
+            width: 20px;
+        }
+
+
+input[type=radio]:checked
++ label.radio {
+    background: url('../img/radio.png') no-repeat;
+    background-position:0 -40px;
+    height: 20px;
+    width: 20px;
+}
+
+    input[type=radio]:checked
+    + label.radio:hover {
+        background: url('../img/radio.png') no-repeat;
+        background-position:0 -60px;
+        height: 20px;
+        width: 20px;
+    }   
+
+
+select {
+    background: #fff;
+    width: 200px;
+    padding: 5px;
+    border: 1px solid #666;
+    margin: 20px;
+}
+
+    select:focus {
+        border: 1px solid #378ce1;
     }
