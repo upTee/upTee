@@ -109,7 +109,7 @@
             {% url 'server_console' server.id as url_console %}
             <!-- end url definitions -->
 
-            <li class="menu_head" data-serverid="{{ server.id }}"><p><i class="icon-chevron-right"></i> {{ server|get_option:'sv_name' }}<p>
+            <li class="menu_head" data-serverid="{{ server.id }}"><p><i class="icon-chevron-right"></i> {{ server|get_option:'sv_name' }}<p><!-- if open <i class="icon-chevron-down"></i> -->
                 <ul style="display: none;">
                     <li class="entry{% current request url_info %}"><a href="{{ url_info }}"><i class="icon-info-sign"></i> Info</a></li>
                     {% if server.config_votes.all %}
