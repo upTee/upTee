@@ -336,3 +336,55 @@ html, body {
     float: left;
     margin-right: 50px;
 }
+
+/* ---terminal--- */
+#terminal {
+    background-color: #272822;
+    width: 705px;
+    color: #D4D4D4;
+    box-shadow: 1px 1px 2px 2px #272822;
+    margin: 10px;
+    font-size: 14px;
+}
+
+#terminal_command_input {
+    background-color: #272822;
+    border: none;
+    color: #E6E6E6;
+    width: 671px;
+    font-size: 14px;
+}
+
+#terminal_enter {
+    padding: 0px 5px;
+}
+
+#terminal_enter div:first-child {
+    width: 14px;
+    float: left;
+    font-size: 22px;
+}
+
+#terminal_entry {
+    height: 300px;
+    padding: 5px;
+    overflow: auto;
+    border-bottom: thin solid #45473D;
+}
+/* ---END terminal--- */
+
+
+/* ---vote delete / command delete button--- */
+.delete_vote,  .delete_command{
+    background: url('../icons/close_icon.png') no-repeat center;
+    height: 15px;
+    width: 15px;
+    float: right;
+    opacity: 0.5;
+}
+
+.delete_vote:hover,  .delete_command:hover{
+    opacity: 1.0;
+    cursor: pointer;
+}
+/* ---End vote delete / command delete button--- */
