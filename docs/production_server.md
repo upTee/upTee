@@ -6,7 +6,7 @@ The following manual shows how to install upTee on a linux server using nginx an
 Installation
 ------------
 ###Install all requirements
-Be sure to install all requirements shown in the [README](https://github.com/upTee/upTee/blob/master/README.md).    
+Be sure to install all requirements shown in the [Home page](Home).    
 __Do not install uWSGI yet!__    
 In case the command _pip_ is not available after installing _setuptools_ run the following command:    
 ```shell
@@ -52,6 +52,7 @@ $ mv uwsgi $VIRTUAL_ENV/bin/uwsgi
   &nbsp;&nbsp;1\. Clone upTee    
 
 ```shell
+$ cd $VIRTUAL_ENV
 $ git clone git://github.com/upTee/upTee.git web
 ```
 
@@ -60,11 +61,12 @@ $ git clone git://github.com/upTee/upTee.git web
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Switch into the _web_ directory and run the following command:    
 ```shell
 $ pip install -r requirements.txt
+$ pip install -r requirements_production.txt
 ```
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If an error appears install the missing packages. The error messages are obvious.    
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In windows download packages which fails from [here](http://www.lfd.uci.edu/~gohlke/pythonlibs/).    
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Repeat the command until the installation finishes successfully!    
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If there are still problems with some modules have a look at the [Troubleshooting section](https://github.com/upTee/upTee/blob/master/docs/production_server.md#troubleshooting).    
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If there are still problems with some modules have a look at the Troubleshooting section at the end of this page.
 
   &nbsp;&nbsp;3\. Set up the website    
 
@@ -95,9 +97,16 @@ $ python manage.py create_portmap 8300 8320
 ```
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This command adds the ports 8300 till 8320 to upTee. Decide yourself which ports you want to use and how many you need.   
 
-  &nbsp;&nbsp;6\. Set up nginx   
+  &nbsp;&nbsp;6\. Link static admin_tools files    
 
-  Create the _sock_ folder.    
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The static admin_tools files are devided over more than one folder which will cause problems. Thats why we simply link them in one server.    
+```shell
+$ $VIRTUAL_ENV/web/scripts/admin_tool_statics
+```
+
+  &nbsp;&nbsp;7\. Set up nginx   
+
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create the _sock_ folder.    
 ```shell
 mkdir $VIRTUAL_ENV/sock
 ```
@@ -106,50 +115,59 @@ mkdir $VIRTUAL_ENV/sock
 ```
 # uWSGI serving Django.
 upstream django {
-	# Distribute requests to servers based on client IP. This keeps load
-	# balancing fair but consistent per-client. In this instance we're
-	# only using one uWGSI worker anyway.
-	ip_hash;
-	server unix:/path/to/virtualenv/sock/uwsgi.sock;
+  # Distribute requests to servers based on client IP. This keeps load
+  # balancing fair but consistent per-client. In this instance we're
+  # only using one uWGSI worker anyway.
+  ip_hash;
+  server unix:/path/to/virtualenv/sock/uwsgi.sock;
 }
 
 server {
-	listen 80;
-	server_name example.org www.example.org # your domain here!
-	underscores_in_headers on;
+  listen 80;
+  server_name example.org www.example.org; # your domain here!
 
-	# Django admin media.
-	location /media/admin/ {
-		alias /path/to/virtualenv/lib/python2.7/site-packages/django/contrib/admin/static/admin/;
-	}
+  # Django admin media.
+  location /media/admin/ {
+    alias /path/to/virtualenv/lib/python2.7/site-packages/django/contrib/admin/static/admin/;
+  }
 
-	# Your project's media directory.
-	location /media/ {
-		alias /path/to/virtualenv/web/uptee/media/;
-	}
+  # Django admin static.
+  location /static/admin/ {
+    alias /path/to/virtualenv/lib/python2.7/site-packages/django/contrib/admin/static/admin/;
+  }
 
-	# Your project's static directory.
-	location /static/ {
-		alias /path/to/virtualenv/web/uptee/static/;
-	}
+  # Django admin_tools static.
+  location /static/admin_tools/ {
+    alias /path/to/virtualenv/lib/python2.7/site-packages/admin_tools/static/admin_tools/;
+  }
 
-	# Finally, send all non-media requests to the Django server.
-	location / {
-		# touch /path/to/virtualenv/web/downtime to set the page down
-		if (-f /path/to/virtualenv/web/downtime) {
-			return 503;
-		}
+  # Your project's media directory.
+  location /media/ {
+    alias /path/to/virtualenv/web/uptee/media/;
+  }
 
-		uwsgi_pass  django;
-		include     uwsgi_params;
-		uwsgi_read_timeout 1800;
-	}
+  # Your project's static directory.
+  location /static/ {
+    alias /path/to/virtualenv/web/uptee/static/;
+  }
 
-	error_page 502 503 504 @maintenance;
-	location @maintenance {
-		root /path/to/virtualenv/web/uptee/templates/;
-		rewrite ^(.*)$ /502.html break;    
-	}
+  # Finally, send all non-media requests to the Django server.
+  location / {
+    # touch /path/to/virtualenv/web/downtime to set the page down
+    if (-f /path/to/virtualenv/web/downtime) {
+      return 503;
+    }
+
+    uwsgi_pass  django;
+    include     uwsgi_params;
+    uwsgi_read_timeout 1800;
+  }
+
+  error_page 502 503 504 @maintenance;
+  location @maintenance {
+    root /path/to/virtualenv/web/uptee/templates/;
+    rewrite ^(.*)$ /502.html break;    
+  }
 }
 ```
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Be sure to change the path to the virtualenv and put your own domain.    
@@ -203,12 +221,18 @@ After updating the website needs to be restarted to make the changes take effect
 
 Troubleshooting
 ---------------
-###error: Unable to find vcvarsall.bat
-Some modules need a C/C++ compiler to build parts of the module for performance reasons.    
-In windows it may happen that it will not find the compiler or it might be even not installed.    
-If this is the case just download module from [here](http://www.lfd.uci.edu/~gohlke/pythonlibs/) and install it. After the installation you may still get the same error.    
-Just comment out the concerned module in the _requirements.txt_.    
-Example:    
+###error: no module named Image
+Due to the installation process it might be that Pillow and PIL is installed at the same time which causes this problem.    
+Simply uninstall poth packaged and reinstall PIL.        
+```shell
+$ pip uninstall Pillow
+$ pip uninstall PIL
+$ pip install PIL
 ```
-# PIL>=1.1.7
+
+###captcha is not working
+For the captcha to work it is needed to install PIL with freetype and PNG support.    
+```shell
+$ sudo apt-get install libjpeg-dev libfreetype6 libfreetype6-dev zlib1g-dev
+$ pip install PIL
 ```

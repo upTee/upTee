@@ -16,4 +16,4 @@ python manage.py celerycam & >/dev/null 2>/dev/null
 
 cd $UPTEEDIR
 
-bin/uwsgi --socket web/sock/uwsgi.sock --daemonize var/log/uwsgi.log --post-buffering 1 --chmod-socket --module wsgi --enable-threads --pythonpath $UPTEEDIR/web/uptee/ & >/dev/null 2>/dev/null
+bin/uwsgi --socket sock/uwsgi.sock --daemonize var/log/uwsgi.log --post-buffering 1 --chmod-socket --module wsgi --enable-threads --pythonpath $UPTEEDIR/web/uptee/ & >/dev/null 2>/dev/null
