@@ -144,6 +144,35 @@ html, body {
     border-bottom: 1px solid #378ce1;
 }
 
+#footer{
+    clear: both;
+    margin: 30px auto 0 auto;
+    border-top: 1px solid #ccc;
+    height: 30px;
+}
+
+#footer ul.left{
+    float: left;
+}
+
+#footer .left li{
+    float: left;
+    text-decoration: none;
+    list-style-type: none;
+    padding: 5px 20px 5px 0;
+}
+
+#footer ul.right{
+    float: right;
+}
+
+#footer .right li{
+    float: right;
+    text-decoration: none;
+    list-style-type: none;
+    padding: 5px 20px 5px 0;
+}
+
 #content_container {
     border-left: 1px solid #ccc;
     background: #fff;
