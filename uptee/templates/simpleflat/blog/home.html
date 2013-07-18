@@ -12,6 +12,8 @@ context variables:
 
 {% block content %}
 
+
+
 {% autopaginate entry_list 5 %}
 
 {% for entry in entry_list %}
@@ -27,6 +29,7 @@ context variables:
             <div class="clear"></div>
         </div>
     </div>
+
 {% empty %}
     <div class="content_box">
         <div class="content_headline">Hello!</div>
@@ -35,5 +38,17 @@ context variables:
 {% endfor %}
 
 {% paginate %}
+
+<div id="footer">
+    <ul class="left">
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Impressum</a></li>
+    </ul>
+
+    <ul class="right">
+        <li>&copy; 2012-2013 Sascha W. &amp; David G.<br> Version: Alpha</li>
+    </ul>
+</div>
+<div class="clear"></div>
 
 {% endblock content %}
