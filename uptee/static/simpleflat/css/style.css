@@ -273,6 +273,15 @@ html, body {
     background: #56af45;
 }
 
+.content_box.yellow, .blog_box.yellow{
+    border: 2px solid #fbca04;
+}
+
+.content_headline.yellow, .blog_headline.yellow{
+    background: #fbca04;
+    color: #333;
+}
+
 .content_box.minimal, .blog_box.minimal{
     border: none;
     background: #fff;
