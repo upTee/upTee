@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% comment %}
+context variables:
+    form
+{% endcomment %}
+
+{% block title %}upTee - Settings{% endblock title %}
+
+{% block content %}
+
+<div class="content_box w500 minimal">
+    <div class="content_headline minimal">User settings</div>
+    <div class="content">
+
+        <form method="post" action="{{ request.path }}">
+            <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
+            <table class="form_table">
+                <tbody>
+                    {{ form.as_table }}
+                </tbody>
+            </table>
+            <input class="button" type="submit" value="Submit">
+        </form>
+    </div>
+</div>
+
+<div class="content_box w500 minimal">
+    <div class="content_headline minimal">Change Password</div>
+    <div class="content">
+
+        {% block link_list %}
+
+            <a href="{% url 'change_password' %}">Change password</a>
+
+        {% endblock link_list %}
+
+
+    </div>
+</div>
+
+{% endblock %}

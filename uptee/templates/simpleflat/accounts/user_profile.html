@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% load possessive %}
+{% load split %}
+{% load get_option %}
+{% load gravatar %}
+
+{% comment %}
+context variables:
+    user_profile
+{% endcomment %}
+
+{% block title %}upTee - {{ user_profile.username|possessive }} profile{% endblock title %}
+
+{% block content %}
+
+
+<div class="content_box w290 minimal">
+    <div class="content_headline minimal">{{ user.username }}</div>
+    <div class="content">
+    <img class="userProfile" src="{% gravatar_for_user user_profile 250 %}">
+    <p class="joinLable"><i class="icon-calendar"></i> Joined on "Date"</p>
+</div>
+</div>
+
+<div class="content_box w450 minimal">
+    <div class="content_headline minimal">Infos</div>
+    <div class="content">
+    
+         <table class="bordered">
+                <tbody>
+                    {% if user.is_authenticated %}
+                    <tr>
+                        <td class="bold">Email:</td>
+                        <td>value</td>
+                    </tr>
+                    {% endif %}
+                    <tr>
+                        <td class="bold">Name:</td>
+                        <td>value</td>
+                    </tr>                   
+                    <tr>
+                        <td class="bold">Age:</td>
+                        <td>value</td>
+                    </tr>
+                    <tr>
+                        <td class="bold">Gender:</td>
+                        <td>value</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="bold">Teeworlds Name:</td>
+                        <td>value</td>
+                    </tr>
+                    <tr>
+                        <td class="bold">Favorite Map:</td>
+                        <td>value</td>
+                    </tr>
+                    <tr>
+                        <td class="bold">Favorite Gametype:</td>
+                        <td>value</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                     <tr>
+                        <td class="bold">Server:</td>
+                        <td>{{ user_profile.profile.active_servers|length }}</td>
+                    </tr>
+                    <tr>
+                        <td class="bold">Online Server:</td>
+                        <td>{{ user_profile.profile.online_servers|length }}</td>
+                    </tr>
+                </tbody>
+        </table>
+        <br>
+        <form class="only_button" method="post" action="">
+            <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
+            <p><input class="button" type="submit" value="Edit Profile"></p>
+        </form>
+
+</div>
+</div>
+
+
+
+{% endblock %}

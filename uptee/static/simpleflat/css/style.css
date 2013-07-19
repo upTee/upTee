@@ -490,3 +490,54 @@ table.colored{
     cursor: pointer;
 }
 /* ---End vote delete / command delete button--- */
+
+/* ---About Page--- */
+#about h2{
+    margin: 2px;
+    color: #009bff;
+    border-bottom: 1px solid #009bff;
+}
+
+#about p{
+    margin: 5px;
+    margin-bottom: 15px;
+}
+
+#about table{
+    border-collapse: collapse;
+    margin: 5px;
+}
+
+#about th{
+    text-align: left;
+    padding: 5px;
+    padding-right: 10px;
+    font-size: 14px;
+}
+
+#about td{
+    text-align: left;
+    padding: 5px;
+    padding-right: 10px;
+    border-top: 1px solid #009bff;
+}
+
+#about ul{
+    margin-left: 30px;
+}
+/* ---END About Page--- */
+
+/* ---User Profile--- */
+img.userProfile{
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+p.joinLable{
+    padding: 10px 0  10px 0;
+    font-weight: normal;
+    color: #ccc;
+    border-bottom: 1px solid #ccc;
+    width: 260px;
+}
+/* ---END User Profile--- */

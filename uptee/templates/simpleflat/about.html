@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}upTee - About{% endblock title %}
+
+{% block content %}
+
+<div id="about">
+    <h2>What is upTee</h2>
+    <p>
+        upTee aims to make the administration simple and fully configurable. It is designed to manage all kind of mods without the problem of missing something.<br>
+        Also it shows the current status of each server hosted with upTee.
+    </p>
+    <h2>Who made upTee?</h2>
+    <table>
+        <tr>
+            <th>Contributor</th>
+            <th>Role</th>
+        </tr>
+        <tr>
+            <td><a href="https://github.com/SushiTee">Sascha "Sushi" W.</a></td>
+            <td>Main developer <a href="http://i.imgur.com/DIHca.jpg">...</a></color></td>
+        </tr>
+        <tr>
+            <td><a href="https://github.com/Fisico">David "Fisico" G.</a></td>
+            <td>Web designer &amp; Mr.Awesome &#9829</td>
+        </tr>
+        <tr>
+            <td><a href="https://github.com/Zatline">Cedric "Zatline" D.</a></td>
+            <td>Made the awesome logo, icon and favicon</td>
+        </tr>
+    </table>
+    <p>
+        If you feel you should be listed above, but you are not, I'm deeply sorry for that, please contact us using <a href="https://github.com/upTee/upTee/issues/">GitHub Issues</a>.
+    </p>
+
+    <h2>What builds upTee?</h2>
+    <p>
+        upTee depends on many 3rd-party projects. Here's the complete list of them:
+        <ul>
+            <li>
+                <strong><a href="http://python.org/">python</a></strong> - a programming language that you should dive into
+                <ul>
+                    <li>
+                        <strong><a href="http://djangoproject.com/">django</a></strong> - open source web application framework
+                        <ul>
+                            <li><strong><a href="https://bitbucket.org/izi/django-admin-tools/">django-admin-tools</a></strong> - pretty admin site</li>
+                            <li><strong><a href="https://bitbucket.org/offline/django-annoying/">django-annoying</a></strong> - a must-have for fixing django annoying things</li>
+                            <li><strong><a href="https://bitbucket.org/jmoiron/johnny-cache/">johnny-cache</a></strong> - low-level caching framework</li>
+                            <li><strong><a href="https://github.com/mbi/django-simple-captcha">django-simple-captcha</a></strong> - simple, yet highly customizable Django application to add captcha images</li>
+                            <li><strong><a href="https://github.com/char0n/django-pybrowscap">django-pybrowscap</a></strong> - pybrowscap middlware for pybrowscap</li>
+                            <li><strong><a href="https://github.com/nvie/django-gravatar">django-gravatar</a></strong> - easy Gravatar support</li>
+                            <li><strong><a href="https://github.com/ericflo/django-pagination/">django-pagination</a></strong> - pagination for dummies</li>
+                            <li><strong><a href="http://south.aeracode.org/">south</a></strong> - schema and data migrations</li>
+                        </ul>
+                    </li>
+                    <li><strong><a href="http://celeryproject.org/">celery</a></strong> - distributed task queue</li>
+                </ul>
+            </li>
+            <li><strong><a href="http://nginx.org/">nginx</a></strong> - high-performance HTTP server</li>
+            <li><strong><a href="http://projects.unbit.it/uwsgi/">uwsgi</a></strong> - application container server</li>
+            <li><strong><a href="http://memcached.org/">memcached</a></strong> - cache backend</li>
+            <li><strong><a href="http://www.rabbitmq.com/">rabbitmq</a></strong> - AMQP messaging system, backend for celery</li>
+        </ul>
+    </p>
+
+
+    <h2>Credits</h2>
+    <p>
+        <ul>
+            <li><a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome Icons</a></li>
+        </ul>
+    </p>
+</div>
+{% endblock content %}
+

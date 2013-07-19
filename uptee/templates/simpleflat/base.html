@@ -156,8 +156,6 @@
                 <li><a href="#">News</a></li>
                 <li><a href="#">Server List</a></li>
                 <li><a href="#">User</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Impressum</a></li>
             </ul>
         </div>
 
@@ -178,11 +176,12 @@
         <div id="usermenu">
             <ul>
                 {% if user.is_authenticated %}
-                <li><a href="#"><i class="icon-user"></i> {{ user.username }}</a></li>
+                <li><a href="{% url 'user' user.id %}"><i class="icon-user"></i> {{ user.username }}</a></li>
                 <li><a href="#"><img class="gravatar" src="{% gravatar_for_user user 40 %}"></a></li>
-                <li><a href="#"><i class="icon-cog"></i> Settings</a></li>
+                <li><a href="{% url 'settings' %}"><i class="icon-cog"></i> Settings</a></li>
                 <li><a href="{% url 'logout' %}"><i class="icon-off"></i> Logout!</a></li>
                 {% else %}
+                <li><a href="{% url 'register' %}"><i class="icon-signin"></i> Register</a></li>
                 <li><a href="{% url 'login' %}"><i class="icon-signin"></i> Login</a></li>
                 {% endif %}
             </ul>
