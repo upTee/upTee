@@ -16,7 +16,7 @@ context variables:
 
 
 <div class="content_box w290 minimal">
-    <div class="content_headline minimal">{{ user.username }}</div>
+    <div class="content_headline minimal">{{ user_profile.username }}</div>
     <div class="content">
     <img class="userProfile" src="{% gravatar_for_user user_profile 250 %}">
     <p class="joinLable"><i class="icon-calendar"></i> Joined on "Date"</p>
@@ -29,7 +29,7 @@ context variables:
     
          <table class="bordered">
                 <tbody>
-                    {% if user.is_authenticated %}
+                    {% if user.is_authenticated and user == user_profile %}
                     <tr>
                         <td class="bold">Email:</td>
                         <td>value</td>
