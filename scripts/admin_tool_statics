@@ -1,3 +1,5 @@
+#!/bin/bash
+
 mkdir -p css/jquery/images images
 ln -s $VIRTUAL_ENV/lib/python2.7/site-packages/admin_tools/dashboard/static/admin_tools/css/dashboard.css $VIRTUAL_ENV/lib/python2.7/site-packages/admin_tools/static/admin_tools/css/dashboard.css
 ln -s $VIRTUAL_ENV/lib/python2.7/site-packages/admin_tools/dashboard/static/admin_tools/css/dashboard-ie.css $VIRTUAL_ENV/lib/python2.7/site-packages/admin_tools/static/admin_tools/css/dashboard-ie.css
