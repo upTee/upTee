@@ -36,7 +36,7 @@ context variables:
         <div class="user">
             <div class="avatar"><img src="{% gravatar_for_user comment.user 40 %}"></div>
         </div>
-        <div class="entry"><p>{{ comment.comment|safe }}</p></div>
+        <div class="entry">{{ comment.comment|safe }}</div>
         <div class="clear"></div>
         <div class="footer">
             <div class="left">{{ comment.submit_date|date:"F j, Y" }}</div>

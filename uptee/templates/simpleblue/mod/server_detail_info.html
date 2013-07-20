@@ -78,13 +78,13 @@ context variables:
 <div class="server_detail_description">
     <h2>Description</h2>
     {% if user.is_authenticated and user == server.owner %}<a class="edit_link" href="{% url 'server_edit_description' server.id %}">edit</a>{% endif %}
-    <p>
+    <div class="entry">
         {% if server.description_html %}
             {{ server.description_html|safe }}
         {% else %}
             No description available.
         {% endif %}
-    </p>
+    </div>
 </div>
 
 <div class="server_detail_events" data-serverid="{{ server.id }}">

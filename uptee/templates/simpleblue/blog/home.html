@@ -29,7 +29,7 @@ context variables:
         <div class="user">
             <div class="avatar"><img src="{% gravatar_for_user entry.created_by 40 %}"></div>
         </div>
-        <div class="entry"><p>{{ entry.content_html|safe }}</p></div>
+        <div class="entry">{{ entry.content_html|safe }}</div>
         <div class="clear"></div>
         <div class="footer">
             <div class="left">{{ entry.created_at|date:"F j, Y" }} / <a href="{% url 'user' entry.created_by.id %}">{{ entry.created_by.username }}</a></div>

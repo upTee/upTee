@@ -585,6 +585,7 @@ a.edit_link {
     padding: 10px;
     display: inline-block;
     max-width: 668px;
+    width: 100%;
 }
 
 .blog_entry div.footer {
@@ -820,3 +821,46 @@ div .cycle .teeworlds {
     float: right;
 }
 /* ---END footer cycle--- */
+
+/* ---markdown styles--- */
+#content_box .entry p {
+    margin-bottom: 10px;
+}
+
+#content_box .entry p:last-child {
+    margin-bottom: 0;
+}
+
+#content_box .entry ul, #content_box .entry ol {
+    margin-left: 30px;
+    margin-bottom: 15px;
+}
+
+#content_box .entry ul:last-child, #content_box .entry ol:last-child {
+    margin-bottom: 0;
+}
+
+#content_box .entry hr {
+    width: 100%;
+    margin: 10px 0;
+}
+
+#content_box .entry pre {
+    padding: 5px 10px;
+    background-color: #D8DADA;
+    margin-bottom: 10px;
+    box-shadow: 1px 1px 2px #A8A8A8, 1px 1px 2px #A8A8A8 inset;
+}
+
+#content_box .entry pre:last-child {
+    margin-bottom: 0;
+}
+
+#content_box .entry h2 {
+    font-size: 18px;
+    border-bottom: 0;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
