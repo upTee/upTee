@@ -32,26 +32,35 @@ $(document).ready(function() {
 
     // open menu depended of the cookie
     $('.menu_head').each(function() {
-        var menu = $(this).find('ul');
+        var menu = $(this);
+        var menu_ul = $(this).find('ul');
         var server_id = $(this).attr("data-serverid");
 
         if($.inArray(server_id, active_menus_cookie) > -1) {
-            $(menu).css('display', 'block');
+            $(menu_ul).css('display', 'block');
+
+            var icon = $(menu).find('i:first');
+            if($(icon).attr('class') == 'icon-chevron-right') {
+                $(icon).attr('class', 'icon-chevron-down');
+            }
         }
     });
 
     // menu slider
     $('.menu_head p').click(function() {
-        var menu = $(this).parent('.menu_head').find('ul');
+        var menu = $(this);
+        var menu_ul = $(this).parent('.menu_head').find('ul');
         var server_id = $(this).parent('.menu_head').attr("data-serverid");
-        $(menu).slideToggle('fast');
+        $(menu_ul).slideToggle('fast');
 
         var array_index = $.inArray(server_id, active_menus_cookie);
-        if(menu.css('display') == 'block' && array_index == -1) {
+        if(menu_ul.css('display') == 'block' && array_index == -1) {  // menu is closed
+            $(menu).find('i:first').attr('class', 'icon-chevron-down');
             active_menus_cookie.push(server_id);
             $.cookie("active_menus", JSON.stringify(active_menus_cookie), { path: '/' });
         }
-        else if(array_index > -1) {
+        else if(array_index > -1) {  // menu is open
+            $(menu).find('i:first').attr('class', 'icon-chevron-right');
             active_menus_cookie.splice(array_index, 1);
             $.cookie("active_menus", JSON.stringify(active_menus_cookie), { path: '/' });
         }
