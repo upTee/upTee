@@ -81,7 +81,7 @@ context variables:
 <div class="content_box w300">
     <div class="content_headline"><i class="icon-picture"></i> Maps</div>
         <div class="content">
-            {% if server.maps.all %}
+            {% if server.maps.all %}<!-- Render this as table -->
             <div class="server_detail_maplist">
                 <div class="maplist_data">
                 {% for map in server.maps.all %}

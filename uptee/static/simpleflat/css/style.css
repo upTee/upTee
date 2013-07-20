@@ -102,6 +102,25 @@ html, body {
     top: 50px;
 }
 
+.statusIcon {
+    width: 10px;
+    height: 40px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    opacity: 0.4;
+}
+
+.statusIcon.off {
+    background: #e63a3a;
+    border-bottom: 1px solid #e63a3a;
+}
+
+.statusIcon.on {
+    background: #56af45;
+    border-bottom: 1px solid #56af45;
+}
+
 #menu {
     background: #eee;
     width: 250px;
