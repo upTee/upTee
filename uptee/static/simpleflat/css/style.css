@@ -500,7 +500,7 @@ table.colored{
 
 
 /* ---vote delete / command delete button--- */
-.delete_vote div.del_button,  .delete_command{
+.delete_vote div.del_button,  .delete_command div.del_button {
     background: url('../icons/close_icon.png') no-repeat center;
     height: 15px;
     width: 15px;
@@ -508,7 +508,7 @@ table.colored{
     opacity: 0.5;
 }
 
-.delete_vote div.del_button:hover,  .delete_command:hover{
+.delete_vote div.del_button:hover, .delete_command div.del_button:hover {
     opacity: 1.0;
     cursor: pointer;
 }

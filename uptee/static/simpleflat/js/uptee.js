@@ -26,7 +26,7 @@ $(document).ready(function() {
         }
     });
 
-    // bote stuff
+    // vote stuff
     var vote_number = 1;
     $('#add_vote').html('<p><button class="button" type="button">Add vote</button></p>');
     $('#add_vote button').click(function() {
@@ -41,6 +41,27 @@ $(document).ready(function() {
 
     $('.delete_vote').html('<div class="del_button" onclick=""></div>');
     $('.delete_vote div.del_button').live('click', function() {
+        var tr = $(this).parents('tr');
+        tr.hide();
+        tr.find('input').attr('value', '');
+    });
+
+    // rcon commands stuff
+    var rcon_number = 1;
+    $('#add_command').html('<p><button class="button" type="button">Add rcon command</button></p>');
+    $('#add_command button').click(function() {
+        var selected_command = $('#rcon_commands_select :selected').text();
+        var table = $('#add_command').parent().find('tbody');
+        table.append('<tr> \
+                        <th><label for="new-' + selected_command + '-' + rcon_number + '">' + selected_command + ':</label></th> \
+                        <td><input type="text" name="new-' + selected_command + '-' + rcon_number + '" value="command" id="new-' + selected_command + '-' + rcon_number + '"></td> \
+                        <td><div class="delete_command"><div class="del_button" onclick=""></div></div></td> \
+                    </tr>');
+        rcon_number++;
+    });
+
+    $('.delete_command').html('<div class="del_button" onclick=""></div>');
+    $('.delete_command div.del_button').live('click', function() {
         var tr = $(this).parents('tr');
         tr.hide();
         tr.find('input').attr('value', '');

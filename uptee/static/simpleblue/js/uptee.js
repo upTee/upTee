@@ -102,7 +102,7 @@ $(document).ready(function() {
     $('#add_command').html('<p><button class="button" type="button">Add rcon command</button></p>');
     $('#add_command button').click(function() {
         var selected_command = $('#rcon_commands_select :selected').text();
-        table = $('#add_command').parent().find('tbody');
+        var table = $('#add_command').parent().find('tbody');
         table.append('<tr> \
                         <th><label for="new-' + selected_command + '-' + rcon_number + '">' + selected_command + ':</label></th> \
                         <td><input type="text" name="new-' + selected_command + '-' + rcon_number + '" value="command" id="new-' + selected_command + '-' + rcon_number + '"></td> \
@@ -113,7 +113,7 @@ $(document).ready(function() {
 
     $('.delete_command').html('<div class="del_button" onclick=""></div>');
     $('.delete_command div.del_button').live('click', function() {
-        tr = $(this).parents('tr');
+        var tr = $(this).parents('tr');
         tr.hide();
         tr.find('input').attr('value', '');
     });
