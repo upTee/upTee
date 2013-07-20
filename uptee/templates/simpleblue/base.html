@@ -98,26 +98,21 @@
                 <div class="sidebar_entry">
                     <div class="signup_box">
                         <h3>Login:</h3>
-                        
-                        {% if form.errors %}
-                        <div class="notification error">
-                            The combination of username and password is wrong or your account is not activated yet.
-                            <div class="notification_close"></div>
-                        </div>
-                        {% endif %}
-    
-                            <form action="{% url 'login' %}" method="post">
-                                <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
-                                <p><label for="username">Username:</label></p><p><input type="text" name="username" value="" id="username" pattern="[\w.@+-]{3,30}" title="30 characters or fewer. Letters, numbers and @/./+/-/_ characters" required=""></p>
-                                <p><label for="password">Password:</label></p><p><input type="password" name="password" value="" id="password" pattern=".{8,}" title="8 characters are required" required=""></p>
-                                <p><input class="button" type="submit" value="Login"><input type="hidden" name="next" value="{{ request.path }}"></p>
-                            </form>
+                        <form action="{% url 'login' %}" method="post">
+                            <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
+                            <p><label for="username">Username:</label></p><p><input type="text" name="username" value="" id="username" pattern="[\w.@+-]{3,30}" title="30 characters or fewer. Letters, numbers and @/./+/-/_ characters" required=""></p>
+                            <p><label for="password">Password:</label></p><p><input type="password" name="password" value="" id="password" pattern=".{8,}" title="8 characters are required" required=""></p>
+                            <p><input class="button" type="submit" value="Login"><input type="hidden" name="next" value="{{ request.path }}"></p>
+                        </form>
                     </div>
                 </div>
                     
                 <div class="sidebar_entry">
                     <div class="register_box">
-                        <a href="{% url 'register' %}"><h3>Register</h3></a>
+                        <p><a href="{% url 'password_recover' %}">Forgot password?</a></p>
+                        <p><a href="{% url 'username_recover' %}">Forgot username?</a></p>
+                        <br>
+                        <p><a href="{% url 'register' %}"><h3>Register</h3></a></p>
                     </div>
                 </div>
                 {% endif %}

@@ -55,23 +55,45 @@ class PasswordChangeForm(forms.Form):
         super(PasswordChangeForm, self).__init__(*args, **kwargs)
 
     def clean_old_password(self):
-        old_password = self.cleaned_data.get('old_password')
+        old_password = self.cleaned_data['old_password']
         if not self.current_user.check_password(old_password):
-            raise forms.ValidationError(
-                'Please enter your current password correctly.')
+            raise forms.ValidationError('Please enter your current password correctly.')
         return old_password
 
     def clean_new_password2(self):
-        new_password1 = self.cleaned_data.get('new_password1')
-        new_password2 = self.cleaned_data.get('new_password2')
+        new_password1 = self.cleaned_data['new_password1']
+        new_password2 = self.cleaned_data['new_password2']
         if new_password1 != new_password2:
-            raise forms.ValidationError(
-                u"The password doesn't match the other.")
+            raise forms.ValidationError("The password doesn't match the other.")
         return new_password2
 
     def save(self):
-        self.current_user.set_password(self.cleaned_data.get('new_password1'))
+        self.current_user.set_password(self.cleaned_data['new_password1'])
         self.current_user.save()
+
+
+class RecoverPasswordForm(forms.Form):
+    username = forms.CharField(label='Username')
+    captcha = Html5CaptchaField(required=True)
+
+    def clean_username(self):
+        username = self.cleaned_data['username']
+        user = User.objects.filter(is_active=True, username=username)
+        if not user:
+            raise forms.ValidationError("No user with this name exists.")
+        return username
+
+
+class RecoverUsernameForm(forms.Form):
+    email = forms.CharField(label='email')
+    captcha = Html5CaptchaField(required=True)
+
+    def clean_username(self):
+        email = self.cleaned_data['email']
+        user = User.objects.filter(is_active=True, email=email)
+        if not user:
+            raise forms.ValidationError("No user with this email exists.")
+        return email
 
 
 class RegisterForm(forms.Form):

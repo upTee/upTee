@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% comment %}
+context variables:
+    form
+{% endcomment %}
+
+{% block title %}upTee - Recover username{% endblock title %}
+
+{% block content %}
+
+<div class="head">
+    <h2>Recover username</h2>
+</div>
+<div class="body">
+    <form method="post" action="{{ request.path }}">
+        <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
+        <table class="form_table">
+            <tbody>
+                {{ form.as_table }}
+            </tbody>
+        </table>
+        <input class="button" type="submit" value="Submit">
+    </form>
+</div>
+
+{% endblock %}

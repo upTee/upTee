@@ -52,7 +52,7 @@ class Moderator(models.Model):
     allowed_tunings = models.ManyToManyField(Tune, related_name='moderators')
 
 
-class Activation(models.Model):
+class Activation(models.Model):  # also used for password recover
     user = models.OneToOneField(User, unique=True, related_name='activation')
     key = models.CharField(max_length=32, unique=True, null=True)
 

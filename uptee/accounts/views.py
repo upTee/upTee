@@ -69,6 +69,50 @@ def change_password(request):
         }, context_instance=RequestContext(request))
 
 
+def password_recover(request, recover_key=None):
+    if request.user.is_authenticated() or not SERVER_EMAIL:
+        raise Http404
+    if not recover_key:
+        form = RecoverPasswordForm()
+        if request.method == 'POST':
+            form = RecoverPasswordForm(request.POST)
+            if form.is_valid():
+                user = User.objects.get(username=form.cleaned_data['username'])
+                messages.success(request, "An email has been sent to your email address with further instructions.")
+                key = User.objects.make_random_password(length=32)
+                activation = Activation(user=user, key=key)
+                activation.save()
+                send_mail('upTee password recover', "The password recovery function was used for your account. If you didn't do that just ignore this email.\r\n\r\nPlease click the following link to reset your password:\r\nhttp://{0}/recoverpassword/{1}\r\n\r\nAnother mail will be sent with your new password.".format(request.META['HTTP_HOST'], key), SERVER_EMAIL, [user.email], fail_silently=not DEBUG)
+                return redirect(reverse('home'))
+        return render_to_response('accounts/password_recover.html', {
+                'form': form,
+            }, context_instance=RequestContext(request))
+    recovery = get_object_or_404(Activation.objects.select_related(), key=recover_key)
+    key = User.objects.make_random_password(length=12)
+    recovery.user.password = make_password(key)
+    recovery.user.save()
+    recovery.delete()
+    messages.success(request, "An email has been sent to your email address with your new password.")
+    send_mail('upTee password recover', "The password recovery function was used for your account.\r\n\r\nYour new password is: {0}".format(key), SERVER_EMAIL, [recovery.user.email], fail_silently=not DEBUG)
+    return redirect(reverse('home'))
+
+
+def username_recover(request):
+    if request.user.is_authenticated():
+        raise Http404
+    form = RecoverUsernameForm()
+    if request.method == 'POST':
+        form = RecoverUsernameForm(request.POST)
+        if form.is_valid():
+            user = User.objects.get(email=form.cleaned_data['email'])
+            messages.success(request, "An email has been sent to your email address with your username.")
+            send_mail('upTee username recover', "The username recovery function was used for your account.\r\n\r\nYour username is: {0}".format(user.username), SERVER_EMAIL, [user.email], fail_silently=not DEBUG)
+            return redirect(reverse('home'))
+    return render_to_response('accounts/username_recover.html', {
+            'form': form,
+        }, context_instance=RequestContext(request))
+
+
 def register(request):
     if request.user.is_authenticated():
         return redirect(reverse('home'))
