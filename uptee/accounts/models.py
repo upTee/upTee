@@ -9,7 +9,7 @@ def get_template(request):
     if not request.user.is_authenticated():
         return DEFAULT_TEMPLATE
     template = request.user.profile.template
-    if template not in [template_[0] for template_ in AVAILABLE_TEMPLATES if template_[2] is True or request.user.is_staff]:
+    if template not in [template_[0] for template_ in AVAILABLE_TEMPLATES if template_[2] or request.user.is_staff]:
         template = DEFAULT_TEMPLATE
         request.user.profile.template = template
         request.user.profile.save()

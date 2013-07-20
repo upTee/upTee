@@ -15,7 +15,7 @@ class SettingsUserForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(SettingsUserForm, self).__init__(*args, **kwargs)
         if not self.instance.is_staff:
-            self.fields['template'].choices = [(template_[0], template_[1]) for template_ in AVAILABLE_TEMPLATES if template_[2] is True or template_[0] == self.instance.profile.template]
+            self.fields['template'].choices = [(template_[0], template_[1]) for template_ in AVAILABLE_TEMPLATES if template_[2] or template_[0] == self.instance.profile.template]
         self.initial['template'] = self.instance.profile.template
 
     class Meta:
