@@ -53,6 +53,7 @@ $ python manage.py celery worker --loglevel=info
 $ python manage.py celery beat
 ```
 Be sure that the broker for celery is running (RabbitMQ is recommended).    
+If the example _[settings_local.py](https://github.com/upTee/upTee/blob/master/docs/settings_devlopment/settings_local.py)_ is used the database will be used.    
 After celery is running, run the server itself.
 ```shell
 $ python manage.py runserver
