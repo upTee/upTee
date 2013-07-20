@@ -83,7 +83,7 @@ context variables:
         <div class="content">
             {% if server.maps.all %}<!-- Render this as table -->
             <div class="server_detail_maplist">
-                <table>
+                <table class="bordered">
                     <tbody>
                     {% for map in server.maps.all %}
                     <tr>
@@ -97,7 +97,7 @@ context variables:
         </div>
 </div>
 
-<div class="content_box w150 {% if server.is_online %}green{% else %}red{% endif %}">
+<div class="content_box w120 {% if server.is_online %}green{% else %}red{% endif %}">
 <div class="content_headline {% if server.is_online %}green{% else %}red{% endif %}">{% if server.is_online %}Online{% else %}Offline{% endif %}</div>
         <div class="content">
             <form class="only_button" method="post" action="{% url 'start_stop_server' server.id %}?next={{ request.path }}">
