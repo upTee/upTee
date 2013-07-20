@@ -132,6 +132,10 @@ html, body {
     z-index: 1;
 }
 
+#menu li {
+    position: relative;
+}
+
 #menu li a{
     display: block;
     line-height: 40px;
