@@ -110,7 +110,7 @@ CACHES = {
 }
 JOHNNY_MIDDLEWARE_KEY_PREFIX = 'jc_uptee'
 
-TEMPLATE_CACHING = True
+TEMPLATE_CACHING = False  # only use if you are using only one template or it may cause problems!!
 
 if TEMPLATE_CACHING:
     TEMPLATE_LOADERS = (

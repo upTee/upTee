@@ -34,8 +34,9 @@ class SettingsUserForm(forms.ModelForm):
         return template
 
     def save(self):
-        self.instance.profile.template = self.cleaned_data['template']
-        self.instance.profile.save()
+        if self.instance.profile.template != self.cleaned_data['template']:
+            self.instance.profile.template = self.cleaned_data['template']
+            self.instance.profile.save()
         super(SettingsUserForm, self).save()
 
 
