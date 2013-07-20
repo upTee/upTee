@@ -47,8 +47,7 @@ def login(request):
 def settings(request):
     form = SettingsUserForm(instance=request.user)
     if request.method == 'POST':
-        form = SettingsUserForm(request.POST,
-            instance=request.user)
+        form = SettingsUserForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
             messages.success(request, "Your profile was saved successfully")

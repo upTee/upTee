@@ -8,10 +8,14 @@ from settings import AVAILABLE_TEMPLATES, TEMPLATE_DIRS
 
 class SettingsUserForm(forms.ModelForm):
     email = forms.EmailField(required=True, widget=Html5EmailInput(attrs={'required': None}))
-    template = forms.ChoiceField(choices=AVAILABLE_TEMPLATES)
+
+    template_choices = [(template_[0], template_[1]) for template_ in AVAILABLE_TEMPLATES]
+    template = forms.ChoiceField(choices=template_choices)
 
     def __init__(self, *args, **kwargs):
         super(SettingsUserForm, self).__init__(*args, **kwargs)
+        if not self.instance.is_staff:
+            self.fields['template'].choices = [(template_[0], template_[1]) for template_ in AVAILABLE_TEMPLATES if template_[2] is True or template_[0] == self.instance.profile.template]
         self.initial['template'] = self.instance.profile.template
 
     class Meta:

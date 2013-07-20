@@ -156,7 +156,8 @@ TEMPLATE_DIRS = (
 )
 
 AVAILABLE_TEMPLATES = (
-    ('simpleblue', 'SimpleBlue'),
+    ('simpleblue', 'SimpleBlue', True),
+    ('simpleflat', 'SimpleFlat', False)
 )
 
 DEFAULT_TEMPLATE = 'simpleblue'

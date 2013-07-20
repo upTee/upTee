@@ -6,7 +6,14 @@ from mod.models import Mod, Option, Server, Tune
 
 
 def get_template(request):
-    return DEFAULT_TEMPLATE if not request.user.is_authenticated() or request.user.profile.template not in [tpl[0] for tpl in AVAILABLE_TEMPLATES] else request.user.profile.template
+    if not request.user.is_authenticated():
+        return DEFAULT_TEMPLATE
+    template = request.user.profile.template
+    if template not in [template_[0] for template_ in AVAILABLE_TEMPLATES if template_[2] is True or request.user.is_staff]:
+        template = DEFAULT_TEMPLATE
+        request.user.profile.template = template
+        request.user.profile.save()
+    return template
 
 
 class UserProfile(models.Model):
