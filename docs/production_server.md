@@ -221,15 +221,6 @@ After updating the website needs to be restarted to make the changes take effect
 
 Troubleshooting
 ---------------
-###error: no module named Image
-Due to the installation process it might be that Pillow and PIL is installed at the same time which causes this problem.    
-Simply uninstall poth packaged and reinstall PIL.        
-```shell
-$ pip uninstall Pillow
-$ pip uninstall PIL
-$ pip install PIL
-```
-
 ###captcha is not working
 For the captcha to work it is needed to install PIL with freetype and PNG support.    
 ```shell
