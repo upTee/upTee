@@ -83,12 +83,16 @@ context variables:
         <div class="content">
             {% if server.maps.all %}<!-- Render this as table -->
             <div class="server_detail_maplist">
-                <div class="maplist_data">
-                {% for map in server.maps.all %}
-                    <p><a href="{% url 'map_details' map.id %}">{{ map.name }}</a></p>
-                {% endfor %}
+                <table>
+                    <tbody>
+                    {% for map in server.maps.all %}
+                    <tr>
+                        <td><a href="{% url 'map_details' map.id %}">{{ map.name }}</a></td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
             {% endif %}
-                </div>
             </div>
         </div>
 </div>
