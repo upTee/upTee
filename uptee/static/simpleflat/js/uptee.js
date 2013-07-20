@@ -26,6 +26,26 @@ $(document).ready(function() {
         }
     });
 
+    // bote stuff
+    var vote_number = 1;
+    $('#add_vote').html('<p><button class="button" type="button">Add vote</button></p>');
+    $('#add_vote button').click(function() {
+        var table = $('#add_vote').parent().find('tbody');
+        table.append('<tr> \
+                        <th><input type="text" name="title new title ' + vote_number + ' new" value="New vote" id="id-' + vote_number + '-title_new"></th> \
+                        <td><input type="text" name="command new command ' + vote_number + ' new" value="command" id="id-' + vote_number + '-command_new"></td> \
+                        <td><div class="delete_vote"><div class="del_button" onclick=""></div></div></td> \
+                    </tr>');
+        vote_number++;
+    });
+
+    $('.delete_vote').html('<div class="del_button" onclick=""></div>');
+    $('.delete_vote div.del_button').live('click', function() {
+        var tr = $(this).parents('tr');
+        tr.hide();
+        tr.find('input').attr('value', '');
+    });
+
     // menu cookie
     var active_menus_cookie = get_active_menus_cokkie();
     //$.cookie("active_menus", "[]", { path: '/' });

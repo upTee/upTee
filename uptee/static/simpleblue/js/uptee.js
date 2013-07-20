@@ -82,7 +82,7 @@ $(document).ready(function() {
     var vote_number = 1;
     $('#add_vote').html('<p><button class="button" type="button">Add vote</button></p>');
     $('#add_vote button').click(function() {
-        table = $('#add_vote').parent().find('tbody');
+        var table = $('#add_vote').parent().find('tbody');
         table.append('<tr> \
                         <th><input type="text" name="title new title ' + vote_number + ' new" value="New vote" id="id-' + vote_number + '-title_new"></th> \
                         <td><input type="text" name="command new command ' + vote_number + ' new" value="command" id="id-' + vote_number + '-command_new"></td> \
@@ -93,7 +93,7 @@ $(document).ready(function() {
 
     $('.delete_vote').html('<div class="del_button" onclick=""></div>');
     $('.delete_vote div.del_button').live('click', function() {
-        tr = $(this).parents('tr');
+        var tr = $(this).parents('tr');
         tr.hide();
         tr.find('input').attr('value', '');
     });
