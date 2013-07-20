@@ -57,7 +57,7 @@ After celery is running, run the server itself.
 ```shell
 $ python manage.py runserver
 ```
-The website is now availableunder __http://localhost:8000/__
+The website is now available under __http://localhost:8000/__
 
 Troubleshooting
 ---------------
