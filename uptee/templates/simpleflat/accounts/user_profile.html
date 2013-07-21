@@ -19,68 +19,93 @@ context variables:
     <div class="content_headline minimal">{{ user_profile.username }}</div>
     <div class="content">
     <img class="userProfile" src="{% gravatar_for_user user_profile 250 %}">
-    <p class="joinLable"><i class="icon-calendar"></i> Joined on "Date"</p>
+    <p class="joinLable"><i class="icon-calendar"></i> Joined on {{ user_profile.date_joined|date:"N t, Y" }}</p>
 </div>
 </div>
 
 <div class="content_box w450 minimal">
     <div class="content_headline minimal">Infos</div>
     <div class="content">
-    
          <table class="bordered">
-                <tbody>
-                    {% if user.is_authenticated and user == user_profile %}
+            <tbody>
+                {% if user_profile.first_name or user_profile.last_name %}
+                    {% if user_profile.profile.publish_name or user.is_authenticated %}
                     <tr>
-                        <td class="bold">Email:</td>
-                        <td>value</td>
+                        <th>Name:</th>
+                        <td>{{ user_profile.first_name }}{% if user_profile.first_name %} {% endif %}{{ user_profile.last_name }}</td>
                     </tr>
                     {% endif %}
+                {% endif %}
+                {% if user_profile.profile.ingame_name %}
+                    {% if user_profile.profile.publish_ingame_name or user.is_authenticated %}
                     <tr>
-                        <td class="bold">Name:</td>
-                        <td>value</td>
-                    </tr>                   
+                        <th>Ingame name:</th>
+                        <td>{{ user_profile.profile.ingame_name }}</td>
+                    </tr>
+                    {% endif %}
+                {% endif %}
+                {% if user_profile.profile.website %}
+                    {% if user_profile.profile.publish_website or user.is_authenticated %}
                     <tr>
-                        <td class="bold">Age:</td>
-                        <td>value</td>
+                        <th>Website:</th>
+                        <td><a href="{{ user_profile.profile.website }}" target="_blank">{{ user_profile.profile.website }}</a></td>
                     </tr>
+                    {% endif %}
+                {% endif %}
+                {% if user_profile.profile.contact %}
+                    {% if user_profile.profile.publish_contact or user.is_authenticated %}
                     <tr>
-                        <td class="bold">Gender:</td>
-                        <td>value</td>
+                        <th>Contact:</th>
+                        <td>{{ user_profile.profile.contact }}</td>
                     </tr>
+                    {% endif %}
+                {% endif %}
+                {% if user_profile.profile.fav_mod %}
+                    {% if user_profile.profile.publish_fav_mod or user.is_authenticated %}
                     <tr>
-                        <td></td>
+                        <th>Favorite mod:</th>
+                        <td>{{ user_profile.profile.fav_mod }}</td>
                     </tr>
+                    {% endif %}
+                {% endif %}
+                {% if user_profile.profile.fav_map %}
+                    {% if user_profile.profile.publish_fav_map or user.is_authenticated %}
                     <tr>
-                        <td class="bold">Teeworlds Name:</td>
-                        <td>value</td>
+                        <th>Favorite map:</th>
+                        <td>{{ user_profile.profile.fav_map }}</td>
                     </tr>
+                    {% endif %}
+                {% endif %}
+                {% if user_profile.profile.gender != 1 %}
+                    {% if user_profile.profile.publish_gender or user.is_authenticated %}
                     <tr>
-                        <td class="bold">Favorite Map:</td>
-                        <td>value</td>
+                        <th>Gender:</th>
+                        <td>{{ user_profile.profile.get_gender_display }}</td>
                     </tr>
+                    {% endif %}
+                {% endif %}
+                {% if user_profile.profile.birthday %}
+                    {% if user_profile.profile.publish_birthday or user.is_authenticated %}
                     <tr>
-                        <td class="bold">Favorite Gametype:</td>
-                        <td>value</td>
+                        <th>Age:</th>
+                        <td>{{ user_profile.profile.get_age }}</td>
                     </tr>
-                    <tr>
-                        <td></td>
-                    </tr>
-                     <tr>
-                        <td class="bold">Server:</td>
-                        <td>{{ user_profile.profile.active_servers|length }}</td>
-                    </tr>
-                    <tr>
-                        <td class="bold">Online Server:</td>
-                        <td>{{ user_profile.profile.online_servers|length }}</td>
-                    </tr>
-                </tbody>
+                    {% endif %}
+                {% endif %}
+                <tr>
+                    <th>Servers:</th>
+                    <td>{{ user_profile.profile.active_servers|length }}</td>
+                </tr>
+                <tr>
+                    <th>Online servers:</th>
+                    <td>{{ user_profile.profile.online_servers|length }}</td>
+                </tr>
+            </tbody>
         </table>
         <br>
-        <form class="only_button" method="post" action="">
-            <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
-            <p><input class="button" type="submit" value="Edit Profile"></p>
-        </form>
-
+        {% if user.is_authenticated and user == user_profile %}
+            <p><a class="link_button" href="{% url 'settings' %}">Edit profile</a></p>
+        {% endif %}
     </div>
 </div>
 

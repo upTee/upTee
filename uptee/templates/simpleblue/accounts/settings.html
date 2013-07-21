@@ -105,6 +105,14 @@ context variables:
                     </td>
                 </tr>
                 <tr>
+                    <th>{{ profile_form.birthday.label_tag }}</th>
+                    <td>{{ profile_form.birthday.errors }}{{ profile_form.birthday }} Your age will be shown like this: 22-27<br>(MM-DD-YYYY)</td>
+                    <td>
+                        <input type="checkbox" name="publish_birthday" id="id_publish_birthday"{% if profile_form.publish_birthday.value != False %} checked="checked"{% endif %}>
+                        <label class="checkbox" for="id_publish_birthday"></label>
+                    </td>
+                </tr>
+                <tr>
                     <th>{{ profile_form.template.label_tag }}</th>
                     <td>{{ profile_form.template.errors }}{{ profile_form.template }}</td>
                     <td></td>

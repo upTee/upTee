@@ -10,6 +10,10 @@
         border: none;
     }
 
+        .form_table td:first-of-type {
+            width: 500px;
+        }
+
     .form_table th {
         text-align: right;
         border: none;
@@ -135,7 +139,7 @@
 
 /* -----Content------ */
 
-.content input[type=submit]{
+.content input[type=submit], .link_button{
     background: #666;
     margin-left: auto;
     margin-right: auto;
@@ -146,18 +150,19 @@
     min-width: 90px;
     min-height: 32px;
     padding: 5px 10px 5px 10px;
+    text-decoration: none;
 }
 
-    .content input[type=submit]:hover{
+    .content input[type=submit]:hover, .link_button:hover {
         background: #777;
     }
 
-    .content input[type=submit]:active{
+    .content input[type=submit]:active, .link_button:active {
         background: #555;
     }
 
 
-.content input[type=text], .content input[type=password] {
+.content input[type=text], .content input[type=password], .content input[type=email] {
     background: #fff;
     width: 200px;
     border: 1px solid #666;
@@ -165,11 +170,11 @@
 }
 
 
-   .content input[type=text]:focus, .content input[type=password]:focus{
+   .content input[type=text]:focus, .content input[type=password]:focus, .content input[type=email]:focus {
     border: 1px solid #378ce1;
     }
 
-    .content input.error[type=text], .content input.error[type=password]{
+    .content input.error[type=text], .content input.error[type=password], .content input.error[type=email] {
     border: 1px solid #e63a3a;
     }
 

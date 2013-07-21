@@ -1,6 +1,9 @@
+from datetime import date
+from dateutil.relativedelta import relativedelta
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
+from django.utils import timezone
 from settings import AVAILABLE_TEMPLATES, DEFAULT_TEMPLATE
 from mod.models import Mod, Option, Server, Tune
 
@@ -56,6 +59,26 @@ class UserProfile(models.Model):
 
     def online_count(self):
         return len(self.user.servers.filter(is_active=True, online=True))
+
+    @property
+    def get_age(self):
+        age = relativedelta(dt1=date.today(), dt2=self.birthday).years
+        if age < 8:
+            return '0-7'
+        elif age < 13:
+            return '8-12'
+        elif age < 18:
+            return '13-17'
+        elif age < 22:
+            return '18-21'
+        elif age < 28:
+            return '22-27'
+        elif age < 38:
+            return '28-37'
+        elif age < 51:
+            return '38-50'
+        else:
+            return 'near death'
 
     def __unicode__(self):
         possessive = '' if self.user.username.endswith('s') else 's'

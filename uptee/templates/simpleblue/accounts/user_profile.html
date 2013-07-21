@@ -77,6 +77,14 @@ context variables:
                 </tr>
                 {% endif %}
             {% endif %}
+            {% if user_profile.profile.birthday %}
+                {% if user_profile.profile.publish_birthday or user.is_authenticated %}
+                <tr>
+                    <th>Age:</th>
+                    <td>{{ user_profile.profile.get_age }}</td>
+                </tr>
+                {% endif %}
+            {% endif %}
             <tr>
                 <th>Servers:</th>
                 <td>{{ user_profile.profile.active_servers|length }}</td>
