@@ -23,7 +23,7 @@ urlpatterns += staticfiles_urlpatterns()
 
 if settings.DEBUG:
     urlpatterns += patterns('django.views.defaults',
-        (r'^403/$', page_not_found),
-        (r'^404/$', permission_denied),
+        (r'^403/$', permission_denied),
+        (r'^404/$', page_not_found),
         (r'^500/$', server_error),
     )
