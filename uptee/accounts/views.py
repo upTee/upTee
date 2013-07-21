@@ -45,14 +45,18 @@ def login(request):
 
 @login_required
 def settings(request):
-    form = SettingsUserForm(instance=request.user)
+    user_form = SettingsUserForm(instance=request.user)
+    profile_form = SettingsUserprofileForm(instance=request.user.profile)
     if request.method == 'POST':
-        form = SettingsUserForm(request.POST, instance=request.user)
-        if form.is_valid():
-            form.save()
+        user_form = SettingsUserForm(request.POST, instance=request.user)
+        profile_form = SettingsUserprofileForm(request.POST, instance=request.user.profile)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
             messages.success(request, "Your profile was saved successfully")
     return render_to_response('accounts/settings.html', {
-            'form': form,
+            'user_form': user_form,
+            'profile_form': profile_form,
         }, context_instance=RequestContext(request))
 
 

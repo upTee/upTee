@@ -21,6 +21,62 @@ context variables:
 <div class="body">
     <table class="tablelist">
         <tbody>
+            {% if user_profile.first_name or user_profile.last_name %}
+                {% if user_profile.profile.publish_name or user.is_authenticated %}
+                <tr>
+                    <th>Name:</th>
+                    <td>{{ user_profile.first_name }}{% if user_profile.first_name %} {% endif %}{{ user_profile.last_name }}</td>
+                </tr>
+                {% endif %}
+            {% endif %}
+            {% if user_profile.profile.ingame_name %}
+                {% if user_profile.profile.publish_ingame_name or user.is_authenticated %}
+                <tr>
+                    <th>Ingame name:</th>
+                    <td>{{ user_profile.profile.ingame_name }}</td>
+                </tr>
+                {% endif %}
+            {% endif %}
+            {% if user_profile.profile.website %}
+                {% if user_profile.profile.publish_website or user.is_authenticated %}
+                <tr>
+                    <th>Website:</th>
+                    <td><a href="{{ user_profile.profile.website }}" target="_blank">{{ user_profile.profile.website }}</a></td>
+                </tr>
+                {% endif %}
+            {% endif %}
+            {% if user_profile.profile.contact %}
+                {% if user_profile.profile.publish_contact or user.is_authenticated %}
+                <tr>
+                    <th>Contact:</th>
+                    <td>{{ user_profile.profile.contact }}</td>
+                </tr>
+                {% endif %}
+            {% endif %}
+            {% if user_profile.profile.fav_mod %}
+                {% if user_profile.profile.publish_fav_mod or user.is_authenticated %}
+                <tr>
+                    <th>Favorite mod:</th>
+                    <td>{{ user_profile.profile.fav_mod }}</td>
+                </tr>
+                {% endif %}
+            {% endif %}
+            {% if user_profile.profile.fav_map %}
+                {% if user_profile.profile.publish_fav_map or user.is_authenticated %}
+                <tr>
+                    <th>Favorite map:</th>
+                    <td>{{ user_profile.profile.fav_map }}</td>
+                </tr>
+                {% endif %}
+            {% endif %}
+            {% if user_profile.profile.gender != 1 %}
+                {% if user_profile.profile.publish_gender or user.is_authenticated %}
+                <tr>
+                    <th>Gender:</th>
+                    <td>{{ user_profile.profile.get_gender_display }}</td>
+                </tr>
+                {% endif %}
+            {% endif %}
             <tr>
                 <th>Servers:</th>
                 <td>{{ user_profile.profile.active_servers|length }}</td>

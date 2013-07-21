@@ -8,7 +8,7 @@ class UserProfileInline(admin.StackedInline):
     model = UserProfile
     max_num = 1
     can_delete = False
-    fields = ('allowed_mods',)
+    fields = ('publish_name', 'gender', 'publish_gender', 'birthday', 'publish_birthday', 'ingame_name', 'publish_ingame_name', 'fav_map', 'publish_fav_map', 'fav_mod', 'publish_fav_mod', 'contact', 'publish_contact', 'website', 'publish_website', 'allowed_mods',)
     filter_horizontal = ('allowed_mods',)
 
 

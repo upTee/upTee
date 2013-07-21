@@ -4,23 +4,30 @@ from django import forms
 from fields import Html5CaptchaField
 from html5input import *
 from settings import AVAILABLE_TEMPLATES, TEMPLATE_DIRS
+from accounts.models import UserProfile
 
 
 class SettingsUserForm(forms.ModelForm):
     email = forms.EmailField(required=True, widget=Html5EmailInput(attrs={'required': None}))
 
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'email')
+
+
+class SettingsUserprofileForm(forms.ModelForm):
     template_choices = [(template_[0], template_[1]) for template_ in AVAILABLE_TEMPLATES]
     template = forms.ChoiceField(choices=template_choices)
 
     def __init__(self, *args, **kwargs):
-        super(SettingsUserForm, self).__init__(*args, **kwargs)
-        if not self.instance.is_staff:
-            self.fields['template'].choices = [(template_[0], template_[1]) for template_ in AVAILABLE_TEMPLATES if template_[2] or template_[0] == self.instance.profile.template]
-        self.initial['template'] = self.instance.profile.template
+        super(SettingsUserprofileForm, self).__init__(*args, **kwargs)
+        if not self.instance.user.is_staff:
+            self.fields['template'].choices = [(template_[0], template_[1]) for template_ in AVAILABLE_TEMPLATES if template_[2] or template_[0] == self.instance.template]
+        self.initial['template'] = self.instance.template
 
     class Meta:
-        model = User
-        fields = ('email',)
+        model = UserProfile
+        fields = ('publish_name', 'ingame_name', 'publish_ingame_name', 'website', 'publish_website', 'contact', 'publish_contact', 'fav_mod', 'publish_fav_mod', 'fav_map', 'publish_fav_map', 'gender', 'publish_gender', 'template')
 
     def clean_template(self):
         template = self.cleaned_data['template']
@@ -32,12 +39,6 @@ class SettingsUserForm(forms.ModelForm):
         if not found:
             raise forms.ValidationError('Template does not exist. Please contact an admin.')
         return template
-
-    def save(self):
-        if self.instance.profile.template != self.cleaned_data['template']:
-            self.instance.profile.template = self.cleaned_data['template']
-            self.instance.profile.save()
-        super(SettingsUserForm, self).save()
 
 
 class PasswordChangeForm(forms.Form):

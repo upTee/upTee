@@ -19,7 +19,31 @@ def get_template(request):
 class UserProfile(models.Model):
     user = models.OneToOneField(User, unique=True, related_name='profile')
     template = models.CharField(max_length=100, default=DEFAULT_TEMPLATE)
-    allowed_mods = models.ManyToManyField(Mod, related_name='users')
+    allowed_mods = models.ManyToManyField(Mod, blank=True, related_name='users')
+
+    GENDER_NONE = 1
+    GENDER_MALE = 2
+    GENDER_FEMALE = 3
+    GEDGET_CHOICES = (
+        (GENDER_NONE, 'Not saying'),
+        (GENDER_MALE, 'Male'),
+        (GENDER_FEMALE, 'Female'),
+    )
+    gender = models.IntegerField(choices=GEDGET_CHOICES, default=GENDER_NONE)
+    publish_gender = models.BooleanField(default=False)
+    birthday = models.DateField(blank=True, null=True, help_text='only your age will be shown (e.g. 15-20) | (MM/DD/YYYY)')
+    publish_birthday = models.BooleanField(default=False)
+    ingame_name = models.CharField(max_length=20, blank=True, null=True, default='')
+    publish_ingame_name = models.BooleanField(default=False)
+    fav_map = models.CharField(max_length=50, blank=True, null=True, default='', verbose_name='favorite map')
+    publish_fav_map = models.BooleanField(default=False)
+    fav_mod = models.CharField(max_length=20, blank=True, null=True, default='', verbose_name='favorite mod')
+    publish_fav_mod = models.BooleanField(default=False)
+    contact = models.CharField(max_length=100, blank=True, null=True, default='')
+    publish_contact = models.BooleanField(default=False)
+    website = models.URLField(blank=True, null=True, default='')
+    publish_website = models.BooleanField(default=False)
+    publish_name = models.BooleanField(default=False)
 
     def active_servers(self):
         return self.user.servers.filter(is_active=True)

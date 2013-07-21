@@ -10,6 +10,10 @@ input[type=text] {
     transition: all .5s;
 }
 
+    input[type=text]:nth-of-type(2) {
+        margin-left: 5px;
+    }
+
     input[type=text]:focus {
         width: 200px;
         background-color: #fff;
