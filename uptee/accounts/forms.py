@@ -73,7 +73,7 @@ class PasswordChangeForm(forms.Form):
 
 
 class RecoverPasswordForm(forms.Form):
-    username = forms.CharField(label='Username')
+    username = forms.CharField(label='Username', widget=forms.TextInput(attrs={'required': None}))
     captcha = Html5CaptchaField(required=True)
 
     def clean_username(self):
@@ -85,7 +85,7 @@ class RecoverPasswordForm(forms.Form):
 
 
 class RecoverUsernameForm(forms.Form):
-    email = forms.CharField(label='email')
+    email = forms.EmailField(label='email', widget=Html5EmailInput(attrs={'required': None}))
     captcha = Html5CaptchaField(required=True)
 
     def clean_username(self):
