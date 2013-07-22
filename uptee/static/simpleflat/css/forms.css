@@ -257,11 +257,11 @@ input[type=radio]:checked
 
 
 select {
-    background: #fff;
-    width: 200px;
-    padding: 5px;
+    background: url('../img/arrow.png') no-repeat right #fff;
+    width: 210px;
     border: 1px solid #666;
-    margin: 20px;
+    padding: 5px;
+    -webkit-appearance: none;
 }
 
     select:focus {
