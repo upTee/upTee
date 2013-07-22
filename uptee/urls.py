@@ -8,7 +8,6 @@ import settings
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^', include('testingstate.urls')),
     url(r'^', include('blog.urls')),
     url(r'^', include('mod.urls')),
     url(r'^', include('accounts.urls')),
@@ -27,4 +26,9 @@ if settings.DEBUG:
         (r'^403/$', permission_denied),
         (r'^404/$', page_not_found),
         (r'^500/$', server_error),
+    )
+
+if settings.TESTING_STATE:
+    urlpatterns += patterns('',
+        url(r'^', include('testingstate.urls')),
     )

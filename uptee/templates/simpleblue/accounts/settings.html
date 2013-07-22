@@ -11,7 +11,7 @@ context variables:
 {% block link_list %}
 
 <div id="link_list">
-    <a href="{% url 'change_password' %}">Change password</a>{% if user.is_staff %} | <a href="{% url 'generate_testing_keys' %}">Generate testing keys</a>{% endif %}
+    <a href="{% url 'change_password' %}">Change password</a>{% if settings.TESTING_STATE and user.is_staff %} | <a href="{% url 'generate_testing_keys' %}">Generate testing keys</a>{% endif %}
 </div>
 
 {% endblock link_list %}

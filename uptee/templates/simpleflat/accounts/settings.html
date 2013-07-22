@@ -104,7 +104,7 @@ context variables:
         <a href="{% url 'change_password' %}">Change password</a>
     </div>
 
-    {% if user.is_staff %}
+    {% if settings.TESTING_STATE and user.is_staff %}
     <div class="content_headline minimal">Generate testing keys</div>
     <div class="content">
         <a href="{% url 'generate_testing_keys' %}">Generate testing keys</a>
