@@ -10,8 +10,8 @@ context variables:
 {% block body %}
 
 <div id="login_container">
-    <div class="content_box w450">
-        <div class="content_headline ">Register</div>
+    <div class="content_box w440">
+        <div class="content_headline">Register</div>
         <div class="content">
             <form method="post" action="{{ request.path }}">
                 <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">

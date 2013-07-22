@@ -37,13 +37,14 @@
         float: left;
         border: 1px solid #666;
         border-right: none;
-        padding: 15px;
+        padding: 10px;
         font-size: 16px;
         width: 130px;
         height: 22px;
         margin-bottom: 10px;
         background: #666;
         color: #fff;
+        height: 22px;
     }
 
         #login_container .description_box .active {
@@ -67,7 +68,7 @@
     #login_container .submit_box {
         margin-left: auto;
         margin-right: auto;
-        margin-top: 30px;
+        margin-top: 20px;
         margin-bottom: 30px;
         height: 30px;
         width: 200px;
@@ -87,7 +88,8 @@
     width: 220px;
     font-size: 16px;
     border: 2px solid #666;
-    padding: 15px 15px 15px 30px;
+    padding: 11px 10px 11px 30px;
+    height: 18px;
 }
 
     #login_container input[type=text]:focus, #login_container input[type=email]:focus, #login_container input[type=password]:focus {
@@ -103,7 +105,7 @@
     background: #56af45;
     margin-left: auto;
     margin-right: auto;
-    padding: 15px;
+    padding: 11px;
     font-size: 15px;
     width: 200px;
     cursor: pointer;
