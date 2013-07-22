@@ -21,11 +21,11 @@ context variables:
 <div class="body">
     <table class="tablelist">
         <tbody>
-            {% if user_profile.first_name or user_profile.last_name %}
+            {% if user_profile.first_name %}
                 {% if user_profile.profile.publish_name or user.is_authenticated %}
                 <tr>
                     <th>Name:</th>
-                    <td>{{ user_profile.first_name }}{% if user_profile.first_name %} {% endif %}{{ user_profile.last_name }}</td>
+                    <td>{{ user_profile.first_name }}</td>
                 </tr>
                 {% endif %}
             {% endif %}

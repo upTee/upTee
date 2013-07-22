@@ -25,11 +25,8 @@ context variables:
                                 {% for error in user_form.first_name.errors %}
                                     <li>{{ error|escape }}</li>
                                 {% endfor %}
-                                {% for error in user_form.last_name.errors %}
-                                    <li>{{ error|escape }}</li>
-                                {% endfor %}
                             </ul>
-                            {{ user_form.first_name }}{{ user_form.last_name }}
+                            {{ user_form.first_name }}
                         </td>
                         <td>
                             {{ profile_form.publish_name }}
