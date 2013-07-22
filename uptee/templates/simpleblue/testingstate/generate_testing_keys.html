@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% comment %}
+context variables:
+    new_keys
+    form
+{% endcomment %}
+
+{% block title %}upTee - Generate keys{% endblock title %}
+
+{% block content %}
+
+<div class="body">
+    {% if new_keys %}
+    <div class="new_keys">
+        <h2>New keys</h2>
+        <ul>
+            {% for key in new_keys %}
+                <li>{{ key }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    <div class="generate_keys">
+        <h2>Generate keys</h2>
+        <form method="post" action="{{ request.path }}">
+            <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
+            <table class="form_table">
+                <tbody>
+                    {{ form.as_table }}
+                </tbody>
+            </table>
+            <input class="button" type="submit" value="Submit">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

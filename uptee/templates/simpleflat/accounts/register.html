@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 
+{% comment %}
+context variables:
+    captcha
+    register_form
+    testing_form
+{% endcomment %}
 
 {% block body %}
 
@@ -7,54 +13,46 @@
     <div class="content_box w450">
         <div class="content_headline ">Register</div>
         <div class="content">
+            <form method="post" action="{{ request.path }}">
+                <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
+
+                {% if testing_form %}
+                    <div class="description_box">
+                        {{ testing_form.key.label_tag }}
+                    </div>
+
+                    <div class="form_box">
+                        <input class="icon_key{% if testing_form.key.errors %} error{% endif %}" type="text" name="key" value="{{ testing_form.key.value|default_if_none:"" }}" id="id_key" required="" />
+                        {{ testing_form.key.errors }}
+                    </div>
+                {% endif %}
+
+                {% for field in register_form %}
+                    {% if field.name != 'captcha' %}
+                        <div class="description_box">
+                            {{ field.label_tag }}
+                        </div>
+
+                        <div class="form_box">
+                            <input class="icon_{{ field.name }}{% if field.errors %} error{% endif %}" type="{{ field.field.widget.input_type }}" name="{{ field.name }}" value="{{ field.value|default_if_none:"" }}" id="{{ field.id_for_label }}"{% if field.field.widget.is_required %} required=""{% endif %}>
+                            {{ field.errors }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
 
                 <div class="description_box">
-                    <label for="username">Username:</label>
+                    <img class="captcha" alt="captcha" src="{% url 'captcha-image' captcha %}"><input id="id_captcha_0" type="hidden" value="{{ captcha }}" name="captcha_0">
                 </div>
 
                 <div class="form_box">
-                    <input class="icon_user" type="text" name="username" value="" id="username" required="" /> <!-- If Error = class="error" -->
+                    <input class="icon_captcha{% if register_form.captcha.errors %} error{% endif %}" type="text" name="captcha_1" value="" id="id_captcha_1" required="">
+                    {{ register_form.captcha.errors }}
                 </div>
 
-                <div class="description_box">
-                    <label for="password">Password:</label>
-                </div>
-
-                <div class="form_box">
-                    <input class="icon_pw" type="password" name="password" value="" id="password" required="" />
-                </div>
                 <div class="clear"></div>
-
-                <div class="description_box">
-                    <label for="password">Password [Again]:</label>
-                </div>
-
-                <div class="form_box">
-                    <input class="icon_pw" type="password" name="password" value="" id="password" required="" />
-                </div>
-
-                <div class="description_box">
-                    <label for="username">Email:</label>
-                </div>
-
-                <div class="form_box ">
-                    <input type="text" name="email" value="" id="email" required="" />
-                </div>
-                <div class="clear"></div>
-
-                <div class="description_box">
-                    <label for="username">Captcha:</label>
-                </div>
-
-                <div class="form_box">
-                    <input type="text" name="captcha" value="" id="captcha" required="" />
-                </div>
-                <div class="clear"></div>
-
-
                 <div class="submit_box">
-                    <input class="button positive" type="submit" value="Register" />
-                    <input type="hidden" name="next" value="{{ request.path }}" />
+                    <input class="button positive" type="submit" value="Register">
+                    <input type="hidden" name="next" value="{{ request.path }}">
                 </div>
             </form>
 

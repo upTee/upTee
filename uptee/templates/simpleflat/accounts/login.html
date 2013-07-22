@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="form_box">
-                    <input class="icon_user" type="text" name="username" value="" id="username" required="" /> <!-- If Error = class="error" -->
+                    <input class="icon_username" type="text" name="username" value="" id="username" required="">
                 </div>
 
                 <div class="description_box">
@@ -28,14 +28,14 @@
                 </div>
 
                 <div class="form_box">
-                    <input class="icon_pw" type="password" name="password" value="" id="password" required="" />
+                    <input class="icon_password1" type="password" name="password" value="" id="password" required="">
                 </div>
                 <div class="clear"></div>
 
 
                 <div class="submit_box">
-                    <input class="button positive" type="submit" value="Login" />
-                    <input type="hidden" name="next" value="{{ request.path }}" />
+                    <input class="button positive" type="submit" value="Login">
+                    <input type="hidden" name="next" value="{{ request.path }}">
                 </div>
             </form>
         </div>

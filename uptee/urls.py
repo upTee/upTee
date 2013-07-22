@@ -8,6 +8,7 @@ import settings
 admin.autodiscover()
 
 urlpatterns = patterns('',
+    url(r'^', include('testingstate.urls')),
     url(r'^', include('blog.urls')),
     url(r'^', include('mod.urls')),
     url(r'^', include('accounts.urls')),

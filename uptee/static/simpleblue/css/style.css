@@ -864,3 +864,23 @@ div .cycle .teeworlds {
     padding: 0;
     text-align: left;
 }
+
+/* ---new keys---*/
+.new_keys h2, .generate_keys h2 {
+        margin: 2px;
+        padding: 5px;
+        color: gray;
+        border-bottom: 1px solid #009bff;
+        font-size: 16px;
+        text-align: center;
+    }
+
+.new_keys ul {
+    list-style-type: none;
+}
+
+    .new_keys ul li {
+            margin: 5px;
+            text-align: center;
+        }
+/* ---END new keys--- */

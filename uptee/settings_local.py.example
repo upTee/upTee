@@ -212,6 +212,15 @@ You might want to add some of your own apps.
 #)
 
 """
+TESTING_STATE
+
+Users can only register with a testing key.
+
+Default: False
+"""
+#TESTING_STATE = True
+
+"""
 SERVER_EXEC
 
 The teeworlds server executable.

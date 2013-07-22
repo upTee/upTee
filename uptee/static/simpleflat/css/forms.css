@@ -33,29 +33,31 @@
 
 
     #login_container .description_box {
+        position: relative;
         float: left;
         border: 1px solid #666;
         border-right: none;
         padding: 15px;
         font-size: 16px;
         width: 130px;
+        height: 22px;
         margin-bottom: 10px;
         background: #666;
         color: #fff;
     }
 
-    #login_container .description_box .active {
-        border: 1px solid #378ce1;
-        border-right: none;
-        background: #378ce1;
-    }
+        #login_container .description_box .active {
+            border: 1px solid #378ce1;
+            border-right: none;
+            background: #378ce1;
+        }
 
-    #login_container .description_box .error {
-        border: 1px solid #e63a3a;
-        border-right: none;
-        background: #e63a3a;
-        color: #000;
-    }
+        #login_container .description_box .error {
+            border: 1px solid #e63a3a;
+            border-right: none;
+            background: #e63a3a;
+            color: #000;
+        }
 
     #login_container .form_box {
         float: left;
@@ -72,46 +74,27 @@
     }
 
 
-#login_container .icon_user{
+#login_container .icon_username{
     background: #fff url('../icons/person.png') no-repeat 5px center;
 }
 
-#login_container .icon_pw{
+#login_container .icon_password1, #login_container .icon_password2{
     background: #fff url('../icons/lock.png') no-repeat 5px center;
 }
 
 
-#login_container input[type=text] {
+#login_container input[type=text], #login_container input[type=email], #login_container input[type=password] {
     width: 220px;
     font-size: 16px;
     border: 2px solid #666;
     padding: 15px 15px 15px 30px;
 }
 
-
-   #login_container input[type=text]:focus{
-    border: 2px solid #378ce1;
+    #login_container input[type=text]:focus, #login_container input[type=email]:focus, #login_container input[type=password]:focus {
+        border: 2px solid #378ce1;
     }
 
-    #login_container input.error[type=text]{
-    border: 2px solid #e63a3a;
-    }
-
-
-
-#login_container input[type=password]{
-    width: 220px;
-    font-size: 16px;
-    padding: 15px 15px 15px 30px;
-    border: 2px solid #666;
-}
-
-
-   #login_container input[type=password]:focus{
-    border: 2px solid #378ce1;
-    }
-
-    #login_container input.error[type=password]{
+    #login_container input.error[type=text], #login_container input.error[type=email], #login_container input.error[type=password] {
         border: 2px solid #e63a3a;
     }
 

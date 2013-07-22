@@ -15,7 +15,8 @@ from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.template import RequestContext
 from accounts.forms import *
 from accounts.models import Activation
-from settings import ADMINS, DEBUG, SERVER_EMAIL
+from settings import ADMINS, DEBUG, SERVER_EMAIL, TESTING_STATE
+from testingstate.forms import TestingForm
 
 
 @login_required
@@ -121,12 +122,14 @@ def register(request):
     if request.user.is_authenticated():
         return redirect(reverse('home'))
     if request.method == 'POST':
-        form = RegisterForm(request.POST)
-        if form.is_valid():
+        register_form = RegisterForm(request.POST) if TESTING_STATE else None
+        testing_form = TestingForm(request.POST)
+        if register_form.is_valid() and (not testing_form or testing_form.is_valid()):
+            testing_form.save()
             new_user = User(
-                username=form.cleaned_data['username'],
-                email=form.cleaned_data['email'],
-                password=make_password(form.cleaned_data['password1']),
+                username=register_form.cleaned_data['username'],
+                email=register_form.cleaned_data['email'],
+                password=make_password(register_form.cleaned_data['password1']),
                 is_active=False,
             )
             new_user.save()
@@ -139,16 +142,18 @@ def register(request):
             else:
                 messages.success(request, "Your account was successfully created. An Admin should contact you shortly.")
             if ADMINS:
-                mail_admins('User registration', u'The following user just registered and wants to be activated:\r\n\r\n{0}'.format(form.cleaned_data['username']), fail_silently=not DEBUG)
+                mail_admins('User registration', u'The following user just registered and wants to be activated:\r\n\r\n{0}'.format(register_form.cleaned_data['username']), fail_silently=not DEBUG)
             return redirect(reverse('home'))
     else:
-        form = RegisterForm()
+        register_form = RegisterForm()
+        testing_form = TestingForm() if TESTING_STATE else None
     challenge, response = captcha_settings.get_challenge()()
     store = CaptchaStore.objects.create(challenge=challenge, response=response)
     key = store.hashkey
     return render_to_response('accounts/register.html', {
             'captcha': key,
-            'register_form': form,
+            'register_form': register_form,
+            'testing_form': testing_form,
         }, context_instance=RequestContext(request))
 
 

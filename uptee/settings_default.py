@@ -176,6 +176,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django_pybrowscap',
+    'testingstate',
     'lib',
     'econ',
     'crumbs',
@@ -190,6 +191,8 @@ INSTALLED_APPS = (
     'south',
     'gravatar',
 )
+
+TESTING_STATE = False
 
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login/'

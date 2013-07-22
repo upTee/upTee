@@ -117,15 +117,15 @@ context variables:
 <div class="content_box w500 minimal">
     <div class="content_headline minimal">Change Password</div>
     <div class="content">
-
-        {% block link_list %}
-
-            <a href="{% url 'change_password' %}">Change password</a>
-
-        {% endblock link_list %}
-
-
+        <a href="{% url 'change_password' %}">Change password</a>
     </div>
+
+    {% if user.is_staff %}
+    <div class="content_headline minimal">Generate testing keys</div>
+    <div class="content">
+        <a href="{% url 'generate_testing_keys' %}">Generate testing keys</a>
+    </div>
+    {% endif %}
 </div>
 
 {% endblock %}
