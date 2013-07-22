@@ -20,6 +20,11 @@ class SettingsUserprofileForm(forms.ModelForm):
     template_choices = [(template_[0], template_[1]) for template_ in AVAILABLE_TEMPLATES]
     template = forms.ChoiceField(choices=template_choices)
 
+    BOOL_CHOICES = (
+        (True, 'Show to everyone'),
+        (False, 'Show only to registered users'),
+    )
+
     def __init__(self, *args, **kwargs):
         super(SettingsUserprofileForm, self).__init__(*args, **kwargs)
         if not self.instance.user.is_staff:
@@ -29,6 +34,16 @@ class SettingsUserprofileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ('publish_name', 'ingame_name', 'publish_ingame_name', 'website', 'publish_website', 'contact', 'publish_contact', 'fav_mod', 'publish_fav_mod', 'fav_map', 'publish_fav_map', 'gender', 'publish_gender', 'birthday', 'publish_birthday', 'template')
+        widgets = {
+            'publish_name': forms.Select(choices=((True, 'Show to everyone'), (False, 'Show only to registered users'))),
+            'publish_ingame_name': forms.Select(choices=((True, 'Show to everyone'), (False, 'Show only to registered users'))),
+            'publish_website': forms.Select(choices=((True, 'Show to everyone'), (False, 'Show only to registered users'))),
+            'publish_contact': forms.Select(choices=((True, 'Show to everyone'), (False, 'Show only to registered users'))),
+            'publish_fav_mod': forms.Select(choices=((True, 'Show to everyone'), (False, 'Show only to registered users'))),
+            'publish_fav_map': forms.Select(choices=((True, 'Show to everyone'), (False, 'Show only to registered users'))),
+            'publish_gender': forms.Select(choices=((True, 'Show to everyone'), (False, 'Show only to registered users'))),
+            'publish_birthday': forms.Select(choices=((True, 'Show to everyone'), (False, 'Show only to registered users'))),
+        }
 
     def clean_birthday(self):
         birthday = self.cleaned_data['birthday']

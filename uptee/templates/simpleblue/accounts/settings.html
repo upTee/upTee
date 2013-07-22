@@ -29,11 +29,6 @@ context variables:
         <table class="form_table">
             <tbody>
                 <tr>
-                    <th></th>
-                    <th></th>
-                    <th>Mark to publish to non users</th>
-                </tr>
-                <tr>
                     <th><label for="name">Name</label></th>
                     <td>
                         <ul>
@@ -47,8 +42,7 @@ context variables:
                         {{ user_form.first_name }}{{ user_form.last_name }}
                     </td>
                     <td>
-                        <input type="checkbox" name="publish_name" id="id_publish_name"{% if profile_form.publish_name.value != False %} checked="checked"{% endif %}>
-                        <label class="checkbox" for="id_publish_name"></label>
+                        {{ profile_form.publish_name }}
                     </td>
                 </tr>
                 <tr>
@@ -60,56 +54,49 @@ context variables:
                     <th>{{ profile_form.ingame_name.label_tag }}</th>
                     <td>{{ profile_form.ingame_name.errors }}{{ profile_form.ingame_name }}</td>
                     <td>
-                        <input type="checkbox" name="publish_ingame_name" id="id_publish_ingame_name"{% if profile_form.publish_ingame_name.value != False %} checked="checked"{% endif %}>
-                        <label class="checkbox" for="id_publish_ingame_name"></label>
+                        {{ profile_form.publish_ingame_name }}
                     </td>
                 </tr>
                 <tr>
                     <th>{{ profile_form.website.label_tag }}</th>
                     <td>{{ profile_form.website.errors }}{{ profile_form.website }}</td>
                     <td>
-                        <input type="checkbox" name="publish_website" id="id_publish_website"{% if profile_form.publish_website.value != False %} checked="checked"{% endif %}>
-                        <label class="checkbox" for="id_publish_website"></label>
+                        {{ profile_form.publish_website }}
                     </td>
                 </tr>
                 <tr>
                     <th>{{ profile_form.contact.label_tag }}</th>
                     <td>{{ profile_form.contact.errors }}{{ profile_form.contact }}</td>
                     <td>
-                        <input type="checkbox" name="publish_contact" id="id_publish_contact"{% if profile_form.publish_contact.value != False %} checked="checked"{% endif %}>
-                        <label class="checkbox" for="id_publish_contact"></label>
+                        {{ profile_form.publish_contact }}
                     </td>
                 </tr>
                 <tr>
                     <th>{{ profile_form.fav_mod.label_tag }}</th>
                     <td>{{ profile_form.fav_mod.errors }}{{ profile_form.fav_mod }}</td>
                     <td>
-                        <input type="checkbox" name="publish_fav_mod" id="id_publish_fav_mod"{% if profile_form.publish_fav_mod.value != False %} checked="checked"{% endif %}>
-                        <label class="checkbox" for="id_publish_fav_mod"></label>
+                        {{ profile_form.publish_fav_mod }}
                     </td>
                 </tr>
                 <tr>
                     <th>{{ profile_form.fav_map.label_tag }}</th>
                     <td>{{ profile_form.fav_map.errors }}{{ profile_form.fav_map }}</td>
                     <td>
-                        <input type="checkbox" name="publish_fav_map" id="id_publish_fav_map"{% if profile_form.publish_fav_map.value != False %} checked="checked"{% endif %}>
-                        <label class="checkbox" for="id_publish_fav_map"></label>
+                        {{ profile_form.publish_fav_map }}
                     </td>
                 </tr>
                 <tr>
                     <th>{{ profile_form.gender.label_tag }}</th>
                     <td>{{ profile_form.gender.errors }}{{ profile_form.gender }}</td>
                     <td>
-                        <input type="checkbox" name="publish_gender" id="id_publish_gender"{% if profile_form.publish_gender.value != False %} checked="checked"{% endif %}>
-                        <label class="checkbox" for="id_publish_gender"></label>
+                        {{ profile_form.publish_gender }}
                     </td>
                 </tr>
                 <tr>
                     <th>{{ profile_form.birthday.label_tag }}</th>
                     <td>{{ profile_form.birthday.errors }}{{ profile_form.birthday }} Your age will be shown like this: 22-27<br>(YYYY-MM-DD)</td>
                     <td>
-                        <input type="checkbox" name="publish_birthday" id="id_publish_birthday"{% if profile_form.publish_birthday.value != False %} checked="checked"{% endif %}>
-                        <label class="checkbox" for="id_publish_birthday"></label>
+                        {{ profile_form.publish_birthday }}
                     </td>
                 </tr>
                 <tr>
