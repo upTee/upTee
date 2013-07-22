@@ -32,7 +32,7 @@ class SettingsUserprofileForm(forms.ModelForm):
 
     def clean_birthday(self):
         birthday = self.cleaned_data['birthday']
-        if birthday < date.today():
+        if birthday > date.today():
             raise forms.ValidationError('You cannot be born in the future.')
         return birthday
 

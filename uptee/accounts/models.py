@@ -34,7 +34,7 @@ class UserProfile(models.Model):
     )
     gender = models.IntegerField(choices=GEDGET_CHOICES, default=GENDER_NONE)
     publish_gender = models.BooleanField(default=False)
-    birthday = models.DateField(blank=True, null=True, help_text='only your age will be shown (e.g. 15-20) | (MM/DD/YYYY)')
+    birthday = models.DateField(blank=True, null=True, help_text='only your age will be shown (e.g. 15-20) | (YYYY-MM-DD)')
     publish_birthday = models.BooleanField(default=False)
     ingame_name = models.CharField(max_length=20, blank=True, null=True, default='')
     publish_ingame_name = models.BooleanField(default=False)
