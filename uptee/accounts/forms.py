@@ -1,3 +1,4 @@
+from datetime import date
 import os
 from django.contrib.auth.models import User
 from django import forms
@@ -28,6 +29,12 @@ class SettingsUserprofileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ('publish_name', 'ingame_name', 'publish_ingame_name', 'website', 'publish_website', 'contact', 'publish_contact', 'fav_mod', 'publish_fav_mod', 'fav_map', 'publish_fav_map', 'gender', 'publish_gender', 'birthday', 'publish_birthday', 'template')
+
+    def clean_birthday(self):
+        birthday = self.cleaned_data['birthday']
+        if birthday < date.today():
+            raise forms.ValidationError('You cannot be born in the future.')
+        return birthday
 
     def clean_template(self):
         template = self.cleaned_data['template']
