@@ -124,7 +124,7 @@
 
 /* -----Content------ */
 
-.content input[type=submit], .link_button{
+.content input[type=submit], .link_button, .content button[type=button] {
     background: #666;
     margin-left: auto;
     margin-right: auto;
@@ -138,11 +138,11 @@
     text-decoration: none;
 }
 
-    .content input[type=submit]:hover, .link_button:hover {
+    .content input[type=submit]:hover, .link_button:hover, .content button[type=button]:hover {
         background: #777;
     }
 
-    .content input[type=submit]:active, .link_button:active {
+    .content input[type=submit]:active, .link_button:active, .content button[type=button]:active {
         background: #555;
     }
 

@@ -439,6 +439,26 @@ table.bordered{
 }
 
 
+table.small{
+    width: 100%;
+    border-collapse:collapse;
+    border: 1px solid #ccc;
+}
+
+.small th{
+    background: #efefef;
+    padding: 5px;
+    text-align: left;
+    border: 1px solid #ccc;
+}
+
+.small td{
+    background: #fff;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+
 table.colored{
     width: 100%;
     border-collapse:collapse;

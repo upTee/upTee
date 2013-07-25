@@ -80,12 +80,12 @@ context variables:
 
 {% include "scoreboard.html" %}
 
-<div class="content_box w300">
+<div class="content_box w200">
     <div class="content_headline"><i class="icon-picture"></i> Maps</div>
     <div class="content">
         {% if server.maps.all %}
         <div class="server_detail_maplist">
-            <table class="bordered">
+            <table class="small">
                 <tbody>
                 {% for map in server.maps.all %}
                 <tr>
