@@ -101,8 +101,45 @@ context variables:
 
 <div class="content_box w300">
     <div class="content_headline"><i class="icon-picture"></i> Events</div>
-    <div class="server_detail_events" data-serverid="{{ server.id }}">
-        <div id="events{% if user.is_authenticated and user == server.owner %}-admin{% endif %}" data-serverid="{{ server.id }}"></div>
+    <div class="content">
+        <div id="calendarContainer" data-serverid="{{ server.id }}">
+            <div class="calendarHead">
+                <div class="arrowLeft"></div>
+                <div class="arrowRight"></div>
+                <div class="preLoader"></div>
+                <div class="month">July</div>
+                <div class="year">2013</div>
+                {% if user.is_authenticated and user == server.owner %}
+                <div class="addEvent">Add Event</div>
+                {% endif %}
+            </div>
+
+            <div class="calendarBody">
+                <div class="calendarBodyHeader">
+                    <div class="weekday">MON</div>
+                    <div class="weekday">TUE</div>
+                    <div class="weekday">WED</div>
+                    <div class="weekday">THU</div>
+                    <div class="weekday">FRI</div>
+                    <div class="weekday">SAT</div>
+                    <div class="weekday sun">SUN</div>
+                </div>
+                <div class="calendarDayListContainer">
+                    <div class="calendarDayLists">
+                        <div class="calendarDayListItem"></div> <!-- js will include the days here -->
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="eventsDay">
+                <!-- events -->  
+            </div>
+            <div class="placeholder"></div>
+            <div class="eventsUpcoming">
+                <!-- events -->
+            </div>
+            <div class="addEvent"></div>
+        </div>
     </div>
 </div>
 

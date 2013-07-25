@@ -410,6 +410,9 @@ class TaskEvent(models.Model):
     status = models.IntegerField(choices=STATUS_CHOICES, default=STATUS_ACTIVE)
     task_id = models.CharField(max_length=100, blank=True, null=True)
 
+    class Meta:
+        ordering = ['date']
+
     def delete(self):
         celery.control.revoke(self.task_id)
         super(TaskEvent, self).delete()

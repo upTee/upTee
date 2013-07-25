@@ -1,334 +1,215 @@
-/*= CORE CSS */
-.hidden { display:none; }
-
-.eventCalendar-wrap { 
-	position:relative; 
-	overflow:hidden;
-}
-.eventCalendar-wrap .arrow { 
-	position:absolute; 
-	z-index:5; 
-	top:3px;
-}
-	.eventCalendar-wrap .prev {
-		left:3px;
-	}
-	.eventCalendar-wrap .next {
-		right:3px;
-	}
-	
-.eventsCalendar-currentTitle .monthTitle {
-	display:block;
-	text-align:center;
-}
-	.eventsCalendar-monthWrap {
-		position:absolute;
-		top:0; left:0;
-		z-index:2;
-	}
-		.eventsCalendar-monthWrap.currentMonth { 
-			z-index:1;
-		}	
-.eventsCalendar-daysList { 
-	display:table;
-	width:100%;
-}
-	.eventsCalendar-daysList.showAsWeek {
-		display:block;
-	}
-	
-	.eventsCalendar-daysList li {
-		display:table-cell;
-	}
-		.eventsCalendar-daysList li.dayWithEvents {
-			background:rgba(0,0,0,0.15);
-		} 
-		.eventsCalendar-daysList li.current {
-			background:rgba(0,0,0,0.35);
-		} 
-		.eventsCalendar-daysList.showAsWeek li {
-			display:block;
-			float:left;
-			width:14.28%;
-			height:20px;
-		}
-	.eventsCalendar-daysList li a {
-		padding:0;
-		display:block;
-		text-align:center;
-		font-size:8px;
-		min-width:7px;
-	}
-.eventsCalendar-loading {
-	display:block;
-	min-width:100px;
-	height:40px;
-	line-height:40px;
-}	
-.eventsCalendar-list {
-	position:relative;
-	z-index:1;
-	
-}	
-	.eventsCalendar-list.oldEventList {
-		z-index:2;
-	}
-	.eventsCalendar-subtitle {
-		padding-left:5px;
-		font-weight:bold;
-		font-size:120%;
-	}
-/* end of core CSS */
-
-.eventCalendar-wrap {
-    background-color: #FFFFFF;
-    border: 1px solid #D3D3D3;
-    border-radius: 5px 5px 5px 5px;
-    box-shadow: 0 0 15px #999999;
-    color: #807E7E;
-    margin-bottom: 20px;
-}
-.eventCalendar-wrap .arrow {
-    color: #FFFFFF;
-    line-height: 28px;
-    padding: 8px 10px;
-    text-decoration: none;
-    top: 9px;
-}
-.eventCalendar-wrap .arrow.prev {
-}
-.eventCalendar-wrap .arrow:hover {
-    opacity: 0.7;
-}
-.eventCalendar-wrap .arrow span {
-    border-bottom: 6px solid transparent;
-    border-left: 6px solid #FFFFFF;
-    border-top: 6px solid transparent;
-    float: left;
-    font-size: 0;
-    height: 0;
-    line-height: 0;
-    text-indent: -5000px;
-    width: 0;
-}
-.eventCalendar-wrap .arrow.prev span {
-    border-left-width: 0;
-    border-right: 6px solid #FFFFFF;
-}
-.eventsCalendar-slider {
-    height: 80px;
-}
-.eventsCalendar-monthWrap {
-    border-radius: 5px 5px 5px 5px;
-    left: 0;
-    top: 10px;
-}
-.eventsCalendar-currentTitle {
-    -moz-border-bottom-colors: none;
-    -moz-border-left-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-top-colors: none;
-    background-color: #138DA5;
-    border-color: #E3E3E3;
-    border-image: none;
-    border-style: solid;
-    border-width: 1px 0;
-    line-height: 25px;
-    outline: 1px solid #138DA5;
-}
-.eventsCalendar-currentTitle .monthTitle {
-    color: #FFFFFF;
-    font-size: 110%;
-    font-weight: bold;
-    text-decoration: none;
-}
-.eventsCalendar-daysList {
-    padding: 0;
-    width: 100%;
-}
-.eventsCalendar-daysList.showAsWeek {
-    -moz-border-bottom-colors: none;
-    -moz-border-left-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-top-colors: none;
-    background-color: #CCCCCC;
-    background-image: -moz-linear-gradient(center top , #EEEEEE 42%, #CCCCCC 71%);
-    border-color: #BCBCBC;
-    border-image: none;
-    border-radius: 0 0 0 0;
-    border-style: solid;
-    border-width: 1px 1px 0;
-    margin: 10px 5px;
-    width: auto;
-}
-.eventsCalendar-daysList.showDayNames.showAsWeek {
-    border-radius: 5px 5px 0 0;
-}
-.eventsCalendar-daysList:before, .eventsCalendar-daysList:after {
-    content: "";
-    display: table;
-}
-.eventsCalendar-daysList:after {
-    clear: both;
-}
-.eventsCalendar-day-header {
-    border-bottom: 1px solid #BCBCBC;
-    font-size: 10px;
-    text-align: center;
-    text-transform: lowercase;
-}
-.eventsCalendar-daysList.showAsWeek li {
-    height: auto;
-    margin: 0;
-}
-.eventsCalendar-daysList.showAsWeek li.empty {
-    background-color: #CCCCCC;
-    min-height: 29px;
-}
-.eventsCalendar-day a {
-    color: #424242;
-    font-size: 10px;
-    text-decoration: none;
-}
-.eventsCalendar-day {
-    border-left: 1px solid #BCBCBC;
-}
-.eventsCalendar-day a {
-    -moz-border-bottom-colors: none;
-    -moz-border-left-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-top-colors: none;
-    border-color: #BCBCBC;
-    border-image: none;
-    border-style: solid;
-    border-width: 0 1px 1px 0;
-}
-.showAsWeek .eventsCalendar-day {
-    border-left-width: 0;
-}
-.showAsWeek .eventsCalendar-day a {
-    -moz-border-bottom-colors: none;
-    -moz-border-left-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-top-colors: none;
-    border-color: #FFFFFF #BCBCBC #BCBCBC #EEEEEE;
-    border-image: none;
-    border-style: solid;
-    border-width: 1px;
-    font-size: 11px;
-    line-height: 27px;
-}
-.eventsCalendar-day a:hover {
-    background-color: #E4E4E4;
-    box-shadow: 5px 5px 10px #C1C1C1 inset;
-    text-shadow: 2px 2px 2px #C1C1C1;
-}
-.eventsCalendar-daysList li.dayWithEvents a {
-    background: none repeat scroll 0 0 #89B814;
-    box-shadow: 5px 5px 10px #698B10 inset;
-    color: #FFFFFF;
-    text-shadow: 2px 2px 2px #698B10;
-}
-li.eventsCalendar-day.dayWithEvents a:hover {
-    background-color: #C2D374;
-    box-shadow: 5px 5px 10px #89B814 inset;
-    text-shadow: 2px 2px 2px #89B814;
-}
-.eventsCalendar-daysList li.current a {
-    background: none repeat scroll 0 0 #449FB2;
-    box-shadow: 5px 5px 10px #216B7A inset;
-    color: #FFFFFF;
-    text-shadow: 2px 2px 2px #216B7A;
-}
-li.eventsCalendar-day.current a:hover {
-    background-color: #79BDCC;
-    box-shadow: 5px 5px 10px #449FB2 inset;
-    text-shadow: 2px 2px 2px #449FB2;
-}
-.eventsCalendar-loading {
-    background-color: #CCCCCC;
-    border-radius: 4px 4px 4px 4px;
-    box-shadow: 0 0 10px #CCCCCC;
-    color: #FFFFFF;
-    font-weight: bold;
-    left: 5px;
-    margin: 5px auto;
-    padding: 0 10px;
-    position: absolute;
-    text-align: center;
-    text-shadow: 0 0 3px #AAAAAA;
-    top: 25px;
-    z-index: 4;
-}
-.eventsCalendar-loading.error {
-    background-color: red;
-}
-.eventsCalendar-subtitle {
-    padding-top: 10px;
-}
-.eventsCalendar-list-wrap {
-    min-height: 100px;
+.calendarHead {
+    width: 280px;
+    height: 200px;
+    background: #378ce1;
     position: relative;
 }
-.eventsCalendar-list-content.scrollable {
+
+    .calendarHead .month {
+        margin-top: 20px;
+        height: 80px;
+        line-height: 100px;
+        font-size: 30px;
+        text-align: center;
+        color: #fff;
+    }
+
+    .calendarHead .year {
+        height: 25px;
+        line-height: 25px;
+        font-size: 20px;
+        text-align: center;
+        color: #fff;
+    }
+
+    .calendarHead .addEvent {
+        margin: auto;
+        margin-top: 20px;
+        background: rgba(0, 0, 0, 0.2);
+        height: 40px;
+        width: 125px;
+        line-height: 40px;
+        font-size: 15px;
+        text-align: center;
+        color: #fff;
+        cursor: pointer;
+    }
+
+        .calendarHead .addEvent:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .calendarHead .addEvent:active {
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+    .calendarHead .arrowLeft {
+        position: absolute;
+        top: 90px;
+        left: 10px;
+        width: 0; 
+        height: 0; 
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent; 
+        border-right:10px solid #fff;
+        cursor: pointer;
+    }
+
+    .calendarHead .arrowRight {
+        position: absolute;
+        top: 90px;
+        right: 10px;
+        width: 0; 
+        height: 0; 
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent; 
+        border-left:10px solid #fff;
+        cursor: pointer;
+    }
+
+    .calendarHead .preLoader {
+        position: absolute;
+        background: url('../img/preloader-w8-line-white.png') no-repeat;
+        display: inline-block;
+        height: 20px;
+        position: absolute;
+            top: 10px;
+            left: 30px;
+        width: 220px;
+        z-index: 12;
+        display: none;
+    }
+
+.calendarBody{
+    background: #eeeeee;
+    width: 280px;
+    height: 230px;
+}
+
+    .calendarBody .day, .calendarBody .weekday {
+        position: relative;
+        float: left;
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+        text-align: center;
+        outline: 0px solid gray;
+    }
+
+    .calendarBody .day:empty {
+        cursor: default;
+    }
+
+    .calendarBody .weekday {
+        height: 30px;
+        line-height: 30px;
+    }
+
+    .calendarBody .day:hover{
+        background: rgba(0, 0, 0, 0.05);
+        cursor: pointer;
+    }
+
+    .calendarBody .day:active{
+        background: rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+    }
+
+    .calendarBody .day:empty {
+        background: none;
+        cursor: default;
+    }
+
+    .calendarBody .day.sun{
+            color: #c80000;
+        }
+
+    .calendarBody .day .event{
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            position: absolute;
+                top: 5px;
+                right: 5px;
+    }
+
+        .calendarBody .day .event.active{
+                background: #56af45;
+        }
+
+        .calendarBody .day .event.done{
+                background: #e63a3a;
+        }
+
+    .calendarBody .day.current{
+            background: #378ce1;
+            color: #fff;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 14px;
+    }
+
+    .calendarBodyHeader{
+        background: #dddddd;
+        height: 30px;
+    }
+
+        .calendarBodyHeader .day{
+            float: left;
+            height: 30px;
+            width: 40px;
+            line-height: 30px;
+            text-align: center;
+            outline: 0px solid gray;
+        }
+
+        .calendarBodyHeader .day.sun, .calendarBodyHeader .weekday.sun {
+            color: #c80000;
+        }
+
+    
+    .placeholder { 
+        background: #378ce1;
+        height: 10px; 
+        width: 280px;
+    }
+    
+    .eventsDay, .eventsUpcoming {
+        background: #dddddd;
+        width: 280px;
+    }
+
+        .eventsDay .event, .eventsUpcoming .event {
+            height: 20px;
+            border-bottom: 1px solid #ccc;
+            padding: 5px 5px 5px 10px;
+        }
+
+        .eventsDay .event.headline, .eventsUpcoming .event.headline {
+            font-weight: bold;
+        }
+
+.addEvent {
+    background: #eeeeee;
+    width: 280px;
     height: 100px;
-    margin: 0 5px 5px 0;
-    overflow-y: auto;
 }
-.eventsCalendar-list {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+
+.calendarDayListContainer {
+    width: 280px;
+    height: 200px;
+    position:relative;
+    overflow:hidden;
 }
-.eventsCalendar-list li {
-    clear: both;
-    margin: 0;
-    padding: 0 5px 15px;
+
+.calendarDayLists {
+    position: absolute;
+    width: 840px;
+    left: 0px;
+    top: 0;
 }
-.eventsCalendar-list li time {
-    font-size: 10px;
-    line-height: 13px;
-}
-.eventsCalendar-list li time em {
+
+.calendarDayListItem {
+    width: 280px;
     float: left;
-    font-style: normal;
-}
-.eventsCalendar-list li time small {
-    background-color: #807E7E;
-    color: #FFFFFF;
-    float: left;
-    font-size: 10px;
-    margin: 0 0 0 3px;
-    padding: 0 5px 0 4px;
-}
-.eventsCalendar-list li time .status_active {
-    background-color: #14A717;
-}
-.eventsCalendar-list li time .status_done {
-    background-color: #a52a2a;
-}
-.eventsCalendar-list li .eventTitle {
-    clear: both;
-    color: #0E8EAB;
-    display: block;
-    font-weight: bold;
-    text-decoration: none;
-}
-.eventsCalendar-list li .eventDesc {
-    clear: both;
-    font-size: 80%;
-    line-height: 1.2em;
-    margin: 0 0 5px;
-}
-.eventsCalendar-list .eventsCalendar-noEvents {
-    background-color: #CCCCCC;
-    border-radius: 4px 4px 4px 4px;
-    box-shadow: 0 0 10px #CCCCCC;
-    color: #FFFFFF;
-    font-size: 120%;
-    font-weight: bold;
-    margin: 5px;
-    padding: 5px;
-    text-align: center;
-    text-shadow: 0 0 3px #AAAAAA;
 }

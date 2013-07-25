@@ -114,43 +114,37 @@ $(document).ready(function() {
         setTimeout(receive_terminal_interval, 1000);
     })();
 
-    // event calender
-    var event_form_count = 0;
-    (function event_calender() {
-        if($('#events').length) {
-            $('#events').eventCalendar();
-        }
+    // event calende
+    {
+        var current_date = new calendarDate(new Date());
+        calendarInit(current_date);
+        calendarGetData(current_date);
 
-        if($('#events-admin').length) {
-            $('#events-admin').eventCalendar({
-                showDelete: true
-            });
+        $('.calendarHead .arrowLeft').click(function() {
+            current_date = changeMonth(current_date, -1);
+            calendarGetData(current_date);
+        });
 
-            // add button to create a new event here
-            $('.eventsCalendar-list-wrap').append('<p><a class="add_event" href="#">Add Event</a></p>');
-            $('a.add_event').click(function(e) {
-                e.preventDefault();
+        $('.calendarHead .arrowRight').click(function() {
+            current_date = changeMonth(current_date, 1);
+            calendarGetData(current_date);
+        });
 
-                if(!$('#event_form').length) {
-                    var server_id = $('.server_detail_events').attr('data-serverid');
-                    $('.server_detail_events').append('<div id="event_form"><p class="loading">loading...</p></div>');
+        $('.calendarDayListContainer .calendarDayListItem .day:not(:empty)').live('click', function() {
+            var day_list = $(this).parent('.calendarDayListContainer .calendarDayListItem');
+            var year = $(day_list).attr('data-year');
+            var month = $(day_list).attr('data-month');
+            var day = parseInt($(this).html(), 10);
+            var date = new Date(year, parseInt(month, 10)-1, day);
 
-                    $.ajax({
-                        url: '/server/' + server_id + '/events/add/',
-                        type: 'GET',
-                        success: function(data) {
-                            $('#event_form').html(data);
+            (function calendarCheckEventDetails() {
+                var ret = calendarGetEventDetails(date, 0);
 
-                            if(!event_form_count) {
-                                handle_event_form(server_id);
-                                event_form_count = 1;
-                            }
-                        }
-                    });
-                }
-            });
-        }
-    })();
+                if(!ret)
+                    setTimeout(calendarCheckEventDetails, 10);
+            })();
+        });
+    }
 });
 
 function get_active_menus_cokkie() {
