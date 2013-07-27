@@ -277,6 +277,9 @@ function calendarGetData(calendar_date) {
 }
 
 function calendarAddEvent() {
+    // loading animation
+    $('.calendarHead .preLoader').css('display', 'inline-block');
+
     var server_id = $('#calendarContainer').attr('data-serverid');
 
     $.ajax({
@@ -285,6 +288,9 @@ function calendarAddEvent() {
         success: function(data) {
             $('#calendarContainer').children('.addEvent').html(data);
             calendarHandleEventForm(server_id);
+
+            // remove animatoin
+            $('.calendarHead .preLoader').css('display', 'none');
         }
     });
 }
@@ -292,6 +298,9 @@ function calendarAddEvent() {
 function calendarHandleEventForm(server_id) {
     var test = $('#calendarContainer').children('.addEvent').find('.button');
     $('#calendarContainer form input.button').live('click', function(e) {
+        // loading animation
+        $('.calendarHead .preLoader').css('display', 'inline-block');
+
         e.preventDefault();
 
         // set the value for the hidden field
@@ -340,6 +349,9 @@ function calendarHandleEventForm(server_id) {
                     // update calender
                     fillEvents(date);
                 }
+
+                // remove animatoin
+                $('.calendarHead .preLoader').css('display', 'none');
             }
         });
     });
