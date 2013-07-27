@@ -24,10 +24,10 @@ context variables:
         <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
         
 
-    <div class="content_box">
-        <div class="content_headline">General Settings</div>
+    <div class="contentBox">
+        <div class="contentHeadline">General Settings</div>
         <div class="content">
-            <table class="form_table">
+            <table class="formTable">
                 <tbody>
                     <tr>
                         <th><label for="restart_allowed">Allow restarting server:</label></th>
@@ -86,7 +86,7 @@ context variables:
     <div class="content_box">
         <div class="content_headline">Options</div>
         <div class="content">
-            <table class="form_table">
+            <table class="formTable">
                 <tbody>
                     {% for option in server.config_options.all %}
                     <tr>
@@ -106,7 +106,7 @@ context variables:
     <div class="content_box">
         <div class="content_headline">Tunings</div>
         <div class="content">
-                <table class="form_table">
+                <table class="formTable">
                     <tbody>
                         {% for tune in server.config_tunes.all %}
                         <tr>

@@ -18,8 +18,8 @@ context variables:
 
 {% for entry in entry_list %}
     {% get_comment_count for blog.entry entry.id as comment_count %}
-    <div class="blog_box">
-        <div class="blog_headline">{{ entry.title }}</div>
+    <div class="blogBox">
+        <div class="blogHeadline">{{ entry.title }}</div>
         <div class="content">
             <p>{{ entry.content_html|safe }}</p>
         </div>
@@ -31,8 +31,8 @@ context variables:
     </div>
 
 {% empty %}
-    <div class="content_box">
-        <div class="content_headline">Hello!</div>
+    <div class="contentBox">
+        <div class="contentHeadline">Hello!</div>
         <div class="content">Hello {% if user.is_authenticated %}{{ user.username }}{% else %}Guest{% endif %}</div></div>
     </div>
 {% endfor %}

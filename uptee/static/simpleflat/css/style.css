@@ -93,15 +93,6 @@ html, body {
     width: 180px;
 }
 
-#menufiller {
-    background: #eee;
-    width: 250px;
-    height: 50px;
-    position: absolute;
-    left: 0px;
-    top: 50px;
-}
-
 .statusIcon {
     width: 10px;
     height: 40px;
@@ -196,7 +187,7 @@ html, body {
     padding: 5px 20px 5px 0;
 }
 
-#content_container {
+#contentContainer {
     border-left: 1px solid #ccc;
     background: #fff;
     position: absolute;
@@ -210,7 +201,7 @@ html, body {
     z-index: 5;
 }
 
-#content_container .spacer{
+#contentContainer .spacer{
     width: 100%;
     height: 20px;
 }
@@ -238,7 +229,7 @@ html, body {
     }
 
 
-.content_box, .blog_box {
+.contentBox, .blogBox {
     border: 2px solid #378ce1;
     margin-bottom: 30px;
     float: left;
@@ -246,7 +237,7 @@ html, body {
     width: 100%;
 }
 
-.content_headline, .blog_headline {
+.contentHeadline, .blogHeadline {
     background: #378ce1;
     display: block;
     padding: 5px 10px 10px 10px;
@@ -254,7 +245,7 @@ html, body {
     color: #fff;
 }
 
-.blog_box .footer{
+.blogBox .footer{
     background: #eee;
     border-top: 1px solid #bbbbbb;
     padding: 5px;
@@ -264,59 +255,59 @@ html, body {
 }
 
 /* -----Custom Box Frames---------------- */
-.content_box.gray, .blog_box.gray{
+.contentBox.gray, .blogBox.gray{
     border: 2px solid #666;
 }
 
-.content_headline.gray, .blog_headline.gray{
+.contentHeadline.gray, .blogHeadline.gray{
     background: #666;
 }
 
-.content_box.darkgray, .blog_box.darkgray{
+.contentBox.darkgray, .blogBox.darkgray{
     border: 2px solid #333;
 }
 
-.content_headline.darkgray, .blog_headline.darkgray{
+.contentHeadline.darkgray, .blogHeadline.darkgray{
     background: #333;
 }
 
-.content_box.red, .blog_box.red{
+.contentBox.red, .blogBox.red{
     border: 2px solid #e63a3a;
 }
 
-.content_headline.red, .blog_headline.red{
+.contentHeadline.red, .blogHeadline.red{
     background: #e63a3a;
 }
 
-.content_box.green, .blog_box.green{
+.contentBox.green, .blogBox.green{
     border: 2px solid #56af45;
 }
 
-.content_headline.green, .blog_headline.green{
+.contentHeadline.green, .blogHeadline.green{
     background: #56af45;
 }
 
-.content_box.yellow, .blog_box.yellow{
+.contentBox.yellow, .blogBox.yellow{
     border: 2px solid #fbca04;
 }
 
-.content_headline.yellow, .blog_headline.yellow{
+.contentHeadline.yellow, .blogHeadline.yellow{
     background: #fbca04;
     color: #333;
 }
 
-.content_box.minimal, .blog_box.minimal{
+.contentBox.minimal, .blogBox.minimal{
     border: none;
     background: #fff;
 }
 
-.content_headline.minimal, .blog_headline.minimal{
+.contentHeadline.minimal, .blogHeadline.minimal{
     color: #333;
     border-bottom: 1px solid #ccc;
     background: none;
 }
 
-.content_box.minimal .content {
+.contentBox.minimal .content {
     background: #fff;
 }
 
@@ -371,11 +362,11 @@ html, body {
 
 /*----END Notifications-----*/
 
-.blog_box div.right {
+.blogBox div.right {
     float: right;
 }
 
-.blog_box div.left {
+.blogBox div.left {
     float: left;
 }
 
@@ -395,21 +386,6 @@ html, body {
     width: 300px;
 
 }
-
-
-/*.content table {
-    border-collapse: collapse;
-}
-
-.content tr {
-    border-bottom: 1px solid #bbbbbb;
-    padding-right: 5px;
-}
-
-.content td {
-    padding: 5px 35px 5px 5px;
-}
-*/
 
 
 .content .box {
@@ -492,7 +468,7 @@ table.colored{
     font-size: 14px;
 }
 
-#terminal_command_input {
+#terminalCommandInput {
     background-color: #272822;
     border: none;
     color: #E6E6E6;
@@ -500,17 +476,17 @@ table.colored{
     font-size: 14px;
 }
 
-#terminal_enter {
+#terminalEnter {
     padding: 0px 5px;
 }
 
-#terminal_enter div:first-child {
+#terminalEnter div:first-child {
     width: 14px;
     float: left;
     font-size: 22px;
 }
 
-#terminal_entry {
+#terminalEntry {
     height: 300px;
     padding: 5px;
     overflow: auto;
@@ -520,7 +496,7 @@ table.colored{
 
 
 /* ---vote delete / command delete button--- */
-.delete_vote div.del_button,  .delete_command div.del_button {
+.deleteVote div.delButton,  .deleteCommand div.delButton {
     background: url('../icons/close_icon.png') no-repeat center;
     height: 15px;
     width: 15px;
@@ -528,7 +504,7 @@ table.colored{
     opacity: 0.5;
 }
 
-.delete_vote div.del_button:hover, .delete_command div.del_button:hover {
+.deleteVote div.delButton:hover, .deleteCommand div.delButton:hover {
     opacity: 1.0;
     cursor: pointer;
 }

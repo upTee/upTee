@@ -11,7 +11,7 @@ context variables:
 {% endfor %}
 
 <form action="{% url 'events_add_ajax' server.id %}" method="post">
-    <table class="form_table">
+    <table class="formTable">
         <tbody>
             {% for field in event_form %}
                 <tr>

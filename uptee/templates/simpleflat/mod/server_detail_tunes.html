@@ -19,12 +19,12 @@ context variables:
 
 {% block content %}
 
-    <div class="content_box">
-        <div class="content_headline">Tunes</div>
+    <div class="contentBox">
+        <div class="contentHeadline">Tunes</div>
         <div class="content">
             <form action="{% url 'update_tunes' server.id %}" method="post">
                 <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
-                <table class="form_table">
+                <table class="formTable">
                     <tbody>
                         {% for tune in tunes %}
                         <tr>

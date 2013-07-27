@@ -10,13 +10,13 @@ context variables:
 
 {% block content %}
 
-<div class="content_box w600 minimal">
-    <div class="content_headline minimal">User settings</div>
+<div class="contentBox w600 minimal">
+    <div class="contentHeadline minimal">User settings</div>
     <div class="content">
 
         <form method="post" action="{{ request.path }}">
             <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
-            <table class="form_table">
+            <table class="formTable">
                 <tbody>
                     <tr>
                         <th><label for="name">Name</label></th>
@@ -98,14 +98,14 @@ context variables:
     </div>
 </div>
 
-<div class="content_box w500 minimal">
-    <div class="content_headline minimal">Change Password</div>
+<div class="contentBox w500 minimal">
+    <div class="contentHeadline minimal">Change Password</div>
     <div class="content">
         <a href="{% url 'change_password' %}">Change password</a>
     </div>
 
     {% if settings.TESTING_STATE and user.is_staff %}
-    <div class="content_headline minimal">Generate testing keys</div>
+    <div class="contentHeadline minimal">Generate testing keys</div>
     <div class="content">
         <a href="{% url 'generate_testing_keys' %}">Generate testing keys</a>
     </div>

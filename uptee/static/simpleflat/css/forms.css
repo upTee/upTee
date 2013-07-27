@@ -1,38 +1,38 @@
-.form_table { 
+.formTable { 
     border-collapse: separate;
     border-spacing: 0 20px;
     border: none;
 }
 
-    .form_table td {
+    .formTable td {
         padding-left: 20px;
         text-align: left;
         border: none;
     }
 
-        .form_table td:first-of-type {
+        .formTable td:first-of-type {
             width: 500px;
         }
 
-    .form_table th {
+    .formTable th {
         text-align: right;
         border: none;
     }
 
-    .form_table tr  {
+    .formTable tr  {
         margin-top: 10px;
         text-align: right;
         border: none;
     }
 
-#login_container {
+#loginContainer {
     position: relative;
     margin: 75px auto 0 auto;
     width: 455px;
 }
 
 
-    #login_container .description_box {
+    #loginContainer .descriptionBox {
         position: relative;
         float: left;
         border: 1px solid #666;
@@ -47,25 +47,25 @@
         height: 22px;
     }
 
-        #login_container .description_box .active {
+        #loginContainer .descriptionBox .active {
             border: 1px solid #378ce1;
             border-right: none;
             background: #378ce1;
         }
 
-        #login_container .description_box .error {
+        #loginContainer .descriptionBox .error {
             border: 1px solid #e63a3a;
             border-right: none;
             background: #e63a3a;
             color: #000;
         }
 
-    #login_container .form_box {
+    #loginContainer .formBox {
         float: left;
         margin-bottom: 10px;
     }
 
-    #login_container .submit_box {
+    #loginContainer .submitBox {
         margin-left: auto;
         margin-right: auto;
         margin-top: 20px;
@@ -75,16 +75,16 @@
     }
 
 
-#login_container .icon_username{
+#loginContainer .iconUsername{
     background: #fff url('../icons/person.png') no-repeat 5px center;
 }
 
-#login_container .icon_password1, #login_container .icon_password2{
+#loginContainer .iconPassword1, #loginContainer .iconPassword2{
     background: #fff url('../icons/lock.png') no-repeat 5px center;
 }
 
 
-#login_container input[type=text], #login_container input[type=email], #login_container input[type=password] {
+#loginContainer input[type=text], #loginContainer input[type=email], #loginContainer input[type=password] {
     width: 220px;
     font-size: 16px;
     border: 2px solid #666;
@@ -92,16 +92,16 @@
     height: 18px;
 }
 
-    #login_container input[type=text]:focus, #login_container input[type=email]:focus, #login_container input[type=password]:focus {
+    #loginContainer input[type=text]:focus, #loginContainer input[type=email]:focus, #loginContainer input[type=password]:focus {
         border: 2px solid #378ce1;
     }
 
-    #login_container input.error[type=text], #login_container input.error[type=email], #login_container input.error[type=password] {
+    #loginContainer input.error[type=text], #loginContainer input.error[type=email], #loginContainer input.error[type=password] {
         border: 2px solid #e63a3a;
     }
 
 
-#login_container input[type=submit]{
+#loginContainer input[type=submit]{
     background: #56af45;
     margin-left: auto;
     margin-right: auto;
@@ -113,11 +113,11 @@
     border: none;
 }
 
-    #login_container input[type=submit]:hover{
+    #loginContainer input[type=submit]:hover{
         background: #4e9e3e;
     }
 
-    #login_container input[type=submit]:active{
+    #loginContainer input[type=submit]:active{
         background: #479038;
     }
 

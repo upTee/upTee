@@ -20,8 +20,8 @@ context variables:
 
 {% block content %}
 
-    <div class="content_box">
-        <div class="content_headline">Rcon Commands</div>
+    <div class="contentBox">
+        <div class="contentHeadline">Rcon Commands</div>
         <div class="content">
             
             <form action="{% url 'update_rcon_commands' server.id %}" method="post">
@@ -31,7 +31,7 @@ context variables:
                         <option value="{{ command.id }}">{{ command.command }}</option>
                     {% endfor %}
                 </select>
-                <table class="form_table">
+                <table class="formTable">
                     <tbody>
                         {% for rcon_command in rcon_commands %}
                         <tr>

@@ -26,10 +26,10 @@ context variables:
             {% if server.owner == user or moderator and moderator.edit_automatic_restart_allowed %}
 
 
-        <div class="content_box w450">
-            <div class="content_headline">Config Options</div>
+        <div class="contentBox w450">
+            <div class="contentHeadline">Config Options</div>
             <div class="content">
-                <table class="form_table">
+                <table class="formTable">
                     <tbody>
                         {% for option in options %}
                         <tr>
@@ -60,10 +60,10 @@ context variables:
         </div>
 
 
-        <div class="content_box w300">
-            <div class="content_headline">General Options</div>
+        <div class="contentBox w300">
+            <div class="contentHeadline">General Options</div>
             <div class="content">
-                <table class="form_table">
+                <table class="formTable">
                     <tbody>
                         <tr>
                             <th><label for="automatic_restart">Auto restart server:</label></th>
@@ -85,8 +85,8 @@ context variables:
             </div>
         </div>
 
-    <div class="content_box w170 red">
-            <div class="content_headline red">Update Settings</div>
+    <div class="contentBox w170 red">
+            <div class="contentHeadline red">Update Settings</div>
             <div class="content">
                 <p><input class="button" type="submit" value="Update settings"></p>
                 </form>

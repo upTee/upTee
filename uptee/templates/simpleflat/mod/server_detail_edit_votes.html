@@ -20,24 +20,24 @@ context variables:
 {% block content %}
 
 
-<div class="content_box w600">
-    <div class="content_headline">Edit Votes</div>
+<div class="contentBox w600">
+    <div class="contentHeadline">Edit Votes</div>
     <div class="content">
         <form action="{% url 'update_votes' server.id %}" method="post">
             <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
-            <table class="form_table">
+            <table class="formTable">
                 <tbody>
                     {% for vote in votes %}
                     <tr>
                         <th><input type="text" name="title {{ vote.title }} {{ vote.id }}" value="{{ vote.title }}" id="id-{{ vote.title }}-{{ vote.id }}"></th>
                         <td><input type="text" name="command {{ vote.command }} {{ vote.id }}" value="{{ vote.command }}" id="id-{{ vote.command }}-{{ vote.id }}"></td>
-                        <td><div class="delete_vote"></div></td> <!-- here a button will be included by js if js is supported "<div class="del_button"></div>" -->
+                        <td><div class="deleteVote"></div></td> <!-- here a button will be included by js if js is supported "<div class="del_button"></div>" -->
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
-            <div id="add_vote"></div> <!-- here a button will be included by js if js is supported "<p><button type="button">Add vote</button></p>" -->
-            <br \>
+            <div id="addVote"></div> <!-- here a button will be included by js if js is supported "<p><button type="button">Add vote</button></p>" -->
+            <br>
             <p><input class="button" type="submit" value="Update votes"></p>
         </form>
     </div>
