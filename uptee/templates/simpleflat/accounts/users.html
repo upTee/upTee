@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% load pagination_tags %}
+{% load gravatar %}
+
+{% comment %}
+context variables:
+    users
+    paginator
+{% endcomment %}
+
+{% block title %}upTee - Users{% endblock title %}
+
+{% block link_list %}
+
+<div id="link_list">
+    {% autopaginate users %}
+    {% paginate %}
+</div>
+
+{% endblock link_list %}
+
+{% block content %}
+
+{% autopaginate users %}
+
+<div class="contentBox w500">
+    <div class="contentHeadline">User List</div>
+    <div class="content">
+        
+        <table class="bordered">
+            <tbody>
+                <tr>
+                    <td class="bold">Name</td>
+                    <td class="bold">Servers</td>
+                    <td class="bold">Online servers</td>
+                </tr>
+                {% for user in users %}
+                    <tr>
+                        <td><img class="gravatar" src="{% gravatar_for_user user 20 %}"> <a href="{% url 'user' user.id %}">{{ user.username }}</a></td>
+                        <td><a href="{% url 'user_server_list' user.username %}">{{ user.profile.active_servers|length }}</a></td>
+                        <td><a href="{% url 'user_server_list' user.username %}type:online">{{ user.profile.online_servers|length }}</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+{% endblock %}
