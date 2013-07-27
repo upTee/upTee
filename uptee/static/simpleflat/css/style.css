@@ -94,12 +94,11 @@ html, body {
 }
 
 .statusIcon {
-    width: 10px;
+    width: 5px;
     height: 40px;
     position: absolute;
     top: 0px;
     right: 0px;
-    opacity: 0.4;
 }
 
 .statusIcon.off {
