@@ -8,6 +8,13 @@ context variables:
 
 {% block title %}upTee - Generate keys{% endblock title %}
 
+{% block breadcrumb %}
+    {{ block.super }}
+    {% load breadcrumb_tags %}
+    {% add_crumb 'Settings' 'settings' %}
+    {% add_crumb 'Generate testing keys' 'generate_testing_keys' %}
+{% endblock %}
+
 {% block content %}
 
 <div class="body">

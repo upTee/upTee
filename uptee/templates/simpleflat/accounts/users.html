@@ -11,6 +11,12 @@ context variables:
 
 {% block title %}upTee - Users{% endblock title %}
 
+{% block breadcrumb %}
+    {{ block.super }}
+    {% load breadcrumb_tags %}
+    {% add_crumb 'Users' 'users' %}
+{% endblock %}
+
 {% block link_list %}
 
 <div id="link_list">

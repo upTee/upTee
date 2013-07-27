@@ -8,6 +8,12 @@ context variables:
 
 {% block title %}upTee - Settings{% endblock title %}
 
+{% block breadcrumb %}
+    {{ block.super }}
+    {% load breadcrumb_tags %}
+    {% add_crumb 'Settings' 'settings' %}
+{% endblock %}
+
 {% block content %}
 
 <div class="contentBox w600 minimal">

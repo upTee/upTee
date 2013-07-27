@@ -12,8 +12,16 @@ context variables:
 
 {% block title %}upTee - {{ user_profile.username|possessive }} profile{% endblock title %}
 
-{% block content %}
+{% block breadcrumb %}
+    {{ block.super }}
+    {% load breadcrumb_tags %}
+    {% add_crumb 'Users' 'users' %}
+    {% with user_profile_breadcrumb=user_profile.username|possessive|add:' profile' %}
+        {% add_crumb user_profile_breadcrumb 'user' user_profile.id %}
+    {% endwith %}
+{% endblock %}
 
+{% block content %}
 
 <div class="contentBox w290 minimal">
     <div class="contentHeadline minimal">{{ user_profile.username }}</div>

@@ -13,6 +13,37 @@ context variables:
 
 {% block title %}upTee - {% if username %}{{ username|possessive }} servers{% else %}Server list{% endif %}{% endblock title %}
 
+{% block breadcrumb %}
+    {% url 'server_list__type' 'online' as url_servers_type_online %}
+    {% url 'server_list__type' 'offline' as url_servers_type_offline %}
+    {% url 'user_server_list' username as url_user_servers %}
+    {% url 'user_server_list__type' username 'online' as url_user_servers_type_online %}
+    {% url 'user_server_list__type' username 'offline' as url_user_servers_type_offline %}
+
+    {{ block.super }}
+    {% load breadcrumb_tags %}
+
+    {% add_crumb 'Servers' 'server_list' %}
+    {% if request.path == url_servers_type_online %}
+        {% add_crumb 'Online servers' url_servers_type_online %}
+    {% elif request.path == url_servers_type_offline %}
+        {% add_crumb 'Offline servers' url_servers_type_offline %}
+    {% endif %}
+    {% if username %}
+        {% with user_server_name=username|possessive|add:' servers' %}
+            {% if request.path == url_user_servers %}
+                {% add_crumb user_server_name url_user_servers %}
+            {% elif request.path == url_user_servers_type_online %}
+                {% add_crumb user_server_name url_user_servers %}
+                {% add_crumb 'Online servers' url_user_servers_type_online %}
+            {% elif request.path == url_user_servers_type_offline %}
+                {% add_crumb user_server_name url_user_servers %}
+                {% add_crumb 'Offline servers' url_user_servers_type_offline %}
+            {% endif %}
+        {% endwith %}
+    {% endif %}
+{% endblock %}
+
 {% block link_list %}
 
 <div id="link_list">
@@ -41,7 +72,7 @@ context variables:
                 {% if not username %}
                 
                 <tr>
-                    <td>Owner:</td>
+                    <td>Owner: {% url 'server_list__type' 'online' %}</td>
                     <td><a href="{% url 'user' server.owner.id %}">{% if server.owner == request.user %}You{% else %}{{ server.owner.username }}{% endif %}</p>{% endif %}</a></td>
                 </tr>
 
