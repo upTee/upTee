@@ -22,11 +22,14 @@ context variables:
         <div class="contentHeadline">Cange Mod</div>
         <div class="content">
             <p><strong>If you change the mod of your server all settings will be resetted to the mod default. You may have to check your moderators permissions.</strong></p>
+            <br>
             <form action="{{ request.path }}" method="post">
                 <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
                 {{ form.as_table }}
+
                 <p><input class="button" type="submit" value="Change mod"></p>
             </form>
+
         </div>
 </div>
 
