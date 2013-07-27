@@ -1,5 +1,5 @@
 /* override things for when the user is not authenticated */
-#content_container {
+#contentContainer {
     left: 0;
 }
 
