@@ -25,6 +25,7 @@ context variables:
                 <p><a href="{% url 'server_edit_moderator' server.id moderator.user.id %}">{{ moderator.user.username }}</a></p>
             {% empty %}
                 <p><strong>No moderators here!</strong></p>
+                <br>
             {% endfor %}
             
             <form class="smallform" method="post" action="{{ request.path }}">
