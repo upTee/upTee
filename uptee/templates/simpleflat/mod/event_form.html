@@ -12,7 +12,25 @@ context variables:
 
 <form action="{% url 'events_add_ajax' server.id %}" method="post">
     <table class="form_table">
-        {{ event_form.as_table }}
+        <tbody>
+            {% for field in event_form %}
+                <tr>
+                    <th>{% if field.name == 'date' %}Time{% else %}{{ field.label_tag }}{% endif %}:</th>
+                    <td>
+                        {% if field.name == 'date' %}
+                            {% if field.errors %}
+                                <ul>
+                                    <li>Please enter a valid Time in the future.</li>
+                                </ul>
+                            {% endif %}
+                            <input id="id_date" type="hidden" name="date"><input id="id_date_input" type="text" name="date_input" placeholder="hh:mm:ss">
+                        {% else %}
+                        {{ field.errors }}{{ field }}
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
     </table>
     <p><input class="button" type="submit" value="Add Event"></p>
     <p><button class="close_button" type="button">Close</button></p>

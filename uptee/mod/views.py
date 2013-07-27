@@ -679,7 +679,7 @@ def events_add_ajax(request, server_id):
             if task:
                 event.task_id = task.task_id
             event.save()
-            return []
+            return {'event_id': event.id}
     return render_to_response('mod/event_form.html', {
         'server': server,
         'event_form': form

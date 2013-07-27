@@ -144,6 +144,10 @@ $(document).ready(function() {
                     setTimeout(calendarCheckEventDetails, 10);
             })();
         });
+
+        $('.calendarHead .addEvent').click(function() {
+            calendarAddEvent();
+        });
     }
 });
 
@@ -248,38 +252,4 @@ function rotate_commands(direction) {
             $('#terminal_command_input').val('');
         }
     }
-}
-
-function handle_event_form(server_id) {
-    $('#event_form .button').live('click', function(e) {
-        e.preventDefault();
-
-        $('#event_form').append('<p class="loading">loading...</p>');
-
-        $.ajax({
-            beforeSend: function(jqXHR, settings) {
-                var csrftoken = $.cookie('csrftoken');
-                jqXHR.setRequestHeader('X-CSRFToken', csrftoken);
-            },
-            type: "POST",
-            url: '/server/' + server_id + '/events/add/',
-            data: $('#event_form :input').serialize(), // serializes the form's elements.
-            success: function(data)
-            {
-                if(data.length) {
-                    $('#event_form').html(data);
-                }
-                else {
-                    $('#event_form').remove();
-                    $('.eventsCalendar-list-wrap').append('<div class="notification_s success">Event successfully added!<div class="notification_close"></div></div>');
-                }
-            }
-        });
-    });
-
-    $('#event_form .close_button').live('click', function(e) {
-        e.preventDefault();
-
-        $('#event_form').remove();
-    });
 }

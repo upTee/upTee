@@ -295,7 +295,7 @@ function handle_event_form(server_id) {
             data: $('#event_form :input').serialize(), // serializes the form's elements.
             success: function(data)
             {
-                if(data.length) {
+                if(!data.hasOwnProperty('event_id')) {
                     $('#event_form').html(data);
                 }
                 else {
