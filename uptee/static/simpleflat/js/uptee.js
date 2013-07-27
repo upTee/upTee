@@ -12,12 +12,12 @@ $(document).ready(function() {
         if($('#fold_button .icon').length) {
             $('#option_menu_entries').slideUp('fast', function() {
                     $('#fold_button .icon').attr('class', 'icon_collapsed');
-                    $('#content_container').animate({'left': '100'}, 'fast');
+                    $('#contentContainer').animate({'left': '100'}, 'fast');
                     $('#breadcrum').animate({'left': '100'}, 'fast');
             });
         }
         if($('#fold_button .icon_collapsed').length) {
-            $('#content_container').animate({'left': '301'}, 'fast');
+            $('#contentContainer').animate({'left': '301'}, 'fast');
             $('#breadcrum').animate({'left': '300'}, 'fast', function() {
                 $('#option_menu_entries').slideDown('fast', function() {
                     $('#fold_button .icon_collapsed').attr('class', 'icon');
@@ -60,7 +60,7 @@ $(document).ready(function() {
         rcon_number++;
     });
 
-    $('.deleteCommand').html('<div class="del_button" onclick=""></div>');
+    $('.deleteCommand').html('<div class="delButton" onclick=""></div>');
     $('.deleteCommand div.delButton').live('click', function() {
         var tr = $(this).parents('tr');
         tr.hide();
@@ -170,33 +170,33 @@ var command_list = [];
 var command_list_index = 0;
 
 $(document).keypress(function(e) {
-    if (e.which == 13 && $('#terminal_command_input:focus').length) {
+    if (e.which == 13 && $('#terminalCommandInput:focus').length) {
         handle_input();
     }
 
-    if (e.keyCode == 38 && $("#terminal_command_input:focus").length) {
+    if (e.keyCode == 38 && $("#terminalCommandInput:focus").length) {
         rotate_commands(0);
     }
     
-    if (e.keyCode == 40 && $("#terminal_command_input:focus").length) {
+    if (e.keyCode == 40 && $("#terminalCommandInput:focus").length) {
         rotate_commands(1);
     }
 });
 
 function handle_input() {
-    var command = $('#terminal_command_input').val();
+    var command = $('#terminalCommandInput').val();
     if (command === '') return;
     command_list.push(command);
     command_list_index = command_list.length;
-    $('#terminal_command_input').val('');
+    $('#terminalCommandInput').val('');
     send_command(command);
 }
 
 function add_entry(line) {
     var data = '<p>' + line + '</p>';
-    $('#terminal_entry').append(data);
-    $('#terminal_entry').animate({
-        scrollTop: $('#terminal_entry')[0].scrollHeight
+    $('#terminalEntry').append(data);
+    $('#terminalEntry').animate({
+        scrollTop: $('#terminalEntry')[0].scrollHeight
     }, 'normal');
 }
 
@@ -240,16 +240,16 @@ function rotate_commands(direction) {
     if(!direction) {
         if(command_list_index > 0) {
             command_list_index--;
-            $('#terminal_command_input').val(command_list[command_list_index]);
+            $('#terminalCommandInput').val(command_list[command_list_index]);
         }
     }
     else {
         if(command_list_index < command_list.length) {
             command_list_index++;
-            $('#terminal_command_input').val(command_list[command_list_index]);
+            $('#terminalCommandInput').val(command_list[command_list_index]);
         }
         else {
-            $('#terminal_command_input').val('');
+            $('#terminalCommandInput').val('');
         }
     }
 }
