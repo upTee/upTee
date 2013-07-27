@@ -76,6 +76,11 @@ html, body {
     text-decoration: none;
 }
 
+#headermenu li img, #usermenu li img{
+    margin-top: 5px;
+}
+
+
 #menu li .entry.current {
     background: #fff;
     color: #000;
