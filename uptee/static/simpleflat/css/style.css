@@ -38,7 +38,7 @@ html, body {
     background: #378ce1;
     width: 100%;
     height: 50px;
-    min-width: 810px;
+    min-width: 1024px;
 }
 
 #headermenu {
@@ -201,7 +201,7 @@ html, body {
     right: 0;
     padding: 30px;
     overflow: auto;
-    min-width: 500px;
+    min-width: 710px;
     z-index: 5;
 }
 
@@ -564,3 +564,114 @@ p.joinLable{
     width: 260px;
 }
 /* ---END User Profile--- */
+
+
+/* --- Blog comments ---*/
+.commentsHeadline{
+   color: #666;
+   text-align: center;
+   border-bottom: 1px solid #ccc;
+}
+
+
+
+.comment{
+    margin-top: 40px;
+    position: relative;
+    width: 700px;
+}
+
+.comment .headline{
+    position: relative;
+    background: #ccc;
+    width: 580px;
+    float: right;
+    padding: 10px;
+    height: 20px;
+}
+
+    .comment .headline.staff{
+        background: #378ce1;
+        color: #fff;
+    }
+
+    .comment .headline.preview{
+            background: #56af45;
+        }
+
+    .comment .headline .links{
+        position: absolute;
+        right: 10px;
+
+    }
+
+    .comment .headline .user{
+        position: absolute;
+        left: 10px;
+    }
+
+.comment .entry{
+    padding: 0 10px 0 10px;
+    background: #ccc;
+    width: 580px;
+    float: right;
+}
+
+    .comment .entry.staff{
+        background: #378ce1;
+        color: #fff;
+    }
+
+    .comment .entry.preview{
+            background: #56af45;
+        }
+
+
+.comment .arrow{
+    position: absolute;
+    top: 30px;
+    left: 85px;
+    width: 0; 
+    height: 0; 
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 15px solid #ccc;
+}
+
+    .comment .arrow.staff{
+        border-right: 15px solid #378ce1;
+    }
+
+    .comment .arrow.preview{
+        border-right: 15px solid #56af45;
+    }
+
+
+
+
+.comment .avatar{
+    border: 1px solid #ccc; 
+    padding: 5px;
+    width: 70px;
+    height: 70px;
+    float: left;
+}
+
+.comment .footer{
+    background: #ccc;
+    width: 580px;
+    float: right;
+    padding: 10px;
+}
+
+    .comment .footer.staff{
+            background: #378ce1;
+            color: #fff;
+        }
+
+    .comment .footer.preview{
+            background: #56af45;
+        }
+
+
+/* --- END Blog comments ---*/

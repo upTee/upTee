@@ -270,3 +270,64 @@ select {
     select:focus {
         border: 1px solid #378ce1;
     }
+
+
+/* comment form */
+
+.createComment{
+    width: 600px;
+    margin-left: 100px;
+    margin-top: 40px;
+    background: #ccc;
+}
+
+.createComment .headline{
+    background: rgba(0, 0, 0, 0.2); /*replace with hex*/
+    padding: 10px;
+    font-size: 15px;
+    color: #fff;
+}
+
+.createComment textarea {
+    background: #ccc;
+    width: 580px;
+    max-width: 580px;
+    height: 100px;
+    border: none;
+    border-top: 1px solid #666;
+    border-bottom: 1px solid #666;
+    padding: 10px;
+    margin-bottom: 0;
+
+}
+
+  .createComment  textarea:focus {
+        background: rgba(0, 0, 0, 0.05); /*replace with hex*/
+    }
+
+.createComment .buttonBox {
+    padding: 10px;
+    margin-top: 0;
+}
+
+.createComment input[type=submit]{
+    background: #666;
+    font-size: 15px;
+    cursor: pointer;
+    color: #fff;
+    border: none;
+    min-width: 90px;
+    min-height: 32px;
+    padding: 5px 10px 5px 10px;
+    text-decoration: none;
+}
+
+    .createComment input[type=submit]:hover{
+        background: #777;
+    }
+
+    .createComment input[type=submit]:active{
+        background: #555;
+    }
+
+/* end comment form */
