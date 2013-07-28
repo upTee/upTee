@@ -30,7 +30,9 @@ context variables:
 <div id="comments">
     {% get_comment_list for blog.entry entry.id as comment_list %}
     {% if comment_list %}
-        <div class="commentsHeadline">Comments</div>
+        <div class="commentsHeadline">
+            comments <!-- show number of comments --> <!-- //assigned to Sushi //Fisico -->
+        </div>
     {% endif %}
 
 
@@ -43,18 +45,18 @@ context variables:
             </div>
 
 
-            <div class="arrow"></div> <!-- If Staff or Superadmin class="staff" --> <!-- //assigned to Sushi //Fisico -->
+            <div class="arrow"></div> <!-- If comment is from Staff or Superadmin class="staff" --> <!-- //assigned to Sushi //Fisico -->
 
             <div class="headline"> <!-- If Staff or Superadmin class="staff" --> <!-- //assigned to Sushi //Fisico -->
                 <div class="user"><a href="{% url 'user' comment.user.id %}">{{ comment.user.username }}</a></div>
                 <div class="links"><a title="Permalink" href="{{ entry.get_absolute_url }}#cm-{{ comment.id }}">#</a> {% if user.is_staff or user.is_superuser %}<a href="{% url 'comments-delete' comment.id %}">delete</a>{% endif %} </div>
             </div>
 
-            <div class="entry"> <!-- If Staff or Superadmin class="staff" --> <!-- //assigned to Sushi //Fisico -->
+            <div class="entry"> <!-- If comment is from Staff or Superadmin class="staff" --> <!-- //assigned to Sushi //Fisico -->
                 {{ comment.comment|safe }}
             </div>
 
-            <div class="footer"> <!-- If Staff or Superadmin class="staff" --> <!-- //assigned to Sushi //Fisico -->
+            <div class="footer"> <!-- If comment is from Staff or Superadmin class="staff" --> <!-- //assigned to Sushi //Fisico -->
                 <div class="left">{{ comment.submit_date|date:"F j, Y" }}</div>
             </div>
             <div class="clear"></div>
