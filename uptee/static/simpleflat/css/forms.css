@@ -279,6 +279,7 @@ select {
     margin-left: 100px;
     margin-top: 40px;
     background: #ccc;
+    border: 1px solid #666
 }
 
 .createComment .headline{
