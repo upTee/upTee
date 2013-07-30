@@ -234,7 +234,7 @@ html, body {
 
 
 .contentBox, .blogBox {
-    border: 2px solid #378ce1;
+    border: 1px solid #378ce1;
     margin-bottom: 30px;
     float: left;
     margin-right: 50px;
@@ -260,7 +260,7 @@ html, body {
 
 /* -----Custom Box Frames---------------- */
 .contentBox.gray, .blogBox.gray{
-    border: 2px solid #666;
+    border: 1px solid #666;
 }
 
 .contentHeadline.gray, .blogHeadline.gray{
@@ -268,7 +268,7 @@ html, body {
 }
 
 .contentBox.darkgray, .blogBox.darkgray{
-    border: 2px solid #333;
+    border: 1px solid #333;
 }
 
 .contentHeadline.darkgray, .blogHeadline.darkgray{
@@ -276,7 +276,7 @@ html, body {
 }
 
 .contentBox.red, .blogBox.red{
-    border: 2px solid #e63a3a;
+    border: 1px solid #e63a3a;
 }
 
 .contentHeadline.red, .blogHeadline.red{
@@ -284,7 +284,7 @@ html, body {
 }
 
 .contentBox.green, .blogBox.green{
-    border: 2px solid #56af45;
+    border: 1px solid #56af45;
 }
 
 .contentHeadline.green, .blogHeadline.green{
@@ -292,7 +292,7 @@ html, body {
 }
 
 .contentBox.yellow, .blogBox.yellow{
-    border: 2px solid #fbca04;
+    border: 1px solid #fbca04;
 }
 
 .contentHeadline.yellow, .blogHeadline.yellow{
