@@ -12,69 +12,59 @@ context variables:
 
 {% block content %}
 
-
-    <div class="blogBox">
-        <div class="blogHeadline">{{ entry.title }}</div>
-        <div class="content">
-            <p>{{ entry.content_html|safe }}</p>
-        </div>
-        <div class="footer">
-            <div class="left">Posted on <strong>{{ entry.created_at|date:"F j, Y" }}</strong> by <strong><a href="{% url 'user' entry.created_by.id %}">{{ entry.created_by.username }}</a></strong></div>
-            <div class="clear"></div>
-        </div>
+<div class="blogBox">
+    <div class="blogHeadline">{{ entry.title }}</div>
+    <div class="content">
+        <p>{{ entry.content_html|safe }}</p>
     </div>
-
-
-
+    <div class="footer">
+        <div class="left">Posted on <strong>{{ entry.created_at|date:"F j, Y" }}</strong> by <strong><a href="{% url 'user' entry.created_by.id %}">{{ entry.created_by.username }}</a></strong></div>
+        <div class="clear"></div>
+    </div>
+</div>
 
 <div id="comments">
     {% get_comment_list for blog.entry entry.id as comment_list %}
+    {% get_comment_count for blog.entry entry.id as comment_count %}
     {% if comment_list %}
         <div class="commentsHeadline">
-            comments <!-- show number of comments --> <!-- //assigned to Sushi //Fisico -->
+            {{ comment_count }} comment{{ comment_count|pluralize }}
         </div>
     {% endif %}
 
-
     {% for comment in comment_list %}
         <div id="cm-{{ comment.id }}" class="comment">
-            
 
             <div class="avatar">
                 <img src="{% gravatar_for_user comment.user 70 %}">
             </div>
 
+            <div class="arrow{% if comment.user.is_staff %} staff{% endif %}"></div>
 
-            <div class="arrow"></div> <!-- If comment is from Staff or Superadmin class="staff" --> <!-- //assigned to Sushi //Fisico -->
-
-            <div class="headline"> <!-- If Staff or Superadmin class="staff" --> <!-- //assigned to Sushi //Fisico -->
+            <div class="headline{% if comment.user.is_staff %} staff{% endif %}">
                 <div class="user"><a href="{% url 'user' comment.user.id %}">{{ comment.user.username }}</a></div>
                 <div class="links"><a title="Permalink" href="{{ entry.get_absolute_url }}#cm-{{ comment.id }}">#</a> {% if user.is_staff or user.is_superuser %}<a href="{% url 'comments-delete' comment.id %}">delete</a>{% endif %} </div>
             </div>
 
-            <div class="entry"> <!-- If comment is from Staff or Superadmin class="staff" --> <!-- //assigned to Sushi //Fisico -->
+            <div class="entry{% if comment.user.is_staff %} staff{% endif %}">
                 {{ comment.comment|safe }}
             </div>
 
-            <div class="footer"> <!-- If comment is from Staff or Superadmin class="staff" --> <!-- //assigned to Sushi //Fisico -->
+            <div class="footer{% if comment.user.is_staff %} staff{% endif %}">
                 <div class="left">{{ comment.submit_date|date:"F j, Y" }}</div>
             </div>
+
             <div class="clear"></div>
         </div>
         <div class="clear"></div>
-
     {% endfor %}
-
 </div>
 
 <div class="clear"></div>
 
-
-
-
 {% if user.is_authenticated %}
 <div class="createComment">
-    <div class="headline"><a onclick="toogle_comments()">Create comment</a></div>
+    <div class="headline">Create comment</div>
     {% render_comment_form for entry %}
 </div>
 {% endif %}
