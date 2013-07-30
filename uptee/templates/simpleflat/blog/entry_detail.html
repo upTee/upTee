@@ -10,6 +10,12 @@ context variables:
 
 {% block title %}upTee - Blog entry details{% endblock title %}
 
+{% block breadcrumb %}
+    {{ block.super }}
+    {% load breadcrumb_tags %}
+    {% add_crumb entry.title entry_detail entry.slug %}
+{% endblock %}
+
 {% block content %}
 
 <div class="blogBox">

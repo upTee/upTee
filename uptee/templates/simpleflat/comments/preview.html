@@ -3,6 +3,13 @@
 {% load comments %}
 {% load gravatar %}
 
+{% block breadcrumb %}
+    {{ block.super }}
+    {% load breadcrumb_tags %}
+    {% add_crumb form.target_object.title form.target_object.get_absolute_url %}
+    {% add_crumb 'Comment preview' request.path %}
+{% endblock %}
+
 {% block content %}
 
 {% if not form.errors %}
