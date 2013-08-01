@@ -19,7 +19,12 @@ img {
 
 
 a:visited, a:link {
+    text-decoration: none;
+    color: #378ce1;
+}
 
+a:visited:hover, a:link:hover {
+    text-decoration: underline;
 }
 
 .bold {
@@ -677,5 +682,10 @@ p.joinLable{
             background: #56af45;
         }
 
+
+.comment a:visited, .comment a:link{
+    color: #fff;
+    text-decoration: underline;
+}
 
 /* --- END Blog comments ---*/
