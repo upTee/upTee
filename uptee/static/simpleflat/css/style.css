@@ -20,7 +20,7 @@ img {
 
 a:visited, a:link {
     text-decoration: none;
-    color: #378ce1;
+    color: #1b7ffa;
 }
 
 a:visited:hover, a:link:hover {
@@ -40,7 +40,7 @@ html, body {
 } 
 
 #header {
-    background: #378ce1;
+    background: #1b7ffa;
     width: 100%;
     height: 50px;
     min-width: 1024px;
@@ -112,13 +112,13 @@ html, body {
 }
 
 .statusIcon.off {
-    background: #e63a3a;
-    border-bottom: 1px solid #e63a3a;
+    background: #fb3f35;
+    border-bottom: 1px solid #fb3f35;
 }
 
 .statusIcon.on {
-    background: #56af45;
-    border-bottom: 1px solid #56af45;
+    background: #52d86a;
+    border-bottom: 1px solid #52d86a;
 }
 
 #menu {
@@ -164,7 +164,7 @@ html, body {
 
 #menu li p:hover{
     background: #dddddd;
-    border-bottom: 1px solid #378ce1;
+    border-bottom: 1px solid #1b7ffa;
 }
 
 #footer{
@@ -239,7 +239,7 @@ html, body {
 
 
 .contentBox, .blogBox {
-    border: 1px solid #378ce1;
+    border: 1px solid #1b7ffa;
     margin-bottom: 30px;
     float: left;
     margin-right: 50px;
@@ -247,7 +247,7 @@ html, body {
 }
 
 .contentHeadline, .blogHeadline {
-    background: #378ce1;
+    background: #1b7ffa;
     display: block;
     padding: 5px 10px 10px 10px;
     font-size: 20px;
@@ -281,19 +281,19 @@ html, body {
 }
 
 .contentBox.red, .blogBox.red{
-    border: 1px solid #e63a3a;
+    border: 1px solid #fb3f35;
 }
 
 .contentHeadline.red, .blogHeadline.red{
-    background: #e63a3a;
+    background: #fb3f35;
 }
 
 .contentBox.green, .blogBox.green{
-    border: 1px solid #56af45;
+    border: 1px solid #52d86a;
 }
 
 .contentHeadline.green, .blogHeadline.green{
-    background: #56af45;
+    background: #52d86a;
 }
 
 .contentBox.yellow, .blogBox.yellow{
@@ -302,6 +302,15 @@ html, body {
 
 .contentHeadline.yellow, .blogHeadline.yellow{
     background: #fbca04;
+    color: #333;
+}
+
+.contentBox.orange, .blogBox.orange{
+    border: 1px solid #ff9326;
+}
+
+.contentHeadline.orange, .blogHeadline.orange{
+    background: #ff9326;
     color: #333;
 }
 
@@ -388,8 +397,8 @@ html, body {
 /* server info */
 
 .content h1 {
-    color: #378ce1;
-    border-bottom: 1px solid #378ce1;
+    color: #1b7ffa;
+    border-bottom: 1px solid #1b7ffa;
     font-size: 18px;
     padding:0 0 5px 0;
     width: 300px;
@@ -451,7 +460,7 @@ table.colored{
 }
 
 .colored th{
-    background: #378ce1;
+    background: #1b7ffa;
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid #ccc;
@@ -598,12 +607,12 @@ p.joinLable{
 }
 
     .comment .headline.staff{
-        background: #378ce1;
+        background: #1b7ffa;
         color: #fff;
     }
 
     .comment .headline.preview{
-            background: #56af45;
+            background: #52d86a;
         }
 
     .comment .headline .links{
@@ -625,12 +634,12 @@ p.joinLable{
 }
 
     .comment .entry.staff{
-        background: #378ce1;
+        background: #1b7ffa;
         color: #fff;
     }
 
     .comment .entry.preview{
-            background: #56af45;
+            background: #52d86a;
         }
 
 
@@ -646,11 +655,11 @@ p.joinLable{
 }
 
     .comment .arrow.staff{
-        border-right: 15px solid #378ce1;
+        border-right: 15px solid #1b7ffa;
     }
 
     .comment .arrow.preview{
-        border-right: 15px solid #56af45;
+        border-right: 15px solid #52d86a;
     }
 
 
@@ -674,12 +683,12 @@ p.joinLable{
 }
 
     .comment .footer.staff{
-            background: #378ce1;
+            background: #1b7ffa;
             color: #fff;
         }
 
     .comment .footer.preview{
-            background: #56af45;
+            background: #52d86a;
         }
 
 

@@ -48,15 +48,15 @@
     }
 
         #loginContainer .descriptionBox .active {
-            border: 1px solid #378ce1;
+            border: 1px solid #1b7ffa;
             border-right: none;
-            background: #378ce1;
+            background: #1b7ffa;
         }
 
         #loginContainer .descriptionBox .error {
-            border: 1px solid #e63a3a;
+            border: 1px solid #fb3f35;
             border-right: none;
-            background: #e63a3a;
+            background: #fb3f35;
             color: #000;
         }
 
@@ -93,16 +93,16 @@
 }
 
     #loginContainer input[type=text]:focus, #loginContainer input[type=email]:focus, #loginContainer input[type=password]:focus {
-        border: 2px solid #378ce1;
+        border: 2px solid #1b7ffa;
     }
 
     #loginContainer input.error[type=text], #loginContainer input.error[type=email], #loginContainer input.error[type=password] {
-        border: 2px solid #e63a3a;
+        border: 2px solid #fb3f35;
     }
 
 
 #loginContainer input[type=submit]{
-    background: #56af45;
+    background: #52d86a;
     margin-left: auto;
     margin-right: auto;
     padding: 11px;
@@ -157,11 +157,11 @@
 
 
    .content input[type=text]:focus, .content input[type=password]:focus, .content input[type=email]:focus {
-    border: 1px solid #378ce1;
+    border: 1px solid #1b7ffa;
     }
 
     .content input.error[type=text], .content input.error[type=password], .content input.error[type=email] {
-    border: 1px solid #e63a3a;
+    border: 1px solid #fb3f35;
     }
 
 
@@ -176,7 +176,7 @@ textarea {
 }
 
     textarea:focus {
-        border: 1px solid #378ce1;
+        border: 1px solid #1b7ffa;
     }
 
 
@@ -268,7 +268,7 @@ select {
 }
 
     select:focus {
-        border: 1px solid #378ce1;
+        border: 1px solid #1b7ffa;
     }
 
 
