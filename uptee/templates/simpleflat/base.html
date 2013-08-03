@@ -119,19 +119,19 @@
                         <li class="entry{% current request url_votes %}"><a href="{{ url_votes }}"><i class="icon-question-sign"></i> Votes</a></li>
                     {% endif %}
                     <li class="entry{% current request url_upload_map %}"><a href="{{ url_upload_map }}"><i class="icon-upload-alt"></i> Upload Map</a></li>
-                    <li class="entry{% current request url_edit_settings %}"><a href="{{ url_edit_settings }}"><i class="icon-pencil"></i> Edit Settings</a></li>
-                    <li class="entry{% current request url_edit_votes %}"><a href="{{ url_edit_votes }}">Edit Votes</a></li>
+                    <li class="entry{% current request url_edit_settings %}"><a href="{{ url_edit_settings }}"><i class="icon-edit-sign"></i> Edit Settings</a></li>
+                    <li class="entry{% current request url_edit_votes %}"><a href="{{ url_edit_votes }}"><i class="icon-edit-sign"></i> Edit Votes</a></li>
                     {% if server.config_available_rconcommands.all %}
-                        <li class="entry{% current request url_edit_rcon_commands %}"><a href="{{ url_edit_rcon_commands }}">Commands</a></li>
+                        <li class="entry{% current request url_edit_rcon_commands %}"><a href="{{ url_edit_rcon_commands }}"><i class="icon-keyboard"></i> Commands</a></li>
                     {% endif %}
                     {% if server.config_tunes.all %}
-                        <li class="entry{% current request url_edit_tunes %}"><a href="{{ url_edit_tunes }}">Edit Tunings</a></li>
+                        <li class="entry{% current request url_edit_tunes %}"><a href="{{ url_edit_tunes }}"><i class="icon-edit-sign"> Edit Tunings</a></li>
                     {% endif %}
                     {% if server.is_online %}
-                        <li class="entry{% current request url_console %}"><a href="{{ url_console }}"><i class="icon-terminal"></i> Terminal</a></li>
+                        <li class="entry{% current request url_console %}"><a href="{{ url_console }}"><i class="icon-keyboard"></i> Terminal</a></li>
                     {% endif %}
-                    <li class="entry{% current request url_change_mod %}"><a href="{{ url_change_mod }}">Change Mod</a></li>
-                    <li class="entry{% current request url_moderators %}"><a href="{{ url_moderators }}">Moderators</a></li>
+                    <li class="entry{% current request url_change_mod %}"><a href="{{ url_change_mod }}"><i class="icon-edit-sign"></i> Change Mod</a></li>
+                    <li class="entry{% current request url_moderators %}"><a href="{{ url_moderators }}"><i class="icon-user"></i> Moderators</a></li>
                 </ul>
             </li>
 

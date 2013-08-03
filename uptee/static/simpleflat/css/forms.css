@@ -279,7 +279,7 @@ select {
     margin-left: 100px;
     margin-top: 40px;
     background: #ccc;
-    border: 1px solid #666
+    border-radius: 10px;
 }
 
 .createComment .headline{
@@ -287,6 +287,8 @@ select {
     padding: 10px;
     font-size: 15px;
     color: #fff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .createComment textarea {
@@ -309,6 +311,8 @@ select {
 .createComment .buttonBox {
     padding: 10px;
     margin-top: 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .createComment input[type=submit]{
