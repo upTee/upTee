@@ -332,3 +332,42 @@ select {
     }
 
 /* end comment form */
+
+
+
+/* onoff switch  needs some js ;)  //assigned to Sushi //Fisico */
+.onoffswitch{
+    position: relative;
+    width: 70px;
+    height: 40px;
+    border-radius: 20px;
+    margin: 10px;
+}
+
+    .onoffswitch.on{
+        background: #53d261;
+        border: 2px solid #53d261;
+    }
+
+    .onoffswitch.off{
+        background: #fb3f35;
+        border: 2px solid #fb3f35;
+    }
+
+
+.onoffswitch .switch{
+    position: absolute;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid #e4e4e4;
+}
+
+    .onoffswitch .switch.on{
+        right: 0px;
+    }
+
+    .onoffswitch .switch.off{
+        left: 0px;
+    }
