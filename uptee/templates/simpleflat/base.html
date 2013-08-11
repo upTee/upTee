@@ -110,7 +110,7 @@
             {% url 'server_console' server.id as url_console %}
             <!-- end url definitions -->
 
-            <li class="menu_head" data-serverid="{{ server.id }}"> <p><i class="icon-chevron-right"></i> {{ server|get_option:'sv_name' }}<p>
+            <li class="menu_head" data-serverid="{{ server.id }}"> <p><i class="icon-chevron-right"></i> {{ server|get_option:'sv_name' }}</p>
                 <div class="statusIcon {% if server.is_online %}on{% else %}off{% endif %}"></div> 
                 
                 <ul style="display: none;">

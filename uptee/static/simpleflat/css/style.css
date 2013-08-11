@@ -105,7 +105,7 @@ html, body {
 
 .statusIcon {
     width: 5px;
-    height: 40px;
+    height: 51px;
     position: absolute;
     top: 0px;
     right: 0px;
@@ -122,7 +122,7 @@ html, body {
 }
 
 #menu {
-    background: #eee;
+    background: #fff;
     width: 250px;
     position: absolute;
     left: 0px;
@@ -145,25 +145,29 @@ html, body {
     padding-left: 20px;
     border-bottom: 1px solid transparent;
     color: #000;
+    border-bottom: 1px solid #efefef;
 }
 
 #menu li a:hover{
-    background: #dddddd;
-    border-bottom: 1px solid #009bff;
+    background: #f5f5f5;
 }
 
 
 
 #menu li p{
-    font-size: 18px;
+    color: #636363;
+    background: #eee;
+    font-size: 14px;
+    padding-top: 20px;
     padding-left: 10px;
-    line-height: 40px;
+    line-height: 30px;
     cursor: pointer;
-    border-bottom: 1px solid transparent;
+    border-bottom: 1px solid #efefef;
+    border-top: 1px solid #efefef;
 }
 
 #menu li p:hover{
-    background: #dddddd;
+    background: #f5f5f5;
     border-bottom: 1px solid #1b7ffa;
 }
 
@@ -261,6 +265,11 @@ html, body {
     padding-left: 10px;
     font-size: 10px;
 
+}
+
+/* -----Colors----- */
+.blue {
+    color: #329bff;
 }
 
 /* -----Custom Box Frames---------------- */
