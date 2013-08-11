@@ -23,7 +23,7 @@ Optional requirements
 
 Links
 -----
-* __[Beta page](http://uptee.sushitee.de)__
+* __[Beta page](http://uptee.teesites.net)__
 * __[Github repository](https://github.com/upTee/upTee/)__
 * __[Issues](https://github.com/upTee/upTee/issues)__
 * __[License](https://github.com/upTee/upTee/blob/master/LICENSE)__
@@ -47,4 +47,4 @@ __<sup>[3]</sup>__ recommend but another cached backend possible
 
 -----
 
-upTee – © 2012 - 2013 [upTee](http://uptee.sushitee.de/about/)
+upTee – © 2012 - 2013 [upTee](http://uptee.teesites.net/about/)
