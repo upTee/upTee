@@ -707,3 +707,12 @@ p.joinLable{
 }
 
 /* --- END Blog comments ---*/
+
+
+::-webkit-scrollbar {
+    width: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #666;
+}
