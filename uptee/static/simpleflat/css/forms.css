@@ -102,7 +102,8 @@
 
 
 #loginContainer input[type=submit]{
-    background: #52d86a;
+    /*background: #52d86a;*/
+    
     margin-left: auto;
     margin-right: auto;
     padding: 11px;
@@ -111,15 +112,24 @@
     cursor: pointer;
     color: #fff;
     border: none;
+    
+    border-radius: 5px;
 }
 
-    #loginContainer input[type=submit]:hover{
-        background: #4e9e3e;
-    }
+#loginContainer input.blue[type=submit] {
+    background: #0b6aff;
+    box-shadow: 0px 1px 0px rgba(6, 59, 143, 1);
+}
 
-    #loginContainer input[type=submit]:active{
-        background: #479038;
-    }
+#loginContainer input.red[type=submit] {
+    background: #ff0000;
+    box-shadow: 0px 1px 0px rgba(143, 0, 0, 1);
+}
+
+#loginContainer input.green[type=submit] {
+    background: #4e9e3e;
+    box-shadow: 0px 1px 0px rgba(18, 77, 28, 1);
+}
 
 
 /* -----Content------ */
