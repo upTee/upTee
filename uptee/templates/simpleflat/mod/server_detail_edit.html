@@ -20,14 +20,28 @@ context variables:
 
 {% block content %}
 
+<script type="text/javascript">
+    $(document).ready( function() {
+      $('#tabContainer').easytabs();
+    });
+</script>
+
 
         <form action="{% url 'update_settings' server.id %}" method="post">
             <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
             {% if server.owner == user or moderator and moderator.edit_automatic_restart_allowed %}
 
 
-        <div class="contentBox w450">
-            <div class="contentHeadline">Config Options</div>
+<div id="tabContainer">
+  <ul class="etabs">
+    <li class="tab right"><a href="#configOptions">Config Options</a></li>
+    <li class="tab left"><a href="#generalOptions">General Options</a></li>
+  </ul>
+  
+
+    <div id="configOptions" class="tabContent">
+        <div class="contentBox minimal">
+            <div class="contentHeadline minimal">Config Options</div>
             <div class="content">
                 <table class="formTable">
                     <tbody>
@@ -56,12 +70,17 @@ context variables:
                         {% endfor %}
                     </tbody>
                 </table>
+                <p><input class="button" type="submit" value="Update settings"></p>
+                    </form>
             </div>
         </div>
+    </div>
 
 
-        <div class="contentBox w300">
-            <div class="contentHeadline">General Options</div>
+
+    <div id="generalOptions" class="tabContent">
+        <div class="contentBox minimal">
+            <div class="contentHeadline minimal">General Options</div>
             <div class="content">
                 <table class="formTable">
                     <tbody>
@@ -81,17 +100,14 @@ context variables:
                         </tr>
                     </tbody>
                 </table>
+                <p><input class="button" type="submit" value="Update settings"></p>
+                    </form>
             {% endif %}
+
             </div>
         </div>
-
-    <div class="contentBox w170 red">
-            <div class="contentHeadline red">Update Settings</div>
-            <div class="content">
-                <p><input class="button" type="submit" value="Update settings"></p>
-                </form>
-            </div>
     </div>
 
+</div>
 
 {% endblock content %}
