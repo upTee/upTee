@@ -744,6 +744,11 @@ p.joinLable{
         text-decoration: none;
         color: #1b7ffa;
         text-align: center;
+        font-size: 15px;
+    }
+
+    .tab a:hover{
+        text-decoration: none;
     }
 
     .tab.left{

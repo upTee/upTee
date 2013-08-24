@@ -11,8 +11,8 @@ context variables:
 
 {% block content %}
 
-<div class="contentBox w300">
-        <div class="contentHeadline">{{ map_obj.server|get_option:'sv_name' }} - {{ map_obj.name }}</div>
+<div class="contentBox minimal">
+        <div class="contentHeadline minimal">{{ map_obj.server|get_option:'sv_name' }} - {{ map_obj.name }}</div>
         <div class="content">
             <p>Downloads: {{ map_obj.download_count }}</p>
             {% if not map_obj.server|get_option:'password' and map_obj.server.map_download_allowed or user == map_obj.server.owner or map_obj.server in user_moderated_servers %}

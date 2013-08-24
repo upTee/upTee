@@ -20,12 +20,28 @@ context variables:
 {% block content %}
 
 
+<script type="text/javascript">
+    $(document).ready( function() {
+      $('#tabContainer').easytabs();
+    });
+</script>
+
+
     <form action="{{ request.path }}" method="post">
         <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
         
 
-    <div class="contentBox">
-        <div class="contentHeadline">General Settings</div>
+<div id="tabContainer">
+  <ul class="etabs">
+    <li class="tab right"><a href="#general">General Settings</a></li>
+    <li class="tab"><a href="#options">Options</a></li>
+    <li class="tab left"><a href="#tunings">Tunings</a></li>
+  </ul>
+
+
+<div id="general" class="tabContent">
+    <div class="contentBox minimal">
+        <div class="contentHeadline minimal">General Settings</div>
         <div class="content">
             <table class="formTable">
                 <tbody>
@@ -82,9 +98,11 @@ context variables:
             </table>
         </div>
     </div>
+</div>
 
-    <div class="content_box">
-        <div class="content_headline">Options</div>
+<div id="options" class="tabContent">
+    <div class="content_box minimal">
+        <div class="content_headline minimal">Options</div>
         <div class="content">
             <table class="formTable">
                 <tbody>
@@ -102,9 +120,11 @@ context variables:
             {% if server.config_tunes.all %}
         </div>
     </div>
+</div>
 
-    <div class="content_box">
-        <div class="content_headline">Tunings</div>
+<div id="tunings" class="Tunings">
+    <div class="content_box minimal">
+        <div class="content_headline minimal">Tunings</div>
         <div class="content">
                 <table class="formTable">
                     <tbody>
@@ -129,5 +149,8 @@ context variables:
             </form>
         </div>
     </div>
+</div>
+
+</div>
 
 {% endblock content %}

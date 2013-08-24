@@ -22,7 +22,7 @@ context variables:
     $(document).ready( function() {
       $('#tabContainer').easytabs();
     });
-  </script>
+</script>
 
 
 <div id="tabContainer">
@@ -168,7 +168,7 @@ context variables:
   </div>
 
   <div id="status" class="tabContent">
-    <div class="contentBox w170 {% if server.is_online %}green{% else %}red{% endif %}">
+    <div class="contentBox w120 {% if server.is_online %}green{% else %}red{% endif %}">
     <div class="contentHeadline {% if server.is_online %}green{% else %}red{% endif %}">{% if server.is_online %}Online{% else %}Offline{% endif %}</div>
         {% if user.is_authenticated and server.map_exists %}{% if user == server.owner or user.is_staff or moderator and moderator.restart_allowed %}
         <div class="content">

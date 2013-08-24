@@ -11,7 +11,6 @@
     }
 
         .formTable td:first-of-type {
-            width: 500px;
         }
 
     .formTable th {
@@ -291,12 +290,12 @@ select {
 /* end comment form */
 
 /* Buttons */
-input[type=submit]{  
+input[type=submit], input[type=button], button[type=button]{  
     margin-left: auto;
     margin-right: auto;
-    padding: 15px;
+    padding: 10px;
     font-size: 15px;
-    min-width: 150px;
+    min-width: 100px;
     cursor: pointer;
     color: #fff;
     border: none;
@@ -304,17 +303,23 @@ input[type=submit]{
     background: #666;
 }
 
-input.blue[type=submit] {
+input.login[type=submit]{  
+    padding: 15px;
+    font-size: 15px;
+    min-width: 150px;
+}
+
+input.blue[type=submit], input.blue[type=button], button.blue[type=button] {
     background: #0b6aff;
     box-shadow: 0px 1px 0px rgba(6, 59, 143, 1);
 }
 
-input.red[type=submit] {
+input.red[type=submit], input.red[type=button], button.red[type=button] {
     background: #ff0000;
     box-shadow: 0px 1px 0px rgba(143, 0, 0, 1);
 }
 
-input.green[type=submit] {
+input.green[type=submit], input.green[type=button], button.green[type=button] {
     background: #4e9e3e;
     box-shadow: 0px 1px 0px rgba(18, 77, 28, 1);
 }
