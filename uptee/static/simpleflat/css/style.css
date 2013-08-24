@@ -355,6 +355,7 @@ html, body {
     height: 20px;
     padding: 15px 10px 15px 60px;
     margin: 0 auto 20px;
+    border-radius: 10px;
 }
 
 .notification.info {
@@ -418,6 +419,15 @@ html, body {
 .content .box {
     float: left;
     margin-right: 50px;
+}
+
+
+.content ul{
+    margin-left: 30px;
+}
+
+.content p{
+    margin: 5px;
 }
 
 
@@ -534,41 +544,39 @@ table.colored{
 }
 /* ---End vote delete / command delete button--- */
 
-/* ---About Page--- */
-#about h2{
+/* ---About Page--- 
+#aboutPage h2{
     margin: 2px;
     color: #009bff;
     border-bottom: 1px solid #009bff;
 }
 
-#about p{
+#aboutPage p{
     margin: 5px;
     margin-bottom: 15px;
 }
 
-#about table{
+#aboutPage table{
     border-collapse: collapse;
     margin: 5px;
 }
 
-#about th{
+#aboutPage th{
     text-align: left;
     padding: 5px;
     padding-right: 10px;
     font-size: 14px;
 }
 
-#about td{
+#aboutPage td{
     text-align: left;
     padding: 5px;
     padding-right: 10px;
     border-top: 1px solid #009bff;
 }
 
-#about ul{
-    margin-left: 30px;
-}
-/* ---END About Page--- */
+
+---END About Page--- */
 
 /* ---User Profile--- */
 img.userProfile{
@@ -648,7 +656,6 @@ p.joinLable{
             background: #52d86a;
         }
 
-
 .comment .arrow{
     position: absolute;
     top: 30px;
@@ -667,8 +674,6 @@ p.joinLable{
     .comment .arrow.preview{
         border-right: 15px solid #52d86a;
     }
-
-
 
 
 .comment .avatar{

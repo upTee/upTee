@@ -4,72 +4,121 @@
 
 {% block content %}
 
-<div id="about">
-    <h2>What is upTee</h2>
-    <p>
-        upTee aims to make the administration simple and fully configurable. It is designed to manage all kind of mods without the problem of missing something.<br>
-        Also it shows the current status of each server hosted with upTee.
-    </p>
-    <h2>Who made upTee?</h2>
-    <table>
-        <tr>
-            <th>Contributor</th>
-            <th>Role</th>
-        </tr>
-        <tr>
-            <td><a href="https://github.com/SushiTee" target="_blank">Sascha "Sushi" W.</a></td>
-            <td>Main developer <a href="http://i.imgur.com/DIHca.jpg" target="_blank">...</a></color></td>
-        </tr>
-        <tr>
-            <td><a href="https://github.com/Fisico" target="_blank">David "Fisico" G.</a></td>
-            <td>Web designer &amp; Mr.Awesome &#9829</td>
-        </tr>
-        <tr>
-            <td><a href="https://github.com/Zatline" target="_blank">Cedric "Zatline" D.</a></td>
-            <td>Made the awesome logo, icon and favicon</td>
-        </tr>
-    </table>
-    <p>
-        If you feel you should be listed above, but you are not, I'm deeply sorry for that, please contact us using <a href="https://github.com/upTee/upTee/issues/">GitHub Issues</a>.
-    </p>
 
-    <h2>What builds upTee?</h2>
-    <p>
-        upTee depends on many 3rd-party projects. Here's the complete list of them:
-        <ul>
-            <li>
-                <strong><a href="http://python.org/" target="_blank">python</a></strong> - a programming language that you should dive into
-                <ul>
-                    <li>
-                        <strong><a href="http://djangoproject.com/" target="_blank">django</a></strong> - open source web application framework
+<script type="text/javascript">
+    $(document).ready( function() {
+      $('#tabContainer').easytabs();
+    });
+</script>
+
+
+
+    <div id="tabContainer">
+      <ul class="etabs">
+        <li class="tab right"><a href="#about">About</a></li>
+        <li class="tab"><a href="#team">Team</a></li>
+        <li class="tab"><a href="#projects">3rd-party projects</a></li>
+        <li class="tab left"><a href="#credits">Credits</a></li>
+      </ul>
+
+
+
+
+        <div id="about" class="tabContent">
+            <div class="contentBox minimal">
+                <div class="contentHeadline minimal">What is upTee</div>
+                    <div class="content">
+                    <p>
+                        upTee aims to make the administration simple and fully configurable. It is designed to manage all kind of mods without the problem of missing something.<br>
+                        Also it shows the current status of each server hosted with upTee.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="team" class="tabContent">
+            <div class="contentBox minimal">
+                <div class="contentHeadline minimal">Who made upTee?</div>
+                    <div class="content">
+                        <table class="bordered">
+                            <tr>
+                                <th>Contributor</th>
+                                <th>Role</th>
+                            </tr>
+                            <tr>
+                                <td><a href="https://github.com/SushiTee" target="_blank">Sascha "Sushi" W.</a></td>
+                                <td>Main developer <a href="http://i.imgur.com/DIHca.jpg" target="_blank">.</a></color></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://github.com/Fisico" target="_blank">David "Fisico" G.</a></td>
+                                <td>Web designer &amp; Mr.Awesome &#9829</td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://github.com/Zatline" target="_blank">Cedric "Zatline" D.</a></td>
+                                <td>Made the awesome logo, icon and favicon</td>
+                            </tr>
+                        </table>
+                        <p>
+                            If you feel you should be listed above, but you are not, I'm deeply sorry for that, please contact us using <a href="https://github.com/upTee/upTee/issues/">GitHub Issues</a>.
+                        </p>
+                    </div>
+                </div>
+        </div>
+
+
+
+        <div id="projects" class="tabContent">
+            <div class="contentBox minimal">
+                <div class="contentHeadline minimal">What builds upTee?</div>
+                    <div class="content">
+                        <p>
+                        upTee depends on many 3rd-party projects. Here's the complete list of them:
+                        </p>
+
                         <ul>
-                            <li><strong><a href="https://bitbucket.org/izi/django-admin-tools/" target="_blank">django-admin-tools</a></strong> - pretty admin site</li>
-                            <li><strong><a href="https://bitbucket.org/offline/django-annoying/" target="_blank">django-annoying</a></strong> - a must-have for fixing django annoying things</li>
-                            <li><strong><a href="https://bitbucket.org/jmoiron/johnny-cache/" target="_blank">johnny-cache</a></strong> - low-level caching framework</li>
-                            <li><strong><a href="https://github.com/mbi/django-simple-captcha" target="_blank">django-simple-captcha</a></strong> - simple, yet highly customizable Django application to add captcha images</li>
-                            <li><strong><a href="https://github.com/char0n/django-pybrowscap" target="_blank">django-pybrowscap</a></strong> - pybrowscap middlware for pybrowscap</li>
-                            <li><strong><a href="https://github.com/nvie/django-gravatar" target="_blank">django-gravatar</a></strong> - easy Gravatar support</li>
-                            <li><strong><a href="https://github.com/ericflo/django-pagination/" target="_blank">django-pagination</a></strong> - pagination for dummies</li>
-                            <li><strong><a href="http://south.aeracode.org/" target="_blank">south</a></strong> - schema and data migrations</li>
+                            <li>
+                                <strong><a href="http://python.org/" target="_blank">python</a></strong> - a programming language that you should dive into
+                                <ul>
+                                    <li>
+                                        <strong><a href="http://djangoproject.com/" target="_blank">django</a></strong> - open source web application framework
+                                        <ul>
+                                            <li><strong><a href="https://bitbucket.org/izi/django-admin-tools/" target="_blank">django-admin-tools</a></strong> - pretty admin site</li>
+                                            <li><strong><a href="https://bitbucket.org/offline/django-annoying/" target="_blank">django-annoying</a></strong> - a must-have for fixing django annoying things</li>
+                                            <li><strong><a href="https://bitbucket.org/jmoiron/johnny-cache/" target="_blank">johnny-cache</a></strong> - low-level caching framework</li>
+                                            <li><strong><a href="https://github.com/mbi/django-simple-captcha" target="_blank">django-simple-captcha</a></strong> - simple, yet highly customizable Django application to add captcha images</li>
+                                            <li><strong><a href="https://github.com/char0n/django-pybrowscap" target="_blank">django-pybrowscap</a></strong> - pybrowscap middlware for pybrowscap</li>
+                                            <li><strong><a href="https://github.com/nvie/django-gravatar" target="_blank">django-gravatar</a></strong> - easy Gravatar support</li>
+                                            <li><strong><a href="https://github.com/ericflo/django-pagination/" target="_blank">django-pagination</a></strong> - pagination for dummies</li>
+                                            <li><strong><a href="http://south.aeracode.org/" target="_blank">south</a></strong> - schema and data migrations</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong><a href="http://celeryproject.org/" target="_blank">celery</a></strong> - distributed task queue</li>
+                                </ul>
+                            </li>
+                            <li><strong><a href="http://nginx.org/" target="_blank">nginx</a></strong> - high-performance HTTP server</li>
+                            <li><strong><a href="http://projects.unbit.it/uwsgi/" target="_blank">uwsgi</a></strong> - application container server</li>
+                            <li><strong><a href="http://memcached.org/" target="_blank">memcached</a></strong> - cache backend</li>
+                            <li><strong><a href="http://www.rabbitmq.com/" target="_blank">rabbitmq</a></strong> - AMQP messaging system, backend for celery</li>
                         </ul>
-                    </li>
-                    <li><strong><a href="http://celeryproject.org/" target="_blank">celery</a></strong> - distributed task queue</li>
-                </ul>
-            </li>
-            <li><strong><a href="http://nginx.org/" target="_blank">nginx</a></strong> - high-performance HTTP server</li>
-            <li><strong><a href="http://projects.unbit.it/uwsgi/" target="_blank">uwsgi</a></strong> - application container server</li>
-            <li><strong><a href="http://memcached.org/" target="_blank">memcached</a></strong> - cache backend</li>
-            <li><strong><a href="http://www.rabbitmq.com/" target="_blank">rabbitmq</a></strong> - AMQP messaging system, backend for celery</li>
-        </ul>
-    </p>
+                    </div>
+            </div>
+        </div>
 
 
-    <h2>Credits</h2>
-    <p>
-        <ul>
-            <li><a href="http://fortawesome.github.io/Font-Awesome/" target="_blank">Font Awesome Icons</a></li>
-        </ul>
-    </p>
-</div>
+        <div id="credits" class="tabContent">
+            <div class="contentBox minimal">
+            <div class="contentHeadline minimal">Credits</div>
+                <div class="content">
+                    <p>
+                        <ul>
+                            <li><a href="http://fortawesome.github.io/Font-Awesome/" target="_blank">Font Awesome Icons</a></li>
+                            <li><a href="https://github.com/JangoSteve/jQuery-EasyTabs" target="_blank">EasyTabs.js</a></li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
 {% endblock content %}
 

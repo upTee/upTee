@@ -235,7 +235,6 @@ select {
 }
 
 .createComment .headline{
-    background: rgba(0, 0, 0, 0.2); /*replace with hex*/
     padding: 10px;
     font-size: 15px;
     color: #fff;
@@ -249,8 +248,8 @@ select {
     max-width: 580px;
     height: 100px;
     border: none;
-    border-top: 1px solid #666;
-    border-bottom: 1px solid #666;
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
     padding: 10px;
     margin-bottom: 0;
 
