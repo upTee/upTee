@@ -101,61 +101,6 @@
     }
 
 
-/*#loginContainer input[type=submit]{  
-    margin-left: auto;
-    margin-right: auto;
-    padding: 11px;
-    font-size: 15px;
-    width: 200px;
-    cursor: pointer;
-    color: #fff;
-    border: none;
-    
-    border-radius: 5px;
-}
-
-#loginContainer input.blue[type=submit] {
-    background: #0b6aff;
-    box-shadow: 0px 1px 0px rgba(6, 59, 143, 1);
-}
-
-#loginContainer input.red[type=submit] {
-    background: #ff0000;
-    box-shadow: 0px 1px 0px rgba(143, 0, 0, 1);
-}
-
-#loginContainer input.green[type=submit] {
-    background: #4e9e3e;
-    box-shadow: 0px 1px 0px rgba(18, 77, 28, 1);
-}
-*/
-
-/* -----Content------ */
-
-/*.content input[type=submit], .link_button, .content button[type=button] {
-    margin-top: 20px;
-    background: #666;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 15px;
-    cursor: pointer;
-    color: #fff;
-    border: none;
-    min-width: 90px;
-    min-height: 32px;
-    padding: 5px 10px 5px 10px;
-    text-decoration: none;
-}
-
-    .content input[type=submit]:hover, .link_button:hover, .content button[type=button]:hover {
-        background: #777;
-    }
-
-    .content input[type=submit]:active, .link_button:active, .content button[type=button]:active {
-        background: #555;
-    }
-*/
-
 .content input[type=text], .content input[type=password], .content input[type=email] {
     background: #fff;
     width: 200px;
@@ -373,3 +318,4 @@ input.green[type=submit] {
     background: #4e9e3e;
     box-shadow: 0px 1px 0px rgba(18, 77, 28, 1);
 }
+/*end Buttons */
