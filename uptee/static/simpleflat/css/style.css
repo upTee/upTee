@@ -423,7 +423,6 @@ html, body {
 
 /* ---tables---*/
 table.bordered{
-    width: 100%;
     border-collapse:collapse;
     border: 1px solid #ccc;
 }
@@ -443,7 +442,6 @@ table.bordered{
 
 
 table.small{
-    width: 100%;
     border-collapse:collapse;
     border: 1px solid #ccc;
 }
@@ -463,7 +461,6 @@ table.small{
 
 
 table.colored{
-    width: 100%;
     border-collapse:collapse;
     border: 1px solid #ccc;
 }
@@ -716,3 +713,60 @@ p.joinLable{
 ::-webkit-scrollbar-thumb {
     background: #666;
 }
+
+
+
+/* Tabmenu */
+
+#tabContainer{
+    margin-top: 20px;
+}
+
+.etabs { 
+    margin: 0;
+    padding: 0; 
+    list-style: none;
+    text-align: center;
+}
+
+.tab { 
+    border: solid 1px #1b7ffa;
+    border-right: none;
+    min-width: 50px;
+    display: inline-block; 
+    padding: 10px;
+    float: left;
+    color: #1b7ffa;
+    margin-bottom: 20px;
+}
+
+    .tab a{
+        text-decoration: none;
+        color: #1b7ffa;
+        text-align: center;
+    }
+
+    .tab.left{
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border: solid 1px #1b7ffa;
+    }
+
+    .tab.right{
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+
+    .tab.active{
+        background: #1b7ffa;
+    }
+
+    .tab.active a{
+        color:#fff;
+    }
+
+.tabContent{
+    clear: both;
+    color: #000;
+}
+
