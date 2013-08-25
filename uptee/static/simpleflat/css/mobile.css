@@ -33,3 +33,14 @@
     min-width: 479px;
     overflow: visible;
 }
+
+
+#usermenuBox {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 500px;
+    width: 100px;
+    z-index: 100;
+    background: black;
+}
