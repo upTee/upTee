@@ -52,26 +52,26 @@ html, body {
     left: 250px;
 }
 
-#usermenu {
+#loginmenu {
     position: absolute;
     top: 0;
-    right: 25px;
+    right: 20px;
 }
 
-#headermenu ul, #usermenu ul{
+#headermenu ul, #loginmenu ul{
     list-style-type: none;
     height: 50px;
     margin: auto;
 }
 
-#headermenu li, #usermenu li{
+#headermenu li, #loginmenu li{
     float: left;
     height: 50px;
     background: none;
     display: block;
 }
 
-#headermenu li a, #usermenu li a{
+#headermenu li a, #loginmenu li a{
     height: 50px;
     line-height: 50px;
     padding: 0 20px 0 20px;
@@ -81,19 +81,85 @@ html, body {
     text-decoration: none;
 }
 
-#headermenu li img, #usermenu li img{
-    margin-top: 5px;
-}
-
-
 #menu li .entry.current {
     background: #fff;
     color: #000;
 }
 
-#headermenu li a:hover, #usermenu li a:hover{
+#headermenu li a:hover, #loginmenu li a:hover{
     background: rgba(0,0,0,0.1);
 }
+
+
+#usermenuBox {
+    position: absolute;
+    top: 0;
+    right: 30px;
+    height: 500px;
+    width: 200px;
+    z-index: 100;
+}
+
+
+ul#usermenu, ul.submenu{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    height: 50px;
+}
+
+ul#usermenu:hover, ul.submenu:hover{
+    background: #eee;
+    color: #666;
+}
+
+
+ul#usermenu li{
+    float: left;
+}
+
+ul#usermenu li:hover{
+    color: #666;
+}
+
+li ul.submenu {
+    display: none;
+}
+ul#usermenu li {
+    display: block;
+    text-decoration: none;
+    padding: 6px 0 20px 0;
+    float:none;
+    font-size: 25px;
+    color: #fff;
+    text-align: center;
+}
+
+ul#usermenu li:hover ul.submenu{
+    position: relative;
+    display: block;
+    position: absolute;
+    float:left;
+    margin-top: 9px;
+}
+
+ul#usermenu li:hover li,  ul#usermenu li:hover a {
+    float: none;
+    background: #eee;
+    font-size: 15px;
+    text-align: left;
+    padding-left: 10px;
+    width: 190px;
+}
+
+ul#usermenu li:hover li img {
+    margin-left: 25px;
+    width: 100px;
+
+}
+/*ul#usermenu li:hover li a:hover {
+    background: blue;
+}*/
 
 
 .logo {
@@ -105,7 +171,7 @@ html, body {
 
 .statusIcon {
     width: 5px;
-    height: 51px;
+    height: 40px;
     position: absolute;
     top: 0px;
     right: 0px;
@@ -158,7 +224,8 @@ html, body {
     color: #636363;
     background: #eee;
     font-size: 14px;
-    padding-top: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     padding-left: 10px;
     line-height: 30px;
     cursor: pointer;

@@ -177,19 +177,30 @@
 
         {% endcomment %}
 
-        <div id="usermenu">
-            <ul>
-                {% if user.is_authenticated %}
-                <li><a href="{% url 'user' user.id %}"><i class="icon-user"></i> {{ user.username }}</a></li>
-                <li><a href="#"><img class="gravatar" src="{% gravatar_for_user user 40 %}"></a></li>
-                <li><a href="{% url 'settings' %}"><i class="icon-cog"></i> Settings</a></li>
-                <li><a href="{% url 'logout' %}"><i class="icon-off"></i> Logout!</a></li>
-                {% else %}
-                <li><a href="{% url 'register' %}"><i class="icon-signin"></i> Register</a></li>
-                <li><a href="{% url 'login' %}"><i class="icon-signin"></i> Login</a></li>
-                {% endif %}
+        {% if user.is_authenticated %}
+        <div id="usermenuBox">
+            <ul id="usermenu">
+                <li><i class="icon-gear"></i>
+                    <ul class="submenu">
+                        <li><a href="#"><img class="gravatar" src="{% gravatar_for_user user 100 %}"></a></li>
+                        <li><a href="{% url 'user' user.id %}"><i class="icon-user"></i> {{ user.username }}</a></li>
+                        <li><a href="{% url 'settings' %}"><i class="icon-cog"></i> Account Settings</a></li>
+                        <li><a href="{% url 'logout' %}"><i class="icon-off"></i> Logout!</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
+
+        {% else %}
+
+        <div id="loginmenu">
+            <ul>
+                <li><a href="{% url 'register' %}"><i class="icon-signin"></i> Register</a></li>
+                <li><a href="{% url 'login' %}"><i class="icon-signin"></i> Login</a></li>
+            </ul>
+        </div>
+        {% endif %}
+        
 
         {% comment %}
 
