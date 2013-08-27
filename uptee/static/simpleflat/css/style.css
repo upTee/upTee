@@ -122,6 +122,7 @@ html, body {
     z-index: 500;
     background: #efefef;
     border-radius: 10px;
+    box-shadow: 2px 2px 2px #ccc;
 }
 
 
