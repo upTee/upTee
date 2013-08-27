@@ -1,0 +1,79 @@
+.ui-header{
+    background: #fff;
+    border: none;
+    border-bottom: 1px solid #c0c0c0;
+    color: #000;
+    text-shadow: none;
+}
+
+
+.ui-btn-left{
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    text-shadow: none;
+    color: #0c77fb;
+    font-weight: 100;
+    height: 34px;
+    padding-left: 22px;
+}
+
+.ui-btn-left:hover{
+    color: #0c77fb;
+}
+
+
+.ui-btn-left .ui-btn-text{
+    font-size: 17px;
+}
+
+
+.ui-btn-left .ui-icon-back{
+    background: url('../images/arrow.png');
+    width: 15px;
+    height: 25px;
+    top: 13px !important;
+}
+
+.ui-page,.ui-content{
+    background: #e3e3e3;
+    padding:0 0 0 0;
+}
+
+.ui-listview.serverMenu{
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+}
+
+.ui-li-divider.listHeadline{
+    border: none;
+    border-bottom: 1px solid #e3e3e3;
+    background: #eee;
+    color: #686868;
+    font-size: 12px;
+    text-shadow: none;
+    padding: 30px 30px 10px 30px;
+}
+
+.ui-listview li {
+    background: #fff;
+    border: none;
+    border-bottom: 1px solid #e3e3e3;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+.ui-footer {
+    background: #fff;
+    border: none;
+    border-top: 1px solid #c0c0c0;
+    padding: 0;
+}
+
+.ui-footer .ui-btn {
+    background: red;
+    border-radius: 0;
+    border: none;
+}
