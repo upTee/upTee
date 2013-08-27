@@ -19,34 +19,68 @@
 
 <body>
 
-	<div data-role="page">
+	<div data-role="page" id="serverScreen">
 
 		<div data-role="header" data-position="fixed">
-	        <a href="index.html" data-role="button" data-icon="back">Back</a>
-	        <h1>Headline</h1>
+	        <h1>Your Servers</h1>
 	    </div>
 
 
 	    <div data-role="content">
 		    <ul data-role="listview" data-inset="true" class="serverMenu" data-divider-theme="d">
 		        <li data-role="list-divider" class="listHeadline">ONLINE SERVERS</li>
-		        <li><a href="item1.html">Server1</a></li>
-		        <li><a href="item1.html">Server2</a></li>
-		        <li><a href="item1.html">Server3</a></li>
-		        <li><a href="item1.html">Server4</a></li>
+		        <li><a href="#optionScreen">Server1</a></li>
+		        <li><a href="#optionScreen">Server2</a></li>
+		        <li><a href="#optionScreen">Server3</a></li>
+		        <li><a href="#optionScreen">Server4</a></li>
 		        <li data-role="list-divider" class="listHeadline">OFFLINE SERVERS</li>
-		        <li><a href="item1.html">Server5</a></li>
-		        <li><a href="item1.html">Server6</a></li>
+		        <li><a href="#optionScreen">Server5</a></li>
+		        <li><a href="#optionScreen">Server6</a></li>
 		    </ul>
 		</div>
 
 
+
 	    <div data-role="footer" class="ui-bar" data-position="fixed">
-	        <a href="item1.html">User List</a>
-	        <a href="item1.html">Server List</a>
-	        <a href="item1.html">Home</a>
+	        <a href="">User List</a>
+	        <a href="">Server List</a>
+	        <a href="">Home</a>
 	    </div>
 
 	</div>
+	
+
+
+	<div data-role="page" id="optionScreen">
+
+		<div data-role="header" data-position="fixed">
+	        <a href="#serverScreen" data-role="button" data-icon="back">Back</a>
+	        <h1>Option Menu</h1>
+	    </div>
+
+	    <div data-role="content">
+		    <ul data-role="listview" data-inset="true" class="serverMenu" data-divider-theme="d">
+		        <li><a href="">Option1</a></li>
+		        <li><a href="">Option2</a></li>
+		        <li><a href="">Option3</a></li>
+		        <li><a href="">Option4</a></li>
+		        <li><a href="">Option5</a></li>
+		        <li><a href="">Option6</a></li>
+		        <li><a href="">Option7</a></li>
+		        <li><a href="">Option8</a></li>
+		        <li><a href="">Option9</a></li>
+		        <li><a href="">Option10</a></li>
+		        <li><a href="">Option11</a></li>
+		    </ul>
+		</div>
+
+	    <div data-role="footer" class="ui-bar" data-position="fixed">
+	        <a href="">User List</a>
+	        <a href="">Server List</a>
+	        <a href="">Home</a>
+	    </div>
+
+	</div>
+
 
 </body>
