@@ -32,7 +32,7 @@
     background: url('../images/arrow.png');
     width: 15px;
     height: 25px;
-    top: 13px !important;
+    top: 50% !important;
 }
 
 #optionScreen .ui-content, #optionScreen .ui-page, #serverScreen .ui-content, #serverScreen .ui-page{
