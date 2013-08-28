@@ -37,12 +37,12 @@ context variables:
                         <tr>
                             <th><label for="{{ rcon_command.command }}-{{ rcon_command.id }}">{{ rcon_command.command }}:</label></th>
                             <td><input type="text" name="{{ rcon_command.command }}-{{ rcon_command.id }}" value="{{ rcon_command.value }}" id="{{ rcon_command.command }}-{{ rcon_command.id }}"></td>
-                            <td><div class="delete_command"></div></td> <!-- here a button will be included by js if js is supported "<div class="del_button"></div>" -->
+                            <td><div class="deleteCommand"></div></td> <!-- here a button will be included by js if js is supported "<div class="delButton"></div>" -->
                         </tr>
                         {% endfor %}
                     </tbody>
                 </table>
-                <div id="add_command"></div> <!-- here a button will be included by js if js is supported "<p><button type="button">Add rcon command</button></p>" -->
+                <div id="addCommand"></div> <!-- here a button will be included by js if js is supported "<p><button type="button">Add rcon command</button></p>" -->
                 <p><input class="button" type="submit" value="Update rcon commands"></p>
             </form>
         </div>

@@ -298,7 +298,7 @@ function calendarAddEvent() {
 }
 
 function calendarHandleEventForm(server_id) {
-    $('#calendarContainer form input.button').live('click', function(e) {
+    $('#calendarContainer form').on('click', 'input.button', function(e) {
         // loading animation
         $('.calendarHead .preLoader').css('display', 'inline-block');
 
@@ -357,7 +357,7 @@ function calendarHandleEventForm(server_id) {
         });
     });
 
-    $('#calendarContainer form .closeButton').live('click', function() {
+    $('#calendarContainer form').on('click', '.closeButton', function() {
         $('#calendarContainer').children('.addEvent').hide();
     });
 }

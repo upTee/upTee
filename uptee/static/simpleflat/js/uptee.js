@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     // notification closer
-    $('.notificationClose').live('click', function() {
+    $(document).on('click', '.notificationClose', function() {
         $(this).parent().animate({opacity: 0, height: 0, paddingTop: 0, paddingBottom: 0, marginTop: 0}, 300, function() {
             $(this).remove();
         });
@@ -21,7 +21,7 @@ $(document).ready(function() {
     });
 
     $('.deleteVote').html('<div class="delButton" onclick=""></div>');
-    $('.deleteVote div.delButton').live('click', function() {
+    $(document).on('click', '.deleteVote div.delButton', function() {
         var tr = $(this).parents('tr');
         tr.hide();
         tr.find('input').attr('value', '');
@@ -42,7 +42,7 @@ $(document).ready(function() {
     });
 
     $('.deleteCommand').html('<div class="delButton" onclick=""></div>');
-    $('.deleteCommand div.delButton').live('click', function() {
+    $(document).on('click', '.deleteCommand div.delButton', function() {
         var tr = $(this).parents('tr');
         tr.hide();
         tr.find('input').attr('value', '');
@@ -117,7 +117,7 @@ $(document).ready(function() {
             calendarGetData(current_date);
         });
 
-        $('.calendarDayListContainer .calendarDayListItem .day:not(:empty)').live('click', function() {
+        $('.calendarDayListContainer').on('click', '.calendarDayListItem .day:not(:empty)', function() {
             var day_list = $(this).parent('.calendarDayListContainer .calendarDayListItem');
             var year = $(day_list).attr('data-year');
             var month = $(day_list).attr('data-month');
