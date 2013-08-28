@@ -132,7 +132,7 @@ $(document).ready(function() {
             })();
         });
 
-        $('.calendarHead .addEvent').click(function() {
+        $('.calendarHead .addEventButton').click(function() {
             calendarAddEvent();
         });
     }

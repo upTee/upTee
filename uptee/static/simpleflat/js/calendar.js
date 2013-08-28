@@ -286,7 +286,9 @@ function calendarAddEvent() {
         url: '/server/' + server_id + '/events/add',
         type: 'GET',
         success: function(data) {
-            $('#calendarContainer').children('.addEvent').html(data);
+            var add_event_container = $('#calendarContainer').children('.addEvent');
+            $(add_event_container).css('display', 'block');
+            $(add_event_container).html(data);
             calendarHandleEventForm(server_id);
 
             // remove animatoin
@@ -296,7 +298,6 @@ function calendarAddEvent() {
 }
 
 function calendarHandleEventForm(server_id) {
-    var test = $('#calendarContainer').children('.addEvent').find('.button');
     $('#calendarContainer form input.button').live('click', function(e) {
         // loading animation
         $('.calendarHead .preLoader').css('display', 'inline-block');
@@ -320,10 +321,10 @@ function calendarHandleEventForm(server_id) {
             success: function(data)
             {
                 if(!data.hasOwnProperty('event_id')) {
-                    $('#calendarContainer').children('.addEvent').html(data);
+                    $('#calendarContainer').children('.addEventButton').html(data);
                 }
                 else {
-                    $('#calendarContainer').children('.addEvent').html('<div class="notification_s success">Event successfully added!<div class="notification_close"></div></div>');
+                    $('#calendarContainer').children('.addEventButton').html('<div class="notification_s success">Event successfully added!<div class="notification_close"></div></div>');
                     var date;
                     var time = date_val.split(':');
                     if(time.length > 2)
@@ -354,6 +355,10 @@ function calendarHandleEventForm(server_id) {
                 $('.calendarHead .preLoader').css('display', 'none');
             }
         });
+    });
+
+    $('#calendarContainer form .closeButton').live('click', function() {
+        $('#calendarContainer').children('.addEvent').hide();
     });
 }
 
