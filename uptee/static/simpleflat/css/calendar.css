@@ -163,6 +163,7 @@
 
     .calendarBody .day.selected{
             background: #666;
+            color: #000;
             border-radius: 50%;
             font-weight: bold;
             font-size: 14px;

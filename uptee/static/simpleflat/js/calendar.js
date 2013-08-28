@@ -183,6 +183,8 @@ function calendarGetEventDetails(date, tomorrow) {
         else {
             $(selected_element).attr('class', element_class + ' selected');
         }
+
+        $('#calendarContainer').children('.addEvent').children('h1').html('Add Event for ' + (calendar_current_date.getMonth()+1) + '/' + calendar_current_date.getDate() + '/' + calendar_current_date.getFullYear());
     }
 
     var month_events = events_json[date.getFullYear()+'-'+(date.getMonth()+1)];
