@@ -207,6 +207,9 @@ function calendarGetEventDetails(date, tomorrow) {
     $(selector_str).html(html_str);
     $(selector_str).fadeIn('fast');
 
+    // update event add form height
+    $('#calendarContainer').children('.addEvent').css('height', ($('#calendarContainer').height()-20) + 'px');
+
     return 1;
 }
 
@@ -288,7 +291,7 @@ function calendarAddEvent() {
         type: 'GET',
         success: function(data) {
             var add_event_container = $('#calendarContainer').children('.addEvent');
-            $(add_event_container).css('display', 'block');
+            $(add_event_container).css({'display': 'block', 'height': ($('#calendarContainer').height()-20) + 'px'});
             $(add_event_container).html(data);
             $(add_event_container).children('h1').html('Add Event for ' + (calendar_current_date.getMonth()+1) + '/' + calendar_current_date.getDate() + '/' + calendar_current_date.getFullYear());
             calendarHandleEventForm(server_id);
