@@ -26,6 +26,7 @@ function calendarDate(date) {
 
 function calendarInit(current_date) {
     calendar_current_date = current_date.date;
+    calendar_current_selected_date = current_date.date;
 
     $('.calendarHead .month').html(current_date.monthName());
     $('.calendarHead .year').html(current_date.date.getFullYear());
@@ -289,6 +290,7 @@ function calendarAddEvent() {
             var add_event_container = $('#calendarContainer').children('.addEvent');
             $(add_event_container).css('display', 'block');
             $(add_event_container).html(data);
+            $(add_event_container).children('h1').html('Add Event for ' + (calendar_current_date.getMonth()+1) + '/' + calendar_current_date.getDate() + '/' + calendar_current_date.getFullYear());
             calendarHandleEventForm(server_id);
 
             // remove animatoin
