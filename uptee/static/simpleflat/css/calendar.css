@@ -1,3 +1,7 @@
+#calendarContainer{
+    position: relative;
+}
+
 .calendarHead {
     width: 280px;
     height: 200px;
@@ -22,24 +26,25 @@
         color: #fff;
     }
 
-    .calendarHead .addEvent {
+    .calendarHead .addEventButton {
         margin: auto;
         margin-top: 20px;
         background: rgba(0, 0, 0, 0.2);
         height: 40px;
-        width: 125px;
+        width: 130px;
         line-height: 40px;
         font-size: 15px;
         text-align: center;
         color: #fff;
         cursor: pointer;
+
     }
 
-        .calendarHead .addEvent:hover {
+        .calendarHead .addEventButton:hover {
             background: rgba(0, 0, 0, 0.3);
         }
 
-        .calendarHead .addEvent:active {
+        .calendarHead .addEventButton:active {
             background: rgba(0, 0, 0, 0.4);
         }
 
@@ -142,6 +147,11 @@
             background: #e63a3a;
         }
 
+        .calendarBody .day .event.inactive{
+            left: 5px;
+            background: #ff9326;
+        }
+
 
     .calendarBody .day.current{
             background: #1b7ffa;
@@ -191,10 +201,6 @@
             font-weight: bold;
         }
 
-.addEvent {
-    background: #eeeeee;
-    width: 280px;
-}
 
 .calendarDayListContainer {
     width: 280px;
@@ -213,4 +219,13 @@
 .calendarDayListItem {
     width: 280px;
     float: left;
+}
+
+.addEvent {
+    background: #eeeeee;
+    width: 280px;
+    height:  300px;
+    position: absolute;
+    left: 290px;
+    top: 0;
 }
