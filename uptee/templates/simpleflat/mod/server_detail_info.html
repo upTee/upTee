@@ -47,7 +47,7 @@ context variables:
                     <div class="month">July</div>
                     <div class="year">2013</div>
                     {% if user.is_authenticated and user == server.owner %}
-                    <div class="addEvent">Add Event</div>
+                    <div class="addEventButton">Add Event</div>
                     {% endif %}
                 </div>
 
@@ -70,10 +70,14 @@ context variables:
                 </div>
                 <div class="eventsDay">
                     <!-- events -->  
+                    <div class="delete"></div> <!--@sushi // in .eventsUpcoming -> .event -> place this -->
+
                 </div>
                 <div class="placeholder"></div>
                 <div class="eventsUpcoming">
                     <!-- events -->
+                    <div class="delete"></div> <!--@sushi // in .eventsUpcoming -> .event -> place this -->
+
                 </div>
                 <div class="addEvent"></div>
             </div>
@@ -81,6 +85,10 @@ context variables:
     </div>
   </div>
   
+
+
+
+
   <div id="info" class="tabContent">
     <div class="contentBox minimal">
         <div class="contentHeadline minimal"><i class="icon-info"></i> Info</div>
