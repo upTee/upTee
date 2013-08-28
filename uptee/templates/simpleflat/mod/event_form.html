@@ -9,7 +9,7 @@ context variables:
         <div class="notification_close"></div>
     </div>
 {% endfor %}
-
+<h1>Add Event for %Date%</h1>
 <form action="{% url 'events_add_ajax' server.id %}" method="post">
     <table class="formTable">
         <tbody>
@@ -32,6 +32,8 @@ context variables:
             {% endfor %}
         </tbody>
     </table>
-    <p><input class="button" type="submit" value="Add Event"></p>
-    <p><button class="closeButton" type="button">Close</button></p>
+    <div class="buttonBox">
+        <input class="button" type="submit" value="Add Event">
+        <button class="closeButton" type="button">Close</button>
+    </div>
 </form>

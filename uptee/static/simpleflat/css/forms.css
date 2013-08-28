@@ -308,6 +308,7 @@ input.login[type=submit]{
     min-width: 150px;
 }
 
+
 input.blue[type=submit], input.blue[type=button], button.blue[type=button] {
     background: #0b6aff;
     box-shadow: 0px 1px 0px rgba(6, 59, 143, 1);
