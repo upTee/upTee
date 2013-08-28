@@ -104,6 +104,10 @@ html, body {
     color: #fff;
 }
 
+#userMenu i.icon-gear {
+    cursor: pointer;
+}
+
 #userMenu .arrow {
     position: absolute;
     top: 50px;
@@ -112,6 +116,7 @@ html, body {
     border-right: 30px solid transparent;
     border-bottom: 30px solid #efefef;
     z-index: 499;
+    display: none;
 }
 
 #userMenu #usermenuBox {
@@ -123,6 +128,7 @@ html, body {
     background: #efefef;
     border-radius: 10px;
     box-shadow: 2px 2px 2px #ccc;
+    display: none;
 }
 
 

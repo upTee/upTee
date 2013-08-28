@@ -88,6 +88,12 @@ $(document).ready(function() {
         }
     });
 
+    // menu user settings
+    $('#userMenu .icon-gear').click(function() {
+        $('#usermenuBox').toggle();
+        $('#userMenu .arrow').toggle();
+    })
+
     // terminal interval
     (function receive_terminal_interval() {
         receive_entries();
