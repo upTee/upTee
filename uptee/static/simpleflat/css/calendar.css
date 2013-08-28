@@ -189,6 +189,7 @@
     .eventsDay, .eventsUpcoming {
         background: #dddddd;
         width: 280px;
+        position: relative;
     }
 
         .eventsDay .event, .eventsUpcoming .event {
@@ -201,6 +202,13 @@
             font-weight: bold;
         }
 
+        .eventDay .event .delete, .eventsUpcoming .event .delete {
+            background: url('../icons/close_icon.png') no-repeat center;
+            position: absolute;
+            right: 5px;
+            height: 15px;
+            width: 15px;
+        }
 
 .calendarDayListContainer {
     width: 280px;
