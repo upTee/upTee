@@ -58,6 +58,9 @@ function drawMonth(calendar_date) {
         if(day_num == today.getDate() && today.getFullYear() == calendar_date.date.getFullYear() && today.getMonth() == calendar_date.date.getMonth()) {
             current_class = ' current';
         }
+        else if(day_num == calendar_current_date.getDate() && calendar_current_date.getFullYear() == calendar_date.date.getFullYear() && calendar_current_date.getMonth() == calendar_date.date.getMonth()) {
+            current_class = ' selected';
+        }
 
         day_list += '<div class="day' + sunday_class + current_class + '">' + day_data + '</div>';
     }
@@ -150,8 +153,37 @@ function calendarGetEventDetails(date, tomorrow) {
         return 0;
     }
 
-    if(!tomorrow)
+    if(!tomorrow) {
+        // remove old selection
+        var selected_date = new calendarDate(calendar_current_date);
+        var selected_element = $('.calendarDayListItem .day:eq(' + (selected_date.firstDayOfMonth()-2+selected_date.date.getDate()) + ')');
+        var element_class = $(selected_element).attr('class');
+        if(element_class.length > 8) {
+            if(element_class.substring(element_class.length-8) === 'selected') {
+                $(selected_element).attr('class', element_class.substring(0, element_class.length-9));
+            }
+        }
+        
         calendar_current_date = date;
+
+        // add new selection
+        selected_date = new calendarDate(calendar_current_date);
+        selected_element = $('.calendarDayListItem .day:eq(' + (selected_date.firstDayOfMonth()-2+selected_date.date.getDate()) + ')');
+        element_class = $(selected_element).attr('class');
+        if(element_class.length > 8) {
+            if(element_class.substring(element_class.length-8) !== 'selected' && element_class.substring(element_class.length-7) !== 'current') {
+                $(selected_element).attr('class', element_class + ' selected');
+            }
+        }
+        else if(element_class.length > 7) {
+            if(element_class.substring(element_class.length-7) !== 'current') {
+                $(selected_element).attr('class', element_class + ' selected');
+            }
+        }
+        else {
+            $(selected_element).attr('class', element_class + ' selected');
+        }
+    }
 
     var month_events = events_json[date.getFullYear()+'-'+(date.getMonth()+1)];
     var day_events = [];
