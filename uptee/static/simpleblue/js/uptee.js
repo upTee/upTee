@@ -178,6 +178,20 @@ $(document).ready(function() {
             });
         }
     })();
+
+    // remove ribbon if nessesary
+    var body_width = $('html').width();
+    var wrapper_width = $('#wrapper').width();
+    if(body_width - wrapper_width < 210) {
+        $('#ribbon:visible').hide();
+    }
+    $(window).resize(function() {
+        body_width = $('html').width();
+        if(body_width - wrapper_width < 210)
+            $('#ribbon:visible').hide();
+        else
+            $('#ribbon:hidden').show();
+    });
 });
 
 function toogle_comments() {
