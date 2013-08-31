@@ -831,3 +831,58 @@ p.joinLable{
     color: #000;
 }
 
+
+/* ---- Markdown ---- */
+.markdown p {
+    margin: 5px;
+}
+
+
+.markdown h1, h2, h3, h4, h5{
+    margin: 10px 0 10px 0;
+    color: #333;
+}
+
+
+.markdown blockquote {
+    border-left: 10px solid #ccc;
+    margin: 15px 15px;
+    padding: 10px 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+}
+
+.markdown blockquote:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 55px;
+    line-height: 10px;
+    margin-right: 10px;
+    vertical-align:-20px;
+}
+
+.markdown blockquote p {
+    display:inline;
+}
+
+.markdown ul li {
+    margin-left: 30px;
+}
+
+.markdown ol li {
+    margin-left: 30px;
+}
+
+.markdown pre {
+    padding-top: 10px;
+    border: 1px solid #ff9326;
+    border-left: 10px solid #ff9326;
+    margin: 10px 0 10px 0;
+}
+
+
+.markdown hr {
+    margin: 10px 0 10px 0;
+    border: none;
+    border-top: 1px solid #1b7ffa;
+
+}
