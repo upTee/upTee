@@ -102,12 +102,14 @@ context variables:
                 </tr>
 
 
-                {% if server.is_online %}
+                
                  <tr>
                     <td>Address:</td>
+                    {% if server.is_online %}
                     <td>{{ request.META.HTTP_HOST|split:':'|first }}:{{ server.port }}</td>
+                    {% endif %}
                 </tr>
-                {% endif %}
+                
 
             </tbody>
         </table>
