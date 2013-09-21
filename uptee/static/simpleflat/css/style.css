@@ -39,23 +39,47 @@ html, body {
     color: #000;
 } 
 
+
+.topBarContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    z-index: 12;
+}
+
+.topBar {
+    height: 3px;
+    float: left;
+    width: 10%;
+}
+
+
 #header {
-    background: #1b7ffa;
-    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-bottom: 1px solid #ccc;
     height: 50px;
-    min-width: 1024px;
+    z-index: 10;
 }
 
 #headermenu {
     position: absolute;
     top: 0;
     left: 250px;
+    z-index: 11;
+
 }
 
 #loginmenu {
     position: absolute;
     top: 0;
     right: 20px;
+    z-index: 11;
 }
 
 #headermenu ul, #loginmenu ul{
@@ -76,7 +100,7 @@ html, body {
     line-height: 50px;
     padding: 0 20px 0 20px;
     display: block;
-    color: #fff;
+    color: #000;
     text-align: center;
     text-decoration: none;
 }
@@ -93,15 +117,16 @@ html, body {
 #userMenu {
     position: absolute;
     right: 50px;
-    top: 0;
+    top: 3px;
     height: 50px;
     width: 200px;
+    z-index: 11;
 }
 
 #userMenu p {
     text-align: center;
     font-size: 30px;
-    color: #fff;
+    color: #ccc;
 }
 
 #userMenu i.icon-gear {
@@ -262,6 +287,7 @@ html, body {
     overflow: auto;
     min-width: 710px;
     z-index: 5;
+
 }
 
 #contentContainer .spacer{
@@ -327,6 +353,7 @@ html, body {
 .lightblue{ color:rgb(90,200,250)}
 .blue{ color:rgb(52,170,220)}
 .darkblue{ color:rgb(0,122,255)}
+.purple{ color:rgb(88,86,214)}
 .graybg{ background:rgb(142,142,147)}
 .pinkbg{ background:rgb(255,45,85)}
 .redbg{ background:rgb(255,59,48)}
@@ -336,6 +363,7 @@ html, body {
 .lightbluebg{ background:rgb(90,200,250)}
 .bluebg{ background:rgb(52,170,220)}
 .darkbluebg{ background:rgb(0,122,255)}
+.purplebg{ background:rgb(88,86,214)}
 /* -----End Colors----- */
 
 

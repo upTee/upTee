@@ -74,9 +74,69 @@
 
         {% endcomment %}
 
+        <div class="topBarContainer">
+            <div class="topBar graybg"></div>
+            <div class="topBar pinkbg"></div>
+            <div class="topBar redbg"></div>
+            <div class="topBar orangebg"></div>
+            <div class="topBar yellowbg"></div>
+            <div class="topBar greenbg"></div>
+            <div class="topBar lightbluebg"></div>
+            <div class="topBar bluebg"></div>
+            <div class="topBar darkbluebg"></div>
+            <div class="topBar purplebg"></div>
+        </div>
+
+
         <div id="header">
             <div class="logo"></div>
+
+
+
+            {% comment %}
+
+            USERMENU
+            contains user specific links. Is on the right side of the header.
+
+            {% endcomment %}
+
+            {% if user.is_authenticated %}
+            
+            <div id="userMenu">
+                <p><i class="icon-gear"></i></p><!-- @Sushi // a mouseklick should trigger the menu -->
+                <div class="arrow"></div>
+                <div id="usermenuBox">
+                    <ul>
+                        <li><img class="gravatar" src="{% gravatar_for_user user 100 %}"></li>
+                        <li><a href="{% url 'user' user.id %}"><i class="icon-user"></i> {{ user.username }}</a></li>
+                        <li><a href="{% url 'settings' %}"><i class="icon-cog"></i> Account Settings</a></li>
+                        <li><a href="{% url 'logout' %}"><i class="icon-off"></i> Logout!</a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+            {% else %}
+
+            <div id="loginmenu">
+                <ul>
+                    <li><a href="{% url 'register' %}"><i class="icon-signin"></i> Register</a></li>
+                    <li><a href="{% url 'login' %}"><i class="icon-signin"></i> Login</a></li>
+                </ul>
+            </div>
+            {% endif %}
+            
+
+            {% comment %}
+
+            END USERMENU
+
+            {% endcomment %}
+            <div class="clear"></div>
         </div>
+
+
+
 
         {% comment %}
 
@@ -171,45 +231,7 @@
         {% endcomment %}
 
 
-        {% comment %}
-
-        USERMENU
-        contains user specific links. Is on the right side of the header.
-
-        {% endcomment %}
-
-        {% if user.is_authenticated %}
         
-        <div id="userMenu">
-            <p><i class="icon-gear"></i></p><!-- @Sushi // a mouseklick should trigger the menu -->
-            <div class="arrow"></div>
-            <div id="usermenuBox">
-                <ul>
-                    <li><img class="gravatar" src="{% gravatar_for_user user 100 %}"></li>
-                    <li><a href="{% url 'user' user.id %}"><i class="icon-user"></i> {{ user.username }}</a></li>
-                    <li><a href="{% url 'settings' %}"><i class="icon-cog"></i> Account Settings</a></li>
-                    <li><a href="{% url 'logout' %}"><i class="icon-off"></i> Logout!</a></li>
-                </ul>
-            </div>
-        </div>
-
-
-        {% else %}
-
-        <div id="loginmenu">
-            <ul>
-                <li><a href="{% url 'register' %}"><i class="icon-signin"></i> Register</a></li>
-                <li><a href="{% url 'login' %}"><i class="icon-signin"></i> Login</a></li>
-            </ul>
-        </div>
-        {% endif %}
-        
-
-        {% comment %}
-
-        END USERMENU
-
-        {% endcomment %}
 
 
         {% comment %}
