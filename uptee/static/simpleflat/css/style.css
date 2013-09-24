@@ -139,7 +139,7 @@ html, body {
     left: 70px;
     border-left: 30px solid transparent;
     border-right: 30px solid transparent;
-    border-bottom: 30px solid #efefef;
+    border-bottom: 30px solid rgba(27,27,27,.85);
     z-index: 499;
     display: none;
 }
@@ -150,7 +150,7 @@ html, body {
     right: 0;
     width: 200px;
     z-index: 500;
-    background: #efefef;
+    background: rgba(27,27,27,.85);
     border-radius: 10px;
     box-shadow: 2px 2px 2px #ccc;
     display: none;
