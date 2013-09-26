@@ -11,11 +11,11 @@ function calendarDate(date) {
     };
 
     this.firstDayOfMonth = function() {
-        return new Date(this.date.getFullYear(), this.date.getMonth(), 1).getDay();
+        return (new Date(this.date.getFullYear(), this.date.getMonth(), 1).getDay()+6)%7;
     };
 
     this.lastDayOfMonth = function() {
-        return new Date(this.date.getFullYear(), this.date.getMonth(), 1).getDay();
+        return (new Date(this.date.getFullYear(), this.date.getMonth()+1, 0).getDay()+6)%7;
     };
 
     this.monthName = function() {
@@ -38,12 +38,24 @@ function calendarInit(current_date) {
 function drawMonth(calendar_date) {
     var day_list = '';
     var day_num = 0;
-    for(var i = 1; i <= calendar_date.firstDayOfMonth()-1+calendar_date.daysOfMonth(); i++) {
+    var perv_month = new calendarDate(new Date(calendar_date.date.getFullYear(), calendar_date.date.getMonth()-1, 1));
+
+    // fill days before the actual month with days from the last month
+    var test = perv_month.daysOfMonth();
+    var start_day = perv_month.daysOfMonth()-calendar_date.firstDayOfMonth();
+    for(var i = 0; i < calendar_date.firstDayOfMonth(); i++)
+    {
+        day_list += '<div class="day fill">' + (start_day+i+1) + '</div>';
+    }
+
+    for(var i = 1; i <= calendar_date.firstDayOfMonth()+calendar_date.daysOfMonth(); i++) {
         // days
         var day_data = '';
-        if(i >= calendar_date.firstDayOfMonth()) {
+        if(i > calendar_date.firstDayOfMonth()) {
             day_num++;
             day_data = day_num;
+        } else {
+            continue;
         }
 
         // sunday
@@ -65,6 +77,11 @@ function drawMonth(calendar_date) {
         day_list += '<div class="day' + sunday_class + current_class + '">' + day_data + '</div>';
     }
 
+    // fill rest with days from the next month
+    var amount_days = 42-(calendar_date.firstDayOfMonth()+calendar_date.daysOfMonth());
+    for(var i = 0; i < amount_days; i++) {
+        day_list += '<div class="day fill">' + (i+1) + '</div>';
+    }
     return day_list;
 }
 
@@ -156,7 +173,7 @@ function calendarGetEventDetails(date, tomorrow) {
     if(!tomorrow) {
         // remove old selection
         var selected_date = new calendarDate(calendar_current_date);
-        var selected_element = $('.calendarDayListItem .day:eq(' + (selected_date.firstDayOfMonth()-2+selected_date.date.getDate()) + ')');
+        var selected_element = $('.calendarDayListItem .day:eq(' + (selected_date.firstDayOfMonth()-1+selected_date.date.getDate()) + ')');
         var element_class = $(selected_element).attr('class');
         if(element_class.length > 8) {
             if(element_class.substring(element_class.length-8) === 'selected') {
@@ -168,7 +185,11 @@ function calendarGetEventDetails(date, tomorrow) {
 
         // add new selection
         selected_date = new calendarDate(calendar_current_date);
-        selected_element = $('.calendarDayListItem .day:eq(' + (selected_date.firstDayOfMonth()-2+selected_date.date.getDate()) + ')');
+        var test = (selected_date.firstDayOfMonth()-2+selected_date.date.getDate());
+        var test2 = selected_date.firstDayOfMonth();
+        var test3 = selected_date.date.getDate();
+        var test4 = selected_date.lastDayOfMonth();
+        selected_element = $('.calendarDayListItem .day:eq(' + (selected_date.firstDayOfMonth()-1+selected_date.date.getDate()) + ')');
         element_class = $(selected_element).attr('class');
         if(element_class.length > 8) {
             if(element_class.substring(element_class.length-8) !== 'selected' && element_class.substring(element_class.length-7) !== 'current') {

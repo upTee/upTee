@@ -88,7 +88,7 @@
 .calendarBody{
     background: #eeeeee;
     width: 280px;
-    height: 230px;
+    height: 270px;
 }
 
     .calendarBody .day, .calendarBody .weekday {
@@ -99,10 +99,6 @@
         line-height: 40px;
         text-align: center;
         outline: 0px solid gray;
-    }
-
-    .calendarBody .day:empty {
-        cursor: default;
     }
 
     .calendarBody .weekday {
@@ -120,13 +116,17 @@
         cursor: pointer;
     }
 
-    .calendarBody .day:empty {
-        background: none;
-        cursor: default;
-    }
-
     .calendarBody .day.sun{
         color: #c80000;
+    }
+
+    .calendarBody .day.fill{
+        color: #8E8F91;
+    }
+
+    .calendarBody .day:empty, .calendarBody .day.fill {
+        cursor: default;
+        background: none;
     }
 
     .calendarBody .day .event{
@@ -220,7 +220,7 @@
 
 .calendarDayListContainer {
     width: 280px;
-    height: 200px;
+    height: 240px;
     position:relative;
     overflow:hidden;
 }

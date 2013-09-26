@@ -118,6 +118,9 @@ $(document).ready(function() {
         });
 
         $('.calendarDayListContainer').on('click', '.calendarDayListItem .day:not(:empty)', function() {
+            if($(this).attr('class') == 'day fill')
+                return;
+
             var day_list = $(this).parent('.calendarDayListContainer .calendarDayListItem');
             var year = $(day_list).attr('data-year');
             var month = $(day_list).attr('data-month');
