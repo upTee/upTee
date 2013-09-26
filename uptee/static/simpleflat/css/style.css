@@ -909,9 +909,13 @@ p.joinLable{
     display:inline;
 }
 
-.markdown ul li {
-    margin-left: 30px;
+.markdown ul {
+    margin-left: 0;
 }
+
+    .markdown ul li {
+        margin-left: 30px;
+    }
 
 .markdown ol li {
     margin-left: 30px;
