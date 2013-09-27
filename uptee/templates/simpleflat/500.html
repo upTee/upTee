@@ -9,12 +9,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
 
-        <link rel="shortcut icon" href="{{ STATIC_URL }}simpleflat/img/favicon.ico">
-        <link rel="apple-touch-icon" href="{{ STATIC_URL }}simpleflat/img/apple-touch-icon.png">
-        <link rel="stylesheet" href="{{ STATIC_URL }}simpleflat/css/style.css" type="text/css">
-        <link rel="stylesheet" href="{{ STATIC_URL }}simpleflat/css/forms.css" type="text/css">
-        <link rel="stylesheet" href="{{ STATIC_URL }}simpleflat/css/size.css" type="text/css">
-        <link rel="stylesheet" href="{{ STATIC_URL }}simpleflat/css/font-awesome.min.css" type="text/css"><!-- Font Awesome Icons -->
+        <link rel="shortcut icon" href="../../static/simpleflat/img/favicon.ico">
+        <link rel="apple-touch-icon" href="../../static/simpleflat/img/apple-touch-icon.png">
+        <link rel="stylesheet" href="../../static/simpleflat/css/style.css" type="text/css">
     </head>
 
 
@@ -34,12 +31,25 @@
         </div>
 
 
+
         <div id="header">
             <div class="logo"></div>
         </div>
 
-        <h2>Oooops... the server doesn't want to process your request. This is bad luck. :(</h2>
+
+        <div id="contentContainer" class="full">
+            <div class="errorContent">
+                <div class="errorCode">500</div>
+                <div class="errorText">
+                    <h2>Ooops...</h2>
+                    <p>The server doesn't want to process your request. This is bad luck. :(</p>
+                </div>
+                <div class="clear"></div>
+            </div>
 
 
+        </div>
     </body>
 </html>
+
+
