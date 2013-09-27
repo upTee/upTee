@@ -1,17 +1,45 @@
 <!DOCTYPE html>
 <html>
-    <head>
+   <head>
         <meta charset="utf-8">
         <title>upTee - Oooops... something went wrong</title>
 
         <meta name="description" content="">
         <meta name="author" content="Fisico">
-        <meta name="viewport" content="width=device-width; initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
-        <link rel="shortcut icon" href="static/simpleblue/img/favicon.ico">
-        <link rel="apple-touch-icon" href="static/img/apple-touch-icon.png">
+
+        <link rel="shortcut icon" href="{{ STATIC_URL }}simpleflat/img/favicon.ico">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}simpleflat/img/apple-touch-icon.png">
+        <link rel="stylesheet" href="{{ STATIC_URL }}simpleflat/css/style.css" type="text/css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}simpleflat/css/forms.css" type="text/css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}simpleflat/css/size.css" type="text/css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}simpleflat/css/font-awesome.min.css" type="text/css"><!-- Font Awesome Icons -->
     </head>
+
+
     <body>
+
+        <div class="topBarContainer">
+            <div class="topBar graybg"></div>
+            <div class="topBar pinkbg"></div>
+            <div class="topBar redbg"></div>
+            <div class="topBar orangebg"></div>
+            <div class="topBar yellowbg"></div>
+            <div class="topBar greenbg"></div>
+            <div class="topBar lightbluebg"></div>
+            <div class="topBar bluebg"></div>
+            <div class="topBar darkbluebg"></div>
+            <div class="topBar purplebg"></div>
+        </div>
+
+
+        <div id="header">
+            <div class="logo"></div>
+        </div>
+
         <h2>Oooops... the server doesn't want to process your request. This is bad luck. :(</h2>
+
+
     </body>
 </html>

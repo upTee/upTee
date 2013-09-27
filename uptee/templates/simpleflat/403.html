@@ -1,14 +1,67 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html>
+   <head>
+        <meta charset="utf-8">
+        <title>upTee - Don't ever do this again</title>
 
-{% block title %}upTee - Don't ever do this again{% endblock title %}
+        <meta name="description" content="">
+        <meta name="author" content="Fisico">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
-{% block content %}
 
-<div class="head">
-    <h2>Ooops...</h2>
-</div>
-<div class="body">
-    <p>You can't just do this!</p>
-</div>
+        <link rel="shortcut icon" href="{{ STATIC_URL }}simpleflat/img/favicon.ico">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}simpleflat/img/apple-touch-icon.png">
+        <link rel="stylesheet" href="{{ STATIC_URL }}simpleflat/css/style.css" type="text/css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}simpleflat/css/forms.css" type="text/css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}simpleflat/css/size.css" type="text/css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}simpleflat/css/font-awesome.min.css" type="text/css"><!-- Font Awesome Icons -->
+    </head>
 
-{% endblock content %}
+
+    <body>
+
+        <div class="topBarContainer">
+            <div class="topBar graybg"></div>
+            <div class="topBar pinkbg"></div>
+            <div class="topBar redbg"></div>
+            <div class="topBar orangebg"></div>
+            <div class="topBar yellowbg"></div>
+            <div class="topBar greenbg"></div>
+            <div class="topBar lightbluebg"></div>
+            <div class="topBar bluebg"></div>
+            <div class="topBar darkbluebg"></div>
+            <div class="topBar purplebg"></div>
+        </div>
+
+
+
+        <div id="header">
+            <div class="logo"></div>
+        </div>
+
+
+        <div id="contentContainer" class="full">
+        	<div class="errorContent">
+        		<div class="errorCode">403</div>
+        		<div class="errorText">
+        			<h2>Ooops...</h2>
+        			<p>You can't just do this!</p>
+        		</div>
+        		<div class="clear"></div>
+        	</div>
+
+
+        </div>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
