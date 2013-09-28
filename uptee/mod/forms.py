@@ -5,6 +5,7 @@ import zipfile
 from django import forms
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.utils.timezone import utc
 from accounts.models import Moderator
 from mod.models import Mod, Server, TaskEvent
 
@@ -106,12 +107,14 @@ class CommandForm(forms.Form):
 
 
 class TaskEventAdminForm(forms.ModelForm):
+    timezone_offset = forms.IntegerField(widget=forms.HiddenInput())
 
     class Meta:
         model = TaskEvent
 
     def clean_date(self):
         date = self.cleaned_data['date']
+        date = date.replace(tzinfo=utc)
         if date <= timezone.now():
             raise forms.ValidationError('Choose a time in the future.')
         return date

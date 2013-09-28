@@ -14,6 +14,7 @@ context variables:
     <table class="formTable">
         <tbody>
             {% for field in event_form %}
+                {% if field.name != 'timezone_offset' %}
                 <tr>
                     <th>{% if field.name == 'date' %}Time{% else %}{{ field.label_tag }}{% endif %}:</th>
                     <td>
@@ -29,7 +30,9 @@ context variables:
                         {% endif %}
                     </td>
                 </tr>
+                {% endif %}
             {% endfor %}
+            {{ event_form.timezone_offset }}
         </tbody>
     </table>
     <div class="buttonBox">

@@ -299,6 +299,8 @@ function handle_event_form(server_id) {
 
         $('#event_form').append('<p class="loading">loading...</p>');
 
+        $('#id_timezone_offset').val(new Date().getTimezoneOffset());
+
         $.ajax({
             beforeSend: function(jqXHR, settings) {
                 var csrftoken = $.cookie('csrftoken');

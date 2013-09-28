@@ -136,7 +136,7 @@ function changeMonth(current_date, direction) { // -1 left, +1 right
 
 function fillEvents(date) {
     var day_list = $('.calendarBody .calendarDayListItem[data-year="' + date.getFullYear() + '"][data-month="' + (date.getMonth()+1) + '"]');
-    var days = $(day_list).children('.day:not(:empty)');
+    var days = $(day_list).children('.day:not(:empty)').filter(':not(.day.fill)');
     var data = events_json[date.getFullYear()+'-'+(date.getMonth()+1)];
 
     $(days).each(function(i) {
@@ -364,9 +364,10 @@ function calendarHandleEventForm(server_id) {
 
         e.preventDefault();
 
-        // set the value for the hidden field
+        // set the value for the hidden fields
         var date_val = $('#id_date_input').val();
         $('#id_date').val((calendar_current_date.getMonth()+1) + '/' + calendar_current_date.getDate() + '/' + calendar_current_date.getFullYear() + ' ' + date_val);
+        $('#id_timezone_offset').val(new Date().getTimezoneOffset());
 
         var input_data = $('#calendarContainer form :input');
 
@@ -381,10 +382,10 @@ function calendarHandleEventForm(server_id) {
             success: function(data)
             {
                 if(!data.hasOwnProperty('event_id')) {
-                    $('#calendarContainer').children('.addEventButton').html(data);
+                    $('#calendarContainer').children('.addEvent').html(data);
                 }
                 else {
-                    $('#calendarContainer').children('.addEventButton').html('<div class="notification_s success">Event successfully added!<div class="notification_close"></div></div>');
+                    $('#calendarContainer').children('.addEvent').html('<div class="notification_s success">Event successfully added!<div class="notification_close"></div></div>');
                     var date;
                     var time = date_val.split(':');
                     if(time.length > 2)

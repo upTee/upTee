@@ -1,5 +1,7 @@
 import os
-from time import mktime, time
+from calendar import timegm
+from datetime import datetime, timedelta
+from time import time
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -8,6 +10,7 @@ from django.core.urlresolvers import reverse
 from django.http import Http404, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.template import RequestContext
+from django.utils import timezone
 from django.views.decorators.http import require_POST
 from annoying.decorators import ajax_request
 from econ.tasks import telnet_client
@@ -41,7 +44,7 @@ def server_detail(request, server_id):
     moderator = moderator[0] if moderator else None
     return render_to_response('mod/server_detail_info.html', {
         'server': server,
-        'moderator': moderator
+        'moderator': moderator,
     }, context_instance=RequestContext(request))
 
 
@@ -624,7 +627,7 @@ def events_ajax(request, server_id):
     elif year:
         events = events.filter(date__day=year)
     events_json = [{
-        "date": str(int(mktime(event.date.timetuple())*1000)),
+        "date": str(int(timegm(event.date.timetuple())*1000)),
         "type": event.get_task_type_display(),
         "title": event.name, "server_id": str(server_id),
         "repeat": str(event.repeat),
@@ -664,7 +667,7 @@ def events_add_ajax(request, server_id):
         form = TaskEventForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data['name']
-            date = form.cleaned_data['date']
+            date = form.cleaned_data['date']+timedelta(minutes=form.cleaned_data['timezone_offset'])
             repeat = form.cleaned_data['repeat']
             task_type = form.cleaned_data['task_type']
             event = TaskEvent(server=server, name=name, task_type=task_type, date=date, repeat=repeat, status=TaskEvent.STATUS_ACTIVE)
