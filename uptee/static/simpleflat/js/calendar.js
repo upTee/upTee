@@ -245,7 +245,12 @@ function calendarGetEventDetails(date, tomorrow) {
         var minutes = event.date.getMinutes();
         if(minutes <= 9)
             minutes = '0' + minutes;
-        html_str += '<div class="event">' + (event.date.getMonth()+1) + '/' + event.date.getDate() + '/' + event.date.getFullYear() + ' | ' + hours + ':' + minutes + ' ' + event.title + '</div>';
+        var admin = $('.eventsDay, .eventsUpcoming').attr('data-admin');
+        if(!admin) {
+            html_str += '<div class="event" data-eventid="'+event.event_id+'">' + (event.date.getMonth()+1) + '/' + event.date.getDate() + '/' + event.date.getFullYear() + ' | ' + hours + ':' + minutes + ' ' + event.title + '</div>';
+        } else {
+            html_str += '<div class="event" data-eventid="'+event.event_id+'">' + (event.date.getMonth()+1) + '/' + event.date.getDate() + '/' + event.date.getFullYear() + ' | ' + hours + ':' + minutes + ' ' + event.title + '<div class="delete"></div></div>';
+        }
     }
 
     var selector_str = '#calendarContainer .eventsDay';
@@ -383,6 +388,7 @@ function calendarHandleEventForm(server_id) {
             {
                 if(!data.hasOwnProperty('event_id')) {
                     $('#calendarContainer').children('.addEvent').html(data);
+                    $('#calendarContainer').children('.addEvent').children('h1').html('Add Event for ' + (calendar_current_date.getMonth()+1) + '/' + calendar_current_date.getDate() + '/' + calendar_current_date.getFullYear());
                 }
                 else {
                     $('#calendarContainer').children('.addEvent').html('<div class="notification_s success">Event successfully added!<div class="notification_close"></div></div>');
@@ -421,6 +427,56 @@ function calendarHandleEventForm(server_id) {
     $('#calendarContainer form').on('click', '.closeButton', function() {
         $('#calendarContainer').children('.addEvent').hide();
     });
+}
+
+function deleteEvent(container, server_id, event_id) {
+    // loading animation
+    $('.calendarHead .preLoader').css('display', 'inline-block');
+
+    var current_date = calendar_current_date;
+
+    $.ajax({
+        beforeSend: function(jqXHR, settings) {
+            var csrftoken = $.cookie('csrftoken');
+            jqXHR.setRequestHeader('X-CSRFToken', csrftoken);
+        },
+        url: '/server/' + server_id + '/events/delete/',
+        type: 'POST',
+        data: {
+            'event_id': event_id
+        },
+        success: function(json) {
+            // remove event from cache
+            events = events_json[current_date.getFullYear()+'-'+(current_date.getMonth()+1)];
+            for(var i = 0; i < events.length; i++) {
+                if(events[i].event_id == event_id) {
+                    events.splice(i, 1);
+                    break;
+                }
+            }
+
+            // remove from HTML
+            $(container).remove();
+
+            // remove dot from calender list
+            var found = 0;
+            for(var j = 0; j < events.length; j++) {
+                if(events[j].date.getDate() == current_date.getDate()) {
+                    found = 1;
+                    break;
+                }
+            }
+
+            if(!found) {
+                var days = $('.calendarDayListContainer .calendarDayListItem .day:not(:empty)').filter(':not(.day.fill)');
+                var day = days[current_date.getDate()-1];
+                $(day).html(current_date.getDate());
+            }
+
+            // remove animatoin
+            $('.calendarHead .preLoader').css('display', 'none');
+        }
+        });
 }
 
 function calendarSortJson(a, b) {

@@ -135,6 +135,20 @@ $(document).ready(function() {
             })();
         });
 
+        // delete event
+        $('.eventsDay, .eventsUpcoming').on('click', '.event .delete', function(e) {
+            var admin = $('.eventsDay, .eventsUpcoming').attr('data-admin');
+            if(!admin) {
+                return;
+            }
+
+            var container = $(this).parent('div');
+            var server_id = $('#calendarContainer').attr('data-serverid');
+            var event_id = $(container).attr('data-eventid');
+
+            deleteEvent(container, server_id, event_id);
+        });
+
         $('.calendarHead .addEventButton').click(function() {
             calendarAddEvent();
         });

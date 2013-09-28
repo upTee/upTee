@@ -362,7 +362,7 @@ $.fn.eventCalendar = function(options){
 
                     // delete event
                     if(eventsOpts.showDelete) {
-                        flags.wrap.find('a.deleteEvent[data-eventid="'+event.event_id+'"]').live('click',function(e){
+                        flags.wrap.find('a.deleteEvent[data-eventid="'+event.event_id+'"]').live('click', function(e) {
                             e.preventDefault();
 
                             var container = $(this).parents('li');
@@ -385,7 +385,7 @@ $.fn.eventCalendar = function(options){
                                 success: function(json) {
                                     $(container).remove();
 
-                                    if (flags.wrap.find('.eventsCalendar-list').is(':empty')) {
+                                    if(flags.wrap.find('.eventsCalendar-list').is(':empty')) {
                                         flags.wrap.find('.eventsCalendar-list').html('<li class="eventsCalendar-noEvents"><p>' + eventsOpts.txt_noEvents + '</p></li>');
                                     }
                                     flags.wrap.find('.eventsCalendar-loading').hide();

@@ -204,25 +204,33 @@
             height: 20px;
             border-bottom: 1px solid #ccc;
             padding: 5px 5px 5px 10px;
+            position: relative;
         }
 
         .eventsDay .event.headline, .eventsUpcoming .event.headline {
             font-weight: bold;
         }
 
-        .eventDay .event .delete, .eventsUpcoming .event .delete {
+        .eventsDay .event .delete, .eventsUpcoming .event .delete {
             background: url('../icons/close_icon.png') no-repeat center;
             position: absolute;
-            right: 5px;
+                top: 8px;
+                right: 5px;
             height: 15px;
             width: 15px;
+            opacity: 0.5;
         }
+
+            .eventsDay .event .delete:hover, .eventsUpcoming .event .delete:hover {
+                opacity: 1.0;
+                cursor: pointer;
+            }
 
 .calendarDayListContainer {
     width: 280px;
     height: 240px;
-    position:relative;
-    overflow:hidden;
+    position: relative;
+    overflow: hidden;
 }
 
 .calendarDayLists {

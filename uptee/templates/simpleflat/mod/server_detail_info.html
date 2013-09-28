@@ -68,16 +68,12 @@ context variables:
                     </div>
                     <div class="clear"></div>
                 </div>
-                <div class="eventsDay">
+                <div class="eventsDay"{% if user.is_authenticated and user == server.owner %} data-admin="1"{% endif %}>
                     <!-- events -->  
-                    <div class="delete"></div> <!--@sushi // in .eventsUpcoming -> .event -> place this -->
-
                 </div>
                 <div class="placeholder"></div>
-                <div class="eventsUpcoming">
+                <div class="eventsUpcoming" data-admin="1">
                     <!-- events -->
-                    <div class="delete"></div> <!--@sushi // in .eventsUpcoming -> .event -> place this -->
-
                 </div>
                 <div class="addEvent"></div>
             </div>
