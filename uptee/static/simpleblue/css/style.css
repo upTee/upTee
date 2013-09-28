@@ -262,6 +262,17 @@ img.gravatar {
     position: relative;
 }
 
+#content_box_500 {
+    background: rgb(244, 244, 244);
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid rgb(199, 199, 199);
+    box-shadow: 0 1px 0 #ffffff, 0 1px 0 #ffffff inset;
+    position: relative;
+    display: inline-block;
+}
+
 .errorlist {
     background: #ffeaeb;
     margin: 5px 1px;
@@ -522,6 +533,22 @@ a.edit_link {
         text-align: center;
     }
 /* ---END server detail page--- */
+
+
+/* ---error 500 css--- */
+.error_500 {
+    text-align: center;
+    font-size: 20px;
+}
+
+    .error_500 h2 {
+        margin: 2px 2px 10px;
+        padding: 5px;
+        color: gray;
+        border-bottom: 1px solid #009bff;
+        font-size: 30px;
+    }
+/* ---END error 500 css--- */
 
 
 /* ---terminal--- */

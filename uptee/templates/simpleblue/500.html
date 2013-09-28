@@ -2,16 +2,32 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>upTee - Oooops... something went wrong</title>
+        <title>upTee</title>
 
         <meta name="description" content="">
         <meta name="author" content="Fisico">
         <meta name="viewport" content="width=device-width; initial-scale=1.0">
 
-        <link rel="shortcut icon" href="static/simpleblue/img/favicon.ico">
-        <link rel="apple-touch-icon" href="static/img/apple-touch-icon.png">
+        <link rel="shortcut icon" href="../../static/simpleblue/img/favicon.ico">
+        <link rel="apple-touch-icon" href="../../static/simpleblue/img/apple-touch-icon.png">
+        
+        <link rel="stylesheet" href="../../static/simpleblue/css/style.css" type="text/css">
+        <link rel="stylesheet" href="../../static/simpleblue/css/forms.css" type="text/css">
+        <link rel="stylesheet" href="../../static/simpleblue/css/sprites.css" type="text/css">
     </head>
     <body>
-        <h2>Oooops... the server doesn't want to process your request. This is bad luck. :(</h2>
+        <div id="wrapper">
+            
+            <div id="header_box"> 
+                <a href="{% url 'home' %}"><div data-image="header"></div></a>
+            </div>
+
+            <div id="content_box_500"> 
+                <div class="error_500">
+                    <h2>500 Ooops...</h2>
+                    <p>The server doesn't want to process your request. This is bad luck. :(</p>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
