@@ -21,7 +21,9 @@ context variables:
                         {% if field.name == 'date' %}
                             {% if field.errors %}
                                 <ul>
-                                    <li>Please enter a valid Time in the future.</li>
+                                    {% for error in field.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
                                 </ul>
                             {% endif %}
                             <input id="id_date" type="hidden" name="date"><input id="id_date_input" type="text" name="date_input" placeholder="hh:mm:ss">

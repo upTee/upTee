@@ -667,7 +667,7 @@ def events_add_ajax(request, server_id):
         form = TaskEventForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data['name']
-            date = form.cleaned_data['date']+timedelta(minutes=form.cleaned_data['timezone_offset'])
+            date = form.cleaned_data['date']
             repeat = form.cleaned_data['repeat']
             task_type = form.cleaned_data['task_type']
             event = TaskEvent(server=server, name=name, task_type=task_type, date=date, repeat=repeat, status=TaskEvent.STATUS_ACTIVE)

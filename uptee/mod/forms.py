@@ -2,6 +2,7 @@ import mimetypes
 import os
 import tarfile
 import zipfile
+from datetime import timedelta
 from django import forms
 from django.contrib.auth.models import User
 from django.utils import timezone
@@ -112,11 +113,21 @@ class TaskEventAdminForm(forms.ModelForm):
     class Meta:
         model = TaskEvent
 
+    def __init__(self, *args, **kwargs):
+        super(TaskEventAdminForm, self).__init__(*args, **kwargs)
+        self.fields.keyOrder = ['timezone_offset', 'name', 'task_type', 'date', 'repeat']
+
     def clean_date(self):
         date = self.cleaned_data['date']
         date = date.replace(tzinfo=utc)
+        date = date+timedelta(minutes=self.cleaned_data['timezone_offset'])
         if date <= timezone.now():
             raise forms.ValidationError('Choose a time in the future.')
+        date_before = date-timedelta(minutes=1)
+        date_after = date+timedelta(minutes=1)
+        events = TaskEvent.objects.filter(date__range=[date_before, date_after])
+        if len(events):
+            raise forms.ValidationError('Only one event per minute is allowed.')
         return date
 
     def clean_repeat(self):
