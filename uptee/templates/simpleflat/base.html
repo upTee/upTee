@@ -161,6 +161,7 @@
 
             <!-- url definitions -->
             {% url 'server_detail' server.id as url_info %}
+            {% url 'server_scoreboard' server.id as url_scoreboard %}
             {% url 'upload_map' server.id as url_upload_map %}
             {% url 'server_edit' server.id as url_edit_settings %}
             {% url 'server_edit_votes' server.id as url_edit_votes %}
@@ -177,6 +178,7 @@
                 
                 <ul style="display: none;">
                     <li class="entry{% current request url_info %}"><a href="{{ url_info }}"><i class="icon-info-sign"></i> Info</a></li>
+                    <li class="entry{% current request url_scoreboard %}"><a href="{{ url_scoreboard }}"><i class="icon-info-sign"></i> Scoreboard</a></li>
                     {% if server.config_votes.all %}
                         <li class="entry{% current request url_votes %}"><a href="{{ url_votes }}"><i class="icon-question-sign"></i> Votes</a></li>
                     {% endif %}

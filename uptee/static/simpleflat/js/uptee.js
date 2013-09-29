@@ -102,7 +102,7 @@ $(document).ready(function() {
     })();
 
     // event calende
-    {
+    if($('#calendarContainer').length) {
         var current_date = new calendarDate(new Date());
         calendarInit(current_date);
         calendarGetData(current_date);

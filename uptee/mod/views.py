@@ -48,6 +48,16 @@ def server_detail(request, server_id):
     }, context_instance=RequestContext(request))
 
 
+def server_scoreboard(request, server_id):
+    server = get_object_or_404(Server.active.select_related(), pk=server_id)
+    moderator = server.moderators.filter(user=request.user) if request.user.is_authenticated() else None
+    moderator = moderator[0] if moderator else None
+    return render_to_response('mod/server_detail_scoreboard.html', {
+        'server': server,
+        'moderator': moderator
+    }, context_instance=RequestContext(request))
+
+
 @login_required
 def server_edit_description(request, server_id):
     server = get_object_or_404(Server.active.select_related().filter(owner=request.user), pk=server_id)

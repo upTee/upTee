@@ -1,0 +1,17 @@
+{% extends "mod/server_detail_base.html" %}
+
+{% load get_option %}
+
+{% comment %}
+context variables:
+    server
+    moderator
+{% endcomment %}
+
+{% block title %}upTee - {{ server|get_option:'sv_name' }} - Scoreboard{% endblock title %}
+
+{% block content %}
+
+{% include "scoreboard.html" %}
+
+{% endblock content %}
