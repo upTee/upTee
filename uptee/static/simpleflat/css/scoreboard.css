@@ -1,0 +1,119 @@
+#scoreboardContainer{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.tableContainer{
+    width: 50%;
+}
+
+.tableContainer.left{
+    float: left;
+}
+
+.tableContainer.right{
+    float: right;
+}
+
+.tableContainer.marginTop{
+    margin-top: 30px;
+}
+
+.tableContainer.marginAuto{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table.redTeam{
+    width: 100%;
+    border-collapse:collapse;
+    border: 1px solid #ccc;
+}
+
+.redTeam th{
+    background: rgb(255,59,48);
+    padding: 5px 10px 5px 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+    color: #fff;
+}
+
+.redTeam td{
+    background: #fff;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.redTeam th.headline, .blueTeam th.headline, .spec th.headline, .dm th.headline{
+    background: #fff;
+    color: #000;
+    font-size: 15px;
+    border: none;
+}
+
+.redTeam th.headline.textRight, .blueTeam th.headline.textRight, .dmTeam th.headline.textRight{
+    text-align: right
+}
+
+
+th.score{
+    width: 75px;
+}
+
+
+table.blueTeam{
+    width: 100%;
+    border-collapse:collapse;
+    border: 1px solid #ccc;
+}
+
+.blueTeam th{
+    background: rgb(0,122,255);
+    padding: 5px 10px 5px 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+    color: #fff;
+}
+
+.blueTeam td{
+    background: #fff;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+
+table.spec, table.dm{
+    width: 100%;
+    border-collapse:collapse;
+    border: 1px solid #ccc;
+}
+
+.dm th{
+    background: rgb(142,142,147);
+    padding: 5px 10px 5px 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+    color: #fff;
+}
+
+.dm td{
+    background: #fff;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+
+.spec th{
+    background: rgb(140,85,215);
+    padding: 5px 10px 5px 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+    color: #fff;
+}
+
+.spec td{
+    background: #fff;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
