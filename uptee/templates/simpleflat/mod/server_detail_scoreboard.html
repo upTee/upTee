@@ -16,133 +16,52 @@ context variables:
 
 {% block content %}
 
-<!-- CTF, TDM, SUR Scorebaord -->
-<div id="scoreboardContainer">
-	<div class="tableContainer left">
-		<table class="redTeam">
-		   <tr>
-		    <th class="headline">Red Team</th>
-		    <th class="headline"></th>
-		    <th class="headline textRight">500</th>
-		  </tr>
-		  <tr>
-		    <th class="score">Score</td>
-		    <th>Name</th>
-		    <th>Clan</th>
-		  </tr>
-		  <tr>
-		    <td class="score">25</td>
-		    <td>Fisico</td>
-		    <td>Dayvi</td>
-		  </tr>
-		  <tr>
-		    <td class="score">25</td>
-		    <td>Fisico</td>
-		    <td>Dayvi</td>
-		  </tr>
-		</table>
-	</div>
-
-	<div class="tableContainer right">
-		<table class="blueTeam">
-		  <tr>
-		    <th class="headline">Blue Team</th>
-		    <th class="headline"></th>
-		    <th class="headline textRight">500</th>
-		  </tr>
-		  <tr>
-		    <th class="score">Score</td>
-		    <th>Name</th>
-		    <th>Clan</th>
-		  </tr>
-		  <tr>
-		    <td class="score">25</td>
-		    <td>text 2</td>
-		    <td>text 3</td>
-		  </tr>
-		  <tr>
-		    <td class="score">25</td>
-		    <td>text 2</td>
-		    <td>text 3</td>
-		  </tr>
-		</table>
-	</div>
-	<div class="clear"></div>
-
-	<div class="tableContainer marginAuto marginTop">
-		<table class="spec">
-		   <tr>
-		    <th class="headline">Spectator</th>
-		    <th class="headline"></th>
-		  </tr>
-		  <tr>
-		    <th>Name</th>
-		    <th>Clan</th>
-		  </tr>
-		  <tr>
-		    <td>Fisico</td>
-		    <td>Dayvi</td>
-		  </tr>
-		  <tr>
-		    <td>Fisico</td>
-		    <td>Dayvi</td>
-		  </tr>
-		</table>
-	</div>
-
-	<div class="clear"></div>
-</div>
-<!-- END CTF, TDM, SUR Scorebaord -->
-
 <!-- DM, LMS Scorebaord -->
-<div id="scoreboardContainer">
-	<div class="tableContainer">
-		<table class="dm">
-		   <tr>
-		    <th class="headline">Scorebaord</th>
-		    <th class="headline"></th>
-		    <th class="headline"></th>
-		  </tr>
-		  <tr>
-		  	<th class="score">Score</th>
-		    <th>Name</th>
-		    <th>Clan</th>
-		  </tr>
-		  <tr>
-		  	<td class="score">25</td>
-		    <td>Fisico</td>
-		    <td>Dayvi</td>
-		  </tr>
-		  <tr>
-		    <td class="score">25</td>
-		    <td>Fisico</td>
-		    <td>Dayvi</td>
-		  </tr>
-		</table>
-	</div>
+<div id="scoreboardContainer" data-serverid="{{ server.id }}">
+    {% if server.server_info and server.server_info.clients %}
+    <div class="tableContainer">
+        <table class="dm">
+            <tr>
+                <th class="headline">Scorebaord</th>
+                <th class="headline"></th>
+                <th class="headline"></th>
+            </tr>
+            <tr>
+                <th class="score">Score</th>
+                <th>Name</th>
+                <th>Clan</th>
+            </tr>
+            {% for player in server.server_info.players %}
+            <tr>
+                <td class="score">{{ player.score }}</td>
+                <td>{{ player.name }}</td>
+                <td>{{ player.clan }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 
-	<div class="tableContainer marginTop">
-		<table class="spec">
-		   <tr>
-		    <th class="headline">Spectator</th>
-		    <th class="headline"></th>
-		  </tr>
-		  <tr>
-		    <th>Name</th>
-		    <th>Clan</th>
-		  </tr>
-		  <tr>
-		    <td>Fisico</td>
-		    <td>Dayvi</td>
-		  </tr>
-		  <tr>
-		    <td>Fisico</td>
-		    <td>Dayvi</td>
-		  </tr>
-		</table>
-	</div>
+    <div class="tableContainer marginTop">
+        <table class="spec">
+            <tr>
+                <th class="headline">Spectator</th>
+                <th class="headline"></th>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <th>Clan</th>
+            </tr>
+            {% for spectator in server.server_info.spectators %}
+            <tr>
+                <td>{{ player.name }}</td>
+                <td>{{ player.clan }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 
-	<div class="clear"></div>
+    <div class="clear"></div>
+    {% endif %}
 </div>
 <!-- END DM, LMS Scorebaord -->
 
