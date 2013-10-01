@@ -20,7 +20,6 @@ class TestingForm(forms.Form):
         return key
 
     def save(self):
-        self.request.session['is_in_beta'] = True
         self.testing_key.is_used = True
         self.testing_key.save()
 
