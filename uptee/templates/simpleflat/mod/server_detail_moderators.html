@@ -18,8 +18,8 @@ context variables:
 
 {% block content %}
 
-    <div class="contentBox minimal">
-        <div class="contentHeadline minimal">Moderators</div>
+    <div class="contentBox">
+        <div class="contentHeadline">Moderators</div>
         <div class="content">
             {% for moderator in server.moderators.all %}
                 <p><a href="{% url 'server_edit_moderator' server.id moderator.user.id %}">{{ moderator.user.username }}</a></p>

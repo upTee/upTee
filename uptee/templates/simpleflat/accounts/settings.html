@@ -16,8 +16,8 @@ context variables:
 
 {% block content %}
 
-<div class="contentBox w600 minimal">
-    <div class="contentHeadline minimal">User settings</div>
+<div class="contentBox w600">
+    <div class="contentHeadline">User settings</div>
     <div class="content">
 
         <form method="post" action="{{ request.path }}">
@@ -104,14 +104,14 @@ context variables:
     </div>
 </div>
 
-<div class="contentBox w500 minimal">
-    <div class="contentHeadline minimal">Change Password</div>
+<div class="contentBox w500">
+    <div class="contentHeadline">Change Password</div>
     <div class="content">
         <a href="{% url 'change_password' %}">Change password</a>
     </div>
 
     {% if settings.TESTING_STATE and user.is_staff %}
-    <div class="contentHeadline minimal">Generate testing keys</div>
+    <div class="contentHeadline">Generate testing keys</div>
     <div class="content">
         <a href="{% url 'generate_testing_keys' %}">Generate testing keys</a>
     </div>

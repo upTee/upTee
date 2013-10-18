@@ -18,8 +18,8 @@ context variables:
 
 {% block content %}
 
-    <div class="contentBox minimal">
-        <div class="contentHeadline minimal">Edit description</div>
+    <div class="contentBox">
+        <div class="contentHeadline">Edit description</div>
         <div class="content">
             <form method="post" action="{{ request.path }}">
                 <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">

@@ -61,8 +61,8 @@ context variables:
 {% for server in server_list %}
 
 
-    <div class="contentBox w400 {% if server.is_online %}green{% else %}red{% endif %}">
-        <div class="contentHeadline {% if server.is_online %}green{% else %}red{% endif %}">{{ server|get_option:'sv_name' }}</div>
+    <div class="contentBox w400">
+        <div class="contentHeadline">{{ server|get_option:'sv_name' }}</div>
         <div class="content">
 
         <table class="small pw100">
@@ -121,9 +121,9 @@ context variables:
 
             <div class="hide_mouseover">
                 <div class="mouseover_overlay">
-                    {% include "scoreboard.html" %}
+                 {% comment %}  {% include "scoreboard.html" %} {% endcomment %}
                 </div>
-            </div>   
+            </div> 
 
         <br>
 

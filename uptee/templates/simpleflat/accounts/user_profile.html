@@ -23,16 +23,16 @@ context variables:
 
 {% block content %}
 
-<div class="contentBox w290 minimal">
-    <div class="contentHeadline minimal">{{ user_profile.username }}</div>
+<div class="contentBox w290">
+    <div class="contentHeadline">{{ user_profile.username }}</div>
     <div class="content">
     <img class="userProfile" src="{% gravatar_for_user user_profile 250 %}">
     <p class="joinLable"><i class="icon-calendar"></i> Joined on {{ user_profile.date_joined|date:"N t, Y" }}</p>
 </div>
 </div>
 
-<div class="contentBox w450 minimal">
-    <div class="contentHeadline minimal">Infos</div>
+<div class="contentBox w450">
+    <div class="contentHeadline">Infos</div>
     <div class="content">
          <table class="bordered">
             <tbody>
