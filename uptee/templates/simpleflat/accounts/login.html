@@ -7,39 +7,27 @@
     {% include "messages.html" %}
 </div>
 
-<div id="loginContainer">
+<div id="loginBox">
+    <div class="tabBox">Login</div>
+    <div id="loginContainer">
+        <form action="" method="post">
+            <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
 
-    <div class="contentBox w440">
-        <div class="contentHeadline ">Login</div>
-        <div class="content">
-            <form action="" method="post">
-                <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
-                
-                <div class="descriptionBox">
-                    <label for="username">Username:</label>
-                </div>
+            <div class="formBox">
+                <input class="iconUsername" type="text" name="username" value="" id="username" required="" placeholder="Username">
+            </div>
 
-                <div class="formBox">
-                    <input class="iconUsername" type="text" name="username" value="" id="username" required="">
-                </div>
-
-                <div class="descriptionBox">
-                    <label for="password">Password:</label>
-                </div>
-
-                <div class="formBox">
-                    <input class="iconPassword1" type="password" name="password" value="" id="password" required="">
-                </div>
-                <div class="clear"></div>
+            <div class="formBox">
+                <input class="iconPassword1" type="password" name="password" value="" id="password" required="" placeholder="Password">
+            </div>
+            <div class="clear"></div>
 
 
-                <div class="submitBox">
-                    <input class="button positive green login"  type="submit" value="Login">
-                    <input type="hidden" name="next" value="{{ request.path }}">
-                </div>
-            </form>
-        </div>
+            <div class="submitBox">
+                <input class="button positive green login"  type="submit" value="Login">
+                <input type="hidden" name="next" value="{{ request.path }}">
+            </div>
+        </form>
     </div>
 </div>
-
 {% endblock body %}

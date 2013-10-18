@@ -24,14 +24,34 @@
         border: none;
     }
 
-#loginContainer {
+#loginBox{
     position: relative;
-    margin: 75px auto 0 auto;
-    width: 455px;
+    margin: 100px auto 0 auto;
+    width: 390px;
 }
 
+#loginContainer {
+    background: #eee;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 20px;
+    border-top-left-radius: 0;
+}
 
-    #loginContainer .descriptionBox {
+#loginBox .tabBox{
+    background: #e5e5e5;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    height: 50px;
+    width: 150px;
+    line-height: 45px;
+    padding-left: 25px;
+    font-size: 20px;
+}
+
+    /*#loginContainer .descriptionBox {
         position: relative;
         float: left;
         border: 1px solid #666;
@@ -58,19 +78,14 @@
             background: #fb3f35;
             color: #000;
         }
-
+*/
     #loginContainer .formBox {
         float: left;
         margin-bottom: 10px;
     }
 
     #loginContainer .submitBox {
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 30px;
-        margin-bottom: 30px;
-        height: 30px;
-        width: 150px;
+        margin-top: 20px;
     }
 
 
@@ -84,11 +99,12 @@
 
 
 #loginContainer input[type=text], #loginContainer input[type=email], #loginContainer input[type=password] {
-    width: 220px;
+    width: 300px;
     font-size: 16px;
-    border: 2px solid #666;
+    border: 2px solid #dde0e2;
     padding: 11px 10px 11px 30px;
     height: 18px;
+    border-radius: 3px;
 }
 
     #loginContainer input[type=text]:focus, #loginContainer input[type=email]:focus, #loginContainer input[type=password]:focus {
@@ -303,9 +319,10 @@ input[type=submit], input[type=button], button[type=button]{
 }
 
 input.login[type=submit]{  
-    padding: 15px;
-    font-size: 15px;
+    padding: 12px;
+    font-size: 18px;
     min-width: 150px;
+    width: 100%;
 }
 
 
@@ -320,7 +337,7 @@ input.red[type=submit], input.red[type=button], button.red[type=button] {
 }
 
 input.green[type=submit], input.green[type=button], button.green[type=button] {
-    background: #4e9e3e;
-    box-shadow: 0px 1px 0px rgba(18, 77, 28, 1);
+    background: #90c842;
+    box-shadow: 0px 1px 0px #7aa63d;
 }
 /*end Buttons */

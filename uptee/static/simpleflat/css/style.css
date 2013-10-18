@@ -444,7 +444,7 @@ html, body {
 
 /*----login messages----*/
 #login_messages {
-    padding-top: 20px;
+    margin-top: 100px;
 }
 /*----END login messages----*/
 
