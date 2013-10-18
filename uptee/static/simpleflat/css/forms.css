@@ -344,7 +344,7 @@ input.green[type=submit], input.green[type=button], button.green[type=button] {
 
 
 
-input.statusButton[type=submit]{  
+input.statusButton.big[type=submit]{  
     font-size: 25px;
     height: 50px;
     width: 150px;

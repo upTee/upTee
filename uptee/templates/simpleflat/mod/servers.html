@@ -61,8 +61,10 @@ context variables:
 {% for server in server_list %}
 
 
+
+
     <div class="contentBox w400">
-        <div class="contentHeadline">{{ server|get_option:'sv_name' }}</div>
+        <div class="contentHeadline">{{ server|get_option:'sv_name' }} {% if server.is_online %}<p class="underline green">Online!</p>{% else %}<p class="underline red">Offline!</p>{% endif %}</div>
         <div class="content">
 
         <table class="small pw100">
@@ -130,7 +132,11 @@ context variables:
         {% if user.is_authenticated and server.map_exists %}{% if user.is_staff or server.owner == user or server in user_moderated_servers_restart %}
             <form method="post" action="{% url 'start_stop_server' server.id %}?next={{ request.path }}">
                 <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
-                <input class="button_serverlist" type="submit" value="{% if server.is_online %}Stop{% else %}Start{% endif %} Server">
+                {% if server.is_online %}
+                <p><input class="statusButton red" type="submit" value="Stop"></p>
+                {% else %}
+                <p><input class="statusButton green" type="submit" value="Start"></p>
+                {% endif %}
             </form>
         {% endif %}{% endif %} 
 

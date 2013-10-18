@@ -342,6 +342,24 @@ html, body {
     background: none;
 }
 
+.contentHeadline p.underline{
+    float: right;
+    font-size: 13px;
+    color: #000;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+    .contentHeadline p.underline.red{
+        color:rgb(255,59,48);
+    }
+
+    .contentHeadline p.underline.green{
+        color:rgb(76,217,100);
+    }
+
+
+
 .blogBox .footer{
     background: none;
     border-top: 1px solid #bbbbbb;

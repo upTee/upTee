@@ -181,9 +181,9 @@ context variables:
             <form class="only_button" method="post" action="{% url 'start_stop_server' server.id %}?next={{ request.path }}">
                 <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
                 {% if server.is_online %}
-                <p><input class="statusButton red" type="submit" value="Stop"></p>
+                <p><input class="statusButton big red" type="submit" value="Stop"></p>
                 {% else %}
-                <p><input class="statusButton green" type="submit" value="Start"></p>
+                <p><input class="statusButton big green" type="submit" value="Start"></p>
                 {% endif %}
             </form>
         </div>
