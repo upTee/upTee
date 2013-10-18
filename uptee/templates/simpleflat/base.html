@@ -178,7 +178,6 @@
                 
                 <ul style="display: none;">
                     <li class="entry{% current request url_info %}"><a href="{{ url_info }}"><i class="icon-info-sign"></i> Info</a></li>
-                    <li class="entry{% current request url_scoreboard %}"><a href="{{ url_scoreboard }}"><i class="icon-info-sign"></i> Scoreboard</a></li>
                     {% if server.config_votes.all %}
                         <li class="entry{% current request url_votes %}"><a href="{{ url_votes }}"><i class="icon-question-sign"></i> Votes</a></li>
                     {% endif %}
@@ -192,6 +191,7 @@
                         <li class="entry{% current request url_edit_tunes %}"><a href="{{ url_edit_tunes }}"><i class="icon-edit-sign"> Edit Tunings</a></li>
                     {% endif %}
                     {% if server.is_online %}
+                        <li class="entry{% current request url_scoreboard %}"><a href="{{ url_scoreboard }}"><i class="icon-info-sign"></i> Scoreboard</a></li>
                         <li class="entry{% current request url_console %}"><a href="{{ url_console }}"><i class="icon-keyboard"></i> Terminal</a></li>
                     {% endif %}
                     <li class="entry{% current request url_change_mod %}"><a href="{{ url_change_mod }}"><i class="icon-edit-sign"></i> Change Mod</a></li>
