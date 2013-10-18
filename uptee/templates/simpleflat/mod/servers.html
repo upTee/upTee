@@ -44,9 +44,9 @@ context variables:
     {% endif %}
 {% endblock %}
 
-{% block link_list %}
+{% block content %}
 
-<div id="link_list">
+<div id="linkList">
     <a href="{% if username %}{% url 'user_server_list' username %}{% else %}{% url 'server_list' %}{% endif %}">All</a>
     |
     <a href="{% if username %}{% url 'user_server_list' username %}{% else %}{% url 'server_list' %}{% endif %}type:online">Online</a>
@@ -54,14 +54,7 @@ context variables:
     <a href="{% if username %}{% url 'user_server_list' username %}{% else %}{% url 'server_list' %}{% endif %}type:offline">Offline</a>
 </div>
 
-{% endblock link_list %}
-
-{% block content %}
-
 {% for server in server_list %}
-
-
-
 
     <div class="contentBox w400">
         <div class="contentHeadline">{{ server|get_option:'sv_name' }} {% if server.is_online %}<p class="underline green">Online!</p>{% else %}<p class="underline red">Offline!</p>{% endif %}</div>

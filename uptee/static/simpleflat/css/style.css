@@ -359,7 +359,6 @@ html, body {
     }
 
 
-
 .blogBox .footer{
     background: none;
     border-top: 1px solid #bbbbbb;
@@ -368,7 +367,9 @@ html, body {
     font-size: 10px;
 }
 
-
+#linkList{
+    margin: 10px 0 20px 10px;
+    }
 
 /* -----Colors----- */
 .gray{ color:rgb(142,142,147);}
