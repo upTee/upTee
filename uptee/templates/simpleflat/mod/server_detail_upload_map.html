@@ -20,7 +20,7 @@ context variables:
 {% block content %}
 
 <div class="contentBox">
-        <div class="contentHeadline"><i class="icon-upload-alt"></i> Upload Map</div>
+        <div class="contentHeadline"><i class="icon-cloud-upload"></i> Upload Map</div>
         <div class="content">
             <form action="{{ request.path }}" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">

@@ -138,7 +138,7 @@ context variables:
         <div class="contentHeadline"><i class="icon-pencil"></i> Description</div>
         <div class="content">
             {% if user.is_authenticated and user == server.owner %}<a class="edit_link" href="{% url 'server_edit_description' server.id %}">edit</a>{% endif %}
-            <p>
+            
                 {% if server.description_html %}
                     <div class="markdown">
                         {{ server.description_html|safe }}
@@ -146,7 +146,7 @@ context variables:
                 {% else %}
                     No description available.
                 {% endif %}
-            </p>
+            
         </div>
     </div>
   </div>
@@ -174,8 +174,8 @@ context variables:
   </div>
 
   <div id="status" class="tabContent">
-    <div class="contentBox w220">
-    <div class="contentHeadline">Your server is currently {% if server.is_online %}<p class="green">Online!</p>{% else %}<p class="red">Offline!</p>{% endif %}</div>
+    <div class="contentBox w240">
+    <div class="contentHeadline"><i class="icon-info-sign"></i>  Your server is currently {% if server.is_online %}<p class="green">Online!</p>{% else %}<p class="red">Offline!</p>{% endif %}</div>
         {% if user.is_authenticated and server.map_exists %}{% if user == server.owner or user.is_staff or moderator and moderator.restart_allowed %}
         <div class="content">
             <form class="only_button" method="post" action="{% url 'start_stop_server' server.id %}?next={{ request.path }}">

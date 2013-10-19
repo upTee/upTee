@@ -325,7 +325,7 @@ html, body {
     }
 
 
-.contentBox, .blogBox {
+.contentBox {
     border: none;
     margin-bottom: 30px;
     float: left;
@@ -333,7 +333,7 @@ html, body {
     width: 100%;
 }
 
-.contentHeadline, .blogHeadline {
+.contentHeadline {
     display: block;
     padding: 5px 10px 10px 10px;
     font-size: 20px;
@@ -359,6 +359,29 @@ html, body {
     }
 
 
+
+#linkList{
+    margin: 10px 0 20px 10px;
+    }
+
+
+.blogHeadline {
+    display: block;
+    padding: 5px 10px 10px 10px;
+    font-size: 20px;
+    color: #333;
+    border-bottom: 1px solid #ccc;
+    background: none;
+}
+
+.blogBox {
+    border: 1px solid #ccc;
+    margin-bottom: 30px;
+    float: left;
+    margin-right: 50px;
+    width: 100%;
+}
+
 .blogBox .footer{
     background: none;
     border-top: 1px solid #bbbbbb;
@@ -366,10 +389,6 @@ html, body {
     padding-left: 10px;
     font-size: 10px;
 }
-
-#linkList{
-    margin: 10px 0 20px 10px;
-    }
 
 /* -----Colors----- */
 .gray{ color:rgb(142,142,147);}
@@ -601,6 +620,11 @@ table.colored{
     cursor: pointer;
 }
 /* ---End vote delete / command delete button--- */
+
+.content .helptext{
+    font-size: 12px;
+}
+
 
 /* ---About Page--- 
 #aboutPage h2{

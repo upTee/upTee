@@ -23,10 +23,12 @@ context variables:
         <div class="content">
             <form method="post" action="{{ request.path }}">
                 <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
-                {{ description_form.as_p }}
+                <p>
+                    <textarea cols="40" id="id_description" name="description" rows="10" placeholder="Description..."></textarea>
+                </p>  
+                <p><span class="helptext">You may use markdown</span></p>
                 <br>
                 <input class="button" type="submit" value="Update">
-
             </form>
         </div>
     </div>
