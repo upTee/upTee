@@ -1,3 +1,4 @@
+/* ---form table--- */
 .formTable { 
     border-collapse: separate;
     border-spacing: 0 20px;
@@ -23,7 +24,10 @@
         text-align: right;
         border: none;
     }
+/* ---END form table--- */
 
+
+/* ---Login / register forms--- */
 #loginBox{
     position: relative;
     margin: 100px auto 0 auto;
@@ -112,9 +116,10 @@
     #registerContainer input.error[type=password] {
         border: 2px solid #fb3f35;
     }
+/* ---END login / register forms--- */
 
 
-
+/* ---Content forms--- */
 .content input[type=text], 
 .content input[type=password], 
 .content input[type=email] {
@@ -243,10 +248,10 @@ select {
     select:focus {
         border: 1px solid #1b7ffa;
     }
+/* ---END content froms--- */
 
 
-/* comment form */
-
+/* ---Blog comment form--- */
 .createComment{
     width: 600px;
     margin-left: 100px;
@@ -306,10 +311,10 @@ select {
     .createComment input[type=submit]:active{
         background: #555;
     }
+/* ---END blog comment form--- */
 
-/* end comment form */
 
-/* Buttons */
+/* ---Buttons--- */
 input[type=submit], 
 input[type=button], 
 button[type=button]{  
@@ -353,9 +358,6 @@ button.green[type=button] {
     background: #90c842;
     box-shadow: 0px 1px 0px #7aa63d;
 }
-/*end Buttons */
-
-
 
 input.statusButton.big[type=submit]{  
     font-size: 25px;
@@ -373,3 +375,4 @@ input.statusButton.red[type=submit]{
 input.statusButton.green[type=submit]{  
     background:rgb(76,217,100);
 }
+/* ---END Buttons--- */

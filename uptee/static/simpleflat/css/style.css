@@ -301,12 +301,11 @@ body {
     left: 0;
 }
 
-
-
 #contentContainer .spacer{
     width: 100%;
     height: 20px;
 }
+
 
 #breadcrumb {
     border-bottom: 1px solid #ccc;
@@ -369,6 +368,7 @@ body {
         color:rgb(76,217,100);
     }
 
+
 /* ---Blog--- */
 .blogHeadline {
     display: block;
@@ -403,6 +403,7 @@ body {
     float: left;
 }
 /* ---END Blog--- */
+
 
 /* ---Blog comments--- */
 .commentsHeadline{
@@ -590,8 +591,8 @@ body {
         opacity: 1.0;
         cursor: pointer;
     }
-
 /* ---END Notifications---*/
+
 
 /* ---server info--- */
 .content h1 {
@@ -683,7 +684,6 @@ table.colored{
 /* ---END tables---*/
 
 
-
 /* ---terminal--- */
 #terminal {
     background-color: #272822;
@@ -738,6 +738,7 @@ table.colored{
 }
 /* ---END vote delete / command delete button--- */
 
+
 .content .helptext{
     font-size: 12px;
 }
@@ -758,6 +759,7 @@ p.joinLable{
 }
 /* ---END User Profile--- */
 
+
 ::-webkit-scrollbar {
     width: 3px;
 }
@@ -767,7 +769,7 @@ p.joinLable{
 }
 
 
-/* Tabmenu */
+/* ---Tabmenu--- */
 #tabContainer{
     margin-top: 20px;
 }
@@ -824,9 +826,10 @@ p.joinLable{
     clear: both;
     color: #000;
 }
-/* END Tabmenu */
+/* ---END Tabmenu--- */
 
-/* ---- Markdown ---- */
+
+/* ---Markdown--- */
 .markdown p {
     margin: 5px;
 }
@@ -882,9 +885,10 @@ p.joinLable{
     border: none;
     border-top: 1px solid #1b7ffa;
 }
-/* END Markdown*/ 
+/* ---END Markdown--- */ 
 
-/*error Pages*/
+
+/* ---error Pages--- */
 .errorContent {
     width: 1000px;
     height: 200px;
@@ -928,4 +932,4 @@ p.joinLable{
     padding-left: 25px;
 
 }
-/* END error Pages*/ 
+/* ---END error Pages--- */ 
