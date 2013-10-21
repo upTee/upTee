@@ -30,7 +30,8 @@
     width: 390px;
 }
 
-#loginContainer {
+#loginContainer,
+#registerContainer {
     background: #eee;
     border: 1px solid #ccc;
     border-radius: 3px;
@@ -51,72 +52,72 @@
     font-size: 20px;
 }
 
-    /*#loginContainer .descriptionBox {
-        position: relative;
-        float: left;
-        border: 1px solid #666;
-        border-right: none;
-        padding: 10px;
-        font-size: 16px;
-        width: 130px;
-        height: 22px;
-        margin-bottom: 10px;
-        background: #666;
-        color: #fff;
-        height: 22px;
-    }
 
-        #loginContainer .descriptionBox .active {
-            border: 1px solid #1b7ffa;
-            border-right: none;
-            background: #1b7ffa;
-        }
-
-        #loginContainer .descriptionBox .error {
-            border: 1px solid #fb3f35;
-            border-right: none;
-            background: #fb3f35;
-            color: #000;
-        }
-*/
-    #loginContainer .formBox {
+    #loginContainer .formBox, 
+    #registerContainer .formBox {
         float: left;
         margin-bottom: 10px;
     }
 
-    #loginContainer .submitBox {
+    #loginContainer .submitBox, 
+    #registerContainer .submitBox {
         margin-top: 20px;
     }
 
 
-#loginContainer .iconUsername{
+#loginContainer .iconUsername {
     background: #fff url('../icons/person.png') no-repeat 5px center;
 }
 
-#loginContainer .iconPassword1, #loginContainer .iconPassword2{
+#loginContainer .iconPassword {
     background: #fff url('../icons/lock.png') no-repeat 5px center;
+
 }
 
 
-#loginContainer input[type=text], #loginContainer input[type=email], #loginContainer input[type=password] {
-    width: 300px;
+#loginContainer input[type=text], 
+#loginContainer input[type=email], 
+#loginContainer input[type=password], 
+#registerContainer input[type=text], 
+#registerContainer input[type=email], 
+#registerContainer input[type=password] {
+    width: 320px;
     font-size: 16px;
     border: 2px solid #dde0e2;
-    padding: 11px 10px 11px 30px;
+    padding: 11px 10px 11px 10px;
     height: 18px;
     border-radius: 3px;
 }
+    /* Override for icons */
+    #loginContainer input[type=password],
+    #loginContainer input[type=text]{
+        padding: 11px 10px 11px 30px !important;
+        width: 300px;
+    }
 
-    #loginContainer input[type=text]:focus, #loginContainer input[type=email]:focus, #loginContainer input[type=password]:focus {
+    #loginContainer input[type=text]:focus, 
+    #loginContainer input[type=email]:focus, 
+    #loginContainer input[type=password]:focus,
+    #registerContainer input[type=text]:focus, 
+    #registerContainer input[type=email]:focus, 
+    #registerContainer input[type=password]:focus {
         border: 2px solid #1b7ffa;
     }
 
-    #loginContainer input.error[type=text], #loginContainer input.error[type=email], #loginContainer input.error[type=password] {
+    #loginContainer input.error[type=text], 
+    #loginContainer input.error[type=email], 
+    #loginContainer input.error[type=password],
+    #registerContainer input.error[type=text], 
+    #registerContainer input.error[type=email], 
+    #registerContainer input.error[type=password] {
         border: 2px solid #fb3f35;
     }
 
 
-.content input[type=text], .content input[type=password], .content input[type=email] {
+
+.content input[type=text], 
+.content input[type=password], 
+.content input[type=email] {
     background: #fff;
     width: 200px;
     border: 1px solid #666;
@@ -124,12 +125,16 @@
 }
 
 
-   .content input[type=text]:focus, .content input[type=password]:focus, .content input[type=email]:focus {
-    border: 1px solid #1b7ffa;
+   .content input[type=text]:focus, 
+   .content input[type=password]:focus, 
+   .content input[type=email]:focus {
+        border: 1px solid #1b7ffa;
     }
 
-    .content input.error[type=text], .content input.error[type=password], .content input.error[type=email] {
-    border: 1px solid #fb3f35;
+    .content input.error[type=text], 
+    .content input.error[type=password], 
+    .content input.error[type=email] {
+        border: 1px solid #fb3f35;
     }
 
 
@@ -162,12 +167,12 @@ input[type=checkbox]
 }
 
     input[type=checkbox]
-        + label.checkbox:hover {
-            background: url('../img/checkbox.png') no-repeat;
-            background-position:0 -20px;
-            height: 20px;
-            width: 20px;
-        }
+    + label.checkbox:hover {
+        background: url('../img/checkbox.png') no-repeat;
+        background-position:0 -20px;
+        height: 20px;
+        width: 20px;
+    }
 
 
 input[type=checkbox]:checked
@@ -202,12 +207,12 @@ input[type=radio]
 }
 
     input[type=radio]
-        + label.radio:hover {
-            background: url('../img/radio.png') no-repeat;
-            background-position:0 -20px;
-            height: 20px;
-            width: 20px;
-        }
+    + label.radio:hover {
+        background: url('../img/radio.png') no-repeat;
+        background-position:0 -20px;
+        height: 20px;
+        width: 20px;
+    }
 
 
 input[type=radio]:checked
@@ -305,7 +310,9 @@ select {
 /* end comment form */
 
 /* Buttons */
-input[type=submit], input[type=button], button[type=button]{  
+input[type=submit], 
+input[type=button], 
+button[type=button]{  
     margin-left: auto;
     margin-right: auto;
     padding: 10px;
@@ -326,17 +333,23 @@ input.login[type=submit]{
 }
 
 
-input.blue[type=submit], input.blue[type=button], button.blue[type=button] {
+input.blue[type=submit], 
+input.blue[type=button], 
+button.blue[type=button] {
     background: #0b6aff;
     box-shadow: 0px 1px 0px rgba(6, 59, 143, 1);
 }
 
-input.red[type=submit], input.red[type=button], button.red[type=button] {
+input.red[type=submit], 
+input.red[type=button], 
+button.red[type=button] {
     background: #ff0000;
     box-shadow: 0px 1px 0px rgba(143, 0, 0, 1);
 }
 
-input.green[type=submit], input.green[type=button], button.green[type=button] {
+input.green[type=submit], 
+input.green[type=button], 
+button.green[type=button] {
     background: #90c842;
     box-shadow: 0px 1px 0px #7aa63d;
 }

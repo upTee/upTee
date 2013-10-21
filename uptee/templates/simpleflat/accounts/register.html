@@ -11,7 +11,7 @@ context variables:
 
 <div id="loginBox">
     <div class="tabBox">Register</div>
-    <div id="loginContainer">
+    <div id="registerContainer">
         
         <form method="post" action="{{ request.path }}">
             <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
@@ -22,7 +22,7 @@ context variables:
                 </div>
 
                 <div class="formBox">
-                    <input class="icon_key{% if testing_form.key.errors %} error{% endif %}" type="text" name="key" value="{{ testing_form.key.value|default_if_none:"" }}" id="id_key" required=""/>
+                    <input class="{% if testing_form.key.errors %} error{% endif %}" type="text" name="key" value="{{ testing_form.key.value|default_if_none:"" }}" id="id_key" required=""/>
                     {{ testing_form.key.errors }}
                 </div>
             {% endif %}
@@ -34,7 +34,7 @@ context variables:
                     </div>
 
                     <div class="formBox">
-                        <input class="icon_{{ field.name }}{% if field.errors %} error{% endif %}" type="{{ field.field.widget.input_type }}" name="{{ field.name }}" value="{{ field.value|default_if_none:"" }}" id="{{ field.id_for_label }}"{% if field.field.widget.is_required %} required=""{% endif %} />
+                        <input class="{% if field.errors %} error{% endif %}" type="{{ field.field.widget.input_type }}" name="{{ field.name }}" value="{{ field.value|default_if_none:"" }}" id="{{ field.id_for_label }}"{% if field.field.widget.is_required %} required=""{% endif %} placeholder="{{ field.label }}"/>
                         {{ field.errors }}
                     </div>
                 {% endif %}
