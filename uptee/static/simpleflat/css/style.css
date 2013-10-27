@@ -40,6 +40,8 @@ body {
     font-family: "Segoe UI","Segoe UI Web Regular","Segoe UI Symbol","Helvetica Neue","BBAlpha Sans","S60 Sans",Arial,"sans-serif";
     font-size: 13px !important;
     color: #000;
+    background: url(../img/02.jpg);
+    background-size: 100% 100%;
 } 
 
 
@@ -64,7 +66,7 @@ body {
         top: 0;
         left: 0;
         right: 0;
-    background: #fff;
+    background: rgba(255,255,255,0.5);
     border-bottom: 1px solid #ccc;
     height: 50px;
     z-index: 10;
@@ -283,7 +285,8 @@ body {
 
 #contentContainer {
     border-left: 1px solid #ccc;
-    background: #fff;
+    background: none;
+    background-repeat: no-repeat;
     position: absolute;
         top: 50px;
         bottom: 0;
@@ -293,7 +296,6 @@ body {
     overflow: auto;
     min-width: 710px;
     z-index: 5;
-
 }
 
 
@@ -331,11 +333,13 @@ body {
 
 
 .contentBox {
-    border: none;
+    border: 1px solid #ccc;
     margin-bottom: 30px;
     float: left;
     margin-right: 50px;
     width: 100%;
+    background: #fff;
+    border-radius: 10px;
 }
 
 .content {
@@ -385,6 +389,8 @@ body {
     float: left;
     margin-right: 50px;
     width: 100%;
+    background: #fff;
+    border-radius: 10px;
 }
 
 .blogBox .footer{
