@@ -67,7 +67,7 @@ context variables:
                 {% if not username %}
                 
                 <tr>
-                    <td>Owner: {% url 'server_list__type' 'online' %}</td>
+                    <td>Owner:</td>
                     <td><a href="{% url 'user' server.owner.id %}">{% if server.owner == request.user %}You{% else %}{{ server.owner.username }}{% endif %}</p>{% endif %}</a></td>
                 </tr>
 
