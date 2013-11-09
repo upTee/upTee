@@ -13,7 +13,8 @@ context variables:
 {% block breadcrumb %}
     {{ block.super }}
     {% load breadcrumb_tags %}
-    {% add_crumb 'Description' 'server_edit_description' server.id %}
+    {% add_crumb server.server_name 'server_detail' server.id %}
+    {% add_crumb 'Edit description' 'server_edit_description' server.id %}
 {% endblock %}
 
 {% block content %}
@@ -24,7 +25,7 @@ context variables:
             <form method="post" action="{{ request.path }}">
                 <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
                 <p>
-                    <textarea cols="40" id="id_description" name="description" rows="10" placeholder="Description..."></textarea>
+                    <textarea cols="40" id="id_description" name="description" rows="10" placeholder="Description...">{{ description_form.description.value }}</textarea>
                 </p>  
                 <p><span class="helptext">You may use markdown</span></p>
                 <br>

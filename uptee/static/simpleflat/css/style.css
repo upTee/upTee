@@ -354,6 +354,14 @@ body {
     color: #333;
     border-bottom: 1px solid #ccc;
     background: none;
+    position: relative;
+}
+
+.contentHeadline a.edit_link {
+    position: absolute;
+        top: 13px;
+        right: 10px;
+    font-size: 11px;
 }
 
 .contentHeadline p.underline{
