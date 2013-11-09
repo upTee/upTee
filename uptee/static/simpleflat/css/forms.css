@@ -158,6 +158,13 @@ textarea {
     }
 
 
+form p textarea {
+    width: 600px;
+    min-width: 200px;
+    max-width: 1000px;
+    height: 400px;
+}
+
 input[type=checkbox] {
     display: none;
 }
