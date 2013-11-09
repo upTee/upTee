@@ -135,9 +135,8 @@ context variables:
 
   <div id="description" class="tabContent">
     <div class="contentBox">
-        <div class="contentHeadline"><i class="icon-pencil"></i> Description</div>
+        <div class="contentHeadline"><i class="icon-pencil"></i> Description{% if user.is_authenticated and user == server.owner %}<a class="edit_link" href="{% url 'server_edit_description' server.id %}">edit</a>{% endif %}<div class="clear"></div></div>
         <div class="content">
-            {% if user.is_authenticated and user == server.owner %}<a class="edit_link" href="{% url 'server_edit_description' server.id %}">edit</a>{% endif %}
             
                 {% if server.description_html %}
                     <div class="markdown">
