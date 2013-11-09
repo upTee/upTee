@@ -248,6 +248,10 @@ select {
     select:focus {
         border: 1px solid #1b7ffa;
     }
+
+form select {
+    margin-left: 20px;
+}
 /* ---END content froms--- */
 
 
