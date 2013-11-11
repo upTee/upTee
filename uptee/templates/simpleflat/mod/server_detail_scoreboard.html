@@ -14,11 +14,17 @@ context variables:
 
 {% block title %}upTee - {{ server|get_option:'sv_name' }} - Scoreboard{% endblock title %}
 
+{% block breadcrumb %}
+    {{ block.super }}
+    {% load breadcrumb_tags %}
+    {% add_crumb 'Scoreboard' 'server_scoreboard' server.id %}
+{% endblock %}
+
 {% block content %}
 
 <!-- DM, LMS Scorebaord -->
 <div id="scoreboardContainer" data-serverid="{{ server.id }}">
-    {% if server.server_info and server.server_info.clients %}
+    {% if server.server_info %}
     <div class="tableContainer">
         <table class="dm">
             <tr>
@@ -44,7 +50,7 @@ context variables:
     <div class="tableContainer marginTop">
         <table class="spec">
             <tr>
-                <th class="headline">Spectator</th>
+                <th class="headline">Spectators</th>
                 <th class="headline"></th>
             </tr>
             <tr>

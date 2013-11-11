@@ -47,7 +47,7 @@ context variables:
             <p>Gametype: <span data-info="gametype">{% if server.server_info %}{{ server.server_info.gametype }}{% else %}{{ server|get_option:'sv_gametype' }}{% endif %}</span></p>
             <p>Map: <span data-info="map">{% if server.server_info %}{{ server.server_info.map }}{% else %}{{ server|get_option:'sv_map' }}{% if not server.map_exists %} (<span class="config_error">does not exist!</span>){% endif %}{% endif %}</span></p>
             <p data-info="slots">Slots: <span data-info="slots">{% if server.server_info %}{{ server.server_info.clients|length }}/{{ server.server_info.max_clients }}{% else %}{{ server|get_option:'sv_max_clients' }}{% endif %}</span></p>
-            <p>Password: <span data-info="password">{% if server.server_info %}{% if server.password %}Yes{% else %}No{% endif %}{% else %}{% if server|get_option:'password' %}Yes{% else %}No{% endif %}{% endif %}</span></p>
+            <p>Password: <span data-info="password">{% if server.server_info %}{% if server.server_info.password %}Yes{% else %}No{% endif %}{% else %}{% if server|get_option:'password' %}Yes{% else %}No{% endif %}{% endif %}</span></p>
             {% if server.is_online %}<p>Address: {{ request.META.HTTP_HOST|split:':'|first }}:{{ server.port }}</p>{% endif %}
             <p><a href="{% url 'server_detail' server.id %}">{% if server.owner == request.user or server in user_moderated_servers %}Info/Edit{% else %}Info{% endif %}</a></p>
             <div class="hide_mouseover">

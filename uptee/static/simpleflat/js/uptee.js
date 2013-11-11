@@ -7,6 +7,16 @@ $(document).ready(function() {
         });
     });
 
+    // scorboard update
+    if($('#scoreboardContainer').length) {
+        setInterval(server_scoreboard_update, 30000);
+    }
+
+    // server info update
+    if($('.serverStatusUpdate').length) {
+        setInterval(server_info_update, 30000);
+    }
+
     // vote stuff
     var vote_number = 1;
     $('#addVote').html('<p><button class="button" type="button">Add vote</button></p>');
@@ -256,4 +266,69 @@ function rotate_commands(direction) {
             $('#terminalCommandInput').val('');
         }
     }
+}
+
+function server_scoreboard_update() {
+    var scoreboard = $('#scoreboardContainer');
+    var server_id = $(scoreboard).attr('data-serverid');
+    $.ajax({
+        type: "GET",
+        url: "/server_info_update/" + server_id + "/",
+        success: function(json) {
+            server_info = json.server_info;
+            if(server_info) {
+                if(scoreboard.length && server_info.clients.length) {
+                    $(scoreboard).html('<div class="tableContainer"><table class="dm"><tbody><tr><th class="headline">Scorebaord</th><th class="headline"></th><th class="headline"></th></tr><tr><th class="score">Score</th><th>Name</th><th>Clan</th></tr></tbody></table></div>');
+                    var table = $(scoreboard).find("tbody tr:last");
+                    var data = "";
+                    var k;
+                    if(server_info.players.length) {
+                        for(k = 0; k < server_info.players.length; k++) {
+                            data += '<tr><td class="score">' + server_info.players[k].score + "</td><td>" + server_info.players[k].name + "</td><td>" + server_info.players[k].clan + "</td></tr>";
+                        }
+                    }
+                    table.after(data);
+                    data = "";
+                    $(scoreboard).append('<div class="tableContainer marginTop"><table class="spec"></tbody><tr><th class="headline">Spectator</th><th class="headline"></th></tr><tr><th>Name</th><th>Clan</th></tr></tbody></table></tr></div><div class="clear"></div>');
+                    table = $(scoreboard).find(".spec tr:last");
+                    if(server_info.spectators.length) {
+                        for(k = 0; k < server_info.spectators.length; k++) {
+                            data += "<tr><td>" + server_info.spectators[k].name + "</td><td>" + server_info.spectators[k].clan + "</td></tr>";
+                        }
+                    }
+                    table.after(data);
+                }
+            }
+        }
+    });
+}
+
+function server_info_update() {
+    var server_id_list = [];
+    $('.serverStatusUpdate').each(function(i) {
+        var server_id = $(this).attr("data-serverid");
+
+        if($.inArray(server_id, server_id_list) == -1) {
+            $.ajax({
+                type: "GET",
+                url: "/server_info_update/" + server_id + "/",
+                success: function(json) {
+                    server_info = json.server_info;
+                    if(server_info) {
+                        $('.serverStatusUpdate[data-serverid="' + server_id + '"]').each(function(j) {
+                            $(this).find('span[data-info="gametype"]').html(server_info.gametype);
+                            $(this).find('span[data-info="map"]').html(server_info.map);
+                            $(this).find('span[data-info="slots"]').html(server_info.clients.length + "/" + server_info.max_clients);
+                            var password_protected = 'No';
+                            if(server_info.flags & 1) // 1 = Flag for password protection
+                                password_protected = 'Yes';
+                            $(this).find('span[data-info="password"]').html(password_protected);
+                        });
+                    }
+                }
+            });
+
+            server_id_list.push(server_id);
+        }
+    });
 }

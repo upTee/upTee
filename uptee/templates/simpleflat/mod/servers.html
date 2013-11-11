@@ -59,16 +59,12 @@ context variables:
     <div class="contentBox w400">
         <div class="contentHeadline">{{ server|get_option:'sv_name' }} {% if server.is_online %}<p class="underline green">Online!</p>{% else %}<p class="underline red">Offline!</p>{% endif %}</div>
         <div class="content">
-
+        {% if server.is_online %}<div class="serverStatusUpdate" data-serverid="{{ server.id }}">{% endif %}
         <table class="small pw100">
-            <tbody>
-                    
-            {% if server.is_online %}<div class="server_status_update" data-serverid="{{ server.id }}">{% endif %}
-                {% if not username %}
-                
+            <tbody>                
                 <tr>
                     <td>Owner:</td>
-                    <td><a href="{% url 'user' server.owner.id %}">{% if server.owner == request.user %}You{% else %}{{ server.owner.username }}{% endif %}</p>{% endif %}</a></td>
+                    <td><a href="{% url 'user' server.owner.id %}">{% if server.owner == request.user %}You{% else %}{{ server.owner.username }}{% endif %}</p></a></td>
                 </tr>
 
                 <tr>
@@ -93,7 +89,7 @@ context variables:
 
                 <tr>
                     <td>Password:</td>
-                    <td><span data-info="password">{% if server.server_info %}{% if server.password %}Yes{% else %}No{% endif %}{% else %}{% if server|get_option:'password' %}Yes{% else %}No{% endif %}{% endif %}</span></td>
+                    <td><span data-info="password">{% if server.server_info %}{% if server.server_info.password %}Yes{% else %}No{% endif %}{% else %}{% if server|get_option:'password' %}Yes{% else %}No{% endif %}{% endif %}</span></td>
                 </tr>
 
 
@@ -104,10 +100,9 @@ context variables:
                     <td>{{ request.META.HTTP_HOST|split:':'|first }}:{{ server.port }}</td>
                     {% endif %}
                 </tr>
-                
-
             </tbody>
         </table>
+        {% if server.is_online %}</div>{% endif %}
         
         <br>
 
