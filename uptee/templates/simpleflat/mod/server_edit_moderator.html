@@ -25,131 +25,136 @@ context variables:
       $('#tabContainer').easytabs();
     });
 </script>
-
-
-    <form action="{{ request.path }}" method="post">
-        <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
-        
+ 
 
 <div id="tabContainer">
-  <ul class="etabs">
-    <li class="tab right"><a href="#general">General Settings</a></li>
-    <li class="tab"><a href="#options">Options</a></li>
-    <li class="tab left"><a href="#tunings">Tunings</a></li>
-  </ul>
+    <ul class="etabs">
+        <li class="tab right"><a href="#general">General Settings</a></li>
+        <li class="tab{% if not server.config_tunes.all %} left{% endif %}"><a href="#options">Options</a></li>
+        {% if server.config_tunes.all %}<li class="tab left"><a href="#tunings">Tunings</a></li>{% endif %}
+    </ul>
 
-
-<div id="general" class="tabContent">
-    <div class="contentBox">
-        <div class="contentHeadline">General Settings</div>
-        <div class="content">
-            <table class="formTable">
-                <tbody>
-                    <tr>
-                        <th><label for="restart_allowed">Allow restarting server:</label></th>
-                        <td>
-                            <input type="checkbox" name="restart_allowed" id="restart_allowed"{% if moderator_settings.restart_allowed != 0 %} checked="checked"{% endif %}>
-                            <label class="checkbox" for="restart_allowed"></label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><label for="edit_automatic_restart_allowed">Allow editing auto restart:</label></th>
-                        <td>
-                            <input type="checkbox" name="edit_automatic_restart_allowed" id="edit_automatic_restart_allowed"{% if moderator_settings.edit_automatic_restart_allowed != 0 %} checked="checked"{% endif %}>
-                            <label class="checkbox" for="edit_automatic_restart_allowed"></label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><label for="edit_map_download_allowed">Allow editing download maps:</label></th>
-                        <td>
-                            <input type="checkbox" name="edit_map_download_allowed" id="edit_map_download_allowed"{% if moderator_settings.edit_map_download_allowed != 0 %} checked="checked"{% endif %}>
-                            <label class="checkbox" for="edit_map_download_allowed"></label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><label for="console_allowed">Allow using console:</label></th>
-                        <td>
-                            <input type="checkbox" name="console_allowed" id="console_allowed"{% if moderator_settings.console_allowed != 0 %} checked="checked"{% endif %}>
-                            <label class="checkbox" for="console_allowed"></label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><label for="edit_votes_allowed">Allow editing votes:</label></th>
-                        <td>
-                            <input type="checkbox" name="edit_votes_allowed" id="edit_votes_allowed"{% if moderator_settings.edit_votes_allowed != 0 %} checked="checked"{% endif %}>
-                            <label class="checkbox" for="edit_votes_allowed"></label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><label for="map_upload_allowed">Allow uploading maps:</label></th>
-                        <td>
-                            <input type="checkbox" name="map_upload_allowed" id="map_upload_allowed"{% if moderator_settings.map_upload_allowed != 0 %} checked="checked"{% endif %}>
-                            <label class="checkbox" for="map_upload_allowed"></label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><label for="edit_rcon_commands_allowed">Allow editing rcon commands:</label></th>
-                        <td>
-                            <input type="checkbox" name="edit_rcon_commands_allowed" id="edit_rcon_commands_allowed"{% if moderator_settings.edit_rcon_commands_allowed != 0 %} checked="checked"{% endif %}>
-                            <label class="checkbox" for="edit_rcon_commands_allowed"></label>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+    <div id="general" class="tabContent">
+        <div class="contentBox">
+            <div class="contentHeadline">General Settings</div>
+            <div class="content">
+                <form action="{{ request.path }}" method="post">
+                    <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
+                    <table class="formTable">
+                        <tbody>
+                            <tr>
+                                <th><label for="restart_allowed">Allow restarting server:</label></th>
+                                <td>
+                                    <input type="checkbox" name="restart_allowed" id="restart_allowed"{% if moderator_settings.restart_allowed != 0 %} checked="checked"{% endif %}>
+                                    <label class="checkbox" for="restart_allowed"></label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><label for="edit_automatic_restart_allowed">Allow editing auto restart:</label></th>
+                                <td>
+                                    <input type="checkbox" name="edit_automatic_restart_allowed" id="edit_automatic_restart_allowed"{% if moderator_settings.edit_automatic_restart_allowed != 0 %} checked="checked"{% endif %}>
+                                    <label class="checkbox" for="edit_automatic_restart_allowed"></label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><label for="edit_map_download_allowed">Allow editing download maps:</label></th>
+                                <td>
+                                    <input type="checkbox" name="edit_map_download_allowed" id="edit_map_download_allowed"{% if moderator_settings.edit_map_download_allowed != 0 %} checked="checked"{% endif %}>
+                                    <label class="checkbox" for="edit_map_download_allowed"></label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><label for="console_allowed">Allow using console:</label></th>
+                                <td>
+                                    <input type="checkbox" name="console_allowed" id="console_allowed"{% if moderator_settings.console_allowed != 0 %} checked="checked"{% endif %}>
+                                    <label class="checkbox" for="console_allowed"></label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><label for="edit_votes_allowed">Allow editing votes:</label></th>
+                                <td>
+                                    <input type="checkbox" name="edit_votes_allowed" id="edit_votes_allowed"{% if moderator_settings.edit_votes_allowed != 0 %} checked="checked"{% endif %}>
+                                    <label class="checkbox" for="edit_votes_allowed"></label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><label for="map_upload_allowed">Allow uploading maps:</label></th>
+                                <td>
+                                    <input type="checkbox" name="map_upload_allowed" id="map_upload_allowed"{% if moderator_settings.map_upload_allowed != 0 %} checked="checked"{% endif %}>
+                                    <label class="checkbox" for="map_upload_allowed"></label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><label for="edit_rcon_commands_allowed">Allow editing rcon commands:</label></th>
+                                <td>
+                                    <input type="checkbox" name="edit_rcon_commands_allowed" id="edit_rcon_commands_allowed"{% if moderator_settings.edit_rcon_commands_allowed != 0 %} checked="checked"{% endif %}>
+                                    <label class="checkbox" for="edit_rcon_commands_allowed"></label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p><input class="button" type="submit" value="Update"></p>
+                </form>
+                <form action="{{ request.path }}" method="post">
+                    <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
+                    <input type="hidden" name="form-delete-moderator" id="form-delete-moderator">
+                    <p><input class="button" type="submit" value="Delete moderator"></p>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
-<div id="options" class="tabContent">
-    <div class="content_box">
-        <div class="content_headline minimal">Options</div>
-        <div class="content">
-            <table class="formTable">
-                <tbody>
-                    {% for option in server.config_options.all %}
-                    <tr>
-                        <th><label for="{{ option.command }}">Allow editing '{{ option.command }}':</label></th>
-                        <td>
-                            <input type="checkbox" name="{{ option.command }}" id="{{ option.command }}"{% if option in moderator_settings.allowed_options.all %} checked="checked"{% endif %}>
-                            <label class="checkbox" for="{{ option.command }}"></label>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            {% if server.config_tunes.all %}
+    <div id="options" class="tabContent">
+        <div class="contentBox">
+            <div class="contentHeadline">Options</div>
+            <div class="content">
+                <form action="{{ request.path }}" method="post">
+                    <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
+                    <table class="formTable">
+                        <tbody>
+                            {% for option in server.config_options.all %}
+                            <tr>
+                                <th><label for="{{ option.command }}">Allow editing '{{ option.command }}':</label></th>
+                                <td>
+                                    <input type="checkbox" name="{{ option.command }}" id="{{ option.command }}"{% if option in moderator_settings.allowed_options.all %} checked="checked"{% endif %}>
+                                    <label class="checkbox" for="{{ option.command }}"></label>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <p><input class="button" type="submit" value="Update"></p>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
-<div id="tunings" class="Tunings">
-    <div class="content_box">
-        <div class="content_headline">Tunings</div>
-        <div class="content">
-                <table class="formTable">
-                    <tbody>
-                        {% for tune in server.config_tunes.all %}
-                        <tr>
-                            <th><label for="{{ tune.command }}">Allow editing '{{ tune.command }}':</label></th>
-                            <td>
-                                <input type="checkbox" name="{{ tune.command }}" id="{{ tune.command }}"{% if tune in moderator_settings.allowed_tunings.all %} checked="checked"{% endif %}>
-                                <label class="checkbox" for="{{ tune.command }}"></label>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-                {% endif %}
-                <p><input class="button" type="submit" value="Update"></p>
-            </form>
-            <form action="{{ request.path }}" method="post">
-                <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
-                <input type="hidden" name="form-delete-moderator" id="form-delete-moderator">
-                <p><input class="button" type="submit" value="Delete moderator"></p>
-            </form>
+    {% if server.config_tunes.all %}
+    <div id="tunings" class="Tunings">
+        <div class="contentBox">
+            <div class="contentHeadline">Tunings</div>
+            <div class="content">
+                <form action="{{ request.path }}" method="post">
+                    <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
+                    <table class="formTable">
+                        <tbody>
+                            {% for tune in server.config_tunes.all %}
+                            <tr>
+                                <th><label for="{{ tune.command }}">Allow editing '{{ tune.command }}':</label></th>
+                                <td>
+                                    <input type="checkbox" name="{{ tune.command }}" id="{{ tune.command }}"{% if tune in moderator_settings.allowed_tunings.all %} checked="checked"{% endif %}>
+                                    <label class="checkbox" for="{{ tune.command }}"></label>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <p><input class="button" type="submit" value="Update"></p>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+    {% endif %}
 
 </div>
 

@@ -256,7 +256,7 @@ select {
         border: 1px solid #1b7ffa;
     }
 
-form select {
+form.smallform select {
     margin-left: 20px;
 }
 /* ---END content froms--- */
