@@ -9,6 +9,13 @@ context variables:
 
 {% block title %}upTee - {{ map_obj.server|get_option:'sv_name' }} - {{ map_obj.name }} - Details{% endblock title %}
 
+{% block breadcrumb %}
+    {{ block.super }}
+    {% load breadcrumb_tags %}
+    {% add_crumb map_obj.server.server_name 'server_detail' map_obj.server.id %}
+    {% add_crumb map_obj.name 'map_details' map_obj.id %}
+{% endblock %}
+
 {% block content %}
 
 <div class="contentBox">
