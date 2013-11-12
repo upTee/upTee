@@ -100,8 +100,8 @@ $(document).ready(function() {
 
     // menu user settings
     $('#userMenu .icon-gear').click(function() {
-        $('#usermenuBox').toggle();
-        $('#userMenu .arrow').toggle();
+        $('#usermenuBox').fadeToggle('fast');
+        $('#userMenu .arrow').fadeToggle('fast');
     });
 
     // terminal interval
