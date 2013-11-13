@@ -37,7 +37,7 @@ context variables:
 
     <div id="events" class="tabContent">
         <div class="contentBox minimal">
-        <div class="contentHeadline"><i class="icon-calendar"></i> Events</div>
+        <div class="contentHeadline"><i class="fa fa-calendar"></i> Events</div>
         <div class="content">
             <div id="calendarContainer" data-serverid="{{ server.id }}">
                 <div class="calendarHead">
@@ -87,7 +87,7 @@ context variables:
 
   <div id="info" class="tabContent">
     <div class="contentBox">
-        <div class="contentHeadline"><i class="icon-info-sign"></i> Info</div>
+        <div class="contentHeadline"><i class="fa fa-info-circle"></i> Info</div>
         <div class="content">
             {% if server.is_online %}<div class="serverStatusUpdate" data-serverid="{{ server.id }}">{% endif %}
             <table class="bordered w400">
@@ -135,7 +135,7 @@ context variables:
 
   <div id="description" class="tabContent">
     <div class="contentBox">
-        <div class="contentHeadline"><i class="icon-pencil"></i> Description{% if user.is_authenticated and user == server.owner %}<a class="edit_link" href="{% url 'server_edit_description' server.id %}">edit</a>{% endif %}<div class="clear"></div></div>
+        <div class="contentHeadline"><i class="fa fa-pencil"></i> Description{% if user.is_authenticated and user == server.owner %}<a class="edit_link" href="{% url 'server_edit_description' server.id %}">edit</a>{% endif %}<div class="clear"></div></div>
         <div class="content">
             
                 {% if server.description_html %}
@@ -153,7 +153,7 @@ context variables:
   <div id="maps" class="tabContent">
    {% comment %} {% include "scoreboard.html" %} {% endcomment %}
     <div class="contentBox">
-        <div class="contentHeadline"><i class="icon-picture"></i> Maps</div>
+        <div class="contentHeadline"><i class="fa fa-picture-o"></i> Maps</div>
         <div class="content">
             {% if server.maps.all %}
             <div class="server_detail_maplist">
@@ -174,7 +174,7 @@ context variables:
 
   <div id="status" class="tabContent">
     <div class="contentBox w240">
-    <div class="contentHeadline"><i class="icon-info-sign"></i>  Your server is currently {% if server.is_online %}<p class="green">Online!</p>{% else %}<p class="red">Offline!</p>{% endif %}</div>
+    <div class="contentHeadline"><i class="fa fa-info-circle"></i>  Your server is currently {% if server.is_online %}<p class="green">Online!</p>{% else %}<p class="red">Offline!</p>{% endif %}</div>
         {% if user.is_authenticated and server.map_exists %}{% if user == server.owner or user.is_staff or moderator and moderator.restart_allowed %}
         <div class="content">
             <form class="only_button" method="post" action="{% url 'start_stop_server' server.id %}?next={{ request.path }}">
