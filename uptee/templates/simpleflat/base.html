@@ -25,7 +25,8 @@
         {% endif %}
         <link rel="stylesheet" href="{{ STATIC_URL }}simpleflat/css/forms.css" type="text/css">
         <link rel="stylesheet" href="{{ STATIC_URL }}simpleflat/css/size.css" type="text/css">
-        <link rel="stylesheet" href="{{ STATIC_URL }}simpleflat/css/font-awesome.min.css" type="text/css"><!-- Font Awesome Icons -->
+        <link rel="stylesheet" href="{{ STATIC_URL }}simpleflat/css/font-awesome.min.css"><!-- Font Awesome Icons -->
+
 
         <script src="{{ STATIC_URL }}js/jquery-1.8.2.min.js"></script>
         <script src="{{ STATIC_URL }}js/jquery.easing.1.3.min.js"></script>
@@ -103,14 +104,14 @@
             {% if user.is_authenticated %}
             
             <div id="userMenu">
-                <p><i class="icon-gear"></i></p><!-- @Sushi // a mouseklick should trigger the menu -->
+                <p><i class="fa fa-cog"></i></p><!-- @Sushi // a mouseklick should trigger the menu -->
                 <div class="arrow"></div>
                 <div id="usermenuBox">
                     <ul>
                         <li><img class="gravatar" src="{% gravatar_for_user user 100 %}"></li>
-                        <li><a href="{% url 'user' user.id %}"><i class="icon-user"></i> {{ user.username }}</a></li>
-                        <li><a href="{% url 'settings' %}"><i class="icon-cog"></i> Account Settings</a></li>
-                        <li><a href="{% url 'logout' %}"><i class="icon-off"></i> Logout!</a></li>
+                        <li><a href="{% url 'user' user.id %}"><i class="fa fa-user"></i> {{ user.username }}</a></li>
+                        <li><a href="{% url 'settings' %}"><i class="fa fa-cog"></i> Account Settings</a></li>
+                        <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Logout!</a></li>
                     </ul>
                 </div>
             </div>
@@ -120,8 +121,8 @@
 
             <div id="loginmenu">
                 <ul>
-                    <li><a href="{% url 'register' %}"><i class="icon-signin"></i> Register</a></li>
-                    <li><a href="{% url 'login' %}"><i class="icon-signin"></i> Login</a></li>
+                    <li><a href="{% url 'register' %}"><i class="fa fa-sign-in"></i> Register</a></li>
+                    <li><a href="{% url 'login' %}"><i class="fa fa-sign-in"></i> Login</a></li>
                 </ul>
             </div>
             {% endif %}
@@ -173,29 +174,29 @@
             {% url 'server_console' server.id as url_console %}
             <!-- end url definitions -->
 
-            <li class="menu_head" data-serverid="{{ server.id }}"> <p><i class="icon-chevron-right"></i> {{ server|get_option:'sv_name' }}</p>
+            <li class="menu_head" data-serverid="{{ server.id }}"> <p><i class="fa fa-chevron-right"></i> {{ server|get_option:'sv_name' }}</p>
                 <div class="statusIcon {% if server.is_online %}on{% else %}off{% endif %}"></div> 
                 
                 <ul style="display: none;">
-                    <li class="entry{% current request url_info %}"><a href="{{ url_info }}"><i class="icon-info-sign"></i> Info</a></li>
+                    <li class="entry{% current request url_info %}"><a href="{{ url_info }}"><i class="fa fa-info-circle"></i> Info</a></li>
                     {% if server.config_votes.all %}
-                        <li class="entry{% current request url_votes %}"><a href="{{ url_votes }}"><i class="icon-question-sign"></i> Votes</a></li>
+                        <li class="entry{% current request url_votes %}"><a href="{{ url_votes }}"><i class="fa fa-question-circle"></i> Votes</a></li>
                     {% endif %}
-                    <li class="entry{% current request url_upload_map %}"><a href="{{ url_upload_map }}"><i class="icon-cloud-upload"></i> Upload Map</a></li>
-                    <li class="entry{% current request url_edit_settings %}"><a href="{{ url_edit_settings }}"><i class="icon-edit-sign"></i> Edit Settings</a></li>
-                    <li class="entry{% current request url_edit_votes %}"><a href="{{ url_edit_votes }}"><i class="icon-edit-sign"></i> Edit Votes</a></li>
+                    <li class="entry{% current request url_upload_map %}"><a href="{{ url_upload_map }}"><i class="fa fa-cloud-upload"></i> Upload Map</a></li>
+                    <li class="entry{% current request url_edit_settings %}"><a href="{{ url_edit_settings }}"><i class="fa fa-pencil-square-o"></i></i> Edit Settings</a></li>
+                    <li class="entry{% current request url_edit_votes %}"><a href="{{ url_edit_votes }}"><i class="fa fa-pencil-square-o"></i></i> Edit Votes</a></li>
                     {% if server.config_available_rconcommands.all %}
-                        <li class="entry{% current request url_edit_rcon_commands %}"><a href="{{ url_edit_rcon_commands }}"><i class="icon-keyboard"></i> Commands</a></li>
+                        <li class="entry{% current request url_edit_rcon_commands %}"><a href="{{ url_edit_rcon_commands }}"><i class="fa fa-keyboard-o"></i> Commands</a></li>
                     {% endif %}
                     {% if server.config_tunes.all %}
-                        <li class="entry{% current request url_edit_tunes %}"><a href="{{ url_edit_tunes }}"><i class="icon-edit-sign"></i> Edit Tunings</a></li>
+                        <li class="entry{% current request url_edit_tunes %}"><a href="{{ url_edit_tunes }}"><i class="fa fa-info-circle"></i> Edit Tunings</a></li>
                     {% endif %}
                     {% if server.is_online %}
-                        <li class="entry{% current request url_scoreboard %}"><a href="{{ url_scoreboard }}"><i class="icon-info-sign"></i> Scoreboard</a></li>
-                        <li class="entry{% current request url_console %}"><a href="{{ url_console }}"><i class="icon-keyboard"></i> Terminal</a></li>
+                        <li class="entry{% current request url_scoreboard %}"><a href="{{ url_scoreboard }}"><i class="fa fa-info-circle"></i> Scoreboard</a></li>
+                        <li class="entry{% current request url_console %}"><a href="{{ url_console }}"><i class="fa fa-keyboard-o"></i> Terminal</a></li>
                     {% endif %}
-                    <li class="entry{% current request url_change_mod %}"><a href="{{ url_change_mod }}"><i class="icon-edit-sign"></i> Change Mod</a></li>
-                    <li class="entry{% current request url_moderators %}"><a href="{{ url_moderators }}"><i class="icon-user"></i> Moderators</a></li>
+                    <li class="entry{% current request url_change_mod %}"><a href="{{ url_change_mod }}"><i class="fa fa-pencil-square-o"></i></i> Change Mod</a></li>
+                    <li class="entry{% current request url_moderators %}"><a href="{{ url_moderators }}"><i class="fa fa-user"></i> Moderators</a></li>
                 </ul>
             </li>
 
