@@ -1,7 +1,7 @@
 {% for crumb, href in crumbs %}
     {% if not forloop.last %}
         {% if href %}
-            <a href='{{ href }}' title='Go back to {{ crumb }}'>{{ crumb }}</a> <i class="icon-angle-right"></i> 
+            <a href='{{ href }}' title='Go back to {{ crumb }}'>{{ crumb }}</a> <i class="fa fa-angle-right"></i> 
         {% else %}
             {{ crumb }} <i class="fa fa-angle-right"></i> 
         {% endif %}
