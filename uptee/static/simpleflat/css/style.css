@@ -138,7 +138,7 @@ body {
     color: #ccc;
 }
 
-#userMenu i.icon-gear {
+#userMenu i.fa-cog {
     cursor: pointer;
 }
 

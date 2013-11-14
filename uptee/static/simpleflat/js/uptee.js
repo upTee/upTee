@@ -72,8 +72,8 @@ $(document).ready(function() {
             $(menu_ul).css('display', 'block');
 
             var icon = $(menu).find('i:first');
-            if($(icon).attr('class') == 'icon-chevron-right') {
-                $(icon).attr('class', 'icon-chevron-down');
+            if($(icon).attr('class') == 'fa fa-chevron-right') {
+                $(icon).attr('class', 'fa fa-chevron-down');
             }
         }
     });
@@ -87,19 +87,19 @@ $(document).ready(function() {
 
         var array_index = $.inArray(server_id, active_menus_cookie);
         if(menu_ul.css('display') == 'block' && array_index == -1) {  // menu is closed
-            $(menu).find('i:first').attr('class', 'icon-chevron-down');
+            $(menu).find('i:first').attr('class', 'fa fa-chevron-down');
             active_menus_cookie.push(server_id);
             $.cookie("active_menus", JSON.stringify(active_menus_cookie), { path: '/' });
         }
         else if(array_index > -1) {  // menu is open
-            $(menu).find('i:first').attr('class', 'icon-chevron-right');
+            $(menu).find('i:first').attr('class', 'fa fa-chevron-right');
             active_menus_cookie.splice(array_index, 1);
             $.cookie("active_menus", JSON.stringify(active_menus_cookie), { path: '/' });
         }
     });
 
     // menu user settings
-    $('#userMenu .icon-gear').click(function() {
+    $('#userMenu .fa-cog').click(function() {
         $('#usermenuBox').fadeToggle('fast');
         $('#userMenu .arrow').fadeToggle('fast');
     });
