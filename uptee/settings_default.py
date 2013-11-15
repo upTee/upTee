@@ -162,10 +162,6 @@ AVAILABLE_TEMPLATES = (
 
 DEFAULT_TEMPLATE = 'simpleblue'
 
-CAPTCHA_FONT_SIZE = 40
-
-CAPTCHA_LETTER_ROTATION = (-12, 12)
-
 INSTALLED_APPS = (
     'admin_tools',
     'admin_tools.theming',
