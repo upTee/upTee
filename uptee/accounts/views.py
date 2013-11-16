@@ -122,8 +122,8 @@ def register(request):
     if request.user.is_authenticated():
         return redirect(reverse('home'))
     if request.method == 'POST':
-        register_form = RegisterForm(request.POST) if TESTING_STATE else None
-        testing_form = TestingForm(request.POST)
+        register_form = RegisterForm(request.POST)
+        testing_form = TestingForm(request.POST) if TESTING_STATE else None
         if register_form.is_valid() and (not testing_form or testing_form.is_valid()):
             testing_form.save()
             new_user = User(
