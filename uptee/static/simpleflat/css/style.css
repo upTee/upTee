@@ -148,7 +148,7 @@ body {
         left: 70px;
     border-left: 30px solid transparent;
     border-right: 30px solid transparent;
-    border-bottom: 30px solid rgba(27,27,27,.85);
+    border-bottom: 30px solid rgba(255,255,255, .90);
     z-index: 499;
     display: none;
 }
@@ -159,8 +159,9 @@ body {
         right: 0;
     width: 200px;
     z-index: 500;
-    background: rgba(27,27,27,.85);
+    background: rgba(255,255,255, .90);
     border-radius: 10px;
+    border: 1px solid #ccc;
     box-shadow: 2px 2px 2px #ccc;
     display: none;
 }
