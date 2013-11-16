@@ -181,10 +181,9 @@ body {
 }
 
 .logo {
-    background: url('../img/logo_75.png') no-repeat 3px 5px;
-    background-size: auto 40px;
-    height: 40px;
-    width: 180px;
+    background: url('../img/upteelogo.png') no-repeat 10px 6px;
+    height: 50px;
+    width: auto;
 }
 
 .statusIcon {
@@ -311,7 +310,7 @@ body {
 
 
 #breadcrumb {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #aaa;
     height: 25px;
 }
 
@@ -403,7 +402,7 @@ body {
 
 .blogBox .footer{
     background: none;
-    border-top: 1px solid #bbbbbb;
+    border-top: 1px solid #aaa;
     padding: 5px;
     padding-left: 10px;
     font-size: 10px;
