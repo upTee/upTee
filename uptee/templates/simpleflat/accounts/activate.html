@@ -1,21 +1,14 @@
 {% extends "base.html" %}
 
-{% comment %}
-context variables:
-    captcha
-    register_form
-{% endcomment %}
-
 {% block title %}upTee - Activate{% endblock title %}
 
-{% block content %}
+{% block breadcrumb %}
+    {{ block.super }}
+    {% load breadcrumb_tags %}
+    {% add_crumb 'User Activation' 'activate' '00000000000000000000000000000000' %}
+{% endblock %}
 
-<div class="head">
-    <h2>User activation</h2>
-</div>
-<div class="body">
-    <p>Your account has been successfully activated. You may now login.</p>
-</div>
+{% block content %}
 
 <div class="contentBox w500">
     <div class="contentHeadline">User activation</div>
