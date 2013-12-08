@@ -35,7 +35,7 @@ a:link:hover {
 
 html, 
 body {
-    background: #efefef;
+    background: #fff;
     height: 100%;
     font-family: "Segoe UI","Segoe UI Web Regular","Segoe UI Symbol","Helvetica Neue","BBAlpha Sans","S60 Sans",Arial,"sans-serif";
     font-size: 13px !important;
@@ -65,8 +65,7 @@ body {
         top: 0;
         left: 0;
         right: 0;
-    background: rgba(255,255,255,0.5);
-    border-bottom: 1px solid #ccc;
+    background:rgb(52,170,220);
     height: 50px;
     z-index: 10;
 }
@@ -107,14 +106,14 @@ body {
     line-height: 50px;
     padding: 0 20px 0 20px;
     display: block;
-    color: #000;
+    color: #fff;
     text-align: center;
     text-decoration: none;
 }
 
 #menu li .entry.current {
     background: #fff;
-    color: #000;
+    color: #fff;
 }
 
 #headermenu li a:hover, 
@@ -134,7 +133,7 @@ body {
 #userMenu p {
     text-align: center;
     font-size: 30px;
-    color: #ccc;
+    color: #fff;
 }
 
 #userMenu i.fa-cog {
@@ -147,7 +146,7 @@ body {
         left: 70px;
     border-left: 30px solid transparent;
     border-right: 30px solid transparent;
-    border-bottom: 30px solid rgba(255,255,255, .90);
+    border-bottom: 30px solid rgba(0,0,0,.90);
     z-index: 499;
     display: none;
 }
@@ -158,9 +157,8 @@ body {
         right: 0;
     width: 200px;
     z-index: 500;
-    background: rgba(255,255,255, .90);
+    background: rgba(0,0,0,.90);
     border-radius: 10px;
-    border: 1px solid #ccc;
     box-shadow: 2px 2px 2px #ccc;
     display: none;
 }
@@ -208,7 +206,7 @@ body {
         left: 0px;
         top: 50px;
         bottom: 0;
-    background: rgba(255,255,255,0.8);
+    background: #333;
     width: 250px;
     overflow: auto;
     z-index: 1;
@@ -225,32 +223,29 @@ body {
     text-decoration: none;
     font-size: 14px;
     padding-left: 20px;
-    color: #000;
-    border-bottom: 1px solid #efefef;
+    color: #fff;
 }
 
 #menu li a:hover{
-    background: #f5f5f5;
+    background: #eee;
 }
 
 
 
 #menu li p{
-    color: #636363;
-    background: #fff;
+    color: #fff;
+    background: rgba();
     font-size: 14px;
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 10px;
     line-height: 30px;
     cursor: pointer;
-    border-bottom: 1px solid #efefef;
-    border-top: 1px solid #efefef;
+
 }
 
 #menu li p:hover{
-    background: #f5f5f5;
-    border-bottom: 1px solid #1b7ffa;
+    background: #eee;
 }
 
 #footer{
@@ -295,6 +290,7 @@ body {
     overflow: auto;
     min-width: 710px;
     z-index: 5;
+    background: #f5f5f5;
 }
 
 
@@ -331,28 +327,33 @@ body {
 
 
 .contentBox {
-    border: 1px solid #ccc;
     margin-bottom: 30px;
     float: left;
     margin-right: 50px;
     width: 100%;
-    background: #fff;
-    border-radius: 10px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px #ddd;
 }
 
 .content {
-    background: none;
+    background: #fff;
     padding: 10px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px solid #ccc;
+    border-top: none;
 }
 
 .contentHeadline {
+    background: rgb(52,170,220);
+    border: 1px solid rgb(52,170,220);
     display: block;
     padding: 5px 10px 10px 10px;
     font-size: 20px;
-    color: #333;
-    border-bottom: 1px solid #ccc;
-    background: none;
+    color: #fff;
     position: relative;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
 }
 
 .contentHeadline a.edit_link {
@@ -366,8 +367,12 @@ body {
     float: right;
     font-size: 13px;
     color: #000;
-    margin-top: 10px;
-    margin-right: 10px;
+    margin-top: -5px;
+    margin-right: -11px;
+    line-height: 44px;
+    padding: 0 10px 0 10px;
+    background: rgba(0,0,0,0.15);
+    border-top-right-radius: 5px;
 }
 
     .contentHeadline p.underline.red{
@@ -384,27 +389,38 @@ body {
     display: block;
     padding: 5px 10px 10px 10px;
     font-size: 20px;
-    color: #333;
-    border-bottom: 1px solid #ccc;
-    background: none;
+    color: #fff;
+    background: rgb(52,170,220);
+    border: 1px solid rgb(52,170,220);
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
 }
 
 .blogBox {
-    border: 1px solid #ccc;
     margin-bottom: 30px;
     float: left;
     margin-right: 50px;
     width: 100%;
-    background: #fff;
-    border-radius: 10px;
+    box-shadow: 1px 1px 1px #ddd;
+    border-radius: 5px;
+}
+
+.blogBox .content{
+    border-radius: 0;
+    border: 0;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+
 }
 
 .blogBox .footer{
-    background: none;
-    border-top: 1px solid #aaa;
+    background: #fff;
+    border: 1px solid #ccc;
     padding: 5px;
     padding-left: 10px;
     font-size: 10px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .blogBox div.right {
