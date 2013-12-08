@@ -173,7 +173,7 @@ context variables:
   </div>
 
   <div id="status" class="tabContent">
-    <div class="contentBox w240">
+    <div class="contentBox w250">
     <div class="contentHeadline"><i class="fa fa-info-circle"></i>  Your server is currently {% if server.is_online %}<p class="green">Online!</p>{% else %}<p class="red">Offline!</p>{% endif %}</div>
         {% if user.is_authenticated and server.map_exists %}{% if user == server.owner or user.is_staff or moderator and moderator.restart_allowed %}
         <div class="content">
