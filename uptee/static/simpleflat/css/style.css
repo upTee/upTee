@@ -35,12 +35,11 @@ a:link:hover {
 
 html, 
 body {
-    background: #fff;
+    background: #efefef;
     height: 100%;
     font-family: "Segoe UI","Segoe UI Web Regular","Segoe UI Symbol","Helvetica Neue","BBAlpha Sans","S60 Sans",Arial,"sans-serif";
     font-size: 13px !important;
     color: #000;
-    background: url(../img/02.jpg);
     background-size: 100% 100%;
 } 
 
@@ -785,6 +784,9 @@ p.joinLable{
 /* ---Tabmenu--- */
 #tabContainer{
     margin-top: 20px;
+    border-bottom: 1px solid #ccc;
+    padding: 0;
+    height: 41px;
 }
 
 .etabs { 
@@ -792,17 +794,23 @@ p.joinLable{
     padding: 0; 
     list-style: none;
     text-align: center;
+    
 }
 
 .tab { 
-    border: solid 1px #1b7ffa;
-    border-right: none;
     min-width: 50px;
     display: inline-block; 
     padding: 10px;
     float: left;
     color: #1b7ffa;
     margin-bottom: 20px;
+    border-bottom: 2px solid transparent;
+    -webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -o-transition: all 0.5s ease; -ms-transition: all 0.5s ease; transition: all 0.5s ease;
+}
+
+.tab:hover {
+    border-bottom: 2px solid #1b7ffa;
+    -webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -o-transition: all 0.5s ease; -ms-transition: all 0.5s ease; transition: all 0.5s ease;
 }
 
     .tab a{
@@ -810,30 +818,23 @@ p.joinLable{
         color: #1b7ffa;
         text-align: center;
         font-size: 15px;
+        padding: 10px;
     }
 
     .tab a:hover{
         text-decoration: none;
     }
 
-    .tab.left{
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;
-        border: solid 1px #1b7ffa;
+    .tab a.active{
+        color: #333;
     }
 
-    .tab.right{
-        border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px;
+    .tab.active {
+        color: #333;
+        border-bottom: 2px solid #1b7ffa;
+
     }
 
-    .tab.active{
-        background: #1b7ffa;
-    }
-
-    .tab.active a{
-        color:#fff;
-    }
 
 .tabContent{
     clear: both;
