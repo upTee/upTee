@@ -227,25 +227,27 @@ body {
 }
 
 #menu li a:hover{
-    background: #eee;
+    background: rgba(255,255,255,.1)
 }
 
 
 
 #menu li p{
     color: #fff;
-    background: rgba();
     font-size: 14px;
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 10px;
     line-height: 30px;
     cursor: pointer;
-
 }
 
 #menu li p:hover{
-    background: #eee;
+    background: rgba(255,255,255,.1)
+}
+
+#menu li .entry.current{
+    background: rgba(255,255,255,.2)
 }
 
 #footer{

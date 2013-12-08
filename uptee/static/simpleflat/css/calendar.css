@@ -109,6 +109,7 @@
     .calendarBody .day:hover{
         background: rgba(0, 0, 0, 0.05);
         cursor: pointer;
+        border-radius: 50%;
     }
 
     .calendarBody .day:active{
@@ -259,8 +260,13 @@
 }
 
 .addEvent h1{
+    margin: -10px;
+    width: 320px;
     text-align: center;
     color: #333;
+    background: rgba(0,0,0,.1);
+    height: 50px;
+    line-height: 55px;
 }
 
 .addEvent .buttonBox {
