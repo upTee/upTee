@@ -81,12 +81,14 @@
 }
 
 
-#loginContainer input[type=text], 
-#loginContainer input[type=email], 
-#loginContainer input[type=password], 
-#registerContainer input[type=text], 
-#registerContainer input[type=email], 
-#registerContainer input[type=password] {
+#loginContainer input[type=text],
+#loginContainer input[type=email],
+#loginContainer input[type=password],
+#loginContainer input[type=url],
+#registerContainer input[type=text],
+#registerContainer input[type=email],
+#registerContainer input[type=password],
+#registerContainer input[type=url] {
     width: 320px;
     font-size: 16px;
     border: 2px solid #dde0e2;
@@ -96,26 +98,31 @@
 }
     /* Override for icons */
     #loginContainer input[type=password],
-    #loginContainer input[type=text]{
+    #loginContainer input[type=text],
+    #loginContainer input[type=url] {
         padding: 11px 10px 11px 30px !important;
         width: 300px;
     }
 
-    #loginContainer input[type=text]:focus, 
-    #loginContainer input[type=email]:focus, 
+    #loginContainer input[type=text]:focus,
+    #loginContainer input[type=email]:focus,
     #loginContainer input[type=password]:focus,
-    #registerContainer input[type=text]:focus, 
-    #registerContainer input[type=email]:focus, 
-    #registerContainer input[type=password]:focus {
+    #loginContainer input[type=url]:focus,
+    #registerContainer input[type=text]:focus,
+    #registerContainer input[type=email]:focus,
+    #registerContainer input[type=password]:focus,
+    #registerContainer input[type=url]:focus {
         border: 2px solid #1b7ffa;
     }
 
-    #loginContainer input.error[type=text], 
-    #loginContainer input.error[type=email], 
+    #loginContainer input.error[type=text],
+    #loginContainer input.error[type=email],
     #loginContainer input.error[type=password],
-    #registerContainer input.error[type=text], 
-    #registerContainer input.error[type=email], 
-    #registerContainer input.error[type=password] {
+    #loginContainer input.error[type=url],
+    #registerContainer input.error[type=text],
+    #registerContainer input.error[type=email],
+    #registerContainer input.error[type=password],
+    #registerContainer input.error[type=url] {
         border: 2px solid #fb3f35;
     }
 /* ---END login / register forms--- */
@@ -124,7 +131,8 @@
 /* ---Content forms--- */
 .content input[type=text], 
 .content input[type=password], 
-.content input[type=email] {
+.content input[type=email],
+.content input[type=url] {
     background: #fff;
     width: 200px;
     border: 1px solid #666;
@@ -134,13 +142,15 @@
 
    .content input[type=text]:focus, 
    .content input[type=password]:focus, 
-   .content input[type=email]:focus {
+   .content input[type=email]:focus, 
+   .content input[type=url]:focus {
         border: 1px solid #1b7ffa;
     }
 
     .content input.error[type=text], 
     .content input.error[type=password], 
-    .content input.error[type=email] {
+    .content input.error[type=email],
+    .content input.error[type=url] {
         border: 1px solid #fb3f35;
     }
 

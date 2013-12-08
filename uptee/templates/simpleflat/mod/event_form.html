@@ -20,7 +20,7 @@ context variables:
                     <td>
                         {% if field.name == 'date' %}
                             {% if field.errors %}
-                                <ul>
+                                <ul class="errorlist">
                                     {% for error in field.errors %}
                                         <li>{{ error }}</li>
                                     {% endfor %}
