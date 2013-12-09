@@ -3,6 +3,14 @@
 
 {% block body %}
 
+<div id="headermenu">
+    <ul class="left">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'server_list' %}">Server List</a></li>
+        <li><a href="{% url 'users' %}">User List</a></li>
+    </ul>
+</div>
+        
 <div id="login_messages">
     {% include "messages.html" %}
 </div>
