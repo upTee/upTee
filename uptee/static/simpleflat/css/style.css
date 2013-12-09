@@ -335,6 +335,7 @@ body {
     width: 100%;
     border-radius: 5px;
     box-shadow: 1px 1px 1px #ddd;
+    position: relative;
 }
 
 .content {
@@ -653,6 +654,23 @@ body {
 #linkList{
     margin: 10px 0 20px 10px;
     }
+
+.serverstatus{
+    height: 35px;
+    width: 41px;
+    position: absolute;
+     right: 5px;
+     top: 4px;
+}
+
+.serverstatus.on{
+    background: url(../img/statusicon_green.png) no-repeat;
+}
+
+.serverstatus.off{
+    background: url(../img/statusicon_red.png) no-repeat;
+}
+
 /* ---END serverlist--- */
 
 
