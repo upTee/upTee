@@ -38,6 +38,7 @@ def login(request):
             messages.success(request, "Successfully logged in.")
         else:
             messages.warning(request, "The combination of username and password is wrong or your account is not activated yet.")
+            next = '{0}?next={1}'.format(request.path, next)
         if next == reverse('logout') or next == reverse('logout')[:-1] or next == '':
             next = reverse('home')
         return redirect(next)

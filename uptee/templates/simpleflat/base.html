@@ -113,7 +113,7 @@ Also it shows the current status of each server hosted with upTee.">
                         <li><img class="gravatar" src="{% gravatar_for_user user 100 %}"></li>
                         <li><a href="{% url 'user' user.id %}"><i class="fa fa-user"></i> {{ user.username }}</a></li>
                         <li><a href="{% url 'settings' %}"><i class="fa fa-cog"></i> Account Settings</a></li>
-                        <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Logout!</a></li>
+                        <li><a href="{% url 'logout' %}?next={{ request.path }}"><i class="fa fa-sign-out"></i> Logout!</a></li>
                     </ul>
                 </div>
             </div>
@@ -124,7 +124,7 @@ Also it shows the current status of each server hosted with upTee.">
             <div id="loginmenu">
                 <ul>
                     <li><a href="{% url 'register' %}"><i class="fa fa-sign-in"></i> Register</a></li>
-                    <li><a href="{% url 'login' %}"><i class="fa fa-sign-in"></i> Login</a></li>
+                    <li><a href="{% url 'login' %}?next={{ request.path }}"><i class="fa fa-sign-in"></i> Login</a></li>
                 </ul>
             </div>
             {% endif %}
