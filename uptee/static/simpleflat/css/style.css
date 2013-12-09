@@ -664,11 +664,11 @@ body {
 }
 
 .serverstatus.on{
-    background: url(../img/statusicon_green.png) no-repeat;
+    background: url(../img/status_on.png) no-repeat;
 }
 
 .serverstatus.off{
-    background: url(../img/statusicon_red.png) no-repeat;
+    background: url(../img/status_off.png) no-repeat;
 }
 
 /* ---END serverlist--- */
