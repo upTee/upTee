@@ -38,7 +38,7 @@ context variables:
         <div class="contentBox">
             <div class="contentHeadline">General Settings</div>
             <div class="content">
-                <form action="{{ request.path }}" method="post">
+                <form action="{{ request.path }}?set=general" method="post">
                     <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
                     <table class="formTable">
                         <tbody>
@@ -95,7 +95,7 @@ context variables:
                     </table>
                     <p><input class="button" type="submit" value="Update"></p>
                 </form>
-                <form action="{{ request.path }}" method="post">
+                <form action="{{ request.path }}?set=delete" method="post">
                     <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
                     <input type="hidden" name="form-delete-moderator" id="form-delete-moderator">
                     <p><input class="button" type="submit" value="Delete moderator"></p>
@@ -108,7 +108,7 @@ context variables:
         <div class="contentBox">
             <div class="contentHeadline">Options</div>
             <div class="content">
-                <form action="{{ request.path }}" method="post">
+                <form action="{{ request.path }}?set=options" method="post">
                     <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
                     <table class="formTable">
                         <tbody>
@@ -134,7 +134,7 @@ context variables:
         <div class="contentBox">
             <div class="contentHeadline">Tunings</div>
             <div class="content">
-                <form action="{{ request.path }}" method="post">
+                <form action="{{ request.path }}?set=tunings" method="post">
                     <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
                     <table class="formTable">
                         <tbody>

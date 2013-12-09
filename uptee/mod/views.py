@@ -95,59 +95,65 @@ def server_edit_moderator(request, server_id, user_id):
     server = get_object_or_404(Server.active.select_related().filter(owner=request.user), pk=server_id)
     moderator = get_object_or_404(server.moderators.select_related(), user__pk=user_id)
     if request.method == 'POST':
+        option_set = request.GET.get('set', '')
         if 'form-delete-moderator' in request.POST.keys():
             moderator.delete()
             messages.success(request, 'Moderator successfully deleted.')
             return redirect(reverse(server_moderators, kwargs={'server_id': server.pk}))
-        if 'restart_allowed' in request.POST.keys():
-            moderator.restart_allowed = True
-        else:
-            moderator.restart_allowed = False
-        if 'edit_automatic_restart_allowed' in request.POST.keys():
-            moderator.edit_automatic_restart_allowed = True
-        else:
-            moderator.edit_automatic_restart_allowed = False
-        if 'edit_map_download_allowed' in request.POST.keys():
-            moderator.edit_map_download_allowed = True
-        else:
-            moderator.edit_map_download_allowed = False
-        if 'console_allowed' in request.POST.keys():
-            moderator.console_allowed = True
-        else:
-            moderator.console_allowed = False
-        if 'edit_votes_allowed' in request.POST.keys():
-            moderator.edit_votes_allowed = True
-        else:
-            moderator.edit_votes_allowed = False
-        if 'map_upload_allowed' in request.POST.keys():
-            moderator.map_upload_allowed = True
-        else:
-            moderator.map_upload_allowed = False
-        if 'edit_rcon_commands_allowed' in request.POST.keys():
-            moderator.edit_rcon_commands_allowed = True
-        else:
-            moderator.edit_rcon_commands_allowed = False
-        for option in moderator.allowed_options.all():
-            if option.command not in request.POST.keys():
-                moderator.allowed_options.remove(option)
-        for tune in moderator.allowed_tunings.all():
-            if tune.command not in request.POST.keys():
-                moderator.allowed_tunings.remove(tune)
+        if not option_set or option_set == 'general':
+            if 'restart_allowed' in request.POST.keys():
+                moderator.restart_allowed = True
+            else:
+                moderator.restart_allowed = False
+            if 'edit_automatic_restart_allowed' in request.POST.keys():
+                moderator.edit_automatic_restart_allowed = True
+            else:
+                moderator.edit_automatic_restart_allowed = False
+            if 'edit_map_download_allowed' in request.POST.keys():
+                moderator.edit_map_download_allowed = True
+            else:
+                moderator.edit_map_download_allowed = False
+            if 'console_allowed' in request.POST.keys():
+                moderator.console_allowed = True
+            else:
+                moderator.console_allowed = False
+            if 'edit_votes_allowed' in request.POST.keys():
+                moderator.edit_votes_allowed = True
+            else:
+                moderator.edit_votes_allowed = False
+            if 'map_upload_allowed' in request.POST.keys():
+                moderator.map_upload_allowed = True
+            else:
+                moderator.map_upload_allowed = False
+            if 'edit_rcon_commands_allowed' in request.POST.keys():
+                moderator.edit_rcon_commands_allowed = True
+            else:
+                moderator.edit_rcon_commands_allowed = False
+        if not option_set or option_set == 'options':
+            for option in moderator.allowed_options.all():
+                if option.command not in request.POST.keys():
+                    moderator.allowed_options.remove(option)
+        if not option_set or option_set == 'tunings':
+            for tune in moderator.allowed_tunings.all():
+                if tune.command not in request.POST.keys():
+                    moderator.allowed_tunings.remove(tune)
         for key in request.POST.keys():
             if key == 'csrfmiddlewaretoken':
                 continue
-            option = moderator.allowed_options.filter(command=key)
-            if not option:
-                option = server.config_options.filter(command=key)
-                if option:
-                    moderator.allowed_options.add(option[0])
-            else:
-                continue
-            tune = moderator.allowed_tunings.filter(command=key)
-            if not tune:
-                tune = server.config_tunes.filter(command=key)
-                if tune:
-                    moderator.allowed_tunings.add(tune[0])
+            if not option_set or option_set == 'options':
+                option = moderator.allowed_options.filter(command=key)
+                if not option:
+                    option = server.config_options.filter(command=key)
+                    if option:
+                        moderator.allowed_options.add(option[0])
+                else:
+                    continue
+            if not option_set or option_set == 'tunings':
+                tune = moderator.allowed_tunings.filter(command=key)
+                if not tune:
+                    tune = server.config_tunes.filter(command=key)
+                    if tune:
+                        moderator.allowed_tunings.add(tune[0])
         moderator.save()
         messages.success(request, 'Moderator successfully updated.')
     return render_to_response('mod/server_edit_moderator.html', {

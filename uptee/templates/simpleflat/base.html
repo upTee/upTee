@@ -204,6 +204,60 @@ Also it shows the current status of each server hosted with upTee.">
 
             {% endfor %}
 
+            {% load get_moderator %}
+
+            {% for server in user_moderated_servers %}
+
+            <!-- url definitions -->
+            {% url 'server_detail' server.id as url_info %}
+            {% url 'server_scoreboard' server.id as url_scoreboard %}
+            {% url 'upload_map' server.id as url_upload_map %}
+            {% url 'server_edit' server.id as url_edit_settings %}
+            {% url 'server_edit_votes' server.id as url_edit_votes %}
+            {% url 'server_edit_rcon_commands' server.id as url_edit_rcon_commands %}
+            {% url 'server_tunes' server.id as url_edit_tunes %}
+            {% url 'server_votes' server.id as url_votes %}
+            {% url 'server_console' server.id as url_console %}
+            <!-- end url definitions -->
+
+            {% with server|get_moderator:user.id as server_moderator %}
+
+            <li class="menu_head" data-serverid="{{ server.id }}"> <p><i class="fa fa-chevron-right"></i> {{ server|get_option:'sv_name' }}</p>
+                <div class="statusIcon {% if server.is_online %}on{% else %}off{% endif %}"></div> 
+                
+                <ul style="display: none;">
+                    <li class="entry{% current request url_info %}"><a href="{{ url_info }}"><i class="fa fa-info-circle"></i> Info</a></li>
+                    {% if server.config_votes.all %}
+                        <li class="entry{% current request url_votes %}"><a href="{{ url_votes }}"><i class="fa fa-question-circle"></i> Votes</a></li>
+                    {% endif %}
+                    {% if moderator.map_upload_allowed %}
+                        <li class="entry{% current request url_upload_map %}"><a href="{{ url_upload_map }}"><i class="fa fa-cloud-upload"></i> Upload Map</a></li>
+                    {% endif %}
+                    {% if moderator.allowed_options.all %}
+                        <li class="entry{% current request url_edit_settings %}"><a href="{{ url_edit_settings }}"><i class="fa fa-pencil-square-o"></i></i> Edit Settings</a></li>
+                    {% endif %}
+                    {% if moderator.edit_votes_allowed %}
+                        <li class="entry{% current request url_edit_votes %}"><a href="{{ url_edit_votes }}"><i class="fa fa-pencil-square-o"></i></i> Edit Votes</a></li>
+                    {% endif %}
+                    {% if server.config_available_rconcommands.all and moderator.edit_rcon_commands_allowed %}
+                        <li class="entry{% current request url_edit_rcon_commands %}"><a href="{{ url_edit_rcon_commands }}"><i class="fa fa-keyboard-o"></i> Commands</a></li>
+                    {% endif %}
+                    {% if server.config_tunes.all and moderator.allowed_tunings.all %}
+                        <li class="entry{% current request url_edit_tunes %}"><a href="{{ url_edit_tunes }}"><i class="fa fa-info-circle"></i> Edit Tunings</a></li>
+                    {% endif %}
+                    {% if server.is_online %}
+                        <li class="entry{% current request url_scoreboard %}"><a href="{{ url_scoreboard }}"><i class="fa fa-info-circle"></i> Scoreboard</a></li>
+                        {% if moderator.console_allowed %}
+                            <li class="entry{% current request url_console %}"><a href="{{ url_console }}"><i class="fa fa-keyboard-o"></i> Terminal</a></li>
+                        {% endif %}
+                    {% endif %}
+                </ul>
+            </li>
+
+            {% endwith %}
+
+            {% endfor %}
+
         </ul>
 
 
