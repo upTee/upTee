@@ -22,7 +22,7 @@ context variables:
 <div class="contentBox">
     <div class="contentHeadline">Generate Testing Keys</div>
     <div class="content">
-        <h2>Generate keys</h2>
+        <p>Choose the number of testing keys you want to generate.</p>
         <form method="post" action="{{ request.path }}">
             <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
             <table class="formTable">
@@ -39,7 +39,7 @@ context variables:
     <div class="contentBox">
         <div class="contentHeadline">Generated Testing Keys</div>
         <div class="content">
-            <h2>New keys</h2>
+            <p>Your generated testing keys are listed below, share it!</p>
             <ul>
                 {% for key in new_keys %}
                     <li>{{ key }}</li>

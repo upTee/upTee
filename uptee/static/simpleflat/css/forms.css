@@ -132,7 +132,8 @@
 .content input[type=text], 
 .content input[type=password], 
 .content input[type=email],
-.content input[type=url] {
+.content input[type=url], 
+.content input[type=number]{
     background: #fff;
     width: 200px;
     border: 1px solid #666;
@@ -143,14 +144,16 @@
    .content input[type=text]:focus, 
    .content input[type=password]:focus, 
    .content input[type=email]:focus, 
-   .content input[type=url]:focus {
+   .content input[type=url]:focus, 
+   .content input[type=number]:focus{
         border: 1px solid #1b7ffa;
     }
 
     .content input.error[type=text], 
     .content input.error[type=password], 
     .content input.error[type=email],
-    .content input.error[type=url] {
+    .content input.error[type=url],
+    .content input.error[type=number] {
         border: 1px solid #fb3f35;
     }
 
