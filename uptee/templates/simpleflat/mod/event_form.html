@@ -16,19 +16,15 @@ context variables:
             {% for field in event_form %}
                 {% if field.name != 'timezone_offset' %}
                 <tr>
-                    <th>{% if field.name == 'date' %}Time{% else %}{{ field.label_tag }}{% endif %}:</th>
+                    <th>{% if field.name == 'date' %}Time:{% else %}{{ field.label_tag }}{% endif %}</th>
                     <td>
                         {% if field.name == 'date' %}
-                            {% if field.errors %}
-                                <ul class="errorlist">
-                                    {% for error in field.errors %}
-                                        <li>{{ error }}</li>
-                                    {% endfor %}
-                                </ul>
-                            {% endif %}
-                            <input id="id_date" type="hidden" name="date"><input id="id_date_input" type="text" name="date_input" placeholder="hh:mm:ss">
+                            {{ field.errors }}
+                            <input id="id_date" class="{% if field.errors %} error{% endif %}" type="hidden" name="date"><input class="{% if field.errors %} error{% endif %}" id="id_date_input" type="text" name="date_input" placeholder="hh:mm:ss">
+                        {% elif field.name == 'task_type' %}
+                            {{ field.errors }}{{ field }}
                         {% else %}
-                        {{ field.errors }}{{ field }}
+                            {{ field.errors }}<input class="{% if field.errors %} error{% endif %}" type="{{ field.field.widget.input_type }}" name="{{ field.name }}" value="{{ field.value|default_if_none:"" }}" id="{{ field.id_for_label }}"{% for key, value in field.field.widget.attrs.items %} {{ key }}="{{ value }}"{% endfor %}>
                         {% endif %}
                     </td>
                 </tr>
