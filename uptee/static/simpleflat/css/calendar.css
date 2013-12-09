@@ -37,6 +37,7 @@
         text-align: center;
         color: #fff;
         cursor: pointer;
+        border-radius: 5px;
 
     }
 
@@ -263,10 +264,12 @@
     margin: -10px;
     width: 320px;
     text-align: center;
-    color: #333;
-    background: rgba(0,0,0,.1);
+    color: #fff;
+    background: rgb(52,170,220);
     height: 50px;
     line-height: 55px;
+    border: none;
+    font-weight: normal;
 }
 
 .addEvent .buttonBox {
