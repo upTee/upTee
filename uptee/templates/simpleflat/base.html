@@ -22,7 +22,7 @@ Also it shows the current status of each server hosted with upTee.">
         <link rel="apple-touch-icon" href="{{ STATIC_URL }}simpleflat/img/apple-touch-icon.png">
         
         <link rel="stylesheet" href="{{ STATIC_URL }}simpleflat/css/style.css" type="text/css">
-        {% if not user.is_authenticated %}
+        {% if not user.is_authenticated or not user_server_list and not user_moderated_servers %}
             <link rel="stylesheet" href="{{ STATIC_URL }}simpleflat/css/style_not_authenticated.css" type="text/css">
         {% endif %}
         <link rel="stylesheet" href="{{ STATIC_URL }}simpleflat/css/forms.css" type="text/css">
