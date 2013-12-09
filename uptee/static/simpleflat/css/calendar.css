@@ -5,7 +5,7 @@
 .calendarHead {
     width: 280px;
     height: 200px;
-    background: #1b7ffa;
+    background: rgb(52,170,220);
     position: relative;
 }
 
@@ -155,7 +155,7 @@
 
 
     .calendarBody .day.current{
-            background: #1b7ffa;
+            background: rgb(52,170,220);
             color: #fff;
             border-radius: 50%;
             font-weight: bold;
@@ -190,7 +190,7 @@
 
     
     .placeholder { 
-        background: #1b7ffa;
+        background: rgb(52,170,220);
         height: 10px; 
         width: 280px;
     }

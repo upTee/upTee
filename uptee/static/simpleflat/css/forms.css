@@ -398,6 +398,12 @@ input.statusButton.red[type=submit]{
 input.statusButton.green[type=submit]{  
     background:rgb(76,217,100);
 }
+
+.centerbox{
+    margin: auto;
+    text-align: center;
+}
+
 /* ---END Buttons--- */
 ul.errorlist{
     background: #fb3f35;

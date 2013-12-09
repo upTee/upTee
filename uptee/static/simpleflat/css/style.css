@@ -659,16 +659,19 @@ body {
     height: 35px;
     width: 41px;
     position: absolute;
-     right: 5px;
-     top: 4px;
+     right: 0;
+     top: 6px;
+
 }
 
 .serverstatus.on{
     background: url(../img/status_on.png) no-repeat;
+    background-size: 30px 30px;
 }
 
 .serverstatus.off{
     background: url(../img/status_off.png) no-repeat;
+    background-size: 30px 30px;
 }
 
 /* ---END serverlist--- */

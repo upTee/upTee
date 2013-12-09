@@ -173,7 +173,7 @@ context variables:
   </div>
 
   <div id="status" class="tabContent">
-    <div class="contentBox w370">
+    <div class="contentBox w400">
     <div class="contentHeadline">
         <i class="fa fa-info-circle"></i>  Your server is currently {% if server.is_online %}ONLINE!{% else %}OFFLINE!{% endif %}
         <div class="serverstatus {% if server.is_online %}on{% else %}off{% endif %}"></div>
@@ -182,11 +182,13 @@ context variables:
         <div class="content">
             <form class="only_button" method="post" action="{% url 'start_stop_server' server.id %}?next={{ request.path }}">
                 <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
-                {% if server.is_online %}
-                <p><input class="statusButton big red" type="submit" value="Stop"></p>
-                {% else %}
-                <p><input class="statusButton big green" type="submit" value="Start"></p>
-                {% endif %}
+                <div class="centerbox">
+                    {% if server.is_online %}
+                    <input class="statusButton big red" type="submit" value="Stop">
+                    {% else %}
+                    <input class="statusButton big green" type="submit" value="Start">
+                    {% endif %}
+                </div>
             </form>
         </div>
         {% endif %}{% endif %}
