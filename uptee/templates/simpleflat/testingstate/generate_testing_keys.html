@@ -19,27 +19,25 @@ context variables:
 
 
     
-    <div class="contentBox">
-        <div class="contentHeadline">Generate Testing Keys</div>
-        <div class="content">
-            <h2>Generate keys</h2>
-            <form method="post" action="{{ request.path }}">
-                <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
-                <table class="formTable">
-                    <tbody>
-                        {{ form.as_table }}
-                    </tbody>
-                </table>
-                <input class="button" type="submit" value="Submit">
-            </form>
-        </div>
-    <div>
-
-
+<div class="contentBox">
+    <div class="contentHeadline">Generate Testing Keys</div>
+    <div class="content">
+        <h2>Generate keys</h2>
+        <form method="post" action="{{ request.path }}">
+            <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
+            <table class="formTable">
+                <tbody>
+                    {{ form.as_table }}
+                </tbody>
+            </table>
+            <input class="button" type="submit" value="Submit">
+        </form>
+    </div>
+</div>
 
 {% if new_keys %}
     <div class="contentBox">
-        <div class="contentHeadline">Generate Testing Keys</div>
+        <div class="contentHeadline">Generated Testing Keys</div>
         <div class="content">
             <h2>New keys</h2>
             <ul>
@@ -48,7 +46,8 @@ context variables:
                 {% endfor %}
             </ul>
         </div>
-    <div>
+    </div>
 {% endif %}
+
 
 {% endblock %}
