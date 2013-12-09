@@ -410,11 +410,11 @@ input.statusButton.green[type=submit]{
 /* ---END Buttons--- */
 ul.errorlist{
     background: #fb3f35;
-    margin-top: 10px;
+    margin: 10px;
     padding: 5px 10px 5px 10px;
     border-radius: 5px;
     list-style: none;
-    font-weight: none;
+    font-weight: normal;
 }
 
 /* ---Error Forms--- */
