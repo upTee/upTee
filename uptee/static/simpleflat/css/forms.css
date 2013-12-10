@@ -258,19 +258,37 @@ input[type=radio]:checked
         width: 20px;
     }   
 
+.styled-select select {
+    background: transparent;
+   width: 240px;
+   border: 0;
+   padding: 5px;
+   border-radius: 0;
+   -webkit-appearance: none;
+}
 
-select {
+.styled-select {
+   width: 210px;
+   overflow: hidden;
+   background: url('../img/arrow.png') no-repeat right #fff;
+   border: 1px solid #666;
+   height: 26px;
+   }
+
+
+/*select {
     background: url('../img/arrow.png') no-repeat right #fff;
     width: 210px;
     border: 1px solid #666;
     padding: 5px;
     -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
     select:focus {
         border: 1px solid #1b7ffa;
     }
-
+*/
 form.smallform select {
     margin-left: 20px;
 }

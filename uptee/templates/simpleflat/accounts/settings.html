@@ -27,7 +27,7 @@ context variables:
                     <tr>
                         <th><label for="name">Name</label></th>
                         <td>{{ user_form.first_name.errors }}<input class="{% if user_form.first_name.errors %} error{% endif %}" type="{{ user_form.first_name.field.widget.input_type }}" name="{{ user_form.first_name.name }}" value="{{ user_form.first_name.value|default_if_none:"" }}" id="{{ user_form.first_name.id_for_label }}"{% for key, value in user_form.first_name.field.widget.attrs.items %} {{ key }}="{{ value }}"{% endfor %}></td>
-                        <td>{{ profile_form.publish_name }}</td>
+                        <td><div class="styled-select">{{ profile_form.publish_name }}</div></td>
                     </tr>
                     <tr>
                         <th>{{ user_form.email.label_tag }}</th>
@@ -37,42 +37,42 @@ context variables:
                         <th>{{ profile_form.ingame_name.label_tag }}</th>
                         <td>{{ profile_form.ingame_name.errors }}<input class="{% if profile_form.ingame_name.errors %} error{% endif %}" type="{{ profile_form.ingame_name.field.widget.input_type }}" name="{{ profile_form.ingame_name.name }}" value="{{ profile_form.ingame_name.value|default_if_none:"" }}" id="{{ profile_form.ingame_name.id_for_label }}"{% for key, value in profile_form.ingame_name.field.widget.attrs.items %} {{ key }}="{{ value }}"{% endfor %}></td>
                         <td>
-                            {{ profile_form.publish_ingame_name }}
+                            <div class="styled-select">{{ profile_form.publish_ingame_name }}</div>
                         </td>
                     </tr>
                     <tr>
                         <th>{{ profile_form.website.label_tag }}</th>
                         <td>{{ profile_form.website.errors }}<input class="{% if profile_form.website.errors %} error{% endif %}" type="{{ profile_form.website.field.widget.input_type }}" name="{{ profile_form.website.name }}" value="{{ profile_form.website.value|default_if_none:"" }}" id="{{ profile_form.website.id_for_label }}"{% for key, value in profile_form.website.field.widget.attrs.items %} {{ key }}="{{ value }}"{% endfor %}></td>
                         <td>
-                            {{ profile_form.publish_website }}
+                            <div class="styled-select">{{ profile_form.publish_website }}</div>
                         </td>
                     </tr>
                     <tr>
                         <th>{{ profile_form.contact.label_tag }}</th>
                         <td>{{ profile_form.contact.errors }}<input class="{% if profile_form.contact.errors %} error{% endif %}" type="{{ profile_form.contact.field.widget.input_type }}" name="{{ profile_form.contact.name }}" value="{{ profile_form.contact.value|default_if_none:"" }}" id="{{ profile_form.contact.id_for_label }}"{% for key, value in profile_form.contact.field.widget.attrs.items %} {{ key }}="{{ value }}"{% endfor %}></td>
                         <td>
-                            {{ profile_form.publish_contact }}
+                            <div class="styled-select">{{ profile_form.publish_contact }}</div>
                         </td>
                     </tr>
                     <tr>
                         <th>{{ profile_form.fav_mod.label_tag }}</th>
                         <td>{{ profile_form.fav_mod.errors }}<input class="{% if profile_form.fav_mod.errors %} error{% endif %}" type="{{ profile_form.fav_mod.field.widget.input_type }}" name="{{ profile_form.fav_mod.name }}" value="{{ profile_form.fav_mod.value|default_if_none:"" }}" id="{{ profile_form.fav_mod.id_for_label }}"{% for key, value in profile_form.fav_mod.field.widget.attrs.items %} {{ key }}="{{ value }}"{% endfor %}></td>
                         <td>
-                            {{ profile_form.publish_fav_mod }}
+                            <div class="styled-select">{{ profile_form.publish_fav_mod }}</div>
                         </td>
                     </tr>
                     <tr>
                         <th>{{ profile_form.fav_map.label_tag }}</th>
                         <td>{{ profile_form.fav_map.errors }}<input class="{% if profile_form.fav_map.errors %} error{% endif %}" type="{{ profile_form.fav_map.field.widget.input_type }}" name="{{ profile_form.fav_map.name }}" value="{{ profile_form.fav_map.value|default_if_none:"" }}" id="{{ profile_form.fav_map.id_for_label }}"{% for key, value in profile_form.fav_map.field.widget.attrs.items %} {{ key }}="{{ value }}"{% endfor %}></td>
                         <td>
-                            {{ profile_form.publish_fav_map }}
+                            <div class="styled-select">{{ profile_form.publish_fav_map }}</div>
                         </td>
                     </tr>
                     <tr>
                         <th>{{ profile_form.gender.label_tag }}</th>
-                        <td>{{ profile_form.gender.errors }}{{ profile_form.gender }}</td>
+                        <td><div class="styled-select">{{ profile_form.gender.errors }}{{ profile_form.gender }}</div></td>
                         <td>
-                            {{ profile_form.publish_gender }}
+                            <div class="styled-select">{{ profile_form.publish_gender }}</div>
                         </td>
                     </tr>
                     <tr>
@@ -80,12 +80,12 @@ context variables:
                         <td>{{ profile_form.birthday.errors }}{{ profile_form.birthday }}
                         <p>Your age will be shown like this: 22-27</p></td>
                         <td>
-                            {{ profile_form.publish_birthday }}
+                            <div class="styled-select">{{ profile_form.publish_birthday }}</div>
                         </td>
                     </tr>
                     <tr>
                         <th>{{ profile_form.template.label_tag }}</th>
-                        <td>{{ profile_form.template.errors }}{{ profile_form.template }}</td>
+                        <td><div class="styled-select">{{ profile_form.template.errors }}{{ profile_form.template }}</div></td>
                         <td></td>
                     </tr>
                 </tbody>
