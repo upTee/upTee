@@ -1,6 +1,5 @@
 import os
 from calendar import timegm
-from datetime import datetime, timedelta
 from time import time
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -10,7 +9,6 @@ from django.core.urlresolvers import reverse
 from django.http import Http404, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.template import RequestContext
-from django.utils import timezone
 from django.views.decorators.http import require_POST
 from annoying.decorators import ajax_request
 from econ.tasks import telnet_client

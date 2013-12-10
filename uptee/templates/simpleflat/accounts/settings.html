@@ -77,8 +77,8 @@ context variables:
                     </tr>
                     <tr>
                         <th>{{ profile_form.birthday.label_tag }}</th>
-                        <td>{{ profile_form.birthday.errors }}<input class="{% if profile_form.birthday.errors %} error{% endif %}" type="{{ profile_form.birthday.field.widget.input_type }}" name="{{ profile_form.birthday.name }}" value="{{ profile_form.birthday.value|default_if_none:"" }}" id="{{ profile_form.birthday.id_for_label }}"{% for key, value in profile_form.birthday.field.widget.attrs.items %} {{ key }}="{{ value }}"{% endfor %}> 
-                        <p>Your age will be shown like this: 22-27 | (YYYY-MM-DD)</p></td>
+                        <td>{{ profile_form.birthday.errors }}{{ profile_form.birthday }}
+                        <p>Your age will be shown like this: 22-27</p></td>
                         <td>
                             {{ profile_form.publish_birthday }}
                         </td>
