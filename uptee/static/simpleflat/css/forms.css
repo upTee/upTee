@@ -274,6 +274,24 @@ select {
 form.smallform select {
     margin-left: 20px;
 }
+
+select#id_birthday_month{
+    width: 95px;
+    float: left;
+    margin-right: 5px;
+}
+
+select#id_birthday_day{
+    width: 50px;
+    float: left;
+    margin-right: 5px;
+}
+
+select#id_birthday_year{
+    width: 60px;
+    float: left;
+}
+
 /* ---END content froms--- */
 
 

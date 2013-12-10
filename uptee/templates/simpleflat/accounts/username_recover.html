@@ -5,7 +5,7 @@ context variables:
     form
 {% endcomment %}
 
-{% block title %}upTee - Recover username{% endblock title %}
+{% block title %}upTee - Recover Username{% endblock title %}
 
 {% block breadcrumb %}
     {{ block.super }}
@@ -16,12 +16,13 @@ context variables:
 
 {% block content %}
 
-<div class="contentBox w500">
-    <div class="contentHeadline">Recover username</div>
+<div class="contentBox">
+    <div class="contentHeadline">Recover Username</div>
     <div class="content">
+        <p>Insert your email to recover your username.</p>
         <form method="post" action="{{ request.path }}">
             <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
-            <table class="form_table">
+            <table class="formTable">
                 <tbody>
                     {{ form.as_table }}
                 </tbody>
