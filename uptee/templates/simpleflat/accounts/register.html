@@ -2,12 +2,14 @@
 
 {% comment %}
 context variables:
-    captcha
     register_form
     testing_form
 {% endcomment %}
 
 {% block body %}
+
+{% load captcha_tag %}
+{% captcha_tag %}
 
 <div id="headermenu">
     <ul class="left">
@@ -42,14 +44,14 @@ context variables:
                     </div>
 
                     <div class="formBox">
-                        <input class="{% if field.errors %} error{% endif %}" type="{{ field.field.widget.input_type }}" name="{{ field.name }}" value="{{ field.value|default_if_none:"" }}" id="{{ field.id_for_label }}"{% if field.field.widget.is_required %} required=""{% endif %} placeholder="{{ field.label }}"/>
+                        <input class="{% if field.errors %} error{% endif %}" type="{{ field.field.widget.input_type }}" name="{{ field.name }}" value="{{ field.value|default_if_none:"" }}" id="{{ field.id_for_label }}"{% for key, value in field.field.widget.attrs.items %} {{ key }}="{{ value }}"{% endfor %}/>
                         {{ field.errors }}
                     </div>
                 {% endif %}
             {% endfor %}
 
             <div class="descriptionBox">
-                <img class="captcha" alt="captcha" src="{% url 'captcha-image' captcha %}"><input id="id_captcha_0" type="hidden" value="{{ captcha }}" name="captcha_0">
+                <img class="captcha" alt="captcha" src="{% url 'captcha-image' captcha_key %}"><input id="id_captcha_0" type="hidden" value="{{ captcha_key }}" name="captcha_0">
             </div>
 
             <div class="formBox">

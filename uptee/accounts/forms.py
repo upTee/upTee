@@ -114,7 +114,7 @@ class RecoverUsernameForm(forms.Form):
     email = forms.EmailField(label='email', widget=Html5EmailInput(attrs={'required': None}))
     captcha = Html5CaptchaField(required=True)
 
-    def clean_username(self):
+    def clean_email(self):
         email = self.cleaned_data['email']
         user = User.objects.filter(is_active=True, email=email)
         if not user:
@@ -127,10 +127,10 @@ class RegisterForm(forms.Form):
         error_messages={'invalid': 'Required. 30 characters or fewer. Letters, numbers and @/./+/-/_ characters.'},
         widget=forms.TextInput(attrs={'pattern': r'[\w.@+-]{3,30}', 'title': '30 characters or fewer. Letters, numbers and @/./+/-/_ characters', 'required': None}))
     password1 = forms.CharField(label='Password', min_length=8,
-        widget=forms.PasswordInput(render_value=False, attrs={'pattern': r'.{8,}', 'title': '8 characters are required', 'required': None}))
+        widget=forms.PasswordInput(render_value=False, attrs={'pattern': r'.{8,}', 'title': '8 characters are required', 'required': None, 'placeholder': 'Password'}))
     password2 = forms.CharField(label='Password again', min_length=8,
-        widget=forms.PasswordInput(render_value=False, attrs={'pattern': r'.{8,}', 'title': '8 characters are required', 'required': None}))
-    email = forms.EmailField(required=True, widget=Html5EmailInput(attrs={'required': None}))
+        widget=forms.PasswordInput(render_value=False, attrs={'pattern': r'.{8,}', 'title': '8 characters are required', 'required': None, 'placeholder': 'Password again'}))
+    email = forms.EmailField(required=True, widget=Html5EmailInput(attrs={'required': None, 'placeholder': 'Email'}))
     captcha = Html5CaptchaField(required=True)
 
     def clean_username(self):
