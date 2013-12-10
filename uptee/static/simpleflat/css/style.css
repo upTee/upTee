@@ -146,7 +146,7 @@ body {
         left: 70px;
     border-left: 30px solid transparent;
     border-right: 30px solid transparent;
-    border-bottom: 30px solid rgba(0,0,0,.90);
+    border-bottom: 30px solid #333;
     z-index: 499;
     display: none;
 }
@@ -157,10 +157,10 @@ body {
         right: 0;
     width: 200px;
     z-index: 500;
-    background: rgba(0,0,0,.90);
+    background: #333;
     border-radius: 10px;
-    box-shadow: 2px 2px 2px #ccc;
     display: none;
+    box-shadow: 1px 1px 1px #ddd;
 }
 
 
