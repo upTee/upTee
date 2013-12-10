@@ -362,8 +362,9 @@ body {
 .contentHeadline a.edit_link {
     position: absolute;
         top: 13px;
-        right: 10px;
-    font-size: 11px;
+        right: 15px;
+    font-size: 13px;
+    color: #fff;
 }
 
 .contentHeadline p.underline{
