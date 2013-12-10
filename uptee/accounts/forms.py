@@ -125,7 +125,7 @@ class RecoverUsernameForm(forms.Form):
 class RegisterForm(forms.Form):
     username = forms.RegexField(label="Username", min_length=3, regex=r'^[\w.@+-]+$',
         error_messages={'invalid': 'Required. 30 characters or fewer. Letters, numbers and @/./+/-/_ characters.'},
-        widget=forms.TextInput(attrs={'pattern': r'[\w.@+-]{3,30}', 'title': '30 characters or fewer. Letters, numbers and @/./+/-/_ characters', 'required': None}))
+        widget=forms.TextInput(attrs={'pattern': r'[\w.@+-]{3,30}', 'title': '30 characters or fewer. Letters, numbers and @/./+/-/_ characters', 'required': None, 'placeholder': 'Username'}))
     password1 = forms.CharField(label='Password', min_length=8,
         widget=forms.PasswordInput(render_value=False, attrs={'pattern': r'.{8,}', 'title': '8 characters are required', 'required': None, 'placeholder': 'Password'}))
     password2 = forms.CharField(label='Password again', min_length=8,

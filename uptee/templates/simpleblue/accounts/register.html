@@ -2,7 +2,6 @@
 
 {% comment %}
 context variables:
-    captcha
     register_form
     testing_form
 {% endcomment %}
@@ -10,6 +9,9 @@ context variables:
 {% block title %}upTee - Register{% endblock title %}
 
 {% block content %}
+
+{% load captcha_tag %}
+{% captcha_tag %}
 
 <div class="head">
     <h2>User registration</h2>
@@ -34,7 +36,7 @@ context variables:
                     {% if not forloop.last %}
                         <td>{{ field }}</td>
                     {% else %}
-                        <td><img class="captcha" alt="captcha" src="{% url 'captcha-image' captcha %}"><input id="id_captcha_0" type="hidden" value="{{ captcha }}" name="captcha_0"></td>
+                        <td><img class="captcha" alt="captcha" src="{% url 'captcha-image' captcha_key %}"><input id="id_captcha_0" type="hidden" value="{{ captcha_key }}" name="captcha_0"></td>
                     {% endif %}
                     </tr>
                 {% endfor %}
