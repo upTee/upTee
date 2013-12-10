@@ -273,8 +273,24 @@ input[type=radio]:checked
    background: url('../img/arrow.png') no-repeat right #fff;
    border: 1px solid #666;
    height: 26px;
-   }
+}
 
+.styled-select.birthday_month {
+   width: 95px;
+   float: left;
+   margin-right: 3px;
+}
+
+.styled-select.birthday_day {
+   width: 45px;
+   float: left;
+   margin-right: 3px;
+}
+
+.styled-select.birthday_year {
+   width: 60px;
+   float: left;
+}
 
 /*select {
     background: url('../img/arrow.png') no-repeat right #fff;
@@ -291,23 +307,6 @@ input[type=radio]:checked
 */
 form.smallform select {
     margin-left: 20px;
-}
-
-select#id_birthday_month{
-    width: 95px;
-    float: left;
-    margin-right: 5px;
-}
-
-select#id_birthday_day{
-    width: 50px;
-    float: left;
-    margin-right: 5px;
-}
-
-select#id_birthday_year{
-    width: 60px;
-    float: left;
 }
 
 /* ---END content froms--- */

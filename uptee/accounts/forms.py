@@ -2,7 +2,6 @@ from datetime import date
 import os
 from django.contrib.auth.models import User
 from django import forms
-from django.forms.extras.widgets import SelectDateWidget
 from django.utils import timezone
 from fields import Html5CaptchaField
 from html5input import *
@@ -44,7 +43,7 @@ class SettingsUserprofileForm(forms.ModelForm):
             'publish_fav_mod': forms.Select(choices=((True, 'Show to everyone'), (False, 'Show only to registered users'))),
             'publish_fav_map': forms.Select(choices=((True, 'Show to everyone'), (False, 'Show only to registered users'))),
             'publish_gender': forms.Select(choices=((True, 'Show to everyone'), (False, 'Show only to registered users'))),
-            'birthday': SelectDateWidget(years=range(1930, timezone.now().year)),
+            'birthday': Html5SelectDateWidget(years=range(1930, timezone.now().year)),
             'publish_birthday': forms.Select(choices=((True, 'Show to everyone'), (False, 'Show only to registered users'))),
         }
 
