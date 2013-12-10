@@ -1,6 +1,6 @@
 /* general input fields */
 
-input[type=text] {
+input[type=text], input[type=url] {
     background: #dcdcdc;
     width: 200px;
     padding: 5px;
