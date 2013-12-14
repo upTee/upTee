@@ -20,13 +20,6 @@ context variables:
 
 {% block content %}
 
-<script type="text/javascript">
-    $(document).ready( function() {
-      $('#tabContainer').easytabs();
-    });
-</script>
-
-
         <form action="{% url 'update_settings' server.id %}" method="post">
             <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">
             {% if server.owner == user or moderator and moderator.edit_automatic_restart_allowed %}
