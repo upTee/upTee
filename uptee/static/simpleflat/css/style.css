@@ -250,11 +250,22 @@ body {
     background: rgba(255,255,255,.2)
 }
 
+#contentContainerInner {
+    min-height: 100%;
+    margin-bottom: -60px;
+}
+
+#contentContainerInner:after {
+    content: "";
+    display: block;
+    height: 60px;
+}
+
 #footer{
     clear: both;
     margin: 30px auto 0 auto;
     border-top: 1px solid #ccc;
-    height: 30px;
+    height: 59px;
 }
 
 #footer ul.left{

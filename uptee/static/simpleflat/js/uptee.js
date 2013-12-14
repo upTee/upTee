@@ -3,15 +3,6 @@ $(document).ready(function() {
     // easy tabs
     $('#tabContainer').easytabs();
 
-    // trigger footer check
-    $('#tabContainer').bind('easytabs:midTransition', function() {
-        $('#footer').hide();
-    });
-    $('#tabContainer').bind('easytabs:after', function() {
-        sticky_footer();
-        $('#footer').show();
-    });
-
     // notification closer
     $(document).on('click', '.notificationClose', function() {
         $(this).parent().animate({opacity: 0, height: 0, paddingTop: 0, paddingBottom: 0, marginTop: 0}, 300, function() {
@@ -176,42 +167,6 @@ $(document).ready(function() {
         });
     }
 });
-
-// Window load event used just in case window height is dependant upon images
-$(window).bind("load", sticky_footer);
-
-function sticky_footer() {
-    var footerHeight = 0,
-    contetScrollHeight = 0,
-    contetHeight = 0,
-    footerTop = 0,
-    $footer = $("#footer"),
-    $contet = $('#contentContainer');
-
-    positionFooter();
-
-    function positionFooter() {
-        footerHeight = $footer.height();
-        contetHeight = $contet.height();
-        contetScrollHeight = $contet[0].scrollHeight;
-        footerTop = ($(window).scrollTop()+contetHeight-footerHeight)+"px";
-
-        if ( (contetScrollHeight+footerHeight) < $(window).height()) {
-            $footer.css({
-                position: "absolute",
-                top: footerTop,
-                left: "30px",
-                right: "30px"
-            })
-        } else {
-            $footer.css({
-                position: "static"
-            })
-        }
-    }
-
-    $(window).scroll(positionFooter).resize(positionFooter);
-}
 
 function get_active_menus_cokkie() {
     var active_menus_cookie;
