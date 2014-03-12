@@ -29,6 +29,7 @@ Also it shows the current status of each server hosted with upTee.">
         <link rel="stylesheet" href="{{ STATIC_URL }}simpleflat/css/size.css" type="text/css">
         <link rel="stylesheet" href="{{ STATIC_URL }}simpleflat/css/font-awesome.min.css"><!-- Font Awesome Icons -->
 
+        <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,700' rel='stylesheet' type='text/css'>
 
         <script src="{{ STATIC_URL }}js/jquery-1.8.2.min.js"></script>
         <script src="{{ STATIC_URL }}js/jquery.easing.1.3.min.js"></script>
@@ -77,19 +78,6 @@ Also it shows the current status of each server hosted with upTee.">
 
         {% endcomment %}
 
-        <div class="topBarContainer">
-            <div class="topBar graybg"></div>
-            <div class="topBar pinkbg"></div>
-            <div class="topBar redbg"></div>
-            <div class="topBar orangebg"></div>
-            <div class="topBar yellowbg"></div>
-            <div class="topBar greenbg"></div>
-            <div class="topBar lightbluebg"></div>
-            <div class="topBar bluebg"></div>
-            <div class="topBar darkbluebg"></div>
-            <div class="topBar purplebg"></div>
-        </div>
-
 
         <div id="header">
             <div class="logo"></div>
@@ -106,12 +94,11 @@ Also it shows the current status of each server hosted with upTee.">
             {% if user.is_authenticated %}
             
             <div id="userMenu">
-                <p><i class="fa fa-cog"></i></p><!-- @Sushi // a mouseklick should trigger the menu -->
+                <p class="colorPink">{{ user.username }} <i class="fa fa-angle-down"></i></p>
+                <img class="gravatar" src="{% gravatar_for_user user 45 %}">
                 <div class="arrow"></div>
                 <div id="usermenuBox">
                     <ul>
-                        <li><img class="gravatar" src="{% gravatar_for_user user 100 %}"></li>
-                        <li><a href="{% url 'user' user.id %}"><i class="fa fa-user"></i> {{ user.username }}</a></li>
                         <li><a href="{% url 'settings' %}"><i class="fa fa-cog"></i> Account Settings</a></li>
                         <li><a href="{% url 'logout' %}?next={{ request.path }}"><i class="fa fa-sign-out"></i> Logout!</a></li>
                     </ul>
@@ -138,6 +125,29 @@ Also it shows the current status of each server hosted with upTee.">
             <div class="clear"></div>
         </div>
 
+
+
+
+        {% comment %}
+
+        HEADERMENU
+        contains basic links. Is on the left side of the header.
+
+        {% endcomment %}
+
+        <div id="headermenu">
+            <ul class="left">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'server_list' %}">Server List</a></li>
+                <li><a href="{% url 'users' %}">User List</a></li>
+            </ul>
+        </div>
+
+        {% comment %}
+
+        END HEADERMENU
+
+        {% endcomment %}
 
 
 
@@ -268,30 +278,6 @@ Also it shows the current status of each server hosted with upTee.">
         {% endcomment %}
 
 
-        {% comment %}
-
-        HEADERMENU
-        contains basic links. Is on the left side of the header.
-
-        {% endcomment %}
-
-        <div id="headermenu">
-            <ul class="left">
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'server_list' %}">Server List</a></li>
-                <li><a href="{% url 'users' %}">User List</a></li>
-            </ul>
-        </div>
-
-        {% comment %}
-
-        END HEADERMENU
-
-        {% endcomment %}
-
-
-        
-
 
         {% comment %}
 
@@ -300,8 +286,18 @@ Also it shows the current status of each server hosted with upTee.">
 
         {% endcomment %}
 
-       
 
+        <div id="breadcrumb">
+            <div class="icon"></div>
+            {% block breadcrumb %}
+                {% load breadcrumb_tags %}
+                {% add_crumb 'Home' 'home' %}
+            {% endblock %}
+            <div class="text colorPink">{% render_breadcrumbs %}</div> {% comment %} render breadcrumbs. Only call this here! {% endcomment %}
+        </div>
+
+
+       
         {% comment %}
 
         END BREADCRUMBS
@@ -321,14 +317,7 @@ Also it shows the current status of each server hosted with upTee.">
 
                 {% include "messages.html" %}
 
-                <div id="breadcrumb">
-                    <div class="icon"></div>
-                    {% block breadcrumb %}
-                        {% load breadcrumb_tags %}
-                        {% add_crumb 'Home' 'home' %}
-                    {% endblock %}
-                    <div class="text">{% render_breadcrumbs %}</div> {% comment %} render breadcrumbs. Only call this here! {% endcomment %}
-                </div>
+                
 
                 <div class="spacer"></div>
 
@@ -336,18 +325,7 @@ Also it shows the current status of each server hosted with upTee.">
            
             </div>
 
-            <div id="footer">
-                <ul class="left">
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="{% url 'about' %}">About</a></li>
-                    <li><a href="#">Impressum</a></li>
-                </ul>
-
-                <ul class="right">
-                    <li>&copy; 2012-2013 upTee<br> Version: Alpha</li>
-                </ul>
-            </div>
-            <div class="clear"></div>
+            
 
         </div>
 
@@ -364,6 +342,20 @@ Also it shows the current status of each server hosted with upTee.">
         END BLOCK body
 
         {% endcomment %}
+
+
+        <div id="footer">
+            <ul class="left">
+                <li><a href="#">Contact</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="#">Impressum</a></li>
+            </ul>
+
+            <ul class="right">
+                <li>&copy; 2012-2013 upTee | Version: Alpha</li>
+            </ul>
+        </div>
+        <div class="clear"></div>
 
     </body>
 </html>

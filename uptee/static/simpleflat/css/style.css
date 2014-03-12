@@ -37,27 +37,12 @@ html,
 body {
     background: #f5f5f5;
     height: 100%;
-    font-family: "Segoe UI","Segoe UI Web Regular","Segoe UI Symbol","Helvetica Neue","BBAlpha Sans","S60 Sans",Arial,"sans-serif";
+    font-family: "Ubuntu", "sans-serif";
+    font-weight: 300;
     font-size: 13px !important;
     color: #000;
     background-size: 100% 100%;
 } 
-
-
-.topBarContainer {
-    position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-    height: 3px;
-    z-index: 12;
-}
-
-.topBar {
-    height: 3px;
-    float: left;
-    width: 10%;
-}
 
 
 #header {
@@ -65,10 +50,20 @@ body {
         top: 0;
         left: 0;
         right: 0;
-    background:rgb(52,170,220);
+    background: rgba(255,255,255,.9);
     height: 50px;
     z-index: 10;
+    -webkit-box-shadow: 0px 2px 2px rgba(50, 50, 50, 0.2);
+    -moz-box-shadow: 0px 2px 2px rgba(50, 50, 50, 0.2);
+    box-shadow: 0px 2px 2px rgba(50, 50, 50, 0.2);
 }
+
+.logo {
+    background: url('../img/upteelogo.png') no-repeat 10px 6px;
+    height: 50px;
+    width: auto;
+}
+
 
 #headermenu {
     position: absolute;
@@ -123,30 +118,35 @@ body {
 
 #userMenu {
     position: absolute;
-        right: 50px;
-        top: 3px;
+        right: 20px;
+        top: 0px;
     height: 50px;
-    width: 200px;
     z-index: 11;
 }
 
 #userMenu p {
-    text-align: center;
+    line-height: 50px;
+    height: 50px;
+    float: left;
+    text-align: left;
     font-size: 30px;
-    color: #fff;
-}
-
-#userMenu i.fa-cog {
+    color: #000;
+    margin-right: 20px;
     cursor: pointer;
 }
+
+#userMenu img{
+    float: right;
+}
+
 
 #userMenu .arrow {
     position: absolute;
         top: 50px;
-        left: 70px;
+        left: 30px;
     border-left: 30px solid transparent;
     border-right: 30px solid transparent;
-    border-bottom: 30px solid #333;
+    border-bottom: 30px solid #ccc;
     z-index: 499;
     display: none;
 }
@@ -157,31 +157,37 @@ body {
         right: 0;
     width: 200px;
     z-index: 500;
-    background: #333;
-    border-radius: 10px;
+    background: #fff;
+    border-radius: 5px;
+    border: 1px solid #ccc;
     display: none;
-    box-shadow: 1px 1px 1px #ddd;
+    box-shadow: 0px 4px 19px 0px rgba(0,0,0,0.2);
 }
 
 
 #userMenu #usermenuBox ul li {
         top: 60px;
-    padding: 20px;
+    padding: 10px 10px 10px 10px;
     text-decoration: none;
     list-style: none;
     font-size: 15px;
-    text-align: center;
+    text-align: left;
 }
 
 
-#userMenu #usermenuBox ul li img {
+#userMenu #usermenuBox ul li:hover{
+    background: #e7f7ff;
+    border-radius: 5px;
 }
 
-.logo {
-    background: url('../img/upteelogo.png') no-repeat 10px 6px;
-    height: 50px;
-    width: auto;
+#userMenu #usermenuBox ul li a{
+    color: #000;
+    text-decoration: none;
 }
+
+
+
+
 
 .statusIcon {
     position: absolute;
@@ -250,26 +256,25 @@ body {
     background: rgba(255,255,255,.2)
 }
 
-#contentContainerInner {
-    min-height: 100%;
-    margin-bottom: -90px;
-}
 
-#contentContainerInner:after {
-    content: "";
-    display: block;
-    height: 60px;
-}
 
 #footer{
     clear: both;
-    margin: 30px auto 0;
+    position: absolute;
+    bottom: 0;
+    left: 250px;
+    right: 0;
     border-top: 1px solid #ccc;
-    height: 59px;
+    height: 30px;
+    z-index: 8;
+    background: rgba(255,255,255,.9);
+
 }
 
 #footer ul.left{
     float: left;
+    margin-left: 10px;
+    font-size: 12px;
 }
 
 #footer .left li{
@@ -288,6 +293,7 @@ body {
     text-decoration: none;
     list-style-type: none;
     padding: 5px 20px 5px 0;
+    font-size: 11px;
 }
 
 #contentContainer {
@@ -295,11 +301,11 @@ body {
     background: none;
     background-repeat: no-repeat;
     position: absolute;
-        top: 50px;
+        top: 0;
         bottom: 0;
         left: 250px;
         right: 0;
-    padding: 30px 30px 0;
+    padding: 80px 30px 0;
     overflow: auto;
     min-width: 710px;
     z-index: 5;
@@ -317,23 +323,42 @@ body {
 }
 
 
+#contentContainerInner {
+    min-height: 100%;
+    margin-bottom: -90px;
+}
+
+#contentContainerInner:after {
+    content: "";
+    display: block;
+    height: 60px;
+}
+
+
 #breadcrumb {
-    border-bottom: 1px solid #aaa;
-    height: 25px;
+    position: absolute;
+    top: 50px;
+    left: 250px;
+    right: 0;
+    height: 30px;
+    z-index: 6;
+    border-bottom: 1px solid #ccc;
+    background: rgba(255,255,255,.95);
 }
 
     #breadcrumb .icon {
         background: url('../icons/home2.png');
         height: 15px;
         width: 15px;
-        margin-top: 6px;
+        margin-top: 8px;
         margin-left: 10px;
         float: left;
     }
 
     #breadcrumb .text {
+        height: 30px;
+        line-height: 30px;
         margin-left: 10px;
-        margin-top: 4px;
         float: left;
         color: #555555;
     }
@@ -563,26 +588,16 @@ body {
 
 
 /* ---Colors--- */
-.gray{ color:rgb(142,142,147);}
-.pink{ color:rgb(255,45,85);}
-.red{ color:rgb(255,59,48);}
-.orange{ color:rgb(255,149,0);}
-.yellow{ color:rgb(255,204,0);}
-.green{ color:rgb(76,217,100);}
-.lightblue{ color:rgb(90,200,250);}
-.blue{ color:rgb(52,170,220);}
-.darkblue{ color:rgb(0,122,255);}
-.purple{ color:rgb(88,86,214);}
-.graybg{ background:rgb(142,142,147);}
-.pinkbg{ background:rgb(255,45,85);}
-.redbg{ background:rgb(255,59,48);}
-.orangebg{ background:rgb(255,149,0);}
-.yellowbg{ background:rgb(255,204,0);}
-.greenbg{ background:rgb(76,217,100);}
-.lightbluebg{ background:rgb(90,200,250);}
-.bluebg{ background:rgb(52,170,220);}
-.darkbluebg{ background:rgb(0,122,255);}
-.purplebg{ background:rgb(88,86,214);}
+
+.colorPink{color:rgba(255,40,81,1)!important;}
+.colorRed{color:rgba(255,56,36,1)!important;}
+.colorOrange{color:rgba(255,150,0,1)!important;}
+.colorYellow{color:rgba(255,205,0,1)!important;}
+.colorGreen{color:rgba(68,219,94,1)!important;}
+.colorBlue{color:rgba(0,118,255,1)!important;}
+.colorTeal{color:rgba(87,81,217,1)!important;}
+
+
 .errorbg{ background:rgb(205,32,32)!important; }
 /* ---End Colors--- */
 

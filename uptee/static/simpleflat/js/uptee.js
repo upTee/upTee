@@ -102,7 +102,7 @@ $(document).ready(function() {
     });
 
     // menu user settings
-    $('#userMenu .fa-cog').click(function() {
+    $('#userMenu').click(function() {
         $('#usermenuBox').fadeToggle('fast');
         $('#userMenu .arrow').fadeToggle('fast');
     });
