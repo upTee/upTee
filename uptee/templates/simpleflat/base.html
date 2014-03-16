@@ -99,8 +99,8 @@ Also it shows the current status of each server hosted with upTee.">
                 <div class="arrow"></div>
                 <div id="usermenuBox">
                     <ul>
-                        <li><a href="{% url 'settings' %}"><i class="fa fa-cog"></i> Account Settings</a></li>
-                        <li><a href="{% url 'logout' %}?next={{ request.path }}"><i class="fa fa-sign-out"></i> Logout!</a></li>
+                        <a href="{% url 'settings' %}"><li><i class="fa fa-cog"></i> Account Settings</li></a>
+                        <a href="{% url 'logout' %}?next={{ request.path }}"><li><i class="fa fa-sign-out"></i> Logout!</li></a>
                     </ul>
                 </div>
             </div>
@@ -286,7 +286,6 @@ Also it shows the current status of each server hosted with upTee.">
 
         {% endcomment %}
 
-
         <div id="breadcrumb">
             <div class="icon"></div>
             {% block breadcrumb %}
@@ -296,13 +295,14 @@ Also it shows the current status of each server hosted with upTee.">
             <div class="text colorPink">{% render_breadcrumbs %}</div> {% comment %} render breadcrumbs. Only call this here! {% endcomment %}
         </div>
 
-
-       
         {% comment %}
 
         END BREADCRUMBS
 
         {% endcomment %}
+
+
+        
 
 
         {% comment %}
@@ -313,20 +313,8 @@ Also it shows the current status of each server hosted with upTee.">
         {% endcomment %}
 
         <div id="contentContainer">
-            <div id="contentContainerInner">
-
-                {% include "messages.html" %}
-
-                
-
-                <!-- <div class="spacer"></div> -->
-
-                {% block content %}{% endblock content %}
-           
-            </div>
-
-            
-
+            {% include "messages.html" %}
+            {% block content %}{% endblock content %}
         </div>
 
         {% comment %}

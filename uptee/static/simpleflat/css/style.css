@@ -24,24 +24,26 @@ a:link {
     color: #1b7ffa;
 }
 
+
 a:visited:hover, 
 a:link:hover {
     text-decoration: underline;
 }
 
+
 .bold {
     font-weight: bold;
 }
 
+
 html, 
 body {
-    background: #f5f5f5;
+    background: #fff;
     height: 100%;
     font-family: "Ubuntu", "sans-serif";
     font-weight: 300;
     font-size: 13px !important;
     color: #000;
-    background-size: 100% 100%;
 } 
 
 
@@ -61,7 +63,6 @@ body {
 .logo {
     background: url('../img/upteelogo.png') no-repeat 10px 6px;
     height: 50px;
-    width: auto;
 }
 
 
@@ -83,15 +84,12 @@ body {
 #loginmenu ul{
     list-style-type: none;
     height: 50px;
-    margin: auto;
 }
 
 #headermenu li, 
 #loginmenu li{
     float: left;
     height: 50px;
-    background: none;
-    display: block;
 }
 
 #headermenu li a, 
@@ -105,14 +103,9 @@ body {
     text-decoration: none;
 }
 
-#menu li .entry.current {
-    background: #fff;
-    color: #000;
-}
-
 #headermenu li a:hover, 
 #loginmenu li a:hover{
-    background: rgba(0,0,0,0.1);
+    background: rgba(0,0,0,0.05);
 }
 
 #userMenu {
@@ -129,7 +122,6 @@ body {
     float: left;
     text-align: left;
     font-size: 30px;
-    color: #000;
     margin-right: 20px;
     cursor: pointer;
 }
@@ -138,24 +130,12 @@ body {
     float: right;
 }
 
-
-#userMenu .arrow {
-    position: absolute;
-        top: 50px;
-        left: 30px;
-    border-left: 30px solid transparent;
-    border-right: 30px solid transparent;
-    border-bottom: 30px solid #ccc;
-    z-index: 499;
-    display: none;
-}
-
 #userMenu #usermenuBox {
     position: absolute;
-        top: 80px;
-        right: 0;
+        top: 50px;
+        right: -17px;
     width: 200px;
-    z-index: 500;
+    z-index: 11;
     background: #fff;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -165,27 +145,15 @@ body {
 
 
 #userMenu #usermenuBox ul li {
-        top: 60px;
     padding: 10px 10px 10px 10px;
-    text-decoration: none;
     list-style: none;
     font-size: 15px;
-    text-align: left;
 }
 
 
 #userMenu #usermenuBox ul li:hover{
     background: #e7f7ff;
-    border-radius: 5px;
 }
-
-#userMenu #usermenuBox ul li a{
-    color: #000;
-    text-decoration: none;
-}
-
-
-
 
 
 .statusIcon {
@@ -214,8 +182,8 @@ body {
     background: #333;
     width: 250px;
     overflow: auto;
-    z-index: 1;
 }
+
 
 #menu li {
     position: relative;
@@ -226,33 +194,31 @@ body {
     line-height: 40px;
     height: 40px;
     text-decoration: none;
-    font-size: 14px;
     padding-left: 20px;
-    color: #fff;
+    color: #999;
 }
 
 #menu li a:hover{
-    background: rgba(255,255,255,.1)
+    background: rgba(255,255,255,.05);
+    color: #fff;
 }
 
 
-
 #menu li p{
-    color: #fff;
+    color: #ccc;
     font-size: 14px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 10px;
+    padding: 5px 10px 5px 5px;
     line-height: 30px;
     cursor: pointer;
 }
 
 #menu li p:hover{
-    background: rgba(255,255,255,.1)
+    background: rgba(255,255,255,.1);
+    color: #fff;
 }
 
 #menu li .entry.current{
-    background: rgba(255,255,255,.2)
+    background: rgba(255,255,255,.1);
 }
 
 
@@ -260,9 +226,9 @@ body {
 #footer{
     clear: both;
     position: absolute;
-    bottom: 0;
-    left: 250px;
-    right: 0;
+        bottom: 0;
+        left: 250px;
+        right: 0;
     border-top: 1px solid #ccc;
     height: 30px;
     z-index: 8;
@@ -277,10 +243,10 @@ body {
 }
 
 #footer .left li{
+    line-height: 20px;
     float: left;
-    text-decoration: none;
     list-style-type: none;
-    padding: 5px 20px 5px 0;
+    padding: 0 10px;
 }
 
 #footer ul.right{
@@ -288,10 +254,10 @@ body {
 }
 
 #footer .right li{
+    line-height: 20px;
     float: right;
-    text-decoration: none;
     list-style-type: none;
-    padding: 5px 20px 5px 0;
+    padding: 0 20px 0 0;
     font-size: 11px;
 }
 
@@ -304,41 +270,21 @@ body {
         bottom: 0;
         left: 250px;
         right: 0;
-    padding: 80px 0px 0;
+    padding: 80px 0 0 0;
     overflow: auto;
-    min-width: 710px;
-    z-index: 5;
-    background: #f5f5f5;
+    min-width: 850px;
 }
 
-
-#contentContainer.full {
+#contentContainer.full{ /*Errorpage*/
     left: 0;
-}
-
-#contentContainer .spacer{
-    width: 100%;
-    height: 20px;
-}
-
-
-#contentContainerInner {
-    min-height: 100%;
-    margin-bottom: -90px;
-}
-
-#contentContainerInner:after {
-    content: "";
-    display: block;
-    height: 60px;
 }
 
 
 #breadcrumb {
     position: absolute;
-    top: 50px;
-    left: 250px;
-    right: 0;
+        top: 50px;
+        left: 250px;
+        right: 0;
     height: 30px;
     z-index: 6;
     border-bottom: 1px solid #ccc;
@@ -349,8 +295,7 @@ body {
         background: url('../icons/home2.png');
         height: 15px;
         width: 15px;
-        margin-top: 8px;
-        margin-left: 10px;
+        margin: 8px 0 0 10px;
         float: left;
     }
 
@@ -359,7 +304,6 @@ body {
         line-height: 30px;
         margin-left: 10px;
         float: left;
-        color: #555555;
     }
 
 
@@ -377,7 +321,7 @@ body {
 
 .contentHeadline {
     padding: 5px 10px 10px 10px;
-    font-size: 40px;
+    font-size: 30px;
     position: relative;
     font-weight: 400;
 }
@@ -575,7 +519,6 @@ body {
 
 
 /* ---Colors--- */
-
 .colorPink{color:rgba(255,40,81,1)!important;}
 .colorRed{color:rgba(255,56,36,1)!important;}
 .colorOrange{color:rgba(255,150,0,1)!important;}
@@ -583,7 +526,6 @@ body {
 .colorGreen{color:rgba(68,219,94,1)!important;}
 .colorBlue{color:rgba(0,118,255,1)!important;}
 .colorTeal{color:rgba(87,81,217,1)!important;}
-
 
 .errorbg{ background:rgb(205,32,32)!important; }
 /* ---End Colors--- */
@@ -601,31 +543,35 @@ body {
     position: relative;
     color: #fff;
     background: #666;
-    width: 555px;
-    height: 20px;
-    padding: 15px 10px 15px 60px;
-    margin: 0 auto 20px;
-    border-radius: 10px;
+    padding: 10px 10px 10px 35px;
 }
 
-.notification.info {
-    background: url('../icons/info.png') no-repeat, #666;
+.notification.info{
+    background: url('../icons/info.png') no-repeat 10px center, #bfe3f9;
+    border-bottom: 1px solid #63a3cf;
+    color: #034e96;
 }
 
 .notification.success{
-    background: url('../icons/sucess.png') no-repeat, #666;
+    background: url('../icons/success.png') no-repeat 10px center, #dee3ab;
+    border-bottom: 1px solid #a0c35b;
+    color: #4f8a14;
 }
 
 .notification.warning{
-    background: url('../icons/warning.png') no-repeat, #666;
+    background: url('../icons/warning.png') no-repeat 10px center, #fdebad;
+    border-bottom: 1px solid #e4c455;
+    color: #a06011;
 }
 
 .notification.error{
-    background: url('../icons/error.png') no-repeat, #666;
+    background: url('../icons/error.png') no-repeat 10px center, #fecccb;
+    border-bottom: 1px solid #ff9797;
+    color: #d4000b;
 }
 
 .notificationClose{
-    background: url('../icons/close.png') no-repeat center;
+    background: url('../icons/close_icon.png') no-repeat center;
     height: 20px;
     width: 20px;
     float: right;
@@ -837,16 +783,9 @@ p.joinLable{
 /* ---Tabmenu--- */
 #tabContainer{
     border-bottom: 1px solid #ccc;
-    padding: 0;
-    height: 41px;
 }
 
-
-
 ul.etabs { 
-    margin: 0;
-    padding: 0; 
-    list-style: none;
     text-align: center;
     width: 100%;
     display: table;
@@ -854,9 +793,7 @@ ul.etabs {
 
 li.tab { 
     display: table-cell; 
-    width: auto;
     padding: 10px;
-    color: #1b7ffa;
     margin-bottom: 20px;
     border-bottom: 2px solid transparent;
     -webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -o-transition: all 0.5s ease; -ms-transition: all 0.5s ease; transition: all 0.5s ease;
@@ -868,32 +805,23 @@ li.tab:hover {
 }
 
     li.tab a{
-        text-decoration: none;
-        color: #1b7ffa;
-        text-align: center;
         font-size: 15px;
         padding: 10px;
-        width: auto;
     }
 
-    li.tab a:hover{
-        text-decoration: none;
-    }
+        li.tab a:hover{
+            text-decoration: none;
+        }
 
-    li.tab a.active{
-        color: #333;
-    }
+        li.tab a.active{
+            color: #333;
+        }
 
     li.tab.active {
         color: #333;
         border-bottom: 2px solid #1b7ffa;
-
     }
 
-
-.tabContent{
-    color: #000;
-}
 /* ---END Tabmenu--- */
 
 
