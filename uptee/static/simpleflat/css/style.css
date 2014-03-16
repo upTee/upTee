@@ -304,7 +304,7 @@ body {
         bottom: 0;
         left: 250px;
         right: 0;
-    padding: 80px 30px 0;
+    padding: 80px 0px 0;
     overflow: auto;
     min-width: 710px;
     z-index: 5;
@@ -364,34 +364,22 @@ body {
 
 
 .contentBox {
-    margin-bottom: 30px;
-    float: left;
-    margin-right: 50px;
+    margin: 30px;
     width: 100%;
-    border-radius: 5px;
-    box-shadow: 1px 1px 1px #ddd;
+    float: left;
     position: relative;
 }
 
 .content {
     background: #fff;
     padding: 10px;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border: 1px solid #ccc;
-    border-top: none;
 }
 
 .contentHeadline {
-    background: rgb(52,170,220);
-    border: 1px solid rgb(52,170,220);
-    display: block;
     padding: 5px 10px 10px 10px;
-    font-size: 20px;
-    color: #fff;
+    font-size: 40px;
     position: relative;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
+    font-weight: 400;
 }
 
 .contentHeadline a.edit_link {
@@ -848,53 +836,55 @@ p.joinLable{
 
 /* ---Tabmenu--- */
 #tabContainer{
-    margin-top: 20px;
     border-bottom: 1px solid #ccc;
     padding: 0;
     height: 41px;
 }
 
-.etabs { 
+
+
+ul.etabs { 
     margin: 0;
     padding: 0; 
     list-style: none;
     text-align: center;
-    
+    width: 100%;
+    display: table;
 }
 
-.tab { 
-    min-width: 50px;
-    display: inline-block; 
+li.tab { 
+    display: table-cell; 
+    width: auto;
     padding: 10px;
-    float: left;
     color: #1b7ffa;
     margin-bottom: 20px;
     border-bottom: 2px solid transparent;
     -webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -o-transition: all 0.5s ease; -ms-transition: all 0.5s ease; transition: all 0.5s ease;
 }
 
-.tab:hover {
+li.tab:hover {
     border-bottom: 2px solid #1b7ffa;
     -webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -o-transition: all 0.5s ease; -ms-transition: all 0.5s ease; transition: all 0.5s ease;
 }
 
-    .tab a{
+    li.tab a{
         text-decoration: none;
         color: #1b7ffa;
         text-align: center;
         font-size: 15px;
         padding: 10px;
+        width: auto;
     }
 
-    .tab a:hover{
+    li.tab a:hover{
         text-decoration: none;
     }
 
-    .tab a.active{
+    li.tab a.active{
         color: #333;
     }
 
-    .tab.active {
+    li.tab.active {
         color: #333;
         border-bottom: 2px solid #1b7ffa;
 
@@ -902,7 +892,6 @@ p.joinLable{
 
 
 .tabContent{
-    clear: both;
     color: #000;
 }
 /* ---END Tabmenu--- */

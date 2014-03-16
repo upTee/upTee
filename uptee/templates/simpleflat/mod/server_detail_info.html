@@ -27,51 +27,7 @@ context variables:
   </ul>
   
 
-    <div id="events" class="tabContent">
-        <div class="contentBox minimal">
-        <div class="contentHeadline"><i class="fa fa-calendar"></i> Events</div>
-        <div class="content">
-            <div id="calendarContainer" data-serverid="{{ server.id }}">
-                <div class="calendarHead">
-                    <div class="arrowLeft"></div>
-                    <div class="arrowRight"></div>
-                    <div class="preLoader"></div>
-                    <div class="month"></div>
-                    <div class="year"></div>
-                    {% if user.is_authenticated and user == server.owner %}
-                    <div class="addEventButton">Add Event</div>
-                    {% endif %}
-                </div>
-
-                <div class="calendarBody">
-                    <div class="calendarBodyHeader">
-                        <div class="weekday">MON</div>
-                        <div class="weekday">TUE</div>
-                        <div class="weekday">WED</div>
-                        <div class="weekday">THU</div>
-                        <div class="weekday">FRI</div>
-                        <div class="weekday">SAT</div>
-                        <div class="weekday sun">SUN</div>
-                    </div>
-                    <div class="calendarDayListContainer">
-                        <div class="calendarDayLists">
-                            <div class="calendarDayListItem"></div> <!-- js will include the days here -->
-                        </div>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-                <div class="eventsDay"{% if user.is_authenticated and user == server.owner %} data-admin="1"{% endif %}>
-                    <!-- events -->  
-                </div>
-                <div class="placeholder"></div>
-                <div class="eventsUpcoming" data-admin="1">
-                    <!-- events -->
-                </div>
-                <div class="addEvent"></div>
-            </div>
-        </div>
-    </div>
-  </div>
+   
   
 
 
@@ -79,7 +35,7 @@ context variables:
 
   <div id="info" class="tabContent">
     <div class="contentBox">
-        <div class="contentHeadline"><i class="fa fa-info-circle"></i> Info</div>
+        <div class="contentHeadline colorPink"><i class="fa fa-info-circle"></i> Server Info</div>
         <div class="content">
             {% if server.is_online %}<div class="serverStatusUpdate" data-serverid="{{ server.id }}">{% endif %}
             <table class="bordered w400">
@@ -163,6 +119,56 @@ context variables:
         </div>
     </div>
   </div>
+
+
+ <div id="events" class="tabContent">
+        <div class="contentBox minimal">
+        <div class="contentHeadline"><i class="fa fa-calendar"></i> Events</div>
+        <div class="content">
+            <div id="calendarContainer" data-serverid="{{ server.id }}">
+                <div class="calendarHead">
+                    <div class="arrowLeft"></div>
+                    <div class="arrowRight"></div>
+                    <div class="preLoader"></div>
+                    <div class="month"></div>
+                    <div class="year"></div>
+                    {% if user.is_authenticated and user == server.owner %}
+                    <div class="addEventButton">Add Event</div>
+                    {% endif %}
+                </div>
+
+                <div class="calendarBody">
+                    <div class="calendarBodyHeader">
+                        <div class="weekday">MON</div>
+                        <div class="weekday">TUE</div>
+                        <div class="weekday">WED</div>
+                        <div class="weekday">THU</div>
+                        <div class="weekday">FRI</div>
+                        <div class="weekday">SAT</div>
+                        <div class="weekday sun">SUN</div>
+                    </div>
+                    <div class="calendarDayListContainer">
+                        <div class="calendarDayLists">
+                            <div class="calendarDayListItem"></div> <!-- js will include the days here -->
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="eventsDay"{% if user.is_authenticated and user == server.owner %} data-admin="1"{% endif %}>
+                    <!-- events -->  
+                </div>
+                <div class="placeholder"></div>
+                <div class="eventsUpcoming" data-admin="1">
+                    <!-- events -->
+                </div>
+                <div class="addEvent"></div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+
 
   <div id="status" class="tabContent">
     <div class="contentBox w400">
