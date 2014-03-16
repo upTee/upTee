@@ -20,7 +20,10 @@ context variables:
 </div>
         
 <div id="loginBox">
-    <div class="headline">Register</div>
+    <div class="headline">
+        <img src="{{ STATIC_URL }}simpleflat/img/upteelogo.png">
+        <p>Register to upTee</p>
+    </div>
     <div id="registerContainer">
         
         <form method="post" action="{{ request.path }}">
@@ -39,10 +42,6 @@ context variables:
 
             {% for field in register_form %}
                 {% if field.name != 'captcha' %}
-                    <div class="descriptionBox">
-                        {{ field.label_tag }}
-                    </div>
-
                     <div class="formBox">
                         <input class="{% if field.errors %} error{% endif %}" type="{{ field.field.widget.input_type }}" name="{{ field.name }}" value="{{ field.value|default_if_none:"" }}" id="{{ field.id_for_label }}"{% for key, value in field.field.widget.attrs.items %} {{ key }}="{{ value }}"{% endfor %}/>
                         {{ field.errors }}

@@ -31,33 +31,35 @@
 #loginBox{
     position: relative;
     margin: 100px auto 0 auto;
-    width: 390px;
-    border-radius: 5px;
-    box-shadow: 1px 1px 1px #ddd;
+    width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 75px;
+    box-shadow: 0px 0px 100px 0px rgba(50, 50, 50, .1);
+    background: #fff;
 }
 
 #loginContainer,
 #registerContainer {
-    background: #fff;
-    border: 1px solid #ccc;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border-top: none;
     padding: 20px;
+    background: transparent;
 }
 
 #loginBox .headline{
-    background: rgb(52,170,220);
-    border: 1px solid rgb(52,170,220);
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    height: 50px;
+    height: 150px;
     line-height: 50px;
     text-align: center;
     font-size: 20px;
-    color: #fff;
+    color: #000;
 }
 
+#loginBox .headline img{
+    margin-top: 30px;
+    height: 50px;
+}
+
+#loginBox .headline p{
+    font-size: 40px;
+}
 
     #loginContainer .formBox, 
     #registerContainer .formBox {
@@ -68,6 +70,7 @@
     #loginContainer .submitBox, 
     #registerContainer .submitBox {
         margin-top: 20px;
+        text-align: center;
     }
 
 
@@ -90,11 +93,14 @@
 #registerContainer input[type=password],
 #registerContainer input[type=url] {
     width: 320px;
-    font-size: 16px;
-    border: 2px solid #dde0e2;
+    font-size: 20px;
+    line-height: 20px;
+    font-family: ubuntu;
+    font-weight: 300;
+    border: 0;
+    border-bottom: 1px solid #dde0e2;
     padding: 11px 10px 11px 10px;
     height: 18px;
-    border-radius: 3px;
 }
     /* Override for icons */
     #loginContainer input[type=password],
@@ -112,7 +118,8 @@
     #registerContainer input[type=email]:focus,
     #registerContainer input[type=password]:focus,
     #registerContainer input[type=url]:focus {
-        border: 2px solid #1b7ffa;
+        border: none;
+        border-bottom: 1px solid #1b7ffa;
     }
 
     #loginContainer input.error[type=text],
@@ -123,8 +130,19 @@
     #registerContainer input.error[type=email],
     #registerContainer input.error[type=password],
     #registerContainer input.error[type=url] {
-        border: 2px solid #fb3f35;
+        border: none;
+        border-bottom: 1px solid #fb3f35;
     }
+
+    #loginContainer input.button,
+    #registerContainer input.button{
+        width: 100px;
+        text-align: center;
+        font-family: ubuntu;
+        font-weight: 300;
+        font-size: 20px;
+    }
+
 /* ---END login / register forms--- */
 
 

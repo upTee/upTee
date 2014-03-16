@@ -16,7 +16,12 @@
 </div>
 
 <div id="loginBox">
-    <div class="headline">Login</div>
+
+    <div class="headline">
+        <img src="{{ STATIC_URL }}simpleflat/img/upteelogo.png">
+        <p>Login to upTee</p>
+    </div>
+
     <div id="loginContainer">
         <form action="" method="post">
             <input type="hidden" name="csrfmiddlewaretoken" value="{% with csrf_token as csrf_token_clean %}{{ csrf_token_clean }}{% endwith %}">

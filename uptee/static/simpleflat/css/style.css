@@ -70,7 +70,6 @@ body {
         top: 0;
         left: 250px;
     z-index: 11;
-
 }
 
 #loginmenu {
@@ -101,14 +100,14 @@ body {
     line-height: 50px;
     padding: 0 20px 0 20px;
     display: block;
-    color: #fff;
+    color: #000;
     text-align: center;
     text-decoration: none;
 }
 
 #menu li .entry.current {
     background: #fff;
-    color: #fff;
+    color: #000;
 }
 
 #headermenu li a:hover, 

@@ -3,6 +3,14 @@
     left: 0;
 }
 
+#breadcrumb {
+	left: 0;
+}
+
+#footer{
+	left: 0;
+}
+
 #menufiller {
     display: none;
 }
