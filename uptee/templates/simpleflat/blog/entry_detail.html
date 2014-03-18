@@ -46,32 +46,33 @@ context variables:
     {% endif %}
 
     {% for comment in comment_list %}
-        <div id="cm-{{ comment.id }}" class="comment">
+        <div id="cm-{{ comment.id }}" class="commentContainer{% if comment.user.is_staff %} staff{% endif %}">
 
             <div class="avatar">
                 <img src="{% gravatar_for_user comment.user 70 %}">
             </div>
 
-            <div class="arrow{% if comment.user.is_staff %} staff{% endif %}"></div>
+            <div class="comment">
+                <div class="headline">
+                    <div class="user"><a href="{% url 'user' comment.user.id %}">{{ comment.user.username }}</a></div>
+                    <div class="links"><a title="Permalink" href="{{ entry.get_absolute_url }}#cm-{{ comment.id }}">#</a> {% if user.is_staff or user.is_superuser %}<a href="{% url 'comments-delete' comment.id %}">delete</a>{% endif %} </div>
+                </div>
 
-            <div class="headline{% if comment.user.is_staff %} staff{% endif %}">
-                <div class="user"><a href="{% url 'user' comment.user.id %}">{{ comment.user.username }}</a></div>
-                <div class="links"><a title="Permalink" href="{{ entry.get_absolute_url }}#cm-{{ comment.id }}">#</a> {% if user.is_staff or user.is_superuser %}<a href="{% url 'comments-delete' comment.id %}">delete</a>{% endif %} </div>
-            </div>
+                <div class="entry">
+                    <div class="markdown">
+                        {{ comment.comment|safe }}
+                    </div>
+                </div>
 
-            <div class="entry{% if comment.user.is_staff %} staff{% endif %}">
-                <div class="markdown">
-                    {{ comment.comment|safe }}
+                <div class="footer">
+                    <div class="left">{{ comment.submit_date|date:"F j, Y" }}</div>
                 </div>
             </div>
 
-            <div class="footer{% if comment.user.is_staff %} staff{% endif %}">
-                <div class="left">{{ comment.submit_date|date:"F j, Y" }}</div>
-            </div>
-
             <div class="clear"></div>
+
         </div>
-        <div class="clear"></div>
+
     {% endfor %}
 </div>
 

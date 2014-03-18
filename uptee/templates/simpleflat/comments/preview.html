@@ -13,26 +13,30 @@
 {% block content %}
 
 {% if not form.errors %}
-    <div class="comment">
+    <div class="commentContainer preview">
+        
         <div class="avatar">
             <img src="{% gravatar_for_user request.user 70 %}">
         </div>
 
-        <div class="arrow preview"></div>
+        <div class="comment">
+            <div class="headline">
+                <div class="user"><b>{{ request.user.username }}:</b></div>
+            </div>
 
-        <div class="headline preview">
-            <div class="user"><b>{{ request.user.username }}:</b></div>
+            <div class="entry">
+                {{ form.cleaned_data.comment|safe }}
+            </div>
+
+            <div class="footer">
+                
+            </div>
         </div>
 
-        <div class="entry preview">
-            {{ form.cleaned_data.comment|safe }}
-        </div>
-
-        <div class="footer preview">
-            
-        </div>
         <div class="clear"></div>
+
     </div>
+
 {% endif %}
 
 <div class="createComment">
