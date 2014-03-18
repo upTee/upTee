@@ -12,23 +12,37 @@ context variables:
 
 {% block content %}
 
+<div class="blogContainer left">
+
 {% autopaginate entry_list 5 %}
 
 {% for entry in entry_list %}
     {% get_comment_count for blog.entry entry.id as comment_count %}
+    
+
+
+
     <div class="blogBox">
-        <div class="blogHeadline">{{ entry.title }}</div>
+
+        <div class="blogHeadline colorPink">
+            {{ entry.title }}
+            <p class="date">{{ entry.created_at|date:"F j, Y" }}</p>
+        </div>
+
         <div class="content">
             <div class="markdown">
                 <p>{{ entry.content_html|safe }}</p>
             </div>
         </div>
         <div class="footer">
-            <div class="left">Posted on <strong>{{ entry.created_at|date:"F j, Y" }}</strong> by <strong><a href="{% url 'user' entry.created_by.id %}">{{ entry.created_by.username }}</a></strong></div>
+            <div class="left"> by <strong><a href="{% url 'user' entry.created_by.id %}">{{ entry.created_by.username }}</a></strong></div>
             <div class="right"><a href="{% url 'entry_detail' entry.slug %}">{{ comment_count }} comment{{ comment_count|pluralize }}</a></div>
             <div class="clear"></div>
         </div>
     </div>
+
+
+
 
 {% empty %}
     <div class="contentBox">
@@ -38,5 +52,8 @@ context variables:
 {% endfor %}
 
 {% paginate %}
+
+</div>
+<div class="blogContainer right"></div><!---@Sushi split blogposts in this two containers (blogContainer left, blogContainer right) -->
 
 {% endblock content %}
