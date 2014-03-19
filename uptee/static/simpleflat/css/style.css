@@ -357,17 +357,35 @@ body {
 /* ---Blog--- */
 
 .blogContainer{
-    width: 49%;
+    width: 100%;
+    margin-bottom: 40px;
 }
-    .blogContainer.right{
-        float: right;
 
+
+.blogBox{
+    padding: 10px;
+    margin: 20px;
+    width: 90%;
+    border: 1px solid #ccc;
+}
+
+    .blogBox.detail{
+        width: auto;
+        padding: 10px;
+        margin: 0;
     }
 
-    .blogContainer.left{
+
+    .blogBox:nth-child(even) {
         float: left;
-        outline: 1px solid #ccc;
+        background: #efefef;
     }
+
+    .blogBox:nth-child(odd) {
+        float: right;
+        background: #fff;
+    }
+
 
 .blogHeadline {
     font-size: 20px;
@@ -379,20 +397,7 @@ body {
     font-size: 10px;
     line-height: 25px;
     font-weight: bold;
-    padding: 0 15px;
     color: #000;
-}
-
-.blogBox:nth-child(even) {
-    padding: 10px;
-    background: #efefef;
-    border-bottom: 1px solid #ccc;
-    border-top: 1px solid #ccc;
-}
-
-.blogBox:nth-child(odd) {
-    padding: 10px;
-    background: #fff;
 }
 
 .blogBox .content {
@@ -402,7 +407,7 @@ body {
 .blogBox .footer{
     font-size: 10px;
     margin-top: 15px;
-    padding: 2px 15px 0 5px;
+    padding: 2px 5px 0 5px;
     border-top: 1px solid #ccc;
 }
 

@@ -12,7 +12,7 @@ context variables:
 
 {% block content %}
 
-<div class="blogContainer left">
+<div class="blogContainer">
 
 {% autopaginate entry_list 5 %}
 
@@ -41,8 +41,6 @@ context variables:
     </div>
 
 
-
-
 {% empty %}
     <div class="contentBox">
         <div class="contentHeadline">Hello!</div>
@@ -52,7 +50,8 @@ context variables:
 
 {% paginate %}
 
+<div class="clear"></div>
+
 </div>
-<div class="blogContainer right"></div><!---@Sushi split blogposts in this two containers (blogContainer left, blogContainer right) -->
 
 {% endblock content %}
