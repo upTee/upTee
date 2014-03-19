@@ -383,8 +383,8 @@ body {
         float: none;
         width: auto;
         padding: 10px;
-        margin: 0;
-        border: none;
+        margin: 20px;
+        border: 1px solid #ccc;
         background: #fff;
     }
 
@@ -427,7 +427,6 @@ body {
 .commentsHeadline{
    color: #666;
    text-align: center;
-   border-bottom: 1px solid #ccc;
 }
 
 
