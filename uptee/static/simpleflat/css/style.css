@@ -369,21 +369,22 @@ body {
     border: 1px solid #ccc;
 }
 
-    .blogBox.detail{
-        width: auto;
-        padding: 10px;
-        margin: 0;
-        border: none;
-    }
-
-
-    .blogBox:nth-child(even) {
+    .blogBox:nth-child(odd) {
         float: left;
         background: #efefef;
     }
 
-    .blogBox:nth-child(odd) {
+    .blogBox:nth-child(even) {
         float: right;
+        background: #fff;
+    }
+
+    .blogBox.detail{
+        float: none;
+        width: auto;
+        padding: 10px;
+        margin: 0;
+        border: none;
         background: #fff;
     }
 
@@ -827,8 +828,8 @@ li.tab:hover {
 }
 
 
-.markdown h1, h2, h3, h4, h5{
-    margin: 10px 0 10px 0;
+.markdown h1, h2, h3, h4, h5, h6{
+    margin: 10px 5px 10px 5px;
     color: #333;
 }
 
@@ -866,10 +867,10 @@ li.tab:hover {
 }
 
 .markdown pre {
-    padding-top: 10px;
+    padding: 10px 0 0 5px;
     border: 1px solid #ff9326;
     border-left: 10px solid #ff9326;
-    margin: 10px 0 10px 0;
+    margin: 10px 0 10px 5px;
 }
 
 .markdown hr {
