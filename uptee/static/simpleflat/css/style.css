@@ -420,6 +420,10 @@ body {
     .blogBox .footer .left {
         float: left;
     }
+
+    .pagination {
+        text-align: center;
+    }
 /* ---END Blog--- */
 
 
@@ -618,18 +622,9 @@ body {
     position: absolute;
      right: 0;
      top: 6px;
-
+    font-size: 30px;
 }
 
-.serverstatus.on{
-    background: url(../img/status_on.png) no-repeat;
-    background-size: 30px 30px;
-}
-
-.serverstatus.off{
-    background: url(../img/status_off.png) no-repeat;
-    background-size: 30px 30px;
-}
 
 /* ---END serverlist--- */
 

@@ -57,8 +57,11 @@ context variables:
 {% for server in server_list %}
 
     <div class="contentBox w400">
-        <div class="contentHeadline">{{ server|get_option:'sv_name' }} 
-            <div class="serverstatus {% if server.is_online %}on{% else %}off{% endif %}"></div>
+        <div class="contentHeadline">{{ server|get_option:'sv_name' }}
+            {% if server.is_online %}
+            <div class="serverstatus colorGreen"><i class="fa fa-link"></i></div>
+            {% else %}
+            <div class="serverstatus colorRed"><i class="fa fa-unlink"></i></div>{% endif %}
         </div>
         <div class="content">
         {% if server.is_online %}<div class="serverStatusUpdate" data-serverid="{{ server.id }}">{% endif %}

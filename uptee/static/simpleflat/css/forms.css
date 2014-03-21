@@ -34,8 +34,8 @@
     width: 400px;
     border: 1px solid #ccc;
     border-radius: 25px;
-    box-shadow: 0px 0px 100px 0px rgba(50, 50, 50, .1);
-    background: #fff;
+    box-shadow: 0px 0px 15px 0px rgba(50, 50, 50, .1);
+    background: rgb(245,245,245);
 }
 
 #loginContainer,
@@ -49,7 +49,6 @@
     line-height: 50px;
     text-align: center;
     font-size: 20px;
-    color: #000;
     border-bottom: 1px solid #ccc;
     padding: 0 0 20px 0;
 }
@@ -95,7 +94,7 @@
 #registerContainer input[type=password],
 #registerContainer input[type=url] {
     width: 320px;
-    font-size: 20px;
+    font-size: 15px;
     line-height: 20px;
     font-family: ubuntu;
     font-weight: 300;
@@ -103,6 +102,7 @@
     border-bottom: 1px solid #dde0e2;
     padding: 11px 10px 11px 10px;
     height: 18px;
+    background-color: rgb(245,245,245);
 }
     /* Override for icons */
     #loginContainer input[type=password],
@@ -135,16 +135,6 @@
         border: none;
         border-bottom: 1px solid #fb3f35;
     }
-
-    #loginContainer input.button,
-    #registerContainer input.button{
-        width: 100px;
-        text-align: center;
-        font-family: ubuntu;
-        font-weight: 300;
-        font-size: 20px;
-    }
-
 /* ---END login / register forms--- */
 
 
@@ -362,29 +352,7 @@ form.smallform select {
 
 .createComment .buttonBox {
     padding: 10px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
 }
-
-.createComment input[type=submit]{
-    background: #666;
-    font-size: 15px;
-    cursor: pointer;
-    color: #fff;
-    border: none;
-    min-width: 90px;
-    min-height: 32px;
-    padding: 5px 10px 5px 10px;
-    text-decoration: none;
-}
-
-    .createComment input[type=submit]:hover{
-        background: #777;
-    }
-
-    .createComment input[type=submit]:active{
-        background: #555;
-    }
 /* ---END blog comment form--- */
 
 
@@ -394,60 +362,18 @@ input[type=button],
 button[type=button]{  
     margin-left: auto;
     margin-right: auto;
-    padding: 10px;
     font-size: 15px;
+    font-family: ubuntu;
+    font-weight: 300;
     min-width: 100px;
+    padding: 0 10px;
+    line-height: 40px;
     cursor: pointer;
     color: #fff;
     border: none;
     border-radius: 5px;
     background: #666;
-}
-
-input.login[type=submit]{  
-    padding: 12px;
-    font-size: 18px;
-    min-width: 150px;
-    width: 100%;
-}
-
-
-input.blue[type=submit], 
-input.blue[type=button], 
-button.blue[type=button] {
-    background: #0b6aff;
-    box-shadow: 0px 1px 0px rgba(6, 59, 143, 1);
-}
-
-input.red[type=submit], 
-input.red[type=button], 
-button.red[type=button] {
-    background: #ff0000;
-    box-shadow: 0px 1px 0px rgba(143, 0, 0, 1);
-}
-
-input.green[type=submit], 
-input.green[type=button], 
-button.green[type=button] {
-    background: #90c842;
-    box-shadow: 0px 1px 0px #7aa63d;
-}
-
-input.statusButton.big[type=submit]{  
-    font-size: 25px;
-    height: 50px;
-    width: 150px;
-    background: gray;
-    border-radius: 10px;
-}
-
-
-input.statusButton.red[type=submit]{  
-    background:rgb(255,59,48);
-}
-
-input.statusButton.green[type=submit]{  
-    background:rgb(76,217,100);
+    box-shadow: inset 0px -2px 0px 0px rgba(0,0,0,.2);
 }
 
 .centerbox{
