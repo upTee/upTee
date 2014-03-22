@@ -287,12 +287,11 @@ Also it shows the current status of each server hosted with upTee.">
         {% endcomment %}
 
         <div id="breadcrumb">
-            <div class="icon"></div>
             {% block breadcrumb %}
                 {% load breadcrumb_tags %}
                 {% add_crumb 'Home' 'home' %}
             {% endblock %}
-            <div class="text colorPink">{% render_breadcrumbs %}</div> {% comment %} render breadcrumbs. Only call this here! {% endcomment %}
+            <i class="fa fa-home"></i>{% render_breadcrumbs %} {% comment %} render breadcrumbs. Only call this here! {% endcomment %}
         </div>
 
         {% comment %}
