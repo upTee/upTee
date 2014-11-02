@@ -1,4 +1,4 @@
-from django.contrib.comments.forms import CommentForm
+from django_comments.forms import CommentForm
 from django.utils.html import escape
 from markdown import markdown
 

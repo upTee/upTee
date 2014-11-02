@@ -3,6 +3,7 @@ import os
 import re
 from datetime import timedelta
 from django import contrib
+from django.utils.http import urlquote
 
 # Django settings for uptee project.
 
@@ -172,7 +173,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
-    'django.contrib.comments',
+    'django_comments',
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django_pybrowscap',
@@ -185,12 +186,15 @@ INSTALLED_APPS = (
     'mod',
     'accounts',
     'blog',
-    'comments',
+    'my_comments',
     'messaging',
     'captcha',
-    'south',
     'gravatar',
 )
+
+ABSOLUTE_URL_OVERRIDES = {
+    'auth.user': lambda o: "/users/{0}/".format(urlquote(o.username))
+}
 
 TESTING_STATE = False
 
@@ -203,7 +207,7 @@ SERVER_EMAIL = ''
 
 # user profile
 AUTH_PROFILE_MODULE = 'accounts.UserProfile'
-COMMENTS_APP = 'comments'
+COMMENTS_APP = 'my_comments'
 
 # teeworlds executable
 SERVER_EXEC = 'teeworlds_srv'

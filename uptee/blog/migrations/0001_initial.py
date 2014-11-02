@@ -1,82 +1,34 @@
 # -*- coding: utf-8 -*-
-import datetime
-from south.db import db
-from south.v2 import SchemaMigration
-from django.db import models
+from __future__ import unicode_literals
+
+from django.db import models, migrations
+import django.db.models.deletion
+from django.conf import settings
 
 
-class Migration(SchemaMigration):
+class Migration(migrations.Migration):
 
-    def forwards(self, orm):
-        # Adding model 'Entry'
-        db.create_table('blog_entry', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('created_by', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'], on_delete=models.PROTECT)),
-            ('created_at', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
-            ('published_at', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, blank=True)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            ('slug', self.gf('django.db.models.fields.CharField')(max_length=100, blank=True)),
-            ('content', self.gf('django.db.models.fields.TextField')()),
-            ('content_html', self.gf('django.db.models.fields.TextField')()),
-            ('status', self.gf('django.db.models.fields.IntegerField')(default=2)),
-        ))
-        db.send_create_signal('blog', ['Entry'])
+    dependencies = [
+        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+    ]
 
-
-    def backwards(self, orm):
-        # Deleting model 'Entry'
-        db.delete_table('blog_entry')
-
-
-    models = {
-        'auth.group': {
-            'Meta': {'object_name': 'Group'},
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '80'}),
-            'permissions': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.Permission']", 'symmetrical': 'False', 'blank': 'True'})
-        },
-        'auth.permission': {
-            'Meta': {'ordering': "('content_type__app_label', 'content_type__model', 'codename')", 'unique_together': "(('content_type', 'codename'),)", 'object_name': 'Permission'},
-            'codename': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'content_type': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['contenttypes.ContentType']"}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
-        },
-        'auth.user': {
-            'Meta': {'object_name': 'User'},
-            'date_joined': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
-            'email': ('django.db.models.fields.EmailField', [], {'max_length': '75', 'blank': 'True'}),
-            'first_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
-            'groups': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.Group']", 'symmetrical': 'False', 'blank': 'True'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'is_active': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'is_staff': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'is_superuser': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'last_login': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
-            'last_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
-            'password': ('django.db.models.fields.CharField', [], {'max_length': '128'}),
-            'user_permissions': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.Permission']", 'symmetrical': 'False', 'blank': 'True'}),
-            'username': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '30'})
-        },
-        'blog.entry': {
-            'Meta': {'ordering': "['-created_at']", 'object_name': 'Entry'},
-            'content': ('django.db.models.fields.TextField', [], {}),
-            'content_html': ('django.db.models.fields.TextField', [], {}),
-            'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
-            'created_by': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']", 'on_delete': 'models.PROTECT'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'published_at': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
-            'slug': ('django.db.models.fields.CharField', [], {'max_length': '100', 'blank': 'True'}),
-            'status': ('django.db.models.fields.IntegerField', [], {'default': '2'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '100'})
-        },
-        'contenttypes.contenttype': {
-            'Meta': {'ordering': "('name',)", 'unique_together': "(('app_label', 'model'),)", 'object_name': 'ContentType', 'db_table': "'django_content_type'"},
-            'app_label': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
-        }
-    }
-
-    complete_apps = ['blog']
+    operations = [
+        migrations.CreateModel(
+            name='Entry',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('published_at', models.DateTimeField(auto_now=True)),
+                ('title', models.CharField(max_length=100)),
+                ('slug', models.CharField(max_length=100, blank=True)),
+                ('content', models.TextField(help_text=b'You may use markdown.', verbose_name=b'Inhalt')),
+                ('content_html', models.TextField()),
+                ('status', models.IntegerField(default=2, choices=[(1, b'published'), (2, b'draft'), (3, b'hidden')])),
+                ('created_by', models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=django.db.models.deletion.PROTECT)),
+            ],
+            options={
+                'ordering': ['-created_at'],
+            },
+            bases=(models.Model,),
+        ),
+    ]
