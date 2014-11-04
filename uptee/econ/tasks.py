@@ -2,7 +2,7 @@ import os
 import signal
 import psutil
 from celery import task
-from multiprocessing import Process
+from billiard import Process
 from django.core.cache import cache
 from econ import TelnetClient
 
