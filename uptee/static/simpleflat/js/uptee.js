@@ -37,7 +37,7 @@ $(document).ready(function() {
     $(document).on('click', '.deleteVote div.delButton', function() {
         var tr = $(this).parents('tr');
         tr.hide();
-        tr.find('input').attr('value', '');
+        tr.find('input').val('');
     });
 
     // rcon commands stuff
@@ -58,7 +58,7 @@ $(document).ready(function() {
     $(document).on('click', '.deleteCommand div.delButton', function() {
         var tr = $(this).parents('tr');
         tr.hide();
-        tr.find('input').attr('value', '');
+        tr.find('input').val('');
     });
 
     // menu cookie

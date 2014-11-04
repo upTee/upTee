@@ -95,7 +95,7 @@ $(document).ready(function() {
     $('.delete_vote div.del_button').live('click', function() {
         var tr = $(this).parents('tr');
         tr.hide();
-        tr.find('input').attr('value', '');
+        tr.find('input').val('');
     });
 
     var rcon_number = 1;
@@ -115,7 +115,7 @@ $(document).ready(function() {
     $('.delete_command div.del_button').live('click', function() {
         var tr = $(this).parents('tr');
         tr.hide();
-        tr.find('input').attr('value', '');
+        tr.find('input').val('');
     });
 
     $('input[type=file]').each(function(i) {
@@ -124,8 +124,8 @@ $(document).ready(function() {
         $(this).after('<input type="text" data-type="file" data-for="' + name + '" readonly><button type="button" data-type="file" data-for="' + name + '">Browse...</button>');
 
         $(this).change(function() {
-            var data = $(this).attr('value');
-            $('input[data-for="' + name + '"]').attr('value', data);
+            var data = $(this).val();
+            $('input[data-for="' + name + '"]').val(data);
         });
     });
     $('button[data-type=file], input[data-type=file]').click(function() {

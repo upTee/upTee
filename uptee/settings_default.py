@@ -1,15 +1,13 @@
-import djcelery
-import os
-import re
+import os, re, sys
 from datetime import timedelta
 from django import contrib
 from django.utils.http import urlquote
 
 # Django settings for uptee project.
-
-djcelery.setup_loader()
-
 PROJECT_DIR = os.path.dirname(__file__)
+sys.path.insert(0, PROJECT_DIR)
+
+#djcelery.setup_loader()
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
@@ -135,10 +133,10 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = 'uptee.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'wsgi.application'
+WSGI_APPLICATION = 'uptee.wsgi.application'
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',

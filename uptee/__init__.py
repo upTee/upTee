@@ -1,6 +1,11 @@
 """
 upTee
 """
+
+# This will make sure the app is always imported when
+# Django starts so that shared_task will use this app.
+from _celery import app as celery_app
+
 __version_info__ = {
     'major': 0,
     'minor': 2,
