@@ -138,10 +138,10 @@ def register(request):
                 activation = Activation(user=new_user, key=key)
                 activation.save()
                 send_mail('upTee registration', 'Thank you for your registration.\r\nClick the link below to activate your account:\r\n\r\nhttp://{0}/activate/{1}'.format(request.META['HTTP_HOST'], key), SERVER_EMAIL, [new_user.email], fail_silently=not DEBUG)
+                if ADMINS:
+                    mail_admins('User registration', u'The following user just registered and wants to be activated:\r\n\r\n{0}'.format(register_form.cleaned_data['username']), fail_silently=not DEBUG)
             else:
                 messages.success(request, "Your account was successfully created. An Admin should contact you shortly.")
-            if ADMINS:
-                mail_admins('User registration', u'The following user just registered and wants to be activated:\r\n\r\n{0}'.format(register_form.cleaned_data['username']), fail_silently=not DEBUG)
             return redirect(reverse('home'))
     else:
         register_form = RegisterForm()
