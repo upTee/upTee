@@ -124,7 +124,8 @@ def register(request):
         register_form = RegisterForm(request.POST)
         testing_form = TestingForm(request.POST) if TESTING_STATE else None
         if register_form.is_valid() and (not testing_form or testing_form.is_valid()):
-            testing_form.save()
+            if testing_form:
+                testing_form.save()
             new_user = User(
                 username=register_form.cleaned_data['username'],
                 email=register_form.cleaned_data['email'],
