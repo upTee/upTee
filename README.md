@@ -47,4 +47,4 @@ __<sup>[3]</sup>__ recommend but another cached backend possible
 
 -----
 
-upTee – © 2012 - 2013 [upTee](http://uptee.teesites.net/about/)
+upTee – © 2012 - 2015 [upTee](http://uptee.teesites.net/about/)
