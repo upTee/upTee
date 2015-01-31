@@ -420,7 +420,7 @@ def update_settings(request, server_id):
             if option.widget == Option.WIDGET_TEXTAREA:
                 option.value = post[key].replace('\r\n', r'\n')
             else:
-                option.value = post[key]
+                option.value = post[key].splitlines()[0]
             option.save()
     options = server.config_options.filter(widget=Option.WIDGET_CHECKBOX)
     for option in options:
@@ -494,7 +494,7 @@ def update_votes(request, server_id):
                                 if post[_key] in title_done_list:
                                     break
                             vars()[other] = post[_key]
-                            new_vote = Vote(server=server, command=vars()['command'], title=vars()['title'])
+                            new_vote = Vote(server=server, command=vars()['command'].splitlines()[0], title=vars()['title'].splitlines()[0])
                             new_vote.save()
                             id_done_list.append(vote_id)
                             title_done_list.append(vars()['title'])
@@ -511,7 +511,7 @@ def update_votes(request, server_id):
             if not post[key]:
                 vote.delete()
             else:
-                setattr(vote, input_type, post[key])
+                setattr(vote, input_type, post[key].splitlines()[0])
                 vote.save()
     return render_to_response('mod/settings_updated.html', {'next': next}, context_instance=RequestContext(request))
 
@@ -541,12 +541,12 @@ def update_rcon_commands(request, server_id):
             rcon_command = rcon_command[0] if rcon_command else None
             if rcon_command:
                 if post[key] and rcon_command.command == key.rsplit('-', 1)[0]:
-                    rcon_command.value = post[key]
+                    rcon_command.value = post[key].splitlines()[0]
                     rcon_command.save()
                 else:
                     rcon_command.delete()
     for command in new_commands:
-        rcon_command = RconCommand(server=server, command=command[0], value=command[1])
+        rcon_command = RconCommand(server=server, command=command[0].splitlines()[0], value=command[1].splitlines()[0])
         rcon_command.save()
     return render_to_response('mod/settings_updated.html', {'next': next}, context_instance=RequestContext(request))
 
