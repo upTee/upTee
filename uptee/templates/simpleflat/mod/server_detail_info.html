@@ -35,7 +35,7 @@ context variables:
 
   <div id="info" class="tabContent">
     <div class="contentBox">
-        <div class="contentHeadline colorPink"><i class="fa fa-info-circle"></i> Server Info</div>
+        <div class="contentHeadline colorPink"><i class="fa fa-info-circle fa-border"></i> Server Info</div>
         <div class="content">
             {% if server.is_online %}<div class="serverStatusUpdate" data-serverid="{{ server.id }}">{% endif %}
             <table class="bordered w400">
@@ -83,7 +83,7 @@ context variables:
 
   <div id="description" class="tabContent">
     <div class="contentBox">
-        <div class="contentHeadline"><i class="fa fa-pencil"></i> Description{% if user.is_authenticated and user == server.owner %}<a class="edit_link" href="{% url 'server_edit_description' server.id %}">edit</a>{% endif %}<div class="clear"></div></div>
+        <div class="contentHeadline"><i class="fa fa-pencil fa-border"></i> Description{% if user.is_authenticated and user == server.owner %}<a class="edit_link" href="{% url 'server_edit_description' server.id %}">edit</a>{% endif %}<div class="clear"></div></div>
         <div class="content">
             
                 {% if server.description_html %}

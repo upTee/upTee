@@ -35,7 +35,7 @@ context variables:
         </div>
         <div class="footer">
             <div class="left"> by <strong><a href="{% url 'user' entry.created_by.id %}">{{ entry.created_by.username }}</a></strong></div>
-            <div class="right"><a href="{% url 'entry_detail' entry.slug %}">{{ comment_count }} comment{{ comment_count|pluralize }}</a></div>
+            <div class="right"><i class="fa fa-comments"></i> <a href="{% url 'entry_detail' entry.slug %}">{{ comment_count }} comment{{ comment_count|pluralize }}</a></div>
             <div class="clear"></div>
         </div>
     </div>
