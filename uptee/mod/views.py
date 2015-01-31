@@ -412,6 +412,8 @@ def update_settings(request, server_id):
     if 'map_download_allowed' in post.keys():
         del post['map_download_allowed']
     for key in post.keys():
+        if not post[key]:
+            continue
         if server.owner != request.user:
             if not moderator.allowed_options.filter(command=key):
                 continue
@@ -434,6 +436,8 @@ def update_settings(request, server_id):
         option.save()
     options = server.config_options.filter(widget=Option.WIDGET_SELECT)
     for key in post.keys():
+        if not post[key]:
+            continue
         if server.owner != request.user:
             if not moderator.allowed_options.filter(command=key):
                 continue
@@ -485,7 +489,7 @@ def update_votes(request, server_id):
                     other = 'title'
                 vars()[input_type] = post[key]
                 for _key in post:
-                    if not post[_key] and ' ' not in _key:
+                    if not post[_key] or ' ' not in _key:
                         continue
                     if _key.rsplit(' ', 1)[-1] == 'new' and _key.split(' ', 1)[0] == other:
                         check_id = key.rsplit(' ', 2)[-2]
