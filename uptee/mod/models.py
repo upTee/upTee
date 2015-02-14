@@ -284,7 +284,7 @@ class Config(models.Model):
 
 
 class Option(Config):
-    value = models.CharField(blank=True, max_length=500)
+    value = models.CharField(blank=True, max_length=1000)
 
     WIDGET_TEXT = 1
     WIDGET_TEXTAREA = 2

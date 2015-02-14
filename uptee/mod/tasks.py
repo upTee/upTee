@@ -19,7 +19,6 @@ def run_server(path, server):
         server.online = True
         server.locked = False
         server.save()
-        p.wait()
 
 
 @task()

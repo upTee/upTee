@@ -37,7 +37,7 @@ class Config:
                             value += ',{0}'.format(selection)
                     elif widget[:7] == 'select:':
                         widget = 'text'
-                self.options[command] = (value, widget)
+                self.options[command] = (value[:1000], widget)
             self.tunes = [{'command': line.rsplit()[0].strip('"'), 'value': float(line.split()[1].strip('"'))} for line in tunes]
             self.votes = [{'command': line.rsplit('" ', 1)[1].strip('"'), 'title': line.rsplit('" ', 1)[0].strip('"')} for line in votes if len(line.split('" ')) == 2]
             for line in rcon_commands:
