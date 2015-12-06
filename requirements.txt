@@ -16,3 +16,4 @@ Pillow>=2.2.1
 psutil>=0.6.1
 pytz
 south>=1.0
+python-dateutil
